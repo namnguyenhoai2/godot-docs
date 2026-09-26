@@ -10,33 +10,33 @@
 Theme
 =====
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A resource used for styling/skinning :ref:`Control<class_Control>`\ s and :ref:`Window<class_Window>`\ s.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A resource used for styling/skinning :ref:`Control<class_Control>` and :ref:`Window<class_Window>` nodes. While individual controls can be styled using their local theme overrides (see :ref:`Control.add_theme_color_override()<class_Control_method_add_theme_color_override>`), theme resources allow you to store and apply the same settings across all controls sharing the same type (e.g. style all :ref:`Button<class_Button>`\ s the same). One theme resource can be used for the entire project, but you can also set a separate theme resource to a branch of control nodes. A theme resource assigned to a control applies to the control itself, as well as all of its direct and indirect children (as long as a chain of controls is uninterrupted).
-
-Use :ref:`ProjectSettings.gui/theme/custom<class_ProjectSettings_property_gui/theme/custom>` to set up a project-scope theme that will be available to every control in your project.
-
-Use :ref:`Control.theme<class_Control_property_theme>` of any control node to set up a theme that will be available to that control and all of its direct and indirect children.
+Tài nguyên dùng để tạo kiểu/skin cho :ref:`Control<class_Control>`\ s và :ref:`Window<class_Window>`\ s.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Tài nguyên dùng để tạo kiểu/skin cho các node :ref:`Control<class_Control>` và :ref:`Window<class_Window>`. Mặc dù từng control có thể được tạo kiểu bằng các tùy chỉnh theme cục bộ của chúng (xem :ref:`Control.add_theme_color_override()<class_Control_method_add_theme_color_override>`), các tài nguyên theme cho phép bạn lưu trữ và áp dụng cùng một thiết lập cho tất cả control có cùng kiểu (ví dụ: tạo kiểu giống nhau cho tất cả :ref:`Button<class_Button>`\ s). Một tài nguyên theme có thể được dùng cho toàn bộ project, nhưng bạn cũng có thể đặt một tài nguyên theme riêng cho một nhánh các control node. Tài nguyên theme được gán cho một control sẽ áp dụng cho chính control đó, cũng như tất cả node con trực tiếp và gián tiếp của nó (miễn là chuỗi các control không bị gián đoạn).
+
+Sử dụng :ref:`ProjectSettings.gui/theme/custom <class_ProjectSettings_property_gui/theme/custom>` để thiết lập theme ở phạm vi project, theme này sẽ khả dụng cho mọi control trong project của bạn.
+
+Sử dụng :ref:`Control.theme<class_Control_property_theme>` của bất kỳ control node nào để thiết lập theme khả dụng cho control đó cùng tất cả node con trực tiếp và gián tiếp của nó.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`GUI skinning <../tutorials/ui/gui_skinning>`
+- :doc:`Tạo skin cho GUI <../tutorials/ui/gui_skinning>`
 
-- :doc:`Using the theme editor <../tutorials/ui/gui_using_theme_editor>`
+- :doc:`Sử dụng trình chỉnh sửa theme <../tutorials/ui/gui_using_theme_editor>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -52,139 +52,139 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`add_type<class_Theme_method_add_type>`\ (\ theme_type\: :ref:`StringName<class_StringName>`\ )                                                                                                                                                                 |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`clear<class_Theme_method_clear>`\ (\ )                                                                                                                                                                                                                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`clear_color<class_Theme_method_clear_color>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ )                                                                                                               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`clear_constant<class_Theme_method_clear_constant>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ )                                                                                                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`clear_font<class_Theme_method_clear_font>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ )                                                                                                                 |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`clear_font_size<class_Theme_method_clear_font_size>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ )                                                                                                       |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`clear_icon<class_Theme_method_clear_icon>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ )                                                                                                                 |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`clear_stylebox<class_Theme_method_clear_stylebox>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ )                                                                                                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`clear_theme_item<class_Theme_method_clear_theme_item>`\ (\ data_type\: :ref:`DataType<enum_Theme_DataType>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ )                                                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`clear_type_variation<class_Theme_method_clear_type_variation>`\ (\ theme_type\: :ref:`StringName<class_StringName>`\ )                                                                                                                                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Color<class_Color>`                         | :ref:`get_color<class_Theme_method_get_color>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_color_list<class_Theme_method_get_color_list>`\ (\ theme_type\: :ref:`String<class_String>`\ ) |const|                                                                                                                                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_color_type_list<class_Theme_method_get_color_type_list>`\ (\ ) |const|                                                                                                                                                                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`get_constant<class_Theme_method_get_constant>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_constant_list<class_Theme_method_get_constant_list>`\ (\ theme_type\: :ref:`String<class_String>`\ ) |const|                                                                                                                                               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_constant_type_list<class_Theme_method_get_constant_type_list>`\ (\ ) |const|                                                                                                                                                                               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Font<class_Font>`                           | :ref:`get_font<class_Theme_method_get_font>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                             |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_font_list<class_Theme_method_get_font_list>`\ (\ theme_type\: :ref:`String<class_String>`\ ) |const|                                                                                                                                                       |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`get_font_size<class_Theme_method_get_font_size>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_font_size_list<class_Theme_method_get_font_size_list>`\ (\ theme_type\: :ref:`String<class_String>`\ ) |const|                                                                                                                                             |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_font_size_type_list<class_Theme_method_get_font_size_type_list>`\ (\ ) |const|                                                                                                                                                                             |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_font_type_list<class_Theme_method_get_font_type_list>`\ (\ ) |const|                                                                                                                                                                                       |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Texture2D<class_Texture2D>`                 | :ref:`get_icon<class_Theme_method_get_icon>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                             |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_icon_list<class_Theme_method_get_icon_list>`\ (\ theme_type\: :ref:`String<class_String>`\ ) |const|                                                                                                                                                       |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_icon_type_list<class_Theme_method_get_icon_type_list>`\ (\ ) |const|                                                                                                                                                                                       |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`StyleBox<class_StyleBox>`                   | :ref:`get_stylebox<class_Theme_method_get_stylebox>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_stylebox_list<class_Theme_method_get_stylebox_list>`\ (\ theme_type\: :ref:`String<class_String>`\ ) |const|                                                                                                                                               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_stylebox_type_list<class_Theme_method_get_stylebox_type_list>`\ (\ ) |const|                                                                                                                                                                               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Variant<class_Variant>`                     | :ref:`get_theme_item<class_Theme_method_get_theme_item>`\ (\ data_type\: :ref:`DataType<enum_Theme_DataType>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const|                                               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_theme_item_list<class_Theme_method_get_theme_item_list>`\ (\ data_type\: :ref:`DataType<enum_Theme_DataType>`, theme_type\: :ref:`String<class_String>`\ ) |const|                                                                                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_theme_item_type_list<class_Theme_method_get_theme_item_type_list>`\ (\ data_type\: :ref:`DataType<enum_Theme_DataType>`\ ) |const|                                                                                                                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_type_list<class_Theme_method_get_type_list>`\ (\ ) |const|                                                                                                                                                                                                 |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`StringName<class_StringName>`               | :ref:`get_type_variation_base<class_Theme_method_get_type_variation_base>`\ (\ theme_type\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_type_variation_list<class_Theme_method_get_type_variation_list>`\ (\ base_type\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                                            |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`has_color<class_Theme_method_has_color>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`has_constant<class_Theme_method_has_constant>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`has_default_base_scale<class_Theme_method_has_default_base_scale>`\ (\ ) |const|                                                                                                                                                                               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`has_default_font<class_Theme_method_has_default_font>`\ (\ ) |const|                                                                                                                                                                                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`has_default_font_size<class_Theme_method_has_default_font_size>`\ (\ ) |const|                                                                                                                                                                                 |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`has_font<class_Theme_method_has_font>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                             |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`has_font_size<class_Theme_method_has_font_size>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`has_icon<class_Theme_method_has_icon>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                             |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`has_stylebox<class_Theme_method_has_stylebox>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`has_theme_item<class_Theme_method_has_theme_item>`\ (\ data_type\: :ref:`DataType<enum_Theme_DataType>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const|                                               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`is_type_variation<class_Theme_method_is_type_variation>`\ (\ theme_type\: :ref:`StringName<class_StringName>`, base_type\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                      |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`merge_with<class_Theme_method_merge_with>`\ (\ other\: :ref:`Theme<class_Theme>`\ )                                                                                                                                                                            |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`remove_type<class_Theme_method_remove_type>`\ (\ theme_type\: :ref:`StringName<class_StringName>`\ )                                                                                                                                                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`rename_color<class_Theme_method_rename_color>`\ (\ old_name\: :ref:`StringName<class_StringName>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ )                                                             |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`rename_constant<class_Theme_method_rename_constant>`\ (\ old_name\: :ref:`StringName<class_StringName>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ )                                                       |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`rename_font<class_Theme_method_rename_font>`\ (\ old_name\: :ref:`StringName<class_StringName>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ )                                                               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`rename_font_size<class_Theme_method_rename_font_size>`\ (\ old_name\: :ref:`StringName<class_StringName>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ )                                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`rename_icon<class_Theme_method_rename_icon>`\ (\ old_name\: :ref:`StringName<class_StringName>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ )                                                               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`rename_stylebox<class_Theme_method_rename_stylebox>`\ (\ old_name\: :ref:`StringName<class_StringName>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ )                                                       |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`rename_theme_item<class_Theme_method_rename_theme_item>`\ (\ data_type\: :ref:`DataType<enum_Theme_DataType>`, old_name\: :ref:`StringName<class_StringName>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`rename_type<class_Theme_method_rename_type>`\ (\ old_theme_type\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ )                                                                                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`set_color<class_Theme_method_set_color>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`, color\: :ref:`Color<class_Color>`\ )                                                                                |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`set_constant<class_Theme_method_set_constant>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`, constant\: :ref:`int<class_int>`\ )                                                                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`set_font<class_Theme_method_set_font>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`, font\: :ref:`Font<class_Font>`\ )                                                                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`set_font_size<class_Theme_method_set_font_size>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`, font_size\: :ref:`int<class_int>`\ )                                                                        |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`set_icon<class_Theme_method_set_icon>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`, texture\: :ref:`Texture2D<class_Texture2D>`\ )                                                                        |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`set_stylebox<class_Theme_method_set_stylebox>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`, texture\: :ref:`StyleBox<class_StyleBox>`\ )                                                                  |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`set_theme_item<class_Theme_method_set_theme_item>`\ (\ data_type\: :ref:`DataType<enum_Theme_DataType>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`, value\: :ref:`Variant<class_Variant>`\ )                |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`set_type_variation<class_Theme_method_set_type_variation>`\ (\ theme_type\: :ref:`StringName<class_StringName>`, base_type\: :ref:`StringName<class_StringName>`\ )                                                                                            |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`add_type<class_Theme_method_add_type>`\ (\ theme_type\: :ref:`StringName<class_StringName>`\ )                                                                                                                                                                  |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`clear<class_Theme_method_clear>`\ (\ )                                                                                                                                                                                                                          |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`clear_color<class_Theme_method_clear_color>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ )                                                                                                                |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`clear_constant<class_Theme_method_clear_constant>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ )                                                                                                          |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`clear_font<class_Theme_method_clear_font>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ )                                                                                                                  |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`clear_font_size<class_Theme_method_clear_font_size>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ )                                                                                                        |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`clear_icon<class_Theme_method_clear_icon>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ )                                                                                                                  |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`clear_stylebox<class_Theme_method_clear_stylebox>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ )                                                                                                          |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`clear_theme_item<class_Theme_method_clear_theme_item>`\ (\ data_type\: :ref:`DataType <enum_Theme_DataType>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ )                                                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`clear_type_variation<class_Theme_method_clear_type_variation>`\ (\ theme_type\: :ref:`StringName<class_StringName>`\ )                                                                                                                                          |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>`                         | :ref:`get_color<class_Theme_method_get_color>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                            |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_color_list<class_Theme_method_get_color_list>`\ (\ theme_type\: :ref:`String<class_String>`\ ) |const|                                                                                                                                                      |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_color_type_list<class_Theme_method_get_color_type_list>`\ (\ ) |const|                                                                                                                                                                                      |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`get_constant<class_Theme_method_get_constant>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                      |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_constant_list<class_Theme_method_get_constant_list>`\ (\ theme_type\: :ref:`String<class_String>`\ ) |const|                                                                                                                                                |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_constant_type_list<class_Theme_method_get_constant_type_list>`\ (\ ) |const|                                                                                                                                                                                |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Font<class_Font>`                           | :ref:`get_font<class_Theme_method_get_font>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                              |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_font_list<class_Theme_method_get_font_list>`\ (\ theme_type\: :ref:`String<class_String>`\ ) |const|                                                                                                                                                        |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`get_font_size<class_Theme_method_get_font_size>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                    |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_font_size_list<class_Theme_method_get_font_size_list>`\ (\ theme_type\: :ref:`String<class_String>`\ ) |const|                                                                                                                                              |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_font_size_type_list<class_Theme_method_get_font_size_type_list>`\ (\ ) |const|                                                                                                                                                                              |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_font_type_list<class_Theme_method_get_font_type_list>`\ (\ ) |const|                                                                                                                                                                                        |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Texture2D<class_Texture2D>`                 | :ref:`get_icon<class_Theme_method_get_icon>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                              |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_icon_list<class_Theme_method_get_icon_list>`\ (\ theme_type\: :ref:`String<class_String>`\ ) |const|                                                                                                                                                        |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_icon_type_list<class_Theme_method_get_icon_type_list>`\ (\ ) |const|                                                                                                                                                                                        |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`StyleBox<class_StyleBox>`                   | :ref:`get_stylebox<class_Theme_method_get_stylebox>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                      |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_stylebox_list<class_Theme_method_get_stylebox_list>`\ (\ theme_type\: :ref:`String<class_String>`\ ) |const|                                                                                                                                                |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_stylebox_type_list<class_Theme_method_get_stylebox_type_list>`\ (\ ) |const|                                                                                                                                                                                |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Variant<class_Variant>`                     | :ref:`get_theme_item<class_Theme_method_get_theme_item>`\ (\ data_type\: :ref:`DataType <enum_Theme_DataType>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const|                                               |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_theme_item_list<class_Theme_method_get_theme_item_list>`\ (\ data_type\: :ref:`DataType <enum_Theme_DataType>`, theme_type\: :ref:`String<class_String>`\ ) |const|                                                                                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_theme_item_type_list<class_Theme_method_get_theme_item_type_list>`\ (\ data_type\: :ref:`DataType <enum_Theme_DataType>`\ ) |const|                                                                                                                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_type_list<class_Theme_method_get_type_list>`\ (\ ) |const|                                                                                                                                                                                                  |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`StringName<class_StringName>`               | :ref:`get_type_variation_base<class_Theme_method_get_type_variation_base>`\ (\ theme_type\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                                            |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_type_variation_list<class_Theme_method_get_type_variation_list>`\ (\ base_type\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                                             |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`has_color<class_Theme_method_has_color>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                            |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`has_constant<class_Theme_method_has_constant>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                      |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`has_default_base_scale<class_Theme_method_has_default_base_scale>`\ (\ ) |const|                                                                                                                                                                                |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`has_default_font<class_Theme_method_has_default_font>`\ (\ ) |const|                                                                                                                                                                                            |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`has_default_font_size<class_Theme_method_has_default_font_size>`\ (\ ) |const|                                                                                                                                                                                  |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`has_font<class_Theme_method_has_font>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                              |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`has_font_size<class_Theme_method_has_font_size>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                    |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`has_icon<class_Theme_method_has_icon>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                              |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`has_stylebox<class_Theme_method_has_stylebox>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                      |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`has_theme_item<class_Theme_method_has_theme_item>`\ (\ data_type\: :ref:`DataType <enum_Theme_DataType>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const|                                               |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`is_type_variation<class_Theme_method_is_type_variation>`\ (\ theme_type\: :ref:`StringName<class_StringName>`, base_type\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                       |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`merge_with<class_Theme_method_merge_with>`\ (\ other\: :ref:`Theme<class_Theme>`\ )                                                                                                                                                                             |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`remove_type<class_Theme_method_remove_type>`\ (\ theme_type\: :ref:`StringName<class_StringName>`\ )                                                                                                                                                            |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`rename_color<class_Theme_method_rename_color>`\ (\ old_name\: :ref:`StringName<class_StringName>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ )                                                              |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`rename_constant<class_Theme_method_rename_constant>`\ (\ old_name\: :ref:`StringName<class_StringName>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) ох                                                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`rename_font<class_Theme_method_rename_font>`\ (\ old_name\: :ref:`StringName<class_StringName>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ )                                                                |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`rename_font_size<class_Theme_method_rename_font_size>`\ (\ old_name\: :ref:`StringName<class_StringName>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ )                                                      |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`rename_icon<class_Theme_method_rename_icon>`\ (\ old_name\: :ref:`StringName<class_StringName>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ )                                                                |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`rename_stylebox<class_Theme_method_rename_stylebox>`\ (\ old_name\: :ref:`StringName<class_StringName>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ )                                                        |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`rename_theme_item<class_Theme_method_rename_theme_item>`\ (\ data_type\: :ref:`DataType <enum_Theme_DataType>`, old_name\: :ref:`StringName<class_StringName>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`rename_type<class_Theme_method_rename_type>`\ (\ old_theme_type\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ )                                                                                                      |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`set_color<class_Theme_method_set_color>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`, color\: :ref:`Color<class_Color>`\ )                                                                                 |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`set_constant<class_Theme_method_set_constant>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`, constant\: :ref:`int<class_int>`\ )                                                                            |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`set_font<class_Theme_method_set_font>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`, font\: :ref:`Font<class_Font>`\ )                                                                                      |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`set_font_size<class_Theme_method_set_font_size>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`, font_size\: :ref:`int<class_int>`\ )                                                                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`set_icon<class_Theme_method_set_icon>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`, texture\: :ref:`Texture2D<class_Texture2D>`\ )                                                                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`set_stylebox<class_Theme_method_set_stylebox>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`, texture\: :ref:`StyleBox<class_StyleBox>`\ )                                                                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`set_theme_item<class_Theme_method_set_theme_item>`\ (\ data_type\: :ref:`DataType <enum_Theme_DataType>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`, value\: :ref:`Variant<class_Variant>`\ )                |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`set_type_variation<class_Theme_method_set_type_variation>`\ (\ theme_type\: :ref:`StringName<class_StringName>`, base_type\: :ref:`StringName<class_StringName>`\ )                                                                                             |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -192,14 +192,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_Theme_DataType:
 
 .. rst-class:: classref-enumeration
 
-enum **DataType**: :ref:`🔗<enum_Theme_DataType>`
+enum **DataType**: :ref:`🔗 <enum_Theme_DataType>`
 
 .. _class_Theme_constant_DATA_TYPE_COLOR:
 
@@ -207,7 +207,7 @@ enum **DataType**: :ref:`🔗<enum_Theme_DataType>`
 
 :ref:`DataType<enum_Theme_DataType>` **DATA_TYPE_COLOR** = ``0``
 
-Theme's :ref:`Color<class_Color>` item type.
+Kiểu mục :ref:`Color<class_Color>` của Theme.
 
 .. _class_Theme_constant_DATA_TYPE_CONSTANT:
 
@@ -215,7 +215,7 @@ Theme's :ref:`Color<class_Color>` item type.
 
 :ref:`DataType<enum_Theme_DataType>` **DATA_TYPE_CONSTANT** = ``1``
 
-Theme's constant item type.
+Kiểu mục hằng số của Theme.
 
 .. _class_Theme_constant_DATA_TYPE_FONT:
 
@@ -223,7 +223,7 @@ Theme's constant item type.
 
 :ref:`DataType<enum_Theme_DataType>` **DATA_TYPE_FONT** = ``2``
 
-Theme's :ref:`Font<class_Font>` item type.
+Kiểu mục :ref:`Font<class_Font>` của Theme.
 
 .. _class_Theme_constant_DATA_TYPE_FONT_SIZE:
 
@@ -231,7 +231,7 @@ Theme's :ref:`Font<class_Font>` item type.
 
 :ref:`DataType<enum_Theme_DataType>` **DATA_TYPE_FONT_SIZE** = ``3``
 
-Theme's font size item type.
+Kiểu mục kích thước phông chữ của Theme.
 
 .. _class_Theme_constant_DATA_TYPE_ICON:
 
@@ -239,7 +239,7 @@ Theme's font size item type.
 
 :ref:`DataType<enum_Theme_DataType>` **DATA_TYPE_ICON** = ``4``
 
-Theme's icon :ref:`Texture2D<class_Texture2D>` item type.
+Kiểu mục :ref:`Texture2D<class_Texture2D>` biểu tượng của Theme.
 
 .. _class_Theme_constant_DATA_TYPE_STYLEBOX:
 
@@ -247,7 +247,7 @@ Theme's icon :ref:`Texture2D<class_Texture2D>` item type.
 
 :ref:`DataType<enum_Theme_DataType>` **DATA_TYPE_STYLEBOX** = ``5``
 
-Theme's :ref:`StyleBox<class_StyleBox>` item type.
+Kiểu mục :ref:`StyleBox<class_StyleBox>` của Theme.
 
 .. _class_Theme_constant_DATA_TYPE_MAX:
 
@@ -255,7 +255,7 @@ Theme's :ref:`StyleBox<class_StyleBox>` item type.
 
 :ref:`DataType<enum_Theme_DataType>` **DATA_TYPE_MAX** = ``6``
 
-Maximum value for the DataType enum.
+Giá trị tối đa cho enum DataType.
 
 .. rst-class:: classref-section-separator
 
@@ -263,8 +263,8 @@ Maximum value for the DataType enum.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Theme_property_default_base_scale:
 
@@ -277,9 +277,9 @@ Property Descriptions
 - |void| **set_default_base_scale**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_default_base_scale**\ (\ )
 
-The default base scale factor of this theme resource. Used by some controls to scale their visual properties based on the global scale factor. If this value is set to ``0.0``, the global scale factor is used (see :ref:`ThemeDB.fallback_base_scale<class_ThemeDB_property_fallback_base_scale>`).
+Hệ số tỷ lệ cơ sở mặc định của tài nguyên theme này. Một số control sử dụng hệ số này để điều chỉnh tỷ lệ các thuộc tính hiển thị dựa trên hệ số tỷ lệ toàn cục. Nếu giá trị này được đặt thành ``0.0``, hệ số tỷ lệ toàn cục sẽ được sử dụng (xem :ref:`ThemeDB.fallback_base_scale<class_ThemeDB_property_fallback_base_scale>`).
 
-Use :ref:`has_default_base_scale()<class_Theme_method_has_default_base_scale>` to check if this value is valid.
+Sử dụng :ref:`has_default_base_scale()<class_Theme_method_has_default_base_scale>` để kiểm tra xem giá trị này có hợp lệ hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -289,16 +289,16 @@ Use :ref:`has_default_base_scale()<class_Theme_method_has_default_base_scale>` t
 
 .. rst-class:: classref-property
 
-:ref:`Font<class_Font>` **default_font** :ref:`🔗<class_Theme_property_default_font>`
+:ref:`Font<class_Font>` **default_font** :ref:`🔗 <class_Theme_property_default_font>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_default_font**\ (\ value\: :ref:`Font<class_Font>`\ )
 - :ref:`Font<class_Font>` **get_default_font**\ (\ )
 
-The default font of this theme resource. Used as the default value when trying to fetch a font resource that doesn't exist in this theme or is in invalid state. If the default font is also missing or invalid, the engine fallback value is used (see :ref:`ThemeDB.fallback_font<class_ThemeDB_property_fallback_font>`).
+Phông chữ mặc định của tài nguyên theme này. Được sử dụng làm giá trị mặc định khi cố gắng lấy một tài nguyên phông chữ không tồn tại trong theme này hoặc đang ở trạng thái không hợp lệ. Nếu phông chữ mặc định cũng bị thiếu hoặc không hợp lệ, giá trị fallback của engine sẽ được sử dụng (xem :ref:`ThemeDB.fallback_font<class_ThemeDB_property_fallback_font>`).
 
-Use :ref:`has_default_font()<class_Theme_method_has_default_font>` to check if this value is valid.
+Sử dụng :ref:`has_default_font()<class_Theme_method_has_default_font>` để kiểm tra xem giá trị này có hợp lệ hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -315,9 +315,9 @@ Use :ref:`has_default_font()<class_Theme_method_has_default_font>` to check if t
 - |void| **set_default_font_size**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_default_font_size**\ (\ )
 
-The default font size of this theme resource. Used as the default value when trying to fetch a font size value that doesn't exist in this theme or is in invalid state. If the default font size is also missing or invalid, the engine fallback value is used (see :ref:`ThemeDB.fallback_font_size<class_ThemeDB_property_fallback_font_size>`).
+Kích thước phông chữ mặc định của tài nguyên theme này. Được sử dụng làm giá trị mặc định khi cố gắng lấy một giá trị kích thước phông chữ không tồn tại trong theme này hoặc đang ở trạng thái không hợp lệ. Nếu kích thước phông chữ mặc định cũng bị thiếu hoặc không hợp lệ, giá trị fallback của engine sẽ được sử dụng (xem :ref:`ThemeDB.fallback_font_size<class_ThemeDB_property_fallback_font_size>`).
 
-Values below ``1`` are invalid and can be used to unset the property. Use :ref:`has_default_font_size()<class_Theme_method_has_default_font_size>` to check if this value is valid.
+Các giá trị nhỏ hơn ``1`` không hợp lệ và có thể được dùng để bỏ đặt thuộc tính. Sử dụng :ref:`has_default_font_size()<class_Theme_method_has_default_font_size>` để kiểm tra xem giá trị này có hợp lệ hay không.
 
 .. rst-class:: classref-section-separator
 
@@ -325,8 +325,8 @@ Values below ``1`` are invalid and can be used to unset the property. Use :ref:`
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Theme_method_add_type:
 
@@ -334,9 +334,9 @@ Method Descriptions
 
 |void| **add_type**\ (\ theme_type\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Theme_method_add_type>`
 
-Adds an empty theme type for every valid data type.
+Thêm một kiểu theme trống cho mọi kiểu dữ liệu hợp lệ.
 
-\ **Note:** Empty types are not saved with the theme. This method only exists to perform in-memory changes to the resource. Use available ``set_*`` methods to add theme items.
+\ **Lưu ý:** Các kiểu trống không được lưu cùng theme. Phương thức này chỉ tồn tại để thực hiện các thay đổi trong bộ nhớ đối với tài nguyên. Sử dụng các phương thức ``set_*`` hiện có để thêm các mục theme.
 
 .. rst-class:: classref-item-separator
 
@@ -348,7 +348,7 @@ Adds an empty theme type for every valid data type.
 
 |void| **clear**\ (\ ) :ref:`🔗<class_Theme_method_clear>`
 
-Removes all the theme properties defined on the theme resource.
+Xóa tất cả thuộc tính theme được xác định trên tài nguyên theme.
 
 .. rst-class:: classref-item-separator
 
@@ -360,9 +360,9 @@ Removes all the theme properties defined on the theme resource.
 
 |void| **clear_color**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Theme_method_clear_color>`
 
-Removes the :ref:`Color<class_Color>` property defined by ``name`` and ``theme_type``, if it exists.
+Xóa thuộc tính :ref:`Color<class_Color>` được xác định bởi ``name`` và ``theme_type``, nếu thuộc tính đó tồn tại.
 
-Fails if it doesn't exist. Use :ref:`has_color()<class_Theme_method_has_color>` to check for existence.
+Không thành công nếu thuộc tính không tồn tại. Sử dụng :ref:`has_color()<class_Theme_method_has_color>` để kiểm tra sự tồn tại.
 
 .. rst-class:: classref-item-separator
 
@@ -374,9 +374,9 @@ Fails if it doesn't exist. Use :ref:`has_color()<class_Theme_method_has_color>` 
 
 |void| **clear_constant**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Theme_method_clear_constant>`
 
-Removes the constant property defined by ``name`` and ``theme_type``, if it exists.
+Xóa thuộc tính hằng số được xác định bởi ``name`` và ``theme_type``, nếu thuộc tính đó tồn tại.
 
-Fails if it doesn't exist. Use :ref:`has_constant()<class_Theme_method_has_constant>` to check for existence.
+Không thành công nếu thuộc tính không tồn tại. Sử dụng :ref:`has_constant()<class_Theme_method_has_constant>` để kiểm tra sự tồn tại.
 
 .. rst-class:: classref-item-separator
 
@@ -388,9 +388,9 @@ Fails if it doesn't exist. Use :ref:`has_constant()<class_Theme_method_has_const
 
 |void| **clear_font**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Theme_method_clear_font>`
 
-Removes the :ref:`Font<class_Font>` property defined by ``name`` and ``theme_type``, if it exists.
+Xóa thuộc tính :ref:`Font<class_Font>` được xác định bởi ``name`` và ``theme_type``, nếu thuộc tính đó tồn tại.
 
-Fails if it doesn't exist. Use :ref:`has_font()<class_Theme_method_has_font>` to check for existence.
+Không thành công nếu thuộc tính không tồn tại. Sử dụng :ref:`has_font()<class_Theme_method_has_font>` để kiểm tra sự tồn tại.
 
 .. rst-class:: classref-item-separator
 
@@ -402,9 +402,9 @@ Fails if it doesn't exist. Use :ref:`has_font()<class_Theme_method_has_font>` to
 
 |void| **clear_font_size**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Theme_method_clear_font_size>`
 
-Removes the font size property defined by ``name`` and ``theme_type``, if it exists.
+Xóa thuộc tính kích thước phông chữ được xác định bởi ``name`` và ``theme_type``, nếu thuộc tính đó tồn tại.
 
-Fails if it doesn't exist. Use :ref:`has_font_size()<class_Theme_method_has_font_size>` to check for existence.
+Không thành công nếu thuộc tính không tồn tại. Sử dụng :ref:`has_font_size()<class_Theme_method_has_font_size>` để kiểm tra sự tồn tại.
 
 .. rst-class:: classref-item-separator
 
@@ -416,9 +416,9 @@ Fails if it doesn't exist. Use :ref:`has_font_size()<class_Theme_method_has_font
 
 |void| **clear_icon**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Theme_method_clear_icon>`
 
-Removes the icon property defined by ``name`` and ``theme_type``, if it exists.
+Xóa thuộc tính biểu tượng được xác định bởi ``name`` và ``theme_type``, nếu thuộc tính đó tồn tại.
 
-Fails if it doesn't exist. Use :ref:`has_icon()<class_Theme_method_has_icon>` to check for existence.
+Không thành công nếu thuộc tính không tồn tại. Sử dụng :ref:`has_icon()<class_Theme_method_has_icon>` để kiểm tra sự tồn tại.
 
 .. rst-class:: classref-item-separator
 
@@ -430,9 +430,9 @@ Fails if it doesn't exist. Use :ref:`has_icon()<class_Theme_method_has_icon>` to
 
 |void| **clear_stylebox**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Theme_method_clear_stylebox>`
 
-Removes the :ref:`StyleBox<class_StyleBox>` property defined by ``name`` and ``theme_type``, if it exists.
+Xóa thuộc tính :ref:`StyleBox<class_StyleBox>` được xác định bởi ``name`` và ``theme_type``, nếu thuộc tính đó tồn tại.
 
-Fails if it doesn't exist. Use :ref:`has_stylebox()<class_Theme_method_has_stylebox>` to check for existence.
+Không thành công nếu thuộc tính không tồn tại. Sử dụng :ref:`has_stylebox()<class_Theme_method_has_stylebox>` để kiểm tra sự tồn tại.
 
 .. rst-class:: classref-item-separator
 
@@ -444,11 +444,11 @@ Fails if it doesn't exist. Use :ref:`has_stylebox()<class_Theme_method_has_style
 
 |void| **clear_theme_item**\ (\ data_type\: :ref:`DataType<enum_Theme_DataType>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Theme_method_clear_theme_item>`
 
-Removes the theme property of ``data_type`` defined by ``name`` and ``theme_type``, if it exists.
+Xóa thuộc tính theme của ``data_type`` được xác định bởi ``name`` và ``theme_type``, nếu thuộc tính đó tồn tại.
 
-Fails if it doesn't exist. Use :ref:`has_theme_item()<class_Theme_method_has_theme_item>` to check for existence.
+Không thành công nếu thuộc tính không tồn tại. Sử dụng :ref:`has_theme_item()<class_Theme_method_has_theme_item>` để kiểm tra sự tồn tại.
 
-\ **Note:** This method is analogous to calling the corresponding data type specific method, but can be used for more generalized logic.
+\ **Lưu ý:** Phương thức này tương đương với việc gọi phương thức tương ứng dành riêng cho kiểu dữ liệu, nhưng có thể được sử dụng cho logic tổng quát hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -460,7 +460,7 @@ Fails if it doesn't exist. Use :ref:`has_theme_item()<class_Theme_method_has_the
 
 |void| **clear_type_variation**\ (\ theme_type\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Theme_method_clear_type_variation>`
 
-Unmarks ``theme_type`` as being a variation of another theme type. See :ref:`set_type_variation()<class_Theme_method_set_type_variation>`.
+Bỏ đánh dấu ``theme_type`` là biến thể của một kiểu theme khác. Xem :ref:`set_type_variation()<class_Theme_method_set_type_variation>`.
 
 .. rst-class:: classref-item-separator
 
@@ -472,9 +472,9 @@ Unmarks ``theme_type`` as being a variation of another theme type. See :ref:`set
 
 :ref:`Color<class_Color>` **get_color**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_Theme_method_get_color>`
 
-Returns the :ref:`Color<class_Color>` property defined by ``name`` and ``theme_type``, if it exists.
+Trả về thuộc tính :ref:`Color<class_Color>` được xác định bởi ``name`` và ``theme_type``, nếu thuộc tính đó tồn tại.
 
-Returns the default color value if the property doesn't exist. Use :ref:`has_color()<class_Theme_method_has_color>` to check for existence.
+Trả về giá trị màu mặc định nếu thuộc tính không tồn tại. Sử dụng :ref:`has_color()<class_Theme_method_has_color>` để kiểm tra sự tồn tại.
 
 .. rst-class:: classref-item-separator
 
@@ -486,7 +486,7 @@ Returns the default color value if the property doesn't exist. Use :ref:`has_col
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_color_list**\ (\ theme_type\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_Theme_method_get_color_list>`
 
-Returns a list of names for :ref:`Color<class_Color>` properties defined with ``theme_type``. Use :ref:`get_color_type_list()<class_Theme_method_get_color_type_list>` to get a list of possible theme type names.
+Trả về danh sách tên của các thuộc tính :ref:`Color<class_Color>` được xác định bằng ``theme_type``. Sử dụng :ref:`get_color_type_list()<class_Theme_method_get_color_type_list>` để lấy danh sách tên kiểu theme có thể có.
 
 .. rst-class:: classref-item-separator
 
@@ -498,7 +498,7 @@ Returns a list of names for :ref:`Color<class_Color>` properties defined with ``
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_color_type_list**\ (\ ) |const| :ref:`🔗<class_Theme_method_get_color_type_list>`
 
-Returns a list of all unique theme type names for :ref:`Color<class_Color>` properties. Use :ref:`get_type_list()<class_Theme_method_get_type_list>` to get a list of all unique theme types.
+Trả về danh sách tất cả tên kiểu theme duy nhất cho các thuộc tính :ref:`Color<class_Color>`. Sử dụng :ref:`get_type_list()<class_Theme_method_get_type_list>` để lấy danh sách tất cả kiểu theme duy nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -510,9 +510,9 @@ Returns a list of all unique theme type names for :ref:`Color<class_Color>` prop
 
 :ref:`int<class_int>` **get_constant**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_Theme_method_get_constant>`
 
-Returns the constant property defined by ``name`` and ``theme_type``, if it exists.
+Trả về thuộc tính hằng được xác định bởi ``name`` và ``theme_type``, nếu thuộc tính đó tồn tại.
 
-Returns ``0`` if the property doesn't exist. Use :ref:`has_constant()<class_Theme_method_has_constant>` to check for existence.
+Trả về ``0`` nếu thuộc tính không tồn tại. Sử dụng :ref:`has_constant()<class_Theme_method_has_constant>` để kiểm tra sự tồn tại.
 
 .. rst-class:: classref-item-separator
 
@@ -524,7 +524,7 @@ Returns ``0`` if the property doesn't exist. Use :ref:`has_constant()<class_Them
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_constant_list**\ (\ theme_type\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_Theme_method_get_constant_list>`
 
-Returns a list of names for constant properties defined with ``theme_type``. Use :ref:`get_constant_type_list()<class_Theme_method_get_constant_type_list>` to get a list of possible theme type names.
+Trả về danh sách tên của các thuộc tính hằng được xác định bằng ``theme_type``. Sử dụng :ref:`get_constant_type_list()<class_Theme_method_get_constant_type_list>` để lấy danh sách các tên kiểu theme có thể có.
 
 .. rst-class:: classref-item-separator
 
@@ -536,7 +536,7 @@ Returns a list of names for constant properties defined with ``theme_type``. Use
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_constant_type_list**\ (\ ) |const| :ref:`🔗<class_Theme_method_get_constant_type_list>`
 
-Returns a list of all unique theme type names for constant properties. Use :ref:`get_type_list()<class_Theme_method_get_type_list>` to get a list of all unique theme types.
+Trả về danh sách tất cả tên kiểu theme duy nhất của các thuộc tính hằng. Sử dụng :ref:`get_type_list()<class_Theme_method_get_type_list>` để lấy danh sách tất cả kiểu theme duy nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -548,11 +548,11 @@ Returns a list of all unique theme type names for constant properties. Use :ref:
 
 :ref:`Font<class_Font>` **get_font**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_Theme_method_get_font>`
 
-Returns the :ref:`Font<class_Font>` property defined by ``name`` and ``theme_type``, if it exists.
+Trả về thuộc tính :ref:`Font<class_Font>` được xác định bởi ``name`` và ``theme_type``, nếu thuộc tính đó tồn tại.
 
-Returns the default theme font if the property doesn't exist and the default theme font is set up (see :ref:`default_font<class_Theme_property_default_font>`). Use :ref:`has_font()<class_Theme_method_has_font>` to check for existence of the property and :ref:`has_default_font()<class_Theme_method_has_default_font>` to check for existence of the default theme font.
+Trả về font theme mặc định nếu thuộc tính không tồn tại và font theme mặc định đã được thiết lập (xem :ref:`default_font<class_Theme_property_default_font>`). Sử dụng :ref:`has_font()<class_Theme_method_has_font>` để kiểm tra sự tồn tại của thuộc tính và :ref:`has_default_font()<class_Theme_method_has_default_font>` để kiểm tra sự tồn tại của font theme mặc định.
 
-Returns the engine fallback font value, if neither exist (see :ref:`ThemeDB.fallback_font<class_ThemeDB_property_fallback_font>`).
+Trả về giá trị font dự phòng của engine nếu cả hai đều không tồn tại (xem :ref:`ThemeDB.fallback_font<class_ThemeDB_property_fallback_font>`).
 
 .. rst-class:: classref-item-separator
 
@@ -564,7 +564,7 @@ Returns the engine fallback font value, if neither exist (see :ref:`ThemeDB.fall
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_font_list**\ (\ theme_type\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_Theme_method_get_font_list>`
 
-Returns a list of names for :ref:`Font<class_Font>` properties defined with ``theme_type``. Use :ref:`get_font_type_list()<class_Theme_method_get_font_type_list>` to get a list of possible theme type names.
+Trả về danh sách tên của các thuộc tính :ref:`Font<class_Font>` được xác định bằng ``theme_type``. Sử dụng :ref:`get_font_type_list()<class_Theme_method_get_font_type_list>` để lấy danh sách các tên kiểu theme có thể có.
 
 .. rst-class:: classref-item-separator
 
@@ -576,11 +576,11 @@ Returns a list of names for :ref:`Font<class_Font>` properties defined with ``th
 
 :ref:`int<class_int>` **get_font_size**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_Theme_method_get_font_size>`
 
-Returns the font size property defined by ``name`` and ``theme_type``, if it exists.
+Trả về thuộc tính kích thước font được xác định bởi ``name`` và ``theme_type``, nếu thuộc tính đó tồn tại.
 
-Returns the default theme font size if the property doesn't exist and the default theme font size is set up (see :ref:`default_font_size<class_Theme_property_default_font_size>`). Use :ref:`has_font_size()<class_Theme_method_has_font_size>` to check for existence of the property and :ref:`has_default_font_size()<class_Theme_method_has_default_font_size>` to check for existence of the default theme font.
+Trả về kích thước font theme mặc định nếu thuộc tính không tồn tại và kích thước font theme mặc định đã được thiết lập (xem :ref:`default_font_size<class_Theme_property_default_font_size>`). Sử dụng :ref:`has_font_size()<class_Theme_method_has_font_size>` để kiểm tra sự tồn tại của thuộc tính và :ref:`has_default_font_size()<class_Theme_method_has_default_font_size>` để kiểm tra sự tồn tại của font theme mặc định.
 
-Returns the engine fallback font size value, if neither exist (see :ref:`ThemeDB.fallback_font_size<class_ThemeDB_property_fallback_font_size>`).
+Trả về giá trị kích thước font dự phòng của engine nếu cả hai đều không tồn tại (xem :ref:`ThemeDB.fallback_font_size<class_ThemeDB_property_fallback_font_size>`).
 
 .. rst-class:: classref-item-separator
 
@@ -592,7 +592,7 @@ Returns the engine fallback font size value, if neither exist (see :ref:`ThemeDB
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_font_size_list**\ (\ theme_type\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_Theme_method_get_font_size_list>`
 
-Returns a list of names for font size properties defined with ``theme_type``. Use :ref:`get_font_size_type_list()<class_Theme_method_get_font_size_type_list>` to get a list of possible theme type names.
+Trả về danh sách tên của các thuộc tính kích thước font được xác định bằng ``theme_type``. Sử dụng :ref:`get_font_size_type_list()<class_Theme_method_get_font_size_type_list>` để lấy danh sách các tên kiểu theme có thể có.
 
 .. rst-class:: classref-item-separator
 
@@ -604,7 +604,7 @@ Returns a list of names for font size properties defined with ``theme_type``. Us
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_font_size_type_list**\ (\ ) |const| :ref:`🔗<class_Theme_method_get_font_size_type_list>`
 
-Returns a list of all unique theme type names for font size properties. Use :ref:`get_type_list()<class_Theme_method_get_type_list>` to get a list of all unique theme types.
+Trả về danh sách tất cả tên kiểu theme duy nhất của các thuộc tính kích thước font. Sử dụng :ref:`get_type_list()<class_Theme_method_get_type_list>` để lấy danh sách tất cả kiểu theme duy nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -616,7 +616,7 @@ Returns a list of all unique theme type names for font size properties. Use :ref
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_font_type_list**\ (\ ) |const| :ref:`🔗<class_Theme_method_get_font_type_list>`
 
-Returns a list of all unique theme type names for :ref:`Font<class_Font>` properties. Use :ref:`get_type_list()<class_Theme_method_get_type_list>` to get a list of all unique theme types.
+Trả về danh sách tất cả tên kiểu theme duy nhất của các thuộc tính :ref:`Font<class_Font>`. Sử dụng :ref:`get_type_list()<class_Theme_method_get_type_list>` để lấy danh sách tất cả kiểu theme duy nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -628,9 +628,9 @@ Returns a list of all unique theme type names for :ref:`Font<class_Font>` proper
 
 :ref:`Texture2D<class_Texture2D>` **get_icon**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_Theme_method_get_icon>`
 
-Returns the icon property defined by ``name`` and ``theme_type``, if it exists.
+Trả về thuộc tính icon được xác định bởi ``name`` và ``theme_type``, nếu thuộc tính đó tồn tại.
 
-Returns the engine fallback icon value if the property doesn't exist (see :ref:`ThemeDB.fallback_icon<class_ThemeDB_property_fallback_icon>`). Use :ref:`has_icon()<class_Theme_method_has_icon>` to check for existence.
+Trả về giá trị icon dự phòng của engine nếu thuộc tính không tồn tại (xem :ref:`ThemeDB.fallback_icon<class_ThemeDB_property_fallback_icon>`). Sử dụng :ref:`has_icon()<class_Theme_method_has_icon>` để kiểm tra sự tồn tại.
 
 .. rst-class:: classref-item-separator
 
@@ -642,7 +642,7 @@ Returns the engine fallback icon value if the property doesn't exist (see :ref:`
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_icon_list**\ (\ theme_type\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_Theme_method_get_icon_list>`
 
-Returns a list of names for icon properties defined with ``theme_type``. Use :ref:`get_icon_type_list()<class_Theme_method_get_icon_type_list>` to get a list of possible theme type names.
+Trả về danh sách tên của các thuộc tính icon được xác định bằng ``theme_type``. Sử dụng :ref:`get_icon_type_list()<class_Theme_method_get_icon_type_list>` để lấy danh sách các tên kiểu theme có thể có.
 
 .. rst-class:: classref-item-separator
 
@@ -654,7 +654,7 @@ Returns a list of names for icon properties defined with ``theme_type``. Use :re
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_icon_type_list**\ (\ ) |const| :ref:`🔗<class_Theme_method_get_icon_type_list>`
 
-Returns a list of all unique theme type names for icon properties. Use :ref:`get_type_list()<class_Theme_method_get_type_list>` to get a list of all unique theme types.
+Trả về danh sách tất cả tên kiểu theme duy nhất của các thuộc tính icon. Sử dụng :ref:`get_type_list()<class_Theme_method_get_type_list>` để lấy danh sách tất cả kiểu theme duy nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -666,9 +666,9 @@ Returns a list of all unique theme type names for icon properties. Use :ref:`get
 
 :ref:`StyleBox<class_StyleBox>` **get_stylebox**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_Theme_method_get_stylebox>`
 
-Returns the :ref:`StyleBox<class_StyleBox>` property defined by ``name`` and ``theme_type``, if it exists.
+Trả về thuộc tính :ref:`StyleBox<class_StyleBox>` được xác định bởi ``name`` và ``theme_type``, nếu thuộc tính đó tồn tại.
 
-Returns the engine fallback stylebox value if the property doesn't exist (see :ref:`ThemeDB.fallback_stylebox<class_ThemeDB_property_fallback_stylebox>`). Use :ref:`has_stylebox()<class_Theme_method_has_stylebox>` to check for existence.
+Trả về giá trị stylebox dự phòng của engine nếu thuộc tính không tồn tại (xem :ref:`ThemeDB.fallback_stylebox<class_ThemeDB_property_fallback_stylebox>`). Sử dụng :ref:`has_stylebox()<class_Theme_method_has_stylebox>` để kiểm tra sự tồn tại.
 
 .. rst-class:: classref-item-separator
 
@@ -680,7 +680,7 @@ Returns the engine fallback stylebox value if the property doesn't exist (see :r
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_stylebox_list**\ (\ theme_type\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_Theme_method_get_stylebox_list>`
 
-Returns a list of names for :ref:`StyleBox<class_StyleBox>` properties defined with ``theme_type``. Use :ref:`get_stylebox_type_list()<class_Theme_method_get_stylebox_type_list>` to get a list of possible theme type names.
+Trả về danh sách tên của các thuộc tính :ref:`StyleBox<class_StyleBox>` được xác định bằng ``theme_type``. Sử dụng :ref:`get_stylebox_type_list()<class_Theme_method_get_stylebox_type_list>` để lấy danh sách các tên kiểu theme có thể có.
 
 .. rst-class:: classref-item-separator
 
@@ -692,7 +692,7 @@ Returns a list of names for :ref:`StyleBox<class_StyleBox>` properties defined w
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_stylebox_type_list**\ (\ ) |const| :ref:`🔗<class_Theme_method_get_stylebox_type_list>`
 
-Returns a list of all unique theme type names for :ref:`StyleBox<class_StyleBox>` properties. Use :ref:`get_type_list()<class_Theme_method_get_type_list>` to get a list of all unique theme types.
+Trả về danh sách tất cả tên kiểu theme duy nhất của các thuộc tính :ref:`StyleBox<class_StyleBox>`. Sử dụng :ref:`get_type_list()<class_Theme_method_get_type_list>` để lấy danh sách tất cả kiểu theme duy nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -704,11 +704,11 @@ Returns a list of all unique theme type names for :ref:`StyleBox<class_StyleBox>
 
 :ref:`Variant<class_Variant>` **get_theme_item**\ (\ data_type\: :ref:`DataType<enum_Theme_DataType>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_Theme_method_get_theme_item>`
 
-Returns the theme property of ``data_type`` defined by ``name`` and ``theme_type``, if it exists.
+Trả về thuộc tính theme của ``data_type`` được xác định bởi ``name`` và ``theme_type``, nếu thuộc tính đó tồn tại.
 
-Returns the engine fallback value if the property doesn't exist (see :ref:`ThemeDB<class_ThemeDB>`). Use :ref:`has_theme_item()<class_Theme_method_has_theme_item>` to check for existence.
+Trả về giá trị dự phòng của engine nếu thuộc tính không tồn tại (xem :ref:`ThemeDB<class_ThemeDB>`). Sử dụng :ref:`has_theme_item()<class_Theme_method_has_theme_item>` để kiểm tra sự tồn tại.
 
-\ **Note:** This method is analogous to calling the corresponding data type specific method, but can be used for more generalized logic.
+\ **Lưu ý:** Phương thức này tương đương với việc gọi phương thức tương ứng dành riêng cho kiểu dữ liệu, nhưng có thể được sử dụng cho logic tổng quát hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -720,9 +720,9 @@ Returns the engine fallback value if the property doesn't exist (see :ref:`Theme
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_theme_item_list**\ (\ data_type\: :ref:`DataType<enum_Theme_DataType>`, theme_type\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_Theme_method_get_theme_item_list>`
 
-Returns a list of names for properties of ``data_type`` defined with ``theme_type``. Use :ref:`get_theme_item_type_list()<class_Theme_method_get_theme_item_type_list>` to get a list of possible theme type names.
+Trả về danh sách tên của các thuộc tính của ``data_type`` được xác định bằng ``theme_type``. Sử dụng :ref:`get_theme_item_type_list()<class_Theme_method_get_theme_item_type_list>` để lấy danh sách các tên kiểu theme có thể có.
 
-\ **Note:** This method is analogous to calling the corresponding data type specific method, but can be used for more generalized logic.
+\ **Lưu ý:** Phương thức này tương đương với việc gọi phương thức tương ứng dành riêng cho kiểu dữ liệu, nhưng có thể được sử dụng cho logic tổng quát hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -734,9 +734,9 @@ Returns a list of names for properties of ``data_type`` defined with ``theme_typ
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_theme_item_type_list**\ (\ data_type\: :ref:`DataType<enum_Theme_DataType>`\ ) |const| :ref:`🔗<class_Theme_method_get_theme_item_type_list>`
 
-Returns a list of all unique theme type names for ``data_type`` properties. Use :ref:`get_type_list()<class_Theme_method_get_type_list>` to get a list of all unique theme types.
+Trả về danh sách tất cả tên kiểu theme duy nhất của các thuộc tính ``data_type``. Sử dụng :ref:`get_type_list()<class_Theme_method_get_type_list>` để lấy danh sách tất cả kiểu theme duy nhất.
 
-\ **Note:** This method is analogous to calling the corresponding data type specific method, but can be used for more generalized logic.
+\ **Lưu ý:** Phương thức này tương đương với việc gọi phương thức tương ứng dành riêng cho kiểu dữ liệu, nhưng có thể được sử dụng cho logic tổng quát hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -748,7 +748,7 @@ Returns a list of all unique theme type names for ``data_type`` properties. Use 
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_type_list**\ (\ ) |const| :ref:`🔗<class_Theme_method_get_type_list>`
 
-Returns a list of all unique theme type names. Use the appropriate ``get_*_type_list`` method to get a list of unique theme types for a single data type.
+Trả về danh sách tất cả tên kiểu theme duy nhất. Sử dụng phương thức ``get_*_type_list`` phù hợp để lấy danh sách các kiểu theme duy nhất cho một kiểu dữ liệu.
 
 .. rst-class:: classref-item-separator
 
@@ -760,7 +760,7 @@ Returns a list of all unique theme type names. Use the appropriate ``get_*_type_
 
 :ref:`StringName<class_StringName>` **get_type_variation_base**\ (\ theme_type\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_Theme_method_get_type_variation_base>`
 
-Returns the name of the base theme type if ``theme_type`` is a valid variation type. Returns an empty string otherwise.
+Trả về tên của kiểu theme cơ sở nếu ``theme_type`` là một kiểu biến thể hợp lệ. Nếu không, trả về một chuỗi rỗng.
 
 .. rst-class:: classref-item-separator
 
@@ -772,7 +772,7 @@ Returns the name of the base theme type if ``theme_type`` is a valid variation t
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_type_variation_list**\ (\ base_type\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_Theme_method_get_type_variation_list>`
 
-Returns a list of all type variations for the given ``base_type``.
+Trả về danh sách tất cả biến thể kiểu của ``base_type`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -784,9 +784,9 @@ Returns a list of all type variations for the given ``base_type``.
 
 :ref:`bool<class_bool>` **has_color**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_Theme_method_has_color>`
 
-Returns ``true`` if the :ref:`Color<class_Color>` property defined by ``name`` and ``theme_type`` exists.
+Trả về ``true`` nếu thuộc tính :ref:`Color<class_Color>` được xác định bởi ``name`` và ``theme_type`` tồn tại.
 
-Returns ``false`` if it doesn't exist. Use :ref:`set_color()<class_Theme_method_set_color>` to define it.
+Trả về ``false`` nếu thuộc tính đó không tồn tại. Sử dụng :ref:`set_color()<class_Theme_method_set_color>` để xác định thuộc tính.
 
 .. rst-class:: classref-item-separator
 
@@ -798,9 +798,9 @@ Returns ``false`` if it doesn't exist. Use :ref:`set_color()<class_Theme_method_
 
 :ref:`bool<class_bool>` **has_constant**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_Theme_method_has_constant>`
 
-Returns ``true`` if the constant property defined by ``name`` and ``theme_type`` exists.
+Trả về ``true`` nếu thuộc tính hằng được xác định bởi ``name`` và ``theme_type`` tồn tại.
 
-Returns ``false`` if it doesn't exist. Use :ref:`set_constant()<class_Theme_method_set_constant>` to define it.
+Trả về ``false`` nếu thuộc tính đó không tồn tại. Sử dụng :ref:`set_constant()<class_Theme_method_set_constant>` để xác định thuộc tính.
 
 .. rst-class:: classref-item-separator
 
@@ -812,9 +812,9 @@ Returns ``false`` if it doesn't exist. Use :ref:`set_constant()<class_Theme_meth
 
 :ref:`bool<class_bool>` **has_default_base_scale**\ (\ ) |const| :ref:`🔗<class_Theme_method_has_default_base_scale>`
 
-Returns ``true`` if :ref:`default_base_scale<class_Theme_property_default_base_scale>` has a valid value.
+Trả về ``true`` nếu :ref:`default_base_scale<class_Theme_property_default_base_scale>` có giá trị hợp lệ.
 
-Returns ``false`` if it doesn't. The value must be greater than ``0.0`` to be considered valid.
+Trả về ``false`` nếu không. Giá trị phải lớn hơn ``0.0`` mới được xem là hợp lệ.
 
 .. rst-class:: classref-item-separator
 
@@ -826,9 +826,9 @@ Returns ``false`` if it doesn't. The value must be greater than ``0.0`` to be co
 
 :ref:`bool<class_bool>` **has_default_font**\ (\ ) |const| :ref:`🔗<class_Theme_method_has_default_font>`
 
-Returns ``true`` if :ref:`default_font<class_Theme_property_default_font>` has a valid value.
+Trả về ``true`` nếu :ref:`default_font<class_Theme_property_default_font>` có giá trị hợp lệ.
 
-Returns ``false`` if it doesn't.
+Trả về ``false`` nếu không.
 
 .. rst-class:: classref-item-separator
 
@@ -840,9 +840,9 @@ Returns ``false`` if it doesn't.
 
 :ref:`bool<class_bool>` **has_default_font_size**\ (\ ) |const| :ref:`🔗<class_Theme_method_has_default_font_size>`
 
-Returns ``true`` if :ref:`default_font_size<class_Theme_property_default_font_size>` has a valid value.
+Trả về ``true`` nếu :ref:`default_font_size<class_Theme_property_default_font_size>` có giá trị hợp lệ.
 
-Returns ``false`` if it doesn't. The value must be greater than ``0`` to be considered valid.
+Trả về ``false`` nếu không. Giá trị phải lớn hơn ``0`` mới được xem là hợp lệ.
 
 .. rst-class:: classref-item-separator
 
@@ -854,9 +854,9 @@ Returns ``false`` if it doesn't. The value must be greater than ``0`` to be cons
 
 :ref:`bool<class_bool>` **has_font**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_Theme_method_has_font>`
 
-Returns ``true`` if the :ref:`Font<class_Font>` property defined by ``name`` and ``theme_type`` exists, or if the default theme font is set up (see :ref:`has_default_font()<class_Theme_method_has_default_font>`).
+Trả về ``true`` nếu thuộc tính :ref:`Font<class_Font>` được xác định bởi ``name`` và ``theme_type`` tồn tại hoặc font theme mặc định đã được thiết lập (xem :ref:`has_default_font()<class_Theme_method_has_default_font>`).
 
-Returns ``false`` if neither exist. Use :ref:`set_font()<class_Theme_method_set_font>` to define the property.
+Trả về ``false`` nếu cả hai đều không tồn tại. Sử dụng :ref:`set_font()<class_Theme_method_set_font>` để xác định thuộc tính.
 
 .. rst-class:: classref-item-separator
 
@@ -868,9 +868,9 @@ Returns ``false`` if neither exist. Use :ref:`set_font()<class_Theme_method_set_
 
 :ref:`bool<class_bool>` **has_font_size**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_Theme_method_has_font_size>`
 
-Returns ``true`` if the font size property defined by ``name`` and ``theme_type`` exists, or if the default theme font size is set up (see :ref:`has_default_font_size()<class_Theme_method_has_default_font_size>`).
+Trả về ``true`` nếu thuộc tính kích thước font được xác định bởi ``name`` và ``theme_type`` tồn tại hoặc kích thước font theme mặc định đã được thiết lập (xem :ref:`has_default_font_size()<class_Theme_method_has_default_font_size>`).
 
-Returns ``false`` if neither exist. Use :ref:`set_font_size()<class_Theme_method_set_font_size>` to define the property.
+Trả về ``false`` nếu cả hai đều không tồn tại. Sử dụng :ref:`set_font_size()<class_Theme_method_set_font_size>` để xác định thuộc tính.
 
 .. rst-class:: classref-item-separator
 
@@ -882,9 +882,9 @@ Returns ``false`` if neither exist. Use :ref:`set_font_size()<class_Theme_method
 
 :ref:`bool<class_bool>` **has_icon**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_Theme_method_has_icon>`
 
-Returns ``true`` if the icon property defined by ``name`` and ``theme_type`` exists.
+Trả về ``true`` nếu thuộc tính icon được xác định bởi ``name`` và ``theme_type`` tồn tại.
 
-Returns ``false`` if it doesn't exist. Use :ref:`set_icon()<class_Theme_method_set_icon>` to define it.
+Trả về ``false`` nếu thuộc tính đó không tồn tại. Sử dụng :ref:`set_icon()<class_Theme_method_set_icon>` để xác định thuộc tính.
 
 .. rst-class:: classref-item-separator
 
@@ -896,9 +896,9 @@ Returns ``false`` if it doesn't exist. Use :ref:`set_icon()<class_Theme_method_s
 
 :ref:`bool<class_bool>` **has_stylebox**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_Theme_method_has_stylebox>`
 
-Returns ``true`` if the :ref:`StyleBox<class_StyleBox>` property defined by ``name`` and ``theme_type`` exists.
+Trả về ``true`` nếu thuộc tính :ref:`StyleBox<class_StyleBox>` được định nghĩa bởi ``name`` và ``theme_type`` tồn tại.
 
-Returns ``false`` if it doesn't exist. Use :ref:`set_stylebox()<class_Theme_method_set_stylebox>` to define it.
+Trả về ``false`` nếu thuộc tính đó không tồn tại. Sử dụng :ref:`set_stylebox()<class_Theme_method_set_stylebox>` để định nghĩa thuộc tính.
 
 .. rst-class:: classref-item-separator
 
@@ -910,11 +910,11 @@ Returns ``false`` if it doesn't exist. Use :ref:`set_stylebox()<class_Theme_meth
 
 :ref:`bool<class_bool>` **has_theme_item**\ (\ data_type\: :ref:`DataType<enum_Theme_DataType>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_Theme_method_has_theme_item>`
 
-Returns ``true`` if the theme property of ``data_type`` defined by ``name`` and ``theme_type`` exists.
+Trả về ``true`` nếu thuộc tính theme của ``data_type`` được định nghĩa bởi ``name`` và ``theme_type`` tồn tại.
 
-Returns ``false`` if it doesn't exist. Use :ref:`set_theme_item()<class_Theme_method_set_theme_item>` to define it.
+Trả về ``false`` nếu thuộc tính đó không tồn tại. Sử dụng :ref:`set_theme_item()<class_Theme_method_set_theme_item>` để định nghĩa thuộc tính.
 
-\ **Note:** This method is analogous to calling the corresponding data type specific method, but can be used for more generalized logic.
+\ **Lưu ý:** Phương thức này tương đương với việc gọi phương thức tương ứng dành riêng cho kiểu dữ liệu, nhưng có thể được sử dụng cho logic tổng quát hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -926,7 +926,7 @@ Returns ``false`` if it doesn't exist. Use :ref:`set_theme_item()<class_Theme_me
 
 :ref:`bool<class_bool>` **is_type_variation**\ (\ theme_type\: :ref:`StringName<class_StringName>`, base_type\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_Theme_method_is_type_variation>`
 
-Returns ``true`` if ``theme_type`` is marked as a variation of ``base_type``.
+Trả về ``true`` nếu ``theme_type`` được đánh dấu là một biến thể của ``base_type``.
 
 .. rst-class:: classref-item-separator
 
@@ -938,9 +938,9 @@ Returns ``true`` if ``theme_type`` is marked as a variation of ``base_type``.
 
 |void| **merge_with**\ (\ other\: :ref:`Theme<class_Theme>`\ ) :ref:`🔗<class_Theme_method_merge_with>`
 
-Adds missing and overrides existing definitions with values from the ``other`` theme resource.
+Thêm các định nghĩa còn thiếu và ghi đè các định nghĩa hiện có bằng các giá trị từ tài nguyên theme ``other``.
 
-\ **Note:** This modifies the current theme. If you want to merge two themes together without modifying either one, create a new empty theme and merge the other two into it one after another.
+\ **Lưu ý:** Thao tác này sửa đổi theme hiện tại. Nếu muốn hợp nhất hai theme mà không sửa đổi theme nào, hãy tạo một theme mới, rỗng rồi lần lượt hợp nhất hai theme còn lại vào đó.
 
 .. rst-class:: classref-item-separator
 
@@ -952,7 +952,7 @@ Adds missing and overrides existing definitions with values from the ``other`` t
 
 |void| **remove_type**\ (\ theme_type\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Theme_method_remove_type>`
 
-Removes the theme type, gracefully discarding defined theme items. If the type is a variation, this information is also erased. If the type is a base for type variations, those variations lose their base.
+Xóa loại theme, đồng thời loại bỏ một cách an toàn các mục theme đã định nghĩa. Nếu loại đó là một biến thể, thông tin này cũng bị xóa. Nếu loại đó là cơ sở cho các biến thể loại, các biến thể đó sẽ mất cơ sở của chúng.
 
 .. rst-class:: classref-item-separator
 
@@ -964,9 +964,9 @@ Removes the theme type, gracefully discarding defined theme items. If the type i
 
 |void| **rename_color**\ (\ old_name\: :ref:`StringName<class_StringName>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Theme_method_rename_color>`
 
-Renames the :ref:`Color<class_Color>` property defined by ``old_name`` and ``theme_type`` to ``name``, if it exists.
+Đổi tên thuộc tính :ref:`Color<class_Color>` được định nghĩa bởi ``old_name`` và ``theme_type`` thành ``name``, nếu thuộc tính đó tồn tại.
 
-Fails if it doesn't exist, or if a similar property with the new name already exists. Use :ref:`has_color()<class_Theme_method_has_color>` to check for existence, and :ref:`clear_color()<class_Theme_method_clear_color>` to remove the existing property.
+Thao tác thất bại nếu thuộc tính đó không tồn tại hoặc nếu đã có một thuộc tính tương tự với tên mới. Sử dụng :ref:`has_color()<class_Theme_method_has_color>` để kiểm tra sự tồn tại và :ref:`clear_color()<class_Theme_method_clear_color>` để xóa thuộc tính hiện có.
 
 .. rst-class:: classref-item-separator
 
@@ -978,9 +978,9 @@ Fails if it doesn't exist, or if a similar property with the new name already ex
 
 |void| **rename_constant**\ (\ old_name\: :ref:`StringName<class_StringName>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Theme_method_rename_constant>`
 
-Renames the constant property defined by ``old_name`` and ``theme_type`` to ``name``, if it exists.
+Đổi tên thuộc tính hằng được định nghĩa bởi ``old_name`` và ``theme_type`` thành ``name``, nếu thuộc tính đó tồn tại.
 
-Fails if it doesn't exist, or if a similar property with the new name already exists. Use :ref:`has_constant()<class_Theme_method_has_constant>` to check for existence, and :ref:`clear_constant()<class_Theme_method_clear_constant>` to remove the existing property.
+Thao tác thất bại nếu thuộc tính đó không tồn tại hoặc nếu đã có một thuộc tính tương tự với tên mới. Sử dụng :ref:`has_constant()<class_Theme_method_has_constant>` để kiểm tra sự tồn tại và :ref:`clear_constant()<class_Theme_method_clear_constant>` để xóa thuộc tính hiện có.
 
 .. rst-class:: classref-item-separator
 
@@ -992,9 +992,9 @@ Fails if it doesn't exist, or if a similar property with the new name already ex
 
 |void| **rename_font**\ (\ old_name\: :ref:`StringName<class_StringName>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Theme_method_rename_font>`
 
-Renames the :ref:`Font<class_Font>` property defined by ``old_name`` and ``theme_type`` to ``name``, if it exists.
+Đổi tên thuộc tính :ref:`Font<class_Font>` được định nghĩa bởi ``old_name`` và ``theme_type`` thành ``name``, nếu thuộc tính đó tồn tại.
 
-Fails if it doesn't exist, or if a similar property with the new name already exists. Use :ref:`has_font()<class_Theme_method_has_font>` to check for existence, and :ref:`clear_font()<class_Theme_method_clear_font>` to remove the existing property.
+Thao tác thất bại nếu thuộc tính đó không tồn tại hoặc nếu đã có một thuộc tính tương tự với tên mới. Sử dụng :ref:`has_font()<class_Theme_method_has_font>` để kiểm tra sự tồn tại và :ref:`clear_font()<class_Theme_method_clear_font>` để xóa thuộc tính hiện có.
 
 .. rst-class:: classref-item-separator
 
@@ -1006,9 +1006,9 @@ Fails if it doesn't exist, or if a similar property with the new name already ex
 
 |void| **rename_font_size**\ (\ old_name\: :ref:`StringName<class_StringName>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Theme_method_rename_font_size>`
 
-Renames the font size property defined by ``old_name`` and ``theme_type`` to ``name``, if it exists.
+Đổi tên thuộc tính kích thước phông chữ được định nghĩa bởi ``old_name`` và ``theme_type`` thành ``name``, nếu thuộc tính đó tồn tại.
 
-Fails if it doesn't exist, or if a similar property with the new name already exists. Use :ref:`has_font_size()<class_Theme_method_has_font_size>` to check for existence, and :ref:`clear_font_size()<class_Theme_method_clear_font_size>` to remove the existing property.
+Thao tác thất bại nếu thuộc tính đó không tồn tại hoặc nếu đã có một thuộc tính tương tự với tên mới. Sử dụng :ref:`has_font_size()<class_Theme_method_has_font_size>` để kiểm tra sự tồn tại và :ref:`clear_font_size()<class_Theme_method_clear_font_size>` để xóa thuộc tính hiện có.
 
 .. rst-class:: classref-item-separator
 
@@ -1020,9 +1020,9 @@ Fails if it doesn't exist, or if a similar property with the new name already ex
 
 |void| **rename_icon**\ (\ old_name\: :ref:`StringName<class_StringName>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Theme_method_rename_icon>`
 
-Renames the icon property defined by ``old_name`` and ``theme_type`` to ``name``, if it exists.
+Đổi tên thuộc tính icon được định nghĩa bởi ``old_name`` và ``theme_type`` thành ``name``, nếu thuộc tính đó tồn tại.
 
-Fails if it doesn't exist, or if a similar property with the new name already exists. Use :ref:`has_icon()<class_Theme_method_has_icon>` to check for existence, and :ref:`clear_icon()<class_Theme_method_clear_icon>` to remove the existing property.
+Thao tác thất bại nếu thuộc tính đó không tồn tại hoặc nếu đã có một thuộc tính tương tự với tên mới. Sử dụng :ref:`has_icon()<class_Theme_method_has_icon>` để kiểm tra sự tồn tại và :ref:`clear_icon()<class_Theme_method_clear_icon>` để xóa thuộc tính hiện có.
 
 .. rst-class:: classref-item-separator
 
@@ -1034,9 +1034,9 @@ Fails if it doesn't exist, or if a similar property with the new name already ex
 
 |void| **rename_stylebox**\ (\ old_name\: :ref:`StringName<class_StringName>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Theme_method_rename_stylebox>`
 
-Renames the :ref:`StyleBox<class_StyleBox>` property defined by ``old_name`` and ``theme_type`` to ``name``, if it exists.
+Đổi tên thuộc tính :ref:`StyleBox<class_StyleBox>` được định nghĩa bởi ``old_name`` và ``theme_type`` thành ``name``, nếu thuộc tính đó tồn tại.
 
-Fails if it doesn't exist, or if a similar property with the new name already exists. Use :ref:`has_stylebox()<class_Theme_method_has_stylebox>` to check for existence, and :ref:`clear_stylebox()<class_Theme_method_clear_stylebox>` to remove the existing property.
+Thao tác thất bại nếu thuộc tính đó không tồn tại hoặc nếu đã có một thuộc tính tương tự với tên mới. Sử dụng :ref:`has_stylebox()<class_Theme_method_has_stylebox>` để kiểm tra sự tồn tại và :ref:`clear_stylebox()<class_Theme_method_clear_stylebox>` để xóa thuộc tính hiện có.
 
 .. rst-class:: classref-item-separator
 
@@ -1048,11 +1048,11 @@ Fails if it doesn't exist, or if a similar property with the new name already ex
 
 |void| **rename_theme_item**\ (\ data_type\: :ref:`DataType<enum_Theme_DataType>`, old_name\: :ref:`StringName<class_StringName>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Theme_method_rename_theme_item>`
 
-Renames the theme property of ``data_type`` defined by ``old_name`` and ``theme_type`` to ``name``, if it exists.
+Đổi tên thuộc tính theme của ``data_type`` được định nghĩa bởi ``old_name`` và ``theme_type`` thành ``name``, nếu thuộc tính đó tồn tại.
 
-Fails if it doesn't exist, or if a similar property with the new name already exists. Use :ref:`has_theme_item()<class_Theme_method_has_theme_item>` to check for existence, and :ref:`clear_theme_item()<class_Theme_method_clear_theme_item>` to remove the existing property.
+Thao tác thất bại nếu thuộc tính đó không tồn tại hoặc nếu đã có một thuộc tính tương tự với tên mới. Sử dụng :ref:`has_theme_item()<class_Theme_method_has_theme_item>` để kiểm tra sự tồn tại và :ref:`clear_theme_item()<class_Theme_method_clear_theme_item>` để xóa thuộc tính hiện có.
 
-\ **Note:** This method is analogous to calling the corresponding data type specific method, but can be used for more generalized logic.
+\ **Lưu ý:** Phương thức này tương đương với việc gọi phương thức tương ứng dành riêng cho kiểu dữ liệu, nhưng có thể được sử dụng cho logic tổng quát hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -1064,9 +1064,9 @@ Fails if it doesn't exist, or if a similar property with the new name already ex
 
 |void| **rename_type**\ (\ old_theme_type\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Theme_method_rename_type>`
 
-Renames the theme type ``old_theme_type`` to ``theme_type``, if the old type exists and the new one doesn't exist.
+Đổi tên loại theme ``old_theme_type`` thành ``theme_type``, nếu loại cũ tồn tại và loại mới không tồn tại.
 
-\ **Note:** Renaming a theme type to an empty name or a variation to a type associated with a built-in class removes type variation connections in a way that cannot be undone by reversing the rename alone.
+\ **Lưu ý:** Việc đổi tên một loại theme thành tên rỗng hoặc một biến thể thành một loại được liên kết với một lớp dựng sẵn sẽ xóa các kết nối biến thể loại theo cách không thể hoàn tác chỉ bằng cách đổi tên ngược lại.
 
 .. rst-class:: classref-item-separator
 
@@ -1078,7 +1078,7 @@ Renames the theme type ``old_theme_type`` to ``theme_type``, if the old type exi
 
 |void| **set_color**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`, color\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_Theme_method_set_color>`
 
-Creates or changes the value of the :ref:`Color<class_Color>` property defined by ``name`` and ``theme_type``. Use :ref:`clear_color()<class_Theme_method_clear_color>` to remove the property.
+Tạo hoặc thay đổi giá trị của thuộc tính :ref:`Color<class_Color>` được định nghĩa bởi ``name`` và ``theme_type``. Sử dụng :ref:`clear_color()<class_Theme_method_clear_color>` để xóa thuộc tính.
 
 .. rst-class:: classref-item-separator
 
@@ -1090,7 +1090,7 @@ Creates or changes the value of the :ref:`Color<class_Color>` property defined b
 
 |void| **set_constant**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`, constant\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Theme_method_set_constant>`
 
-Creates or changes the value of the constant property defined by ``name`` and ``theme_type``. Use :ref:`clear_constant()<class_Theme_method_clear_constant>` to remove the property.
+Tạo hoặc thay đổi giá trị của thuộc tính hằng được định nghĩa bởi ``name`` và ``theme_type``. Sử dụng :ref:`clear_constant()<class_Theme_method_clear_constant>` để xóa thuộc tính.
 
 .. rst-class:: classref-item-separator
 
@@ -1102,7 +1102,7 @@ Creates or changes the value of the constant property defined by ``name`` and ``
 
 |void| **set_font**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`, font\: :ref:`Font<class_Font>`\ ) :ref:`🔗<class_Theme_method_set_font>`
 
-Creates or changes the value of the :ref:`Font<class_Font>` property defined by ``name`` and ``theme_type``. Use :ref:`clear_font()<class_Theme_method_clear_font>` to remove the property.
+Tạo hoặc thay đổi giá trị của thuộc tính :ref:`Font<class_Font>` được định nghĩa bởi ``name`` và ``theme_type``. Sử dụng :ref:`clear_font()<class_Theme_method_clear_font>` để xóa thuộc tính.
 
 .. rst-class:: classref-item-separator
 
@@ -1114,7 +1114,7 @@ Creates or changes the value of the :ref:`Font<class_Font>` property defined by 
 
 |void| **set_font_size**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`, font_size\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Theme_method_set_font_size>`
 
-Creates or changes the value of the font size property defined by ``name`` and ``theme_type``. Use :ref:`clear_font_size()<class_Theme_method_clear_font_size>` to remove the property.
+Tạo hoặc thay đổi giá trị của thuộc tính kích thước phông chữ được định nghĩa bởi ``name`` và ``theme_type``. Sử dụng :ref:`clear_font_size()<class_Theme_method_clear_font_size>` để xóa thuộc tính.
 
 .. rst-class:: classref-item-separator
 
@@ -1126,7 +1126,7 @@ Creates or changes the value of the font size property defined by ``name`` and `
 
 |void| **set_icon**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`, texture\: :ref:`Texture2D<class_Texture2D>`\ ) :ref:`🔗<class_Theme_method_set_icon>`
 
-Creates or changes the value of the icon property defined by ``name`` and ``theme_type``. Use :ref:`clear_icon()<class_Theme_method_clear_icon>` to remove the property.
+Tạo hoặc thay đổi giá trị của thuộc tính icon được định nghĩa bởi ``name`` và ``theme_type``. Sử dụng :ref:`clear_icon()<class_Theme_method_clear_icon>` để xóa thuộc tính.
 
 .. rst-class:: classref-item-separator
 
@@ -1138,7 +1138,7 @@ Creates or changes the value of the icon property defined by ``name`` and ``them
 
 |void| **set_stylebox**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`, texture\: :ref:`StyleBox<class_StyleBox>`\ ) :ref:`🔗<class_Theme_method_set_stylebox>`
 
-Creates or changes the value of the :ref:`StyleBox<class_StyleBox>` property defined by ``name`` and ``theme_type``. Use :ref:`clear_stylebox()<class_Theme_method_clear_stylebox>` to remove the property.
+Tạo hoặc thay đổi giá trị của thuộc tính :ref:`StyleBox<class_StyleBox>` được định nghĩa bởi ``name`` và ``theme_type``. Sử dụng :ref:`clear_stylebox()<class_Theme_method_clear_stylebox>` để xóa thuộc tính.
 
 .. rst-class:: classref-item-separator
 
@@ -1150,11 +1150,11 @@ Creates or changes the value of the :ref:`StyleBox<class_StyleBox>` property def
 
 |void| **set_theme_item**\ (\ data_type\: :ref:`DataType<enum_Theme_DataType>`, name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>`, value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_Theme_method_set_theme_item>`
 
-Creates or changes the value of the theme property of ``data_type`` defined by ``name`` and ``theme_type``. Use :ref:`clear_theme_item()<class_Theme_method_clear_theme_item>` to remove the property.
+Tạo hoặc thay đổi giá trị của thuộc tính theme của ``data_type`` được định nghĩa bởi ``name`` và ``theme_type``. Sử dụng :ref:`clear_theme_item()<class_Theme_method_clear_theme_item>` để xóa thuộc tính.
 
-Fails if the ``value`` type is not accepted by ``data_type``.
+Thao tác thất bại nếu loại ``value`` không được ``data_type`` chấp nhận.
 
-\ **Note:** This method is analogous to calling the corresponding data type specific method, but can be used for more generalized logic.
+\ **Lưu ý:** Phương thức này tương đương với việc gọi phương thức tương ứng dành riêng cho kiểu dữ liệu, nhưng có thể được sử dụng cho logic tổng quát hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -1166,20 +1166,20 @@ Fails if the ``value`` type is not accepted by ``data_type``.
 
 |void| **set_type_variation**\ (\ theme_type\: :ref:`StringName<class_StringName>`, base_type\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Theme_method_set_type_variation>`
 
-Marks ``theme_type`` as a variation of ``base_type``.
+Đánh dấu ``theme_type`` là một biến thể của ``base_type``.
 
-This adds ``theme_type`` as a suggested option for :ref:`Control.theme_type_variation<class_Control_property_theme_type_variation>` on a :ref:`Control<class_Control>` that is of the ``base_type`` class.
+Thao tác này thêm ``theme_type`` làm tùy chọn được đề xuất cho :ref:`Control.theme_type_variation<class_Control_property_theme_type_variation>` trên một :ref:`Control<class_Control>` thuộc lớp ``base_type``.
 
-Variations can also be nested, i.e. ``base_type`` can be another variation. If a chain of variations ends with a ``base_type`` matching the class of the :ref:`Control<class_Control>`, the whole chain is going to be suggested as options.
+Các biến thể cũng có thể được lồng nhau, tức là ``base_type`` có thể là một biến thể khác. Nếu một chuỗi biến thể kết thúc bằng một ``base_type`` khớp với lớp của :ref:`Control<class_Control>`, toàn bộ chuỗi sẽ được đề xuất làm các tùy chọn.
 
-\ **Note:** Suggestions only show up if this theme resource is set as the project default theme. See :ref:`ProjectSettings.gui/theme/custom<class_ProjectSettings_property_gui/theme/custom>`.
+\ **Lưu ý:** Các đề xuất chỉ xuất hiện nếu tài nguyên theme này được đặt làm theme mặc định của dự án. Xem :ref:`ProjectSettings.gui/theme/custom <class_ProjectSettings_property_gui/theme/custom>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả tại đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một loại.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

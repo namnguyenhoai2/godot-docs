@@ -10,18 +10,18 @@
 Tree
 ====
 
-**Inherits:** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A control used to show a set of internal :ref:`TreeItem<class_TreeItem>`\ s in a hierarchical structure.
+Một control dùng để hiển thị một tập hợp :ref:`TreeItem<class_TreeItem>`\  theo cấu trúc phân cấp.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A control used to show a set of internal :ref:`TreeItem<class_TreeItem>`\ s in a hierarchical structure. The tree items can be selected, expanded and collapsed. The tree can have multiple columns with custom controls like :ref:`LineEdit<class_LineEdit>`\ s, buttons and popups. It can be useful for structured displays and interactions.
+Một control dùng để hiển thị một tập hợp :ref:`TreeItem<class_TreeItem>`\  theo cấu trúc phân cấp. Các mục trong cây có thể được chọn, mở rộng và thu gọn. Cây có thể có nhiều cột với các control tùy chỉnh như :ref:`LineEdit<class_LineEdit>`\ , các nút và popup. Control này hữu ích cho việc hiển thị và tương tác với dữ liệu có cấu trúc.
 
-Trees are built via code, using :ref:`TreeItem<class_TreeItem>` objects to create the structure. They have a single root, but multiple roots can be simulated with :ref:`hide_root<class_Tree_property_hide_root>`:
+Cây được tạo bằng code, sử dụng các đối tượng :ref:`TreeItem<class_TreeItem>` để tạo cấu trúc. Cây chỉ có một nút gốc, nhưng có thể mô phỏng nhiều nút gốc bằng :ref:`hide_root<class_Tree_property_hide_root>`:
 
 
 .. tabs::
@@ -52,149 +52,149 @@ Trees are built via code, using :ref:`TreeItem<class_TreeItem>` objects to creat
 
 
 
-To iterate over all the :ref:`TreeItem<class_TreeItem>` objects in a **Tree** object, use :ref:`TreeItem.get_next()<class_TreeItem_method_get_next>` and :ref:`TreeItem.get_first_child()<class_TreeItem_method_get_first_child>` after getting the root through :ref:`get_root()<class_Tree_method_get_root>`. You can use :ref:`Object.free()<class_Object_method_free>` on a :ref:`TreeItem<class_TreeItem>` to remove it from the **Tree**.
+Để lặp qua tất cả các đối tượng :ref:`TreeItem<class_TreeItem>` trong một đối tượng **Tree**, hãy sử dụng :ref:`TreeItem.get_next()<class_TreeItem_method_get_next>` và :ref:`TreeItem.get_first_child()<class_TreeItem_method_get_first_child>` sau khi lấy nút gốc thông qua :ref:`get_root()<class_Tree_method_get_root>`. Bạn có thể sử dụng :ref:`Object.free()<class_Object_method_free>` trên một :ref:`TreeItem<class_TreeItem>` để xóa nó khỏi **Tree**.
 
-\ **Incremental search:** Like :ref:`ItemList<class_ItemList>` and :ref:`PopupMenu<class_PopupMenu>`, **Tree** supports searching within the list while the control is focused. Press a key that matches the first letter of an item's name to select the first item starting with the given letter. After that point, there are two ways to perform incremental search: 1) Press the same key again before the timeout duration to select the next item starting with the same letter. 2) Press letter keys that match the rest of the word before the timeout duration to match to select the item in question directly. Both of these actions will be reset to the beginning of the list if the timeout duration has passed since the last keystroke was registered. You can adjust the timeout duration by changing :ref:`ProjectSettings.gui/timers/incremental_search_max_interval_msec<class_ProjectSettings_property_gui/timers/incremental_search_max_interval_msec>`.
+\ **Tìm kiếm tăng dần:** Giống như :ref:`ItemList<class_ItemList>` và :ref:`PopupMenu<class_PopupMenu>`, **Tree** hỗ trợ tìm kiếm trong danh sách khi control đang được focus. Nhấn một phím khớp với chữ cái đầu tiên trong tên của một mục để chọn mục đầu tiên bắt đầu bằng chữ cái đó. Sau đó, có hai cách thực hiện tìm kiếm tăng dần: 1) Nhấn lại cùng phím đó trước khi hết thời gian chờ để chọn mục tiếp theo bắt đầu bằng cùng chữ cái. 2) Nhấn các phím chữ khớp với phần còn lại của từ trước khi hết thời gian chờ để khớp và chọn trực tiếp mục tương ứng. Cả hai thao tác này sẽ được đặt lại về đầu danh sách nếu thời gian chờ đã trôi qua kể từ lần nhấn phím gần nhất được ghi nhận. Bạn có thể điều chỉnh thời gian chờ bằng cách thay đổi :ref:`ProjectSettings.gui/timers/incremental_search_max_interval_msec <class_ProjectSettings_property_gui/timers/incremental_search_max_interval_msec>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                         | :ref:`allow_reselect<class_Tree_property_allow_reselect>`                       | ``false``                                                                 |
-   +-------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                         | :ref:`allow_rmb_select<class_Tree_property_allow_rmb_select>`                   | ``false``                                                                 |
-   +-------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                         | :ref:`allow_search<class_Tree_property_allow_search>`                           | ``true``                                                                  |
-   +-------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                         | :ref:`auto_tooltip<class_Tree_property_auto_tooltip>`                           | ``true``                                                                  |
-   +-------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                         | clip_contents                                                                   | ``true`` (overrides :ref:`Control<class_Control_property_clip_contents>`) |
-   +-------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                         | :ref:`column_titles_visible<class_Tree_property_column_titles_visible>`         | ``false``                                                                 |
-   +-------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                           | :ref:`columns<class_Tree_property_columns>`                                     | ``1``                                                                     |
-   +-------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                           | :ref:`drop_mode_flags<class_Tree_property_drop_mode_flags>`                     | ``0``                                                                     |
-   +-------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                         | :ref:`enable_drag_unfolding<class_Tree_property_enable_drag_unfolding>`         | ``true``                                                                  |
-   +-------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                         | :ref:`enable_recursive_folding<class_Tree_property_enable_recursive_folding>`   | ``true``                                                                  |
-   +-------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`FocusMode<enum_Control_FocusMode>`        | focus_mode                                                                      | ``2`` (overrides :ref:`Control<class_Control_property_focus_mode>`)       |
-   +-------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                         | :ref:`hide_folding<class_Tree_property_hide_folding>`                           | ``false``                                                                 |
-   +-------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                         | :ref:`hide_root<class_Tree_property_hide_root>`                                 | ``false``                                                                 |
-   +-------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`ScrollHintMode<enum_Tree_ScrollHintMode>` | :ref:`scroll_hint_mode<class_Tree_property_scroll_hint_mode>`                   | ``0``                                                                     |
-   +-------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                         | :ref:`scroll_horizontal_enabled<class_Tree_property_scroll_horizontal_enabled>` | ``true``                                                                  |
-   +-------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                         | :ref:`scroll_vertical_enabled<class_Tree_property_scroll_vertical_enabled>`     | ``true``                                                                  |
-   +-------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`SelectMode<enum_Tree_SelectMode>`         | :ref:`select_mode<class_Tree_property_select_mode>`                             | ``0``                                                                     |
-   +-------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                         | :ref:`tile_scroll_hint<class_Tree_property_tile_scroll_hint>`                   | ``false``                                                                 |
-   +-------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   +--------------------------------------------------+---------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                          | :ref:`allow_reselect<class_Tree_property_allow_reselect>`                       | ``false``                                                              |
+   +--------------------------------------------------+---------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                          | :ref:`allow_rmb_select<class_Tree_property_allow_rmb_select>`                   | ``false``                                                              |
+   +--------------------------------------------------+---------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                          | :ref:`allow_search<class_Tree_property_allow_search>`                           | ``true``                                                               |
+   +--------------------------------------------------+---------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                          | :ref:`auto_tooltip<class_Tree_property_auto_tooltip>`                           | ``true``                                                               |
+   +--------------------------------------------------+---------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                          | clip_contents                                                                   | ``true`` (ghi đè :ref:`Control<class_Control_property_clip_contents>`) |
+   +--------------------------------------------------+---------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                          | :ref:`column_titles_visible<class_Tree_property_column_titles_visible>`         | ``false``                                                              |
+   +--------------------------------------------------+---------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                            | :ref:`columns<class_Tree_property_columns>`                                     | ``1``                                                                  |
+   +--------------------------------------------------+---------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                            | :ref:`drop_mode_flags<class_Tree_property_drop_mode_flags>`                     | ``0``                                                                  |
+   +--------------------------------------------------+---------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                          | :ref:`enable_drag_unfolding<class_Tree_property_enable_drag_unfolding>`         | ``true``                                                               |
+   +--------------------------------------------------+---------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                          | :ref:`enable_recursive_folding<class_Tree_property_enable_recursive_folding>`   | ``true``                                                               |
+   +--------------------------------------------------+---------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`FocusMode <enum_Control_FocusMode>`        | focus_mode                                                                      | ``2`` (ghi đè :ref:`Control<class_Control_property_focus_mode>`)       |
+   +--------------------------------------------------+---------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                          | :ref:`hide_folding<class_Tree_property_hide_folding>`                           | ``false``                                                              |
+   +--------------------------------------------------+---------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                          | :ref:`hide_root<class_Tree_property_hide_root>`                                 | ``false``                                                              |
+   +--------------------------------------------------+---------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`ScrollHintMode <enum_Tree_ScrollHintMode>` | :ref:`scroll_hint_mode<class_Tree_property_scroll_hint_mode>`                   | ``0``                                                                  |
+   +--------------------------------------------------+---------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                          | :ref:`scroll_horizontal_enabled<class_Tree_property_scroll_horizontal_enabled>` | ``true``                                                               |
+   +--------------------------------------------------+---------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                          | :ref:`scroll_vertical_enabled<class_Tree_property_scroll_vertical_enabled>`     | ``true``                                                               |
+   +--------------------------------------------------+---------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`SelectMode <enum_Tree_SelectMode>`         | :ref:`select_mode<class_Tree_property_select_mode>`                             | ``0``                                                                  |
+   +--------------------------------------------------+---------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                          | :ref:`tile_scroll_hint<class_Tree_property_tile_scroll_hint>`                   | ``false``                                                              |
+   +--------------------------------------------------+---------------------------------------------------------------------------------+------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`clear<class_Tree_method_clear>`\ (\ )                                                                                                                                                                |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`TreeItem<class_TreeItem>`                                   | :ref:`create_item<class_Tree_method_create_item>`\ (\ parent\: :ref:`TreeItem<class_TreeItem>` = null, index\: :ref:`int<class_int>` = -1\ )                                                               |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`deselect_all<class_Tree_method_deselect_all>`\ (\ )                                                                                                                                                  |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`edit_selected<class_Tree_method_edit_selected>`\ (\ force_edit\: :ref:`bool<class_bool>` = false\ )                                                                                                  |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`ensure_cursor_is_visible<class_Tree_method_ensure_cursor_is_visible>`\ (\ )                                                                                                                          |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                             | :ref:`get_button_id_at_position<class_Tree_method_get_button_id_at_position>`\ (\ position\: :ref:`Vector2<class_Vector2>`\ ) |const|                                                                      |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                             | :ref:`get_column_at_position<class_Tree_method_get_column_at_position>`\ (\ position\: :ref:`Vector2<class_Vector2>`\ ) |const|                                                                            |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                             | :ref:`get_column_expand_ratio<class_Tree_method_get_column_expand_ratio>`\ (\ column\: :ref:`int<class_int>`\ ) |const|                                                                                    |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                       | :ref:`get_column_title<class_Tree_method_get_column_title>`\ (\ column\: :ref:`int<class_int>`\ ) |const|                                                                                                  |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>` | :ref:`get_column_title_alignment<class_Tree_method_get_column_title_alignment>`\ (\ column\: :ref:`int<class_int>`\ ) |const|                                                                              |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`TextDirection<enum_Control_TextDirection>`                  | :ref:`get_column_title_direction<class_Tree_method_get_column_title_direction>`\ (\ column\: :ref:`int<class_int>`\ ) |const|                                                                              |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                       | :ref:`get_column_title_language<class_Tree_method_get_column_title_language>`\ (\ column\: :ref:`int<class_int>`\ ) |const|                                                                                |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                       | :ref:`get_column_title_tooltip_text<class_Tree_method_get_column_title_tooltip_text>`\ (\ column\: :ref:`int<class_int>`\ ) |const|                                                                        |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                             | :ref:`get_column_width<class_Tree_method_get_column_width>`\ (\ column\: :ref:`int<class_int>`\ ) |const|                                                                                                  |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`RID<class_RID>`                                             | :ref:`get_custom_drawing_canvas_item<class_Tree_method_get_custom_drawing_canvas_item>`\ (\ ) |const|                                                                                                      |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Rect2<class_Rect2>`                                         | :ref:`get_custom_popup_rect<class_Tree_method_get_custom_popup_rect>`\ (\ ) |const|                                                                                                                        |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                             | :ref:`get_drop_section_at_position<class_Tree_method_get_drop_section_at_position>`\ (\ position\: :ref:`Vector2<class_Vector2>`\ ) |const|                                                                |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`TreeItem<class_TreeItem>`                                   | :ref:`get_edited<class_Tree_method_get_edited>`\ (\ ) |const|                                                                                                                                              |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                             | :ref:`get_edited_column<class_Tree_method_get_edited_column>`\ (\ ) |const|                                                                                                                                |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Rect2<class_Rect2>`                                         | :ref:`get_item_area_rect<class_Tree_method_get_item_area_rect>`\ (\ item\: :ref:`TreeItem<class_TreeItem>`, column\: :ref:`int<class_int>` = -1, button_index\: :ref:`int<class_int>` = -1\ ) |const|      |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`TreeItem<class_TreeItem>`                                   | :ref:`get_item_at_position<class_Tree_method_get_item_at_position>`\ (\ position\: :ref:`Vector2<class_Vector2>`\ ) |const|                                                                                |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`TreeItem<class_TreeItem>`                                   | :ref:`get_next_selected<class_Tree_method_get_next_selected>`\ (\ from\: :ref:`TreeItem<class_TreeItem>`\ )                                                                                                |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                             | :ref:`get_pressed_button<class_Tree_method_get_pressed_button>`\ (\ ) |const|                                                                                                                              |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`TreeItem<class_TreeItem>`                                   | :ref:`get_root<class_Tree_method_get_root>`\ (\ ) |const|                                                                                                                                                  |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                     | :ref:`get_scroll<class_Tree_method_get_scroll>`\ (\ ) |const|                                                                                                                                              |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`TreeItem<class_TreeItem>`                                   | :ref:`get_selected<class_Tree_method_get_selected>`\ (\ ) |const|                                                                                                                                          |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                             | :ref:`get_selected_column<class_Tree_method_get_selected_column>`\ (\ ) |const|                                                                                                                            |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`is_column_clipping_content<class_Tree_method_is_column_clipping_content>`\ (\ column\: :ref:`int<class_int>`\ ) |const|                                                                              |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`is_column_expanding<class_Tree_method_is_column_expanding>`\ (\ column\: :ref:`int<class_int>`\ ) |const|                                                                                            |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`scroll_to_item<class_Tree_method_scroll_to_item>`\ (\ item\: :ref:`TreeItem<class_TreeItem>`, center_on_item\: :ref:`bool<class_bool>` = false\ )                                                    |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`set_column_clip_content<class_Tree_method_set_column_clip_content>`\ (\ column\: :ref:`int<class_int>`, enable\: :ref:`bool<class_bool>`\ )                                                          |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`set_column_custom_minimum_width<class_Tree_method_set_column_custom_minimum_width>`\ (\ column\: :ref:`int<class_int>`, min_width\: :ref:`int<class_int>`\ )                                         |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`set_column_expand<class_Tree_method_set_column_expand>`\ (\ column\: :ref:`int<class_int>`, expand\: :ref:`bool<class_bool>`\ )                                                                      |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`set_column_expand_ratio<class_Tree_method_set_column_expand_ratio>`\ (\ column\: :ref:`int<class_int>`, ratio\: :ref:`int<class_int>`\ )                                                             |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`set_column_title<class_Tree_method_set_column_title>`\ (\ column\: :ref:`int<class_int>`, title\: :ref:`String<class_String>`\ )                                                                     |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`set_column_title_alignment<class_Tree_method_set_column_title_alignment>`\ (\ column\: :ref:`int<class_int>`, title_alignment\: :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>`\ ) |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`set_column_title_direction<class_Tree_method_set_column_title_direction>`\ (\ column\: :ref:`int<class_int>`, direction\: :ref:`TextDirection<enum_Control_TextDirection>`\ )                        |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`set_column_title_language<class_Tree_method_set_column_title_language>`\ (\ column\: :ref:`int<class_int>`, language\: :ref:`String<class_String>`\ )                                                |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`set_column_title_tooltip_text<class_Tree_method_set_column_title_tooltip_text>`\ (\ column\: :ref:`int<class_int>`, tooltip_text\: :ref:`String<class_String>`\ )                                    |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`set_selected<class_Tree_method_set_selected>`\ (\ item\: :ref:`TreeItem<class_TreeItem>`, column\: :ref:`int<class_int>`\ )                                                                          |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                             | :ref:`clear<class_Tree_method_clear>`\ (\ )                                                                                                                                                                 |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`TreeItem<class_TreeItem>`                                    | :ref:`create_item<class_Tree_method_create_item>`\ (\ parent\: :ref:`TreeItem<class_TreeItem>` = null, index\: :ref:`int<class_int>` = -1\ )                                                                |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                             | :ref:`deselect_all<class_Tree_method_deselect_all>`\ (\ )                                                                                                                                                   |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`edit_selected<class_Tree_method_edit_selected>`\ (\ force_edit\: :ref:`bool<class_bool>` = false\ )                                                                                                   |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                             | :ref:`ensure_cursor_is_visible<class_Tree_method_ensure_cursor_is_visible>`\ (\ )                                                                                                                           |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                              | :ref:`get_button_id_at_position<class_Tree_method_get_button_id_at_position>`\ (\ position\: :ref:`Vector2<class_Vector2>`\ ) |const|                                                                       |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                              | :ref:`get_column_at_position<class_Tree_method_get_column_at_position>`\ (\ position\: :ref:`Vector2<class_Vector2>`\ ) |const|                                                                             |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                              | :ref:`get_column_expand_ratio<class_Tree_method_get_column_expand_ratio>`\ (\ column\: :ref:`int<class_int>`\ ) |const|                                                                                     |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                        | :ref:`get_column_title<class_Tree_method_get_column_title>`\ (\ column\: :ref:`int<class_int>`\ ) |const|                                                                                                   |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`HorizontalAlignment <enum_@GlobalScope_HorizontalAlignment>` | :ref:`get_column_title_alignment<class_Tree_method_get_column_title_alignment>`\ (\ column\: :ref:`int<class_int>`\ ) |const|                                                                               |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`TextDirection <enum_Control_TextDirection>`                  | :ref:`get_column_title_direction<class_Tree_method_get_column_title_direction>`\ (\ column\: :ref:`int<class_int>`\ ) |const|                                                                               |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                        | :ref:`get_column_title_language<class_Tree_method_get_column_title_language>`\ (\ column\: :ref:`int<class_int>`\ ) |const|                                                                                 |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                        | :ref:`get_column_title_tooltip_text<class_Tree_method_get_column_title_tooltip_text>`\ (\ column\: :ref:`int<class_int>`\ ) |const|                                                                         |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                              | :ref:`get_column_width<class_Tree_method_get_column_width>`\ (\ column\: :ref:`int<class_int>`\ ) |const|                                                                                                   |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`RID<class_RID>`                                              | :ref:`get_custom_drawing_canvas_item<class_Tree_method_get_custom_drawing_canvas_item>`\ (\ ) |const|                                                                                                       |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Rect2<class_Rect2>`                                          | :ref:`get_custom_popup_rect<class_Tree_method_get_custom_popup_rect>`\ (\ ) |const|                                                                                                                         |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                              | :ref:`get_drop_section_at_position<class_Tree_method_get_drop_section_at_position>`\ (\ position\: :ref:`Vector2<class_Vector2>`\ ) |const|                                                                 |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`TreeItem<class_TreeItem>`                                    | :ref:`get_edited<class_Tree_method_get_edited>`\ (\ ) |const|                                                                                                                                               |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                              | :ref:`get_edited_column<class_Tree_method_get_edited_column>`\ (\ ) |const|                                                                                                                                 |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Rect2<class_Rect2>`                                          | :ref:`get_item_area_rect<class_Tree_method_get_item_area_rect>`\ (\ item\: :ref:`TreeItem<class_TreeItem>`, column\: :ref:`int<class_int>` = -1, button_index\: :ref:`int<class_int>` = -1\ ) |const|       |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`TreeItem<class_TreeItem>`                                    | :ref:`get_item_at_position<class_Tree_method_get_item_at_position>`\ (\ position\: :ref:`Vector2<class_Vector2>`\ ) |const|                                                                                 |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`TreeItem<class_TreeItem>`                                    | :ref:`get_next_selected<class_Tree_method_get_next_selected>`\ (\ from\: :ref:`TreeItem<class_TreeItem>`\ )                                                                                                 |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                              | :ref:`get_pressed_button<class_Tree_method_get_pressed_button>`\ (\ ) |const|                                                                                                                               |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`TreeItem<class_TreeItem>`                                    | :ref:`get_root<class_Tree_method_get_root>`\ (\ ) |const|                                                                                                                                                   |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                      | :ref:`get_scroll<class_Tree_method_get_scroll>`\ (\ ) |const|                                                                                                                                               |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`TreeItem<class_TreeItem>`                                    | :ref:`get_selected<class_Tree_method_get_selected>`\ (\ ) |const|                                                                                                                                           |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                              | :ref:`get_selected_column<class_Tree_method_get_selected_column>`\ (\ ) |const|                                                                                                                             |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`is_column_clipping_content<class_Tree_method_is_column_clipping_content>`\ (\ column\: :ref:`int<class_int>`\ ) |const|                                                                               |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`is_column_expanding<class_Tree_method_is_column_expanding>`\ (\ column\: :ref:`int<class_int>`\ ) |const|                                                                                             |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                             | :ref:`scroll_to_item<class_Tree_method_scroll_to_item>`\ (\ item\: :ref:`TreeItem<class_TreeItem>`, center_on_item\: :ref:`bool<class_bool>` = false\ )                                                     |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                             | :ref:`set_column_clip_content<class_Tree_method_set_column_clip_content>`\ (\ column\: :ref:`int<class_int>`, enable\: :ref:`bool<class_bool>`\ )                                                           |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                             | :ref:`set_column_custom_minimum_width<class_Tree_method_set_column_custom_minimum_width>`\ (\ column\: :ref:`int<class_int>`, min_width\: :ref:`int<class_int>`\ )                                          |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                             | :ref:`set_column_expand<class_Tree_method_set_column_expand>`\ (\ column\: :ref:`int<class_int>`, expand\: :ref:`bool<class_bool>`\ )                                                                       |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                             | :ref:`set_column_expand_ratio<class_Tree_method_set_column_expand_ratio>`\ (\ column\: :ref:`int<class_int>`, ratio\: :ref:`int<class_int>`\ )                                                              |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                             | :ref:`set_column_title<class_Tree_method_set_column_title>`\ (\ column\: :ref:`int<class_int>`, title\: :ref:`String<class_String>`\ )                                                                      |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                             | :ref:`set_column_title_alignment<class_Tree_method_set_column_title_alignment>`\ (\ column\: :ref:`int<class_int>`, title_alignment\: :ref:`HorizontalAlignment <enum_@GlobalScope_HorizontalAlignment>`\ ) |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                             | :ref:`set_column_title_direction<class_Tree_method_set_column_title_direction>`\ (\ column\: :ref:`int<class_int>`, direction\: :ref:`TextDirection <enum_Control_TextDirection>`\ )                        |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                             | :ref:`set_column_title_language<class_Tree_method_set_column_title_language>`\ (\ column\: :ref:`int<class_int>`, language\: :ref:`String<class_String>`\ )                                                 |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                             | :ref:`set_column_title_tooltip_text<class_Tree_method_set_column_title_tooltip_text>`\ (\ column\: :ref:`int<class_int>`, tooltip_text\: :ref:`String<class_String>`\ )                                     |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                             | :ref:`set_selected<class_Tree_method_set_selected>`\ (\ item\: :ref:`TreeItem<class_TreeItem>`, column\: :ref:`int<class_int>`\ )                                                                           |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Theme Properties
+Thuộc tính Theme
 ----------------
 
 .. table::
@@ -362,8 +362,8 @@ Theme Properties
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_Tree_signal_button_clicked:
 
@@ -371,7 +371,7 @@ Signals
 
 **button_clicked**\ (\ item\: :ref:`TreeItem<class_TreeItem>`, column\: :ref:`int<class_int>`, id\: :ref:`int<class_int>`, mouse_button_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Tree_signal_button_clicked>`
 
-Emitted when a button on the tree was pressed (see :ref:`TreeItem.add_button()<class_TreeItem_method_add_button>`).
+Được phát ra khi một nút trên tree được nhấn (xem :ref:`TreeItem.add_button()<class_TreeItem_method_add_button>`).
 
 .. rst-class:: classref-item-separator
 
@@ -383,7 +383,7 @@ Emitted when a button on the tree was pressed (see :ref:`TreeItem.add_button()<c
 
 **cell_selected**\ (\ ) :ref:`🔗<class_Tree_signal_cell_selected>`
 
-Emitted when a cell is selected.
+Được phát ra khi một ô được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -395,7 +395,7 @@ Emitted when a cell is selected.
 
 **check_propagated_to_item**\ (\ item\: :ref:`TreeItem<class_TreeItem>`, column\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Tree_signal_check_propagated_to_item>`
 
-Emitted when :ref:`TreeItem.propagate_check()<class_TreeItem_method_propagate_check>` is called. Connect to this signal to process the items that are affected when :ref:`TreeItem.propagate_check()<class_TreeItem_method_propagate_check>` is invoked. The order that the items affected will be processed is as follows: the item that invoked the method, children of that item, and finally parents of that item.
+Được phát ra khi :ref:`TreeItem.propagate_check()<class_TreeItem_method_propagate_check>` được gọi. Kết nối với tín hiệu này để xử lý các item bị ảnh hưởng khi :ref:`TreeItem.propagate_check()<class_TreeItem_method_propagate_check>` được gọi. Thứ tự xử lý các item bị ảnh hưởng như sau: item gọi method, các item con của item đó, và cuối cùng là các item cha của item đó.
 
 .. rst-class:: classref-item-separator
 
@@ -407,7 +407,7 @@ Emitted when :ref:`TreeItem.propagate_check()<class_TreeItem_method_propagate_ch
 
 **column_title_clicked**\ (\ column\: :ref:`int<class_int>`, mouse_button_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Tree_signal_column_title_clicked>`
 
-Emitted when a column's title is clicked with either :ref:`@GlobalScope.MOUSE_BUTTON_LEFT<class_@GlobalScope_constant_MOUSE_BUTTON_LEFT>` or :ref:`@GlobalScope.MOUSE_BUTTON_RIGHT<class_@GlobalScope_constant_MOUSE_BUTTON_RIGHT>`.
+Được phát ra khi tiêu đề của một column được nhấp bằng :ref:`@GlobalScope.MOUSE_BUTTON_LEFT <class_@GlobalScope_constant_MOUSE_BUTTON_LEFT>` hoặc :ref:`@GlobalScope.MOUSE_BUTTON_RIGHT <class_@GlobalScope_constant_MOUSE_BUTTON_RIGHT>`.
 
 .. rst-class:: classref-item-separator
 
@@ -419,7 +419,7 @@ Emitted when a column's title is clicked with either :ref:`@GlobalScope.MOUSE_BU
 
 **custom_item_clicked**\ (\ mouse_button_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Tree_signal_custom_item_clicked>`
 
-Emitted when an item with :ref:`TreeItem.CELL_MODE_CUSTOM<class_TreeItem_constant_CELL_MODE_CUSTOM>` is clicked with a mouse button.
+Được phát ra khi một item có :ref:`TreeItem.CELL_MODE_CUSTOM<class_TreeItem_constant_CELL_MODE_CUSTOM>` được nhấp bằng nút chuột.
 
 .. rst-class:: classref-item-separator
 
@@ -431,7 +431,7 @@ Emitted when an item with :ref:`TreeItem.CELL_MODE_CUSTOM<class_TreeItem_constan
 
 **custom_popup_edited**\ (\ arrow_clicked\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_Tree_signal_custom_popup_edited>`
 
-Emitted when a cell with the :ref:`TreeItem.CELL_MODE_CUSTOM<class_TreeItem_constant_CELL_MODE_CUSTOM>` is clicked to be edited.
+Được phát ra khi một ô có :ref:`TreeItem.CELL_MODE_CUSTOM<class_TreeItem_constant_CELL_MODE_CUSTOM>` được nhấp để chỉnh sửa.
 
 .. rst-class:: classref-item-separator
 
@@ -443,7 +443,7 @@ Emitted when a cell with the :ref:`TreeItem.CELL_MODE_CUSTOM<class_TreeItem_cons
 
 **empty_clicked**\ (\ click_position\: :ref:`Vector2<class_Vector2>`, mouse_button_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Tree_signal_empty_clicked>`
 
-Emitted when a mouse button is clicked in the empty space of the tree.
+Được phát ra khi một nút chuột được nhấp trong vùng trống của tree.
 
 .. rst-class:: classref-item-separator
 
@@ -455,7 +455,7 @@ Emitted when a mouse button is clicked in the empty space of the tree.
 
 **item_activated**\ (\ ) :ref:`🔗<class_Tree_signal_item_activated>`
 
-Emitted when an item is double-clicked, or selected with a ``ui_accept`` input event (e.g. using :kbd:`Enter` or :kbd:`Space` on the keyboard).
+Được phát ra khi một item được nhấp đúp hoặc được chọn bằng sự kiện input ``ui_accept`` (ví dụ: sử dụng :kbd:`Enter` hoặc :kbd:`Space` trên bàn phím).
 
 .. rst-class:: classref-item-separator
 
@@ -467,9 +467,9 @@ Emitted when an item is double-clicked, or selected with a ``ui_accept`` input e
 
 **item_collapsed**\ (\ item\: :ref:`TreeItem<class_TreeItem>`\ ) :ref:`🔗<class_Tree_signal_item_collapsed>`
 
-Emitted when an item is expanded or collapsed by clicking on the folding arrow or through code.
+Được phát ra khi một item được mở rộng hoặc thu gọn bằng cách nhấp vào mũi tên gấp hoặc thông qua code.
 
-\ **Note:** Despite its name, this signal is also emitted when an item is expanded.
+\ **Lưu ý:** Mặc dù có tên như vậy, tín hiệu này cũng được phát ra khi một item được mở rộng.
 
 .. rst-class:: classref-item-separator
 
@@ -481,7 +481,7 @@ Emitted when an item is expanded or collapsed by clicking on the folding arrow o
 
 **item_edited**\ (\ ) :ref:`🔗<class_Tree_signal_item_edited>`
 
-Emitted when an item is edited.
+Được phát ra khi một item được chỉnh sửa.
 
 .. rst-class:: classref-item-separator
 
@@ -493,7 +493,7 @@ Emitted when an item is edited.
 
 **item_icon_double_clicked**\ (\ ) :ref:`🔗<class_Tree_signal_item_icon_double_clicked>`
 
-Emitted when an item's icon is double-clicked. For a signal that emits when any part of the item is double-clicked, see :ref:`item_activated<class_Tree_signal_item_activated>`.
+Được phát ra khi biểu tượng của một item được nhấp đúp. Để xem tín hiệu được phát ra khi bất kỳ phần nào của item được nhấp đúp, hãy xem :ref:`item_activated<class_Tree_signal_item_activated>`.
 
 .. rst-class:: classref-item-separator
 
@@ -505,7 +505,7 @@ Emitted when an item's icon is double-clicked. For a signal that emits when any 
 
 **item_mouse_selected**\ (\ mouse_position\: :ref:`Vector2<class_Vector2>`, mouse_button_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Tree_signal_item_mouse_selected>`
 
-Emitted when an item is selected with a mouse button.
+Được phát ra khi một item được chọn bằng nút chuột.
 
 .. rst-class:: classref-item-separator
 
@@ -517,7 +517,7 @@ Emitted when an item is selected with a mouse button.
 
 **item_selected**\ (\ ) :ref:`🔗<class_Tree_signal_item_selected>`
 
-Emitted when an item is selected.
+Được phát ra khi một item được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -529,7 +529,7 @@ Emitted when an item is selected.
 
 **multi_selected**\ (\ item\: :ref:`TreeItem<class_TreeItem>`, column\: :ref:`int<class_int>`, selected\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_Tree_signal_multi_selected>`
 
-Emitted instead of :ref:`item_selected<class_Tree_signal_item_selected>` if :ref:`select_mode<class_Tree_property_select_mode>` is set to :ref:`SELECT_MULTI<class_Tree_constant_SELECT_MULTI>`.
+Được phát ra thay cho :ref:`item_selected<class_Tree_signal_item_selected>` nếu :ref:`select_mode<class_Tree_property_select_mode>` được đặt thành :ref:`SELECT_MULTI<class_Tree_constant_SELECT_MULTI>`.
 
 .. rst-class:: classref-item-separator
 
@@ -541,7 +541,7 @@ Emitted instead of :ref:`item_selected<class_Tree_signal_item_selected>` if :ref
 
 **nothing_selected**\ (\ ) :ref:`🔗<class_Tree_signal_nothing_selected>`
 
-Emitted when a left mouse button click does not select any item.
+Được phát ra khi thao tác nhấp chuột trái không chọn item nào.
 
 .. rst-class:: classref-section-separator
 
@@ -549,14 +549,14 @@ Emitted when a left mouse button click does not select any item.
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_Tree_SelectMode:
 
 .. rst-class:: classref-enumeration
 
-enum **SelectMode**: :ref:`🔗<enum_Tree_SelectMode>`
+enum **SelectMode**: :ref:`🔗 <enum_Tree_SelectMode>`
 
 .. _class_Tree_constant_SELECT_SINGLE:
 
@@ -564,9 +564,9 @@ enum **SelectMode**: :ref:`🔗<enum_Tree_SelectMode>`
 
 :ref:`SelectMode<enum_Tree_SelectMode>` **SELECT_SINGLE** = ``0``
 
-Allows selection of a single cell at a time. From the perspective of items, only a single item is allowed to be selected. And there is only one column selected in the selected item.
+Cho phép chọn một ô tại một thời điểm. Xét theo các item, chỉ một item duy nhất được phép chọn. Và chỉ có một column được chọn trong item đã chọn.
 
-The focus cursor is always hidden in this mode, but it is positioned at the current selection, making the currently selected item the currently focused item.
+Con trỏ focus luôn bị ẩn trong mode này, nhưng được đặt tại vùng chọn hiện tại, khiến item hiện được chọn trở thành item hiện được focus.
 
 .. _class_Tree_constant_SELECT_ROW:
 
@@ -574,9 +574,9 @@ The focus cursor is always hidden in this mode, but it is positioned at the curr
 
 :ref:`SelectMode<enum_Tree_SelectMode>` **SELECT_ROW** = ``1``
 
-Allows selection of a single row at a time. From the perspective of items, only a single items is allowed to be selected. And all the columns are selected in the selected item.
+Cho phép chọn một hàng tại một thời điểm. Xét theo các item, chỉ một item duy nhất được phép chọn. Và tất cả các column đều được chọn trong item đã chọn.
 
-The focus cursor is always hidden in this mode, but it is positioned at the first column of the current selection, making the currently selected item the currently focused item.
+Con trỏ focus luôn bị ẩn trong mode này, nhưng được đặt tại column đầu tiên của vùng chọn hiện tại, khiến item hiện được chọn trở thành item hiện được focus.
 
 .. _class_Tree_constant_SELECT_MULTI:
 
@@ -584,9 +584,9 @@ The focus cursor is always hidden in this mode, but it is positioned at the firs
 
 :ref:`SelectMode<enum_Tree_SelectMode>` **SELECT_MULTI** = ``2``
 
-Allows selection of multiple cells at the same time. From the perspective of items, multiple items are allowed to be selected. And there can be multiple columns selected in each selected item.
+Cho phép chọn nhiều ô cùng lúc. Xét theo các item, có thể chọn nhiều item. Và có thể chọn nhiều column trong mỗi item được chọn.
 
-The focus cursor is visible in this mode, the item or column under the cursor is not necessarily selected.
+Con trỏ focus hiển thị trong mode này; item hoặc column bên dưới con trỏ không nhất thiết được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -596,7 +596,7 @@ The focus cursor is visible in this mode, the item or column under the cursor is
 
 .. rst-class:: classref-enumeration
 
-enum **DropModeFlags**: :ref:`🔗<enum_Tree_DropModeFlags>`
+enum **DropModeFlags**: :ref:`🔗 <enum_Tree_DropModeFlags>`
 
 .. _class_Tree_constant_DROP_MODE_DISABLED:
 
@@ -604,9 +604,9 @@ enum **DropModeFlags**: :ref:`🔗<enum_Tree_DropModeFlags>`
 
 :ref:`DropModeFlags<enum_Tree_DropModeFlags>` **DROP_MODE_DISABLED** = ``0``
 
-Disables all drop sections.
+Tắt tất cả vùng thả.
 
-\ **Note:** This is the default flag, it has no effect when combined with other flags.
+\ **Lưu ý:** Đây là flag mặc định, không có tác dụng khi kết hợp với các flag khác.
 
 .. _class_Tree_constant_DROP_MODE_ON_ITEM:
 
@@ -614,9 +614,9 @@ Disables all drop sections.
 
 :ref:`DropModeFlags<enum_Tree_DropModeFlags>` **DROP_MODE_ON_ITEM** = ``1``
 
-Enables the "on item" drop section. This drop section covers the entire item.
+Bật vùng thả "on item". Vùng thả này bao phủ toàn bộ item.
 
-When combined with :ref:`DROP_MODE_INBETWEEN<class_Tree_constant_DROP_MODE_INBETWEEN>`, this drop section halves in height and stays centered vertically.
+Khi kết hợp với :ref:`DROP_MODE_INBETWEEN<class_Tree_constant_DROP_MODE_INBETWEEN>`, vùng thả này giảm một nửa chiều cao và vẫn nằm ở giữa theo chiều dọc.
 
 .. _class_Tree_constant_DROP_MODE_INBETWEEN:
 
@@ -624,9 +624,9 @@ When combined with :ref:`DROP_MODE_INBETWEEN<class_Tree_constant_DROP_MODE_INBET
 
 :ref:`DropModeFlags<enum_Tree_DropModeFlags>` **DROP_MODE_INBETWEEN** = ``2``
 
-Enables "above item" and "below item" drop sections. The "above item" drop section covers the top half of the item, while the "below item" drop section covers the bottom half, and extends downward to the left of any children.
+Bật các vùng thả "above item" và "below item". Vùng thả "above item" bao phủ nửa trên của item, còn vùng thả "below item" bao phủ nửa dưới và kéo dài xuống dưới về phía bên trái của mọi item con.
 
-When combined with :ref:`DROP_MODE_ON_ITEM<class_Tree_constant_DROP_MODE_ON_ITEM>`, these drop sections halve in height and stay at the top and bottom respectively.
+Khi kết hợp với :ref:`DROP_MODE_ON_ITEM<class_Tree_constant_DROP_MODE_ON_ITEM>`, các vùng thả này giảm một nửa chiều cao và lần lượt nằm ở trên cùng và dưới cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -636,7 +636,7 @@ When combined with :ref:`DROP_MODE_ON_ITEM<class_Tree_constant_DROP_MODE_ON_ITEM
 
 .. rst-class:: classref-enumeration
 
-enum **ScrollHintMode**: :ref:`🔗<enum_Tree_ScrollHintMode>`
+enum **ScrollHintMode**: :ref:`🔗 <enum_Tree_ScrollHintMode>`
 
 .. _class_Tree_constant_SCROLL_HINT_MODE_DISABLED:
 
@@ -644,7 +644,7 @@ enum **ScrollHintMode**: :ref:`🔗<enum_Tree_ScrollHintMode>`
 
 :ref:`ScrollHintMode<enum_Tree_ScrollHintMode>` **SCROLL_HINT_MODE_DISABLED** = ``0``
 
-Scroll hints will never be shown.
+Các gợi ý cuộn sẽ không bao giờ hiển thị.
 
 .. _class_Tree_constant_SCROLL_HINT_MODE_BOTH:
 
@@ -652,7 +652,7 @@ Scroll hints will never be shown.
 
 :ref:`ScrollHintMode<enum_Tree_ScrollHintMode>` **SCROLL_HINT_MODE_BOTH** = ``1``
 
-Scroll hints will be shown at the top and bottom.
+Các gợi ý cuộn sẽ hiển thị ở trên cùng và dưới cùng.
 
 .. _class_Tree_constant_SCROLL_HINT_MODE_TOP:
 
@@ -660,7 +660,7 @@ Scroll hints will be shown at the top and bottom.
 
 :ref:`ScrollHintMode<enum_Tree_ScrollHintMode>` **SCROLL_HINT_MODE_TOP** = ``2``
 
-Only the top scroll hint will be shown.
+Chỉ gợi ý cuộn ở trên cùng sẽ hiển thị.
 
 .. _class_Tree_constant_SCROLL_HINT_MODE_BOTTOM:
 
@@ -668,7 +668,7 @@ Only the top scroll hint will be shown.
 
 :ref:`ScrollHintMode<enum_Tree_ScrollHintMode>` **SCROLL_HINT_MODE_BOTTOM** = ``3``
 
-Only the bottom scroll hint will be shown.
+Chỉ gợi ý cuộn ở dưới cùng sẽ hiển thị.
 
 .. rst-class:: classref-section-separator
 
@@ -676,8 +676,8 @@ Only the bottom scroll hint will be shown.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Tree_property_allow_reselect:
 
@@ -690,7 +690,7 @@ Property Descriptions
 - |void| **set_allow_reselect**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_allow_reselect**\ (\ )
 
-If ``true``, the currently selected cell may be selected again.
+Nếu ``true``, ô hiện được chọn có thể được chọn lại.
 
 .. rst-class:: classref-item-separator
 
@@ -707,7 +707,7 @@ If ``true``, the currently selected cell may be selected again.
 - |void| **set_allow_rmb_select**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_allow_rmb_select**\ (\ )
 
-If ``true``, a right mouse button click can select items.
+Nếu ``true``, thao tác nhấp chuột phải có thể chọn các item.
 
 .. rst-class:: classref-item-separator
 
@@ -724,7 +724,7 @@ If ``true``, a right mouse button click can select items.
 - |void| **set_allow_search**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_allow_search**\ (\ )
 
-If ``true``, allows navigating the **Tree** with letter keys through incremental search.
+Nếu ``true``, cho phép điều hướng **Tree** bằng các phím chữ thông qua tìm kiếm tăng dần.
 
 .. rst-class:: classref-item-separator
 
@@ -741,7 +741,7 @@ If ``true``, allows navigating the **Tree** with letter keys through incremental
 - |void| **set_auto_tooltip**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_auto_tooltip_enabled**\ (\ )
 
-If ``true``, tree items with no tooltip assigned display their text as their tooltip. See also :ref:`TreeItem.get_tooltip_text()<class_TreeItem_method_get_tooltip_text>` and :ref:`TreeItem.get_button_tooltip_text()<class_TreeItem_method_get_button_tooltip_text>`.
+Nếu ``true``, các mục cây chưa được gán tooltip sẽ hiển thị văn bản của chúng làm tooltip. Xem thêm :ref:`TreeItem.get_tooltip_text()<class_TreeItem_method_get_tooltip_text>` và :ref:`TreeItem.get_button_tooltip_text()<class_TreeItem_method_get_button_tooltip_text>`.
 
 .. rst-class:: classref-item-separator
 
@@ -758,7 +758,7 @@ If ``true``, tree items with no tooltip assigned display their text as their too
 - |void| **set_column_titles_visible**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **are_column_titles_visible**\ (\ )
 
-If ``true``, column titles are visible.
+Nếu ``true``, tiêu đề cột sẽ hiển thị.
 
 .. rst-class:: classref-item-separator
 
@@ -775,9 +775,9 @@ If ``true``, column titles are visible.
 - |void| **set_columns**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_columns**\ (\ )
 
-The number of columns.
+Số lượng cột.
 
-Prints an error and does not allow setting the columns during mouse selection.
+In lỗi và không cho phép thiết lập các cột trong khi chọn bằng chuột.
 
 .. rst-class:: classref-item-separator
 
@@ -794,9 +794,9 @@ Prints an error and does not allow setting the columns during mouse selection.
 - |void| **set_drop_mode_flags**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_drop_mode_flags**\ (\ )
 
-The drop mode as an OR combination of flags. See :ref:`DropModeFlags<enum_Tree_DropModeFlags>` constants. Once dropping is done, reverts to :ref:`DROP_MODE_DISABLED<class_Tree_constant_DROP_MODE_DISABLED>`. Setting this during :ref:`Control._can_drop_data()<class_Control_private_method__can_drop_data>` is recommended.
+Chế độ thả dưới dạng tổ hợp OR của các cờ. Xem các hằng số :ref:`DropModeFlags <enum_Tree_DropModeFlags>`. Sau khi thả xong, chế độ sẽ trở về :ref:`DROP_MODE_DISABLED<class_Tree_constant_DROP_MODE_DISABLED>`. Bạn nên thiết lập giá trị này trong :ref:`Control._can_drop_data()<class_Control_private_method__can_drop_data>`.
 
-This controls the drop sections, i.e. the decision and drawing of possible drop locations based on the mouse position.
+Thuộc tính này điều khiển các vùng thả, tức là việc xác định và vẽ các vị trí thả khả dụng dựa trên vị trí chuột.
 
 .. rst-class:: classref-item-separator
 
@@ -813,7 +813,7 @@ This controls the drop sections, i.e. the decision and drawing of possible drop 
 - |void| **set_enable_drag_unfolding**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_drag_unfolding_enabled**\ (\ )
 
-If ``true``, tree items will unfold when hovered over during a drag-and-drop. The delay for when this happens is dictated by :ref:`dragging_unfold_wait_msec<class_Tree_theme_constant_dragging_unfold_wait_msec>`.
+Nếu ``true``, các mục cây sẽ mở ra khi được di chuột qua trong quá trình kéo và thả. Độ trễ trước khi việc này xảy ra được quy định bởi :ref:`dragging_unfold_wait_msec<class_Tree_theme_constant_dragging_unfold_wait_msec>`.
 
 .. rst-class:: classref-item-separator
 
@@ -830,7 +830,7 @@ If ``true``, tree items will unfold when hovered over during a drag-and-drop. Th
 - |void| **set_enable_recursive_folding**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_recursive_folding_enabled**\ (\ )
 
-If ``true``, recursive folding is enabled for this **Tree**. Holding down :kbd:`Shift` while clicking the fold arrow or using ``ui_right``/``ui_left`` shortcuts collapses or uncollapses the :ref:`TreeItem<class_TreeItem>` and all its descendants.
+Nếu ``true``, tính năng gấp đệ quy được bật cho **Tree** này. Giữ :kbd:`Shift` trong khi nhấp vào mũi tên gấp hoặc sử dụng các phím tắt ``ui_right``/``ui_left`` sẽ gấp hoặc mở :ref:`TreeItem<class_TreeItem>` cùng tất cả các mục con của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -847,7 +847,7 @@ If ``true``, recursive folding is enabled for this **Tree**. Holding down :kbd:`
 - |void| **set_hide_folding**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_folding_hidden**\ (\ )
 
-If ``true``, the folding arrow is hidden.
+Nếu ``true``, mũi tên gấp sẽ bị ẩn.
 
 .. rst-class:: classref-item-separator
 
@@ -864,7 +864,7 @@ If ``true``, the folding arrow is hidden.
 - |void| **set_hide_root**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_root_hidden**\ (\ )
 
-If ``true``, the tree's root is hidden.
+Nếu ``true``, nút gốc của cây sẽ bị ẩn.
 
 .. rst-class:: classref-item-separator
 
@@ -881,7 +881,7 @@ If ``true``, the tree's root is hidden.
 - |void| **set_scroll_hint_mode**\ (\ value\: :ref:`ScrollHintMode<enum_Tree_ScrollHintMode>`\ )
 - :ref:`ScrollHintMode<enum_Tree_ScrollHintMode>` **get_scroll_hint_mode**\ (\ )
 
-The way which scroll hints (indicators that show that the content can still be scrolled in a certain direction) will be shown.
+Cách hiển thị các gợi ý cuộn (các chỉ báo cho biết nội dung vẫn có thể được cuộn theo một hướng nhất định).
 
 .. rst-class:: classref-item-separator
 
@@ -898,7 +898,7 @@ The way which scroll hints (indicators that show that the content can still be s
 - |void| **set_h_scroll_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_h_scroll_enabled**\ (\ )
 
-If ``true``, enables horizontal scrolling.
+Nếu ``true``, bật tính năng cuộn ngang.
 
 .. rst-class:: classref-item-separator
 
@@ -915,7 +915,7 @@ If ``true``, enables horizontal scrolling.
 - |void| **set_v_scroll_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_v_scroll_enabled**\ (\ )
 
-If ``true``, enables vertical scrolling.
+Nếu ``true``, bật tính năng cuộn dọc.
 
 .. rst-class:: classref-item-separator
 
@@ -932,7 +932,7 @@ If ``true``, enables vertical scrolling.
 - |void| **set_select_mode**\ (\ value\: :ref:`SelectMode<enum_Tree_SelectMode>`\ )
 - :ref:`SelectMode<enum_Tree_SelectMode>` **get_select_mode**\ (\ )
 
-Allows single or multiple selection. See the :ref:`SelectMode<enum_Tree_SelectMode>` constants.
+Cho phép chọn một hoặc nhiều mục. Xem các hằng số :ref:`SelectMode <enum_Tree_SelectMode>`.
 
 .. rst-class:: classref-item-separator
 
@@ -949,7 +949,7 @@ Allows single or multiple selection. See the :ref:`SelectMode<enum_Tree_SelectMo
 - |void| **set_tile_scroll_hint**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_scroll_hint_tiled**\ (\ )
 
-If ``true``, the scroll hint texture will be tiled instead of stretched. See :ref:`scroll_hint_mode<class_Tree_property_scroll_hint_mode>`.
+Nếu ``true``, texture gợi ý cuộn sẽ được lát thay vì kéo giãn. Xem :ref:`scroll_hint_mode<class_Tree_property_scroll_hint_mode>`.
 
 .. rst-class:: classref-section-separator
 
@@ -957,8 +957,8 @@ If ``true``, the scroll hint texture will be tiled instead of stretched. See :re
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Tree_method_clear:
 
@@ -966,9 +966,9 @@ Method Descriptions
 
 |void| **clear**\ (\ ) :ref:`🔗<class_Tree_method_clear>`
 
-Clears the tree. This removes all items.
+Xóa cây. Thao tác này xóa tất cả các mục.
 
-Prints an error and does not allow clearing the tree if called during mouse selection.
+In lỗi và không cho phép xóa cây nếu được gọi trong khi chọn bằng chuột.
 
 .. rst-class:: classref-item-separator
 
@@ -980,13 +980,13 @@ Prints an error and does not allow clearing the tree if called during mouse sele
 
 :ref:`TreeItem<class_TreeItem>` **create_item**\ (\ parent\: :ref:`TreeItem<class_TreeItem>` = null, index\: :ref:`int<class_int>` = -1\ ) :ref:`🔗<class_Tree_method_create_item>`
 
-Creates an item in the tree and adds it as a child of ``parent``, which can be either a valid :ref:`TreeItem<class_TreeItem>` or ``null``.
+Tạo một mục trong cây và thêm mục đó làm mục con của ``parent``, có thể là một :ref:`TreeItem<class_TreeItem>` hoặc ``null`` hợp lệ.
 
-If ``parent`` is ``null``, the root item will be the parent, or the new item will be the root itself if the tree is empty.
+Nếu ``parent`` là ``null``, mục gốc sẽ là mục cha; hoặc mục mới sẽ tự là mục gốc nếu cây đang trống.
 
-The new item will be the ``index``-th child of parent, or it will be the last child if there are not enough siblings.
+Mục mới sẽ là mục con thứ ``index`` của parent, hoặc sẽ là mục con cuối cùng nếu không có đủ mục cùng cấp.
 
-Prints an error and returns ``null`` if called during mouse selection, or if the ``parent`` does not belong to this tree.
+In lỗi và trả về ``null`` nếu được gọi trong khi chọn bằng chuột hoặc nếu ``parent`` không thuộc cây này.
 
 .. rst-class:: classref-item-separator
 
@@ -998,7 +998,7 @@ Prints an error and returns ``null`` if called during mouse selection, or if the
 
 |void| **deselect_all**\ (\ ) :ref:`🔗<class_Tree_method_deselect_all>`
 
-Deselects all tree items (rows and columns). In :ref:`SELECT_MULTI<class_Tree_constant_SELECT_MULTI>` mode also removes selection cursor.
+Bỏ chọn tất cả các mục cây (hàng và cột). Ở chế độ :ref:`SELECT_MULTI<class_Tree_constant_SELECT_MULTI>`, thao tác này cũng xóa con trỏ chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -1010,11 +1010,11 @@ Deselects all tree items (rows and columns). In :ref:`SELECT_MULTI<class_Tree_co
 
 :ref:`bool<class_bool>` **edit_selected**\ (\ force_edit\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_Tree_method_edit_selected>`
 
-Edits the selected tree item as if it was clicked.
+Chỉnh sửa mục cây đang được chọn như thể mục đó vừa được nhấp vào.
 
-Either the item must be set editable with :ref:`TreeItem.set_editable()<class_TreeItem_method_set_editable>` or ``force_edit`` must be ``true``.
+Mục đó phải được đặt ở trạng thái có thể chỉnh sửa bằng :ref:`TreeItem.set_editable()<class_TreeItem_method_set_editable>`, hoặc ``force_edit`` phải là ``true``.
 
-Returns ``true`` if the item could be edited. Fails if no item is selected.
+Trả về ``true`` nếu có thể chỉnh sửa mục đó. Thao tác thất bại nếu không có mục nào được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -1026,11 +1026,11 @@ Returns ``true`` if the item could be edited. Fails if no item is selected.
 
 |void| **ensure_cursor_is_visible**\ (\ ) :ref:`🔗<class_Tree_method_ensure_cursor_is_visible>`
 
-Makes the currently focused cell visible.
+Làm cho ô hiện đang được focus hiển thị.
 
-This will scroll the tree if necessary. In :ref:`SELECT_ROW<class_Tree_constant_SELECT_ROW>` mode, this will not do horizontal scrolling, as all the cells in the selected row is focused logically.
+Thao tác này sẽ cuộn cây nếu cần. Ở chế độ :ref:`SELECT_ROW<class_Tree_constant_SELECT_ROW>`, thao tác này sẽ không cuộn ngang, vì về mặt logic, tất cả các ô trong hàng được chọn đều đang được focus.
 
-\ **Note:** Despite the name of this method, the focus cursor itself is only visible in :ref:`SELECT_MULTI<class_Tree_constant_SELECT_MULTI>` mode.
+\ **Lưu ý:** Mặc dù tên của phương thức này là như vậy, bản thân con trỏ focus chỉ hiển thị ở chế độ :ref:`SELECT_MULTI<class_Tree_constant_SELECT_MULTI>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1042,7 +1042,7 @@ This will scroll the tree if necessary. In :ref:`SELECT_ROW<class_Tree_constant_
 
 :ref:`int<class_int>` **get_button_id_at_position**\ (\ position\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Tree_method_get_button_id_at_position>`
 
-Returns the button ID at ``position``, or -1 if no button is there.
+Trả về ID của nút tại ``position``, hoặc -1 nếu tại đó không có nút.
 
 .. rst-class:: classref-item-separator
 
@@ -1054,7 +1054,7 @@ Returns the button ID at ``position``, or -1 if no button is there.
 
 :ref:`int<class_int>` **get_column_at_position**\ (\ position\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Tree_method_get_column_at_position>`
 
-Returns the column index at ``position``, or -1 if no item is there.
+Trả về chỉ số cột tại ``position``, hoặc -1 nếu tại đó không có mục.
 
 .. rst-class:: classref-item-separator
 
@@ -1066,7 +1066,7 @@ Returns the column index at ``position``, or -1 if no item is there.
 
 :ref:`int<class_int>` **get_column_expand_ratio**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Tree_method_get_column_expand_ratio>`
 
-Returns the expand ratio assigned to the column.
+Trả về tỷ lệ mở rộng được gán cho cột.
 
 .. rst-class:: classref-item-separator
 
@@ -1078,7 +1078,7 @@ Returns the expand ratio assigned to the column.
 
 :ref:`String<class_String>` **get_column_title**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Tree_method_get_column_title>`
 
-Returns the column's title.
+Trả về tiêu đề của cột.
 
 .. rst-class:: classref-item-separator
 
@@ -1090,7 +1090,7 @@ Returns the column's title.
 
 :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>` **get_column_title_alignment**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Tree_method_get_column_title_alignment>`
 
-Returns the column title alignment.
+Trả về căn chỉnh tiêu đề cột.
 
 .. rst-class:: classref-item-separator
 
@@ -1102,7 +1102,7 @@ Returns the column title alignment.
 
 :ref:`TextDirection<enum_Control_TextDirection>` **get_column_title_direction**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Tree_method_get_column_title_direction>`
 
-Returns column title base writing direction.
+Trả về hướng viết cơ sở của tiêu đề cột.
 
 .. rst-class:: classref-item-separator
 
@@ -1114,7 +1114,7 @@ Returns column title base writing direction.
 
 :ref:`String<class_String>` **get_column_title_language**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Tree_method_get_column_title_language>`
 
-Returns column title language code.
+Trả về mã ngôn ngữ của tiêu đề cột.
 
 .. rst-class:: classref-item-separator
 
@@ -1126,7 +1126,7 @@ Returns column title language code.
 
 :ref:`String<class_String>` **get_column_title_tooltip_text**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Tree_method_get_column_title_tooltip_text>`
 
-Returns the column title's tooltip text.
+Trả về văn bản tooltip của tiêu đề cột.
 
 .. rst-class:: classref-item-separator
 
@@ -1138,7 +1138,7 @@ Returns the column title's tooltip text.
 
 :ref:`int<class_int>` **get_column_width**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Tree_method_get_column_width>`
 
-Returns the column's width in pixels.
+Trả về chiều rộng của cột theo pixel.
 
 .. rst-class:: classref-item-separator
 
@@ -1150,9 +1150,9 @@ Returns the column's width in pixels.
 
 :ref:`RID<class_RID>` **get_custom_drawing_canvas_item**\ (\ ) |const| :ref:`🔗<class_Tree_method_get_custom_drawing_canvas_item>`
 
-Returns the internal canvas item designated for custom drawing. See :ref:`TreeItem.set_custom_draw_callback()<class_TreeItem_method_set_custom_draw_callback>`.
+Trả về mục canvas nội bộ được chỉ định để vẽ tùy chỉnh. Xem :ref:`TreeItem.set_custom_draw_callback()<class_TreeItem_method_set_custom_draw_callback>`.
 
-\ **Note:** This canvas item clears automatically on each Tree draw call.
+\ **Lưu ý:** Mục canvas này sẽ tự động được xóa sau mỗi lần gọi vẽ Tree.
 
 .. rst-class:: classref-item-separator
 
@@ -1164,7 +1164,7 @@ Returns the internal canvas item designated for custom drawing. See :ref:`TreeIt
 
 :ref:`Rect2<class_Rect2>` **get_custom_popup_rect**\ (\ ) |const| :ref:`🔗<class_Tree_method_get_custom_popup_rect>`
 
-Returns the rectangle for custom popups. Helper to create custom cell controls that display a popup. See :ref:`TreeItem.set_cell_mode()<class_TreeItem_method_set_cell_mode>`.
+Trả về vùng chữ nhật dành cho các popup tùy chỉnh. Đây là trình trợ giúp để tạo các điều khiển ô tùy chỉnh có hiển thị popup. Xem :ref:`TreeItem.set_cell_mode()<class_TreeItem_method_set_cell_mode>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1176,19 +1176,19 @@ Returns the rectangle for custom popups. Helper to create custom cell controls t
 
 :ref:`int<class_int>` **get_drop_section_at_position**\ (\ position\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Tree_method_get_drop_section_at_position>`
 
-Returns the drop section at ``position``, as permitted by enabled :ref:`DropModeFlags<enum_Tree_DropModeFlags>`.
+Trả về vùng thả tại ``position``, theo các :ref:`DropModeFlags <enum_Tree_DropModeFlags>` đã bật.
 
-- ``-1`` if the position is **above** the item. Typically used to insert as the item's previous sibling.
+- ``-1`` nếu vị trí nằm **phía trên** mục. Thường được dùng để chèn làm mục cùng cấp trước đó của mục.
 
-- ``0`` if the position is **on** the item. Typically used to insert as the item's last child.
+- ``0`` nếu vị trí nằm **trên** mục. Thường được dùng để chèn làm mục con cuối cùng của mục.
 
-- ``1`` if the position is **below** the item, when the item has no children. Typically used to insert as the item's next sibling. If the item *does* have children, this section is still reachable by hovering to the left of the item's collapse arrow, and below.
+- ``1`` nếu vị trí nằm **phía dưới** mục khi mục đó không có mục con. Thường được dùng để chèn làm mục cùng cấp tiếp theo của mục. Nếu mục *có* mục con, vùng này vẫn có thể được truy cập bằng cách di chuột sang bên trái mũi tên gấp của mục và xuống dưới.
 
-- ``2`` if the position is **below** the item, when the item has children. Typically used to insert as the item's first child.
+- ``2`` nếu vị trí nằm **phía dưới** mục khi mục đó có các mục con. Thường được dùng để chèn làm mục con đầu tiên của mục.
 
-- ``-100`` if the position is not over any item, or no :ref:`DropModeFlags<enum_Tree_DropModeFlags>` are set.
+- ``-100`` nếu vị trí không nằm trên mục nào hoặc không có :ref:`DropModeFlags <enum_Tree_DropModeFlags>` nào được đặt.
 
-See :ref:`DropModeFlags<enum_Tree_DropModeFlags>` for a description of each drop region. To get the item which the returned drop section refers to, use :ref:`get_item_at_position()<class_Tree_method_get_item_at_position>`.
+Xem :ref:`DropModeFlags <enum_Tree_DropModeFlags>` để biết mô tả từng vùng thả. Để lấy mục mà vùng thả được trả về tham chiếu đến, hãy sử dụng :ref:`get_item_at_position()<class_Tree_method_get_item_at_position>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1200,7 +1200,7 @@ See :ref:`DropModeFlags<enum_Tree_DropModeFlags>` for a description of each drop
 
 :ref:`TreeItem<class_TreeItem>` **get_edited**\ (\ ) |const| :ref:`🔗<class_Tree_method_get_edited>`
 
-Returns the currently edited item. Can be used with :ref:`item_edited<class_Tree_signal_item_edited>` to get the item that was modified.
+Trả về mục hiện đang được chỉnh sửa. Có thể dùng với :ref:`item_edited<class_Tree_signal_item_edited>` để lấy mục đã được sửa đổi.
 
 
 .. tabs::
@@ -1211,7 +1211,7 @@ Returns the currently edited item. Can be used with :ref:`item_edited<class_Tree
         $Tree.item_edited.connect(on_Tree_item_edited)
 
     func on_Tree_item_edited():
-        print($Tree.get_edited()) # This item just got edited (e.g. checked).
+        print($Tree.get_edited()) # Mục này vừa được chỉnh sửa (ví dụ: vừa được chọn).
 
  .. code-tab:: csharp
 
@@ -1222,7 +1222,7 @@ Returns the currently edited item. Can be used with :ref:`item_edited<class_Tree
 
     public void OnTreeItemEdited()
     {
-        GD.Print(GetNode<Tree>("Tree").GetEdited()); // This item just got edited (e.g. checked).
+        GD.Print(GetNode<Tree>("Tree").GetEdited()); // Mục này vừa được chỉnh sửa (ví dụ: vừa được chọn).
     }
 
 
@@ -1237,7 +1237,7 @@ Returns the currently edited item. Can be used with :ref:`item_edited<class_Tree
 
 :ref:`int<class_int>` **get_edited_column**\ (\ ) |const| :ref:`🔗<class_Tree_method_get_edited_column>`
 
-Returns the column for the currently edited item.
+Trả về cột của mục hiện đang được chỉnh sửa.
 
 .. rst-class:: classref-item-separator
 
@@ -1249,7 +1249,7 @@ Returns the column for the currently edited item.
 
 :ref:`Rect2<class_Rect2>` **get_item_area_rect**\ (\ item\: :ref:`TreeItem<class_TreeItem>`, column\: :ref:`int<class_int>` = -1, button_index\: :ref:`int<class_int>` = -1\ ) |const| :ref:`🔗<class_Tree_method_get_item_area_rect>`
 
-Returns the rectangle area for the specified :ref:`TreeItem<class_TreeItem>`. If ``column`` is specified, only get the position and size of that column, otherwise get the rectangle containing all columns. If a button index is specified, the rectangle of that button will be returned.
+Trả về vùng hình chữ nhật của :ref:`TreeItem<class_TreeItem>` được chỉ định. Nếu ``column`` được chỉ định, chỉ lấy vị trí và kích thước của cột đó; nếu không, lấy hình chữ nhật bao gồm tất cả các cột. Nếu chỉ số nút được chỉ định, hình chữ nhật của nút đó sẽ được trả về.
 
 .. rst-class:: classref-item-separator
 
@@ -1261,7 +1261,7 @@ Returns the rectangle area for the specified :ref:`TreeItem<class_TreeItem>`. If
 
 :ref:`TreeItem<class_TreeItem>` **get_item_at_position**\ (\ position\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Tree_method_get_item_at_position>`
 
-Returns the tree item at the specified position (relative to the tree origin position).
+Trả về mục cây tại vị trí được chỉ định (tương đối với vị trí gốc của cây).
 
 .. rst-class:: classref-item-separator
 
@@ -1273,9 +1273,9 @@ Returns the tree item at the specified position (relative to the tree origin pos
 
 :ref:`TreeItem<class_TreeItem>` **get_next_selected**\ (\ from\: :ref:`TreeItem<class_TreeItem>`\ ) :ref:`🔗<class_Tree_method_get_next_selected>`
 
-Returns the next selected :ref:`TreeItem<class_TreeItem>` after the given one, or ``null`` if the end is reached.
+Trả về :ref:`TreeItem<class_TreeItem>` được chọn tiếp theo sau mục đã cho hoặc ``null`` nếu đã đến cuối.
 
-If ``from`` is ``null``, this returns the first selected item.
+Nếu ``from`` là ``null``, hàm này trả về mục được chọn đầu tiên.
 
 .. rst-class:: classref-item-separator
 
@@ -1287,7 +1287,7 @@ If ``from`` is ``null``, this returns the first selected item.
 
 :ref:`int<class_int>` **get_pressed_button**\ (\ ) |const| :ref:`🔗<class_Tree_method_get_pressed_button>`
 
-Returns the last pressed button's index.
+Trả về chỉ mục của nút được nhấn gần đây nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -1299,7 +1299,7 @@ Returns the last pressed button's index.
 
 :ref:`TreeItem<class_TreeItem>` **get_root**\ (\ ) |const| :ref:`🔗<class_Tree_method_get_root>`
 
-Returns the tree's root item, or ``null`` if the tree is empty.
+Trả về mục gốc của cây hoặc ``null`` nếu cây trống.
 
 .. rst-class:: classref-item-separator
 
@@ -1311,7 +1311,7 @@ Returns the tree's root item, or ``null`` if the tree is empty.
 
 :ref:`Vector2<class_Vector2>` **get_scroll**\ (\ ) |const| :ref:`🔗<class_Tree_method_get_scroll>`
 
-Returns the current scrolling position.
+Trả về vị trí cuộn hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -1323,11 +1323,11 @@ Returns the current scrolling position.
 
 :ref:`TreeItem<class_TreeItem>` **get_selected**\ (\ ) |const| :ref:`🔗<class_Tree_method_get_selected>`
 
-Returns the currently focused item, or ``null`` if no item is focused.
+Trả về mục hiện đang được focus hoặc ``null`` nếu không có mục nào được focus.
 
-In :ref:`SELECT_ROW<class_Tree_constant_SELECT_ROW>` and :ref:`SELECT_SINGLE<class_Tree_constant_SELECT_SINGLE>` modes, the focused item is same as the selected item. In :ref:`SELECT_MULTI<class_Tree_constant_SELECT_MULTI>` mode, the focused item is the item under the focus cursor, not necessarily selected.
+Trong các chế độ :ref:`SELECT_ROW<class_Tree_constant_SELECT_ROW>` và :ref:`SELECT_SINGLE<class_Tree_constant_SELECT_SINGLE>`, mục được focus cũng chính là mục được chọn. Trong chế độ :ref:`SELECT_MULTI<class_Tree_constant_SELECT_MULTI>`, mục được focus là mục nằm dưới con trỏ focus, không nhất thiết là mục được chọn.
 
-To get the currently selected item(s), use :ref:`get_next_selected()<class_Tree_method_get_next_selected>`.
+Để lấy các mục hiện đang được chọn, hãy sử dụng :ref:`get_next_selected()<class_Tree_method_get_next_selected>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1339,11 +1339,11 @@ To get the currently selected item(s), use :ref:`get_next_selected()<class_Tree_
 
 :ref:`int<class_int>` **get_selected_column**\ (\ ) |const| :ref:`🔗<class_Tree_method_get_selected_column>`
 
-Returns the currently focused column, or -1 if no column is focused.
+Trả về cột hiện đang được focus hoặc -1 nếu không có cột nào được focus.
 
-In :ref:`SELECT_SINGLE<class_Tree_constant_SELECT_SINGLE>` mode, the focused column is the selected column. In :ref:`SELECT_ROW<class_Tree_constant_SELECT_ROW>` mode, the focused column is always 0 if any item is selected. In :ref:`SELECT_MULTI<class_Tree_constant_SELECT_MULTI>` mode, the focused column is the column under the focus cursor, and there are not necessarily any column selected.
+Trong chế độ :ref:`SELECT_SINGLE<class_Tree_constant_SELECT_SINGLE>`, cột được focus là cột được chọn. Trong chế độ :ref:`SELECT_ROW<class_Tree_constant_SELECT_ROW>`, cột được focus luôn là 0 nếu có bất kỳ mục nào được chọn. Trong chế độ :ref:`SELECT_MULTI<class_Tree_constant_SELECT_MULTI>`, cột được focus là cột nằm dưới con trỏ focus và không nhất thiết có cột nào được chọn.
 
-To tell whether a column of an item is selected, use :ref:`TreeItem.is_selected()<class_TreeItem_method_is_selected>`.
+Để xác định một cột của mục có được chọn hay không, hãy sử dụng :ref:`TreeItem.is_selected()<class_TreeItem_method_is_selected>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1355,7 +1355,7 @@ To tell whether a column of an item is selected, use :ref:`TreeItem.is_selected(
 
 :ref:`bool<class_bool>` **is_column_clipping_content**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Tree_method_is_column_clipping_content>`
 
-Returns ``true`` if the column has enabled clipping (see :ref:`set_column_clip_content()<class_Tree_method_set_column_clip_content>`).
+Trả về ``true`` nếu cột đã bật clipping (xem :ref:`set_column_clip_content()<class_Tree_method_set_column_clip_content>`).
 
 .. rst-class:: classref-item-separator
 
@@ -1367,7 +1367,7 @@ Returns ``true`` if the column has enabled clipping (see :ref:`set_column_clip_c
 
 :ref:`bool<class_bool>` **is_column_expanding**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Tree_method_is_column_expanding>`
 
-Returns ``true`` if the column has enabled expanding (see :ref:`set_column_expand()<class_Tree_method_set_column_expand>`).
+Trả về ``true`` nếu cột đã bật expanding (xem :ref:`set_column_expand()<class_Tree_method_set_column_expand>`).
 
 .. rst-class:: classref-item-separator
 
@@ -1379,7 +1379,7 @@ Returns ``true`` if the column has enabled expanding (see :ref:`set_column_expan
 
 |void| **scroll_to_item**\ (\ item\: :ref:`TreeItem<class_TreeItem>`, center_on_item\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_Tree_method_scroll_to_item>`
 
-Causes the **Tree** to jump to the specified :ref:`TreeItem<class_TreeItem>`.
+Khiến **Tree** chuyển nhanh đến :ref:`TreeItem<class_TreeItem>` được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -1391,7 +1391,7 @@ Causes the **Tree** to jump to the specified :ref:`TreeItem<class_TreeItem>`.
 
 |void| **set_column_clip_content**\ (\ column\: :ref:`int<class_int>`, enable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_Tree_method_set_column_clip_content>`
 
-Allows to enable clipping for column's content, making the content size ignored.
+Cho phép bật clipping cho nội dung của cột, khiến kích thước nội dung bị bỏ qua.
 
 .. rst-class:: classref-item-separator
 
@@ -1403,7 +1403,7 @@ Allows to enable clipping for column's content, making the content size ignored.
 
 |void| **set_column_custom_minimum_width**\ (\ column\: :ref:`int<class_int>`, min_width\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Tree_method_set_column_custom_minimum_width>`
 
-Overrides the calculated minimum width of a column. It can be set to ``0`` to restore the default behavior. Columns that have the "Expand" flag will use their "min_width" in a similar fashion to :ref:`Control.size_flags_stretch_ratio<class_Control_property_size_flags_stretch_ratio>`.
+Ghi đè chiều rộng tối thiểu được tính toán của một cột. Có thể đặt giá trị này thành ``0`` để khôi phục hành vi mặc định. Các cột có cờ "Expand" sẽ sử dụng "min_width" theo cách tương tự như :ref:`Control.size_flags_stretch_ratio<class_Control_property_size_flags_stretch_ratio>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1415,7 +1415,7 @@ Overrides the calculated minimum width of a column. It can be set to ``0`` to re
 
 |void| **set_column_expand**\ (\ column\: :ref:`int<class_int>`, expand\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_Tree_method_set_column_expand>`
 
-If ``true``, the column will have the "Expand" flag of :ref:`Control<class_Control>`. Columns that have the "Expand" flag will use their expand ratio in a similar fashion to :ref:`Control.size_flags_stretch_ratio<class_Control_property_size_flags_stretch_ratio>` (see :ref:`set_column_expand_ratio()<class_Tree_method_set_column_expand_ratio>`).
+Nếu là ``true``, cột sẽ có cờ "Expand" của :ref:`Control<class_Control>`. Các cột có cờ "Expand" sẽ sử dụng tỷ lệ expand của chúng theo cách tương tự như :ref:`Control.size_flags_stretch_ratio<class_Control_property_size_flags_stretch_ratio>` (xem :ref:`set_column_expand_ratio()<class_Tree_method_set_column_expand_ratio>`).
 
 .. rst-class:: classref-item-separator
 
@@ -1427,7 +1427,7 @@ If ``true``, the column will have the "Expand" flag of :ref:`Control<class_Contr
 
 |void| **set_column_expand_ratio**\ (\ column\: :ref:`int<class_int>`, ratio\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Tree_method_set_column_expand_ratio>`
 
-Sets the relative expand ratio for a column. See :ref:`set_column_expand()<class_Tree_method_set_column_expand>`.
+Đặt tỷ lệ expand tương đối cho một cột. Xem :ref:`set_column_expand()<class_Tree_method_set_column_expand>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1439,7 +1439,7 @@ Sets the relative expand ratio for a column. See :ref:`set_column_expand()<class
 
 |void| **set_column_title**\ (\ column\: :ref:`int<class_int>`, title\: :ref:`String<class_String>`\ ) :ref:`🔗<class_Tree_method_set_column_title>`
 
-Sets the title of a column.
+Đặt tiêu đề của một cột.
 
 .. rst-class:: classref-item-separator
 
@@ -1451,7 +1451,7 @@ Sets the title of a column.
 
 |void| **set_column_title_alignment**\ (\ column\: :ref:`int<class_int>`, title_alignment\: :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>`\ ) :ref:`🔗<class_Tree_method_set_column_title_alignment>`
 
-Sets the column title alignment. Note that :ref:`@GlobalScope.HORIZONTAL_ALIGNMENT_FILL<class_@GlobalScope_constant_HORIZONTAL_ALIGNMENT_FILL>` is not supported for column titles.
+Đặt căn chỉnh tiêu đề cột. Lưu ý rằng :ref:`@GlobalScope.HORIZONTAL_ALIGNMENT_FILL <class_@GlobalScope_constant_HORIZONTAL_ALIGNMENT_FILL>` không được hỗ trợ cho tiêu đề cột.
 
 .. rst-class:: classref-item-separator
 
@@ -1463,7 +1463,7 @@ Sets the column title alignment. Note that :ref:`@GlobalScope.HORIZONTAL_ALIGNME
 
 |void| **set_column_title_direction**\ (\ column\: :ref:`int<class_int>`, direction\: :ref:`TextDirection<enum_Control_TextDirection>`\ ) :ref:`🔗<class_Tree_method_set_column_title_direction>`
 
-Sets column title base writing direction.
+Đặt hướng viết cơ sở của tiêu đề cột.
 
 .. rst-class:: classref-item-separator
 
@@ -1475,7 +1475,7 @@ Sets column title base writing direction.
 
 |void| **set_column_title_language**\ (\ column\: :ref:`int<class_int>`, language\: :ref:`String<class_String>`\ ) :ref:`🔗<class_Tree_method_set_column_title_language>`
 
-Sets the language code of the given ``column``'s title to ``language``. This is used for line-breaking and text shaping algorithms. If ``language`` is empty, the current locale is used.
+Đặt mã ngôn ngữ của tiêu đề ``column`` đã cho thành ``language``. Mã này được dùng cho các thuật toán ngắt dòng và định hình văn bản. Nếu ``language`` trống, locale hiện tại sẽ được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -1487,7 +1487,7 @@ Sets the language code of the given ``column``'s title to ``language``. This is 
 
 |void| **set_column_title_tooltip_text**\ (\ column\: :ref:`int<class_int>`, tooltip_text\: :ref:`String<class_String>`\ ) :ref:`🔗<class_Tree_method_set_column_title_tooltip_text>`
 
-Sets the column title's tooltip text.
+Đặt văn bản tooltip của tiêu đề cột.
 
 .. rst-class:: classref-item-separator
 
@@ -1499,7 +1499,7 @@ Sets the column title's tooltip text.
 
 |void| **set_selected**\ (\ item\: :ref:`TreeItem<class_TreeItem>`, column\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Tree_method_set_selected>`
 
-Selects the specified :ref:`TreeItem<class_TreeItem>` and column.
+Chọn :ref:`TreeItem<class_TreeItem>` và cột được chỉ định.
 
 .. rst-class:: classref-section-separator
 
@@ -1507,8 +1507,8 @@ Selects the specified :ref:`TreeItem<class_TreeItem>` and column.
 
 .. rst-class:: classref-descriptions-group
 
-Theme Property Descriptions
----------------------------
+Mô tả thuộc tính Theme
+----------------------
 
 .. _class_Tree_theme_color_children_hl_line_color:
 
@@ -1516,7 +1516,7 @@ Theme Property Descriptions
 
 :ref:`Color<class_Color>` **children_hl_line_color** = ``Color(0.27, 0.27, 0.27, 1)`` :ref:`🔗<class_Tree_theme_color_children_hl_line_color>`
 
-The :ref:`Color<class_Color>` of the relationship lines between the selected :ref:`TreeItem<class_TreeItem>` and its children.
+:ref:`Color<class_Color>` của các đường quan hệ giữa :ref:`TreeItem<class_TreeItem>` đã chọn và các phần tử con của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -1528,7 +1528,7 @@ The :ref:`Color<class_Color>` of the relationship lines between the selected :re
 
 :ref:`Color<class_Color>` **custom_button_font_highlight** = ``Color(0.95, 0.95, 0.95, 1)`` :ref:`🔗<class_Tree_theme_color_custom_button_font_highlight>`
 
-Text :ref:`Color<class_Color>` for a :ref:`TreeItem.CELL_MODE_CUSTOM<class_TreeItem_constant_CELL_MODE_CUSTOM>` mode cell when it's hovered.
+:ref:`Color<class_Color>` văn bản cho ô ở chế độ :ref:`TreeItem.CELL_MODE_CUSTOM<class_TreeItem_constant_CELL_MODE_CUSTOM>` khi ô được di chuột qua.
 
 .. rst-class:: classref-item-separator
 
@@ -1540,7 +1540,7 @@ Text :ref:`Color<class_Color>` for a :ref:`TreeItem.CELL_MODE_CUSTOM<class_TreeI
 
 :ref:`Color<class_Color>` **drop_on_item_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_Tree_theme_color_drop_on_item_color>`
 
-:ref:`Color<class_Color>` used to draw the highlight outline when dragging items that can only be dropped "on" other items.
+:ref:`Color<class_Color>` dùng để vẽ đường viền highlight khi kéo các mục chỉ có thể được thả "on" các mục khác.
 
 .. rst-class:: classref-item-separator
 
@@ -1552,7 +1552,7 @@ Text :ref:`Color<class_Color>` for a :ref:`TreeItem.CELL_MODE_CUSTOM<class_TreeI
 
 :ref:`Color<class_Color>` **drop_position_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_Tree_theme_color_drop_position_color>`
 
-:ref:`Color<class_Color>` used to draw possible drop locations. See :ref:`DropModeFlags<enum_Tree_DropModeFlags>` constants for further description of drop locations.
+:ref:`Color<class_Color>` dùng để vẽ các vị trí có thể thả. Xem các hằng số :ref:`DropModeFlags <enum_Tree_DropModeFlags>` để biết thêm mô tả về các vị trí thả.
 
 .. rst-class:: classref-item-separator
 
@@ -1564,7 +1564,7 @@ Text :ref:`Color<class_Color>` for a :ref:`TreeItem.CELL_MODE_CUSTOM<class_TreeI
 
 :ref:`Color<class_Color>` **font_color** = ``Color(0.7, 0.7, 0.7, 1)`` :ref:`🔗<class_Tree_theme_color_font_color>`
 
-Default text :ref:`Color<class_Color>` of the item.
+:ref:`Color<class_Color>` văn bản mặc định của mục.
 
 .. rst-class:: classref-item-separator
 
@@ -1576,7 +1576,7 @@ Default text :ref:`Color<class_Color>` of the item.
 
 :ref:`Color<class_Color>` **font_disabled_color** = ``Color(0.875, 0.875, 0.875, 0.5)`` :ref:`🔗<class_Tree_theme_color_font_disabled_color>`
 
-Text :ref:`Color<class_Color>` for a :ref:`TreeItem.CELL_MODE_CHECK<class_TreeItem_constant_CELL_MODE_CHECK>` mode cell when it's non-editable (see :ref:`TreeItem.set_editable()<class_TreeItem_method_set_editable>`).
+:ref:`Color<class_Color>` văn bản cho ô ở chế độ :ref:`TreeItem.CELL_MODE_CHECK<class_TreeItem_constant_CELL_MODE_CHECK>` khi ô không thể chỉnh sửa (xem :ref:`TreeItem.set_editable()<class_TreeItem_method_set_editable>`).
 
 .. rst-class:: classref-item-separator
 
@@ -1588,7 +1588,7 @@ Text :ref:`Color<class_Color>` for a :ref:`TreeItem.CELL_MODE_CHECK<class_TreeIt
 
 :ref:`Color<class_Color>` **font_hovered_color** = ``Color(0.95, 0.95, 0.95, 1)`` :ref:`🔗<class_Tree_theme_color_font_hovered_color>`
 
-Text :ref:`Color<class_Color>` used when the item is hovered and not selected yet.
+:ref:`Color<class_Color>` văn bản được sử dụng khi mục được di chuột qua nhưng chưa được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -1600,7 +1600,7 @@ Text :ref:`Color<class_Color>` used when the item is hovered and not selected ye
 
 :ref:`Color<class_Color>` **font_hovered_dimmed_color** = ``Color(0.875, 0.875, 0.875, 1)`` :ref:`🔗<class_Tree_theme_color_font_hovered_dimmed_color>`
 
-Text :ref:`Color<class_Color>` used when the item is hovered, while a button of the same item is hovered as the same time.
+:ref:`Color<class_Color>` văn bản được sử dụng khi mục được di chuột qua, đồng thời một nút của cùng mục đó cũng được di chuột qua.
 
 .. rst-class:: classref-item-separator
 
@@ -1612,7 +1612,7 @@ Text :ref:`Color<class_Color>` used when the item is hovered, while a button of 
 
 :ref:`Color<class_Color>` **font_hovered_selected_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_Tree_theme_color_font_hovered_selected_color>`
 
-Text :ref:`Color<class_Color>` used when the item is hovered and selected.
+:ref:`Color<class_Color>` văn bản được sử dụng khi mục được di chuột qua và được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -1624,7 +1624,7 @@ Text :ref:`Color<class_Color>` used when the item is hovered and selected.
 
 :ref:`Color<class_Color>` **font_outline_color** = ``Color(0, 0, 0, 1)`` :ref:`🔗<class_Tree_theme_color_font_outline_color>`
 
-The tint of text outline of the item.
+Màu sắc của đường viền văn bản của mục.
 
 .. rst-class:: classref-item-separator
 
@@ -1636,7 +1636,7 @@ The tint of text outline of the item.
 
 :ref:`Color<class_Color>` **font_selected_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_Tree_theme_color_font_selected_color>`
 
-Text :ref:`Color<class_Color>` used when the item is selected.
+:ref:`Color<class_Color>` văn bản được sử dụng khi mục được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -1648,7 +1648,7 @@ Text :ref:`Color<class_Color>` used when the item is selected.
 
 :ref:`Color<class_Color>` **guide_color** = ``Color(0.7, 0.7, 0.7, 0.25)`` :ref:`🔗<class_Tree_theme_color_guide_color>`
 
-:ref:`Color<class_Color>` of the guideline.
+:ref:`Color<class_Color>` của đường hướng dẫn.
 
 .. rst-class:: classref-item-separator
 
@@ -1660,7 +1660,7 @@ Text :ref:`Color<class_Color>` used when the item is selected.
 
 :ref:`Color<class_Color>` **parent_hl_line_color** = ``Color(0.27, 0.27, 0.27, 1)`` :ref:`🔗<class_Tree_theme_color_parent_hl_line_color>`
 
-The :ref:`Color<class_Color>` of the relationship lines between the selected :ref:`TreeItem<class_TreeItem>` and its parents.
+:ref:`Color<class_Color>` của các đường quan hệ giữa :ref:`TreeItem<class_TreeItem>` đã chọn và các phần tử cha của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -1672,7 +1672,7 @@ The :ref:`Color<class_Color>` of the relationship lines between the selected :re
 
 :ref:`Color<class_Color>` **relationship_line_color** = ``Color(0.27, 0.27, 0.27, 1)`` :ref:`🔗<class_Tree_theme_color_relationship_line_color>`
 
-The default :ref:`Color<class_Color>` of the relationship lines.
+:ref:`Color<class_Color>` mặc định của các đường quan hệ.
 
 .. rst-class:: classref-item-separator
 
@@ -1684,7 +1684,7 @@ The default :ref:`Color<class_Color>` of the relationship lines.
 
 :ref:`Color<class_Color>` **scroll_hint_color** = ``Color(0, 0, 0, 1)`` :ref:`🔗<class_Tree_theme_color_scroll_hint_color>`
 
-:ref:`Color<class_Color>` used to modulate the :ref:`scroll_hint<class_Tree_theme_icon_scroll_hint>` texture.
+:ref:`Color<class_Color>` dùng để điều biến texture :ref:`scroll_hint<class_Tree_theme_icon_scroll_hint>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1696,7 +1696,7 @@ The default :ref:`Color<class_Color>` of the relationship lines.
 
 :ref:`Color<class_Color>` **title_button_color** = ``Color(0.875, 0.875, 0.875, 1)`` :ref:`🔗<class_Tree_theme_color_title_button_color>`
 
-Default text :ref:`Color<class_Color>` of the title button.
+:ref:`Color<class_Color>` văn bản mặc định của nút tiêu đề.
 
 .. rst-class:: classref-item-separator
 
@@ -1708,7 +1708,7 @@ Default text :ref:`Color<class_Color>` of the title button.
 
 :ref:`int<class_int>` **button_margin** = ``4`` :ref:`🔗<class_Tree_theme_constant_button_margin>`
 
-The horizontal space between each button in a cell.
+Khoảng cách theo chiều ngang giữa mỗi nút trong một ô.
 
 .. rst-class:: classref-item-separator
 
@@ -1720,7 +1720,7 @@ The horizontal space between each button in a cell.
 
 :ref:`int<class_int>` **check_h_separation** = ``4`` :ref:`🔗<class_Tree_theme_constant_check_h_separation>`
 
-The horizontal space between the checkbox and the text in a :ref:`TreeItem.CELL_MODE_CHECK<class_TreeItem_constant_CELL_MODE_CHECK>` mode cell.
+Khoảng cách theo chiều ngang giữa checkbox và văn bản trong ô ở chế độ :ref:`TreeItem.CELL_MODE_CHECK<class_TreeItem_constant_CELL_MODE_CHECK>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1732,7 +1732,7 @@ The horizontal space between the checkbox and the text in a :ref:`TreeItem.CELL_
 
 :ref:`int<class_int>` **children_hl_line_width** = ``1`` :ref:`🔗<class_Tree_theme_constant_children_hl_line_width>`
 
-The width of the relationship lines between the selected :ref:`TreeItem<class_TreeItem>` and its children.
+Độ rộng của các đường quan hệ giữa :ref:`TreeItem<class_TreeItem>` đã chọn và các phần tử con của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -1744,7 +1744,7 @@ The width of the relationship lines between the selected :ref:`TreeItem<class_Tr
 
 :ref:`int<class_int>` **dragging_unfold_wait_msec** = ``500`` :ref:`🔗<class_Tree_theme_constant_dragging_unfold_wait_msec>`
 
-During a drag-and-drop, this is how many milliseconds to wait over a section before the section unfolds.
+Trong quá trình kéo-thả, đây là số mili giây cần chờ khi di chuột qua một phần trước khi phần đó mở ra.
 
 .. rst-class:: classref-item-separator
 
@@ -1756,7 +1756,7 @@ During a drag-and-drop, this is how many milliseconds to wait over a section bef
 
 :ref:`int<class_int>` **draw_guides** = ``1`` :ref:`🔗<class_Tree_theme_constant_draw_guides>`
 
-Draws the guidelines if not zero, this acts as a boolean. The guideline is a horizontal line drawn at the bottom of each item.
+Vẽ các đường hướng dẫn nếu khác 0; giá trị này hoạt động như một boolean. Đường hướng dẫn là đường ngang được vẽ ở cuối mỗi mục.
 
 .. rst-class:: classref-item-separator
 
@@ -1768,7 +1768,7 @@ Draws the guidelines if not zero, this acts as a boolean. The guideline is a hor
 
 :ref:`int<class_int>` **draw_relationship_lines** = ``0`` :ref:`🔗<class_Tree_theme_constant_draw_relationship_lines>`
 
-Draws the relationship lines if not zero, this acts as a boolean. Relationship lines are drawn at the start of child items to show hierarchy.
+Vẽ các đường quan hệ nếu khác 0; giá trị này hoạt động như một boolean. Các đường quan hệ được vẽ ở đầu các mục con để thể hiện hệ phân cấp.
 
 .. rst-class:: classref-item-separator
 
@@ -1780,7 +1780,7 @@ Draws the relationship lines if not zero, this acts as a boolean. Relationship l
 
 :ref:`int<class_int>` **h_separation** = ``4`` :ref:`🔗<class_Tree_theme_constant_h_separation>`
 
-The horizontal space between item cells. This is also used as the margin at the start of an item when folding is disabled.
+Khoảng cách theo chiều ngang giữa các ô của mục. Khoảng cách này cũng được dùng làm lề ở đầu mục khi tính năng folding bị tắt.
 
 .. rst-class:: classref-item-separator
 
@@ -1792,7 +1792,7 @@ The horizontal space between item cells. This is also used as the margin at the 
 
 :ref:`int<class_int>` **icon_h_separation** = ``4`` :ref:`🔗<class_Tree_theme_constant_icon_h_separation>`
 
-The horizontal space between the icon and the text in item's cells.
+Khoảng cách theo chiều ngang giữa biểu tượng và văn bản trong các ô của mục.
 
 .. rst-class:: classref-item-separator
 
@@ -1804,7 +1804,7 @@ The horizontal space between the icon and the text in item's cells.
 
 :ref:`int<class_int>` **icon_max_width** = ``0`` :ref:`🔗<class_Tree_theme_constant_icon_max_width>`
 
-The maximum allowed width of the icon in item's cells. This limit is applied on top of the default size of the icon, but before the value set with :ref:`TreeItem.set_icon_max_width()<class_TreeItem_method_set_icon_max_width>`. The height is adjusted according to the icon's ratio.
+Độ rộng tối đa cho phép của biểu tượng trong các ô của mục. Giới hạn này được áp dụng trên kích thước mặc định của biểu tượng nhưng trước giá trị được đặt bằng :ref:`TreeItem.set_icon_max_width()<class_TreeItem_method_set_icon_max_width>`. Chiều cao được điều chỉnh theo tỷ lệ của biểu tượng.
 
 .. rst-class:: classref-item-separator
 
@@ -1816,7 +1816,7 @@ The maximum allowed width of the icon in item's cells. This limit is applied on 
 
 :ref:`int<class_int>` **inner_item_margin_bottom** = ``0`` :ref:`🔗<class_Tree_theme_constant_inner_item_margin_bottom>`
 
-The inner bottom margin of a cell.
+Lề dưới bên trong của một ô.
 
 .. rst-class:: classref-item-separator
 
@@ -1828,7 +1828,7 @@ The inner bottom margin of a cell.
 
 :ref:`int<class_int>` **inner_item_margin_left** = ``0`` :ref:`🔗<class_Tree_theme_constant_inner_item_margin_left>`
 
-The inner left margin of a cell.
+Lề trái bên trong của một ô.
 
 .. rst-class:: classref-item-separator
 
@@ -1840,7 +1840,7 @@ The inner left margin of a cell.
 
 :ref:`int<class_int>` **inner_item_margin_right** = ``0`` :ref:`🔗<class_Tree_theme_constant_inner_item_margin_right>`
 
-The inner right margin of a cell.
+Lề phải bên trong của một ô.
 
 .. rst-class:: classref-item-separator
 
@@ -1852,7 +1852,7 @@ The inner right margin of a cell.
 
 :ref:`int<class_int>` **inner_item_margin_top** = ``0`` :ref:`🔗<class_Tree_theme_constant_inner_item_margin_top>`
 
-The inner top margin of a cell.
+Lề trên bên trong của một ô.
 
 .. rst-class:: classref-item-separator
 
@@ -1864,7 +1864,7 @@ The inner top margin of a cell.
 
 :ref:`int<class_int>` **item_margin** = ``16`` :ref:`🔗<class_Tree_theme_constant_item_margin>`
 
-The horizontal margin at the start of an item. This is used when folding is enabled for the item.
+Lề ngang ở đầu mục. Lề này được sử dụng khi tính năng folding được bật cho mục.
 
 .. rst-class:: classref-item-separator
 
@@ -1876,9 +1876,9 @@ The horizontal margin at the start of an item. This is used when folding is enab
 
 :ref:`int<class_int>` **outline_size** = ``0`` :ref:`🔗<class_Tree_theme_constant_outline_size>`
 
-The size of the text outline.
+Kích thước đường viền văn bản.
 
-\ **Note:** If using a font with :ref:`FontFile.multichannel_signed_distance_field<class_FontFile_property_multichannel_signed_distance_field>` enabled, its :ref:`FontFile.msdf_pixel_range<class_FontFile_property_msdf_pixel_range>` must be set to at least *twice* the value of :ref:`outline_size<class_Tree_theme_constant_outline_size>` for outline rendering to look correct. Otherwise, the outline may appear to be cut off earlier than intended.
+\ **Lưu ý:** Nếu sử dụng một font có bật :ref:`FontFile.multichannel_signed_distance_field<class_FontFile_property_multichannel_signed_distance_field>`, :ref:`FontFile.msdf_pixel_range<class_FontFile_property_msdf_pixel_range>` của font đó phải được đặt ít nhất bằng *gấp đôi* giá trị của :ref:`outline_size<class_Tree_theme_constant_outline_size>` để hiển thị đường viền chính xác. Nếu không, đường viền có thể bị cắt sớm hơn dự kiến.
 
 .. rst-class:: classref-item-separator
 
@@ -1890,7 +1890,7 @@ The size of the text outline.
 
 :ref:`int<class_int>` **parent_hl_line_margin** = ``0`` :ref:`🔗<class_Tree_theme_constant_parent_hl_line_margin>`
 
-The space between the parent relationship lines for the selected :ref:`TreeItem<class_TreeItem>` and the relationship lines to its siblings that are not selected.
+Khoảng cách giữa các đường quan hệ với parent của :ref:`TreeItem<class_TreeItem>` đã chọn và các đường quan hệ với những sibling không được chọn của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -1902,7 +1902,7 @@ The space between the parent relationship lines for the selected :ref:`TreeItem<
 
 :ref:`int<class_int>` **parent_hl_line_width** = ``1`` :ref:`🔗<class_Tree_theme_constant_parent_hl_line_width>`
 
-The width of the relationship lines between the selected :ref:`TreeItem<class_TreeItem>` and its parents.
+Độ rộng của các đường quan hệ giữa :ref:`TreeItem<class_TreeItem>` đã chọn và các parent của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -1914,7 +1914,7 @@ The width of the relationship lines between the selected :ref:`TreeItem<class_Tr
 
 :ref:`int<class_int>` **relationship_line_width** = ``1`` :ref:`🔗<class_Tree_theme_constant_relationship_line_width>`
 
-The default width of the relationship lines.
+Độ rộng mặc định của các đường quan hệ.
 
 .. rst-class:: classref-item-separator
 
@@ -1926,7 +1926,7 @@ The default width of the relationship lines.
 
 :ref:`int<class_int>` **scroll_border** = ``4`` :ref:`🔗<class_Tree_theme_constant_scroll_border>`
 
-The maximum distance between the mouse cursor and the control's border to trigger border scrolling when dragging.
+Khoảng cách tối đa giữa con trỏ chuột và đường viền của control để kích hoạt việc cuộn đường viền khi kéo.
 
 .. rst-class:: classref-item-separator
 
@@ -1938,7 +1938,7 @@ The maximum distance between the mouse cursor and the control's border to trigge
 
 :ref:`int<class_int>` **scroll_speed** = ``12`` :ref:`🔗<class_Tree_theme_constant_scroll_speed>`
 
-The speed of border scrolling.
+Tốc độ cuộn đường viền.
 
 .. rst-class:: classref-item-separator
 
@@ -1950,7 +1950,7 @@ The speed of border scrolling.
 
 :ref:`int<class_int>` **scrollbar_h_separation** = ``4`` :ref:`🔗<class_Tree_theme_constant_scrollbar_h_separation>`
 
-The horizontal separation of tree content and scrollbar.
+Khoảng cách theo chiều ngang giữa nội dung cây và thanh cuộn.
 
 .. rst-class:: classref-item-separator
 
@@ -1962,7 +1962,7 @@ The horizontal separation of tree content and scrollbar.
 
 :ref:`int<class_int>` **scrollbar_margin_bottom** = ``-1`` :ref:`🔗<class_Tree_theme_constant_scrollbar_margin_bottom>`
 
-The bottom margin of the scrollbars. When negative, uses :ref:`panel<class_Tree_theme_style_panel>` bottom margin.
+Lề dưới của các thanh cuộn. Khi là số âm, sử dụng lề dưới của :ref:`panel<class_Tree_theme_style_panel>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1974,7 +1974,7 @@ The bottom margin of the scrollbars. When negative, uses :ref:`panel<class_Tree_
 
 :ref:`int<class_int>` **scrollbar_margin_left** = ``-1`` :ref:`🔗<class_Tree_theme_constant_scrollbar_margin_left>`
 
-The left margin of the horizontal scrollbar. When negative, uses :ref:`panel<class_Tree_theme_style_panel>` left margin.
+Lề trái của thanh cuộn ngang. Khi là số âm, sử dụng lề trái của :ref:`panel<class_Tree_theme_style_panel>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1986,7 +1986,7 @@ The left margin of the horizontal scrollbar. When negative, uses :ref:`panel<cla
 
 :ref:`int<class_int>` **scrollbar_margin_right** = ``-1`` :ref:`🔗<class_Tree_theme_constant_scrollbar_margin_right>`
 
-The right margin of the scrollbars. When negative, uses :ref:`panel<class_Tree_theme_style_panel>` right margin.
+Lề phải của các thanh cuộn. Khi là số âm, sử dụng lề phải của :ref:`panel<class_Tree_theme_style_panel>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1998,7 +1998,7 @@ The right margin of the scrollbars. When negative, uses :ref:`panel<class_Tree_t
 
 :ref:`int<class_int>` **scrollbar_margin_top** = ``-1`` :ref:`🔗<class_Tree_theme_constant_scrollbar_margin_top>`
 
-The top margin of the vertical scrollbar. When negative, uses :ref:`panel<class_Tree_theme_style_panel>` top margin.
+Lề trên của thanh cuộn dọc. Khi là số âm, sử dụng lề trên của :ref:`panel<class_Tree_theme_style_panel>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2010,7 +2010,7 @@ The top margin of the vertical scrollbar. When negative, uses :ref:`panel<class_
 
 :ref:`int<class_int>` **scrollbar_v_separation** = ``4`` :ref:`🔗<class_Tree_theme_constant_scrollbar_v_separation>`
 
-The vertical separation of tree content and scrollbar.
+Khoảng cách theo chiều dọc giữa nội dung cây và thanh cuộn.
 
 .. rst-class:: classref-item-separator
 
@@ -2022,7 +2022,7 @@ The vertical separation of tree content and scrollbar.
 
 :ref:`int<class_int>` **v_separation** = ``4`` :ref:`🔗<class_Tree_theme_constant_v_separation>`
 
-The vertical padding inside each item, i.e. the distance between the item's content and top/bottom border.
+Khoảng đệm theo chiều dọc bên trong mỗi item, tức là khoảng cách giữa nội dung của item và đường viền trên/dưới.
 
 .. rst-class:: classref-item-separator
 
@@ -2032,9 +2032,9 @@ The vertical padding inside each item, i.e. the distance between the item's cont
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Font<class_Font>` **font** :ref:`🔗<class_Tree_theme_font_font>`
+:ref:`Font<class_Font>` **font** :ref:`🔗 <class_Tree_theme_font_font>`
 
-:ref:`Font<class_Font>` of the item's text.
+:ref:`Font<class_Font>` của văn bản trong item.
 
 .. rst-class:: classref-item-separator
 
@@ -2044,9 +2044,9 @@ The vertical padding inside each item, i.e. the distance between the item's cont
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Font<class_Font>` **title_button_font** :ref:`🔗<class_Tree_theme_font_title_button_font>`
+:ref:`Font<class_Font>` **title_button_font** :ref:`🔗 <class_Tree_theme_font_title_button_font>`
 
-:ref:`Font<class_Font>` of the title button's text.
+:ref:`Font<class_Font>` của văn bản trên title button.
 
 .. rst-class:: classref-item-separator
 
@@ -2056,9 +2056,9 @@ The vertical padding inside each item, i.e. the distance between the item's cont
 
 .. rst-class:: classref-themeproperty
 
-:ref:`int<class_int>` **font_size** :ref:`🔗<class_Tree_theme_font_size_font_size>`
+:ref:`int<class_int>` **font_size** :ref:`🔗 <class_Tree_theme_font_size_font_size>`
 
-Font size of the item's text.
+Cỡ font của văn bản trong item.
 
 .. rst-class:: classref-item-separator
 
@@ -2068,9 +2068,9 @@ Font size of the item's text.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`int<class_int>` **title_button_font_size** :ref:`🔗<class_Tree_theme_font_size_title_button_font_size>`
+:ref:`int<class_int>` **title_button_font_size** :ref:`🔗 <class_Tree_theme_font_size_title_button_font_size>`
 
-Font size of the title button's text.
+Cỡ font của văn bản trên title button.
 
 .. rst-class:: classref-item-separator
 
@@ -2080,9 +2080,9 @@ Font size of the title button's text.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **arrow** :ref:`🔗<class_Tree_theme_icon_arrow>`
+:ref:`Texture2D<class_Texture2D>` **arrow** :ref:`🔗 <class_Tree_theme_icon_arrow>`
 
-The arrow icon used when a foldable item is not collapsed.
+Biểu tượng mũi tên được sử dụng khi item có thể thu gọn không bị thu gọn.
 
 .. rst-class:: classref-item-separator
 
@@ -2092,9 +2092,9 @@ The arrow icon used when a foldable item is not collapsed.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **arrow_collapsed** :ref:`🔗<class_Tree_theme_icon_arrow_collapsed>`
+:ref:`Texture2D<class_Texture2D>` **arrow_collapsed** :ref:`🔗 <class_Tree_theme_icon_arrow_collapsed>`
 
-The arrow icon used when a foldable item is collapsed (for left-to-right layouts).
+Biểu tượng mũi tên được sử dụng khi item có thể thu gọn bị thu gọn (đối với bố cục từ trái sang phải).
 
 .. rst-class:: classref-item-separator
 
@@ -2104,9 +2104,9 @@ The arrow icon used when a foldable item is collapsed (for left-to-right layouts
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **arrow_collapsed_mirrored** :ref:`🔗<class_Tree_theme_icon_arrow_collapsed_mirrored>`
+:ref:`Texture2D<class_Texture2D>` **arrow_collapsed_mirrored** :ref:`🔗 <class_Tree_theme_icon_arrow_collapsed_mirrored>`
 
-The arrow icon used when a foldable item is collapsed (for right-to-left layouts).
+Biểu tượng mũi tên được sử dụng khi item có thể thu gọn bị thu gọn (đối với bố cục từ phải sang trái).
 
 .. rst-class:: classref-item-separator
 
@@ -2116,9 +2116,9 @@ The arrow icon used when a foldable item is collapsed (for right-to-left layouts
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **checked** :ref:`🔗<class_Tree_theme_icon_checked>`
+:ref:`Texture2D<class_Texture2D>` **checked** :ref:`🔗 <class_Tree_theme_icon_checked>`
 
-The check icon to display when the :ref:`TreeItem.CELL_MODE_CHECK<class_TreeItem_constant_CELL_MODE_CHECK>` mode cell is checked and editable (see :ref:`TreeItem.set_editable()<class_TreeItem_method_set_editable>`).
+Biểu tượng dấu kiểm hiển thị khi ô ở chế độ :ref:`TreeItem.CELL_MODE_CHECK<class_TreeItem_constant_CELL_MODE_CHECK>` được chọn và có thể chỉnh sửa (xem :ref:`TreeItem.set_editable()<class_TreeItem_method_set_editable>`).
 
 .. rst-class:: classref-item-separator
 
@@ -2128,9 +2128,9 @@ The check icon to display when the :ref:`TreeItem.CELL_MODE_CHECK<class_TreeItem
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **checked_disabled** :ref:`🔗<class_Tree_theme_icon_checked_disabled>`
+:ref:`Texture2D<class_Texture2D>` **checked_disabled** :ref:`🔗 <class_Tree_theme_icon_checked_disabled>`
 
-The check icon to display when the :ref:`TreeItem.CELL_MODE_CHECK<class_TreeItem_constant_CELL_MODE_CHECK>` mode cell is checked and non-editable (see :ref:`TreeItem.set_editable()<class_TreeItem_method_set_editable>`).
+Biểu tượng dấu kiểm hiển thị khi ô ở chế độ :ref:`TreeItem.CELL_MODE_CHECK<class_TreeItem_constant_CELL_MODE_CHECK>` được chọn và không thể chỉnh sửa (xem :ref:`TreeItem.set_editable()<class_TreeItem_method_set_editable>`).
 
 .. rst-class:: classref-item-separator
 
@@ -2140,9 +2140,9 @@ The check icon to display when the :ref:`TreeItem.CELL_MODE_CHECK<class_TreeItem
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **indeterminate** :ref:`🔗<class_Tree_theme_icon_indeterminate>`
+:ref:`Texture2D<class_Texture2D>` **indeterminate** :ref:`🔗 <class_Tree_theme_icon_indeterminate>`
 
-The check icon to display when the :ref:`TreeItem.CELL_MODE_CHECK<class_TreeItem_constant_CELL_MODE_CHECK>` mode cell is indeterminate and editable (see :ref:`TreeItem.set_editable()<class_TreeItem_method_set_editable>`).
+Biểu tượng dấu kiểm hiển thị khi ô ở chế độ :ref:`TreeItem.CELL_MODE_CHECK<class_TreeItem_constant_CELL_MODE_CHECK>` có trạng thái không xác định và có thể chỉnh sửa (xem :ref:`TreeItem.set_editable()<class_TreeItem_method_set_editable>`).
 
 .. rst-class:: classref-item-separator
 
@@ -2152,9 +2152,9 @@ The check icon to display when the :ref:`TreeItem.CELL_MODE_CHECK<class_TreeItem
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **indeterminate_disabled** :ref:`🔗<class_Tree_theme_icon_indeterminate_disabled>`
+:ref:`Texture2D<class_Texture2D>` **indeterminate_disabled** :ref:`🔗 <class_Tree_theme_icon_indeterminate_disabled>`
 
-The check icon to display when the :ref:`TreeItem.CELL_MODE_CHECK<class_TreeItem_constant_CELL_MODE_CHECK>` mode cell is indeterminate and non-editable (see :ref:`TreeItem.set_editable()<class_TreeItem_method_set_editable>`).
+Biểu tượng dấu kiểm hiển thị khi ô ở chế độ :ref:`TreeItem.CELL_MODE_CHECK<class_TreeItem_constant_CELL_MODE_CHECK>` có trạng thái không xác định và không thể chỉnh sửa (xem :ref:`TreeItem.set_editable()<class_TreeItem_method_set_editable>`).
 
 .. rst-class:: classref-item-separator
 
@@ -2164,9 +2164,9 @@ The check icon to display when the :ref:`TreeItem.CELL_MODE_CHECK<class_TreeItem
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **scroll_hint** :ref:`🔗<class_Tree_theme_icon_scroll_hint>`
+:ref:`Texture2D<class_Texture2D>` **scroll_hint** :ref:`🔗 <class_Tree_theme_icon_scroll_hint>`
 
-The indicator that will be shown when the content can still be scrolled. See :ref:`scroll_hint_mode<class_Tree_property_scroll_hint_mode>`.
+Chỉ báo hiển thị khi nội dung vẫn còn có thể cuộn. Xem :ref:`scroll_hint_mode<class_Tree_property_scroll_hint_mode>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2176,9 +2176,9 @@ The indicator that will be shown when the content can still be scrolled. See :re
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **select_arrow** :ref:`🔗<class_Tree_theme_icon_select_arrow>`
+:ref:`Texture2D<class_Texture2D>` **select_arrow** :ref:`🔗 <class_Tree_theme_icon_select_arrow>`
 
-The arrow icon to display for the :ref:`TreeItem.CELL_MODE_RANGE<class_TreeItem_constant_CELL_MODE_RANGE>` mode cell.
+Biểu tượng mũi tên hiển thị cho ô ở chế độ :ref:`TreeItem.CELL_MODE_RANGE<class_TreeItem_constant_CELL_MODE_RANGE>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2188,9 +2188,9 @@ The arrow icon to display for the :ref:`TreeItem.CELL_MODE_RANGE<class_TreeItem_
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **unchecked** :ref:`🔗<class_Tree_theme_icon_unchecked>`
+:ref:`Texture2D<class_Texture2D>` **unchecked** :ref:`🔗 <class_Tree_theme_icon_unchecked>`
 
-The check icon to display when the :ref:`TreeItem.CELL_MODE_CHECK<class_TreeItem_constant_CELL_MODE_CHECK>` mode cell is unchecked and editable (see :ref:`TreeItem.set_editable()<class_TreeItem_method_set_editable>`).
+Biểu tượng dấu kiểm hiển thị khi ô ở chế độ :ref:`TreeItem.CELL_MODE_CHECK<class_TreeItem_constant_CELL_MODE_CHECK>` không được chọn và có thể chỉnh sửa (xem :ref:`TreeItem.set_editable()<class_TreeItem_method_set_editable>`).
 
 .. rst-class:: classref-item-separator
 
@@ -2200,9 +2200,9 @@ The check icon to display when the :ref:`TreeItem.CELL_MODE_CHECK<class_TreeItem
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **unchecked_disabled** :ref:`🔗<class_Tree_theme_icon_unchecked_disabled>`
+:ref:`Texture2D<class_Texture2D>` **unchecked_disabled** :ref:`🔗 <class_Tree_theme_icon_unchecked_disabled>`
 
-The check icon to display when the :ref:`TreeItem.CELL_MODE_CHECK<class_TreeItem_constant_CELL_MODE_CHECK>` mode cell is unchecked and non-editable (see :ref:`TreeItem.set_editable()<class_TreeItem_method_set_editable>`).
+Biểu tượng dấu kiểm hiển thị khi ô ở chế độ :ref:`TreeItem.CELL_MODE_CHECK<class_TreeItem_constant_CELL_MODE_CHECK>` không được chọn và không thể chỉnh sửa (xem :ref:`TreeItem.set_editable()<class_TreeItem_method_set_editable>`).
 
 .. rst-class:: classref-item-separator
 
@@ -2212,9 +2212,9 @@ The check icon to display when the :ref:`TreeItem.CELL_MODE_CHECK<class_TreeItem
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **updown** :ref:`🔗<class_Tree_theme_icon_updown>`
+:ref:`Texture2D<class_Texture2D>` **updown** :ref:`🔗 <class_Tree_theme_icon_updown>`
 
-The updown arrow icon to display for the :ref:`TreeItem.CELL_MODE_RANGE<class_TreeItem_constant_CELL_MODE_RANGE>` mode cell.
+Biểu tượng mũi tên lên xuống hiển thị cho ô ở chế độ :ref:`TreeItem.CELL_MODE_RANGE<class_TreeItem_constant_CELL_MODE_RANGE>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2224,9 +2224,9 @@ The updown arrow icon to display for the :ref:`TreeItem.CELL_MODE_RANGE<class_Tr
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **button_hover** :ref:`🔗<class_Tree_theme_style_button_hover>`
+:ref:`StyleBox<class_StyleBox>` **button_hover** :ref:`🔗 <class_Tree_theme_style_button_hover>`
 
-:ref:`StyleBox<class_StyleBox>` used when a button in the tree is hovered.
+:ref:`StyleBox<class_StyleBox>` được sử dụng khi di chuột qua một button trong cây.
 
 .. rst-class:: classref-item-separator
 
@@ -2236,9 +2236,9 @@ The updown arrow icon to display for the :ref:`TreeItem.CELL_MODE_RANGE<class_Tr
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **button_pressed** :ref:`🔗<class_Tree_theme_style_button_pressed>`
+:ref:`StyleBox<class_StyleBox>` **button_pressed** :ref:`🔗 <class_Tree_theme_style_button_pressed>`
 
-:ref:`StyleBox<class_StyleBox>` used when a button in the tree is pressed.
+:ref:`StyleBox<class_StyleBox>` được sử dụng khi nhấn một button trong cây.
 
 .. rst-class:: classref-item-separator
 
@@ -2248,9 +2248,9 @@ The updown arrow icon to display for the :ref:`TreeItem.CELL_MODE_RANGE<class_Tr
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **cursor** :ref:`🔗<class_Tree_theme_style_cursor>`
+:ref:`StyleBox<class_StyleBox>` **cursor** :ref:`🔗 <class_Tree_theme_style_cursor>`
 
-:ref:`StyleBox<class_StyleBox>` used for the cursor, when the **Tree** is being focused.
+:ref:`StyleBox<class_StyleBox>` được sử dụng cho cursor khi **Tree** đang được focus.
 
 .. rst-class:: classref-item-separator
 
@@ -2260,9 +2260,9 @@ The updown arrow icon to display for the :ref:`TreeItem.CELL_MODE_RANGE<class_Tr
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **cursor_unfocused** :ref:`🔗<class_Tree_theme_style_cursor_unfocused>`
+:ref:`StyleBox<class_StyleBox>` **cursor_unfocused** :ref:`🔗 <class_Tree_theme_style_cursor_unfocused>`
 
-:ref:`StyleBox<class_StyleBox>` used for the cursor, when the **Tree** is not being focused.
+:ref:`StyleBox<class_StyleBox>` được sử dụng cho cursor khi **Tree** không được focus.
 
 .. rst-class:: classref-item-separator
 
@@ -2272,9 +2272,9 @@ The updown arrow icon to display for the :ref:`TreeItem.CELL_MODE_RANGE<class_Tr
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **custom_button** :ref:`🔗<class_Tree_theme_style_custom_button>`
+:ref:`StyleBox<class_StyleBox>` **custom_button** :ref:`🔗 <class_Tree_theme_style_custom_button>`
 
-Default :ref:`StyleBox<class_StyleBox>` for a :ref:`TreeItem.CELL_MODE_CUSTOM<class_TreeItem_constant_CELL_MODE_CUSTOM>` mode cell when button is enabled with :ref:`TreeItem.set_custom_as_button()<class_TreeItem_method_set_custom_as_button>`.
+:ref:`StyleBox<class_StyleBox>` mặc định cho ô ở chế độ :ref:`TreeItem.CELL_MODE_CUSTOM<class_TreeItem_constant_CELL_MODE_CUSTOM>` khi button được bật với :ref:`TreeItem.set_custom_as_button()<class_TreeItem_method_set_custom_as_button>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2284,9 +2284,9 @@ Default :ref:`StyleBox<class_StyleBox>` for a :ref:`TreeItem.CELL_MODE_CUSTOM<cl
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **custom_button_hover** :ref:`🔗<class_Tree_theme_style_custom_button_hover>`
+:ref:`StyleBox<class_StyleBox>` **custom_button_hover** :ref:`🔗 <class_Tree_theme_style_custom_button_hover>`
 
-:ref:`StyleBox<class_StyleBox>` for a :ref:`TreeItem.CELL_MODE_CUSTOM<class_TreeItem_constant_CELL_MODE_CUSTOM>` mode button cell when it's hovered.
+:ref:`StyleBox<class_StyleBox>` dành cho một ô nút ở chế độ :ref:`TreeItem.CELL_MODE_CUSTOM<class_TreeItem_constant_CELL_MODE_CUSTOM>` khi được di chuột qua.
 
 .. rst-class:: classref-item-separator
 
@@ -2296,9 +2296,9 @@ Default :ref:`StyleBox<class_StyleBox>` for a :ref:`TreeItem.CELL_MODE_CUSTOM<cl
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **custom_button_pressed** :ref:`🔗<class_Tree_theme_style_custom_button_pressed>`
+:ref:`StyleBox<class_StyleBox>` **custom_button_pressed** :ref:`🔗 <class_Tree_theme_style_custom_button_pressed>`
 
-:ref:`StyleBox<class_StyleBox>` for a :ref:`TreeItem.CELL_MODE_CUSTOM<class_TreeItem_constant_CELL_MODE_CUSTOM>` mode button cell when it's pressed.
+:ref:`StyleBox<class_StyleBox>` dành cho một ô nút ở chế độ :ref:`TreeItem.CELL_MODE_CUSTOM<class_TreeItem_constant_CELL_MODE_CUSTOM>` khi được nhấn.
 
 .. rst-class:: classref-item-separator
 
@@ -2308,9 +2308,9 @@ Default :ref:`StyleBox<class_StyleBox>` for a :ref:`TreeItem.CELL_MODE_CUSTOM<cl
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **focus** :ref:`🔗<class_Tree_theme_style_focus>`
+:ref:`StyleBox<class_StyleBox>` **focus** :ref:`🔗 <class_Tree_theme_style_focus>`
 
-The focused style for the **Tree**, drawn on top of everything.
+Kiểu focus cho **Tree**, được vẽ lên trên mọi thứ.
 
 .. rst-class:: classref-item-separator
 
@@ -2320,9 +2320,9 @@ The focused style for the **Tree**, drawn on top of everything.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **hovered** :ref:`🔗<class_Tree_theme_style_hovered>`
+:ref:`StyleBox<class_StyleBox>` **hovered** :ref:`🔗 <class_Tree_theme_style_hovered>`
 
-:ref:`StyleBox<class_StyleBox>` for the item being hovered, but not selected.
+:ref:`StyleBox<class_StyleBox>` dành cho mục đang được di chuột qua nhưng chưa được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -2332,9 +2332,9 @@ The focused style for the **Tree**, drawn on top of everything.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **hovered_dimmed** :ref:`🔗<class_Tree_theme_style_hovered_dimmed>`
+:ref:`StyleBox<class_StyleBox>` **hovered_dimmed** :ref:`🔗 <class_Tree_theme_style_hovered_dimmed>`
 
-:ref:`StyleBox<class_StyleBox>` for the item being hovered, while a button of the same item is hovered as the same time.
+:ref:`StyleBox<class_StyleBox>` dành cho mục đang được di chuột qua, đồng thời một nút của cùng mục đó cũng đang được di chuột qua.
 
 .. rst-class:: classref-item-separator
 
@@ -2344,9 +2344,9 @@ The focused style for the **Tree**, drawn on top of everything.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **hovered_selected** :ref:`🔗<class_Tree_theme_style_hovered_selected>`
+:ref:`StyleBox<class_StyleBox>` **hovered_selected** :ref:`🔗 <class_Tree_theme_style_hovered_selected>`
 
-:ref:`StyleBox<class_StyleBox>` for the hovered and selected items, used when the **Tree** is not being focused.
+:ref:`StyleBox<class_StyleBox>` dành cho các mục đang được di chuột qua và đã chọn, được dùng khi **Tree** không được focus.
 
 .. rst-class:: classref-item-separator
 
@@ -2356,9 +2356,9 @@ The focused style for the **Tree**, drawn on top of everything.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **hovered_selected_focus** :ref:`🔗<class_Tree_theme_style_hovered_selected_focus>`
+:ref:`StyleBox<class_StyleBox>` **hovered_selected_focus** :ref:`🔗 <class_Tree_theme_style_hovered_selected_focus>`
 
-:ref:`StyleBox<class_StyleBox>` for the hovered and selected items, used when the **Tree** is being focused.
+:ref:`StyleBox<class_StyleBox>` dành cho các mục đang được di chuột qua và đã chọn, được dùng khi **Tree** đang được focus.
 
 .. rst-class:: classref-item-separator
 
@@ -2368,9 +2368,9 @@ The focused style for the **Tree**, drawn on top of everything.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **panel** :ref:`🔗<class_Tree_theme_style_panel>`
+:ref:`StyleBox<class_StyleBox>` **panel** :ref:`🔗 <class_Tree_theme_style_panel>`
 
-The background style for the **Tree**.
+Kiểu nền cho **Tree**.
 
 .. rst-class:: classref-item-separator
 
@@ -2380,9 +2380,9 @@ The background style for the **Tree**.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **selected** :ref:`🔗<class_Tree_theme_style_selected>`
+:ref:`StyleBox<class_StyleBox>` **selected** :ref:`🔗 <class_Tree_theme_style_selected>`
 
-:ref:`StyleBox<class_StyleBox>` for the selected items, used when the **Tree** is not being focused.
+:ref:`StyleBox<class_StyleBox>` dành cho các mục đã chọn, được dùng khi **Tree** không được focus.
 
 .. rst-class:: classref-item-separator
 
@@ -2392,9 +2392,9 @@ The background style for the **Tree**.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **selected_focus** :ref:`🔗<class_Tree_theme_style_selected_focus>`
+:ref:`StyleBox<class_StyleBox>` **selected_focus** :ref:`🔗 <class_Tree_theme_style_selected_focus>`
 
-:ref:`StyleBox<class_StyleBox>` for the selected items, used when the **Tree** is being focused.
+:ref:`StyleBox<class_StyleBox>` dành cho các mục đã chọn, được dùng khi **Tree** đang được focus.
 
 .. rst-class:: classref-item-separator
 
@@ -2404,9 +2404,9 @@ The background style for the **Tree**.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **title_button_hover** :ref:`🔗<class_Tree_theme_style_title_button_hover>`
+:ref:`StyleBox<class_StyleBox>` **title_button_hover** :ref:`🔗 <class_Tree_theme_style_title_button_hover>`
 
-:ref:`StyleBox<class_StyleBox>` used when the title button is being hovered.
+:ref:`StyleBox<class_StyleBox>` được dùng khi nút tiêu đề đang được di chuột qua.
 
 .. rst-class:: classref-item-separator
 
@@ -2416,9 +2416,9 @@ The background style for the **Tree**.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **title_button_normal** :ref:`🔗<class_Tree_theme_style_title_button_normal>`
+:ref:`StyleBox<class_StyleBox>` **title_button_normal** :ref:`🔗 <class_Tree_theme_style_title_button_normal>`
 
-Default :ref:`StyleBox<class_StyleBox>` for the title button.
+:ref:`StyleBox<class_StyleBox>` mặc định cho nút tiêu đề.
 
 .. rst-class:: classref-item-separator
 
@@ -2428,16 +2428,16 @@ Default :ref:`StyleBox<class_StyleBox>` for the title button.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **title_button_pressed** :ref:`🔗<class_Tree_theme_style_title_button_pressed>`
+:ref:`StyleBox<class_StyleBox>` **title_button_pressed** :ref:`🔗 <class_Tree_theme_style_title_button_pressed>`
 
-:ref:`StyleBox<class_StyleBox>` used when the title button is being pressed.
+:ref:`StyleBox<class_StyleBox>` được dùng khi nút tiêu đề đang được nhấn.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng ghi đè để có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

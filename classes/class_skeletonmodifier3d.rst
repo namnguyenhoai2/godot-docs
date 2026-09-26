@@ -10,33 +10,33 @@
 SkeletonModifier3D
 ==================
 
-**Inherits:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`BoneConstraint3D<class_BoneConstraint3D>`, :ref:`BoneTwistDisperser3D<class_BoneTwistDisperser3D>`, :ref:`IKModifier3D<class_IKModifier3D>`, :ref:`LimitAngularVelocityModifier3D<class_LimitAngularVelocityModifier3D>`, :ref:`LookAtModifier3D<class_LookAtModifier3D>`, :ref:`ModifierBoneTarget3D<class_ModifierBoneTarget3D>`, :ref:`PhysicalBoneSimulator3D<class_PhysicalBoneSimulator3D>`, :ref:`RetargetModifier3D<class_RetargetModifier3D>`, :ref:`SkeletonIK3D<class_SkeletonIK3D>`, :ref:`SpringBoneSimulator3D<class_SpringBoneSimulator3D>`, :ref:`XRBodyModifier3D<class_XRBodyModifier3D>`, :ref:`XRHandModifier3D<class_XRHandModifier3D>`
+**Được kế thừa bởi:** :ref:`BoneConstraint3D<class_BoneConstraint3D>`, :ref:`BoneTwistDisperser3D<class_BoneTwistDisperser3D>`, :ref:`IKModifier3D<class_IKModifier3D>`, :ref:`LimitAngularVelocityModifier3D<class_LimitAngularVelocityModifier3D>`, :ref:`LookAtModifier3D<class_LookAtModifier3D>`, :ref:`ModifierBoneTarget3D<class_ModifierBoneTarget3D>`, :ref:`PhysicalBoneSimulator3D<class_PhysicalBoneSimulator3D>`, :ref:`RetargetModifier3D<class_RetargetModifier3D>`, :ref:`SkeletonIK3D<class_SkeletonIK3D>`, :ref:`SpringBoneSimulator3D<class_SpringBoneSimulator3D>`, :ref:`XRBodyModifier3D<class_XRBodyModifier3D>`, :ref:`XRHandModifier3D<class_XRHandModifier3D>`
 
-A node that may modify a Skeleton3D's bones.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-**SkeletonModifier3D** retrieves a target :ref:`Skeleton3D<class_Skeleton3D>` by having a :ref:`Skeleton3D<class_Skeleton3D>` parent.
-
-If there is an :ref:`AnimationMixer<class_AnimationMixer>`, a modification always performs after playback process of the :ref:`AnimationMixer<class_AnimationMixer>`.
-
-This node should be used to implement custom IK solvers, constraints, or skeleton physics.
+Một node có thể sửa đổi các bone của Skeleton3D.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+**SkeletonModifier3D**lấy một :ref:`Skeleton3D<class_Skeleton3D>` đích bằng cách có một parent :ref:`Skeleton3D<class_Skeleton3D>`.
+
+Nếu có một :ref:`AnimationMixer<class_AnimationMixer>`, việc sửa đổi luôn được thực hiện sau quá trình phát lại của :ref:`AnimationMixer<class_AnimationMixer>`.
+
+Node này nên được dùng để triển khai các IK solver, constraint hoặc physics cho skeleton tùy chỉnh.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- `Design of the Skeleton Modifier 3D <https://godotengine.org/article/design-of-the-skeleton-modifier-3d/>`__
+- `Thiết kế Skeleton Modifier 3D <https://godotengine.org/article/design-of-the-skeleton-modifier-3d/>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -50,8 +50,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -74,8 +74,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Signal
+------
 
 .. _class_SkeletonModifier3D_signal_modification_processed:
 
@@ -83,9 +83,9 @@ Signals
 
 **modification_processed**\ (\ ) :ref:`🔗<class_SkeletonModifier3D_signal_modification_processed>`
 
-Notifies when the modification have been finished.
+Thông báo khi việc sửa đổi đã hoàn tất.
 
-\ **Note:** If you want to get the modified bone pose by the modifier, you must use :ref:`Skeleton3D.get_bone_pose()<class_Skeleton3D_method_get_bone_pose>` or :ref:`Skeleton3D.get_bone_global_pose()<class_Skeleton3D_method_get_bone_global_pose>` at the moment this signal is fired.
+\ **Lưu ý:** Nếu bạn muốn lấy pose của bone đã được modifier sửa đổi, bạn phải sử dụng :ref:`Skeleton3D.get_bone_pose()<class_Skeleton3D_method_get_bone_pose>` hoặc :ref:`Skeleton3D.get_bone_global_pose()<class_Skeleton3D_method_get_bone_global_pose>` tại thời điểm signal này được phát.
 
 .. rst-class:: classref-section-separator
 
@@ -93,14 +93,14 @@ Notifies when the modification have been finished.
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_SkeletonModifier3D_BoneAxis:
 
 .. rst-class:: classref-enumeration
 
-enum **BoneAxis**: :ref:`🔗<enum_SkeletonModifier3D_BoneAxis>`
+enum **BoneAxis**: :ref:`🔗 <enum_SkeletonModifier3D_BoneAxis>`
 
 .. _class_SkeletonModifier3D_constant_BONE_AXIS_PLUS_X:
 
@@ -108,7 +108,7 @@ enum **BoneAxis**: :ref:`🔗<enum_SkeletonModifier3D_BoneAxis>`
 
 :ref:`BoneAxis<enum_SkeletonModifier3D_BoneAxis>` **BONE_AXIS_PLUS_X** = ``0``
 
-Enumerated value for the +X axis.
+Giá trị liệt kê cho trục +X.
 
 .. _class_SkeletonModifier3D_constant_BONE_AXIS_MINUS_X:
 
@@ -116,7 +116,7 @@ Enumerated value for the +X axis.
 
 :ref:`BoneAxis<enum_SkeletonModifier3D_BoneAxis>` **BONE_AXIS_MINUS_X** = ``1``
 
-Enumerated value for the -X axis.
+Giá trị liệt kê cho trục -X.
 
 .. _class_SkeletonModifier3D_constant_BONE_AXIS_PLUS_Y:
 
@@ -124,7 +124,7 @@ Enumerated value for the -X axis.
 
 :ref:`BoneAxis<enum_SkeletonModifier3D_BoneAxis>` **BONE_AXIS_PLUS_Y** = ``2``
 
-Enumerated value for the +Y axis.
+Giá trị liệt kê cho trục +Y.
 
 .. _class_SkeletonModifier3D_constant_BONE_AXIS_MINUS_Y:
 
@@ -132,7 +132,7 @@ Enumerated value for the +Y axis.
 
 :ref:`BoneAxis<enum_SkeletonModifier3D_BoneAxis>` **BONE_AXIS_MINUS_Y** = ``3``
 
-Enumerated value for the -Y axis.
+Giá trị liệt kê cho trục -Y.
 
 .. _class_SkeletonModifier3D_constant_BONE_AXIS_PLUS_Z:
 
@@ -140,7 +140,7 @@ Enumerated value for the -Y axis.
 
 :ref:`BoneAxis<enum_SkeletonModifier3D_BoneAxis>` **BONE_AXIS_PLUS_Z** = ``4``
 
-Enumerated value for the +Z axis.
+Giá trị liệt kê cho trục +Z.
 
 .. _class_SkeletonModifier3D_constant_BONE_AXIS_MINUS_Z:
 
@@ -148,7 +148,7 @@ Enumerated value for the +Z axis.
 
 :ref:`BoneAxis<enum_SkeletonModifier3D_BoneAxis>` **BONE_AXIS_MINUS_Z** = ``5``
 
-Enumerated value for the -Z axis.
+Giá trị liệt kê cho trục -Z.
 
 .. rst-class:: classref-item-separator
 
@@ -158,7 +158,7 @@ Enumerated value for the -Z axis.
 
 .. rst-class:: classref-enumeration
 
-enum **BoneDirection**: :ref:`🔗<enum_SkeletonModifier3D_BoneDirection>`
+enum **BoneDirection**: :ref:`🔗 <enum_SkeletonModifier3D_BoneDirection>`
 
 .. _class_SkeletonModifier3D_constant_BONE_DIRECTION_PLUS_X:
 
@@ -166,7 +166,7 @@ enum **BoneDirection**: :ref:`🔗<enum_SkeletonModifier3D_BoneDirection>`
 
 :ref:`BoneDirection<enum_SkeletonModifier3D_BoneDirection>` **BONE_DIRECTION_PLUS_X** = ``0``
 
-Enumerated value for the +X axis.
+Giá trị liệt kê cho trục +X.
 
 .. _class_SkeletonModifier3D_constant_BONE_DIRECTION_MINUS_X:
 
@@ -174,7 +174,7 @@ Enumerated value for the +X axis.
 
 :ref:`BoneDirection<enum_SkeletonModifier3D_BoneDirection>` **BONE_DIRECTION_MINUS_X** = ``1``
 
-Enumerated value for the -X axis.
+Giá trị liệt kê cho trục -X.
 
 .. _class_SkeletonModifier3D_constant_BONE_DIRECTION_PLUS_Y:
 
@@ -182,7 +182,7 @@ Enumerated value for the -X axis.
 
 :ref:`BoneDirection<enum_SkeletonModifier3D_BoneDirection>` **BONE_DIRECTION_PLUS_Y** = ``2``
 
-Enumerated value for the +Y axis.
+Giá trị liệt kê cho trục +Y.
 
 .. _class_SkeletonModifier3D_constant_BONE_DIRECTION_MINUS_Y:
 
@@ -190,7 +190,7 @@ Enumerated value for the +Y axis.
 
 :ref:`BoneDirection<enum_SkeletonModifier3D_BoneDirection>` **BONE_DIRECTION_MINUS_Y** = ``3``
 
-Enumerated value for the -Y axis.
+Giá trị liệt kê cho trục -Y.
 
 .. _class_SkeletonModifier3D_constant_BONE_DIRECTION_PLUS_Z:
 
@@ -198,7 +198,7 @@ Enumerated value for the -Y axis.
 
 :ref:`BoneDirection<enum_SkeletonModifier3D_BoneDirection>` **BONE_DIRECTION_PLUS_Z** = ``4``
 
-Enumerated value for the +Z axis.
+Giá trị liệt kê cho trục +Z.
 
 .. _class_SkeletonModifier3D_constant_BONE_DIRECTION_MINUS_Z:
 
@@ -206,7 +206,7 @@ Enumerated value for the +Z axis.
 
 :ref:`BoneDirection<enum_SkeletonModifier3D_BoneDirection>` **BONE_DIRECTION_MINUS_Z** = ``5``
 
-Enumerated value for the -Z axis.
+Giá trị liệt kê cho trục -Z.
 
 .. _class_SkeletonModifier3D_constant_BONE_DIRECTION_FROM_PARENT:
 
@@ -214,7 +214,7 @@ Enumerated value for the -Z axis.
 
 :ref:`BoneDirection<enum_SkeletonModifier3D_BoneDirection>` **BONE_DIRECTION_FROM_PARENT** = ``6``
 
-Enumerated value for the axis from a parent bone to the child bone.
+Giá trị liệt kê cho trục từ bone parent đến bone child.
 
 .. rst-class:: classref-item-separator
 
@@ -224,7 +224,7 @@ Enumerated value for the axis from a parent bone to the child bone.
 
 .. rst-class:: classref-enumeration
 
-enum **SecondaryDirection**: :ref:`🔗<enum_SkeletonModifier3D_SecondaryDirection>`
+enum **SecondaryDirection**: :ref:`🔗 <enum_SkeletonModifier3D_SecondaryDirection>`
 
 .. _class_SkeletonModifier3D_constant_SECONDARY_DIRECTION_NONE:
 
@@ -232,7 +232,7 @@ enum **SecondaryDirection**: :ref:`🔗<enum_SkeletonModifier3D_SecondaryDirecti
 
 :ref:`SecondaryDirection<enum_SkeletonModifier3D_SecondaryDirection>` **SECONDARY_DIRECTION_NONE** = ``0``
 
-Enumerated value for the case when the axis is undefined.
+Giá trị liệt kê cho trường hợp trục chưa được xác định.
 
 .. _class_SkeletonModifier3D_constant_SECONDARY_DIRECTION_PLUS_X:
 
@@ -240,7 +240,7 @@ Enumerated value for the case when the axis is undefined.
 
 :ref:`SecondaryDirection<enum_SkeletonModifier3D_SecondaryDirection>` **SECONDARY_DIRECTION_PLUS_X** = ``1``
 
-Enumerated value for the +X axis.
+Giá trị liệt kê cho trục +X.
 
 .. _class_SkeletonModifier3D_constant_SECONDARY_DIRECTION_MINUS_X:
 
@@ -248,7 +248,7 @@ Enumerated value for the +X axis.
 
 :ref:`SecondaryDirection<enum_SkeletonModifier3D_SecondaryDirection>` **SECONDARY_DIRECTION_MINUS_X** = ``2``
 
-Enumerated value for the -X axis.
+Giá trị liệt kê cho trục -X.
 
 .. _class_SkeletonModifier3D_constant_SECONDARY_DIRECTION_PLUS_Y:
 
@@ -256,7 +256,7 @@ Enumerated value for the -X axis.
 
 :ref:`SecondaryDirection<enum_SkeletonModifier3D_SecondaryDirection>` **SECONDARY_DIRECTION_PLUS_Y** = ``3``
 
-Enumerated value for the +Y axis.
+Giá trị liệt kê cho trục +Y.
 
 .. _class_SkeletonModifier3D_constant_SECONDARY_DIRECTION_MINUS_Y:
 
@@ -264,7 +264,7 @@ Enumerated value for the +Y axis.
 
 :ref:`SecondaryDirection<enum_SkeletonModifier3D_SecondaryDirection>` **SECONDARY_DIRECTION_MINUS_Y** = ``4``
 
-Enumerated value for the -Y axis.
+Giá trị liệt kê cho trục -Y.
 
 .. _class_SkeletonModifier3D_constant_SECONDARY_DIRECTION_PLUS_Z:
 
@@ -272,7 +272,7 @@ Enumerated value for the -Y axis.
 
 :ref:`SecondaryDirection<enum_SkeletonModifier3D_SecondaryDirection>` **SECONDARY_DIRECTION_PLUS_Z** = ``5``
 
-Enumerated value for the +Z axis.
+Giá trị liệt kê cho trục +Z.
 
 .. _class_SkeletonModifier3D_constant_SECONDARY_DIRECTION_MINUS_Z:
 
@@ -280,7 +280,7 @@ Enumerated value for the +Z axis.
 
 :ref:`SecondaryDirection<enum_SkeletonModifier3D_SecondaryDirection>` **SECONDARY_DIRECTION_MINUS_Z** = ``6``
 
-Enumerated value for the -Z axis.
+Giá trị liệt kê cho trục -Z.
 
 .. _class_SkeletonModifier3D_constant_SECONDARY_DIRECTION_CUSTOM:
 
@@ -288,7 +288,7 @@ Enumerated value for the -Z axis.
 
 :ref:`SecondaryDirection<enum_SkeletonModifier3D_SecondaryDirection>` **SECONDARY_DIRECTION_CUSTOM** = ``7``
 
-Enumerated value for an optional axis.
+Giá trị liệt kê cho một trục tùy chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -298,7 +298,7 @@ Enumerated value for an optional axis.
 
 .. rst-class:: classref-enumeration
 
-enum **RotationAxis**: :ref:`🔗<enum_SkeletonModifier3D_RotationAxis>`
+enum **RotationAxis**: :ref:`🔗 <enum_SkeletonModifier3D_RotationAxis>`
 
 .. _class_SkeletonModifier3D_constant_ROTATION_AXIS_X:
 
@@ -306,7 +306,7 @@ enum **RotationAxis**: :ref:`🔗<enum_SkeletonModifier3D_RotationAxis>`
 
 :ref:`RotationAxis<enum_SkeletonModifier3D_RotationAxis>` **ROTATION_AXIS_X** = ``0``
 
-Enumerated value for the rotation of the X axis.
+Giá trị liệt kê cho phép xoay của trục X.
 
 .. _class_SkeletonModifier3D_constant_ROTATION_AXIS_Y:
 
@@ -314,7 +314,7 @@ Enumerated value for the rotation of the X axis.
 
 :ref:`RotationAxis<enum_SkeletonModifier3D_RotationAxis>` **ROTATION_AXIS_Y** = ``1``
 
-Enumerated value for the rotation of the Y axis.
+Giá trị liệt kê cho phép xoay của trục Y.
 
 .. _class_SkeletonModifier3D_constant_ROTATION_AXIS_Z:
 
@@ -322,7 +322,7 @@ Enumerated value for the rotation of the Y axis.
 
 :ref:`RotationAxis<enum_SkeletonModifier3D_RotationAxis>` **ROTATION_AXIS_Z** = ``2``
 
-Enumerated value for the rotation of the Z axis.
+Giá trị liệt kê cho phép xoay của trục Z.
 
 .. _class_SkeletonModifier3D_constant_ROTATION_AXIS_ALL:
 
@@ -330,7 +330,7 @@ Enumerated value for the rotation of the Z axis.
 
 :ref:`RotationAxis<enum_SkeletonModifier3D_RotationAxis>` **ROTATION_AXIS_ALL** = ``3``
 
-Enumerated value for the unconstrained rotation.
+Giá trị liệt kê cho phép xoay không bị ràng buộc.
 
 .. _class_SkeletonModifier3D_constant_ROTATION_AXIS_CUSTOM:
 
@@ -338,7 +338,7 @@ Enumerated value for the unconstrained rotation.
 
 :ref:`RotationAxis<enum_SkeletonModifier3D_RotationAxis>` **ROTATION_AXIS_CUSTOM** = ``4``
 
-Enumerated value for an optional rotation axis.
+Giá trị liệt kê cho một trục xoay tùy chọn.
 
 .. rst-class:: classref-section-separator
 
@@ -346,8 +346,8 @@ Enumerated value for an optional rotation axis.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_SkeletonModifier3D_property_active:
 
@@ -360,7 +360,7 @@ Property Descriptions
 - |void| **set_active**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_active**\ (\ )
 
-If ``true``, the **SkeletonModifier3D** will be processing.
+Nếu ``true``, **SkeletonModifier3D** sẽ được xử lý.
 
 .. rst-class:: classref-item-separator
 
@@ -377,9 +377,9 @@ If ``true``, the **SkeletonModifier3D** will be processing.
 - |void| **set_influence**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_influence**\ (\ )
 
-Sets the influence of the modification.
+Thiết lập mức ảnh hưởng của việc sửa đổi.
 
-\ **Note:** This value is used by :ref:`Skeleton3D<class_Skeleton3D>` to blend, so the **SkeletonModifier3D** should always apply only 100% of the result without interpolation.
+\ **Lưu ý:** Giá trị này được :ref:`Skeleton3D<class_Skeleton3D>` sử dụng để blend, vì vậy **SkeletonModifier3D** luôn chỉ nên áp dụng 100% kết quả mà không nội suy.
 
 .. rst-class:: classref-section-separator
 
@@ -387,8 +387,8 @@ Sets the influence of the modification.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_SkeletonModifier3D_private_method__process_modification:
 
@@ -396,11 +396,11 @@ Method Descriptions
 
 |void| **_process_modification**\ (\ ) |virtual| :ref:`🔗<class_SkeletonModifier3D_private_method__process_modification>`
 
-**Deprecated:** Use :ref:`_process_modification_with_delta()<class_SkeletonModifier3D_private_method__process_modification_with_delta>` instead.
+**Đã lỗi thời:** Thay vào đó, hãy sử dụng :ref:`_process_modification_with_delta()<class_SkeletonModifier3D_private_method__process_modification_with_delta>`.
 
-Override this virtual method to implement a custom skeleton modifier. You should do things like get the :ref:`Skeleton3D<class_Skeleton3D>`'s current pose and apply the pose here.
+Ghi đè virtual method này để triển khai skeleton modifier tùy chỉnh. Bạn nên thực hiện những việc như lấy pose hiện tại của :ref:`Skeleton3D<class_Skeleton3D>` và áp dụng pose tại đây.
 
-\ :ref:`_process_modification()<class_SkeletonModifier3D_private_method__process_modification>` must not apply :ref:`influence<class_SkeletonModifier3D_property_influence>` to bone poses because the :ref:`Skeleton3D<class_Skeleton3D>` automatically applies influence to all bone poses set by the modifier.
+\ :ref:`_process_modification()<class_SkeletonModifier3D_private_method__process_modification>` không được áp dụng :ref:`influence<class_SkeletonModifier3D_property_influence>` cho các pose của bone vì :ref:`Skeleton3D<class_Skeleton3D>` tự động áp dụng influence cho tất cả pose của bone do modifier thiết lập.
 
 .. rst-class:: classref-item-separator
 
@@ -412,13 +412,13 @@ Override this virtual method to implement a custom skeleton modifier. You should
 
 |void| **_process_modification_with_delta**\ (\ delta\: :ref:`float<class_float>`\ ) |virtual| :ref:`🔗<class_SkeletonModifier3D_private_method__process_modification_with_delta>`
 
-Override this virtual method to implement a custom skeleton modifier. You should do things like get the :ref:`Skeleton3D<class_Skeleton3D>`'s current pose and apply the pose here.
+Ghi đè virtual method này để triển khai skeleton modifier tùy chỉnh. Bạn nên thực hiện những việc như lấy pose hiện tại của :ref:`Skeleton3D<class_Skeleton3D>` và áp dụng pose tại đây.
 
-\ :ref:`_process_modification_with_delta()<class_SkeletonModifier3D_private_method__process_modification_with_delta>` must not apply :ref:`influence<class_SkeletonModifier3D_property_influence>` to bone poses because the :ref:`Skeleton3D<class_Skeleton3D>` automatically applies influence to all bone poses set by the modifier.
+\ :ref:`_process_modification_with_delta()<class_SkeletonModifier3D_private_method__process_modification_with_delta>` không được áp dụng :ref:`influence<class_SkeletonModifier3D_property_influence>` cho các pose của bone vì :ref:`Skeleton3D<class_Skeleton3D>` tự động áp dụng influence cho tất cả pose của bone do modifier thiết lập.
 
-\ ``delta`` is passed from parent :ref:`Skeleton3D<class_Skeleton3D>`. See also :ref:`Skeleton3D.advance()<class_Skeleton3D_method_advance>`.
+\ ``delta`` được truyền từ :ref:`Skeleton3D<class_Skeleton3D>` parent. Xem thêm :ref:`Skeleton3D.advance()<class_Skeleton3D_method_advance>`.
 
-\ **Note:** This method may be called outside :ref:`Node._process()<class_Node_private_method__process>` and :ref:`Node._physics_process()<class_Node_private_method__physics_process>` with ``delta`` is ``0.0``, since the modification should be processed immediately after initialization of the :ref:`Skeleton3D<class_Skeleton3D>`.
+\ **Lưu ý:** Phương thức này có thể được gọi bên ngoài :ref:`Node._process()<class_Node_private_method__process>` và :ref:`Node._physics_process()<class_Node_private_method__physics_process>` với ``delta`` là ``0.0``, vì việc sửa đổi cần được xử lý ngay sau khi khởi tạo :ref:`Skeleton3D<class_Skeleton3D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -430,7 +430,7 @@ Override this virtual method to implement a custom skeleton modifier. You should
 
 |void| **_skeleton_changed**\ (\ old_skeleton\: :ref:`Skeleton3D<class_Skeleton3D>`, new_skeleton\: :ref:`Skeleton3D<class_Skeleton3D>`\ ) |virtual| :ref:`🔗<class_SkeletonModifier3D_private_method__skeleton_changed>`
 
-Called when the skeleton is changed.
+Được gọi khi skeleton thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -442,7 +442,7 @@ Called when the skeleton is changed.
 
 |void| **_validate_bone_names**\ (\ ) |virtual| :ref:`🔗<class_SkeletonModifier3D_private_method__validate_bone_names>`
 
-Called when bone names and indices need to be validated, such as when entering the scene tree or changing skeleton.
+Được gọi khi cần xác thực tên và chỉ mục của bone, chẳng hạn khi vào scene tree hoặc thay đổi skeleton.
 
 .. rst-class:: classref-item-separator
 
@@ -454,14 +454,14 @@ Called when bone names and indices need to be validated, such as when entering t
 
 :ref:`Skeleton3D<class_Skeleton3D>` **get_skeleton**\ (\ ) |const| :ref:`🔗<class_SkeletonModifier3D_method_get_skeleton>`
 
-Returns the parent :ref:`Skeleton3D<class_Skeleton3D>` node if it exists. Otherwise, returns ``null``.
+Trả về node :ref:`Skeleton3D<class_Skeleton3D>` parent nếu tồn tại. Nếu không, trả về ``null``.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng mặt nạ bit gồm các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

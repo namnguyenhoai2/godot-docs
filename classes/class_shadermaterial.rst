@@ -10,31 +10,31 @@
 ShaderMaterial
 ==============
 
-**Inherits:** :ref:`Material<class_Material>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Material<class_Material>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A material defined by a custom :ref:`Shader<class_Shader>` program and the values of its shader parameters.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A material that uses a custom :ref:`Shader<class_Shader>` program to render visual items (canvas items, meshes, skies, fog), or to process particles. Compared to other materials, **ShaderMaterial** gives deeper control over the generated shader code. For more information, see the shaders documentation index below.
-
-Multiple **ShaderMaterial**\ s can use the same shader and configure different values for the shader uniforms.
-
-\ **Note:** For performance reasons, the :ref:`Resource.changed<class_Resource_signal_changed>` signal is only emitted when the :ref:`Resource.resource_name<class_Resource_property_resource_name>` changes. Only in editor, it is also emitted for :ref:`shader<class_ShaderMaterial_property_shader>` changes.
+Một material được định nghĩa bởi chương trình :ref:`Shader<class_Shader>` tùy chỉnh và các giá trị của những tham số shader.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Một material sử dụng chương trình :ref:`Shader<class_Shader>` tùy chỉnh để kết xuất các đối tượng hình ảnh (canvas item, mesh, sky, fog) hoặc xử lý particle. So với các material khác, **ShaderMaterial** cho phép kiểm soát sâu hơn mã shader được tạo ra. Để biết thêm thông tin, hãy xem chỉ mục tài liệu về shader bên dưới.
+
+Nhiều **ShaderMaterial**\ s có thể sử dụng cùng một shader và cấu hình các giá trị khác nhau cho các shader uniform.
+
+\ **Lưu ý:** Vì lý do hiệu năng, signal :ref:`Resource.changed<class_Resource_signal_changed>` chỉ được phát khi :ref:`Resource.resource_name<class_Resource_property_resource_name>` thay đổi. Chỉ trong editor, signal này cũng được phát khi :ref:`shader<class_ShaderMaterial_property_shader>` thay đổi.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Shaders documentation index <../tutorials/shaders/index>`
+- :doc:`Chỉ mục tài liệu về shader <../tutorials/shaders/index>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -46,8 +46,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -64,21 +64,21 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ShaderMaterial_property_shader:
 
 .. rst-class:: classref-property
 
-:ref:`Shader<class_Shader>` **shader** :ref:`🔗<class_ShaderMaterial_property_shader>`
+:ref:`Shader<class_Shader>` **shader** :ref:`🔗 <class_ShaderMaterial_property_shader>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_shader**\ (\ value\: :ref:`Shader<class_Shader>`\ )
 - :ref:`Shader<class_Shader>` **get_shader**\ (\ )
 
-The :ref:`Shader<class_Shader>` program used to render this material.
+Chương trình :ref:`Shader<class_Shader>` được sử dụng để kết xuất material này.
 
 .. rst-class:: classref-section-separator
 
@@ -86,8 +86,8 @@ The :ref:`Shader<class_Shader>` program used to render this material.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_ShaderMaterial_method_get_shader_parameter:
 
@@ -95,7 +95,7 @@ Method Descriptions
 
 :ref:`Variant<class_Variant>` **get_shader_parameter**\ (\ param\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_ShaderMaterial_method_get_shader_parameter>`
 
-Returns the current value set for this material of a uniform in the shader.
+Trả về giá trị hiện tại được thiết lập cho uniform trong shader của material này.
 
 .. rst-class:: classref-item-separator
 
@@ -107,18 +107,18 @@ Returns the current value set for this material of a uniform in the shader.
 
 |void| **set_shader_parameter**\ (\ param\: :ref:`StringName<class_StringName>`, value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_ShaderMaterial_method_set_shader_parameter>`
 
-Changes the value set for this material of a uniform in the shader.
+Thay đổi giá trị được thiết lập cho uniform trong shader của material này.
 
-\ **Note:** ``param`` is case-sensitive and must match the name of the uniform in the code exactly (not the capitalized name in the inspector).
+\ **Lưu ý:** ``param`` có phân biệt chữ hoa chữ thường và phải khớp chính xác với tên của uniform trong mã (không phải tên được viết hoa trong inspector).
 
-\ **Note:** Changes to the shader uniform will be effective on all instances using this **ShaderMaterial**. To prevent this, use per-instance uniforms with :ref:`CanvasItem.set_instance_shader_parameter()<class_CanvasItem_method_set_instance_shader_parameter>`, :ref:`GeometryInstance3D.set_instance_shader_parameter()<class_GeometryInstance3D_method_set_instance_shader_parameter>` or duplicate the **ShaderMaterial** resource using :ref:`Resource.duplicate()<class_Resource_method_duplicate>`. Per-instance uniforms allow for better shader reuse and are therefore faster, so they should be preferred over duplicating the **ShaderMaterial** when possible.
+\ **Lưu ý:** Các thay đổi đối với shader uniform sẽ có hiệu lực trên tất cả các instance sử dụng **ShaderMaterial** này. Để ngăn điều đó, hãy sử dụng per-instance uniform với :ref:`CanvasItem.set_instance_shader_parameter()<class_CanvasItem_method_set_instance_shader_parameter>`, :ref:`GeometryInstance3D.set_instance_shader_parameter()<class_GeometryInstance3D_method_set_instance_shader_parameter>` hoặc nhân bản resource **ShaderMaterial** bằng :ref:`Resource.duplicate()<class_Resource_method_duplicate>`. Per-instance uniform cho phép tái sử dụng shader tốt hơn và do đó nhanh hơn, vì vậy nên ưu tiên chúng thay vì nhân bản **ShaderMaterial** khi có thể.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này để nó có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,53 +10,53 @@
 ResourceImporterLayeredTexture
 ==============================
 
-**Inherits:** :ref:`ResourceImporter<class_ResourceImporter>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`ResourceImporter<class_ResourceImporter>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Imports a 3-dimensional texture (:ref:`Texture3D<class_Texture3D>`), a :ref:`Texture2DArray<class_Texture2DArray>`, a :ref:`Cubemap<class_Cubemap>` or a :ref:`CubemapArray<class_CubemapArray>`.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-This imports a 3-dimensional texture, which can then be used in custom shaders, as a :ref:`FogMaterial<class_FogMaterial>` density map or as a :ref:`GPUParticlesAttractorVectorField3D<class_GPUParticlesAttractorVectorField3D>`. See also :ref:`ResourceImporterTexture<class_ResourceImporterTexture>` and :ref:`ResourceImporterTextureAtlas<class_ResourceImporterTextureAtlas>`.
+Nhập texture 3 chiều (:ref:`Texture3D<class_Texture3D>`), một :ref:`Texture2DArray<class_Texture2DArray>`, một :ref:`Cubemap<class_Cubemap>` hoặc một :ref:`CubemapArray<class_CubemapArray>`.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Tính năng này nhập texture 3 chiều, sau đó có thể được sử dụng trong custom shader, làm bản đồ mật độ :ref:`FogMaterial<class_FogMaterial>` hoặc làm :ref:`GPUParticlesAttractorVectorField3D<class_GPUParticlesAttractorVectorField3D>`. Xem thêm :ref:`ResourceImporterTexture<class_ResourceImporterTexture>` và :ref:`ResourceImporterTextureAtlas<class_ResourceImporterTextureAtlas>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Importing images <../tutorials/assets_pipeline/importing_images>`
+- :doc:`Nhập hình ảnh <../tutorials/assets_pipeline/importing_images>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`     | :ref:`compress/channel_pack<class_ResourceImporterLayeredTexture_property_compress/channel_pack>`         | ``0``     |
-   +---------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`     | :ref:`compress/hdr_compression<class_ResourceImporterLayeredTexture_property_compress/hdr_compression>`   | ``1``     |
-   +---------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`   | :ref:`compress/high_quality<class_ResourceImporterLayeredTexture_property_compress/high_quality>`         | ``false`` |
-   +---------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>` | :ref:`compress/lossy_quality<class_ResourceImporterLayeredTexture_property_compress/lossy_quality>`       | ``0.7``   |
-   +---------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`     | :ref:`compress/mode<class_ResourceImporterLayeredTexture_property_compress/mode>`                         | ``1``     |
-   +---------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>` | :ref:`compress/rdo_quality_loss<class_ResourceImporterLayeredTexture_property_compress/rdo_quality_loss>` | ``0.0``   |
-   +---------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`     | :ref:`compress/uastc_level<class_ResourceImporterLayeredTexture_property_compress/uastc_level>`           | ``0``     |
-   +---------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`   | :ref:`mipmaps/generate<class_ResourceImporterLayeredTexture_property_mipmaps/generate>`                   | ``true``  |
-   +---------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`     | :ref:`mipmaps/limit<class_ResourceImporterLayeredTexture_property_mipmaps/limit>`                         | ``-1``    |
-   +---------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`     | :ref:`slices/arrangement<class_ResourceImporterLayeredTexture_property_slices/arrangement>`               | ``1``     |
-   +---------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
+   +---------------------------+------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`     | :ref:`compress/channel_pack <class_ResourceImporterLayeredTexture_property_compress/channel_pack>`         | ``0``     |
+   +---------------------------+------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`     | :ref:`compress/hdr_compression <class_ResourceImporterLayeredTexture_property_compress/hdr_compression>`   | ``1``     |
+   +---------------------------+------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`   | :ref:`compress/high_quality <class_ResourceImporterLayeredTexture_property_compress/high_quality>`         | ``false`` |
+   +---------------------------+------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>` | :ref:`compress/lossy_quality <class_ResourceImporterLayeredTexture_property_compress/lossy_quality>`       | ``0.7``   |
+   +---------------------------+------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`     | :ref:`compress/mode <class_ResourceImporterLayeredTexture_property_compress/mode>`                         | ``1``     |
+   +---------------------------+------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>` | :ref:`compress/rdo_quality_loss <class_ResourceImporterLayeredTexture_property_compress/rdo_quality_loss>` | ``0.0``   |
+   +---------------------------+------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`     | :ref:`compress/uastc_level <class_ResourceImporterLayeredTexture_property_compress/uastc_level>`           | ``0``     |
+   +---------------------------+------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`   | :ref:`mipmaps/generate <class_ResourceImporterLayeredTexture_property_mipmaps/generate>`                   | ``true``  |
+   +---------------------------+------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`     | :ref:`mipmaps/limit <class_ResourceImporterLayeredTexture_property_mipmaps/limit>`                         | ``-1``    |
+   +---------------------------+------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`     | :ref:`slices/arrangement <class_ResourceImporterLayeredTexture_property_slices/arrangement>`               | ``1``     |
+   +---------------------------+------------------------------------------------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-section-separator
 
@@ -64,22 +64,22 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ResourceImporterLayeredTexture_property_compress/channel_pack:
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **compress/channel_pack** = ``0`` :ref:`🔗<class_ResourceImporterLayeredTexture_property_compress/channel_pack>`
+:ref:`int<class_int>` **compress/channel_pack** = ``0`` :ref:`🔗 <class_ResourceImporterLayeredTexture_property_compress/channel_pack>`
 
-Controls how color channels should be used in the imported texture.
+Điều khiển cách sử dụng các kênh màu trong texture đã nhập.
 
-\ **sRGB Friendly:**, prevents the R and RG color formats from being used, as they do not support nonlinear sRGB encoding.
+\ **Thân thiện với sRGB:**, ngăn không cho sử dụng các định dạng màu R và RG vì chúng không hỗ trợ mã hóa sRGB phi tuyến.
 
-\ **Optimized:**, allows the RG color format to be used if the texture does not use the blue channel. This reduces memory usage if the texture's blue channel can be discarded (all pixels must have a blue value of ``0``).
+\ **Tối ưu hóa:**, cho phép sử dụng định dạng màu RG nếu texture không sử dụng kênh xanh dương. Điều này làm giảm mức sử dụng bộ nhớ nếu có thể loại bỏ kênh xanh dương của texture (tất cả pixel phải có giá trị xanh dương là ``0``).
 
-\ **Normal Map (RG Channels):** This forces all layers from the texture to be imported with the RG color format, with only the red and green channels preserved. RGTC (Red-Green Texture Compression) compression is able to preserve its detail much better, while using the same amount of memory as a standard RGBA VRAM-compressed texture. This only has an effect on textures with the VRAM Compressed or Basis Universal compression modes. This mode is only available in layered textures (:ref:`Cubemap<class_Cubemap>`, :ref:`CubemapArray<class_CubemapArray>`, :ref:`Texture2DArray<class_Texture2DArray>` and :ref:`Texture3D<class_Texture3D>`).
+\ **Normal Map (kênh RG):** Tùy chọn này buộc tất cả layer của texture được nhập bằng định dạng màu RG, chỉ giữ lại các kênh đỏ và xanh lá. Tính năng nén RGTC (Red-Green Texture Compression) có thể bảo toàn chi tiết tốt hơn nhiều, đồng thời sử dụng cùng lượng bộ nhớ như texture VRAM được nén RGBA tiêu chuẩn. Tùy chọn này chỉ có tác dụng với texture sử dụng chế độ nén VRAM Compressed hoặc Basis Universal. Chế độ này chỉ khả dụng với texture phân lớp (:ref:`Cubemap<class_Cubemap>`, :ref:`CubemapArray<class_CubemapArray>`, :ref:`Texture2DArray<class_Texture2DArray>` và :ref:`Texture3D<class_Texture3D>`).
 
 .. rst-class:: classref-item-separator
 
@@ -89,17 +89,17 @@ Controls how color channels should be used in the imported texture.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **compress/hdr_compression** = ``1`` :ref:`🔗<class_ResourceImporterLayeredTexture_property_compress/hdr_compression>`
+:ref:`int<class_int>` **compress/hdr_compression** = ``1`` :ref:`🔗 <class_ResourceImporterLayeredTexture_property_compress/hdr_compression>`
 
-Controls how VRAM compression should be performed for HDR images.
+Điều khiển cách thực hiện nén VRAM cho hình ảnh HDR.
 
-\ **Disabled:** Never use VRAM compression for HDR textures, regardless of whether they're opaque or transparent. Instead, the texture is converted to RGBE9995 (9-bits per channel + 5-bit exponent = 32 bits per pixel) to reduce memory usage compared to a half-float or single-precision float image format.
+\ **Đã tắt:** Không bao giờ sử dụng nén VRAM cho texture HDR, bất kể chúng đục hay trong suốt. Thay vào đó, texture được chuyển đổi sang RGBE9995 (9 bit mỗi kênh + số mũ 5 bit = 32 bit mỗi pixel) để giảm mức sử dụng bộ nhớ so với định dạng hình ảnh số thực half-float hoặc single-precision.
 
-\ **Opaque Only:** Only uses VRAM compression for opaque HDR textures. This is due to a limitation of HDR formats, as there is no VRAM-compressed HDR format that supports transparency at the same time.
+\ **Chỉ đục:** Chỉ sử dụng nén VRAM cho texture HDR đục. Điều này là do một hạn chế của các định dạng HDR, vì không có định dạng HDR được nén VRAM nào đồng thời hỗ trợ độ trong suốt.
 
-\ **Always:** Force VRAM compression even for HDR textures with an alpha channel. To perform this, the alpha channel is discarded on import.
+\ **Luôn luôn:** Buộc nén VRAM ngay cả với texture HDR có kênh alpha. Để thực hiện việc này, kênh alpha sẽ bị loại bỏ khi nhập.
 
-\ **Note:** Only effective on Radiance HDR (``.hdr``) and OpenEXR (``.exr``) images.
+\ **Lưu ý:** Chỉ có hiệu lực với hình ảnh Radiance HDR (``.hdr``) và OpenEXR (``.exr``).
 
 .. rst-class:: classref-item-separator
 
@@ -109,13 +109,13 @@ Controls how VRAM compression should be performed for HDR images.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **compress/high_quality** = ``false`` :ref:`🔗<class_ResourceImporterLayeredTexture_property_compress/high_quality>`
+:ref:`bool<class_bool>` **compress/high_quality** = ``false`` :ref:`🔗 <class_ResourceImporterLayeredTexture_property_compress/high_quality>`
 
-If ``true``, uses BPTC compression on desktop platforms and ASTC compression on mobile platforms. When using BPTC, BC7 is used for SDR textures and BC6H is used for HDR textures.
+Nếu ``true``, sử dụng nén BPTC trên các nền tảng desktop và nén ASTC trên các nền tảng di động. Khi sử dụng BPTC, BC7 được dùng cho texture SDR và BC6H được dùng cho texture HDR.
 
-If ``false``, uses the faster but lower-quality S3TC compression on desktop platforms and ETC2 on mobile/web platforms. When using S3TC, DXT1 (BC1) is used for opaque textures and DXT5 (BC3) is used for transparent or normal map (RGTC) textures.
+Nếu ``false``, sử dụng tính năng nén S3TC nhanh hơn nhưng chất lượng thấp hơn trên các nền tảng desktop, và ETC2 trên các nền tảng di động/web. Khi sử dụng S3TC, DXT1 (BC1) được dùng cho texture đục, còn DXT5 (BC3) được dùng cho texture trong suốt hoặc normal map (RGTC).
 
-BPTC and ASTC support VRAM compression for HDR textures, but S3TC and ETC2 do not (see :ref:`compress/hdr_compression<class_ResourceImporterLayeredTexture_property_compress/hdr_compression>`).
+BPTC và ASTC hỗ trợ nén VRAM cho texture HDR, nhưng S3TC và ETC2 thì không (xem :ref:`compress/hdr_compression <class_ResourceImporterLayeredTexture_property_compress/hdr_compression>`).
 
 .. rst-class:: classref-item-separator
 
@@ -125,9 +125,9 @@ BPTC and ASTC support VRAM compression for HDR textures, but S3TC and ETC2 do no
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **compress/lossy_quality** = ``0.7`` :ref:`🔗<class_ResourceImporterLayeredTexture_property_compress/lossy_quality>`
+:ref:`float<class_float>` **compress/lossy_quality** = ``0.7`` :ref:`🔗 <class_ResourceImporterLayeredTexture_property_compress/lossy_quality>`
 
-The quality to use when using the **Lossy** compression mode. Higher values result in better quality, at the cost of larger file sizes. Lossy quality does not affect memory usage of the imported texture, only its file size on disk.
+Chất lượng được sử dụng khi dùng chế độ nén **Lossy**. Giá trị cao hơn cho chất lượng tốt hơn, nhưng làm tăng kích thước tệp. Chất lượng Lossy không ảnh hưởng đến mức sử dụng bộ nhớ của texture đã nhập, mà chỉ ảnh hưởng đến kích thước tệp trên ổ đĩa.
 
 .. rst-class:: classref-item-separator
 
@@ -137,21 +137,21 @@ The quality to use when using the **Lossy** compression mode. Higher values resu
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **compress/mode** = ``1`` :ref:`🔗<class_ResourceImporterLayeredTexture_property_compress/mode>`
+:ref:`int<class_int>` **compress/mode** = ``1`` :ref:`🔗 <class_ResourceImporterLayeredTexture_property_compress/mode>`
 
-The compression mode to use. Each compression mode provides a different tradeoff:
+Chế độ nén được sử dụng. Mỗi chế độ nén mang lại một sự đánh đổi khác nhau:
 
-\ **Lossless**: Original quality, high memory usage, high size on disk, fast import.
+\ **Lossless**: Chất lượng nguyên bản, mức sử dụng bộ nhớ cao, kích thước trên ổ đĩa lớn, nhập nhanh.
 
-\ **Lossy:** Reduced quality, high memory usage, low size on disk, fast import.
+\ **Lossy:** Chất lượng giảm, mức sử dụng bộ nhớ cao, kích thước trên ổ đĩa nhỏ, nhập nhanh.
 
-\ **VRAM Compressed:** Reduced quality, low memory usage, low size on disk, slowest import. Only use for textures in 3D scenes, not for 2D elements.
+\ **VRAM Compressed:** Chất lượng giảm, mức sử dụng bộ nhớ thấp, kích thước trên ổ đĩa nhỏ, nhập chậm nhất. Chỉ sử dụng cho texture trong scene 3D, không sử dụng cho các phần tử 2D.
 
-\ **VRAM Uncompressed:** Original quality, high memory usage, highest size on disk, fastest import.
+\ **VRAM Uncompressed:** Chất lượng gốc, sử dụng nhiều bộ nhớ, kích thước trên ổ đĩa lớn nhất, import nhanh nhất.
 
-\ **Basis Universal:** Reduced quality, low memory usage, lowest size on disk, slow import. Only use for textures in 3D scenes, not for 2D elements.
+\ **Basis Universal:** Chất lượng giảm, sử dụng ít bộ nhớ, kích thước trên ổ đĩa nhỏ nhất, import chậm. Chỉ sử dụng cho texture trong các cảnh 3D, không sử dụng cho các phần tử 2D.
 
-See `Compress mode <../tutorials/assets_pipeline/importing_images.html#compress-mode>`__ in the manual for more details.
+Xem `Compress mode <../tutorials/assets_pipeline/importing_images.html#compress-mode>`__ trong manual để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -161,13 +161,13 @@ See `Compress mode <../tutorials/assets_pipeline/importing_images.html#compress-
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **compress/rdo_quality_loss** = ``0.0`` :ref:`🔗<class_ResourceImporterLayeredTexture_property_compress/rdo_quality_loss>`
+:ref:`float<class_float>` **compress/rdo_quality_loss** = ``0.0`` :ref:`🔗 <class_ResourceImporterLayeredTexture_property_compress/rdo_quality_loss>`
 
-If greater than or equal to ``0.01``, enables Rate-Distortion Optimization (RDO) to reduce file size. Higher values result in smaller file sizes but lower quality.
+Nếu lớn hơn hoặc bằng ``0.01``, tính năng Rate-Distortion Optimization (RDO) sẽ được bật để giảm kích thước tệp. Giá trị cao hơn tạo ra tệp có kích thước nhỏ hơn nhưng chất lượng thấp hơn.
 
-\ **Note:** Enabling RDO makes encoding times significantly longer, especially when the image is large.
+\ **Lưu ý:** Bật RDO khiến thời gian encoding dài hơn đáng kể, đặc biệt khi hình ảnh lớn.
 
-See also :ref:`ProjectSettings.rendering/textures/basis_universal/rdo_dict_size<class_ProjectSettings_property_rendering/textures/basis_universal/rdo_dict_size>` and :ref:`ProjectSettings.rendering/textures/basis_universal/zstd_supercompression_level<class_ProjectSettings_property_rendering/textures/basis_universal/zstd_supercompression_level>` if you want to reduce the file size further.
+Xem thêm :ref:`ProjectSettings.rendering/textures/basis_universal/rdo_dict_size <class_ProjectSettings_property_rendering/textures/basis_universal/rdo_dict_size>` và :ref:`ProjectSettings.rendering/textures/basis_universal/zstd_supercompression_level <class_ProjectSettings_property_rendering/textures/basis_universal/zstd_supercompression_level>` nếu bạn muốn giảm kích thước tệp hơn nữa.
 
 .. rst-class:: classref-item-separator
 
@@ -177,9 +177,9 @@ See also :ref:`ProjectSettings.rendering/textures/basis_universal/rdo_dict_size<
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **compress/uastc_level** = ``0`` :ref:`🔗<class_ResourceImporterLayeredTexture_property_compress/uastc_level>`
+:ref:`int<class_int>` **compress/uastc_level** = ``0`` :ref:`🔗 <class_ResourceImporterLayeredTexture_property_compress/uastc_level>`
 
-The UASTC encoding level. Higher values result in better quality but make encoding times longer.
+Mức encoding UASTC. Giá trị cao hơn cho chất lượng tốt hơn nhưng khiến thời gian encoding dài hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -189,17 +189,17 @@ The UASTC encoding level. Higher values result in better quality but make encodi
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **mipmaps/generate** = ``true`` :ref:`🔗<class_ResourceImporterLayeredTexture_property_mipmaps/generate>`
+:ref:`bool<class_bool>` **mipmaps/generate** = ``true`` :ref:`🔗 <class_ResourceImporterLayeredTexture_property_mipmaps/generate>`
 
-If ``true``, smaller versions of the texture are generated on import. For example, a 64×64 texture will generate 6 mipmaps (32×32, 16×16, 8×8, 4×4, 2×2, 1×1). This has several benefits:
+Nếu ``true``, các phiên bản nhỏ hơn của texture sẽ được tạo khi import. Ví dụ, texture 64×64 sẽ tạo ra 6 mipmap (32×32, 16×16, 8×8, 4×4, 2×2, 1×1). Điều này mang lại một số lợi ích:
 
-- Textures will not become grainy in the distance (in 3D), or if scaled down due to :ref:`Camera2D<class_Camera2D>` zoom or :ref:`CanvasItem<class_CanvasItem>` scale (in 2D).
+- Texture sẽ không bị nhiễu hạt khi ở xa (trong 3D) hoặc khi được thu nhỏ do :ref:`Camera2D<class_Camera2D>` zoom hoặc :ref:`CanvasItem<class_CanvasItem>` scale (trong 2D).
 
-- Performance will improve if the texture is displayed in the distance, since sampling smaller versions of the original texture is faster and requires less memory bandwidth.
+- Hiệu năng sẽ được cải thiện nếu texture được hiển thị ở xa, vì việc lấy mẫu các phiên bản nhỏ hơn của texture gốc nhanh hơn và yêu cầu ít băng thông bộ nhớ hơn.
 
-The downside of mipmaps is that they increase memory usage by roughly 33% (for :ref:`Texture2DArray<class_Texture2DArray>`, :ref:`Cubemap<class_Cubemap>` and :ref:`CubemapArray<class_CubemapArray>`) or 14% (for :ref:`Texture3D<class_Texture3D>`).
+Nhược điểm của mipmap là chúng làm tăng mức sử dụng bộ nhớ khoảng 33% (đối với :ref:`Texture2DArray<class_Texture2DArray>`, :ref:`Cubemap<class_Cubemap>` và :ref:`CubemapArray<class_CubemapArray>`) hoặc 14% (đối với :ref:`Texture3D<class_Texture3D>`).
 
-It's recommended to enable mipmaps in 3D. However, in 2D, this should only be enabled if your project visibly benefits from having mipmaps enabled. If the camera never zooms out significantly, there won't be a benefit to enabling mipmaps but memory usage will increase.
+Bạn nên bật mipmap trong 3D. Tuy nhiên, trong 2D, chỉ nên bật tính năng này nếu dự án của bạn thực sự được hưởng lợi rõ rệt từ việc bật mipmap. Nếu camera không bao giờ zoom out đáng kể, việc bật mipmap sẽ không mang lại lợi ích nhưng sẽ làm tăng mức sử dụng bộ nhớ.
 
 .. rst-class:: classref-item-separator
 
@@ -209,9 +209,9 @@ It's recommended to enable mipmaps in 3D. However, in 2D, this should only be en
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **mipmaps/limit** = ``-1`` :ref:`🔗<class_ResourceImporterLayeredTexture_property_mipmaps/limit>`
+:ref:`int<class_int>` **mipmaps/limit** = ``-1`` :ref:`🔗 <class_ResourceImporterLayeredTexture_property_mipmaps/limit>`
 
-Unimplemented. This currently has no effect when changed.
+Chưa được triển khai. Hiện tại, thay đổi giá trị này không có tác dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -221,16 +221,16 @@ Unimplemented. This currently has no effect when changed.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **slices/arrangement** = ``1`` :ref:`🔗<class_ResourceImporterLayeredTexture_property_slices/arrangement>`
+:ref:`int<class_int>` **slices/arrangement** = ``1`` :ref:`🔗 <class_ResourceImporterLayeredTexture_property_slices/arrangement>`
 
-Controls how the cubemap's texture is internally laid out. When using high-resolution cubemaps, **2×3** and **3×2** are less prone to exceeding hardware texture size limits compared to **1×6** and **6×1**.
+Kiểm soát cách bố trí nội bộ texture của cubemap. Khi sử dụng cubemap độ phân giải cao, **2×3** và **3×2** ít có khả năng vượt quá giới hạn kích thước texture của phần cứng hơn so với **1×6** và **6×1**.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường nên được người dùng override để có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

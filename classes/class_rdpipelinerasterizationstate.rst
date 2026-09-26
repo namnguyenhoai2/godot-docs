@@ -10,48 +10,48 @@
 RDPipelineRasterizationState
 ============================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Pipeline rasterization state (used by :ref:`RenderingDevice<class_RenderingDevice>`).
+Trạng thái rasterization của pipeline (được sử dụng bởi :ref:`RenderingDevice<class_RenderingDevice>`).
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This object is used by :ref:`RenderingDevice<class_RenderingDevice>`.
+Đối tượng này được sử dụng bởi :ref:`RenderingDevice<class_RenderingDevice>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`PolygonCullMode<enum_RenderingDevice_PolygonCullMode>`   | :ref:`cull_mode<class_RDPipelineRasterizationState_property_cull_mode>`                                   | ``0``     |
-   +----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`                                      | :ref:`depth_bias_clamp<class_RDPipelineRasterizationState_property_depth_bias_clamp>`                     | ``0.0``   |
-   +----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`                                      | :ref:`depth_bias_constant_factor<class_RDPipelineRasterizationState_property_depth_bias_constant_factor>` | ``0.0``   |
-   +----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                        | :ref:`depth_bias_enabled<class_RDPipelineRasterizationState_property_depth_bias_enabled>`                 | ``false`` |
-   +----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`                                      | :ref:`depth_bias_slope_factor<class_RDPipelineRasterizationState_property_depth_bias_slope_factor>`       | ``0.0``   |
-   +----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                        | :ref:`discard_primitives<class_RDPipelineRasterizationState_property_discard_primitives>`                 | ``false`` |
-   +----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                        | :ref:`enable_depth_clamp<class_RDPipelineRasterizationState_property_enable_depth_clamp>`                 | ``false`` |
-   +----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`PolygonFrontFace<enum_RenderingDevice_PolygonFrontFace>` | :ref:`front_face<class_RDPipelineRasterizationState_property_front_face>`                                 | ``0``     |
-   +----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`                                      | :ref:`line_width<class_RDPipelineRasterizationState_property_line_width>`                                 | ``1.0``   |
-   +----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`                                          | :ref:`patch_control_points<class_RDPipelineRasterizationState_property_patch_control_points>`             | ``1``     |
-   +----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                        | :ref:`wireframe<class_RDPipelineRasterizationState_property_wireframe>`                                   | ``false`` |
-   +----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
+   +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`PolygonCullMode <enum_RenderingDevice_PolygonCullMode>`   | :ref:`cull_mode<class_RDPipelineRasterizationState_property_cull_mode>`                                   | ``0``     |
+   +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`                                       | :ref:`depth_bias_clamp<class_RDPipelineRasterizationState_property_depth_bias_clamp>`                     | ``0.0``   |
+   +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`                                       | :ref:`depth_bias_constant_factor<class_RDPipelineRasterizationState_property_depth_bias_constant_factor>` | ``0.0``   |
+   +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                         | :ref:`depth_bias_enabled<class_RDPipelineRasterizationState_property_depth_bias_enabled>`                 | ``false`` |
+   +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`                                       | :ref:`depth_bias_slope_factor<class_RDPipelineRasterizationState_property_depth_bias_slope_factor>`       | ``0.0``   |
+   +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                         | :ref:`discard_primitives<class_RDPipelineRasterizationState_property_discard_primitives>`                 | ``false`` |
+   +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                         | :ref:`enable_depth_clamp<class_RDPipelineRasterizationState_property_enable_depth_clamp>`                 | ``false`` |
+   +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`PolygonFrontFace <enum_RenderingDevice_PolygonFrontFace>` | :ref:`front_face<class_RDPipelineRasterizationState_property_front_face>`                                 | ``0``     |
+   +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`                                       | :ref:`line_width<class_RDPipelineRasterizationState_property_line_width>`                                 | ``1.0``   |
+   +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`                                           | :ref:`patch_control_points<class_RDPipelineRasterizationState_property_patch_control_points>`             | ``1``     |
+   +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                         | :ref:`wireframe<class_RDPipelineRasterizationState_property_wireframe>`                                   | ``false`` |
+   +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-section-separator
 
@@ -59,8 +59,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_RDPipelineRasterizationState_property_cull_mode:
 
@@ -73,7 +73,7 @@ Property Descriptions
 - |void| **set_cull_mode**\ (\ value\: :ref:`PolygonCullMode<enum_RenderingDevice_PolygonCullMode>`\ )
 - :ref:`PolygonCullMode<enum_RenderingDevice_PolygonCullMode>` **get_cull_mode**\ (\ )
 
-The cull mode to use when drawing polygons, which determines whether front faces or backfaces are hidden.
+Chế độ loại bỏ được sử dụng khi vẽ các đa giác, xác định mặt trước hay mặt sau bị ẩn.
 
 .. rst-class:: classref-item-separator
 
@@ -90,7 +90,7 @@ The cull mode to use when drawing polygons, which determines whether front faces
 - |void| **set_depth_bias_clamp**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_depth_bias_clamp**\ (\ )
 
-A limit for how much each depth value can be offset. If negative, it serves as a minimum value, but if positive, it serves as a maximum value.
+Giới hạn về mức độ mà mỗi giá trị depth có thể được offset. Nếu là số âm, giá trị này đóng vai trò là giá trị tối thiểu; nếu là số dương, nó đóng vai trò là giá trị tối đa.
 
 .. rst-class:: classref-item-separator
 
@@ -107,7 +107,7 @@ A limit for how much each depth value can be offset. If negative, it serves as a
 - |void| **set_depth_bias_constant_factor**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_depth_bias_constant_factor**\ (\ )
 
-A constant offset added to each depth value. Applied after :ref:`depth_bias_slope_factor<class_RDPipelineRasterizationState_property_depth_bias_slope_factor>`.
+Một offset hằng số được cộng vào mỗi giá trị depth. Được áp dụng sau :ref:`depth_bias_slope_factor<class_RDPipelineRasterizationState_property_depth_bias_slope_factor>`.
 
 .. rst-class:: classref-item-separator
 
@@ -124,7 +124,7 @@ A constant offset added to each depth value. Applied after :ref:`depth_bias_slop
 - |void| **set_depth_bias_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_depth_bias_enabled**\ (\ )
 
-If ``true``, each generated depth value will by offset by some amount. The specific amount is generated per polygon based on the values of :ref:`depth_bias_slope_factor<class_RDPipelineRasterizationState_property_depth_bias_slope_factor>` and :ref:`depth_bias_constant_factor<class_RDPipelineRasterizationState_property_depth_bias_constant_factor>`.
+Nếu ``true``, mỗi giá trị depth được tạo sẽ được offset một lượng nhất định. Lượng cụ thể được tạo cho từng đa giác dựa trên các giá trị của :ref:`depth_bias_slope_factor<class_RDPipelineRasterizationState_property_depth_bias_slope_factor>` và :ref:`depth_bias_constant_factor<class_RDPipelineRasterizationState_property_depth_bias_constant_factor>`.
 
 .. rst-class:: classref-item-separator
 
@@ -141,7 +141,7 @@ If ``true``, each generated depth value will by offset by some amount. The speci
 - |void| **set_depth_bias_slope_factor**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_depth_bias_slope_factor**\ (\ )
 
-A constant scale applied to the slope of each polygons' depth. Applied before :ref:`depth_bias_constant_factor<class_RDPipelineRasterizationState_property_depth_bias_constant_factor>`.
+Một scale hằng số được áp dụng cho slope depth của mỗi đa giác. Được áp dụng trước :ref:`depth_bias_constant_factor<class_RDPipelineRasterizationState_property_depth_bias_constant_factor>`.
 
 .. rst-class:: classref-item-separator
 
@@ -158,7 +158,7 @@ A constant scale applied to the slope of each polygons' depth. Applied before :r
 - |void| **set_discard_primitives**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_discard_primitives**\ (\ )
 
-If ``true``, primitives are discarded immediately before the rasterization stage.
+Nếu ``true``, các primitive sẽ bị loại bỏ ngay trước giai đoạn rasterization.
 
 .. rst-class:: classref-item-separator
 
@@ -175,7 +175,7 @@ If ``true``, primitives are discarded immediately before the rasterization stage
 - |void| **set_enable_depth_clamp**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_enable_depth_clamp**\ (\ )
 
-If ``true``, clamps depth values according to the minimum and maximum depth of the associated viewport.
+Nếu ``true``, giới hạn các giá trị depth theo depth tối thiểu và tối đa của viewport liên kết.
 
 .. rst-class:: classref-item-separator
 
@@ -192,7 +192,7 @@ If ``true``, clamps depth values according to the minimum and maximum depth of t
 - |void| **set_front_face**\ (\ value\: :ref:`PolygonFrontFace<enum_RenderingDevice_PolygonFrontFace>`\ )
 - :ref:`PolygonFrontFace<enum_RenderingDevice_PolygonFrontFace>` **get_front_face**\ (\ )
 
-The winding order to use to determine which face of a triangle is considered its front face.
+Thứ tự winding được sử dụng để xác định mặt nào của một tam giác được xem là mặt trước.
 
 .. rst-class:: classref-item-separator
 
@@ -209,7 +209,7 @@ The winding order to use to determine which face of a triangle is considered its
 - |void| **set_line_width**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_line_width**\ (\ )
 
-The line width to use when drawing lines (in pixels). Thick lines may not be supported on all hardware.
+Độ rộng đường kẻ được sử dụng khi vẽ các đường (tính bằng pixel). Đường kẻ dày có thể không được mọi phần cứng hỗ trợ.
 
 .. rst-class:: classref-item-separator
 
@@ -226,7 +226,7 @@ The line width to use when drawing lines (in pixels). Thick lines may not be sup
 - |void| **set_patch_control_points**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_patch_control_points**\ (\ )
 
-The number of control points to use when drawing a patch with tessellation enabled. Higher values result in higher quality at the cost of performance.
+Số control point được sử dụng khi vẽ một patch với tessellation được bật. Giá trị cao hơn cho chất lượng cao hơn nhưng làm giảm hiệu năng.
 
 .. rst-class:: classref-item-separator
 
@@ -243,14 +243,14 @@ The number of control points to use when drawing a patch with tessellation enabl
 - |void| **set_wireframe**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_wireframe**\ (\ )
 
-If ``true``, performs wireframe rendering for triangles instead of flat or textured rendering.
+Nếu ``true``, thực hiện rendering dạng wireframe cho các tam giác thay vì rendering phẳng hoặc có texture.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải override phương thức này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để xây dựng một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

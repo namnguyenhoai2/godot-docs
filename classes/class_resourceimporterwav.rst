@@ -10,55 +10,55 @@
 ResourceImporterWAV
 ===================
 
-**Inherits:** :ref:`ResourceImporter<class_ResourceImporter>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`ResourceImporter<class_ResourceImporter>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Imports a WAV audio file for playback.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-WAV is an uncompressed format, which can provide higher quality compared to Ogg Vorbis and MP3. It also has the lowest CPU cost to decode. This means high numbers of WAV sounds can be played at the same time, even on low-end devices.
-
-By default, Godot imports WAV files using the lossy Quite OK Audio compression. You may change this by setting the :ref:`compress/mode<class_ResourceImporterWAV_property_compress/mode>` property.
+Nhập tệp âm thanh WAV để phát lại.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+WAV là định dạng không nén, có thể cung cấp chất lượng cao hơn so với Ogg Vorbis và MP3. Định dạng này cũng có chi phí giải mã trên CPU thấp nhất. Điều này có nghĩa là có thể phát đồng thời nhiều âm thanh WAV, ngay cả trên các thiết bị cấp thấp.
+
+Theo mặc định, Godot nhập các tệp WAV bằng tính năng nén Quite OK Audio có tổn hao. Bạn có thể thay đổi điều này bằng cách đặt thuộc tính :ref:`compress/mode <class_ResourceImporterWAV_property_compress/mode>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Importing audio samples <../tutorials/assets_pipeline/importing_audio_samples>`
+- :doc:`Nhập các mẫu âm thanh <../tutorials/assets_pipeline/importing_audio_samples>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------+--------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`     | :ref:`compress/mode<class_ResourceImporterWAV_property_compress/mode>`         | ``2``     |
-   +---------------------------+--------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`     | :ref:`edit/loop_begin<class_ResourceImporterWAV_property_edit/loop_begin>`     | ``0``     |
-   +---------------------------+--------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`     | :ref:`edit/loop_end<class_ResourceImporterWAV_property_edit/loop_end>`         | ``-1``    |
-   +---------------------------+--------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`     | :ref:`edit/loop_mode<class_ResourceImporterWAV_property_edit/loop_mode>`       | ``0``     |
-   +---------------------------+--------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`   | :ref:`edit/normalize<class_ResourceImporterWAV_property_edit/normalize>`       | ``false`` |
-   +---------------------------+--------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`   | :ref:`edit/trim<class_ResourceImporterWAV_property_edit/trim>`                 | ``false`` |
-   +---------------------------+--------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`   | :ref:`force/8_bit<class_ResourceImporterWAV_property_force/8_bit>`             | ``false`` |
-   +---------------------------+--------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`   | :ref:`force/max_rate<class_ResourceImporterWAV_property_force/max_rate>`       | ``false`` |
-   +---------------------------+--------------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>` | :ref:`force/max_rate_hz<class_ResourceImporterWAV_property_force/max_rate_hz>` | ``44100`` |
-   +---------------------------+--------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`   | :ref:`force/mono<class_ResourceImporterWAV_property_force/mono>`               | ``false`` |
-   +---------------------------+--------------------------------------------------------------------------------+-----------+
+   +---------------------------+---------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`     | :ref:`compress/mode <class_ResourceImporterWAV_property_compress/mode>`         | ``2``     |
+   +---------------------------+---------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`     | :ref:`edit/loop_begin <class_ResourceImporterWAV_property_edit/loop_begin>`     | ``0``     |
+   +---------------------------+---------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`     | :ref:`edit/loop_end <class_ResourceImporterWAV_property_edit/loop_end>`         | ``-1``    |
+   +---------------------------+---------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`     | :ref:`edit/loop_mode <class_ResourceImporterWAV_property_edit/loop_mode>`       | ``0``     |
+   +---------------------------+---------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`   | :ref:`edit/normalize <class_ResourceImporterWAV_property_edit/normalize>`       | ``false`` |
+   +---------------------------+---------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`   | :ref:`edit/trim <class_ResourceImporterWAV_property_edit/trim>`                 | ``false`` |
+   +---------------------------+---------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`   | :ref:`force/8_bit <class_ResourceImporterWAV_property_force/8_bit>`             | ``false`` |
+   +---------------------------+---------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`   | :ref:`force/max_rate <class_ResourceImporterWAV_property_force/max_rate>`       | ``false`` |
+   +---------------------------+---------------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>` | :ref:`force/max_rate_hz <class_ResourceImporterWAV_property_force/max_rate_hz>` | ``44100`` |
+   +---------------------------+---------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`   | :ref:`force/mono <class_ResourceImporterWAV_property_force/mono>`               | ``false`` |
+   +---------------------------+---------------------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-section-separator
 
@@ -66,22 +66,22 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ResourceImporterWAV_property_compress/mode:
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **compress/mode** = ``2`` :ref:`🔗<class_ResourceImporterWAV_property_compress/mode>`
+:ref:`int<class_int>` **compress/mode** = ``2`` :ref:`🔗 <class_ResourceImporterWAV_property_compress/mode>`
 
-The compression mode to use on import.
+Chế độ nén được sử dụng khi nhập.
 
-- **PCM (Uncompressed):** Imports audio data without any form of compression, preserving the highest possible quality. It has the lowest CPU cost, but the highest memory usage.
+- **PCM (Không nén):** Nhập dữ liệu âm thanh mà không áp dụng bất kỳ hình thức nén nào, bảo toàn chất lượng cao nhất có thể. Chế độ này có chi phí CPU thấp nhất, nhưng mức sử dụng bộ nhớ cao nhất.
 
-- **IMA ADPCM:** Applies fast, lossy compression during import, noticeably decreasing the quality, but with low CPU cost and memory usage. Does not support seeking and only Forward loop mode is supported.
+- **IMA ADPCM:** Áp dụng tính năng nén có tổn hao nhanh trong quá trình nhập, làm giảm chất lượng đáng kể, nhưng có chi phí CPU và mức sử dụng bộ nhớ thấp. Không hỗ trợ tìm kiếm và chỉ hỗ trợ chế độ lặp Forward.
 
-- **\ `Quite OK Audio <https://qoaformat.org/>`__:** Also applies lossy compression on import, having a slightly higher CPU cost compared to IMA ADPCM, but much higher quality and the lowest memory usage.
+- **\ `Quite OK Audio <https://qoaformat.org/>`__:** Cũng áp dụng tính năng nén có tổn hao khi nhập, có chi phí CPU cao hơn một chút so với IMA ADPCM, nhưng chất lượng cao hơn nhiều và mức sử dụng bộ nhớ thấp nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -91,9 +91,9 @@ The compression mode to use on import.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **edit/loop_begin** = ``0`` :ref:`🔗<class_ResourceImporterWAV_property_edit/loop_begin>`
+:ref:`int<class_int>` **edit/loop_begin** = ``0`` :ref:`🔗 <class_ResourceImporterWAV_property_edit/loop_begin>`
 
-The begin loop point to use when :ref:`edit/loop_mode<class_ResourceImporterWAV_property_edit/loop_mode>` is **Forward**, **Ping-Pong**, or **Backward**. This is set in samples after the beginning of the audio file.
+Điểm bắt đầu vòng lặp được sử dụng khi :ref:`edit/loop_mode <class_ResourceImporterWAV_property_edit/loop_mode>` là **Forward**, **Ping-Pong** hoặc **Backward**. Giá trị này được đặt theo số mẫu tính từ đầu tệp âm thanh.
 
 .. rst-class:: classref-item-separator
 
@@ -103,9 +103,9 @@ The begin loop point to use when :ref:`edit/loop_mode<class_ResourceImporterWAV_
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **edit/loop_end** = ``-1`` :ref:`🔗<class_ResourceImporterWAV_property_edit/loop_end>`
+:ref:`int<class_int>` **edit/loop_end** = ``-1`` :ref:`🔗 <class_ResourceImporterWAV_property_edit/loop_end>`
 
-The end loop point to use when :ref:`edit/loop_mode<class_ResourceImporterWAV_property_edit/loop_mode>` is **Forward**, **Ping-Pong**, or **Backward**. This is set in samples after the beginning of the audio file. A value of ``-1`` uses the end of the audio file as the end loop point.
+Điểm kết thúc vòng lặp được sử dụng khi :ref:`edit/loop_mode <class_ResourceImporterWAV_property_edit/loop_mode>` là **Forward**, **Ping-Pong** hoặc **Backward**. Giá trị này được đặt theo số mẫu tính từ đầu tệp âm thanh. Giá trị ``-1`` sử dụng cuối tệp âm thanh làm điểm kết thúc vòng lặp.
 
 .. rst-class:: classref-item-separator
 
@@ -115,21 +115,21 @@ The end loop point to use when :ref:`edit/loop_mode<class_ResourceImporterWAV_pr
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **edit/loop_mode** = ``0`` :ref:`🔗<class_ResourceImporterWAV_property_edit/loop_mode>`
+:ref:`int<class_int>` **edit/loop_mode** = ``0`` :ref:`🔗 <class_ResourceImporterWAV_property_edit/loop_mode>`
 
-Controls how audio should loop.
+Kiểm soát cách âm thanh được lặp.
 
-- **Detect From WAV:** Uses loop information from the WAV metadata.
+- **Phát hiện từ WAV:** Sử dụng thông tin vòng lặp từ siêu dữ liệu WAV.
 
-- **Disabled:** Don't loop audio, even if the metadata indicates the file playback should loop.
+- **Tắt:** Không lặp âm thanh, ngay cả khi siêu dữ liệu cho biết tệp cần được phát lặp lại.
 
-- **Forward:** Standard audio looping. Plays the audio forward from the beginning to :ref:`edit/loop_end<class_ResourceImporterWAV_property_edit/loop_end>`, then returns to :ref:`edit/loop_begin<class_ResourceImporterWAV_property_edit/loop_begin>` and repeats.
+- **Forward:** Lặp âm thanh tiêu chuẩn. Phát âm thanh theo chiều tiến từ đầu đến :ref:`edit/loop_end <class_ResourceImporterWAV_property_edit/loop_end>`, sau đó quay lại :ref:`edit/loop_begin <class_ResourceImporterWAV_property_edit/loop_begin>` và lặp lại.
 
-- **Ping-Pong:** Plays the audio forward until :ref:`edit/loop_end<class_ResourceImporterWAV_property_edit/loop_end>`, then backwards to :ref:`edit/loop_begin<class_ResourceImporterWAV_property_edit/loop_begin>`, repeating this cycle.
+- **Ping-Pong:** Phát âm thanh theo chiều tiến đến :ref:`edit/loop_end <class_ResourceImporterWAV_property_edit/loop_end>`, sau đó phát ngược đến :ref:`edit/loop_begin <class_ResourceImporterWAV_property_edit/loop_begin>`, rồi lặp lại chu kỳ này.
 
-- **Backward:** Plays the audio backwards from :ref:`edit/loop_end<class_ResourceImporterWAV_property_edit/loop_end>` to :ref:`edit/loop_begin<class_ResourceImporterWAV_property_edit/loop_begin>`, then repeats.
+- **Backward:** Phát âm thanh theo chiều ngược từ :ref:`edit/loop_end <class_ResourceImporterWAV_property_edit/loop_end>` đến :ref:`edit/loop_begin <class_ResourceImporterWAV_property_edit/loop_begin>`, rồi lặp lại.
 
-\ **Note:** In :ref:`AudioStreamPlayer<class_AudioStreamPlayer>`, the :ref:`AudioStreamPlayer.finished<class_AudioStreamPlayer_signal_finished>` signal won't be emitted for looping audio when it reaches the end of the audio file, as the audio will keep playing indefinitely.
+\ **Lưu ý:** Trong :ref:`AudioStreamPlayer<class_AudioStreamPlayer>`, :ref:`AudioStreamPlayer.finished<class_AudioStreamPlayer_signal_finished>` signal sẽ không được phát ra đối với âm thanh lặp khi âm thanh đến cuối tệp, vì âm thanh sẽ tiếp tục phát vô thời hạn.
 
 .. rst-class:: classref-item-separator
 
@@ -139,9 +139,9 @@ Controls how audio should loop.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **edit/normalize** = ``false`` :ref:`🔗<class_ResourceImporterWAV_property_edit/normalize>`
+:ref:`bool<class_bool>` **edit/normalize** = ``false`` :ref:`🔗 <class_ResourceImporterWAV_property_edit/normalize>`
 
-If ``true``, normalize the audio volume so that its peak volume is equal to 0 dB. When enabled, normalization will make audio sound louder depending on its original peak volume.
+Nếu ``true``, chuẩn hóa âm lượng âm thanh để âm lượng đỉnh bằng 0 dB. Khi được bật, tính năng chuẩn hóa sẽ làm âm thanh to hơn tùy thuộc vào âm lượng đỉnh ban đầu.
 
 .. rst-class:: classref-item-separator
 
@@ -151,9 +151,9 @@ If ``true``, normalize the audio volume so that its peak volume is equal to 0 dB
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **edit/trim** = ``false`` :ref:`🔗<class_ResourceImporterWAV_property_edit/trim>`
+:ref:`bool<class_bool>` **edit/trim** = ``false`` :ref:`🔗 <class_ResourceImporterWAV_property_edit/trim>`
 
-If ``true``, automatically trim the beginning and end of the audio if it's lower than -50 dB after normalization (see :ref:`edit/normalize<class_ResourceImporterWAV_property_edit/normalize>`). This prevents having files with silence at the beginning or end, which increases their size unnecessarily and adds latency to the moment they are played back. A fade-in/fade-out period of 500 samples is also used during trimming to avoid audible pops.
+Nếu ``true``, tự động cắt phần đầu và cuối âm thanh nếu nhỏ hơn -50 dB sau khi chuẩn hóa (xem :ref:`edit/normalize <class_ResourceImporterWAV_property_edit/normalize>`). Điều này ngăn các tệp có khoảng lặng ở đầu hoặc cuối, vốn làm tăng kích thước tệp một cách không cần thiết và tạo độ trễ khi chúng được phát lại. Trong quá trình cắt cũng sử dụng khoảng fade-in/fade-out dài 500 mẫu để tránh tiếng bật có thể nghe thấy.
 
 .. rst-class:: classref-item-separator
 
@@ -163,11 +163,11 @@ If ``true``, automatically trim the beginning and end of the audio if it's lower
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **force/8_bit** = ``false`` :ref:`🔗<class_ResourceImporterWAV_property_force/8_bit>`
+:ref:`bool<class_bool>` **force/8_bit** = ``false`` :ref:`🔗 <class_ResourceImporterWAV_property_force/8_bit>`
 
-If ``true``, forces the imported audio to use 8-bit quantization if the source file is 16-bit or higher.
+Nếu ``true``, buộc âm thanh đã nhập sử dụng lượng tử hóa 8-bit nếu tệp nguồn là 16-bit trở lên.
 
-Enabling this is generally not recommended, as 8-bit quantization decreases audio quality significantly. If you need smaller file sizes, consider using Ogg Vorbis or MP3 audio instead.
+Nhìn chung, không nên bật tùy chọn này, vì lượng tử hóa 8-bit làm giảm đáng kể chất lượng âm thanh. Nếu cần kích thước tệp nhỏ hơn, hãy cân nhắc sử dụng âm thanh Ogg Vorbis hoặc MP3 thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -177,11 +177,11 @@ Enabling this is generally not recommended, as 8-bit quantization decreases audi
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **force/max_rate** = ``false`` :ref:`🔗<class_ResourceImporterWAV_property_force/max_rate>`
+:ref:`bool<class_bool>` **force/max_rate** = ``false`` :ref:`🔗 <class_ResourceImporterWAV_property_force/max_rate>`
 
-If set to a value greater than ``0``, forces the audio's sample rate to be reduced to a value lower than or equal to the value specified in :ref:`force/max_rate_hz<class_ResourceImporterWAV_property_force/max_rate_hz>`.
+Nếu được đặt thành một giá trị lớn hơn ``0``, buộc sample rate của âm thanh giảm xuống một giá trị nhỏ hơn hoặc bằng giá trị được chỉ định trong :ref:`force/max_rate_hz <class_ResourceImporterWAV_property_force/max_rate_hz>`.
 
-This can decrease file size noticeably on certain sounds, without impacting quality depending on the actual sound's contents. See `Best practices <../tutorials/assets_pipeline/importing_audio_samples.html#doc-importing-audio-samples-best-practices>`__ for more information.
+Điều này có thể làm giảm đáng kể kích thước tệp đối với một số âm thanh nhất định mà không ảnh hưởng đến chất lượng, tùy thuộc vào nội dung thực tế của âm thanh. Xem `Các phương pháp hay nhất <../tutorials/assets_pipeline/importing_audio_samples.html#doc-importing-audio-samples-best-practices>`__ để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -191,9 +191,9 @@ This can decrease file size noticeably on certain sounds, without impacting qual
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **force/max_rate_hz** = ``44100`` :ref:`🔗<class_ResourceImporterWAV_property_force/max_rate_hz>`
+:ref:`float<class_float>` **force/max_rate_hz** = ``44100`` :ref:`🔗 <class_ResourceImporterWAV_property_force/max_rate_hz>`
 
-The frequency to limit the imported audio sample to (in Hz). Only effective if :ref:`force/max_rate<class_ResourceImporterWAV_property_force/max_rate>` is ``true``.
+Tần số giới hạn của sample âm thanh đã import (tính bằng Hz). Chỉ có hiệu lực nếu :ref:`force/max_rate <class_ResourceImporterWAV_property_force/max_rate>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -203,16 +203,16 @@ The frequency to limit the imported audio sample to (in Hz). Only effective if :
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **force/mono** = ``false`` :ref:`🔗<class_ResourceImporterWAV_property_force/mono>`
+:ref:`bool<class_bool>` **force/mono** = ``false`` :ref:`🔗 <class_ResourceImporterWAV_property_force/mono>`
 
-If ``true``, forces the imported audio to be mono if the source file is stereo. This decreases the file size by 50% by merging the two channels into one.
+Nếu ``true``, buộc âm thanh đã import chuyển thành mono nếu tệp nguồn là stereo. Điều này làm giảm kích thước tệp 50% bằng cách hợp nhất hai kênh thành một.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải override phương thức này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Phương thức không sửa đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng argument nào sau các argument được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Không cần instance để gọi phương thức này, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

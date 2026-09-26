@@ -10,66 +10,66 @@
 SoftBody3D
 ==========
 
-**Inherits:** :ref:`MeshInstance3D<class_MeshInstance3D>` **<** :ref:`GeometryInstance3D<class_GeometryInstance3D>` **<** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`MeshInstance3D<class_MeshInstance3D>` **<** :ref:`GeometryInstance3D<class_GeometryInstance3D>` **<** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A deformable 3D physics mesh.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A deformable 3D physics mesh. Used to create elastic or deformable objects such as cloth, rubber, or other flexible materials.
-
-Additionally, **SoftBody3D** is subject to wind forces defined in :ref:`Area3D<class_Area3D>` (see :ref:`Area3D.wind_source_path<class_Area3D_property_wind_source_path>`, :ref:`Area3D.wind_force_magnitude<class_Area3D_property_wind_force_magnitude>`, and :ref:`Area3D.wind_attenuation_factor<class_Area3D_property_wind_attenuation_factor>`).
-
-\ **Note:** It's recommended to use Jolt Physics when using **SoftBody3D** instead of the default GodotPhysics3D, as Jolt Physics' soft body implementation is faster and more reliable. You can switch the physics engine using the :ref:`ProjectSettings.physics/3d/physics_engine<class_ProjectSettings_property_physics/3d/physics_engine>` project setting.
+Một physics mesh 3D có thể biến dạng.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Một physics mesh 3D có thể biến dạng. Được dùng để tạo các vật thể đàn hồi hoặc có thể biến dạng như vải, cao su hoặc các vật liệu mềm dẻo khác.
+
+Ngoài ra, **SoftBody3D** chịu tác động của các lực gió được định nghĩa trong :ref:`Area3D<class_Area3D>` (xem :ref:`Area3D.wind_source_path<class_Area3D_property_wind_source_path>`, :ref:`Area3D.wind_force_magnitude<class_Area3D_property_wind_force_magnitude>` và :ref:`Area3D.wind_attenuation_factor<class_Area3D_property_wind_attenuation_factor>`).
+
+\ **Lưu ý:** Bạn nên sử dụng Jolt Physics khi dùng **SoftBody3D** thay vì GodotPhysics3D mặc định, vì triển khai soft body của Jolt Physics nhanh hơn và đáng tin cậy hơn. Bạn có thể chuyển physics engine bằng thiết lập dự án :ref:`ProjectSettings.physics/3d/physics_engine <class_ProjectSettings_property_physics/3d/physics_engine>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
 - :doc:`SoftBody <../tutorials/physics/soft_body>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------------+-----------------------------------------------------------------------------------+------------------+
-   | :ref:`int<class_int>`                           | :ref:`collision_layer<class_SoftBody3D_property_collision_layer>`                 | ``1``            |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------+------------------+
-   | :ref:`int<class_int>`                           | :ref:`collision_mask<class_SoftBody3D_property_collision_mask>`                   | ``1``            |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------+------------------+
-   | :ref:`float<class_float>`                       | :ref:`damping_coefficient<class_SoftBody3D_property_damping_coefficient>`         | ``0.01``         |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------+------------------+
-   | :ref:`DisableMode<enum_SoftBody3D_DisableMode>` | :ref:`disable_mode<class_SoftBody3D_property_disable_mode>`                       | ``0``            |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------+------------------+
-   | :ref:`float<class_float>`                       | :ref:`drag_coefficient<class_SoftBody3D_property_drag_coefficient>`               | ``0.0``          |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------+------------------+
-   | :ref:`float<class_float>`                       | :ref:`linear_stiffness<class_SoftBody3D_property_linear_stiffness>`               | ``0.5``          |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------+------------------+
-   | :ref:`NodePath<class_NodePath>`                 | :ref:`parent_collision_ignore<class_SoftBody3D_property_parent_collision_ignore>` | ``NodePath("")`` |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------+------------------+
-   | :ref:`float<class_float>`                       | :ref:`pressure_coefficient<class_SoftBody3D_property_pressure_coefficient>`       | ``0.0``          |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------+------------------+
-   | :ref:`bool<class_bool>`                         | :ref:`ray_pickable<class_SoftBody3D_property_ray_pickable>`                       | ``true``         |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------+------------------+
-   | :ref:`float<class_float>`                       | :ref:`shrinking_factor<class_SoftBody3D_property_shrinking_factor>`               | ``0.0``          |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------+------------------+
-   | :ref:`int<class_int>`                           | :ref:`simulation_precision<class_SoftBody3D_property_simulation_precision>`       | ``5``            |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------+------------------+
-   | :ref:`float<class_float>`                       | :ref:`total_mass<class_SoftBody3D_property_total_mass>`                           | ``1.0``          |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------+------------------+
+   +--------------------------------------------------+-----------------------------------------------------------------------------------+------------------+
+   | :ref:`int<class_int>`                            | :ref:`collision_layer<class_SoftBody3D_property_collision_layer>`                 | ``1``            |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------+------------------+
+   | :ref:`int<class_int>`                            | :ref:`collision_mask<class_SoftBody3D_property_collision_mask>`                   | ``1``            |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------+------------------+
+   | :ref:`float<class_float>`                        | :ref:`damping_coefficient<class_SoftBody3D_property_damping_coefficient>`         | ``0.01``         |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------+------------------+
+   | :ref:`DisableMode <enum_SoftBody3D_DisableMode>` | :ref:`disable_mode<class_SoftBody3D_property_disable_mode>`                       | ``0``            |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------+------------------+
+   | :ref:`float<class_float>`                        | :ref:`drag_coefficient<class_SoftBody3D_property_drag_coefficient>`               | ``0.0``          |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------+------------------+
+   | :ref:`float<class_float>`                        | :ref:`linear_stiffness<class_SoftBody3D_property_linear_stiffness>`               | ``0.5``          |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------+------------------+
+   | :ref:`NodePath<class_NodePath>`                  | :ref:`parent_collision_ignore<class_SoftBody3D_property_parent_collision_ignore>` | ``NodePath("")`` |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------+------------------+
+   | :ref:`float<class_float>`                        | :ref:`pressure_coefficient<class_SoftBody3D_property_pressure_coefficient>`       | ``0.0``          |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------+------------------+
+   | :ref:`bool<class_bool>`                          | :ref:`ray_pickable<class_SoftBody3D_property_ray_pickable>`                       | ``true``         |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------+------------------+
+   | :ref:`float<class_float>`                        | :ref:`shrinking_factor<class_SoftBody3D_property_shrinking_factor>`               | ``0.0``          |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------+------------------+
+   | :ref:`int<class_int>`                            | :ref:`simulation_precision<class_SoftBody3D_property_simulation_precision>`       | ``5``            |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------+------------------+
+   | :ref:`float<class_float>`                        | :ref:`total_mass<class_SoftBody3D_property_total_mass>`                           | ``1.0``          |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------+------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -79,7 +79,7 @@ Methods
    +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                 | :ref:`apply_central_force<class_SoftBody3D_method_apply_central_force>`\ (\ force\: :ref:`Vector3<class_Vector3>`\ )                                                                                                                                     |
    +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                 | :ref:`apply_central_impulse<class_SoftBody3D_method_apply_central_impulse>`\ (\ impulse\: :ref:`Vector3<class_Vector3>`\ )                                                                                                                               |
+   | |void|                                                                 | :ref:`apply_central_impulse<class_SoftBody3D_method_apply_central_impulse>`\ (\ impulse\: :ref:`Vector3<class_Vector3>`\ )。                                                                                                                             |
    +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                 | :ref:`apply_force<class_SoftBody3D_method_apply_force>`\ (\ point_index\: :ref:`int<class_int>`, force\: :ref:`Vector3<class_Vector3>`\ )                                                                                                                |
    +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -112,14 +112,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_SoftBody3D_DisableMode:
 
 .. rst-class:: classref-enumeration
 
-enum **DisableMode**: :ref:`🔗<enum_SoftBody3D_DisableMode>`
+enum **DisableMode**: :ref:`🔗 <enum_SoftBody3D_DisableMode>`
 
 .. _class_SoftBody3D_constant_DISABLE_MODE_REMOVE:
 
@@ -127,9 +127,9 @@ enum **DisableMode**: :ref:`🔗<enum_SoftBody3D_DisableMode>`
 
 :ref:`DisableMode<enum_SoftBody3D_DisableMode>` **DISABLE_MODE_REMOVE** = ``0``
 
-When :ref:`Node.process_mode<class_Node_property_process_mode>` is set to :ref:`Node.PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`, remove from the physics simulation to stop all physics interactions with this **SoftBody3D**.
+Khi :ref:`Node.process_mode<class_Node_property_process_mode>` được đặt thành :ref:`Node.PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`, hãy xóa khỏi physics simulation để dừng mọi tương tác vật lý với **SoftBody3D** này.
 
-Automatically re-added to the physics simulation when the :ref:`Node<class_Node>` is processed again.
+Tự động được thêm lại vào physics simulation khi :ref:`Node<class_Node>` được xử lý lần nữa.
 
 .. _class_SoftBody3D_constant_DISABLE_MODE_KEEP_ACTIVE:
 
@@ -137,7 +137,7 @@ Automatically re-added to the physics simulation when the :ref:`Node<class_Node>
 
 :ref:`DisableMode<enum_SoftBody3D_DisableMode>` **DISABLE_MODE_KEEP_ACTIVE** = ``1``
 
-When :ref:`Node.process_mode<class_Node_property_process_mode>` is set to :ref:`Node.PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`, do not affect the physics simulation.
+Khi :ref:`Node.process_mode<class_Node_property_process_mode>` được đặt thành :ref:`Node.PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`, không ảnh hưởng đến physics simulation.
 
 .. rst-class:: classref-section-separator
 
@@ -145,8 +145,8 @@ When :ref:`Node.process_mode<class_Node_property_process_mode>` is set to :ref:`
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_SoftBody3D_property_collision_layer:
 
@@ -159,9 +159,9 @@ Property Descriptions
 - |void| **set_collision_layer**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_collision_layer**\ (\ )
 
-The physics layers this SoftBody3D **is in**. Collision objects can exist in one or more of 32 different layers. See also :ref:`collision_mask<class_SoftBody3D_property_collision_mask>`.
+Các physics layer mà SoftBody3D **nằm trong**. Các collision object có thể tồn tại trong một hoặc nhiều trong số 32 layer khác nhau. Xem thêm :ref:`collision_mask<class_SoftBody3D_property_collision_mask>`.
 
-\ **Note:** Object A can detect a contact with object B only if object B is in any of the layers that object A scans. See `Collision layers and masks <../tutorials/physics/physics_introduction.html#collision-layers-and-masks>`__ in the documentation for more information.
+\ **Lưu ý:** Object A chỉ có thể phát hiện tiếp xúc với object B nếu object B nằm trong bất kỳ layer nào mà object A quét. Xem `Collision layers and masks <../tutorials/physics/physics_introduction.html#collision-layers-and-masks>`__ trong tài liệu để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -178,9 +178,9 @@ The physics layers this SoftBody3D **is in**. Collision objects can exist in one
 - |void| **set_collision_mask**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_collision_mask**\ (\ )
 
-The physics layers this SoftBody3D **scans**. Collision objects can scan one or more of 32 different layers. See also :ref:`collision_layer<class_SoftBody3D_property_collision_layer>`.
+Các physics layer mà SoftBody3D **quét**. Các collision object có thể quét một hoặc nhiều trong số 32 layer khác nhau. Xem thêm :ref:`collision_layer<class_SoftBody3D_property_collision_layer>`.
 
-\ **Note:** Object A can detect a contact with object B only if object B is in any of the layers that object A scans. See `Collision layers and masks <../tutorials/physics/physics_introduction.html#collision-layers-and-masks>`__ in the documentation for more information.
+\ **Lưu ý:** Object A chỉ có thể phát hiện tiếp xúc với object B nếu object B nằm trong bất kỳ layer nào mà object A quét. Xem `Collision layers and masks <../tutorials/physics/physics_introduction.html#collision-layers-and-masks>`__ trong tài liệu để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -197,7 +197,7 @@ The physics layers this SoftBody3D **scans**. Collision objects can scan one or 
 - |void| **set_damping_coefficient**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_damping_coefficient**\ (\ )
 
-The body's damping coefficient. Higher values will slow down the body more noticeably when forces are applied.
+Hệ số damping của body. Giá trị cao hơn sẽ làm body chậm lại rõ rệt hơn khi các lực được tác động.
 
 .. rst-class:: classref-item-separator
 
@@ -214,7 +214,7 @@ The body's damping coefficient. Higher values will slow down the body more notic
 - |void| **set_disable_mode**\ (\ value\: :ref:`DisableMode<enum_SoftBody3D_DisableMode>`\ )
 - :ref:`DisableMode<enum_SoftBody3D_DisableMode>` **get_disable_mode**\ (\ )
 
-Defines the behavior in physics when :ref:`Node.process_mode<class_Node_property_process_mode>` is set to :ref:`Node.PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`.
+Xác định hành vi trong physics khi :ref:`Node.process_mode<class_Node_property_process_mode>` được đặt thành :ref:`Node.PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`.
 
 .. rst-class:: classref-item-separator
 
@@ -231,9 +231,9 @@ Defines the behavior in physics when :ref:`Node.process_mode<class_Node_property
 - |void| **set_drag_coefficient**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_drag_coefficient**\ (\ )
 
-The body's drag coefficient. Higher values increase this body's air resistance.
+Hệ số drag của body. Giá trị cao hơn làm tăng lực cản không khí của body này.
 
-\ **Note:** This value is currently unused by Godot's default physics implementation.
+\ **Lưu ý:** Giá trị này hiện không được Godot's default physics implementation sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -250,7 +250,7 @@ The body's drag coefficient. Higher values increase this body's air resistance.
 - |void| **set_linear_stiffness**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_linear_stiffness**\ (\ )
 
-Higher values will result in a stiffer body, while lower values will increase the body's ability to bend. The value can be between ``0.0`` and ``1.0`` (inclusive).
+Giá trị cao hơn sẽ tạo ra body cứng hơn, trong khi giá trị thấp hơn sẽ tăng khả năng uốn cong của body. Giá trị có thể nằm trong khoảng từ ``0.0`` đến ``1.0`` (bao gồm cả hai giá trị).
 
 .. rst-class:: classref-item-separator
 
@@ -267,7 +267,7 @@ Higher values will result in a stiffer body, while lower values will increase th
 - |void| **set_parent_collision_ignore**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_parent_collision_ignore**\ (\ )
 
-:ref:`NodePath<class_NodePath>` to a :ref:`CollisionObject3D<class_CollisionObject3D>` this SoftBody3D should avoid clipping.
+:ref:`NodePath<class_NodePath>` thành một :ref:`CollisionObject3D<class_CollisionObject3D>`, SoftBody3D này sẽ tránh bị cắt xuyên.
 
 .. rst-class:: classref-item-separator
 
@@ -284,7 +284,7 @@ Higher values will result in a stiffer body, while lower values will increase th
 - |void| **set_pressure_coefficient**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_pressure_coefficient**\ (\ )
 
-The pressure coefficient of this soft body. Simulate pressure build-up from inside this body. Higher values increase the strength of this effect.
+Hệ số áp suất của soft body này. Mô phỏng sự tích tụ áp suất bên trong body này. Giá trị cao hơn sẽ tăng cường độ của hiệu ứng này.
 
 .. rst-class:: classref-item-separator
 
@@ -301,7 +301,7 @@ The pressure coefficient of this soft body. Simulate pressure build-up from insi
 - |void| **set_ray_pickable**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_ray_pickable**\ (\ )
 
-If ``true``, the **SoftBody3D** will respond to :ref:`RayCast3D<class_RayCast3D>`\ s.
+Nếu ``true``, **SoftBody3D** sẽ phản hồi với :ref:`RayCast3D<class_RayCast3D>`\ s.
 
 .. rst-class:: classref-item-separator
 
@@ -318,9 +318,9 @@ If ``true``, the **SoftBody3D** will respond to :ref:`RayCast3D<class_RayCast3D>
 - |void| **set_shrinking_factor**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_shrinking_factor**\ (\ )
 
-Scales the rest lengths of **SoftBody3D**'s edge constraints. Positive values shrink the mesh, while negative values expand it. For example, a value of ``0.1`` shortens the edges of the mesh by 10%, while ``-0.1`` expands the edges by 10%.
+Điều chỉnh độ dài nghỉ của các ràng buộc cạnh của **SoftBody3D**. Các giá trị dương làm thu nhỏ mesh, trong khi các giá trị âm làm mở rộng mesh. Ví dụ: giá trị ``0.1`` rút ngắn các cạnh của mesh 10%, còn ``-0.1`` mở rộng các cạnh 10%.
 
-\ **Note:** :ref:`shrinking_factor<class_SoftBody3D_property_shrinking_factor>` is best used on surface meshes with pinned points.
+\ **Lưu ý:** :ref:`shrinking_factor<class_SoftBody3D_property_shrinking_factor>` phù hợp nhất khi được sử dụng trên các mesh bề mặt có các điểm được ghim.
 
 .. rst-class:: classref-item-separator
 
@@ -337,7 +337,7 @@ Scales the rest lengths of **SoftBody3D**'s edge constraints. Positive values sh
 - |void| **set_simulation_precision**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_simulation_precision**\ (\ )
 
-Increasing this value will improve the resulting simulation, but can affect performance. Use with care.
+Việc tăng giá trị này sẽ cải thiện kết quả mô phỏng, nhưng có thể ảnh hưởng đến hiệu năng. Hãy thận trọng khi sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -354,7 +354,7 @@ Increasing this value will improve the resulting simulation, but can affect perf
 - |void| **set_total_mass**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_total_mass**\ (\ )
 
-The SoftBody3D's mass.
+Khối lượng của SoftBody3D.
 
 .. rst-class:: classref-section-separator
 
@@ -362,8 +362,8 @@ The SoftBody3D's mass.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_SoftBody3D_method_add_collision_exception_with:
 
@@ -371,7 +371,7 @@ Method Descriptions
 
 |void| **add_collision_exception_with**\ (\ body\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_SoftBody3D_method_add_collision_exception_with>`
 
-Adds a body to the list of bodies that this body can't collide with.
+Thêm một body vào danh sách các body mà body này không thể va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -383,7 +383,7 @@ Adds a body to the list of bodies that this body can't collide with.
 
 |void| **apply_central_force**\ (\ force\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_SoftBody3D_method_apply_central_force>`
 
-Distributes and applies a force to all points. A force is time dependent and meant to be applied every physics update.
+Phân bổ và áp dụng một lực lên tất cả các điểm. Lực phụ thuộc vào thời gian và được dùng để áp dụng trong mỗi lần cập nhật vật lý.
 
 .. rst-class:: classref-item-separator
 
@@ -395,9 +395,9 @@ Distributes and applies a force to all points. A force is time dependent and mea
 
 |void| **apply_central_impulse**\ (\ impulse\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_SoftBody3D_method_apply_central_impulse>`
 
-Distributes and applies an impulse to all points.
+Phân bổ và áp dụng một xung lực lên tất cả các điểm.
 
-An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_force" functions otherwise).
+Xung lực không phụ thuộc vào thời gian! Việc áp dụng một xung lực trong mỗi frame sẽ tạo ra một lực phụ thuộc vào framerate. Vì lý do này, xung lực chỉ nên được dùng khi mô phỏng các va chạm xảy ra một lần (nếu không, hãy sử dụng các hàm "_force").
 
 .. rst-class:: classref-item-separator
 
@@ -409,7 +409,7 @@ An impulse is time-independent! Applying an impulse every frame would result in 
 
 |void| **apply_force**\ (\ point_index\: :ref:`int<class_int>`, force\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_SoftBody3D_method_apply_force>`
 
-Applies a force to a point. A force is time dependent and meant to be applied every physics update.
+Áp dụng một lực lên một điểm. Lực phụ thuộc vào thời gian và được dùng để áp dụng trong mỗi lần cập nhật vật lý.
 
 .. rst-class:: classref-item-separator
 
@@ -421,9 +421,9 @@ Applies a force to a point. A force is time dependent and meant to be applied ev
 
 |void| **apply_impulse**\ (\ point_index\: :ref:`int<class_int>`, impulse\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_SoftBody3D_method_apply_impulse>`
 
-Applies an impulse to a point.
+Áp dụng một xung lực lên một điểm.
 
-An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_force" functions otherwise).
+Xung lực không phụ thuộc vào thời gian! Việc áp dụng một xung lực trong mỗi frame sẽ tạo ra một lực phụ thuộc vào framerate. Vì lý do này, xung lực chỉ nên được dùng khi mô phỏng các va chạm xảy ra một lần (nếu không, hãy sử dụng các hàm "_force").
 
 .. rst-class:: classref-item-separator
 
@@ -435,7 +435,7 @@ An impulse is time-independent! Applying an impulse every frame would result in 
 
 :ref:`Array<class_Array>`\[:ref:`PhysicsBody3D<class_PhysicsBody3D>`\] **get_collision_exceptions**\ (\ ) :ref:`🔗<class_SoftBody3D_method_get_collision_exceptions>`
 
-Returns an array of nodes that were added as collision exceptions for this body.
+Trả về một mảng các node đã được thêm làm ngoại lệ va chạm cho body này.
 
 .. rst-class:: classref-item-separator
 
@@ -447,7 +447,7 @@ Returns an array of nodes that were added as collision exceptions for this body.
 
 :ref:`bool<class_bool>` **get_collision_layer_value**\ (\ layer_number\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SoftBody3D_method_get_collision_layer_value>`
 
-Returns whether or not the specified layer of the :ref:`collision_layer<class_SoftBody3D_property_collision_layer>` is enabled, given a ``layer_number`` between 1 and 32.
+Trả về layer được chỉ định của :ref:`collision_layer<class_SoftBody3D_property_collision_layer>` có được bật hay không, với ``layer_number`` nằm trong khoảng từ 1 đến 32.
 
 .. rst-class:: classref-item-separator
 
@@ -459,7 +459,7 @@ Returns whether or not the specified layer of the :ref:`collision_layer<class_So
 
 :ref:`bool<class_bool>` **get_collision_mask_value**\ (\ layer_number\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SoftBody3D_method_get_collision_mask_value>`
 
-Returns whether or not the specified layer of the :ref:`collision_mask<class_SoftBody3D_property_collision_mask>` is enabled, given a ``layer_number`` between 1 and 32.
+Trả về layer được chỉ định của :ref:`collision_mask<class_SoftBody3D_property_collision_mask>` có được bật hay không, với ``layer_number`` nằm trong khoảng từ 1 đến 32.
 
 .. rst-class:: classref-item-separator
 
@@ -471,7 +471,7 @@ Returns whether or not the specified layer of the :ref:`collision_mask<class_Sof
 
 :ref:`RID<class_RID>` **get_physics_rid**\ (\ ) |const| :ref:`🔗<class_SoftBody3D_method_get_physics_rid>`
 
-Returns the internal :ref:`RID<class_RID>` used by the :ref:`PhysicsServer3D<class_PhysicsServer3D>` for this body.
+Trả về :ref:`RID<class_RID>` nội bộ được :ref:`PhysicsServer3D<class_PhysicsServer3D>` sử dụng cho body này.
 
 .. rst-class:: classref-item-separator
 
@@ -483,7 +483,7 @@ Returns the internal :ref:`RID<class_RID>` used by the :ref:`PhysicsServer3D<cla
 
 :ref:`Vector3<class_Vector3>` **get_point_transform**\ (\ point_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_SoftBody3D_method_get_point_transform>`
 
-Returns local translation of a vertex in the surface array.
+Trả về phép tịnh tiến cục bộ của một đỉnh trong mảng bề mặt.
 
 .. rst-class:: classref-item-separator
 
@@ -495,7 +495,7 @@ Returns local translation of a vertex in the surface array.
 
 :ref:`bool<class_bool>` **is_point_pinned**\ (\ point_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SoftBody3D_method_is_point_pinned>`
 
-Returns ``true`` if vertex is set to pinned.
+Trả về ``true`` nếu đỉnh được đặt ở trạng thái ghim.
 
 .. rst-class:: classref-item-separator
 
@@ -507,7 +507,7 @@ Returns ``true`` if vertex is set to pinned.
 
 |void| **remove_collision_exception_with**\ (\ body\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_SoftBody3D_method_remove_collision_exception_with>`
 
-Removes a body from the list of bodies that this body can't collide with.
+Xóa một body khỏi danh sách các body mà body này không thể va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -519,7 +519,7 @@ Removes a body from the list of bodies that this body can't collide with.
 
 |void| **set_collision_layer_value**\ (\ layer_number\: :ref:`int<class_int>`, value\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_SoftBody3D_method_set_collision_layer_value>`
 
-Based on ``value``, enables or disables the specified layer in the :ref:`collision_layer<class_SoftBody3D_property_collision_layer>`, given a ``layer_number`` between 1 and 32.
+Dựa trên ``value``, bật hoặc tắt layer được chỉ định trong :ref:`collision_layer<class_SoftBody3D_property_collision_layer>`, với ``layer_number`` nằm trong khoảng từ 1 đến 32.
 
 .. rst-class:: classref-item-separator
 
@@ -531,7 +531,7 @@ Based on ``value``, enables or disables the specified layer in the :ref:`collisi
 
 |void| **set_collision_mask_value**\ (\ layer_number\: :ref:`int<class_int>`, value\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_SoftBody3D_method_set_collision_mask_value>`
 
-Based on ``value``, enables or disables the specified layer in the :ref:`collision_mask<class_SoftBody3D_property_collision_mask>`, given a ``layer_number`` between 1 and 32.
+Dựa trên ``value``, bật hoặc tắt layer được chỉ định trong :ref:`collision_mask<class_SoftBody3D_property_collision_mask>`, với ``layer_number`` nằm trong khoảng từ 1 đến 32.
 
 .. rst-class:: classref-item-separator
 
@@ -543,14 +543,14 @@ Based on ``value``, enables or disables the specified layer in the :ref:`collisi
 
 |void| **set_point_pinned**\ (\ point_index\: :ref:`int<class_int>`, pinned\: :ref:`bool<class_bool>`, attachment_path\: :ref:`NodePath<class_NodePath>` = NodePath(""), insert_at\: :ref:`int<class_int>` = -1\ ) :ref:`🔗<class_SoftBody3D_method_set_point_pinned>`
 
-Sets the pinned state of a surface vertex. When set to ``true``, the optional ``attachment_path`` can define a :ref:`Node3D<class_Node3D>` the pinned vertex will be attached to.
+Đặt trạng thái ghim của một đỉnh bề mặt. Khi được đặt thành ``true``, ``attachment_path`` tùy chọn có thể xác định một :ref:`Node3D<class_Node3D>` mà đỉnh được ghim sẽ gắn vào.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

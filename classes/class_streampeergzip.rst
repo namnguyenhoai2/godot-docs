@@ -10,38 +10,38 @@
 StreamPeerGZIP
 ==============
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể bị thay đổi hoặc xóa trong các phiên bản tương lai.
 
-**Inherits:** :ref:`StreamPeer<class_StreamPeer>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`StreamPeer<class_StreamPeer>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A stream peer that handles GZIP and deflate compression/decompression.
+Một stream peer xử lý việc nén/giải nén GZIP và deflate.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This class allows to compress or decompress data using GZIP/deflate in a streaming fashion. This is particularly useful when compressing or decompressing files that have to be sent through the network without needing to allocate them all in memory.
+Lớp này cho phép nén hoặc giải nén dữ liệu bằng GZIP/deflate theo phương thức streaming. Điều này đặc biệt hữu ích khi nén hoặc giải nén các tệp cần được gửi qua mạng mà không phải phân bổ toàn bộ chúng trong bộ nhớ.
 
-After starting the stream via :ref:`start_compression()<class_StreamPeerGZIP_method_start_compression>` (or :ref:`start_decompression()<class_StreamPeerGZIP_method_start_decompression>`), calling :ref:`StreamPeer.put_partial_data()<class_StreamPeer_method_put_partial_data>` on this stream will compress (or decompress) the data, writing it to the internal buffer. Calling :ref:`StreamPeer.get_available_bytes()<class_StreamPeer_method_get_available_bytes>` will return the pending bytes in the internal buffer, and :ref:`StreamPeer.get_partial_data()<class_StreamPeer_method_get_partial_data>` will retrieve the compressed (or decompressed) bytes from it. When the stream is over, you must call :ref:`finish()<class_StreamPeerGZIP_method_finish>` to ensure the internal buffer is properly flushed (make sure to call :ref:`StreamPeer.get_available_bytes()<class_StreamPeer_method_get_available_bytes>` on last time to check if more data needs to be read after that).
+Sau khi khởi động stream bằng :ref:`start_compression()<class_StreamPeerGZIP_method_start_compression>` (hoặc :ref:`start_decompression()<class_StreamPeerGZIP_method_start_decompression>`), việc gọi :ref:`StreamPeer.put_partial_data()<class_StreamPeer_method_put_partial_data>` trên stream này sẽ nén (hoặc giải nén) dữ liệu và ghi dữ liệu vào bộ đệm nội bộ. Gọi :ref:`StreamPeer.get_available_bytes()<class_StreamPeer_method_get_available_bytes>` sẽ trả về các byte đang chờ trong bộ đệm nội bộ, còn :ref:`StreamPeer.get_partial_data()<class_StreamPeer_method_get_partial_data>` sẽ lấy các byte đã nén (hoặc đã giải nén) từ đó. Khi stream kết thúc, bạn phải gọi :ref:`finish()<class_StreamPeerGZIP_method_finish>` để đảm bảo bộ đệm nội bộ được flush đúng cách (hãy nhớ gọi :ref:`StreamPeer.get_available_bytes()<class_StreamPeer_method_get_available_bytes>` lần cuối để kiểm tra xem sau đó có cần đọc thêm dữ liệu hay không).
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`clear<class_StreamPeerGZIP_method_clear>`\ (\ )                                                                                                                         |
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>` | :ref:`finish<class_StreamPeerGZIP_method_finish>`\ (\ )                                                                                                                       |
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>` | :ref:`start_compression<class_StreamPeerGZIP_method_start_compression>`\ (\ use_deflate\: :ref:`bool<class_bool>` = false, buffer_size\: :ref:`int<class_int>` = 65535\ )     |
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>` | :ref:`start_decompression<class_StreamPeerGZIP_method_start_decompression>`\ (\ use_deflate\: :ref:`bool<class_bool>` = false, buffer_size\: :ref:`int<class_int>` = 65535\ ) |
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +----------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                 | :ref:`clear<class_StreamPeerGZIP_method_clear>`\ (\ )                                                                                                                         |
+   +----------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>` | :ref:`finish<class_StreamPeerGZIP_method_finish>`\ (\ )                                                                                                                       |
+   +----------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>` | :ref:`start_compression<class_StreamPeerGZIP_method_start_compression>`\ (\ use_deflate\: :ref:`bool<class_bool>` = false, buffer_size\: :ref:`int<class_int>` = 65535\ )     |
+   +----------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>` | :ref:`start_decompression<class_StreamPeerGZIP_method_start_decompression>`\ (\ use_deflate\: :ref:`bool<class_bool>` = false, buffer_size\: :ref:`int<class_int>` = 65535\ ) |
+   +----------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -49,8 +49,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả các phương thức
+---------------------
 
 .. _class_StreamPeerGZIP_method_clear:
 
@@ -58,7 +58,7 @@ Method Descriptions
 
 |void| **clear**\ (\ ) :ref:`🔗<class_StreamPeerGZIP_method_clear>`
 
-Clears this stream, resetting the internal state.
+Xóa stream này và đặt lại trạng thái nội bộ.
 
 .. rst-class:: classref-item-separator
 
@@ -70,9 +70,9 @@ Clears this stream, resetting the internal state.
 
 :ref:`Error<enum_@GlobalScope_Error>` **finish**\ (\ ) :ref:`🔗<class_StreamPeerGZIP_method_finish>`
 
-Finalizes the stream, compressing any buffered chunk left.
+Hoàn tất stream và nén mọi phần dữ liệu đang được đệm còn lại.
 
-You must call it only when you are compressing.
+Bạn chỉ được gọi phương thức này khi đang nén.
 
 .. rst-class:: classref-item-separator
 
@@ -84,7 +84,7 @@ You must call it only when you are compressing.
 
 :ref:`Error<enum_@GlobalScope_Error>` **start_compression**\ (\ use_deflate\: :ref:`bool<class_bool>` = false, buffer_size\: :ref:`int<class_int>` = 65535\ ) :ref:`🔗<class_StreamPeerGZIP_method_start_compression>`
 
-Start the stream in compression mode with the given ``buffer_size``, if ``use_deflate`` is ``true`` uses deflate instead of GZIP.
+Khởi động stream ở chế độ nén với ``buffer_size`` đã cho; nếu ``use_deflate`` là ``true`` thì sử dụng deflate thay vì GZIP.
 
 .. rst-class:: classref-item-separator
 
@@ -96,14 +96,14 @@ Start the stream in compression mode with the given ``buffer_size``, if ``use_de
 
 :ref:`Error<enum_@GlobalScope_Error>` **start_decompression**\ (\ use_deflate\: :ref:`bool<class_bool>` = false, buffer_size\: :ref:`int<class_int>` = 65535\ ) :ref:`🔗<class_StreamPeerGZIP_method_start_decompression>`
 
-Start the stream in decompression mode with the given ``buffer_size``, if ``use_deflate`` is ``true`` uses deflate instead of GZIP.
+Khởi động stream ở chế độ giải nén với ``buffer_size`` đã cho; nếu ``use_deflate`` là ``true`` thì sử dụng deflate thay vì GZIP.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ có thể sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

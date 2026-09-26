@@ -10,45 +10,45 @@
 TextureRect
 ===========
 
-**Inherits:** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A control that displays a texture.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A control that displays a texture, for example an icon inside a GUI. The texture's placement can be controlled with the :ref:`stretch_mode<class_TextureRect_property_stretch_mode>` property. It can scale, tile, or stay centered inside its bounding rectangle.
+Một control hiển thị texture.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Một control hiển thị texture, chẳng hạn như một biểu tượng bên trong GUI. Vị trí của texture có thể được điều khiển bằng thuộc tính :ref:`stretch_mode<class_TextureRect_property_stretch_mode>`. Texture có thể được scale, lặp lại hoặc giữ ở chính giữa bên trong hình chữ nhật giới hạn của nó.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- `3D Voxel Demo <https://godotengine.org/asset-library/asset/2755>`__
+- `Bản minh họa voxel 3D <https://godotengine.org/asset-library/asset/2755>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +--------------------------------------------------+--------------------------------------------------------------+-----------------------------------------------------------------------+
-   | :ref:`ExpandMode<enum_TextureRect_ExpandMode>`   | :ref:`expand_mode<class_TextureRect_property_expand_mode>`   | ``0``                                                                 |
-   +--------------------------------------------------+--------------------------------------------------------------+-----------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                          | :ref:`flip_h<class_TextureRect_property_flip_h>`             | ``false``                                                             |
-   +--------------------------------------------------+--------------------------------------------------------------+-----------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                          | :ref:`flip_v<class_TextureRect_property_flip_v>`             | ``false``                                                             |
-   +--------------------------------------------------+--------------------------------------------------------------+-----------------------------------------------------------------------+
-   | :ref:`MouseFilter<enum_Control_MouseFilter>`     | mouse_filter                                                 | ``1`` (overrides :ref:`Control<class_Control_property_mouse_filter>`) |
-   +--------------------------------------------------+--------------------------------------------------------------+-----------------------------------------------------------------------+
-   | :ref:`StretchMode<enum_TextureRect_StretchMode>` | :ref:`stretch_mode<class_TextureRect_property_stretch_mode>` | ``0``                                                                 |
-   +--------------------------------------------------+--------------------------------------------------------------+-----------------------------------------------------------------------+
-   | :ref:`Texture2D<class_Texture2D>`                | :ref:`texture<class_TextureRect_property_texture>`           |                                                                       |
-   +--------------------------------------------------+--------------------------------------------------------------+-----------------------------------------------------------------------+
+   +---------------------------------------------------+--------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`ExpandMode <enum_TextureRect_ExpandMode>`   | :ref:`expand_mode<class_TextureRect_property_expand_mode>`   | ``0``                                                               |
+   +---------------------------------------------------+--------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`flip_h<class_TextureRect_property_flip_h>`             | ``false``                                                           |
+   +---------------------------------------------------+--------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`flip_v<class_TextureRect_property_flip_v>`             | ``false``                                                           |
+   +---------------------------------------------------+--------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`MouseFilter <enum_Control_MouseFilter>`     | mouse_filter                                                 | ``1`` (ghi đè :ref:`Control<class_Control_property_mouse_filter>`)‎ |
+   +---------------------------------------------------+--------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`StretchMode <enum_TextureRect_StretchMode>` | :ref:`stretch_mode<class_TextureRect_property_stretch_mode>` | ``0``                                                               |
+   +---------------------------------------------------+--------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`Texture2D<class_Texture2D>`                 | :ref:`texture<class_TextureRect_property_texture>`           |                                                                     |
+   +---------------------------------------------------+--------------------------------------------------------------+---------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -56,14 +56,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_TextureRect_ExpandMode:
 
 .. rst-class:: classref-enumeration
 
-enum **ExpandMode**: :ref:`🔗<enum_TextureRect_ExpandMode>`
+enum **ExpandMode**: :ref:`🔗 <enum_TextureRect_ExpandMode>`
 
 .. _class_TextureRect_constant_EXPAND_KEEP_SIZE:
 
@@ -71,7 +71,7 @@ enum **ExpandMode**: :ref:`🔗<enum_TextureRect_ExpandMode>`
 
 :ref:`ExpandMode<enum_TextureRect_ExpandMode>` **EXPAND_KEEP_SIZE** = ``0``
 
-The minimum size will be equal to texture size, i.e. **TextureRect** can't be smaller than the texture.
+Kích thước tối thiểu sẽ bằng kích thước texture, tức là **TextureRect** không thể nhỏ hơn texture.
 
 .. _class_TextureRect_constant_EXPAND_IGNORE_SIZE:
 
@@ -79,7 +79,7 @@ The minimum size will be equal to texture size, i.e. **TextureRect** can't be sm
 
 :ref:`ExpandMode<enum_TextureRect_ExpandMode>` **EXPAND_IGNORE_SIZE** = ``1``
 
-The size of the texture won't be considered for minimum size calculation, so the **TextureRect** can be shrunk down past the texture size.
+Kích thước của texture sẽ không được xét khi tính kích thước tối thiểu, vì vậy **TextureRect** có thể được thu nhỏ xuống thấp hơn kích thước texture.
 
 .. _class_TextureRect_constant_EXPAND_FIT_WIDTH:
 
@@ -87,7 +87,7 @@ The size of the texture won't be considered for minimum size calculation, so the
 
 :ref:`ExpandMode<enum_TextureRect_ExpandMode>` **EXPAND_FIT_WIDTH** = ``2``
 
-The height of the texture will be ignored. Minimum width will be equal to the current height. Useful for horizontal layouts, e.g. inside :ref:`HBoxContainer<class_HBoxContainer>`.
+Chiều cao của texture sẽ bị bỏ qua. Chiều rộng tối thiểu sẽ bằng chiều cao hiện tại. Hữu ích cho các bố cục ngang, chẳng hạn như bên trong :ref:`HBoxContainer<class_HBoxContainer>`.
 
 .. _class_TextureRect_constant_EXPAND_FIT_WIDTH_PROPORTIONAL:
 
@@ -95,7 +95,7 @@ The height of the texture will be ignored. Minimum width will be equal to the cu
 
 :ref:`ExpandMode<enum_TextureRect_ExpandMode>` **EXPAND_FIT_WIDTH_PROPORTIONAL** = ``3``
 
-Same as :ref:`EXPAND_FIT_WIDTH<class_TextureRect_constant_EXPAND_FIT_WIDTH>`, but keeps texture's aspect ratio.
+Giống :ref:`EXPAND_FIT_WIDTH<class_TextureRect_constant_EXPAND_FIT_WIDTH>`, nhưng giữ nguyên tỷ lệ khung hình của texture.
 
 .. _class_TextureRect_constant_EXPAND_FIT_HEIGHT:
 
@@ -103,7 +103,7 @@ Same as :ref:`EXPAND_FIT_WIDTH<class_TextureRect_constant_EXPAND_FIT_WIDTH>`, bu
 
 :ref:`ExpandMode<enum_TextureRect_ExpandMode>` **EXPAND_FIT_HEIGHT** = ``4``
 
-The width of the texture will be ignored. Minimum height will be equal to the current width. Useful for vertical layouts, e.g. inside :ref:`VBoxContainer<class_VBoxContainer>`.
+Chiều rộng của texture sẽ bị bỏ qua. Chiều cao tối thiểu sẽ bằng chiều rộng hiện tại. Hữu ích cho các bố cục dọc, chẳng hạn như bên trong :ref:`VBoxContainer<class_VBoxContainer>`.
 
 .. _class_TextureRect_constant_EXPAND_FIT_HEIGHT_PROPORTIONAL:
 
@@ -111,7 +111,7 @@ The width of the texture will be ignored. Minimum height will be equal to the cu
 
 :ref:`ExpandMode<enum_TextureRect_ExpandMode>` **EXPAND_FIT_HEIGHT_PROPORTIONAL** = ``5``
 
-Same as :ref:`EXPAND_FIT_HEIGHT<class_TextureRect_constant_EXPAND_FIT_HEIGHT>`, but keeps texture's aspect ratio.
+Giống :ref:`EXPAND_FIT_HEIGHT<class_TextureRect_constant_EXPAND_FIT_HEIGHT>`, nhưng giữ nguyên tỷ lệ khung hình của texture.
 
 .. rst-class:: classref-item-separator
 
@@ -121,7 +121,7 @@ Same as :ref:`EXPAND_FIT_HEIGHT<class_TextureRect_constant_EXPAND_FIT_HEIGHT>`, 
 
 .. rst-class:: classref-enumeration
 
-enum **StretchMode**: :ref:`🔗<enum_TextureRect_StretchMode>`
+enum **StretchMode**: :ref:`🔗 <enum_TextureRect_StretchMode>`
 
 .. _class_TextureRect_constant_STRETCH_SCALE:
 
@@ -129,7 +129,7 @@ enum **StretchMode**: :ref:`🔗<enum_TextureRect_StretchMode>`
 
 :ref:`StretchMode<enum_TextureRect_StretchMode>` **STRETCH_SCALE** = ``0``
 
-Scale to fit the node's bounding rectangle.
+Scale để vừa với hình chữ nhật giới hạn của node.
 
 .. _class_TextureRect_constant_STRETCH_TILE:
 
@@ -137,9 +137,9 @@ Scale to fit the node's bounding rectangle.
 
 :ref:`StretchMode<enum_TextureRect_StretchMode>` **STRETCH_TILE** = ``1``
 
-Tile inside the node's bounding rectangle.
+Lặp texture bên trong hình chữ nhật giới hạn của node.
 
-\ **Note:** :ref:`STRETCH_TILE<class_TextureRect_constant_STRETCH_TILE>` mode is not supported for :ref:`texture<class_TextureRect_property_texture>` set to an :ref:`AtlasTexture<class_AtlasTexture>` with non-zero :ref:`AtlasTexture.margin<class_AtlasTexture_property_margin>`.
+\ **Lưu ý:** :ref:`STRETCH_TILE<class_TextureRect_constant_STRETCH_TILE>` mode không được hỗ trợ cho :ref:`texture<class_TextureRect_property_texture>` được đặt thành một :ref:`AtlasTexture<class_AtlasTexture>` có :ref:`AtlasTexture.margin<class_AtlasTexture_property_margin>` khác không.
 
 .. _class_TextureRect_constant_STRETCH_KEEP:
 
@@ -147,7 +147,7 @@ Tile inside the node's bounding rectangle.
 
 :ref:`StretchMode<enum_TextureRect_StretchMode>` **STRETCH_KEEP** = ``2``
 
-The texture keeps its original size and stays in the bounding rectangle's top-left corner.
+Texture giữ nguyên kích thước ban đầu và nằm ở góc trên bên trái của hình chữ nhật giới hạn.
 
 .. _class_TextureRect_constant_STRETCH_KEEP_CENTERED:
 
@@ -155,7 +155,7 @@ The texture keeps its original size and stays in the bounding rectangle's top-le
 
 :ref:`StretchMode<enum_TextureRect_StretchMode>` **STRETCH_KEEP_CENTERED** = ``3``
 
-The texture keeps its original size and stays centered in the node's bounding rectangle.
+Texture giữ nguyên kích thước ban đầu và nằm ở chính giữa hình chữ nhật giới hạn của node.
 
 .. _class_TextureRect_constant_STRETCH_KEEP_ASPECT:
 
@@ -163,7 +163,7 @@ The texture keeps its original size and stays centered in the node's bounding re
 
 :ref:`StretchMode<enum_TextureRect_StretchMode>` **STRETCH_KEEP_ASPECT** = ``4``
 
-Scale the texture to fit the node's bounding rectangle, but maintain the texture's aspect ratio.
+Scale texture để vừa với hình chữ nhật giới hạn của node, nhưng vẫn giữ nguyên tỷ lệ khung hình của texture.
 
 .. _class_TextureRect_constant_STRETCH_KEEP_ASPECT_CENTERED:
 
@@ -171,7 +171,7 @@ Scale the texture to fit the node's bounding rectangle, but maintain the texture
 
 :ref:`StretchMode<enum_TextureRect_StretchMode>` **STRETCH_KEEP_ASPECT_CENTERED** = ``5``
 
-Scale the texture to fit the node's bounding rectangle, center it and maintain its aspect ratio.
+Scale texture để vừa với hình chữ nhật giới hạn của node, căn giữa texture và giữ nguyên tỷ lệ khung hình.
 
 .. _class_TextureRect_constant_STRETCH_KEEP_ASPECT_COVERED:
 
@@ -179,7 +179,7 @@ Scale the texture to fit the node's bounding rectangle, center it and maintain i
 
 :ref:`StretchMode<enum_TextureRect_StretchMode>` **STRETCH_KEEP_ASPECT_COVERED** = ``6``
 
-Scale the texture so that the shorter side fits the bounding rectangle. The other side clips to the node's limits.
+Scale texture sao cho cạnh ngắn hơn vừa với hình chữ nhật giới hạn. Cạnh còn lại sẽ bị cắt theo giới hạn của node.
 
 .. rst-class:: classref-section-separator
 
@@ -187,8 +187,8 @@ Scale the texture so that the shorter side fits the bounding rectangle. The othe
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_TextureRect_property_expand_mode:
 
@@ -201,9 +201,9 @@ Property Descriptions
 - |void| **set_expand_mode**\ (\ value\: :ref:`ExpandMode<enum_TextureRect_ExpandMode>`\ )
 - :ref:`ExpandMode<enum_TextureRect_ExpandMode>` **get_expand_mode**\ (\ )
 
-**Experimental:** Using :ref:`EXPAND_FIT_WIDTH<class_TextureRect_constant_EXPAND_FIT_WIDTH>`, :ref:`EXPAND_FIT_WIDTH_PROPORTIONAL<class_TextureRect_constant_EXPAND_FIT_WIDTH_PROPORTIONAL>`, :ref:`EXPAND_FIT_HEIGHT<class_TextureRect_constant_EXPAND_FIT_HEIGHT>`, or :ref:`EXPAND_FIT_HEIGHT_PROPORTIONAL<class_TextureRect_constant_EXPAND_FIT_HEIGHT_PROPORTIONAL>` may result in unstable behavior in some :ref:`Container<class_Container>` controls. This behavior may be re-evaluated and changed in the future.
+**Thử nghiệm:** Việc sử dụng :ref:`EXPAND_FIT_WIDTH<class_TextureRect_constant_EXPAND_FIT_WIDTH>`, :ref:`EXPAND_FIT_WIDTH_PROPORTIONAL<class_TextureRect_constant_EXPAND_FIT_WIDTH_PROPORTIONAL>`, :ref:`EXPAND_FIT_HEIGHT<class_TextureRect_constant_EXPAND_FIT_HEIGHT>` hoặc :ref:`EXPAND_FIT_HEIGHT_PROPORTIONAL<class_TextureRect_constant_EXPAND_FIT_HEIGHT_PROPORTIONAL>` có thể dẫn đến hành vi không ổn định ở một số control :ref:`Container<class_Container>`. Hành vi này có thể được đánh giá lại và thay đổi trong tương lai.
 
-Defines how minimum size is determined based on the texture's size.
+Xác định cách tính kích thước tối thiểu dựa trên kích thước của texture.
 
 .. rst-class:: classref-item-separator
 
@@ -220,7 +220,7 @@ Defines how minimum size is determined based on the texture's size.
 - |void| **set_flip_h**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_flipped_h**\ (\ )
 
-If ``true``, texture is flipped horizontally.
+Nếu ``true``, texture sẽ được lật theo chiều ngang.
 
 .. rst-class:: classref-item-separator
 
@@ -237,7 +237,7 @@ If ``true``, texture is flipped horizontally.
 - |void| **set_flip_v**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_flipped_v**\ (\ )
 
-If ``true``, texture is flipped vertically.
+Nếu ``true``, texture sẽ được lật theo chiều dọc.
 
 .. rst-class:: classref-item-separator
 
@@ -254,7 +254,7 @@ If ``true``, texture is flipped vertically.
 - |void| **set_stretch_mode**\ (\ value\: :ref:`StretchMode<enum_TextureRect_StretchMode>`\ )
 - :ref:`StretchMode<enum_TextureRect_StretchMode>` **get_stretch_mode**\ (\ )
 
-Controls the texture's behavior when resizing the node's bounding rectangle.
+Kiểm soát hành vi của texture khi thay đổi kích thước hình chữ nhật giới hạn của node.
 
 .. rst-class:: classref-item-separator
 
@@ -264,21 +264,21 @@ Controls the texture's behavior when resizing the node's bounding rectangle.
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **texture** :ref:`🔗<class_TextureRect_property_texture>`
+:ref:`Texture2D<class_Texture2D>` **texture** :ref:`🔗 <class_TextureRect_property_texture>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_texture**\ (\ value\: :ref:`Texture2D<class_Texture2D>`\ )
 - :ref:`Texture2D<class_Texture2D>` **get_texture**\ (\ )
 
-The node's :ref:`Texture2D<class_Texture2D>` resource.
+Resource :ref:`Texture2D<class_Texture2D>` của node.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần override method này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Cần override method này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có side effect. Nó không sửa đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Method này chấp nhận bất kỳ số lượng argument nào sau các argument được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Method này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Method này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Method này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

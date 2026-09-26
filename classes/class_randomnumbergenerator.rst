@@ -10,20 +10,20 @@
 RandomNumberGenerator
 =====================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Provides methods for generating pseudo-random numbers.
+Cung cấp các phương thức để tạo số giả ngẫu nhiên.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-RandomNumberGenerator is a class for generating pseudo-random numbers. It currently uses `PCG32 <https://www.pcg-random.org/>`__.
+RandomNumberGenerator là một class dùng để tạo số giả ngẫu nhiên. Hiện tại, class này sử dụng `PCG32 <https://www.pcg-random.org/>`__.
 
-\ **Note:** The underlying algorithm is an implementation detail and should not be depended upon.
+\ **Lưu ý:** Thuật toán nền tảng là một chi tiết triển khai và không nên được phụ thuộc vào.
 
-To generate a random float number (within a given range) based on a time-dependent seed:
+Để tạo một số thực ngẫu nhiên (trong một phạm vi cho trước) dựa trên seed phụ thuộc vào thời gian:
 
 ::
 
@@ -33,14 +33,14 @@ To generate a random float number (within a given range) based on a time-depende
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- :doc:`Random number generation <../tutorials/math/random_number_generation>`
+- :doc:`Tạo số ngẫu nhiên <../tutorials/math/random_number_generation>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -54,8 +54,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -82,8 +82,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_RandomNumberGenerator_property_seed:
 
@@ -96,13 +96,13 @@ Property Descriptions
 - |void| **set_seed**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_seed**\ (\ )
 
-Initializes the random number generator state based on the given seed value. A given seed will give a reproducible sequence of pseudo-random numbers.
+Khởi tạo trạng thái của bộ tạo số ngẫu nhiên dựa trên giá trị seed đã cho. Một seed nhất định sẽ tạo ra một chuỗi số giả ngẫu nhiên có thể tái lập.
 
-\ **Note:** The RNG does not have an avalanche effect, and can output similar random streams given similar seeds. Consider using a hash function to improve your seed quality if they're sourced externally.
+\ **Lưu ý:** RNG không có hiệu ứng avalanche và có thể xuất ra các luồng ngẫu nhiên tương tự khi được cung cấp các seed tương tự. Hãy cân nhắc sử dụng hàm băm để cải thiện chất lượng seed nếu chúng có nguồn gốc từ bên ngoài.
 
-\ **Note:** The default value of this property is pseudo-random, and changes when calling :ref:`randomize()<class_RandomNumberGenerator_method_randomize>`. The ``0`` value documented here is a placeholder, and not the actual default seed.
+\ **Lưu ý:** Giá trị mặc định của thuộc tính này là giả ngẫu nhiên và thay đổi khi gọi :ref:`randomize()<class_RandomNumberGenerator_method_randomize>`. Giá trị ``0`` được ghi lại ở đây chỉ là giá trị giữ chỗ, không phải seed mặc định thực tế.
 
-\ **Note:** Setting this property produces a side effect of changing the internal :ref:`state<class_RandomNumberGenerator_property_state>`, so make sure to initialize the seed *before* modifying the :ref:`state<class_RandomNumberGenerator_property_state>`:
+\ **Lưu ý:** Việc đặt thuộc tính này gây ra tác dụng phụ là thay đổi :ref:`state<class_RandomNumberGenerator_property_state>` nội bộ, vì vậy hãy đảm bảo khởi tạo seed *before* sửa đổi :ref:`state<class_RandomNumberGenerator_property_state>`:
 
 ::
 
@@ -125,7 +125,7 @@ Initializes the random number generator state based on the given seed value. A g
 - |void| **set_state**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_state**\ (\ )
 
-The current state of the random number generator. Save and restore this property to restore the generator to a previous state:
+Trạng thái hiện tại của bộ tạo số ngẫu nhiên. Lưu và khôi phục thuộc tính này để khôi phục bộ tạo về trạng thái trước đó:
 
 ::
 
@@ -136,9 +136,9 @@ The current state of the random number generator. Save and restore this property
     rng.state = saved_state # Restore the state.
     print(rng.randf()) # Prints the same value as previously.
 
-\ **Note:** Do not set state to arbitrary values, since the random number generator requires the state to have certain qualities to behave properly. It should only be set to values that came from the state property itself. To initialize the random number generator with arbitrary input, use :ref:`seed<class_RandomNumberGenerator_property_seed>` instead.
+\ **Lưu ý:** Không đặt state thành các giá trị tùy ý, vì bộ tạo số ngẫu nhiên yêu cầu state có những đặc tính nhất định để hoạt động chính xác. Chỉ nên đặt state thành các giá trị lấy từ chính thuộc tính state. Để khởi tạo bộ tạo số ngẫu nhiên bằng dữ liệu đầu vào tùy ý, hãy sử dụng :ref:`seed<class_RandomNumberGenerator_property_seed>`.
 
-\ **Note:** The default value of this property is pseudo-random, and changes when calling :ref:`randomize()<class_RandomNumberGenerator_method_randomize>`. The ``0`` value documented here is a placeholder, and not the actual default state.
+\ **Lưu ý:** Giá trị mặc định của thuộc tính này là giả ngẫu nhiên và thay đổi khi gọi :ref:`randomize()<class_RandomNumberGenerator_method_randomize>`. Giá trị ``0`` được ghi lại ở đây chỉ là giá trị giữ chỗ, không phải state mặc định thực tế.
 
 .. rst-class:: classref-section-separator
 
@@ -146,8 +146,8 @@ The current state of the random number generator. Save and restore this property
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_RandomNumberGenerator_method_rand_weighted:
 
@@ -155,11 +155,11 @@ Method Descriptions
 
 :ref:`int<class_int>` **rand_weighted**\ (\ weights\: :ref:`PackedFloat32Array<class_PackedFloat32Array>`\ ) :ref:`🔗<class_RandomNumberGenerator_method_rand_weighted>`
 
-Returns a random integer between ``0`` and the size of the array that is passed as a parameter. Each value in the array should be a floating-point number that represents the relative likelihood that it will be returned as an index. A higher value means the value is more likely to be returned as an index, while a value of ``0`` means it will never be returned as an index.
+Trả về một số nguyên ngẫu nhiên từ ``0`` đến kích thước của mảng được truyền dưới dạng tham số. Mỗi giá trị trong mảng phải là một số dấu phẩy động biểu thị khả năng tương đối mà giá trị đó sẽ được trả về dưới dạng chỉ mục. Giá trị cao hơn nghĩa là giá trị đó có nhiều khả năng được trả về dưới dạng chỉ mục hơn, trong khi giá trị ``0`` nghĩa là nó sẽ không bao giờ được trả về dưới dạng chỉ mục.
 
-For example, if ``[0.5, 1, 1, 2]`` is passed as a parameter, then the method is twice as likely to return ``3`` (the index of the value ``2``) and twice as unlikely to return ``0`` (the index of the value ``0.5``) compared to the indices ``1`` and ``2``.
+Ví dụ: nếu ``[0.5, 1, 1, 2]`` được truyền dưới dạng tham số, phương thức sẽ có khả năng trả về ``3`` (chỉ mục của giá trị ``2``) cao gấp đôi và khả năng trả về ``0`` (chỉ mục của giá trị ``0.5``) thấp hơn gấp đôi so với các chỉ mục ``1`` và ``2``.
 
-Prints an error and returns ``-1`` if the array is empty.
+In một lỗi và trả về ``-1`` nếu mảng trống.
 
 
 .. tabs::
@@ -171,8 +171,8 @@ Prints an error and returns ``-1`` if the array is empty.
     var my_array = ["one", "two", "three", "four"]
     var weights = PackedFloat32Array([0.5, 1, 1, 2])
 
-    # Prints one of the four elements in `my_array`.
-    # It is more likely to print "four", and less likely to print "one".
+    # In một trong bốn phần tử trong `my_array`.
+    # Khả năng in "four" cao hơn và khả năng in "one" thấp hơn.
     print(my_array[rng.rand_weighted(weights)])
 
 
@@ -187,7 +187,7 @@ Prints an error and returns ``-1`` if the array is empty.
 
 :ref:`float<class_float>` **randf**\ (\ ) :ref:`🔗<class_RandomNumberGenerator_method_randf>`
 
-Returns a pseudo-random float between ``0.0`` and ``1.0`` (inclusive).
+Trả về một số thực giả ngẫu nhiên từ ``0.0`` đến ``1.0`` (bao gồm cả hai giá trị).
 
 .. rst-class:: classref-item-separator
 
@@ -199,7 +199,7 @@ Returns a pseudo-random float between ``0.0`` and ``1.0`` (inclusive).
 
 :ref:`float<class_float>` **randf_range**\ (\ from\: :ref:`float<class_float>`, to\: :ref:`float<class_float>`\ ) :ref:`🔗<class_RandomNumberGenerator_method_randf_range>`
 
-Returns a pseudo-random float between ``from`` and ``to`` (inclusive).
+Trả về một số thực giả ngẫu nhiên từ ``from`` đến ``to`` (bao gồm cả hai giá trị).
 
 .. rst-class:: classref-item-separator
 
@@ -211,9 +211,9 @@ Returns a pseudo-random float between ``from`` and ``to`` (inclusive).
 
 :ref:`float<class_float>` **randfn**\ (\ mean\: :ref:`float<class_float>` = 0.0, deviation\: :ref:`float<class_float>` = 1.0\ ) :ref:`🔗<class_RandomNumberGenerator_method_randfn>`
 
-Returns a `normally-distributed <https://en.wikipedia.org/wiki/Normal_distribution>`__, pseudo-random floating-point number from the specified ``mean`` and a standard ``deviation``. This is also known as a Gaussian distribution.
+Trả về một số dấu phẩy động giả ngẫu nhiên `phân phối chuẩn <https://en.wikipedia.org/wiki/Normal_distribution>`__ từ ``mean`` và ``deviation`` độ lệch chuẩn đã chỉ định. Đây còn được gọi là phân phối Gaussian.
 
-\ **Note:** This method uses the `Box-Muller transform <https://en.wikipedia.org/wiki/Box%E2%80%93Muller_transform>`__ algorithm.
+\ **Lưu ý:** Phương thức này sử dụng thuật toán `biến đổi Box-Muller <https://en.wikipedia.org/wiki/Box%E2%80%93Muller_transform>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -225,7 +225,7 @@ Returns a `normally-distributed <https://en.wikipedia.org/wiki/Normal_distributi
 
 :ref:`int<class_int>` **randi**\ (\ ) :ref:`🔗<class_RandomNumberGenerator_method_randi>`
 
-Returns a pseudo-random 32-bit unsigned integer between ``0`` and ``4294967295`` (inclusive).
+Trả về một số nguyên không dấu 32-bit giả ngẫu nhiên từ ``0`` đến ``4294967295`` (bao gồm cả hai giá trị).
 
 .. rst-class:: classref-item-separator
 
@@ -237,7 +237,7 @@ Returns a pseudo-random 32-bit unsigned integer between ``0`` and ``4294967295``
 
 :ref:`int<class_int>` **randi_range**\ (\ from\: :ref:`int<class_int>`, to\: :ref:`int<class_int>`\ ) :ref:`🔗<class_RandomNumberGenerator_method_randi_range>`
 
-Returns a pseudo-random 32-bit signed integer between ``from`` and ``to`` (inclusive).
+Trả về một số nguyên có dấu 32-bit giả ngẫu nhiên từ ``from`` đến ``to`` (bao gồm cả hai giá trị).
 
 .. rst-class:: classref-item-separator
 
@@ -249,14 +249,14 @@ Returns a pseudo-random 32-bit signed integer between ``from`` and ``to`` (inclu
 
 |void| **randomize**\ (\ ) :ref:`🔗<class_RandomNumberGenerator_method_randomize>`
 
-Sets up a time-based seed for this **RandomNumberGenerator** instance. Unlike the :ref:`@GlobalScope<class_@GlobalScope>` random number generation functions, different **RandomNumberGenerator** instances can use different seeds.
+Thiết lập seed dựa trên thời gian cho instance **RandomNumberGenerator** này. Không giống các hàm tạo số ngẫu nhiên :ref:`@GlobalScope <class_@GlobalScope>`, các instance **RandomNumberGenerator** khác nhau có thể sử dụng các seed khác nhau.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các flag sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

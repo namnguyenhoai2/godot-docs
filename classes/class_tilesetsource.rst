@@ -10,31 +10,31 @@
 TileSetSource
 =============
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`TileSetAtlasSource<class_TileSetAtlasSource>`, :ref:`TileSetScenesCollectionSource<class_TileSetScenesCollectionSource>`
+**Được kế thừa bởi:** :ref:`TileSetAtlasSource<class_TileSetAtlasSource>`, :ref:`TileSetScenesCollectionSource<class_TileSetScenesCollectionSource>`
 
-Exposes a set of tiles for a :ref:`TileSet<class_TileSet>` resource.
+Cung cấp một tập hợp tile cho một resource :ref:`TileSet<class_TileSet>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Exposes a set of tiles for a :ref:`TileSet<class_TileSet>` resource.
+Cung cấp một tập hợp tile cho một resource :ref:`TileSet<class_TileSet>`.
 
-Tiles in a source are indexed with two IDs, coordinates ID (of type Vector2i) and an alternative ID (of type int), named according to their use in the :ref:`TileSetAtlasSource<class_TileSetAtlasSource>` class.
+Các tile trong một source được lập chỉ mục bằng hai ID: ID tọa độ (kiểu Vector2i) và ID thay thế (kiểu int), được đặt tên theo cách sử dụng trong class :ref:`TileSetAtlasSource<class_TileSetAtlasSource>`.
 
-Depending on the TileSet source type, those IDs might have restrictions on their values, this is why the base **TileSetSource** class only exposes getters for them.
+Tùy thuộc vào loại source của TileSet, các ID đó có thể bị giới hạn về giá trị; vì vậy, class cơ sở **TileSetSource** chỉ cung cấp các getter cho chúng.
 
-You can iterate over all tiles exposed by a TileSetSource by first iterating over coordinates IDs using :ref:`get_tiles_count()<class_TileSetSource_method_get_tiles_count>` and :ref:`get_tile_id()<class_TileSetSource_method_get_tile_id>`, then over alternative IDs using :ref:`get_alternative_tiles_count()<class_TileSetSource_method_get_alternative_tiles_count>` and :ref:`get_alternative_tile_id()<class_TileSetSource_method_get_alternative_tile_id>`.
+Bạn có thể lặp qua tất cả các tile do TileSetSource cung cấp bằng cách trước tiên lặp qua các ID tọa độ sử dụng :ref:`get_tiles_count()<class_TileSetSource_method_get_tiles_count>` và :ref:`get_tile_id()<class_TileSetSource_method_get_tile_id>`, sau đó lặp qua các ID thay thế sử dụng :ref:`get_alternative_tiles_count()<class_TileSetSource_method_get_alternative_tiles_count>` và :ref:`get_alternative_tile_id()<class_TileSetSource_method_get_alternative_tile_id>`.
 
-\ **Warning:** **TileSetSource** can only be added to one TileSet at the same time. Calling :ref:`TileSet.add_source()<class_TileSet_method_add_source>` on a second :ref:`TileSet<class_TileSet>` will remove the source from the first one.
+\ **Cảnh báo:** **TileSetSource** chỉ có thể được thêm vào một TileSet tại cùng một thời điểm. Việc gọi :ref:`TileSet.add_source()<class_TileSet_method_add_source>` trên một :ref:`TileSet<class_TileSet>` thứ hai sẽ xóa source khỏi source đầu tiên.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -59,8 +59,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_TileSetSource_method_get_alternative_tile_id:
 
@@ -68,7 +68,7 @@ Method Descriptions
 
 :ref:`int<class_int>` **get_alternative_tile_id**\ (\ atlas_coords\: :ref:`Vector2i<class_Vector2i>`, index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TileSetSource_method_get_alternative_tile_id>`
 
-Returns the alternative ID for the tile with coordinates ID ``atlas_coords`` at index ``index``.
+Trả về ID thay thế của tile có ID tọa độ ``atlas_coords`` tại index ``index``.
 
 .. rst-class:: classref-item-separator
 
@@ -80,11 +80,11 @@ Returns the alternative ID for the tile with coordinates ID ``atlas_coords`` at 
 
 :ref:`int<class_int>` **get_alternative_tiles_count**\ (\ atlas_coords\: :ref:`Vector2i<class_Vector2i>`\ ) |const| :ref:`🔗<class_TileSetSource_method_get_alternative_tiles_count>`
 
-Returns the number of alternatives tiles for the coordinates ID ``atlas_coords``.
+Trả về số lượng tile thay thế cho ID tọa độ ``atlas_coords``.
 
-For :ref:`TileSetAtlasSource<class_TileSetAtlasSource>`, this always return at least 1, as the base tile with ID 0 is always part of the alternatives list.
+Đối với :ref:`TileSetAtlasSource<class_TileSetAtlasSource>`, giá trị này luôn trả về ít nhất 1, vì tile cơ sở có ID 0 luôn nằm trong danh sách tile thay thế.
 
-Returns -1 if there is not tile at the given coords.
+Trả về -1 nếu không có tile tại tọa độ đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -96,7 +96,7 @@ Returns -1 if there is not tile at the given coords.
 
 :ref:`Vector2i<class_Vector2i>` **get_tile_id**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TileSetSource_method_get_tile_id>`
 
-Returns the tile coordinates ID of the tile with index ``index``.
+Trả về ID tọa độ của tile có index ``index``.
 
 .. rst-class:: classref-item-separator
 
@@ -108,7 +108,7 @@ Returns the tile coordinates ID of the tile with index ``index``.
 
 :ref:`int<class_int>` **get_tiles_count**\ (\ ) |const| :ref:`🔗<class_TileSetSource_method_get_tiles_count>`
 
-Returns how many tiles this atlas source defines (not including alternative tiles).
+Trả về số lượng tile mà source atlas này định nghĩa (không bao gồm các tile thay thế).
 
 .. rst-class:: classref-item-separator
 
@@ -120,7 +120,7 @@ Returns how many tiles this atlas source defines (not including alternative tile
 
 :ref:`bool<class_bool>` **has_alternative_tile**\ (\ atlas_coords\: :ref:`Vector2i<class_Vector2i>`, alternative_tile\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TileSetSource_method_has_alternative_tile>`
 
-Returns if the base tile at coordinates ``atlas_coords`` has an alternative with ID ``alternative_tile``.
+Trả về liệu tile cơ sở tại tọa độ ``atlas_coords`` có tile thay thế với ID ``alternative_tile`` hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -132,14 +132,14 @@ Returns if the base tile at coordinates ``atlas_coords`` has an alternative with
 
 :ref:`bool<class_bool>` **has_tile**\ (\ atlas_coords\: :ref:`Vector2i<class_Vector2i>`\ ) |const| :ref:`🔗<class_TileSetSource_method_has_tile>`
 
-Returns if this atlas has a tile with coordinates ID ``atlas_coords``.
+Trả về liệu atlas này có tile với ID tọa độ ``atlas_coords`` hay không.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng class cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

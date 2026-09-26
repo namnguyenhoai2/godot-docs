@@ -10,31 +10,31 @@
 TranslationServer
 =================
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-The server responsible for language translations.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-The translation server is the API backend that manages all language translations.
-
-Translations are stored in :ref:`TranslationDomain<class_TranslationDomain>`\ s, which can be accessed by name. The most commonly used translation domain is the main translation domain. It always exists and can be accessed using an empty :ref:`StringName<class_StringName>`. The translation server provides wrapper methods for accessing the main translation domain directly, without having to fetch the translation domain first. Custom translation domains are mainly for advanced usages like editor plugins. Names starting with ``godot.`` are reserved for engine internals.
+Server chịu trách nhiệm xử lý các bản dịch ngôn ngữ.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+TranslationServer là backend API quản lý tất cả bản dịch ngôn ngữ.
+
+Các bản dịch được lưu trữ trong :ref:`TranslationDomain<class_TranslationDomain>`\ s, có thể truy cập theo tên. Domain bản dịch được sử dụng phổ biến nhất là domain bản dịch chính. Domain này luôn tồn tại và có thể được truy cập bằng một :ref:`StringName<class_StringName>` rỗng. TranslationServer cung cấp các phương thức wrapper để truy cập trực tiếp vào domain bản dịch chính mà không cần lấy domain bản dịch trước. Các domain bản dịch tùy chỉnh chủ yếu dành cho những trường hợp sử dụng nâng cao như plugin editor. Các tên bắt đầu bằng ``godot.`` được dành riêng cho các thành phần nội bộ của engine.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Internationalizing games <../tutorials/i18n/internationalizing_games>`
+- :doc:`Quốc tế hóa game <../tutorials/i18n/internationalizing_games>`
 
-- :doc:`Locales <../tutorials/i18n/locales>`
+- :doc:`Locale <../tutorials/i18n/locales>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -46,8 +46,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -124,8 +124,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_TranslationServer_property_pseudolocalization_enabled:
 
@@ -138,7 +138,7 @@ Property Descriptions
 - |void| **set_pseudolocalization_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_pseudolocalization_enabled**\ (\ )
 
-If ``true``, enables the use of pseudolocalization on the main translation domain. See :ref:`ProjectSettings.internationalization/pseudolocalization/use_pseudolocalization<class_ProjectSettings_property_internationalization/pseudolocalization/use_pseudolocalization>` for details.
+Nếu ``true``, bật việc sử dụng pseudolocalization cho translation domain chính. Xem :ref:`ProjectSettings.internationalization/pseudolocalization/use_pseudolocalization <class_ProjectSettings_property_internationalization/pseudolocalization/use_pseudolocalization>` để biết chi tiết.
 
 .. rst-class:: classref-section-separator
 
@@ -146,8 +146,8 @@ If ``true``, enables the use of pseudolocalization on the main translation domai
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_TranslationServer_method_add_translation:
 
@@ -155,7 +155,7 @@ Method Descriptions
 
 |void| **add_translation**\ (\ translation\: :ref:`Translation<class_Translation>`\ ) :ref:`🔗<class_TranslationServer_method_add_translation>`
 
-Adds a translation to the main translation domain.
+Thêm một bản dịch vào translation domain chính.
 
 .. rst-class:: classref-item-separator
 
@@ -167,7 +167,7 @@ Adds a translation to the main translation domain.
 
 |void| **clear**\ (\ ) :ref:`🔗<class_TranslationServer_method_clear>`
 
-Removes all translations from the main translation domain.
+Xóa tất cả bản dịch khỏi translation domain chính.
 
 .. rst-class:: classref-item-separator
 
@@ -179,7 +179,7 @@ Removes all translations from the main translation domain.
 
 :ref:`int<class_int>` **compare_locales**\ (\ locale_a\: :ref:`String<class_String>`, locale_b\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_TranslationServer_method_compare_locales>`
 
-Compares two locales and returns a similarity score between ``0`` (no match) and ``10`` (full match).
+So sánh hai locale và trả về điểm tương đồng trong khoảng từ ``0`` (không khớp) đến ``10`` (khớp hoàn toàn).
 
 .. rst-class:: classref-item-separator
 
@@ -191,7 +191,7 @@ Compares two locales and returns a similarity score between ``0`` (no match) and
 
 :ref:`Array<class_Array>`\[:ref:`Translation<class_Translation>`\] **find_translations**\ (\ locale\: :ref:`String<class_String>`, exact\: :ref:`bool<class_bool>`\ ) |const| :ref:`🔗<class_TranslationServer_method_find_translations>`
 
-Returns the :ref:`Translation<class_Translation>` instances in the main translation domain that match ``locale`` (see :ref:`compare_locales()<class_TranslationServer_method_compare_locales>`). If ``exact`` is ``true``, only instances whose locale exactly equals ``locale`` will be returned.
+Trả về các instance :ref:`Translation<class_Translation>` trong translation domain chính khớp với ``locale`` (xem :ref:`compare_locales()<class_TranslationServer_method_compare_locales>`). Nếu ``exact`` là ``true``, chỉ các instance có locale khớp chính xác với ``locale`` mới được trả về.
 
 .. rst-class:: classref-item-separator
 
@@ -203,7 +203,7 @@ Returns the :ref:`Translation<class_Translation>` instances in the main translat
 
 :ref:`String<class_String>` **format_number**\ (\ number\: :ref:`String<class_String>`, locale\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_TranslationServer_method_format_number>`
 
-Converts a number from Western Arabic (0..9) to the numeral system used in the given ``locale``.
+Chuyển đổi một số từ chữ số Ả Rập phương Tây (0..9) sang hệ chữ số được sử dụng trong ``locale`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -215,7 +215,7 @@ Converts a number from Western Arabic (0..9) to the numeral system used in the g
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_all_countries**\ (\ ) |const| :ref:`🔗<class_TranslationServer_method_get_all_countries>`
 
-Returns an array of known country codes.
+Trả về một mảng các mã quốc gia đã biết.
 
 .. rst-class:: classref-item-separator
 
@@ -227,7 +227,7 @@ Returns an array of known country codes.
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_all_languages**\ (\ ) |const| :ref:`🔗<class_TranslationServer_method_get_all_languages>`
 
-Returns array of known language codes.
+Trả về một mảng các mã ngôn ngữ đã biết.
 
 .. rst-class:: classref-item-separator
 
@@ -239,7 +239,7 @@ Returns array of known language codes.
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_all_scripts**\ (\ ) |const| :ref:`🔗<class_TranslationServer_method_get_all_scripts>`
 
-Returns an array of known script codes.
+Trả về một mảng các mã hệ chữ viết đã biết.
 
 .. rst-class:: classref-item-separator
 
@@ -251,7 +251,7 @@ Returns an array of known script codes.
 
 :ref:`String<class_String>` **get_country_name**\ (\ country\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_TranslationServer_method_get_country_name>`
 
-Returns a readable country name for the ``country`` code.
+Trả về tên quốc gia dễ đọc cho mã ``country``.
 
 .. rst-class:: classref-item-separator
 
@@ -263,7 +263,7 @@ Returns a readable country name for the ``country`` code.
 
 :ref:`String<class_String>` **get_language_name**\ (\ language\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_TranslationServer_method_get_language_name>`
 
-Returns a readable language name for the ``language`` code.
+Trả về tên ngôn ngữ dễ đọc cho mã ``language``.
 
 .. rst-class:: classref-item-separator
 
@@ -275,7 +275,7 @@ Returns a readable language name for the ``language`` code.
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_loaded_locales**\ (\ ) |const| :ref:`🔗<class_TranslationServer_method_get_loaded_locales>`
 
-Returns an array of all loaded locales of the project.
+Trả về một mảng gồm tất cả locale đã tải của project.
 
 .. rst-class:: classref-item-separator
 
@@ -287,9 +287,9 @@ Returns an array of all loaded locales of the project.
 
 :ref:`String<class_String>` **get_locale**\ (\ ) |const| :ref:`🔗<class_TranslationServer_method_get_locale>`
 
-Returns the current locale of the project.
+Trả về locale hiện tại của project.
 
-See also :ref:`OS.get_locale()<class_OS_method_get_locale>` and :ref:`OS.get_locale_language()<class_OS_method_get_locale_language>` to query the locale of the user system.
+Xem thêm :ref:`OS.get_locale()<class_OS_method_get_locale>` và :ref:`OS.get_locale_language()<class_OS_method_get_locale_language>` để truy vấn locale của hệ thống người dùng.
 
 .. rst-class:: classref-item-separator
 
@@ -301,7 +301,7 @@ See also :ref:`OS.get_locale()<class_OS_method_get_locale>` and :ref:`OS.get_loc
 
 :ref:`String<class_String>` **get_locale_name**\ (\ locale\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_TranslationServer_method_get_locale_name>`
 
-Returns a locale's language and its variant (e.g. ``"en_US"`` would return ``"English (United States)"``).
+Trả về ngôn ngữ và biến thể của một locale (ví dụ: ``"en_US"`` sẽ trả về ``"English (United States)"``).
 
 .. rst-class:: classref-item-separator
 
@@ -313,7 +313,7 @@ Returns a locale's language and its variant (e.g. ``"en_US"`` would return ``"En
 
 :ref:`TranslationDomain<class_TranslationDomain>` **get_or_add_domain**\ (\ domain\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_TranslationServer_method_get_or_add_domain>`
 
-Returns the translation domain with the specified name. An empty translation domain will be created and added if it does not exist.
+Trả về translation domain có tên được chỉ định. Một translation domain trống sẽ được tạo và thêm vào nếu chưa tồn tại.
 
 .. rst-class:: classref-item-separator
 
@@ -325,7 +325,7 @@ Returns the translation domain with the specified name. An empty translation dom
 
 :ref:`String<class_String>` **get_percent_sign**\ (\ locale\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_TranslationServer_method_get_percent_sign>`
 
-Returns the percent sign used in the given ``locale``.
+Trả về dấu phần trăm được sử dụng trong ``locale`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -337,7 +337,7 @@ Returns the percent sign used in the given ``locale``.
 
 :ref:`String<class_String>` **get_plural_rules**\ (\ locale\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_TranslationServer_method_get_plural_rules>`
 
-Returns the default plural rules for the ``locale``.
+Trả về các quy tắc số nhiều mặc định cho ``locale``.
 
 .. rst-class:: classref-item-separator
 
@@ -349,7 +349,7 @@ Returns the default plural rules for the ``locale``.
 
 :ref:`String<class_String>` **get_script_name**\ (\ script\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_TranslationServer_method_get_script_name>`
 
-Returns a readable script name for the ``script`` code.
+Trả về tên hệ chữ viết dễ đọc cho mã ``script``.
 
 .. rst-class:: classref-item-separator
 
@@ -361,9 +361,9 @@ Returns a readable script name for the ``script`` code.
 
 :ref:`String<class_String>` **get_tool_locale**\ (\ ) :ref:`🔗<class_TranslationServer_method_get_tool_locale>`
 
-Returns the current locale of the editor.
+Trả về locale hiện tại của editor.
 
-\ **Note:** When called from an exported project returns the same value as :ref:`get_locale()<class_TranslationServer_method_get_locale>`.
+\ **Lưu ý:** Khi được gọi từ một project đã export, phương thức này trả về cùng giá trị với :ref:`get_locale()<class_TranslationServer_method_get_locale>`.
 
 .. rst-class:: classref-item-separator
 
@@ -375,9 +375,9 @@ Returns the current locale of the editor.
 
 :ref:`Translation<class_Translation>` **get_translation_object**\ (\ locale\: :ref:`String<class_String>`\ ) :ref:`🔗<class_TranslationServer_method_get_translation_object>`
 
-**Deprecated:** Use :ref:`find_translations()<class_TranslationServer_method_find_translations>` instead.
+**Không dùng nữa:** Thay vào đó, hãy sử dụng :ref:`find_translations()<class_TranslationServer_method_find_translations>`.
 
-Returns the :ref:`Translation<class_Translation>` instance that best matches ``locale`` in the main translation domain. Returns ``null`` if there are no matches.
+Trả về instance :ref:`Translation<class_Translation>` khớp tốt nhất với ``locale`` trong translation domain chính. Trả về ``null`` nếu không có kết quả khớp.
 
 .. rst-class:: classref-item-separator
 
@@ -389,7 +389,7 @@ Returns the :ref:`Translation<class_Translation>` instance that best matches ``l
 
 :ref:`Array<class_Array>`\[:ref:`Translation<class_Translation>`\] **get_translations**\ (\ ) |const| :ref:`🔗<class_TranslationServer_method_get_translations>`
 
-Returns all available :ref:`Translation<class_Translation>` instances in the main translation domain as added by :ref:`add_translation()<class_TranslationServer_method_add_translation>`.
+Trả về tất cả instance :ref:`Translation<class_Translation>` khả dụng trong translation domain chính được thêm bởi :ref:`add_translation()<class_TranslationServer_method_add_translation>`.
 
 .. rst-class:: classref-item-separator
 
@@ -401,7 +401,7 @@ Returns all available :ref:`Translation<class_Translation>` instances in the mai
 
 :ref:`bool<class_bool>` **has_domain**\ (\ domain\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_TranslationServer_method_has_domain>`
 
-Returns ``true`` if a translation domain with the specified name exists.
+Trả về ``true`` nếu translation domain có tên được chỉ định tồn tại.
 
 .. rst-class:: classref-item-separator
 
@@ -413,7 +413,7 @@ Returns ``true`` if a translation domain with the specified name exists.
 
 :ref:`bool<class_bool>` **has_translation**\ (\ translation\: :ref:`Translation<class_Translation>`\ ) |const| :ref:`🔗<class_TranslationServer_method_has_translation>`
 
-Returns ``true`` if the main translation domain contains the given ``translation``.
+Trả về ``true`` nếu translation domain chính chứa ``translation`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -425,7 +425,7 @@ Returns ``true`` if the main translation domain contains the given ``translation
 
 :ref:`bool<class_bool>` **has_translation_for_locale**\ (\ locale\: :ref:`String<class_String>`, exact\: :ref:`bool<class_bool>`\ ) |const| :ref:`🔗<class_TranslationServer_method_has_translation_for_locale>`
 
-Returns ``true`` if there are any :ref:`Translation<class_Translation>` instances in the main translation domain that match ``locale`` (see :ref:`compare_locales()<class_TranslationServer_method_compare_locales>`). If ``exact`` is ``true``, only instances whose locale exactly equals ``locale`` are considered.
+Trả về ``true`` nếu có bất kỳ instance :ref:`Translation<class_Translation>` nào trong translation domain chính khớp với ``locale`` (xem :ref:`compare_locales()<class_TranslationServer_method_compare_locales>`). Nếu ``exact`` là ``true``, chỉ các instance có locale khớp chính xác với ``locale`` mới được xem xét.
 
 .. rst-class:: classref-item-separator
 
@@ -437,7 +437,7 @@ Returns ``true`` if there are any :ref:`Translation<class_Translation>` instance
 
 :ref:`String<class_String>` **parse_number**\ (\ number\: :ref:`String<class_String>`, locale\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_TranslationServer_method_parse_number>`
 
-Converts ``number`` from the numeral system used in the given ``locale`` to Western Arabic (0..9).
+Chuyển đổi ``number`` từ hệ chữ số được sử dụng trong ``locale`` đã cho sang chữ số Ả Rập phương Tây (0..9).
 
 .. rst-class:: classref-item-separator
 
@@ -449,9 +449,9 @@ Converts ``number`` from the numeral system used in the given ``locale`` to West
 
 :ref:`StringName<class_StringName>` **pseudolocalize**\ (\ message\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_TranslationServer_method_pseudolocalize>`
 
-Returns the pseudolocalized string based on the ``message`` passed in.
+Trả về chuỗi pseudolocalized dựa trên ``message`` được truyền vào.
 
-\ **Note:** This method always uses the main translation domain.
+\ **Lưu ý:** Phương thức này luôn sử dụng translation domain chính.
 
 .. rst-class:: classref-item-separator
 
@@ -463,7 +463,7 @@ Returns the pseudolocalized string based on the ``message`` passed in.
 
 |void| **reload_pseudolocalization**\ (\ ) :ref:`🔗<class_TranslationServer_method_reload_pseudolocalization>`
 
-Reparses the pseudolocalization options and reloads the translation for the main translation domain.
+Phân tích lại các tùy chọn pseudolocalization và tải lại bản dịch cho translation domain chính.
 
 .. rst-class:: classref-item-separator
 
@@ -475,9 +475,9 @@ Reparses the pseudolocalization options and reloads the translation for the main
 
 |void| **remove_domain**\ (\ domain\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_TranslationServer_method_remove_domain>`
 
-Removes the translation domain with the specified name.
+Xóa translation domain có tên được chỉ định.
 
-\ **Note:** Trying to remove the main translation domain is an error.
+\ **Lưu ý:** Cố gắng xóa translation domain chính sẽ gây lỗi.
 
 .. rst-class:: classref-item-separator
 
@@ -489,7 +489,7 @@ Removes the translation domain with the specified name.
 
 |void| **remove_translation**\ (\ translation\: :ref:`Translation<class_Translation>`\ ) :ref:`🔗<class_TranslationServer_method_remove_translation>`
 
-Removes the given translation from the main translation domain.
+Xóa bản dịch đã cho khỏi translation domain chính.
 
 .. rst-class:: classref-item-separator
 
@@ -501,9 +501,9 @@ Removes the given translation from the main translation domain.
 
 |void| **set_locale**\ (\ locale\: :ref:`String<class_String>`\ ) :ref:`🔗<class_TranslationServer_method_set_locale>`
 
-Sets the locale of the project. The ``locale`` string will be standardized to match known locales (e.g. ``en-US`` would be matched to ``en_US``).
+Đặt locale của project. Chuỗi ``locale`` sẽ được chuẩn hóa để khớp với các locale đã biết (ví dụ: ``en-US`` sẽ được khớp với ``en_US``).
 
-If translations have been loaded beforehand for the new locale, they will be applied.
+Nếu bản dịch cho locale mới đã được tải từ trước, chúng sẽ được áp dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -515,7 +515,7 @@ If translations have been loaded beforehand for the new locale, they will be app
 
 :ref:`String<class_String>` **standardize_locale**\ (\ locale\: :ref:`String<class_String>`, add_defaults\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_TranslationServer_method_standardize_locale>`
 
-Returns a ``locale`` string standardized to match known locales (e.g. ``en-US`` would be matched to ``en_US``). If ``add_defaults`` is ``true``, the locale may have a default script or country added.
+Trả về chuỗi ``locale`` được chuẩn hóa để khớp với các locale đã biết (ví dụ: ``en-US`` sẽ được khớp với ``en_US``). Nếu ``add_defaults`` là ``true``, locale có thể được thêm script hoặc quốc gia mặc định.
 
 .. rst-class:: classref-item-separator
 
@@ -527,9 +527,9 @@ Returns a ``locale`` string standardized to match known locales (e.g. ``en-US`` 
 
 :ref:`StringName<class_StringName>` **translate**\ (\ message\: :ref:`StringName<class_StringName>`, context\: :ref:`StringName<class_StringName>` = &""\ ) |const| :ref:`🔗<class_TranslationServer_method_translate>`
 
-Returns the current locale's translation for the given message and context.
+Trả về bản dịch của locale hiện tại cho message và context đã cho.
 
-\ **Note:** This method always uses the main translation domain.
+\ **Lưu ý:** Phương thức này luôn sử dụng translation domain chính.
 
 .. rst-class:: classref-item-separator
 
@@ -541,18 +541,18 @@ Returns the current locale's translation for the given message and context.
 
 :ref:`StringName<class_StringName>` **translate_plural**\ (\ message\: :ref:`StringName<class_StringName>`, plural_message\: :ref:`StringName<class_StringName>`, n\: :ref:`int<class_int>`, context\: :ref:`StringName<class_StringName>` = &""\ ) |const| :ref:`🔗<class_TranslationServer_method_translate_plural>`
 
-Returns the current locale's translation for the given message, plural message and context.
+Trả về bản dịch của locale hiện tại cho message, plural message và context đã cho.
 
-The number ``n`` is the number or quantity of the plural object. It will be used to guide the translation system to fetch the correct plural form for the selected language.
+Số ``n`` là số hoặc số lượng của đối tượng số nhiều. Số này sẽ được dùng để hướng dẫn hệ thống dịch lấy đúng dạng số nhiều cho ngôn ngữ đã chọn.
 
-\ **Note:** This method always uses the main translation domain.
+\ **Lưu ý:** Phương thức này luôn sử dụng translation domain chính.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,35 +10,35 @@
 RDUniform
 =========
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Shader uniform (used by :ref:`RenderingDevice<class_RenderingDevice>`).
+Uniform của shader (được sử dụng bởi :ref:`RenderingDevice<class_RenderingDevice>`).
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This object is used by :ref:`RenderingDevice<class_RenderingDevice>`.
+Đối tượng này được sử dụng bởi :ref:`RenderingDevice<class_RenderingDevice>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------------+------------------------------------------------------------+-------+
-   | :ref:`int<class_int>`                                | :ref:`binding<class_RDUniform_property_binding>`           | ``0`` |
-   +------------------------------------------------------+------------------------------------------------------------+-------+
-   | :ref:`UniformType<enum_RenderingDevice_UniformType>` | :ref:`uniform_type<class_RDUniform_property_uniform_type>` | ``3`` |
-   +------------------------------------------------------+------------------------------------------------------------+-------+
+   +-------------------------------------------------------+------------------------------------------------------------+-------+
+   | :ref:`int<class_int>`                                 | :ref:`binding<class_RDUniform_property_binding>`           | ``0`` |
+   +-------------------------------------------------------+------------------------------------------------------------+-------+
+   | :ref:`UniformType <enum_RenderingDevice_UniformType>` | :ref:`uniform_type<class_RDUniform_property_uniform_type>` | ``3`` |
+   +-------------------------------------------------------+------------------------------------------------------------+-------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -57,8 +57,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_RDUniform_property_binding:
 
@@ -71,7 +71,7 @@ Property Descriptions
 - |void| **set_binding**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_binding**\ (\ )
 
-The uniform's binding.
+Binding của uniform.
 
 .. rst-class:: classref-item-separator
 
@@ -88,7 +88,7 @@ The uniform's binding.
 - |void| **set_uniform_type**\ (\ value\: :ref:`UniformType<enum_RenderingDevice_UniformType>`\ )
 - :ref:`UniformType<enum_RenderingDevice_UniformType>` **get_uniform_type**\ (\ )
 
-The uniform's data type.
+Kiểu dữ liệu của uniform.
 
 .. rst-class:: classref-section-separator
 
@@ -96,8 +96,8 @@ The uniform's data type.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_RDUniform_method_add_id:
 
@@ -105,7 +105,7 @@ Method Descriptions
 
 |void| **add_id**\ (\ id\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_RDUniform_method_add_id>`
 
-Binds the given id to the uniform. The data associated with the id is then used when the uniform is passed to a shader.
+Gán id đã cho vào uniform. Dữ liệu liên kết với id sau đó sẽ được sử dụng khi uniform được truyền vào shader.
 
 .. rst-class:: classref-item-separator
 
@@ -117,7 +117,7 @@ Binds the given id to the uniform. The data associated with the id is then used 
 
 |void| **clear_ids**\ (\ ) :ref:`🔗<class_RDUniform_method_clear_ids>`
 
-Unbinds all ids currently bound to the uniform.
+Hủy liên kết tất cả id hiện đang được gán với uniform.
 
 .. rst-class:: classref-item-separator
 
@@ -129,14 +129,14 @@ Unbinds all ids currently bound to the uniform.
 
 :ref:`Array<class_Array>`\[:ref:`RID<class_RID>`\] **get_ids**\ (\ ) |const| :ref:`🔗<class_RDUniform_method_get_ids>`
 
-Returns an array of all ids currently bound to the uniform.
+Trả về một mảng chứa tất cả id hiện đang được gán với uniform.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,20 +10,20 @@
 Shortcut
 ========
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A shortcut for binding input.
+Một shortcut dùng để liên kết đầu vào.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Shortcuts (also known as hotkeys) are containers of :ref:`InputEvent<class_InputEvent>` resources. They are commonly used to interact with a :ref:`Control<class_Control>` element from an :ref:`InputEvent<class_InputEvent>`.
+Shortcut (còn được gọi là hotkey) là các vùng chứa tài nguyên :ref:`InputEvent<class_InputEvent>`. Chúng thường được dùng để tương tác với một phần tử :ref:`Control<class_Control>` từ một :ref:`InputEvent<class_InputEvent>`.
 
-One shortcut can contain multiple :ref:`InputEvent<class_InputEvent>` resources, making it possible to trigger one action with multiple different inputs.
+Một shortcut có thể chứa nhiều tài nguyên :ref:`InputEvent<class_InputEvent>`, nhờ đó có thể kích hoạt một hành động bằng nhiều đầu vào khác nhau.
 
-\ **Example:** Capture the :kbd:`Ctrl + S` shortcut using a **Shortcut** resource:
+\ **Ví dụ:** Ghi lại shortcut :kbd:`Ctrl + S` bằng tài nguyên **Shortcut**:
 
 
 .. tabs::
@@ -37,7 +37,7 @@ One shortcut can contain multiple :ref:`InputEvent<class_InputEvent>` resources,
         var key_event = InputEventKey.new()
         key_event.keycode = KEY_S
         key_event.ctrl_pressed = true
-        key_event.command_or_control_autoremap = true # Swaps Ctrl for Command on Mac.
+        key_event.command_or_control_autoremap = true # Hoán đổi Ctrl thành Command trên máy Mac.
         save_shortcut.events = [key_event]
 
     func _input(event):
@@ -59,7 +59,7 @@ One shortcut can contain multiple :ref:`InputEvent<class_InputEvent>` resources,
             {
                 Keycode = Key.S,
                 CtrlPressed = true,
-                CommandOrControlAutoremap = true, // Swaps Ctrl for Command on Mac.
+                CommandOrControlAutoremap = true, // Hoán đổi Ctrl thành Command trên máy Mac.
             };
 
             _saveShortcut.Events = [keyEvent];
@@ -81,7 +81,7 @@ One shortcut can contain multiple :ref:`InputEvent<class_InputEvent>` resources,
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -93,8 +93,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -113,8 +113,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Shortcut_property_events:
 
@@ -127,9 +127,9 @@ Property Descriptions
 - |void| **set_events**\ (\ value\: :ref:`Array<class_Array>`\ )
 - :ref:`Array<class_Array>` **get_events**\ (\ )
 
-The shortcut's :ref:`InputEvent<class_InputEvent>` array.
+Mảng :ref:`InputEvent<class_InputEvent>` của shortcut.
 
-Generally the :ref:`InputEvent<class_InputEvent>` used is an :ref:`InputEventKey<class_InputEventKey>`, though it can be any :ref:`InputEvent<class_InputEvent>`, including an :ref:`InputEventAction<class_InputEventAction>`.
+Thông thường, :ref:`InputEvent<class_InputEvent>` được sử dụng là một :ref:`InputEventKey<class_InputEventKey>`, nhưng có thể là bất kỳ :ref:`InputEvent<class_InputEvent>` nào, bao gồm cả một :ref:`InputEventAction<class_InputEventAction>`.
 
 .. rst-class:: classref-section-separator
 
@@ -137,8 +137,8 @@ Generally the :ref:`InputEvent<class_InputEvent>` used is an :ref:`InputEventKey
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Shortcut_method_get_as_text:
 
@@ -146,7 +146,7 @@ Method Descriptions
 
 :ref:`String<class_String>` **get_as_text**\ (\ ) |const| :ref:`🔗<class_Shortcut_method_get_as_text>`
 
-Returns the shortcut's first valid :ref:`InputEvent<class_InputEvent>` as a :ref:`String<class_String>`.
+Trả về :ref:`InputEvent<class_InputEvent>` hợp lệ đầu tiên của shortcut dưới dạng :ref:`String<class_String>`.
 
 .. rst-class:: classref-item-separator
 
@@ -158,7 +158,7 @@ Returns the shortcut's first valid :ref:`InputEvent<class_InputEvent>` as a :ref
 
 :ref:`bool<class_bool>` **has_valid_event**\ (\ ) |const| :ref:`🔗<class_Shortcut_method_has_valid_event>`
 
-Returns whether :ref:`events<class_Shortcut_property_events>` contains an :ref:`InputEvent<class_InputEvent>` which is valid.
+Trả về liệu :ref:`events<class_Shortcut_property_events>` có chứa một :ref:`InputEvent<class_InputEvent>` hợp lệ hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -170,14 +170,14 @@ Returns whether :ref:`events<class_Shortcut_property_events>` contains an :ref:`
 
 :ref:`bool<class_bool>` **matches_event**\ (\ event\: :ref:`InputEvent<class_InputEvent>`\ ) |const| :ref:`🔗<class_Shortcut_method_matches_event>`
 
-Returns whether any :ref:`InputEvent<class_InputEvent>` in :ref:`events<class_Shortcut_property_events>` equals ``event``. This uses :ref:`InputEvent.is_match()<class_InputEvent_method_is_match>` to compare events.
+Trả về liệu bất kỳ :ref:`InputEvent<class_InputEvent>` nào trong :ref:`events<class_Shortcut_property_events>` có bằng ``event`` hay không. Phương thức này sử dụng :ref:`InputEvent.is_match()<class_InputEvent_method_is_match>` để so sánh các event.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

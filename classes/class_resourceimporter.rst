@@ -10,30 +10,30 @@
 ResourceImporter
 ================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa từ:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`EditorImportPlugin<class_EditorImportPlugin>`, :ref:`ResourceImporterBitMap<class_ResourceImporterBitMap>`, :ref:`ResourceImporterBMFont<class_ResourceImporterBMFont>`, :ref:`ResourceImporterCSVTranslation<class_ResourceImporterCSVTranslation>`, :ref:`ResourceImporterDynamicFont<class_ResourceImporterDynamicFont>`, :ref:`ResourceImporterImage<class_ResourceImporterImage>`, :ref:`ResourceImporterImageFont<class_ResourceImporterImageFont>`, :ref:`ResourceImporterLayeredTexture<class_ResourceImporterLayeredTexture>`, :ref:`ResourceImporterMP3<class_ResourceImporterMP3>`, :ref:`ResourceImporterOBJ<class_ResourceImporterOBJ>`, :ref:`ResourceImporterOggVorbis<class_ResourceImporterOggVorbis>`, :ref:`ResourceImporterScene<class_ResourceImporterScene>`, :ref:`ResourceImporterShaderFile<class_ResourceImporterShaderFile>`, :ref:`ResourceImporterSVG<class_ResourceImporterSVG>`, :ref:`ResourceImporterTexture<class_ResourceImporterTexture>`, :ref:`ResourceImporterTextureAtlas<class_ResourceImporterTextureAtlas>`, :ref:`ResourceImporterWAV<class_ResourceImporterWAV>`
+**Được kế thừa bởi:** :ref:`EditorImportPlugin<class_EditorImportPlugin>`, :ref:`ResourceImporterBitMap<class_ResourceImporterBitMap>`, :ref:`ResourceImporterBMFont<class_ResourceImporterBMFont>`, :ref:`ResourceImporterCSVTranslation<class_ResourceImporterCSVTranslation>`, :ref:`ResourceImporterDynamicFont<class_ResourceImporterDynamicFont>`, :ref:`ResourceImporterImage<class_ResourceImporterImage>`, :ref:`ResourceImporterImageFont<class_ResourceImporterImageFont>`, :ref:`ResourceImporterLayeredTexture<class_ResourceImporterLayeredTexture>`, :ref:`ResourceImporterMP3<class_ResourceImporterMP3>`, :ref:`ResourceImporterOBJ<class_ResourceImporterOBJ>`, :ref:`ResourceImporterOggVorbis<class_ResourceImporterOggVorbis>`, :ref:`ResourceImporterScene<class_ResourceImporterScene>`, :ref:`ResourceImporterShaderFile<class_ResourceImporterShaderFile>`, :ref:`ResourceImporterSVG<class_ResourceImporterSVG>`, :ref:`ResourceImporterTexture<class_ResourceImporterTexture>`, :ref:`ResourceImporterTextureAtlas<class_ResourceImporterTextureAtlas>`, :ref:`ResourceImporterWAV<class_ResourceImporterWAV>`
 
-Base class for resource importers.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-This is the base class for Godot's resource importers. To implement your own resource importers using editor plugins, see :ref:`EditorImportPlugin<class_EditorImportPlugin>`.
+Lớp cơ sở cho các resource importer.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
----------
+Mô tả
+-----
+
+Đây là lớp cơ sở cho các resource importer của Godot. Để triển khai resource importer của riêng bạn bằng editor plugin, hãy xem :ref:`EditorImportPlugin<class_EditorImportPlugin>`.
+
+.. rst-class:: classref-introduction-group
+
+Tutorial
+--------
 
 - :doc:`Import plugins <../tutorials/plugins/editor/import_plugins>`
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -48,14 +48,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_ResourceImporter_ImportOrder:
 
 .. rst-class:: classref-enumeration
 
-enum **ImportOrder**: :ref:`🔗<enum_ResourceImporter_ImportOrder>`
+enum **ImportOrder**: :ref:`🔗 <enum_ResourceImporter_ImportOrder>`
 
 .. _class_ResourceImporter_constant_IMPORT_ORDER_DEFAULT:
 
@@ -63,7 +63,7 @@ enum **ImportOrder**: :ref:`🔗<enum_ResourceImporter_ImportOrder>`
 
 :ref:`ImportOrder<enum_ResourceImporter_ImportOrder>` **IMPORT_ORDER_DEFAULT** = ``0``
 
-The default import order.
+Thứ tự import mặc định.
 
 .. _class_ResourceImporter_constant_IMPORT_ORDER_SCENE:
 
@@ -71,7 +71,7 @@ The default import order.
 
 :ref:`ImportOrder<enum_ResourceImporter_ImportOrder>` **IMPORT_ORDER_SCENE** = ``100``
 
-The import order for scenes, which ensures scenes are imported *after* all other core resources such as textures. Custom importers should generally have an import order lower than ``100`` to avoid issues when importing scenes that rely on custom resources.
+Thứ tự import cho các scene, đảm bảo các scene được import *sau* tất cả core resource khác như texture. Các custom importer nhìn chung nên có thứ tự import thấp hơn ``100`` để tránh sự cố khi import các scene phụ thuộc vào custom resource.
 
 .. rst-class:: classref-section-separator
 
@@ -79,8 +79,8 @@ The import order for scenes, which ensures scenes are imported *after* all other
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_ResourceImporter_private_method__get_build_dependencies:
 
@@ -88,7 +88,7 @@ Method Descriptions
 
 :ref:`PackedStringArray<class_PackedStringArray>` **_get_build_dependencies**\ (\ path\: :ref:`String<class_String>`\ ) |virtual| |const| :ref:`🔗<class_ResourceImporter_private_method__get_build_dependencies>`
 
-Called when the engine compilation profile editor wants to check what build options an imported resource needs. For example, :ref:`ResourceImporterDynamicFont<class_ResourceImporterDynamicFont>` has a property called :ref:`ResourceImporterDynamicFont.multichannel_signed_distance_field<class_ResourceImporterDynamicFont_property_multichannel_signed_distance_field>`, that depends on the engine to be build with the "msdfgen" module. If that resource happened to be a custom one, it would be handled like this:
+Được gọi khi trình chỉnh sửa compilation profile của engine muốn kiểm tra một resource đã import cần những tùy chọn build nào. Ví dụ: :ref:`ResourceImporterDynamicFont<class_ResourceImporterDynamicFont>` có một thuộc tính tên là :ref:`ResourceImporterDynamicFont.multichannel_signed_distance_field<class_ResourceImporterDynamicFont_property_multichannel_signed_distance_field>`, thuộc tính này phụ thuộc vào việc engine được build với module "msdfgen". Nếu resource đó là một resource tùy chỉnh, nó sẽ được xử lý như sau:
 
 ::
 
@@ -101,12 +101,12 @@ Called when the engine compilation profile editor wants to check what build opti
 
         return dependencies
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

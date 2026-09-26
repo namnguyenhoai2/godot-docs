@@ -10,27 +10,27 @@
 Sprite2D
 ========
 
-**Inherits:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-General-purpose sprite node.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A node that displays a 2D texture. The texture displayed can be a region from a larger atlas texture, or a frame from a sprite sheet animation.
+Node sprite đa dụng.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Một node hiển thị texture 2D. Texture được hiển thị có thể là một vùng từ texture atlas lớn hơn hoặc một frame từ animation sprite sheet.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- `Instancing Demo <https://godotengine.org/asset-library/asset/2716>`__
+- `Bản minh họa Instancing <https://godotengine.org/asset-library/asset/2716>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -64,8 +64,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -82,8 +82,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_Sprite2D_signal_frame_changed:
 
@@ -91,7 +91,7 @@ Signals
 
 **frame_changed**\ (\ ) :ref:`🔗<class_Sprite2D_signal_frame_changed>`
 
-Emitted when the :ref:`frame<class_Sprite2D_property_frame>` changes.
+Được phát khi :ref:`frame<class_Sprite2D_property_frame>` thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -103,7 +103,7 @@ Emitted when the :ref:`frame<class_Sprite2D_property_frame>` changes.
 
 **texture_changed**\ (\ ) :ref:`🔗<class_Sprite2D_signal_texture_changed>`
 
-Emitted when the :ref:`texture<class_Sprite2D_property_texture>` changes.
+Được phát khi :ref:`texture<class_Sprite2D_property_texture>` thay đổi.
 
 .. rst-class:: classref-section-separator
 
@@ -111,8 +111,8 @@ Emitted when the :ref:`texture<class_Sprite2D_property_texture>` changes.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Sprite2D_property_centered:
 
@@ -125,9 +125,9 @@ Property Descriptions
 - |void| **set_centered**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_centered**\ (\ )
 
-If ``true``, texture is centered.
+Nếu ``true``, texture được căn giữa.
 
-\ **Note:** For games with a pixel art aesthetic, textures may appear deformed when centered. This is caused by their position being between pixels. To prevent this, set this property to ``false``, or consider enabling :ref:`ProjectSettings.rendering/2d/snap/snap_2d_vertices_to_pixel<class_ProjectSettings_property_rendering/2d/snap/snap_2d_vertices_to_pixel>` and :ref:`ProjectSettings.rendering/2d/snap/snap_2d_transforms_to_pixel<class_ProjectSettings_property_rendering/2d/snap/snap_2d_transforms_to_pixel>`.
+\ **Lưu ý:** Với các game có phong cách pixel art, texture có thể bị biến dạng khi được căn giữa. Nguyên nhân là vị trí của chúng nằm giữa các pixel. Để ngăn điều này, hãy đặt thuộc tính này thành ``false`` hoặc cân nhắc bật :ref:`ProjectSettings.rendering/2d/snap/snap_2d_vertices_to_pixel <class_ProjectSettings_property_rendering/2d/snap/snap_2d_vertices_to_pixel>` và :ref:`ProjectSettings.rendering/2d/snap/snap_2d_transforms_to_pixel <class_ProjectSettings_property_rendering/2d/snap/snap_2d_transforms_to_pixel>`.
 
 .. rst-class:: classref-item-separator
 
@@ -144,7 +144,7 @@ If ``true``, texture is centered.
 - |void| **set_flip_h**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_flipped_h**\ (\ )
 
-If ``true``, texture is flipped horizontally.
+Nếu ``true``, texture được lật theo chiều ngang.
 
 .. rst-class:: classref-item-separator
 
@@ -161,7 +161,7 @@ If ``true``, texture is flipped horizontally.
 - |void| **set_flip_v**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_flipped_v**\ (\ )
 
-If ``true``, texture is flipped vertically.
+Nếu ``true``, texture được lật theo chiều dọc.
 
 .. rst-class:: classref-item-separator
 
@@ -178,7 +178,7 @@ If ``true``, texture is flipped vertically.
 - |void| **set_frame**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_frame**\ (\ )
 
-Current frame to display from sprite sheet. :ref:`hframes<class_Sprite2D_property_hframes>` or :ref:`vframes<class_Sprite2D_property_vframes>` must be greater than 1. This property is automatically adjusted when :ref:`hframes<class_Sprite2D_property_hframes>` or :ref:`vframes<class_Sprite2D_property_vframes>` are changed to keep pointing to the same visual frame (same column and row). If that's impossible, this value is reset to ``0``.
+Frame hiện tại sẽ hiển thị từ sprite sheet. :ref:`hframes<class_Sprite2D_property_hframes>` hoặc :ref:`vframes<class_Sprite2D_property_vframes>` phải lớn hơn 1. Thuộc tính này được tự động điều chỉnh khi :ref:`hframes<class_Sprite2D_property_hframes>` hoặc :ref:`vframes<class_Sprite2D_property_vframes>` thay đổi để tiếp tục trỏ đến cùng frame trực quan (cùng cột và hàng). Nếu không thể thực hiện, giá trị này được đặt lại thành ``0``.
 
 .. rst-class:: classref-item-separator
 
@@ -195,7 +195,7 @@ Current frame to display from sprite sheet. :ref:`hframes<class_Sprite2D_propert
 - |void| **set_frame_coords**\ (\ value\: :ref:`Vector2i<class_Vector2i>`\ )
 - :ref:`Vector2i<class_Vector2i>` **get_frame_coords**\ (\ )
 
-Coordinates of the frame to display from sprite sheet. This is as an alias for the :ref:`frame<class_Sprite2D_property_frame>` property. :ref:`hframes<class_Sprite2D_property_hframes>` or :ref:`vframes<class_Sprite2D_property_vframes>` must be greater than 1.
+Tọa độ của frame sẽ hiển thị từ sprite sheet. Đây là bí danh của thuộc tính :ref:`frame<class_Sprite2D_property_frame>`. :ref:`hframes<class_Sprite2D_property_hframes>` hoặc :ref:`vframes<class_Sprite2D_property_vframes>` phải lớn hơn 1.
 
 .. rst-class:: classref-item-separator
 
@@ -212,7 +212,7 @@ Coordinates of the frame to display from sprite sheet. This is as an alias for t
 - |void| **set_hframes**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_hframes**\ (\ )
 
-The number of columns in the sprite sheet. When this property is changed, :ref:`frame<class_Sprite2D_property_frame>` is adjusted so that the same visual frame is maintained (same row and column). If that's impossible, :ref:`frame<class_Sprite2D_property_frame>` is reset to ``0``.
+Số cột trong sprite sheet. Khi thuộc tính này thay đổi, :ref:`frame<class_Sprite2D_property_frame>` được điều chỉnh để duy trì cùng frame trực quan (cùng hàng và cột). Nếu không thể thực hiện, :ref:`frame<class_Sprite2D_property_frame>` được đặt lại thành ``0``.
 
 .. rst-class:: classref-item-separator
 
@@ -229,9 +229,9 @@ The number of columns in the sprite sheet. When this property is changed, :ref:`
 - |void| **set_offset**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_offset**\ (\ )
 
-The texture's drawing offset.
+Độ lệch khi vẽ texture.
 
-\ **Note:** When you increase :ref:`offset<class_Sprite2D_property_offset>`.y in Sprite2D, the sprite moves downward on screen (i.e., +Y is down).
+\ **Lưu ý:** Khi bạn tăng :ref:`offset<class_Sprite2D_property_offset>`.y trong Sprite2D, sprite sẽ di chuyển xuống dưới trên màn hình (tức là +Y hướng xuống).
 
 .. rst-class:: classref-item-separator
 
@@ -248,9 +248,9 @@ The texture's drawing offset.
 - |void| **set_region_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_region_enabled**\ (\ )
 
-If ``true``, texture is cut from a larger atlas texture. See :ref:`region_rect<class_Sprite2D_property_region_rect>`.
+Nếu ``true``, texture được cắt từ một texture atlas lớn hơn. Xem :ref:`region_rect<class_Sprite2D_property_region_rect>`.
 
-\ **Note:** When using a custom :ref:`Shader<class_Shader>` on a **Sprite2D**, the ``UV`` shader built-in will refer to the entire texture space. Use the ``REGION_RECT`` built-in to get the currently visible region defined in :ref:`region_rect<class_Sprite2D_property_region_rect>` instead. See :doc:`CanvasItem shaders <../tutorials/shaders/shader_reference/canvas_item_shader>` for details.
+\ **Lưu ý:** Khi sử dụng :ref:`Shader<class_Shader>` tùy chỉnh trên một **Sprite2D**, shader built-in ``UV`` sẽ tham chiếu đến toàn bộ không gian texture. Thay vào đó, hãy sử dụng built-in ``REGION_RECT`` để lấy vùng hiện đang hiển thị được xác định trong :ref:`region_rect<class_Sprite2D_property_region_rect>`. Xem :doc:`shader CanvasItem <../tutorials/shaders/shader_reference/canvas_item_shader>` để biết chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -267,7 +267,7 @@ If ``true``, texture is cut from a larger atlas texture. See :ref:`region_rect<c
 - |void| **set_region_filter_clip_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_region_filter_clip_enabled**\ (\ )
 
-If ``true``, the area outside of the :ref:`region_rect<class_Sprite2D_property_region_rect>` is clipped to avoid bleeding of the surrounding texture pixels. :ref:`region_enabled<class_Sprite2D_property_region_enabled>` must be ``true``.
+Nếu ``true``, vùng bên ngoài :ref:`region_rect<class_Sprite2D_property_region_rect>` sẽ bị cắt để tránh hiện tượng lem từ các pixel texture xung quanh. :ref:`region_enabled<class_Sprite2D_property_region_enabled>` phải là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -284,7 +284,7 @@ If ``true``, the area outside of the :ref:`region_rect<class_Sprite2D_property_r
 - |void| **set_region_rect**\ (\ value\: :ref:`Rect2<class_Rect2>`\ )
 - :ref:`Rect2<class_Rect2>` **get_region_rect**\ (\ )
 
-The region of the atlas texture to display. :ref:`region_enabled<class_Sprite2D_property_region_enabled>` must be ``true``.
+Vùng của texture atlas sẽ hiển thị. :ref:`region_enabled<class_Sprite2D_property_region_enabled>` phải là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -294,14 +294,14 @@ The region of the atlas texture to display. :ref:`region_enabled<class_Sprite2D_
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **texture** :ref:`🔗<class_Sprite2D_property_texture>`
+:ref:`Texture2D<class_Texture2D>` **texture** :ref:`🔗 <class_Sprite2D_property_texture>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_texture**\ (\ value\: :ref:`Texture2D<class_Texture2D>`\ )
 - :ref:`Texture2D<class_Texture2D>` **get_texture**\ (\ )
 
-:ref:`Texture2D<class_Texture2D>` object to draw.
+Đối tượng :ref:`Texture2D<class_Texture2D>` sẽ vẽ.
 
 .. rst-class:: classref-item-separator
 
@@ -318,7 +318,7 @@ The region of the atlas texture to display. :ref:`region_enabled<class_Sprite2D_
 - |void| **set_vframes**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_vframes**\ (\ )
 
-The number of rows in the sprite sheet. When this property is changed, :ref:`frame<class_Sprite2D_property_frame>` is adjusted so that the same visual frame is maintained (same row and column). If that's impossible, :ref:`frame<class_Sprite2D_property_frame>` is reset to ``0``.
+Số hàng trong sprite sheet. Khi thuộc tính này thay đổi, :ref:`frame<class_Sprite2D_property_frame>` được điều chỉnh để duy trì cùng frame trực quan (cùng hàng và cột). Nếu không thể thực hiện, :ref:`frame<class_Sprite2D_property_frame>` được đặt lại thành ``0``.
 
 .. rst-class:: classref-section-separator
 
@@ -326,8 +326,8 @@ The number of rows in the sprite sheet. When this property is changed, :ref:`fra
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Sprite2D_method_get_rect:
 
@@ -335,9 +335,9 @@ Method Descriptions
 
 :ref:`Rect2<class_Rect2>` **get_rect**\ (\ ) |const| :ref:`🔗<class_Sprite2D_method_get_rect>`
 
-Returns a :ref:`Rect2<class_Rect2>` representing the Sprite2D's boundary in local coordinates.
+Trả về một :ref:`Rect2<class_Rect2>` biểu diễn ranh giới của Sprite2D trong hệ tọa độ cục bộ.
 
-\ **Example:** Detect if the Sprite2D was clicked:
+\ **Ví dụ:** Phát hiện Sprite2D đã được nhấp:
 
 
 .. tabs::
@@ -377,14 +377,14 @@ Returns a :ref:`Rect2<class_Rect2>` representing the Sprite2D's boundary in loca
 
 :ref:`bool<class_bool>` **is_pixel_opaque**\ (\ pos\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Sprite2D_method_is_pixel_opaque>`
 
-Returns ``true`` if the pixel at the given position is opaque, ``false`` otherwise. Also returns ``false`` if the given position is out of bounds or this sprite's :ref:`texture<class_Sprite2D_property_texture>` is ``null``. ``pos`` is in local coordinates.
+Trả về ``true`` nếu pixel tại vị trí đã cho là không trong suốt, ngược lại trả về ``false``. Đồng thời trả về ``false`` nếu vị trí đã cho nằm ngoài phạm vi hoặc :ref:`texture<class_Sprite2D_property_texture>` của sprite này là ``null``. ``pos`` nằm trong hệ tọa độ cục bộ.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

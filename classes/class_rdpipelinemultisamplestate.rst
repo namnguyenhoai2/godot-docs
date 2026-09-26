@@ -10,38 +10,38 @@
 RDPipelineMultisampleState
 ==========================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Pipeline multisample state (used by :ref:`RenderingDevice<class_RenderingDevice>`).
+Trạng thái multisample của pipeline (được sử dụng bởi :ref:`RenderingDevice<class_RenderingDevice>`).
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**RDPipelineMultisampleState** is used to control how multisample or supersample antialiasing is being performed when rendering using :ref:`RenderingDevice<class_RenderingDevice>`.
+**RDPipelineMultisampleState** được sử dụng để kiểm soát cách thực hiện khử răng cưa multisample hoặc supersample khi kết xuất bằng :ref:`RenderingDevice<class_RenderingDevice>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------------------+-----------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                    | :ref:`enable_alpha_to_coverage<class_RDPipelineMultisampleState_property_enable_alpha_to_coverage>` | ``false`` |
-   +------------------------------------------------------------+-----------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                    | :ref:`enable_alpha_to_one<class_RDPipelineMultisampleState_property_enable_alpha_to_one>`           | ``false`` |
-   +------------------------------------------------------------+-----------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                    | :ref:`enable_sample_shading<class_RDPipelineMultisampleState_property_enable_sample_shading>`       | ``false`` |
-   +------------------------------------------------------------+-----------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`                                  | :ref:`min_sample_shading<class_RDPipelineMultisampleState_property_min_sample_shading>`             | ``0.0``   |
-   +------------------------------------------------------------+-----------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`TextureSamples<enum_RenderingDevice_TextureSamples>` | :ref:`sample_count<class_RDPipelineMultisampleState_property_sample_count>`                         | ``0``     |
-   +------------------------------------------------------------+-----------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`Array<class_Array>`\[:ref:`int<class_int>`\]         | :ref:`sample_masks<class_RDPipelineMultisampleState_property_sample_masks>`                         | ``[]``    |
-   +------------------------------------------------------------+-----------------------------------------------------------------------------------------------------+-----------+
+   +-------------------------------------------------------------+-----------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                     | :ref:`enable_alpha_to_coverage<class_RDPipelineMultisampleState_property_enable_alpha_to_coverage>` | ``false`` |
+   +-------------------------------------------------------------+-----------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                     | :ref:`enable_alpha_to_one<class_RDPipelineMultisampleState_property_enable_alpha_to_one>`           | ``false`` |
+   +-------------------------------------------------------------+-----------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                     | :ref:`enable_sample_shading<class_RDPipelineMultisampleState_property_enable_sample_shading>`       | ``false`` |
+   +-------------------------------------------------------------+-----------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`                                   | :ref:`min_sample_shading<class_RDPipelineMultisampleState_property_min_sample_shading>`             | ``0.0``   |
+   +-------------------------------------------------------------+-----------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`TextureSamples <enum_RenderingDevice_TextureSamples>` | :ref:`sample_count<class_RDPipelineMultisampleState_property_sample_count>`                         | ``0``     |
+   +-------------------------------------------------------------+-----------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`Array<class_Array>`\[:ref:`int<class_int>`\]          | :ref:`sample_masks<class_RDPipelineMultisampleState_property_sample_masks>`                         | ``[]``    |
+   +-------------------------------------------------------------+-----------------------------------------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-section-separator
 
@@ -49,8 +49,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_RDPipelineMultisampleState_property_enable_alpha_to_coverage:
 
@@ -63,7 +63,7 @@ Property Descriptions
 - |void| **set_enable_alpha_to_coverage**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_enable_alpha_to_coverage**\ (\ )
 
-If ``true``, alpha to coverage is enabled. This generates a temporary coverage value based on the alpha component of the fragment's first color output. This allows alpha transparency to make use of multisample antialiasing.
+Nếu ``true``, alpha to coverage được bật. Tính năng này tạo ra một giá trị coverage tạm thời dựa trên thành phần alpha của đầu ra màu đầu tiên của fragment. Điều này cho phép độ trong suốt alpha sử dụng khử răng cưa multisample.
 
 .. rst-class:: classref-item-separator
 
@@ -80,7 +80,7 @@ If ``true``, alpha to coverage is enabled. This generates a temporary coverage v
 - |void| **set_enable_alpha_to_one**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_enable_alpha_to_one**\ (\ )
 
-If ``true``, alpha is forced to either ``0.0`` or ``1.0``. This allows hardening the edges of antialiased alpha transparencies. Only relevant if :ref:`enable_alpha_to_coverage<class_RDPipelineMultisampleState_property_enable_alpha_to_coverage>` is ``true``.
+Nếu ``true``, alpha bị buộc thành ``0.0`` hoặc ``1.0``. Điều này cho phép làm cứng các cạnh của vùng trong suốt alpha đã được khử răng cưa. Chỉ có ý nghĩa nếu :ref:`enable_alpha_to_coverage<class_RDPipelineMultisampleState_property_enable_alpha_to_coverage>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -97,7 +97,7 @@ If ``true``, alpha is forced to either ``0.0`` or ``1.0``. This allows hardening
 - |void| **set_enable_sample_shading**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_enable_sample_shading**\ (\ )
 
-If ``true``, enables per-sample shading which replaces MSAA by SSAA. This provides higher quality antialiasing that works with transparent (alpha scissor) edges. This has a very high performance cost. See also :ref:`min_sample_shading<class_RDPipelineMultisampleState_property_min_sample_shading>`. See the `per-sample shading Vulkan documentation <https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#primsrast-sampleshading>`__ for more details.
+Nếu ``true``, bật per-sample shading, thay thế MSAA bằng SSAA. Tính năng này cung cấp khử răng cưa chất lượng cao hơn và hoạt động với các cạnh trong suốt (alpha scissor). Tính năng này có chi phí hiệu năng rất cao. Xem thêm :ref:`min_sample_shading<class_RDPipelineMultisampleState_property_min_sample_shading>`. Xem `tài liệu Vulkan về per-sample shading <https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#primsrast-sampleshading>`__ để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -114,7 +114,7 @@ If ``true``, enables per-sample shading which replaces MSAA by SSAA. This provid
 - |void| **set_min_sample_shading**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_min_sample_shading**\ (\ )
 
-The multiplier of :ref:`sample_count<class_RDPipelineMultisampleState_property_sample_count>` that determines how many samples are performed for each fragment. Must be between ``0.0`` and ``1.0`` (inclusive). Only effective if :ref:`enable_sample_shading<class_RDPipelineMultisampleState_property_enable_sample_shading>` is ``true``. If :ref:`min_sample_shading<class_RDPipelineMultisampleState_property_min_sample_shading>` is ``1.0``, fragment invocation must only read from the coverage index sample. Tile image access must not be used if :ref:`enable_sample_shading<class_RDPipelineMultisampleState_property_enable_sample_shading>` is *not* ``1.0``.
+Bội số của :ref:`sample_count<class_RDPipelineMultisampleState_property_sample_count>` xác định số mẫu được thực hiện cho mỗi fragment. Phải nằm trong khoảng từ ``0.0`` đến ``1.0`` (bao gồm cả hai giá trị). Chỉ có hiệu lực nếu :ref:`enable_sample_shading<class_RDPipelineMultisampleState_property_enable_sample_shading>` là ``true``. Nếu :ref:`min_sample_shading<class_RDPipelineMultisampleState_property_min_sample_shading>` là ``1.0``, việc gọi fragment chỉ được đọc từ sample có chỉ mục coverage. Không được sử dụng tile image access nếu :ref:`enable_sample_shading<class_RDPipelineMultisampleState_property_enable_sample_shading>` là *không phải* ``1.0``.
 
 .. rst-class:: classref-item-separator
 
@@ -131,7 +131,7 @@ The multiplier of :ref:`sample_count<class_RDPipelineMultisampleState_property_s
 - |void| **set_sample_count**\ (\ value\: :ref:`TextureSamples<enum_RenderingDevice_TextureSamples>`\ )
 - :ref:`TextureSamples<enum_RenderingDevice_TextureSamples>` **get_sample_count**\ (\ )
 
-The number of MSAA samples (or SSAA samples if :ref:`enable_sample_shading<class_RDPipelineMultisampleState_property_enable_sample_shading>` is ``true``) to perform. Higher values result in better antialiasing, at the cost of performance.
+Số lượng mẫu MSAA (hoặc mẫu SSAA nếu :ref:`enable_sample_shading<class_RDPipelineMultisampleState_property_enable_sample_shading>` là ``true``) cần thực hiện. Giá trị cao hơn cho kết quả khử răng cưa tốt hơn, nhưng phải đánh đổi bằng hiệu năng.
 
 .. rst-class:: classref-item-separator
 
@@ -148,14 +148,14 @@ The number of MSAA samples (or SSAA samples if :ref:`enable_sample_shading<class
 - |void| **set_sample_masks**\ (\ value\: :ref:`Array<class_Array>`\[:ref:`int<class_int>`\]\ )
 - :ref:`Array<class_Array>`\[:ref:`int<class_int>`\] **get_sample_masks**\ (\ )
 
-The sample mask array. See the `sample mask Vulkan documentation <https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#fragops-samplemask>`__ for more details.
+Mảng sample mask. Xem `tài liệu Vulkan về sample mask <https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#fragops-samplemask>`__ để biết thêm chi tiết.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

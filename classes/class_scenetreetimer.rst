@@ -10,18 +10,18 @@
 SceneTreeTimer
 ==============
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-One-shot timer.
+Timer chạy một lần.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A one-shot timer managed by the scene tree, which emits :ref:`timeout<class_SceneTreeTimer_signal_timeout>` on completion. See also :ref:`SceneTree.create_timer()<class_SceneTree_method_create_timer>`.
+Timer chạy một lần do scene tree quản lý, phát :ref:`timeout<class_SceneTreeTimer_signal_timeout>` khi hoàn tất. Xem thêm :ref:`SceneTree.create_timer()<class_SceneTree_method_create_timer>`.
 
-As opposed to :ref:`Timer<class_Timer>`, it does not require the instantiation of a node. Commonly used to create a one-shot delay timer as in the following example:
+Không giống :ref:`Timer<class_Timer>`, nó không yêu cầu khởi tạo một node. Thường được dùng để tạo timer trì hoãn chạy một lần như trong ví dụ sau:
 
 
 .. tabs::
@@ -44,14 +44,14 @@ As opposed to :ref:`Timer<class_Timer>`, it does not require the instantiation o
 
 
 
-The timer will be dereferenced after its time elapses. To preserve the timer, you can keep a reference to it. See :ref:`RefCounted<class_RefCounted>`.
+Timer sẽ được bỏ tham chiếu sau khi hết thời gian. Để giữ lại timer, bạn có thể lưu một tham chiếu đến nó. Xem :ref:`RefCounted<class_RefCounted>`.
 
-\ **Note:** The timer is processed after all of the nodes in the current frame, i.e. node's :ref:`Node._process()<class_Node_private_method__process>` method would be called before the timer (or :ref:`Node._physics_process()<class_Node_private_method__physics_process>` if ``process_in_physics`` in :ref:`SceneTree.create_timer()<class_SceneTree_method_create_timer>` has been set to ``true``).
+\ **Lưu ý:** Timer được xử lý sau tất cả các node trong frame hiện tại, tức là phương thức :ref:`Node._process()<class_Node_private_method__process>` của node sẽ được gọi trước timer (hoặc :ref:`Node._physics_process()<class_Node_private_method__physics_process>` nếu ``process_in_physics`` trong :ref:`SceneTree.create_timer()<class_SceneTree_method_create_timer>` đã được đặt thành ``true``).
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -66,8 +66,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Các signal
+----------
 
 .. _class_SceneTreeTimer_signal_timeout:
 
@@ -75,7 +75,7 @@ Signals
 
 **timeout**\ (\ ) :ref:`🔗<class_SceneTreeTimer_signal_timeout>`
 
-Emitted when the timer reaches 0.
+Được phát khi timer đạt 0.
 
 .. rst-class:: classref-section-separator
 
@@ -83,28 +83,28 @@ Emitted when the timer reaches 0.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_SceneTreeTimer_property_time_left:
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **time_left** :ref:`🔗<class_SceneTreeTimer_property_time_left>`
+:ref:`float<class_float>` **time_left** :ref:`🔗 <class_SceneTreeTimer_property_time_left>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_time_left**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_time_left**\ (\ )
 
-The time remaining (in seconds).
+Thời gian còn lại (tính bằng giây).
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

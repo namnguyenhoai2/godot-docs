@@ -10,31 +10,31 @@
 ResourceImporterBMFont
 ======================
 
-**Inherits:** :ref:`ResourceImporter<class_ResourceImporter>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`ResourceImporter<class_ResourceImporter>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Imports a bitmap font in the BMFont (``.fnt``) format.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-The BMFont format is a format created by the `BMFont <https://www.angelcode.com/products/bmfont/>`__ program. Many BMFont-compatible programs also exist, like `BMGlyph <https://www.bmglyph.com/>`__.
-
-Compared to :ref:`ResourceImporterImageFont<class_ResourceImporterImageFont>`, **ResourceImporterBMFont** supports bitmap fonts with varying glyph widths/heights.
-
-See also :ref:`ResourceImporterDynamicFont<class_ResourceImporterDynamicFont>`.
+Nhập một bitmap font ở định dạng BMFont (``.fnt``).
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Định dạng BMFont là một định dạng được tạo bởi chương trình `BMFont <https://www.angelcode.com/products/bmfont/>`__. Ngoài ra còn có nhiều chương trình tương thích với BMFont, chẳng hạn như `BMGlyph <https://www.bmglyph.com/>`__.
+
+So với :ref:`ResourceImporterImageFont<class_ResourceImporterImageFont>`, **ResourceImporterBMFont** hỗ trợ bitmap font có độ rộng/chiều cao glyph khác nhau.
+
+Xem thêm :ref:`ResourceImporterDynamicFont<class_ResourceImporterDynamicFont>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
 - `Bitmap fonts - Using fonts <../tutorials/ui/gui_using_fonts.html#bitmap-fonts>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -54,8 +54,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ResourceImporterBMFont_property_compress:
 
@@ -63,7 +63,7 @@ Property Descriptions
 
 :ref:`bool<class_bool>` **compress** = ``true`` :ref:`🔗<class_ResourceImporterBMFont_property_compress>`
 
-If ``true``, uses lossless compression for the resulting font.
+Nếu ``true``, sử dụng tính năng nén không mất dữ liệu cho font kết quả.
 
 .. rst-class:: classref-item-separator
 
@@ -75,7 +75,7 @@ If ``true``, uses lossless compression for the resulting font.
 
 :ref:`Array<class_Array>` **fallbacks** = ``[]`` :ref:`🔗<class_ResourceImporterBMFont_property_fallbacks>`
 
-List of font fallbacks to use if a glyph isn't found in this bitmap font. Fonts at the beginning of the array are attempted first.
+Danh sách các font dự phòng sẽ được sử dụng nếu không tìm thấy glyph trong bitmap font này. Các font ở đầu mảng sẽ được thử trước.
 
 .. rst-class:: classref-item-separator
 
@@ -87,14 +87,14 @@ List of font fallbacks to use if a glyph isn't found in this bitmap font. Fonts 
 
 :ref:`int<class_int>` **scaling_mode** = ``2`` :ref:`🔗<class_ResourceImporterBMFont_property_scaling_mode>`
 
-Font scaling mode.
+Chế độ co giãn font.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

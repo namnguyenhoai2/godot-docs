@@ -10,28 +10,28 @@
 SpringBoneCollision3D
 =====================
 
-**Inherits:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`SpringBoneCollisionCapsule3D<class_SpringBoneCollisionCapsule3D>`, :ref:`SpringBoneCollisionPlane3D<class_SpringBoneCollisionPlane3D>`, :ref:`SpringBoneCollisionSphere3D<class_SpringBoneCollisionSphere3D>`
+**Được kế thừa bởi:** :ref:`SpringBoneCollisionCapsule3D<class_SpringBoneCollisionCapsule3D>`, :ref:`SpringBoneCollisionPlane3D<class_SpringBoneCollisionPlane3D>`, :ref:`SpringBoneCollisionSphere3D<class_SpringBoneCollisionSphere3D>`
 
-A base class of the collision that interacts with :ref:`SpringBoneSimulator3D<class_SpringBoneSimulator3D>`.
+Lớp cơ sở của đối tượng va chạm tương tác với :ref:`SpringBoneSimulator3D<class_SpringBoneSimulator3D>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A collision can be a child of :ref:`SpringBoneSimulator3D<class_SpringBoneSimulator3D>`. If it is not a child of :ref:`SpringBoneSimulator3D<class_SpringBoneSimulator3D>`, it has no effect.
+Một đối tượng va chạm có thể là node con của :ref:`SpringBoneSimulator3D<class_SpringBoneSimulator3D>`. Nếu nó không phải là node con của :ref:`SpringBoneSimulator3D<class_SpringBoneSimulator3D>`, nó sẽ không có tác dụng.
 
-The colliding and sliding are done in the :ref:`SpringBoneSimulator3D<class_SpringBoneSimulator3D>`'s modification process in order of its collision list which is set by :ref:`SpringBoneSimulator3D.set_collision_path()<class_SpringBoneSimulator3D_method_set_collision_path>`. If :ref:`SpringBoneSimulator3D.are_all_child_collisions_enabled()<class_SpringBoneSimulator3D_method_are_all_child_collisions_enabled>` is ``true``, the order matches :ref:`SceneTree<class_SceneTree>`.
+Việc va chạm và trượt được thực hiện trong quá trình sửa đổi của :ref:`SpringBoneSimulator3D<class_SpringBoneSimulator3D>`, theo thứ tự trong danh sách va chạm của nó, được thiết lập bởi :ref:`SpringBoneSimulator3D.set_collision_path()<class_SpringBoneSimulator3D_method_set_collision_path>`. Nếu :ref:`SpringBoneSimulator3D.are_all_child_collisions_enabled()<class_SpringBoneSimulator3D_method_are_all_child_collisions_enabled>` là ``true``, thứ tự sẽ khớp với :ref:`SceneTree<class_SceneTree>`.
 
-If :ref:`bone<class_SpringBoneCollision3D_property_bone>` is set, it synchronizes with the bone pose of the ancestor :ref:`Skeleton3D<class_Skeleton3D>`, which is done in before the :ref:`SpringBoneSimulator3D<class_SpringBoneSimulator3D>`'s modification process as the pre-process.
+Nếu :ref:`bone<class_SpringBoneCollision3D_property_bone>` được thiết lập, nó sẽ đồng bộ với tư thế xương của :ref:`Skeleton3D<class_Skeleton3D>` tổ tiên; việc này được thực hiện trước quá trình sửa đổi của :ref:`SpringBoneSimulator3D<class_SpringBoneSimulator3D>` dưới dạng bước tiền xử lý.
 
-\ **Warning:** A scaled **SpringBoneCollision3D** will likely not behave as expected. Make sure that the parent :ref:`Skeleton3D<class_Skeleton3D>` and its bones are not scaled.
+\ **Cảnh báo:** Một **SpringBoneCollision3D** được scale có thể sẽ không hoạt động như mong đợi. Hãy đảm bảo rằng :ref:`Skeleton3D<class_Skeleton3D>` cha và các xương của nó không bị scale.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -49,8 +49,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -65,8 +65,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_SpringBoneCollision3D_property_bone:
 
@@ -79,7 +79,7 @@ Property Descriptions
 - |void| **set_bone**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_bone**\ (\ )
 
-The index of the attached bone.
+Chỉ mục của xương được gắn.
 
 .. rst-class:: classref-item-separator
 
@@ -96,7 +96,7 @@ The index of the attached bone.
 - |void| **set_bone_name**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_bone_name**\ (\ )
 
-The name of the attached bone.
+Tên của xương được gắn.
 
 .. rst-class:: classref-item-separator
 
@@ -106,14 +106,14 @@ The name of the attached bone.
 
 .. rst-class:: classref-property
 
-:ref:`Vector3<class_Vector3>` **position_offset** :ref:`🔗<class_SpringBoneCollision3D_property_position_offset>`
+:ref:`Vector3<class_Vector3>` **position_offset** :ref:`🔗 <class_SpringBoneCollision3D_property_position_offset>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_position_offset**\ (\ value\: :ref:`Vector3<class_Vector3>`\ )
 - :ref:`Vector3<class_Vector3>` **get_position_offset**\ (\ )
 
-The offset of the position from :ref:`Skeleton3D<class_Skeleton3D>`'s :ref:`bone<class_SpringBoneCollision3D_property_bone>` pose position.
+Độ lệch vị trí so với vị trí tư thế :ref:`bone<class_SpringBoneCollision3D_property_bone>` của :ref:`Skeleton3D<class_Skeleton3D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -123,14 +123,14 @@ The offset of the position from :ref:`Skeleton3D<class_Skeleton3D>`'s :ref:`bone
 
 .. rst-class:: classref-property
 
-:ref:`Quaternion<class_Quaternion>` **rotation_offset** :ref:`🔗<class_SpringBoneCollision3D_property_rotation_offset>`
+:ref:`Quaternion<class_Quaternion>` **rotation_offset** :ref:`🔗 <class_SpringBoneCollision3D_property_rotation_offset>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_rotation_offset**\ (\ value\: :ref:`Quaternion<class_Quaternion>`\ )
 - :ref:`Quaternion<class_Quaternion>` **get_rotation_offset**\ (\ )
 
-The offset of the rotation from :ref:`Skeleton3D<class_Skeleton3D>`'s :ref:`bone<class_SpringBoneCollision3D_property_bone>` pose rotation.
+Độ lệch góc xoay so với góc xoay tư thế :ref:`bone<class_SpringBoneCollision3D_property_bone>` của :ref:`Skeleton3D<class_Skeleton3D>`.
 
 .. rst-class:: classref-section-separator
 
@@ -138,8 +138,8 @@ The offset of the rotation from :ref:`Skeleton3D<class_Skeleton3D>`'s :ref:`bone
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_SpringBoneCollision3D_method_get_skeleton:
 
@@ -147,14 +147,14 @@ Method Descriptions
 
 :ref:`Skeleton3D<class_Skeleton3D>` **get_skeleton**\ (\ ) |const| :ref:`🔗<class_SpringBoneCollision3D_method_get_skeleton>`
 
-Get parent :ref:`Skeleton3D<class_Skeleton3D>` node of the parent :ref:`SpringBoneSimulator3D<class_SpringBoneSimulator3D>` if found.
+Lấy node :ref:`Skeleton3D<class_Skeleton3D>` cha của :ref:`SpringBoneSimulator3D<class_SpringBoneSimulator3D>` cha nếu tìm thấy.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường được người dùng ghi đè để có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một thực thể để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,24 +10,24 @@
 StringName
 ==========
 
-A built-in type for unique strings.
+Một kiểu tích hợp dành cho các chuỗi duy nhất.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**StringName**\ s are immutable strings designed for general-purpose representation of unique names (also called "string interning"). Two **StringName**\ s with the same value are the same object. Comparing them is extremely fast compared to regular :ref:`String<class_String>`\ s.
+Các **StringName**\  là những chuỗi bất biến được thiết kế để biểu diễn các tên duy nhất cho mục đích chung (còn gọi là "string interning"). Hai **StringName**\  có cùng giá trị sẽ là cùng một đối tượng. Việc so sánh chúng nhanh hơn rất nhiều so với các :ref:`String<class_String>`\  thông thường.
 
-You will usually pass a :ref:`String<class_String>` to methods expecting a **StringName** and it will be automatically converted (often at compile time), but in rare cases you can construct a **StringName** ahead of time with the **StringName** constructor or, in GDScript, the literal syntax ``&"example"``. Manually constructing a **StringName** allows you to control when the conversion from :ref:`String<class_String>` occurs or to use the literal and prevent conversions entirely.
+Thông thường, bạn sẽ truyền một :ref:`String<class_String>` cho các phương thức yêu cầu một **StringName** và nó sẽ được tự động chuyển đổi (thường là tại thời điểm biên dịch), nhưng trong một số trường hợp hiếm, bạn có thể tạo trước một **StringName** bằng constructor **StringName** hoặc trong GDScript bằng cú pháp literal ``&"example"``. Việc tạo thủ công một **StringName** cho phép bạn kiểm soát thời điểm chuyển đổi từ :ref:`String<class_String>` diễn ra hoặc sử dụng literal để ngăn hoàn toàn việc chuyển đổi.
 
-See also :ref:`NodePath<class_NodePath>`, which is a similar concept specifically designed to store pre-parsed scene tree paths.
+Xem thêm :ref:`NodePath<class_NodePath>`, một khái niệm tương tự được thiết kế riêng để lưu trữ các đường dẫn cây cảnh đã được phân tích cú pháp trước.
 
-All of :ref:`String<class_String>`'s methods are available in this class too. They convert the **StringName** into a string, and they also return a string. This is highly inefficient and should only be used if the string is desired.
+Tất cả các phương thức của :ref:`String<class_String>` cũng khả dụng trong lớp này. Chúng chuyển đổi **StringName** thành một chuỗi và cũng trả về một chuỗi. Cách này cực kỳ kém hiệu quả và chỉ nên được sử dụng khi bạn thực sự cần chuỗi.
 
-\ **Note:** In C#, an explicit conversion to ``System.String`` is required to use the methods listed on this page. Use the ``ToString()`` method to cast a **StringName** to a string, and then use the equivalent methods in ``System.String`` or ``StringExtensions``.
+\ **Lưu ý:** Trong C#, cần chuyển đổi tường minh sang ``System.String`` để sử dụng các phương thức được liệt kê trên trang này. Hãy sử dụng phương thức ``ToString()`` để chuyển một **StringName** thành chuỗi, sau đó sử dụng các phương thức tương đương trong ``System.String`` hoặc ``StringExtensions``.
 
-\ **Note:** In a boolean context, a **StringName** will evaluate to ``false`` if it is empty (``StringName("")``). Otherwise, a **StringName** will always evaluate to ``true``.
+\ **Lưu ý:** Trong ngữ cảnh boolean, một **StringName** sẽ được đánh giá là ``false`` nếu nó rỗng (``StringName("")``). Nếu không, một **StringName** sẽ luôn được đánh giá là ``true``.
 
 .. note::
 
@@ -35,7 +35,7 @@ All of :ref:`String<class_String>`'s methods are available in this class too. Th
 
 .. rst-class:: classref-reftable-group
 
-Constructors
+Hàm khởi tạo
 ------------
 
 .. table::
@@ -51,8 +51,8 @@ Constructors
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -281,35 +281,35 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Operators
----------
+Toán tử
+-------
 
 .. table::
    :widths: auto
 
-   +-----------------------------+------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | :ref:`operator !=<class_StringName_operator_neq_String>`\ (\ right\: :ref:`String<class_String>`\ )              |
-   +-----------------------------+------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | :ref:`operator !=<class_StringName_operator_neq_StringName>`\ (\ right\: :ref:`StringName<class_StringName>`\ )  |
-   +-----------------------------+------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>` | :ref:`operator %<class_StringName_operator_mod_Variant>`\ (\ right\: :ref:`Variant<class_Variant>`\ )            |
-   +-----------------------------+------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>` | :ref:`operator +<class_StringName_operator_sum_String>`\ (\ right\: :ref:`String<class_String>`\ )               |
-   +-----------------------------+------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>` | :ref:`operator +<class_StringName_operator_sum_StringName>`\ (\ right\: :ref:`StringName<class_StringName>`\ )   |
-   +-----------------------------+------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | :ref:`operator \<<class_StringName_operator_lt_StringName>`\ (\ right\: :ref:`StringName<class_StringName>`\ )   |
-   +-----------------------------+------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | :ref:`operator \<=<class_StringName_operator_lte_StringName>`\ (\ right\: :ref:`StringName<class_StringName>`\ ) |
-   +-----------------------------+------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | :ref:`operator ==<class_StringName_operator_eq_String>`\ (\ right\: :ref:`String<class_String>`\ )               |
-   +-----------------------------+------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | :ref:`operator ==<class_StringName_operator_eq_StringName>`\ (\ right\: :ref:`StringName<class_StringName>`\ )   |
-   +-----------------------------+------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | :ref:`operator ><class_StringName_operator_gt_StringName>`\ (\ right\: :ref:`StringName<class_StringName>`\ )    |
-   +-----------------------------+------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | :ref:`operator >=<class_StringName_operator_gte_StringName>`\ (\ right\: :ref:`StringName<class_StringName>`\ )  |
-   +-----------------------------+------------------------------------------------------------------------------------------------------------------+
+   +-----------------------------+-------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | :ref:`operator != <class_StringName_operator_neq_String>`\ (\ right\: :ref:`String<class_String>`\ )              |
+   +-----------------------------+-------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | :ref:`operator != <class_StringName_operator_neq_StringName>`\ (\ right\: :ref:`StringName<class_StringName>`\ )  |
+   +-----------------------------+-------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>` | :ref:`operator % <class_StringName_operator_mod_Variant>`\ (\ right\: :ref:`Variant<class_Variant>`\ )            |
+   +-----------------------------+-------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>` | :ref:`operator + <class_StringName_operator_sum_String>`\ (\ right\: :ref:`String<class_String>`\ )               |
+   +-----------------------------+-------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>` | :ref:`operator + <class_StringName_operator_sum_StringName>`\ (\ right\: :ref:`StringName<class_StringName>`\ )   |
+   +-----------------------------+-------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | :ref:`operator \< <class_StringName_operator_lt_StringName>`\ (\ right\: :ref:`StringName<class_StringName>`\ )   |
+   +-----------------------------+-------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | :ref:`operator \<= <class_StringName_operator_lte_StringName>`\ (\ right\: :ref:`StringName<class_StringName>`\ ) |
+   +-----------------------------+-------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | :ref:`operator == <class_StringName_operator_eq_String>`\ (\ right\: :ref:`String<class_String>`\ )               |
+   +-----------------------------+-------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | :ref:`operator == <class_StringName_operator_eq_StringName>`\ (\ right\: :ref:`StringName<class_StringName>`\ )   |
+   +-----------------------------+-------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | :ref:`operator > <class_StringName_operator_gt_StringName>`\ (\ right\: :ref:`StringName<class_StringName>`\ )    |
+   +-----------------------------+-------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | :ref:`operator >= <class_StringName_operator_gte_StringName>`\ (\ right\: :ref:`StringName<class_StringName>`\ )  |
+   +-----------------------------+-------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -317,8 +317,8 @@ Operators
 
 .. rst-class:: classref-descriptions-group
 
-Constructor Descriptions
-------------------------
+Mô tả hàm khởi tạo
+------------------
 
 .. _class_StringName_constructor_StringName:
 
@@ -326,7 +326,7 @@ Constructor Descriptions
 
 :ref:`StringName<class_StringName>` **StringName**\ (\ ) :ref:`🔗<class_StringName_constructor_StringName>`
 
-Constructs an empty **StringName**.
+Khởi tạo một **StringName** rỗng.
 
 .. rst-class:: classref-item-separator
 
@@ -336,7 +336,7 @@ Constructs an empty **StringName**.
 
 :ref:`StringName<class_StringName>` **StringName**\ (\ from\: :ref:`StringName<class_StringName>`\ )
 
-Constructs a **StringName** as a copy of the given **StringName**.
+Khởi tạo một **StringName** dưới dạng bản sao của **StringName** đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -346,7 +346,7 @@ Constructs a **StringName** as a copy of the given **StringName**.
 
 :ref:`StringName<class_StringName>` **StringName**\ (\ from\: :ref:`String<class_String>`\ )
 
-Creates a new **StringName** from the given :ref:`String<class_String>`. In GDScript, ``StringName("example")`` is equivalent to ``&"example"``.
+Tạo một **StringName** mới từ :ref:`String<class_String>` đã cho. Trong GDScript, ``StringName("example")`` tương đương với ``&"example"``.
 
 .. rst-class:: classref-section-separator
 
@@ -354,8 +354,8 @@ Creates a new **StringName** from the given :ref:`String<class_String>`. In GDSc
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_StringName_method_begins_with:
 
@@ -363,7 +363,7 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **begins_with**\ (\ text\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_StringName_method_begins_with>`
 
-Returns ``true`` if the string begins with the given ``text``. See also :ref:`ends_with()<class_StringName_method_ends_with>`.
+Trả về ``true`` nếu chuỗi bắt đầu bằng ``text`` đã cho. Xem thêm :ref:`ends_with()<class_StringName_method_ends_with>`.
 
 .. rst-class:: classref-item-separator
 
@@ -375,7 +375,7 @@ Returns ``true`` if the string begins with the given ``text``. See also :ref:`en
 
 :ref:`PackedStringArray<class_PackedStringArray>` **bigrams**\ (\ ) |const| :ref:`🔗<class_StringName_method_bigrams>`
 
-Returns an array containing the bigrams (pairs of consecutive characters) of this string.
+Trả về một mảng chứa các bigram (cặp ký tự liên tiếp) của chuỗi này.
 
 ::
 
@@ -391,22 +391,22 @@ Returns an array containing the bigrams (pairs of consecutive characters) of thi
 
 :ref:`int<class_int>` **bin_to_int**\ (\ ) |const| :ref:`🔗<class_StringName_method_bin_to_int>`
 
-Converts the string representing a binary number into an :ref:`int<class_int>`. The string may optionally be prefixed with ``"0b"``, and an additional ``-`` prefix for negative numbers.
+Chuyển đổi chuỗi biểu diễn một số nhị phân thành :ref:`int<class_int>`. Chuỗi có thể tùy chọn được thêm tiền tố ``"0b"``, và thêm một tiền tố ``-`` cho các số âm.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    print("101".bin_to_int())   # Prints 5
-    print("0b101".bin_to_int()) # Prints 5
-    print("-0b10".bin_to_int()) # Prints -2
+    print("101".bin_to_int())   # In ra 5
+    print("0b101".bin_to_int()) # In ra 5
+    print("-0b10".bin_to_int()) # In ra -2
 
  .. code-tab:: csharp
 
-    GD.Print("101".BinToInt());   // Prints 5
-    GD.Print("0b101".BinToInt()); // Prints 5
-    GD.Print("-0b10".BinToInt()); // Prints -2
+    GD.Print("101".BinToInt());   // In ra 5
+    GD.Print("0b101".BinToInt()); // In ra 5
+    GD.Print("-0b10".BinToInt()); // In ra -2
 
 
 
@@ -420,7 +420,7 @@ Converts the string representing a binary number into an :ref:`int<class_int>`. 
 
 :ref:`String<class_String>` **c_escape**\ (\ ) |const| :ref:`🔗<class_StringName_method_c_escape>`
 
-Returns a copy of the string with special characters escaped using the C language standard.
+Trả về một bản sao của chuỗi, trong đó các ký tự đặc biệt được escape theo tiêu chuẩn ngôn ngữ C.
 
 .. rst-class:: classref-item-separator
 
@@ -432,9 +432,9 @@ Returns a copy of the string with special characters escaped using the C languag
 
 :ref:`String<class_String>` **c_unescape**\ (\ ) |const| :ref:`🔗<class_StringName_method_c_unescape>`
 
-Returns a copy of the string with escaped characters replaced by their meanings. Supported escape sequences are ``\'``, ``\"``, ``\\``, ``\a``, ``\b``, ``\f``, ``\n``, ``\r``, ``\t``, ``\v``.
+Trả về một bản sao của chuỗi, trong đó các ký tự đã escape được thay thế bằng ý nghĩa của chúng. Các escape sequence được hỗ trợ là ``\'``, ``\"``, ``\\``, ``\a``, ``\b``, ``\f``, ``\n``, ``\r``, ``\t``, ``\v``.
 
-\ **Note:** Unlike the GDScript parser, this method doesn't support the ``\uXXXX`` escape sequence.
+\ **Lưu ý:** Không giống parser GDScript, method này không hỗ trợ escape sequence ``\uXXXX``.
 
 .. rst-class:: classref-item-separator
 
@@ -446,22 +446,22 @@ Returns a copy of the string with escaped characters replaced by their meanings.
 
 :ref:`String<class_String>` **capitalize**\ (\ ) |const| :ref:`🔗<class_StringName_method_capitalize>`
 
-Changes the appearance of the string: replaces underscores (``_``) with spaces, adds spaces before uppercase letters in the middle of a word, converts all letters to lowercase, then converts the first one and each one following a space to uppercase.
+Thay đổi hình thức của chuỗi: thay thế dấu gạch dưới (``_``) bằng khoảng trắng, thêm khoảng trắng trước các chữ cái viết hoa ở giữa một từ, chuyển tất cả chữ cái thành chữ thường, sau đó chuyển chữ cái đầu tiên và mỗi chữ cái đứng sau một khoảng trắng thành chữ hoa.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    "move_local_x".capitalize()   # Returns "Move Local X"
-    "sceneFile_path".capitalize() # Returns "Scene File Path"
-    "2D, FPS, PNG".capitalize()   # Returns "2d, Fps, Png"
+    "move_local_x".capitalize()   # Trả về "Move Local X"
+    "sceneFile_path".capitalize() # Trả về "Scene File Path"
+    "2D, FPS, PNG".capitalize()   # Trả về "2d, Fps, Png"
 
  .. code-tab:: csharp
 
-    "move_local_x".Capitalize();   // Returns "Move Local X"
-    "sceneFile_path".Capitalize(); // Returns "Scene File Path"
-    "2D, FPS, PNG".Capitalize();   // Returns "2d, Fps, Png"
+    "move_local_x".Capitalize();   // Trả về "Move Local X"
+    "sceneFile_path".Capitalize(); // Trả về "Scene File Path"
+    "2D, FPS, PNG".Capitalize();   // Trả về "2d, Fps, Png"
 
 
 
@@ -475,11 +475,11 @@ Changes the appearance of the string: replaces underscores (``_``) with spaces, 
 
 :ref:`int<class_int>` **casecmp_to**\ (\ to\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_StringName_method_casecmp_to>`
 
-Performs a case-sensitive comparison to another string. Returns ``-1`` if less than, ``1`` if greater than, or ``0`` if equal. "Less than" and "greater than" are determined by the `Unicode code points <https://en.wikipedia.org/wiki/List_of_Unicode_characters>`__ of each string, which roughly matches the alphabetical order.
+Thực hiện phép so sánh phân biệt chữ hoa chữ thường với một chuỗi khác. Trả về ``-1`` nếu nhỏ hơn, ``1`` nếu lớn hơn hoặc ``0`` nếu bằng nhau. "Nhỏ hơn" và "lớn hơn" được xác định dựa trên các `điểm mã Unicode <https://en.wikipedia.org/wiki/List_of_Unicode_characters>`__ của mỗi chuỗi, gần tương ứng với thứ tự bảng chữ cái.
 
-With different string lengths, returns ``1`` if this string is longer than the ``to`` string, or ``-1`` if shorter. Note that the length of empty strings is *always* ``0``.
+Khi các chuỗi có độ dài khác nhau, trả về ``1`` nếu chuỗi này dài hơn chuỗi ``to``, hoặc ``-1`` nếu ngắn hơn. Lưu ý rằng độ dài của chuỗi rỗng là *luôn luôn* ``0``.
 
-To get a :ref:`bool<class_bool>` result from a string comparison, use the ``==`` operator instead. See also :ref:`nocasecmp_to()<class_StringName_method_nocasecmp_to>`, :ref:`filecasecmp_to()<class_StringName_method_filecasecmp_to>`, and :ref:`naturalcasecmp_to()<class_StringName_method_naturalcasecmp_to>`.
+Để nhận kết quả :ref:`bool<class_bool>` từ phép so sánh chuỗi, hãy sử dụng toán tử ``==`` thay thế. Xem thêm :ref:`nocasecmp_to()<class_StringName_method_nocasecmp_to>`, :ref:`filecasecmp_to()<class_StringName_method_filecasecmp_to>` và :ref:`naturalcasecmp_to()<class_StringName_method_naturalcasecmp_to>`.
 
 .. rst-class:: classref-item-separator
 
@@ -491,25 +491,25 @@ To get a :ref:`bool<class_bool>` result from a string comparison, use the ``==``
 
 :ref:`bool<class_bool>` **contains**\ (\ what\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_StringName_method_contains>`
 
-Returns ``true`` if the string contains ``what``. In GDScript, this corresponds to the ``in`` operator.
+Trả về ``true`` nếu chuỗi chứa ``what``. Trong GDScript, điều này tương ứng với toán tử ``in``.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    print("Node".contains("de")) # Prints true
-    print("team".contains("I"))  # Prints false
-    print("I" in "team")         # Prints false
+    print("Node".contains("de")) # In ra true
+    print("team".contains("I"))  # In ra false
+    print("I" in "team")         # In ra false
 
  .. code-tab:: csharp
 
-    GD.Print("Node".Contains("de")); // Prints True
-    GD.Print("team".Contains("I"));  // Prints False
+    GD.Print("Node".Contains("de")); // In ra True
+    GD.Print("team".Contains("I"));  // In ra False
 
 
 
-If you need to know where ``what`` is within the string, use :ref:`find()<class_StringName_method_find>`. See also :ref:`containsn()<class_StringName_method_containsn>`.
+Nếu bạn cần biết vị trí của ``what`` trong chuỗi, hãy sử dụng :ref:`find()<class_StringName_method_find>`. Xem thêm :ref:`containsn()<class_StringName_method_containsn>`.
 
 .. rst-class:: classref-item-separator
 
@@ -521,9 +521,9 @@ If you need to know where ``what`` is within the string, use :ref:`find()<class_
 
 :ref:`bool<class_bool>` **containsn**\ (\ what\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_StringName_method_containsn>`
 
-Returns ``true`` if the string contains ``what``, **ignoring case**.
+Trả về ``true`` nếu chuỗi chứa ``what``, **không phân biệt chữ hoa chữ thường**.
 
-If you need to know where ``what`` is within the string, use :ref:`findn()<class_StringName_method_findn>`. See also :ref:`contains()<class_StringName_method_contains>`.
+Nếu bạn cần biết vị trí của ``what`` trong chuỗi, hãy sử dụng :ref:`findn()<class_StringName_method_findn>`. Xem thêm :ref:`contains()<class_StringName_method_contains>`.
 
 .. rst-class:: classref-item-separator
 
@@ -535,7 +535,7 @@ If you need to know where ``what`` is within the string, use :ref:`findn()<class
 
 :ref:`int<class_int>` **count**\ (\ what\: :ref:`String<class_String>`, from\: :ref:`int<class_int>` = 0, to\: :ref:`int<class_int>` = 0\ ) |const| :ref:`🔗<class_StringName_method_count>`
 
-Returns the number of occurrences of the substring ``what`` between ``from`` and ``to`` positions. If ``to`` is 0, the search continues until the end of the string.
+Trả về số lần xuất hiện của chuỗi con ``what`` giữa các vị trí ``from`` và ``to``. Nếu ``to`` là 0, việc tìm kiếm sẽ tiếp tục đến cuối chuỗi.
 
 .. rst-class:: classref-item-separator
 
@@ -547,7 +547,7 @@ Returns the number of occurrences of the substring ``what`` between ``from`` and
 
 :ref:`int<class_int>` **countn**\ (\ what\: :ref:`String<class_String>`, from\: :ref:`int<class_int>` = 0, to\: :ref:`int<class_int>` = 0\ ) |const| :ref:`🔗<class_StringName_method_countn>`
 
-Returns the number of occurrences of the substring ``what`` between ``from`` and ``to`` positions, **ignoring case**. If ``to`` is 0, the search continues until the end of the string.
+Trả về số lần xuất hiện của chuỗi con ``what`` giữa các vị trí ``from`` và ``to``, **không phân biệt chữ hoa chữ thường**. Nếu ``to`` là 0, việc tìm kiếm sẽ tiếp tục đến cuối chuỗi.
 
 .. rst-class:: classref-item-separator
 
@@ -559,7 +559,7 @@ Returns the number of occurrences of the substring ``what`` between ``from`` and
 
 :ref:`String<class_String>` **dedent**\ (\ ) |const| :ref:`🔗<class_StringName_method_dedent>`
 
-Returns a copy of the string with indentation (leading tabs and spaces) removed. See also :ref:`indent()<class_StringName_method_indent>` to add indentation.
+Trả về một bản sao của chuỗi sau khi xóa thụt lề (các tab và khoảng trắng ở đầu). Xem thêm :ref:`indent()<class_StringName_method_indent>` để thêm thụt lề.
 
 .. rst-class:: classref-item-separator
 
@@ -571,7 +571,7 @@ Returns a copy of the string with indentation (leading tabs and spaces) removed.
 
 :ref:`bool<class_bool>` **ends_with**\ (\ text\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_StringName_method_ends_with>`
 
-Returns ``true`` if the string ends with the given ``text``. See also :ref:`begins_with()<class_StringName_method_begins_with>`.
+Trả về ``true`` nếu chuỗi kết thúc bằng ``text`` được cung cấp. Xem thêm :ref:`begins_with()<class_StringName_method_begins_with>`.
 
 .. rst-class:: classref-item-separator
 
@@ -583,7 +583,7 @@ Returns ``true`` if the string ends with the given ``text``. See also :ref:`begi
 
 :ref:`String<class_String>` **erase**\ (\ position\: :ref:`int<class_int>`, chars\: :ref:`int<class_int>` = 1\ ) |const| :ref:`🔗<class_StringName_method_erase>`
 
-Returns a string with ``chars`` characters erased starting from ``position``. If ``chars`` goes beyond the string's length given the specified ``position``, fewer characters will be erased from the returned string. Returns an empty string if either ``position`` or ``chars`` is negative. Returns the original string unmodified if ``chars`` is ``0``.
+Trả về một chuỗi trong đó ``chars`` ký tự bị xóa bắt đầu từ ``position``. Nếu ``chars`` vượt quá độ dài của chuỗi với ``position`` đã chỉ định, sẽ có ít ký tự hơn bị xóa khỏi chuỗi được trả về. Trả về một chuỗi rỗng nếu ``position`` hoặc ``chars`` là số âm. Trả về chuỗi ban đầu không thay đổi nếu ``chars`` là ``0``.
 
 .. rst-class:: classref-item-separator
 
@@ -595,9 +595,9 @@ Returns a string with ``chars`` characters erased starting from ``position``. If
 
 :ref:`int<class_int>` **filecasecmp_to**\ (\ to\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_StringName_method_filecasecmp_to>`
 
-Like :ref:`naturalcasecmp_to()<class_StringName_method_naturalcasecmp_to>` but prioritizes strings that begin with periods (``.``) and underscores (``_``) before any other character. Useful when sorting folders or file names.
+Tương tự :ref:`naturalcasecmp_to()<class_StringName_method_naturalcasecmp_to>` nhưng ưu tiên các chuỗi bắt đầu bằng dấu chấm (``.``) và dấu gạch dưới (``_``) trước mọi ký tự khác. Hữu ích khi sắp xếp thư mục hoặc tên tệp.
 
-To get a :ref:`bool<class_bool>` result from a string comparison, use the ``==`` operator instead. See also :ref:`filenocasecmp_to()<class_StringName_method_filenocasecmp_to>`, :ref:`naturalcasecmp_to()<class_StringName_method_naturalcasecmp_to>`, and :ref:`casecmp_to()<class_StringName_method_casecmp_to>`.
+Để nhận kết quả :ref:`bool<class_bool>` từ phép so sánh chuỗi, hãy sử dụng toán tử ``==`` thay thế. Xem thêm :ref:`filenocasecmp_to()<class_StringName_method_filenocasecmp_to>`, :ref:`naturalcasecmp_to()<class_StringName_method_naturalcasecmp_to>` và :ref:`casecmp_to()<class_StringName_method_casecmp_to>`.
 
 .. rst-class:: classref-item-separator
 
@@ -609,9 +609,9 @@ To get a :ref:`bool<class_bool>` result from a string comparison, use the ``==``
 
 :ref:`int<class_int>` **filenocasecmp_to**\ (\ to\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_StringName_method_filenocasecmp_to>`
 
-Like :ref:`naturalnocasecmp_to()<class_StringName_method_naturalnocasecmp_to>` but prioritizes strings that begin with periods (``.``) and underscores (``_``) before any other character. Useful when sorting folders or file names.
+Tương tự :ref:`naturalnocasecmp_to()<class_StringName_method_naturalnocasecmp_to>` nhưng ưu tiên các chuỗi bắt đầu bằng dấu chấm (``.``) và dấu gạch dưới (``_``) trước mọi ký tự khác. Hữu ích khi sắp xếp thư mục hoặc tên tệp.
 
-To get a :ref:`bool<class_bool>` result from a string comparison, use the ``==`` operator instead. See also :ref:`filecasecmp_to()<class_StringName_method_filecasecmp_to>`, :ref:`naturalnocasecmp_to()<class_StringName_method_naturalnocasecmp_to>`, and :ref:`nocasecmp_to()<class_StringName_method_nocasecmp_to>`.
+Để nhận kết quả :ref:`bool<class_bool>` từ phép so sánh chuỗi, hãy sử dụng toán tử ``==`` thay thế. Xem thêm :ref:`filecasecmp_to()<class_StringName_method_filecasecmp_to>`, :ref:`naturalnocasecmp_to()<class_StringName_method_naturalnocasecmp_to>` và :ref:`nocasecmp_to()<class_StringName_method_nocasecmp_to>`.
 
 .. rst-class:: classref-item-separator
 
@@ -623,32 +623,32 @@ To get a :ref:`bool<class_bool>` result from a string comparison, use the ``==``
 
 :ref:`int<class_int>` **find**\ (\ what\: :ref:`String<class_String>`, from\: :ref:`int<class_int>` = 0\ ) |const| :ref:`🔗<class_StringName_method_find>`
 
-Returns the index of the **first** occurrence of ``what`` in this string, or ``-1`` if there are none. The search's start can be specified with ``from``, continuing to the end of the string.
+Trả về chỉ mục của lần xuất hiện **đầu tiên** của ``what`` trong chuỗi này, hoặc ``-1`` nếu không có. Có thể chỉ định vị trí bắt đầu tìm kiếm bằng ``from``, và việc tìm kiếm sẽ tiếp tục đến cuối chuỗi.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    print("Team".find("I")) # Prints -1
+    print("Team".find("I")) # In ra -1
 
-    print("Potato".find("t"))    # Prints 2
-    print("Potato".find("t", 3)) # Prints 4
-    print("Potato".find("t", 5)) # Prints -1
+    print("Potato".find("t"))    # In ra 2
+    print("Potato".find("t", 3)) # In ra 4
+    print("Potato".find("t", 5)) # In ra -1
 
  .. code-tab:: csharp
 
-    GD.Print("Team".Find("I")); // Prints -1
+    GD.Print("Team".Find("I")); // In ra -1
 
-    GD.Print("Potato".Find("t"));    // Prints 2
-    GD.Print("Potato".Find("t", 3)); // Prints 4
-    GD.Print("Potato".Find("t", 5)); // Prints -1
+    GD.Print("Potato".Find("t"));    // In ra 2
+    GD.Print("Potato".Find("t", 3)); // In ra 4
+    GD.Print("Potato".Find("t", 5)); // In ra -1
 
 
 
-\ **Note:** If you just want to know whether the string contains ``what``, use :ref:`contains()<class_StringName_method_contains>`. In GDScript, you may also use the ``in`` operator.
+\ **Lưu ý:** Nếu bạn chỉ muốn biết liệu chuỗi có chứa ``what`` hay không, hãy sử dụng :ref:`contains()<class_StringName_method_contains>`. Trong GDScript, bạn cũng có thể sử dụng toán tử ``in``.
 
-\ **Note:** A negative value of ``from`` is converted to a starting index by counting back from the last possible index with enough space to find ``what``.
+\ **Lưu ý:** Giá trị âm của ``from`` được chuyển đổi thành chỉ mục bắt đầu bằng cách đếm ngược từ chỉ mục cuối cùng có đủ khoảng trống để tìm ``what``.
 
 .. rst-class:: classref-item-separator
 
@@ -660,7 +660,7 @@ Returns the index of the **first** occurrence of ``what`` in this string, or ``-
 
 :ref:`int<class_int>` **findn**\ (\ what\: :ref:`String<class_String>`, from\: :ref:`int<class_int>` = 0\ ) |const| :ref:`🔗<class_StringName_method_findn>`
 
-Returns the index of the **first** **case-insensitive** occurrence of ``what`` in this string, or ``-1`` if there are none. The starting search index can be specified with ``from``, continuing to the end of the string.
+Trả về chỉ mục của lần xuất hiện **đầu tiên** **không phân biệt chữ hoa chữ thường** của ``what`` trong chuỗi này, hoặc ``-1`` nếu không có. Có thể chỉ định chỉ mục bắt đầu tìm kiếm bằng ``from``, và việc tìm kiếm sẽ tiếp tục đến cuối chuỗi.
 
 .. rst-class:: classref-item-separator
 
@@ -672,9 +672,9 @@ Returns the index of the **first** **case-insensitive** occurrence of ``what`` i
 
 :ref:`String<class_String>` **format**\ (\ values\: :ref:`Variant<class_Variant>`, placeholder\: :ref:`String<class_String>` = "{_}"\ ) |const| :ref:`🔗<class_StringName_method_format>`
 
-Formats the string by replacing all occurrences of ``placeholder`` with the elements of ``values``.
+Định dạng chuỗi bằng cách thay thế tất cả các lần xuất hiện của ``placeholder`` bằng các phần tử của ``values``.
 
-\ ``values`` can be a :ref:`Dictionary<class_Dictionary>`, an :ref:`Array<class_Array>`, or an :ref:`Object<class_Object>`. Any underscores in ``placeholder`` will be replaced with the corresponding keys in advance. Array elements use their index as keys.
+\ ``values`` có thể là một :ref:`Dictionary<class_Dictionary>`, một :ref:`Array<class_Array>` hoặc một :ref:`Object<class_Object>`. Mọi dấu gạch dưới trong ``placeholder`` sẽ được thay thế trước bằng các khóa tương ứng. Các phần tử mảng sử dụng chỉ mục của chúng làm khóa.
 
 ::
 
@@ -685,7 +685,7 @@ Formats the string by replacing all occurrences of ``placeholder`` with the elem
     # Prints "User 42 is Godot."
     print("User {id} is {name}.".format({"id": 42, "name": "Godot"}))
 
-Some additional handling is performed when ``values`` is an :ref:`Array<class_Array>`. If ``placeholder`` does not contain an underscore, the elements of the ``values`` array will be used to replace one occurrence of the placeholder in order; If an element of ``values`` is another 2-element array, it'll be interpreted as a key-value pair.
+Một số xử lý bổ sung được thực hiện khi ``values`` là một :ref:`Array<class_Array>`. Nếu ``placeholder`` không chứa dấu gạch dưới, các phần tử của mảng ``values`` sẽ lần lượt được dùng để thay thế một lần xuất hiện của placeholder; nếu một phần tử của ``values`` là một mảng gồm 2 phần tử khác, mảng đó sẽ được diễn giải là một cặp khóa-giá trị.
 
 ::
 
@@ -693,7 +693,7 @@ Some additional handling is performed when ``values`` is an :ref:`Array<class_Ar
     print("User {} is {}.".format([42, "Godot"], "{}"))
     print("User {id} is {name}.".format([["id", 42], ["name", "Godot"]]))
 
-When passing an :ref:`Object<class_Object>`, the property names from :ref:`Object.get_property_list()<class_Object_method_get_property_list>` are used as keys.
+Khi truyền một :ref:`Object<class_Object>`, tên thuộc tính từ :ref:`Object.get_property_list()<class_Object_method_get_property_list>` sẽ được dùng làm khóa.
 
 ::
 
@@ -701,9 +701,9 @@ When passing an :ref:`Object<class_Object>`, the property names from :ref:`Objec
     var node = Node2D.new()
     print("Visible {visible}, position {position}".format(node))
 
-See also the :doc:`GDScript format string <../tutorials/scripting/gdscript/gdscript_format_string>` tutorial.
+Xem thêm tutorial :doc:`GDScript format string <../tutorials/scripting/gdscript/gdscript_format_string>`.
 
-\ **Note:** Each replacement is done sequentially for each element of ``values``, **not** all at once. This means that if any element is inserted and it contains another placeholder, it may be changed by the next replacement. While this can be very useful, it often causes unexpected results. If not necessary, make sure ``values``'s elements do not contain placeholders.
+\ **Lưu ý:** Mỗi phép thay thế được thực hiện tuần tự cho từng phần tử của ``values``, **không phải** tất cả cùng lúc. Điều này có nghĩa là nếu một phần tử được chèn vào và chứa placeholder khác, nó có thể bị thay đổi bởi phép thay thế tiếp theo. Điều này có thể rất hữu ích, nhưng thường gây ra kết quả không mong muốn. Nếu không cần thiết, hãy đảm bảo các phần tử của ``values`` không chứa placeholder.
 
 ::
 
@@ -712,7 +712,7 @@ See also the :doc:`GDScript format string <../tutorials/scripting/gdscript/gdscr
     print("{a} {b}".format({"a": "{b}", "b": "c"})) # Prints "c c"
     print("{a} {b}".format({"b": "c", "a": "{b}"})) # Prints "{b} c"
 
-\ **Note:** In C#, it's recommended to `interpolate strings with "$" <https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/interpolated>`__, instead.
+\ **Lưu ý:** Trong C#, bạn nên `interpolate strings with "$" <https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/interpolated>`__ thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -724,7 +724,7 @@ See also the :doc:`GDScript format string <../tutorials/scripting/gdscript/gdscr
 
 :ref:`String<class_String>` **get_base_dir**\ (\ ) |const| :ref:`🔗<class_StringName_method_get_base_dir>`
 
-If the string is a valid file path, returns the base directory name.
+Nếu chuỗi là một đường dẫn tệp hợp lệ, trả về tên thư mục cơ sở.
 
 ::
 
@@ -740,7 +740,7 @@ If the string is a valid file path, returns the base directory name.
 
 :ref:`String<class_String>` **get_basename**\ (\ ) |const| :ref:`🔗<class_StringName_method_get_basename>`
 
-If the string is a valid file path, returns the full file path, without the extension.
+Nếu chuỗi là một đường dẫn tệp hợp lệ, trả về đường dẫn tệp đầy đủ, không bao gồm phần mở rộng.
 
 ::
 
@@ -756,7 +756,7 @@ If the string is a valid file path, returns the full file path, without the exte
 
 :ref:`String<class_String>` **get_extension**\ (\ ) |const| :ref:`🔗<class_StringName_method_get_extension>`
 
-If the string is a valid file name or path, returns the file extension without the leading period (``.``). Otherwise, returns an empty string.
+Nếu chuỗi là một tên tệp hoặc đường dẫn hợp lệ, trả về phần mở rộng tệp không có dấu chấm đứng đầu (``.``). Nếu không, trả về một chuỗi rỗng.
 
 ::
 
@@ -780,7 +780,7 @@ If the string is a valid file name or path, returns the file extension without t
 
 :ref:`String<class_String>` **get_file**\ (\ ) |const| :ref:`🔗<class_StringName_method_get_file>`
 
-If the string is a valid file path, returns the file name, including the extension.
+Nếu chuỗi là một đường dẫn tệp hợp lệ, trả về tên tệp, bao gồm cả phần mở rộng.
 
 ::
 
@@ -796,9 +796,9 @@ If the string is a valid file path, returns the file name, including the extensi
 
 :ref:`String<class_String>` **get_slice**\ (\ delimiter\: :ref:`String<class_String>`, slice\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_StringName_method_get_slice>`
 
-Splits the string using a ``delimiter`` and returns the substring at index ``slice``. Returns the original string if ``delimiter`` does not occur in the string. Returns an empty string if the ``slice`` does not exist.
+Tách chuỗi bằng một ``delimiter`` và trả về chuỗi con tại chỉ mục ``slice``. Trả về chuỗi ban đầu nếu ``delimiter`` không xuất hiện trong chuỗi. Trả về một chuỗi rỗng nếu ``slice`` không tồn tại.
 
-This is faster than :ref:`split()<class_StringName_method_split>`, if you only need one substring.
+Cách này nhanh hơn :ref:`split()<class_StringName_method_split>` nếu bạn chỉ cần một chuỗi con.
 
 ::
 
@@ -814,7 +814,7 @@ This is faster than :ref:`split()<class_StringName_method_split>`, if you only n
 
 :ref:`int<class_int>` **get_slice_count**\ (\ delimiter\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_StringName_method_get_slice_count>`
 
-Returns the total number of slices when the string is split with the given ``delimiter`` (see :ref:`split()<class_StringName_method_split>`).
+Trả về tổng số lát cắt khi chuỗi được tách bằng ``delimiter`` đã cho (xem :ref:`split()<class_StringName_method_split>`).
 
 .. rst-class:: classref-item-separator
 
@@ -826,9 +826,9 @@ Returns the total number of slices when the string is split with the given ``del
 
 :ref:`String<class_String>` **get_slicec**\ (\ delimiter\: :ref:`int<class_int>`, slice\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_StringName_method_get_slicec>`
 
-Splits the string using a Unicode character with code ``delimiter`` and returns the substring at index ``slice``. Returns an empty string if the ``slice`` does not exist.
+Tách chuỗi bằng một ký tự Unicode có mã ``delimiter`` và trả về chuỗi con tại chỉ mục ``slice``. Trả về một chuỗi rỗng nếu ``slice`` không tồn tại.
 
-This is faster than :ref:`split()<class_StringName_method_split>`, if you only need one substring.
+Cách này nhanh hơn :ref:`split()<class_StringName_method_split>` nếu bạn chỉ cần một chuỗi con.
 
 .. rst-class:: classref-item-separator
 
@@ -840,9 +840,9 @@ This is faster than :ref:`split()<class_StringName_method_split>`, if you only n
 
 :ref:`int<class_int>` **hash**\ (\ ) |const| :ref:`🔗<class_StringName_method_hash>`
 
-Returns the 32-bit hash value representing the string's contents.
+Trả về giá trị hash 32 bit biểu diễn nội dung của chuỗi.
 
-\ **Note:** Strings with equal hash values are *not* guaranteed to be the same, as a result of hash collisions. On the contrary, strings with different hash values are guaranteed to be different.
+\ **Lưu ý:** Các chuỗi có giá trị hash bằng nhau *không* được đảm bảo là giống nhau do xảy ra va chạm hash. Ngược lại, các chuỗi có giá trị hash khác nhau được đảm bảo là khác nhau.
 
 .. rst-class:: classref-item-separator
 
@@ -854,7 +854,7 @@ Returns the 32-bit hash value representing the string's contents.
 
 :ref:`PackedByteArray<class_PackedByteArray>` **hex_decode**\ (\ ) |const| :ref:`🔗<class_StringName_method_hex_decode>`
 
-Decodes a hexadecimal string as a :ref:`PackedByteArray<class_PackedByteArray>`.
+Giải mã một chuỗi hệ thập lục phân thành một :ref:`PackedByteArray<class_PackedByteArray>`.
 
 
 .. tabs::
@@ -862,13 +862,13 @@ Decodes a hexadecimal string as a :ref:`PackedByteArray<class_PackedByteArray>`.
  .. code-tab:: gdscript
 
     var text = "hello world"
-    var encoded = text.to_utf8_buffer().hex_encode() # outputs "68656c6c6f20776f726c64"
+    var encoded = text.to_utf8_buffer().hex_encode() # xuất ra "68656c6c6f20776f726c64"
     print(encoded.hex_decode().get_string_from_utf8())
 
  .. code-tab:: csharp
 
     var text = "hello world";
-    var encoded = text.ToUtf8Buffer().HexEncode(); // outputs "68656c6c6f20776f726c64"
+    var encoded = text.ToUtf8Buffer().HexEncode(); // xuất ra "68656c6c6f20776f726c64"
     GD.Print(encoded.HexDecode().GetStringFromUtf8());
 
 
@@ -883,20 +883,20 @@ Decodes a hexadecimal string as a :ref:`PackedByteArray<class_PackedByteArray>`.
 
 :ref:`int<class_int>` **hex_to_int**\ (\ ) |const| :ref:`🔗<class_StringName_method_hex_to_int>`
 
-Converts the string representing a hexadecimal number into an :ref:`int<class_int>`. The string may be optionally prefixed with ``"0x"``, and an additional ``-`` prefix for negative numbers.
+Chuyển đổi chuỗi biểu diễn một số hệ thập lục phân thành một :ref:`int<class_int>`. Chuỗi có thể có tiền tố ``"0x"`` tùy chọn, và thêm tiền tố ``-`` đối với số âm.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    print("0xff".hex_to_int()) # Prints 255
-    print("ab".hex_to_int())   # Prints 171
+    print("0xff".hex_to_int()) # In ra 255
+    print("ab".hex_to_int())   # In ra 171
 
  .. code-tab:: csharp
 
-    GD.Print("0xff".HexToInt()); // Prints 255
-    GD.Print("ab".HexToInt());   // Prints 171
+    GD.Print("0xff".HexToInt()); // In ra 255
+    GD.Print("ab".HexToInt());   // In ra 171
 
 
 
@@ -910,9 +910,9 @@ Converts the string representing a hexadecimal number into an :ref:`int<class_in
 
 :ref:`String<class_String>` **indent**\ (\ prefix\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_StringName_method_indent>`
 
-Indents every line of the string with the given ``prefix``. Empty lines are not indented. See also :ref:`dedent()<class_StringName_method_dedent>` to remove indentation.
+Thụt lề mọi dòng của chuỗi bằng ``prefix`` đã cho. Các dòng trống không được thụt lề. Xem thêm :ref:`dedent()<class_StringName_method_dedent>` để xóa thụt lề.
 
-For example, the string can be indented with two tabulations using ``"\t\t"``, or four spaces using ``"    "``.
+Ví dụ: chuỗi có thể được thụt lề bằng hai tab thông qua ``"\t\t"``, hoặc bằng bốn khoảng trắng thông qua ``"    "``.
 
 .. rst-class:: classref-item-separator
 
@@ -924,7 +924,7 @@ For example, the string can be indented with two tabulations using ``"\t\t"``, o
 
 :ref:`String<class_String>` **insert**\ (\ position\: :ref:`int<class_int>`, what\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_StringName_method_insert>`
 
-Inserts ``what`` at the given ``position`` in the string.
+Chèn ``what`` tại ``position`` đã cho trong chuỗi.
 
 .. rst-class:: classref-item-separator
 
@@ -936,9 +936,9 @@ Inserts ``what`` at the given ``position`` in the string.
 
 :ref:`bool<class_bool>` **is_absolute_path**\ (\ ) |const| :ref:`🔗<class_StringName_method_is_absolute_path>`
 
-Returns ``true`` if the string is a path to a file or directory, and its starting point is explicitly defined. This method is the opposite of :ref:`is_relative_path()<class_StringName_method_is_relative_path>`.
+Trả về ``true`` nếu chuỗi là đường dẫn đến một tệp hoặc thư mục và điểm bắt đầu của nó được xác định rõ ràng. Phương thức này ngược với :ref:`is_relative_path()<class_StringName_method_is_relative_path>`.
 
-This includes all paths starting with ``"res://"``, ``"user://"``, ``"C:\"``, ``"/"``, etc.
+Điều này bao gồm mọi đường dẫn bắt đầu bằng ``"res://"``, ``"user://"``, ``"C:\"``, ``"/"``, v.v.
 
 .. rst-class:: classref-item-separator
 
@@ -950,7 +950,7 @@ This includes all paths starting with ``"res://"``, ``"user://"``, ``"C:\"``, ``
 
 :ref:`bool<class_bool>` **is_empty**\ (\ ) |const| :ref:`🔗<class_StringName_method_is_empty>`
 
-Returns ``true`` if the string's length is ``0`` (``""``). See also :ref:`length()<class_StringName_method_length>`.
+Trả về ``true`` nếu độ dài của chuỗi là ``0`` (``""``). Xem thêm :ref:`length()<class_StringName_method_length>`.
 
 .. rst-class:: classref-item-separator
 
@@ -962,7 +962,7 @@ Returns ``true`` if the string's length is ``0`` (``""``). See also :ref:`length
 
 :ref:`bool<class_bool>` **is_relative_path**\ (\ ) |const| :ref:`🔗<class_StringName_method_is_relative_path>`
 
-Returns ``true`` if the string is a path, and its starting point is dependent on context. The path could begin from the current directory, or the current :ref:`Node<class_Node>` (if the string is derived from a :ref:`NodePath<class_NodePath>`), and may sometimes be prefixed with ``"./"``. This method is the opposite of :ref:`is_absolute_path()<class_StringName_method_is_absolute_path>`.
+Trả về ``true`` nếu chuỗi là một đường dẫn và điểm bắt đầu của nó phụ thuộc vào ngữ cảnh. Đường dẫn có thể bắt đầu từ thư mục hiện tại hoặc :ref:`Node<class_Node>` hiện tại (nếu chuỗi được tạo ra từ một :ref:`NodePath<class_NodePath>`), và đôi khi có thể có tiền tố ``"./"``. Phương thức này ngược với :ref:`is_absolute_path()<class_StringName_method_is_absolute_path>`.
 
 .. rst-class:: classref-item-separator
 
@@ -974,7 +974,7 @@ Returns ``true`` if the string is a path, and its starting point is dependent on
 
 :ref:`bool<class_bool>` **is_subsequence_of**\ (\ text\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_StringName_method_is_subsequence_of>`
 
-Returns ``true`` if all characters of this string can be found in ``text`` in their original order. This is not the same as :ref:`contains()<class_StringName_method_contains>`.
+Trả về ``true`` nếu tất cả ký tự của chuỗi này có thể được tìm thấy trong ``text`` theo đúng thứ tự ban đầu. Điều này không giống :ref:`contains()<class_StringName_method_contains>`.
 
 ::
 
@@ -995,7 +995,7 @@ Returns ``true`` if all characters of this string can be found in ``text`` in th
 
 :ref:`bool<class_bool>` **is_subsequence_ofn**\ (\ text\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_StringName_method_is_subsequence_ofn>`
 
-Returns ``true`` if all characters of this string can be found in ``text`` in their original order, **ignoring case**. This is not the same as :ref:`containsn()<class_StringName_method_containsn>`.
+Trả về ``true`` nếu tất cả ký tự của chuỗi này có thể được tìm thấy trong ``text`` theo đúng thứ tự ban đầu, **bỏ qua chữ hoa chữ thường**. Điều này không giống :ref:`containsn()<class_StringName_method_containsn>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1007,7 +1007,7 @@ Returns ``true`` if all characters of this string can be found in ``text`` in th
 
 :ref:`bool<class_bool>` **is_valid_ascii_identifier**\ (\ ) |const| :ref:`🔗<class_StringName_method_is_valid_ascii_identifier>`
 
-Returns ``true`` if this string is a valid ASCII identifier. A valid ASCII identifier may contain only letters, digits, and underscores (``_``), and the first character may not be a digit.
+Trả về ``true`` nếu chuỗi này là một định danh ASCII hợp lệ. Định danh ASCII hợp lệ chỉ có thể chứa chữ cái, chữ số và dấu gạch dưới (``_``), đồng thời ký tự đầu tiên không được là chữ số.
 
 ::
 
@@ -1016,7 +1016,7 @@ Returns ``true`` if this string is a valid ASCII identifier. A valid ASCII ident
     print("1st_method".is_valid_ascii_identifier()) # Prints false
     print("MyMethod#2".is_valid_ascii_identifier()) # Prints false
 
-See also :ref:`is_valid_unicode_identifier()<class_StringName_method_is_valid_unicode_identifier>`.
+Xem thêm :ref:`is_valid_unicode_identifier()<class_StringName_method_is_valid_unicode_identifier>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1028,7 +1028,7 @@ See also :ref:`is_valid_unicode_identifier()<class_StringName_method_is_valid_un
 
 :ref:`bool<class_bool>` **is_valid_filename**\ (\ ) |const| :ref:`🔗<class_StringName_method_is_valid_filename>`
 
-Returns ``true`` if this string is a valid file name. A valid file name cannot be empty, begin or end with space characters, or contain characters that are not allowed (``:`` ``/`` ``\`` ``?`` ``*`` ``"`` ``|`` ``%`` ``<`` ``>``).
+Trả về ``true`` nếu chuỗi này là một tên tệp hợp lệ. Tên tệp hợp lệ không được rỗng, bắt đầu hoặc kết thúc bằng ký tự khoảng trắng, hoặc chứa các ký tự không được phép (``:`` ``/`` ``\`` ``?`` ``*`` ``"`` ``|`` ``%`` ``<`` ``>``).
 
 .. rst-class:: classref-item-separator
 
@@ -1040,7 +1040,7 @@ Returns ``true`` if this string is a valid file name. A valid file name cannot b
 
 :ref:`bool<class_bool>` **is_valid_float**\ (\ ) |const| :ref:`🔗<class_StringName_method_is_valid_float>`
 
-Returns ``true`` if this string represents a valid floating-point number. A valid float may contain only digits, one decimal point (``.``), and the exponent letter (``e``). It may also be prefixed with a positive (``+``) or negative (``-``) sign. Any valid integer is also a valid float (see :ref:`is_valid_int()<class_StringName_method_is_valid_int>`). See also :ref:`to_float()<class_StringName_method_to_float>`.
+Trả về ``true`` nếu chuỗi này biểu diễn một số dấu phẩy động hợp lệ. Float hợp lệ chỉ có thể chứa chữ số, một dấu thập phân (``.``) và chữ cái biểu thị số mũ (``e``). Chuỗi cũng có thể có tiền tố là dấu dương (``+``) hoặc dấu âm (``-``). Mọi số nguyên hợp lệ cũng là một float hợp lệ (xem :ref:`is_valid_int()<class_StringName_method_is_valid_int>`). Xem thêm :ref:`to_float()<class_StringName_method_to_float>`.
 
 ::
 
@@ -1059,9 +1059,9 @@ Returns ``true`` if this string represents a valid floating-point number. A vali
 
 :ref:`bool<class_bool>` **is_valid_hex_number**\ (\ with_prefix\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_StringName_method_is_valid_hex_number>`
 
-Returns ``true`` if this string is a valid hexadecimal number. A valid hexadecimal number only contains digits or letters ``A`` to ``F`` (either uppercase or lowercase), and may be prefixed with a positive (``+``) or negative (``-``) sign.
+Trả về ``true`` nếu chuỗi này là một số hệ thập lục phân hợp lệ. Số hệ thập lục phân hợp lệ chỉ chứa chữ số hoặc các chữ cái từ ``A`` đến ``F`` (viết hoa hoặc viết thường), và có thể có tiền tố là dấu dương (``+``) hoặc dấu âm (``-``).
 
-If ``with_prefix`` is ``true``, the hexadecimal number needs to prefixed by ``"0x"`` to be considered valid.
+Nếu ``with_prefix`` là ``true``, số thập lục phân cần được thêm ``"0x"`` vào trước để được xem là hợp lệ.
 
 ::
 
@@ -1081,7 +1081,7 @@ If ``with_prefix`` is ``true``, the hexadecimal number needs to prefixed by ``"0
 
 :ref:`bool<class_bool>` **is_valid_html_color**\ (\ ) |const| :ref:`🔗<class_StringName_method_is_valid_html_color>`
 
-Returns ``true`` if this string is a valid color in hexadecimal HTML notation. The string must be a hexadecimal value (see :ref:`is_valid_hex_number()<class_StringName_method_is_valid_hex_number>`) of either 3, 4, 6 or 8 digits, and may be prefixed by a hash sign (``#``). Other HTML notations for colors, such as names or ``hsl()``, are not considered valid. See also :ref:`Color.html()<class_Color_method_html>`.
+Trả về ``true`` nếu chuỗi này là một màu hợp lệ ở dạng ký hiệu HTML thập lục phân. Chuỗi phải là một giá trị thập lục phân (xem :ref:`is_valid_hex_number()<class_StringName_method_is_valid_hex_number>`) gồm 3, 4, 6 hoặc 8 chữ số, và có thể được thêm dấu thăng (``#``) ở trước. Các ký hiệu HTML khác cho màu, chẳng hạn như tên hoặc ``hsl()``, không được xem là hợp lệ. Xem thêm :ref:`Color.html()<class_Color_method_html>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1093,9 +1093,9 @@ Returns ``true`` if this string is a valid color in hexadecimal HTML notation. T
 
 :ref:`bool<class_bool>` **is_valid_identifier**\ (\ ) |const| :ref:`🔗<class_StringName_method_is_valid_identifier>`
 
-**Deprecated:** Use :ref:`is_valid_ascii_identifier()<class_StringName_method_is_valid_ascii_identifier>` instead.
+**Không dùng nữa:** Thay vào đó, hãy sử dụng :ref:`is_valid_ascii_identifier()<class_StringName_method_is_valid_ascii_identifier>`.
 
-Returns ``true`` if this string is a valid identifier. A valid identifier may contain only letters, digits and underscores (``_``), and the first character may not be a digit.
+Trả về ``true`` nếu chuỗi này là một identifier hợp lệ. Một identifier hợp lệ chỉ có thể chứa chữ cái, chữ số và dấu gạch dưới (``_``), và ký tự đầu tiên không được là chữ số.
 
 ::
 
@@ -1114,7 +1114,7 @@ Returns ``true`` if this string is a valid identifier. A valid identifier may co
 
 :ref:`bool<class_bool>` **is_valid_int**\ (\ ) |const| :ref:`🔗<class_StringName_method_is_valid_int>`
 
-Returns ``true`` if this string represents a valid integer. A valid integer only contains digits, and may be prefixed with a positive (``+``) or negative (``-``) sign. See also :ref:`to_int()<class_StringName_method_to_int>`.
+Trả về ``true`` nếu chuỗi này biểu diễn một số nguyên hợp lệ. Một số nguyên hợp lệ chỉ chứa các chữ số và có thể có dấu dương (``+``) hoặc dấu âm (``-``) ở trước. Xem thêm :ref:`to_int()<class_StringName_method_to_int>`.
 
 ::
 
@@ -1134,7 +1134,7 @@ Returns ``true`` if this string represents a valid integer. A valid integer only
 
 :ref:`bool<class_bool>` **is_valid_ip_address**\ (\ ) |const| :ref:`🔗<class_StringName_method_is_valid_ip_address>`
 
-Returns ``true`` if this string represents a well-formatted IPv4 or IPv6 address. This method considers `reserved IP addresses <https://en.wikipedia.org/wiki/Reserved_IP_addresses>`__ such as ``"0.0.0.0"`` and ``"ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"`` as valid.
+Trả về ``true`` nếu chuỗi này biểu diễn một địa chỉ IPv4 hoặc IPv6 được định dạng đúng. Phương thức này xem các `địa chỉ IP dành riêng <https://en.wikipedia.org/wiki/Reserved_IP_addresses>`__ như ``"0.0.0.0"`` và ``"ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"`` là hợp lệ.
 
 .. rst-class:: classref-item-separator
 
@@ -1146,9 +1146,9 @@ Returns ``true`` if this string represents a well-formatted IPv4 or IPv6 address
 
 :ref:`bool<class_bool>` **is_valid_unicode_identifier**\ (\ ) |const| :ref:`🔗<class_StringName_method_is_valid_unicode_identifier>`
 
-Returns ``true`` if this string is a valid Unicode identifier.
+Trả về ``true`` nếu chuỗi này là một Unicode identifier hợp lệ.
 
-A valid Unicode identifier must begin with a Unicode character of class ``XID_Start`` or ``"_"``, and may contain Unicode characters of class ``XID_Continue`` in the other positions.
+Một Unicode identifier hợp lệ phải bắt đầu bằng một ký tự Unicode thuộc lớp ``XID_Start`` hoặc ``"_"``, và có thể chứa các ký tự Unicode thuộc lớp ``XID_Continue`` ở những vị trí còn lại.
 
 ::
 
@@ -1159,9 +1159,9 @@ A valid Unicode identifier must begin with a Unicode character of class ``XID_St
     print("выносливость".is_valid_unicode_identifier()) # Prints true
     print("体力".is_valid_unicode_identifier())         # Prints true
 
-See also :ref:`is_valid_ascii_identifier()<class_StringName_method_is_valid_ascii_identifier>`.
+Xem thêm :ref:`is_valid_ascii_identifier()<class_StringName_method_is_valid_ascii_identifier>`.
 
-\ **Note:** This method checks identifiers the same way as GDScript. See :ref:`TextServer.is_valid_identifier()<class_TextServer_method_is_valid_identifier>` for more advanced checks.
+\ **Lưu ý:** Phương thức này kiểm tra identifier theo cùng cách với GDScript. Xem :ref:`TextServer.is_valid_identifier()<class_TextServer_method_is_valid_identifier>` để thực hiện các kiểm tra nâng cao hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -1173,7 +1173,7 @@ See also :ref:`is_valid_ascii_identifier()<class_StringName_method_is_valid_asci
 
 :ref:`String<class_String>` **join**\ (\ parts\: :ref:`PackedStringArray<class_PackedStringArray>`\ ) |const| :ref:`🔗<class_StringName_method_join>`
 
-Returns the concatenation of ``parts``' elements, with each element separated by the string calling this method. This method is the opposite of :ref:`split()<class_StringName_method_split>`.
+Trả về phép nối các phần tử của ``parts``, trong đó mỗi phần tử được phân tách bằng chuỗi gọi phương thức này. Phương thức này ngược với :ref:`split()<class_StringName_method_split>`.
 
 
 .. tabs::
@@ -1182,16 +1182,16 @@ Returns the concatenation of ``parts``' elements, with each element separated by
 
     var fruits = ["Apple", "Orange", "Pear", "Kiwi"]
 
-    print(", ".join(fruits))  # Prints "Apple, Orange, Pear, Kiwi"
-    print("---".join(fruits)) # Prints "Apple---Orange---Pear---Kiwi"
+    print(", ".join(fruits))  # In ra "Apple, Orange, Pear, Kiwi"
+    print("---".join(fruits)) # In ra "Apple---Orange---Pear---Kiwi"
 
  .. code-tab:: csharp
 
     string[] fruits = ["Apple", "Orange", "Pear", "Kiwi"];
 
-    // In C#, this method is static.
-    GD.Print(string.Join(", ", fruits));  // Prints "Apple, Orange, Pear, Kiwi"
-    GD.Print(string.Join("---", fruits)); // Prints "Apple---Orange---Pear---Kiwi"
+    // Trong C#, phương thức này là static.
+    GD.Print(string.Join(", ", fruits));  // In ra "Apple, Orange, Pear, Kiwi"
+    GD.Print(string.Join("---", fruits)); // In ra "Apple---Orange---Pear---Kiwi"
 
 
 
@@ -1205,7 +1205,7 @@ Returns the concatenation of ``parts``' elements, with each element separated by
 
 :ref:`String<class_String>` **json_escape**\ (\ ) |const| :ref:`🔗<class_StringName_method_json_escape>`
 
-Returns a copy of the string with special characters escaped using the JSON standard. Because it closely matches the C standard, it is possible to use :ref:`c_unescape()<class_StringName_method_c_unescape>` to unescape the string, if necessary.
+Trả về một bản sao của chuỗi, trong đó các ký tự đặc biệt được escape bằng tiêu chuẩn JSON. Vì khá tương thích với tiêu chuẩn C, bạn có thể dùng :ref:`c_unescape()<class_StringName_method_c_unescape>` để unescape chuỗi nếu cần.
 
 .. rst-class:: classref-item-separator
 
@@ -1217,7 +1217,7 @@ Returns a copy of the string with special characters escaped using the JSON stan
 
 :ref:`String<class_String>` **left**\ (\ length\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_StringName_method_left>`
 
-Returns the first ``length`` characters from the beginning of the string. If ``length`` is negative, strips the last ``length`` characters from the string's end.
+Trả về ``length`` ký tự đầu tiên tính từ đầu chuỗi. Nếu ``length`` là số âm, loại bỏ ``length`` ký tự cuối khỏi cuối chuỗi.
 
 ::
 
@@ -1234,7 +1234,7 @@ Returns the first ``length`` characters from the beginning of the string. If ``l
 
 :ref:`int<class_int>` **length**\ (\ ) |const| :ref:`🔗<class_StringName_method_length>`
 
-Returns the number of characters in the string. Empty strings (``""``) always return ``0``. See also :ref:`is_empty()<class_StringName_method_is_empty>`.
+Trả về số ký tự trong chuỗi. Các chuỗi rỗng (``""``) luôn trả về ``0``. Xem thêm :ref:`is_empty()<class_StringName_method_is_empty>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1246,7 +1246,7 @@ Returns the number of characters in the string. Empty strings (``""``) always re
 
 :ref:`String<class_String>` **lpad**\ (\ min_length\: :ref:`int<class_int>`, character\: :ref:`String<class_String>` = " "\ ) |const| :ref:`🔗<class_StringName_method_lpad>`
 
-Formats the string to be at least ``min_length`` long by adding ``character``\ s to the left of the string, if necessary. See also :ref:`rpad()<class_StringName_method_rpad>`.
+Định dạng chuỗi để có độ dài ít nhất là ``min_length`` bằng cách thêm các ``character``\ s vào bên trái chuỗi nếu cần. Xem thêm :ref:`rpad()<class_StringName_method_rpad>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1258,9 +1258,9 @@ Formats the string to be at least ``min_length`` long by adding ``character``\ s
 
 :ref:`String<class_String>` **lstrip**\ (\ chars\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_StringName_method_lstrip>`
 
-Removes a set of characters defined in ``chars`` from the string's beginning. See also :ref:`rstrip()<class_StringName_method_rstrip>`.
+Xóa khỏi đầu chuỗi một tập hợp các ký tự được định nghĩa trong ``chars``. Xem thêm :ref:`rstrip()<class_StringName_method_rstrip>`.
 
-\ **Note:** ``chars`` is not a prefix. Use :ref:`trim_prefix()<class_StringName_method_trim_prefix>` to remove a single prefix, rather than a set of characters.
+\ **Lưu ý:** ``chars`` không phải là một tiền tố. Hãy dùng :ref:`trim_prefix()<class_StringName_method_trim_prefix>` để xóa một tiền tố đơn lẻ thay vì một tập hợp ký tự.
 
 .. rst-class:: classref-item-separator
 
@@ -1272,7 +1272,7 @@ Removes a set of characters defined in ``chars`` from the string's beginning. Se
 
 :ref:`bool<class_bool>` **match**\ (\ expr\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_StringName_method_match>`
 
-Does a simple expression match (also called "glob" or "globbing"), where ``*`` matches zero or more arbitrary characters and ``?`` matches any single character except a period (``.``). An empty string or empty expression always evaluates to ``false``.
+Thực hiện so khớp biểu thức đơn giản (còn gọi là "glob" hoặc "globbing"), trong đó ``*`` khớp với không hoặc nhiều ký tự bất kỳ, còn ``?`` khớp với bất kỳ ký tự đơn nào ngoại trừ dấu chấm (``.``). Chuỗi rỗng hoặc biểu thức rỗng luôn cho kết quả ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -1284,7 +1284,7 @@ Does a simple expression match (also called "glob" or "globbing"), where ``*`` m
 
 :ref:`bool<class_bool>` **matchn**\ (\ expr\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_StringName_method_matchn>`
 
-Does a simple **case-insensitive** expression match, where ``*`` matches zero or more arbitrary characters and ``?`` matches any single character except a period (``.``). An empty string or empty expression always evaluates to ``false``.
+Thực hiện so khớp biểu thức đơn giản **không phân biệt chữ hoa chữ thường**, trong đó ``*`` khớp với không hoặc nhiều ký tự bất kỳ, còn ``?`` khớp với bất kỳ ký tự đơn nào ngoại trừ dấu chấm (``.``). Chuỗi rỗng hoặc biểu thức rỗng luôn cho kết quả ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -1296,7 +1296,7 @@ Does a simple **case-insensitive** expression match, where ``*`` matches zero or
 
 :ref:`PackedByteArray<class_PackedByteArray>` **md5_buffer**\ (\ ) |const| :ref:`🔗<class_StringName_method_md5_buffer>`
 
-Returns the `MD5 hash <https://en.wikipedia.org/wiki/MD5>`__ of the string as a :ref:`PackedByteArray<class_PackedByteArray>`.
+Trả về `MD5 hash <https://en.wikipedia.org/wiki/MD5>`__ của chuỗi dưới dạng :ref:`PackedByteArray<class_PackedByteArray>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1308,7 +1308,7 @@ Returns the `MD5 hash <https://en.wikipedia.org/wiki/MD5>`__ of the string as a 
 
 :ref:`String<class_String>` **md5_text**\ (\ ) |const| :ref:`🔗<class_StringName_method_md5_text>`
 
-Returns the `MD5 hash <https://en.wikipedia.org/wiki/MD5>`__ of the string as another :ref:`String<class_String>`.
+Trả về `MD5 hash <https://en.wikipedia.org/wiki/MD5>`__ của chuỗi dưới dạng một :ref:`String<class_String>` khác.
 
 .. rst-class:: classref-item-separator
 
@@ -1320,13 +1320,13 @@ Returns the `MD5 hash <https://en.wikipedia.org/wiki/MD5>`__ of the string as an
 
 :ref:`int<class_int>` **naturalcasecmp_to**\ (\ to\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_StringName_method_naturalcasecmp_to>`
 
-Performs a **case-sensitive**, *natural order* comparison to another string. Returns ``-1`` if less than, ``1`` if greater than, or ``0`` if equal. "Less than" or "greater than" are determined by the `Unicode code points <https://en.wikipedia.org/wiki/List_of_Unicode_characters>`__ of each string, which roughly matches the alphabetical order.
+Thực hiện phép so sánh **phân biệt chữ hoa chữ thường**, *theo thứ tự tự nhiên* với một chuỗi khác. Trả về ``-1`` nếu nhỏ hơn, ``1`` nếu lớn hơn hoặc ``0`` nếu bằng nhau. "Nhỏ hơn" hoặc "lớn hơn" được xác định dựa trên `các điểm mã Unicode <https://en.wikipedia.org/wiki/List_of_Unicode_characters>`__ của mỗi chuỗi, gần tương ứng với thứ tự bảng chữ cái.
 
-When used for sorting, natural order comparison orders sequences of numbers by the combined value of each digit as is often expected, instead of the single digit's value. A sorted sequence of numbered strings will be ``["1", "2", "3", ...]``, not ``["1", "10", "2", "3", ...]``.
+Khi được dùng để sắp xếp, phép so sánh theo thứ tự tự nhiên sắp xếp các chuỗi chữ số dựa trên giá trị kết hợp của từng chữ số như thường được mong đợi, thay vì giá trị của từng chữ số riêng lẻ. Một chuỗi các chuỗi được đánh số sau khi sắp xếp sẽ là ``["1", "2", "3", ...]``, không phải ``["1", "10", "2", "3", ...]``.
 
-With different string lengths, returns ``1`` if this string is longer than the ``to`` string, or ``-1`` if shorter. Note that the length of empty strings is *always* ``0``.
+Khi các chuỗi có độ dài khác nhau, trả về ``1`` nếu chuỗi này dài hơn chuỗi ``to``, hoặc ``-1`` nếu ngắn hơn. Lưu ý rằng độ dài của chuỗi rỗng là *luôn luôn* ``0``.
 
-To get a :ref:`bool<class_bool>` result from a string comparison, use the ``==`` operator instead. See also :ref:`naturalnocasecmp_to()<class_StringName_method_naturalnocasecmp_to>`, :ref:`filecasecmp_to()<class_StringName_method_filecasecmp_to>`, and :ref:`nocasecmp_to()<class_StringName_method_nocasecmp_to>`.
+Để nhận được kết quả :ref:`bool<class_bool>` từ phép so sánh chuỗi, hãy dùng toán tử ``==`` thay thế. Xem thêm :ref:`naturalnocasecmp_to()<class_StringName_method_naturalnocasecmp_to>`, :ref:`filecasecmp_to()<class_StringName_method_filecasecmp_to>` và :ref:`nocasecmp_to()<class_StringName_method_nocasecmp_to>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1338,13 +1338,13 @@ To get a :ref:`bool<class_bool>` result from a string comparison, use the ``==``
 
 :ref:`int<class_int>` **naturalnocasecmp_to**\ (\ to\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_StringName_method_naturalnocasecmp_to>`
 
-Performs a **case-insensitive**, *natural order* comparison to another string. Returns ``-1`` if less than, ``1`` if greater than, or ``0`` if equal. "Less than" or "greater than" are determined by the `Unicode code points <https://en.wikipedia.org/wiki/List_of_Unicode_characters>`__ of each string, which roughly matches the alphabetical order. Internally, lowercase characters are converted to uppercase for the comparison.
+Thực hiện phép so sánh **không phân biệt chữ hoa chữ thường**, *theo thứ tự tự nhiên* với một chuỗi khác. Trả về ``-1`` nếu nhỏ hơn, ``1`` nếu lớn hơn hoặc ``0`` nếu bằng nhau. "Nhỏ hơn" hoặc "lớn hơn" được xác định dựa trên `các điểm mã Unicode <https://en.wikipedia.org/wiki/List_of_Unicode_characters>`__ của mỗi chuỗi, gần tương ứng với thứ tự bảng chữ cái. Bên trong, các ký tự chữ thường được chuyển thành chữ hoa để so sánh.
 
-When used for sorting, natural order comparison orders sequences of numbers by the combined value of each digit as is often expected, instead of the single digit's value. A sorted sequence of numbered strings will be ``["1", "2", "3", ...]``, not ``["1", "10", "2", "3", ...]``.
+Khi được dùng để sắp xếp, phép so sánh theo thứ tự tự nhiên sắp xếp các chuỗi chữ số dựa trên giá trị kết hợp của từng chữ số như thường được mong đợi, thay vì giá trị của từng chữ số riêng lẻ. Một chuỗi các chuỗi được đánh số sau khi sắp xếp sẽ là ``["1", "2", "3", ...]``, không phải ``["1", "10", "2", "3", ...]``.
 
-With different string lengths, returns ``1`` if this string is longer than the ``to`` string, or ``-1`` if shorter. Note that the length of empty strings is *always* ``0``.
+Khi các chuỗi có độ dài khác nhau, trả về ``1`` nếu chuỗi này dài hơn chuỗi ``to``, hoặc ``-1`` nếu ngắn hơn. Lưu ý rằng độ dài của chuỗi rỗng là *luôn luôn* ``0``.
 
-To get a :ref:`bool<class_bool>` result from a string comparison, use the ``==`` operator instead. See also :ref:`naturalcasecmp_to()<class_StringName_method_naturalcasecmp_to>`, :ref:`filenocasecmp_to()<class_StringName_method_filenocasecmp_to>`, and :ref:`casecmp_to()<class_StringName_method_casecmp_to>`.
+Để nhận được kết quả :ref:`bool<class_bool>` từ phép so sánh chuỗi, hãy dùng toán tử ``==`` thay thế. Xem thêm :ref:`naturalcasecmp_to()<class_StringName_method_naturalcasecmp_to>`, :ref:`filenocasecmp_to()<class_StringName_method_filenocasecmp_to>` và :ref:`casecmp_to()<class_StringName_method_casecmp_to>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1356,11 +1356,11 @@ To get a :ref:`bool<class_bool>` result from a string comparison, use the ``==``
 
 :ref:`int<class_int>` **nocasecmp_to**\ (\ to\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_StringName_method_nocasecmp_to>`
 
-Performs a **case-insensitive** comparison to another string. Returns ``-1`` if less than, ``1`` if greater than, or ``0`` if equal. "Less than" or "greater than" are determined by the `Unicode code points <https://en.wikipedia.org/wiki/List_of_Unicode_characters>`__ of each string, which roughly matches the alphabetical order. Internally, lowercase characters are converted to uppercase for the comparison.
+Thực hiện phép so sánh **không phân biệt chữ hoa chữ thường** với một chuỗi khác. Trả về ``-1`` nếu nhỏ hơn, ``1`` nếu lớn hơn hoặc ``0`` nếu bằng nhau. "Nhỏ hơn" hoặc "lớn hơn" được xác định dựa trên `các điểm mã Unicode <https://en.wikipedia.org/wiki/List_of_Unicode_characters>`__ của mỗi chuỗi, gần tương ứng với thứ tự bảng chữ cái. Bên trong, các ký tự chữ thường được chuyển thành chữ hoa để so sánh.
 
-With different string lengths, returns ``1`` if this string is longer than the ``to`` string, or ``-1`` if shorter. Note that the length of empty strings is *always* ``0``.
+Khi các chuỗi có độ dài khác nhau, trả về ``1`` nếu chuỗi này dài hơn chuỗi ``to``, hoặc ``-1`` nếu ngắn hơn. Lưu ý rằng độ dài của chuỗi rỗng là *luôn luôn* ``0``.
 
-To get a :ref:`bool<class_bool>` result from a string comparison, use the ``==`` operator instead. See also :ref:`casecmp_to()<class_StringName_method_casecmp_to>`, :ref:`filenocasecmp_to()<class_StringName_method_filenocasecmp_to>`, and :ref:`naturalnocasecmp_to()<class_StringName_method_naturalnocasecmp_to>`.
+Để nhận được kết quả :ref:`bool<class_bool>` từ phép so sánh chuỗi, hãy sử dụng toán tử ``==`` thay thế. Xem thêm :ref:`casecmp_to()<class_StringName_method_casecmp_to>`, :ref:`filenocasecmp_to()<class_StringName_method_filenocasecmp_to>` và :ref:`naturalnocasecmp_to()<class_StringName_method_naturalnocasecmp_to>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1372,7 +1372,7 @@ To get a :ref:`bool<class_bool>` result from a string comparison, use the ``==``
 
 :ref:`String<class_String>` **pad_decimals**\ (\ digits\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_StringName_method_pad_decimals>`
 
-Formats the string representing a number to have an exact number of ``digits`` *after* the decimal point.
+Định dạng chuỗi biểu diễn một số để có chính xác số lượng ``digits`` *sau* dấu thập phân.
 
 .. rst-class:: classref-item-separator
 
@@ -1384,7 +1384,7 @@ Formats the string representing a number to have an exact number of ``digits`` *
 
 :ref:`String<class_String>` **pad_zeros**\ (\ digits\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_StringName_method_pad_zeros>`
 
-Formats the string representing a number to have an exact number of ``digits`` *before* the decimal point.
+Định dạng chuỗi biểu diễn một số để có chính xác số lượng ``digits`` *trước* dấu thập phân.
 
 .. rst-class:: classref-item-separator
 
@@ -1396,9 +1396,9 @@ Formats the string representing a number to have an exact number of ``digits`` *
 
 :ref:`String<class_String>` **path_join**\ (\ path\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_StringName_method_path_join>`
 
-Concatenates ``path`` at the end of the string as a subpath, adding ``/`` if necessary.
+Nối ``path`` vào cuối chuỗi dưới dạng một subpath, thêm ``/`` nếu cần.
 
-\ **Example:** ``"this/is".path_join("path") == "this/is/path"``.
+\ **Ví dụ:** ``"this/is".path_join("path") == "this/is/path"``.
 
 .. rst-class:: classref-item-separator
 
@@ -1410,7 +1410,7 @@ Concatenates ``path`` at the end of the string as a subpath, adding ``/`` if nec
 
 :ref:`String<class_String>` **remove_char**\ (\ what\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_StringName_method_remove_char>`
 
-Removes all occurrences of the Unicode character with code ``what``. Faster version of :ref:`replace()<class_StringName_method_replace>` when the key is only one character long and the replacement is ``""``.
+Xóa mọi lần xuất hiện của ký tự Unicode có mã ``what``. Phiên bản nhanh hơn của :ref:`replace()<class_StringName_method_replace>` khi key chỉ dài một ký tự và replacement là ``""``.
 
 .. rst-class:: classref-item-separator
 
@@ -1422,7 +1422,7 @@ Removes all occurrences of the Unicode character with code ``what``. Faster vers
 
 :ref:`String<class_String>` **remove_chars**\ (\ chars\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_StringName_method_remove_chars>`
 
-Removes all occurrences of the characters in ``chars``. See also :ref:`remove_char()<class_StringName_method_remove_char>`.
+Xóa mọi lần xuất hiện của các ký tự trong ``chars``. Xem thêm :ref:`remove_char()<class_StringName_method_remove_char>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1434,7 +1434,7 @@ Removes all occurrences of the characters in ``chars``. See also :ref:`remove_ch
 
 :ref:`String<class_String>` **repeat**\ (\ count\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_StringName_method_repeat>`
 
-Repeats this string a number of times. ``count`` needs to be greater than ``0``. Otherwise, returns an empty string.
+Lặp lại chuỗi này một số lần. ``count`` phải lớn hơn ``0``. Nếu không, trả về một chuỗi rỗng.
 
 .. rst-class:: classref-item-separator
 
@@ -1446,7 +1446,7 @@ Repeats this string a number of times. ``count`` needs to be greater than ``0``.
 
 :ref:`String<class_String>` **replace**\ (\ what\: :ref:`String<class_String>`, forwhat\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_StringName_method_replace>`
 
-Replaces all occurrences of ``what`` inside the string with the given ``forwhat``.
+Thay thế mọi lần xuất hiện của ``what`` bên trong chuỗi bằng ``forwhat`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -1458,7 +1458,7 @@ Replaces all occurrences of ``what`` inside the string with the given ``forwhat`
 
 :ref:`String<class_String>` **replace_char**\ (\ key\: :ref:`int<class_int>`, with\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_StringName_method_replace_char>`
 
-Replaces all occurrences of the Unicode character with code ``key`` with the Unicode character with code ``with``. Faster version of :ref:`replace()<class_StringName_method_replace>` when the key is only one character long. To get a single character use ``"X".unicode_at(0)`` (note that some strings, like compound letters and emoji, can be composed of multiple unicode codepoints, and will not work with this method, use :ref:`length()<class_StringName_method_length>` to make sure).
+Thay thế mọi lần xuất hiện của ký tự Unicode có mã ``key`` bằng ký tự Unicode có mã ``with``. Phiên bản nhanh hơn của :ref:`replace()<class_StringName_method_replace>` khi key chỉ dài một ký tự. Để lấy một ký tự đơn, hãy sử dụng ``"X".unicode_at(0)`` (lưu ý rằng một số chuỗi, chẳng hạn như chữ ghép và emoji, có thể được tạo thành từ nhiều Unicode codepoint và sẽ không hoạt động với phương thức này; hãy sử dụng :ref:`length()<class_StringName_method_length>` để đảm bảo).
 
 .. rst-class:: classref-item-separator
 
@@ -1470,7 +1470,7 @@ Replaces all occurrences of the Unicode character with code ``key`` with the Uni
 
 :ref:`String<class_String>` **replace_chars**\ (\ keys\: :ref:`String<class_String>`, with\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_StringName_method_replace_chars>`
 
-Replaces any occurrence of the characters in ``keys`` with the Unicode character with code ``with``. See also :ref:`replace_char()<class_StringName_method_replace_char>`.
+Thay thế mọi lần xuất hiện của các ký tự trong ``keys`` bằng ký tự Unicode có mã ``with``. Xem thêm :ref:`replace_char()<class_StringName_method_replace_char>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1482,7 +1482,7 @@ Replaces any occurrence of the characters in ``keys`` with the Unicode character
 
 :ref:`String<class_String>` **replacen**\ (\ what\: :ref:`String<class_String>`, forwhat\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_StringName_method_replacen>`
 
-Replaces all **case-insensitive** occurrences of ``what`` inside the string with the given ``forwhat``.
+Thay thế mọi lần xuất hiện **không phân biệt chữ hoa chữ thường** của ``what`` bên trong chuỗi bằng ``forwhat`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -1494,7 +1494,7 @@ Replaces all **case-insensitive** occurrences of ``what`` inside the string with
 
 :ref:`String<class_String>` **reverse**\ (\ ) |const| :ref:`🔗<class_StringName_method_reverse>`
 
-Returns the copy of this string in reverse order. This operation works on unicode codepoints, rather than sequences of codepoints, and may break things like compound letters or emojis.
+Trả về bản sao của chuỗi này theo thứ tự ngược lại. Thao tác này hoạt động trên các Unicode codepoint thay vì các chuỗi codepoint, nên có thể làm hỏng những thứ như chữ ghép hoặc emoji.
 
 .. rst-class:: classref-item-separator
 
@@ -1506,11 +1506,11 @@ Returns the copy of this string in reverse order. This operation works on unicod
 
 :ref:`int<class_int>` **rfind**\ (\ what\: :ref:`String<class_String>`, from\: :ref:`int<class_int>` = -1\ ) |const| :ref:`🔗<class_StringName_method_rfind>`
 
-Returns the index of the **last** occurrence of ``what`` in this string, or ``-1`` if there are none. The search's start can be specified with ``from``, continuing to the beginning of the string. This method is the reverse of :ref:`find()<class_StringName_method_find>`.
+Trả về chỉ mục của lần xuất hiện **cuối cùng** của ``what`` trong chuỗi này hoặc ``-1`` nếu không có. Có thể chỉ định vị trí bắt đầu tìm kiếm bằng ``from``, rồi tiếp tục tìm về đầu chuỗi. Phương thức này là nghịch đảo của :ref:`find()<class_StringName_method_find>`.
 
-\ **Note:** A negative value of ``from`` is converted to a starting index by counting back from the last possible index with enough space to find ``what``.
+\ **Lưu ý:** Giá trị âm của ``from`` được chuyển đổi thành chỉ mục bắt đầu bằng cách đếm ngược từ chỉ mục cuối cùng có đủ khoảng trống để tìm ``what``.
 
-\ **Note:** A value of ``from`` that is greater than the last possible index with enough space to find ``what`` is considered out-of-bounds, and returns ``-1``.
+\ **Lưu ý:** Giá trị ``from`` lớn hơn chỉ mục khả dĩ cuối cùng còn đủ chỗ để tìm ``what`` được xem là nằm ngoài phạm vi và trả về ``-1``.
 
 .. rst-class:: classref-item-separator
 
@@ -1522,7 +1522,7 @@ Returns the index of the **last** occurrence of ``what`` in this string, or ``-1
 
 :ref:`int<class_int>` **rfindn**\ (\ what\: :ref:`String<class_String>`, from\: :ref:`int<class_int>` = -1\ ) |const| :ref:`🔗<class_StringName_method_rfindn>`
 
-Returns the index of the **last** **case-insensitive** occurrence of ``what`` in this string, or ``-1`` if there are none. The starting search index can be specified with ``from``, continuing to the beginning of the string. This method is the reverse of :ref:`findn()<class_StringName_method_findn>`.
+Trả về chỉ mục của lần xuất hiện **cuối cùng** **không phân biệt chữ hoa chữ thường** của ``what`` trong chuỗi này hoặc ``-1`` nếu không có. Có thể chỉ định chỉ mục bắt đầu tìm kiếm bằng ``from``, rồi tiếp tục tìm về đầu chuỗi. Phương thức này là nghịch đảo của :ref:`findn()<class_StringName_method_findn>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1534,7 +1534,7 @@ Returns the index of the **last** **case-insensitive** occurrence of ``what`` in
 
 :ref:`String<class_String>` **right**\ (\ length\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_StringName_method_right>`
 
-Returns the last ``length`` characters from the end of the string. If ``length`` is negative, strips the first ``length`` characters from the string's beginning.
+Trả về ``length`` ký tự cuối cùng tính từ cuối chuỗi. Nếu ``length`` là số âm, xóa ``length`` ký tự đầu tiên ở đầu chuỗi.
 
 ::
 
@@ -1551,7 +1551,7 @@ Returns the last ``length`` characters from the end of the string. If ``length``
 
 :ref:`String<class_String>` **rpad**\ (\ min_length\: :ref:`int<class_int>`, character\: :ref:`String<class_String>` = " "\ ) |const| :ref:`🔗<class_StringName_method_rpad>`
 
-Formats the string to be at least ``min_length`` long, by adding ``character``\ s to the right of the string, if necessary. See also :ref:`lpad()<class_StringName_method_lpad>`.
+Định dạng chuỗi để có độ dài tối thiểu ``min_length`` bằng cách thêm ``character``\ s vào bên phải chuỗi nếu cần. Xem thêm :ref:`lpad()<class_StringName_method_lpad>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1563,11 +1563,11 @@ Formats the string to be at least ``min_length`` long, by adding ``character``\ 
 
 :ref:`PackedStringArray<class_PackedStringArray>` **rsplit**\ (\ delimiter\: :ref:`String<class_String>` = "", allow_empty\: :ref:`bool<class_bool>` = true, maxsplit\: :ref:`int<class_int>` = 0\ ) |const| :ref:`🔗<class_StringName_method_rsplit>`
 
-Splits the string using a ``delimiter`` and returns an array of the substrings, starting from the end of the string. The splits in the returned array appear in the same order as the original string. If ``delimiter`` is an empty string, each substring will be a single character.
+Tách chuỗi bằng ``delimiter`` và trả về một mảng các chuỗi con, bắt đầu từ cuối chuỗi. Các phần tách trong mảng trả về xuất hiện theo cùng thứ tự như trong chuỗi ban đầu. Nếu ``delimiter`` là một chuỗi rỗng, mỗi chuỗi con sẽ là một ký tự đơn.
 
-If ``allow_empty`` is ``false``, empty strings between adjacent delimiters are excluded from the array.
+Nếu ``allow_empty`` là ``false``, các chuỗi rỗng giữa những dấu phân cách liền kề sẽ bị loại khỏi mảng.
 
-If ``maxsplit`` is greater than ``0``, the number of splits may not exceed ``maxsplit``. By default, the entire string is split, which is mostly identical to :ref:`split()<class_StringName_method_split>`.
+Nếu ``maxsplit`` lớn hơn ``0``, số lần tách không được vượt quá ``maxsplit``. Theo mặc định, toàn bộ chuỗi được tách, gần như tương đương với :ref:`split()<class_StringName_method_split>`.
 
 
 .. tabs::
@@ -1577,13 +1577,13 @@ If ``maxsplit`` is greater than ``0``, the number of splits may not exceed ``max
     var some_string = "One,Two,Three,Four"
     var some_array = some_string.rsplit(",", true, 1)
 
-    print(some_array.size()) # Prints 2
-    print(some_array[0])     # Prints "One,Two,Three"
-    print(some_array[1])     # Prints "Four"
+    print(some_array.size()) # In ra 2
+    print(some_array[0])     # In "One,Two,Three"
+    print(some_array[1])     # In "Four"
 
  .. code-tab:: csharp
 
-    // In C#, there is no String.RSplit() method.
+    // Trong C#, không có phương thức String.RSplit().
 
 
 
@@ -1597,9 +1597,9 @@ If ``maxsplit`` is greater than ``0``, the number of splits may not exceed ``max
 
 :ref:`String<class_String>` **rstrip**\ (\ chars\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_StringName_method_rstrip>`
 
-Removes a set of characters defined in ``chars`` from the string's end. See also :ref:`lstrip()<class_StringName_method_lstrip>`.
+Xóa một tập hợp các ký tự được xác định trong ``chars`` khỏi cuối chuỗi. Xem thêm :ref:`lstrip()<class_StringName_method_lstrip>`.
 
-\ **Note:** ``chars`` is not a suffix. Use :ref:`trim_suffix()<class_StringName_method_trim_suffix>` to remove a single suffix, rather than a set of characters.
+\ **Lưu ý:** ``chars`` không phải là hậu tố. Hãy sử dụng :ref:`trim_suffix()<class_StringName_method_trim_suffix>` để xóa một hậu tố đơn lẻ thay vì một tập hợp ký tự.
 
 .. rst-class:: classref-item-separator
 
@@ -1611,7 +1611,7 @@ Removes a set of characters defined in ``chars`` from the string's end. See also
 
 :ref:`PackedByteArray<class_PackedByteArray>` **sha1_buffer**\ (\ ) |const| :ref:`🔗<class_StringName_method_sha1_buffer>`
 
-Returns the `SHA-1 <https://en.wikipedia.org/wiki/SHA-1>`__ hash of the string as a :ref:`PackedByteArray<class_PackedByteArray>`.
+Trả về giá trị băm `SHA-1 <https://en.wikipedia.org/wiki/SHA-1>`__ của chuỗi dưới dạng :ref:`PackedByteArray<class_PackedByteArray>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1623,7 +1623,7 @@ Returns the `SHA-1 <https://en.wikipedia.org/wiki/SHA-1>`__ hash of the string a
 
 :ref:`String<class_String>` **sha1_text**\ (\ ) |const| :ref:`🔗<class_StringName_method_sha1_text>`
 
-Returns the `SHA-1 <https://en.wikipedia.org/wiki/SHA-1>`__ hash of the string as another :ref:`String<class_String>`.
+Trả về giá trị băm `SHA-1 <https://en.wikipedia.org/wiki/SHA-1>`__ của chuỗi dưới dạng một :ref:`String<class_String>` khác.
 
 .. rst-class:: classref-item-separator
 
@@ -1635,7 +1635,7 @@ Returns the `SHA-1 <https://en.wikipedia.org/wiki/SHA-1>`__ hash of the string a
 
 :ref:`PackedByteArray<class_PackedByteArray>` **sha256_buffer**\ (\ ) |const| :ref:`🔗<class_StringName_method_sha256_buffer>`
 
-Returns the `SHA-256 <https://en.wikipedia.org/wiki/SHA-2>`__ hash of the string as a :ref:`PackedByteArray<class_PackedByteArray>`.
+Trả về giá trị băm `SHA-256 <https://en.wikipedia.org/wiki/SHA-2>`__ của chuỗi dưới dạng :ref:`PackedByteArray<class_PackedByteArray>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1647,7 +1647,7 @@ Returns the `SHA-256 <https://en.wikipedia.org/wiki/SHA-2>`__ hash of the string
 
 :ref:`String<class_String>` **sha256_text**\ (\ ) |const| :ref:`🔗<class_StringName_method_sha256_text>`
 
-Returns the `SHA-256 <https://en.wikipedia.org/wiki/SHA-2>`__ hash of the string as another :ref:`String<class_String>`.
+Trả về giá trị băm `SHA-256 <https://en.wikipedia.org/wiki/SHA-2>`__ của chuỗi dưới dạng một :ref:`String<class_String>` khác.
 
 .. rst-class:: classref-item-separator
 
@@ -1659,7 +1659,7 @@ Returns the `SHA-256 <https://en.wikipedia.org/wiki/SHA-2>`__ hash of the string
 
 :ref:`float<class_float>` **similarity**\ (\ text\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_StringName_method_similarity>`
 
-Returns the similarity index (`Sørensen-Dice coefficient <https://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient>`__) of this string compared to another. A result of ``1.0`` means totally similar, while ``0.0`` means totally dissimilar.
+Trả về chỉ số tương đồng (`hệ số Sørensen-Dice <https://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient>`__) của chuỗi này khi so sánh với một chuỗi khác. Kết quả ``1.0`` có nghĩa là hoàn toàn tương đồng, còn ``0.0`` có nghĩa là hoàn toàn không tương đồng.
 
 ::
 
@@ -1678,7 +1678,7 @@ Returns the similarity index (`Sørensen-Dice coefficient <https://en.wikipedia.
 
 :ref:`String<class_String>` **simplify_path**\ (\ ) |const| :ref:`🔗<class_StringName_method_simplify_path>`
 
-If the string is a valid file path, converts the string into a canonical path. This is the shortest possible path, without ``"./"``, and all the unnecessary ``".."`` and ``"/"``.
+Nếu chuỗi là một đường dẫn tệp hợp lệ, chuyển chuỗi thành đường dẫn canonical. Đây là đường dẫn ngắn nhất có thể, không có ``"./"``, cùng tất cả ``".."`` và ``"/"`` không cần thiết.
 
 ::
 
@@ -1695,11 +1695,11 @@ If the string is a valid file path, converts the string into a canonical path. T
 
 :ref:`PackedStringArray<class_PackedStringArray>` **split**\ (\ delimiter\: :ref:`String<class_String>` = "", allow_empty\: :ref:`bool<class_bool>` = true, maxsplit\: :ref:`int<class_int>` = 0\ ) |const| :ref:`🔗<class_StringName_method_split>`
 
-Splits the string using a ``delimiter`` and returns an array of the substrings. If ``delimiter`` is an empty string, each substring will be a single character. This method is the opposite of :ref:`join()<class_StringName_method_join>`.
+Tách chuỗi bằng ``delimiter`` và trả về một mảng các chuỗi con. Nếu ``delimiter`` là một chuỗi rỗng, mỗi chuỗi con sẽ là một ký tự đơn. Phương thức này ngược với :ref:`join()<class_StringName_method_join>`.
 
-If ``allow_empty`` is ``false``, empty strings between adjacent delimiters are excluded from the array.
+Nếu ``allow_empty`` là ``false``, các chuỗi rỗng giữa những dấu phân cách liền kề sẽ bị loại khỏi mảng.
 
-If ``maxsplit`` is greater than ``0``, the number of splits may not exceed ``maxsplit``. By default, the entire string is split.
+Nếu ``maxsplit`` lớn hơn ``0``, số lần tách không được vượt quá ``maxsplit``. Theo mặc định, toàn bộ chuỗi được tách.
 
 
 .. tabs::
@@ -1708,23 +1708,23 @@ If ``maxsplit`` is greater than ``0``, the number of splits may not exceed ``max
 
     var some_array = "One,Two,Three,Four".split(",", true, 2)
 
-    print(some_array.size()) # Prints 3
-    print(some_array[0])     # Prints "One"
-    print(some_array[1])     # Prints "Two"
-    print(some_array[2])     # Prints "Three,Four"
+    print(some_array.size()) # In 3
+    print(some_array[0])     # In "One"
+    print(some_array[1])     # In "Two"
+    print(some_array[2])     # In "Three,Four"
 
  .. code-tab:: csharp
 
-    // C#'s `Split()` does not support the `maxsplit` parameter.
+    // `Split()` của C# không hỗ trợ tham số `maxsplit`.
     var someArray = "One,Two,Three".Split(",");
 
-    GD.Print(someArray[0]); // Prints "One"
-    GD.Print(someArray[1]); // Prints "Two"
-    GD.Print(someArray[2]); // Prints "Three"
+    GD.Print(someArray[0]); // In "One"
+    GD.Print(someArray[1]); // In "Two"
+    GD.Print(someArray[2]); // In "Three"
 
 
 
-\ **Note:** If you only need one substring from the array, consider using :ref:`get_slice()<class_StringName_method_get_slice>` which is faster. If you need to split strings with more complex rules, use the :ref:`RegEx<class_RegEx>` class instead.
+\ **Lưu ý:** Nếu bạn chỉ cần một chuỗi con từ mảng, hãy cân nhắc sử dụng :ref:`get_slice()<class_StringName_method_get_slice>` vì nó nhanh hơn. Nếu bạn cần tách các chuỗi bằng những quy tắc phức tạp hơn, hãy sử dụng class :ref:`RegEx<class_RegEx>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1736,9 +1736,9 @@ If ``maxsplit`` is greater than ``0``, the number of splits may not exceed ``max
 
 :ref:`PackedFloat64Array<class_PackedFloat64Array>` **split_floats**\ (\ delimiter\: :ref:`String<class_String>`, allow_empty\: :ref:`bool<class_bool>` = true\ ) |const| :ref:`🔗<class_StringName_method_split_floats>`
 
-Splits the string into floats by using a ``delimiter`` and returns a :ref:`PackedFloat64Array<class_PackedFloat64Array>`.
+Tách chuỗi thành các số thực bằng cách sử dụng ``delimiter`` và trả về một :ref:`PackedFloat64Array<class_PackedFloat64Array>`.
 
-If ``allow_empty`` is ``false``, empty or invalid :ref:`float<class_float>` conversions between adjacent delimiters are excluded.
+Nếu ``allow_empty`` là ``false``, các phép chuyển đổi :ref:`float<class_float>` trống hoặc không hợp lệ giữa các dấu phân cách liền kề sẽ bị loại trừ.
 
 ::
 
@@ -1756,9 +1756,9 @@ If ``allow_empty`` is ``false``, empty or invalid :ref:`float<class_float>` conv
 
 :ref:`String<class_String>` **strip_edges**\ (\ left\: :ref:`bool<class_bool>` = true, right\: :ref:`bool<class_bool>` = true\ ) |const| :ref:`🔗<class_StringName_method_strip_edges>`
 
-Strips all non-printable characters from the beginning and the end of the string. These include spaces, tabulations (``\t``), and newlines (``\n`` ``\r``).
+Loại bỏ tất cả ký tự không in được ở đầu và cuối chuỗi. Các ký tự này bao gồm dấu cách, ký tự tab (``\t``) và ký tự xuống dòng (``\n`` ``\r``).
 
-If ``left`` is ``false``, ignores the string's beginning. Likewise, if ``right`` is ``false``, ignores the string's end.
+Nếu ``left`` là ``false``, bỏ qua phần đầu chuỗi. Tương tự, nếu ``right`` là ``false``, bỏ qua phần cuối chuỗi.
 
 .. rst-class:: classref-item-separator
 
@@ -1770,7 +1770,7 @@ If ``left`` is ``false``, ignores the string's beginning. Likewise, if ``right``
 
 :ref:`String<class_String>` **strip_escapes**\ (\ ) |const| :ref:`🔗<class_StringName_method_strip_escapes>`
 
-Strips all escape characters from the string. These include all non-printable control characters of the first page of the ASCII table (values from 0 to 31), such as tabulation (``\t``) and newline (``\n``, ``\r``) characters, but *not* spaces.
+Loại bỏ tất cả ký tự escape khỏi chuỗi. Các ký tự này bao gồm mọi ký tự điều khiển không in được trên trang đầu tiên của bảng ASCII (các giá trị từ 0 đến 31), chẳng hạn như ký tự tab (``\t``) và ký tự xuống dòng (``\n``, ``\r``), nhưng *không* bao gồm dấu cách.
 
 .. rst-class:: classref-item-separator
 
@@ -1782,7 +1782,7 @@ Strips all escape characters from the string. These include all non-printable co
 
 :ref:`String<class_String>` **substr**\ (\ from\: :ref:`int<class_int>`, len\: :ref:`int<class_int>` = -1\ ) |const| :ref:`🔗<class_StringName_method_substr>`
 
-Returns part of the string from the position ``from`` with length ``len``. If ``len`` is ``-1`` (as by default), returns the rest of the string starting from the given position.
+Trả về một phần của chuỗi bắt đầu tại vị trí ``from`` với độ dài ``len``. Nếu ``len`` là ``-1`` (như mặc định), trả về phần còn lại của chuỗi bắt đầu từ vị trí đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -1794,7 +1794,7 @@ Returns part of the string from the position ``from`` with length ``len``. If ``
 
 :ref:`PackedByteArray<class_PackedByteArray>` **to_ascii_buffer**\ (\ ) |const| :ref:`🔗<class_StringName_method_to_ascii_buffer>`
 
-Converts the string to an `ASCII <https://en.wikipedia.org/wiki/ASCII>`__/Latin-1 encoded :ref:`PackedByteArray<class_PackedByteArray>`. This method is slightly faster than :ref:`to_utf8_buffer()<class_StringName_method_to_utf8_buffer>`, but replaces all unsupported characters with spaces. This is the inverse of :ref:`PackedByteArray.get_string_from_ascii()<class_PackedByteArray_method_get_string_from_ascii>`.
+Chuyển đổi chuỗi thành `ASCII <https://en.wikipedia.org/wiki/ASCII>`__ :ref:`PackedByteArray<class_PackedByteArray>` được mã hóa theo Latin-1. Phương thức này nhanh hơn một chút so với :ref:`to_utf8_buffer()<class_StringName_method_to_utf8_buffer>`, nhưng thay thế mọi ký tự không được hỗ trợ bằng dấu cách. Đây là phép đảo của :ref:`PackedByteArray.get_string_from_ascii()<class_PackedByteArray_method_get_string_from_ascii>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1806,7 +1806,7 @@ Converts the string to an `ASCII <https://en.wikipedia.org/wiki/ASCII>`__/Latin-
 
 :ref:`String<class_String>` **to_camel_case**\ (\ ) |const| :ref:`🔗<class_StringName_method_to_camel_case>`
 
-Returns the string converted to ``camelCase``.
+Trả về chuỗi được chuyển đổi thành ``camelCase``.
 
 .. rst-class:: classref-item-separator
 
@@ -1818,7 +1818,7 @@ Returns the string converted to ``camelCase``.
 
 :ref:`float<class_float>` **to_float**\ (\ ) |const| :ref:`🔗<class_StringName_method_to_float>`
 
-Converts the string representing a decimal number into a :ref:`float<class_float>`. This method stops on the first non-number character, except the first decimal point (``.``) and the exponent letter (``e``). See also :ref:`is_valid_float()<class_StringName_method_is_valid_float>`.
+Chuyển đổi chuỗi biểu diễn một số thập phân thành :ref:`float<class_float>`. Phương thức này dừng tại ký tự đầu tiên không phải chữ số, ngoại trừ dấu chấm thập phân đầu tiên (``.``) và chữ cái số mũ (``e``). Xem thêm :ref:`is_valid_float()<class_StringName_method_is_valid_float>`.
 
 ::
 
@@ -1838,7 +1838,7 @@ Converts the string representing a decimal number into a :ref:`float<class_float
 
 :ref:`int<class_int>` **to_int**\ (\ ) |const| :ref:`🔗<class_StringName_method_to_int>`
 
-Converts the string representing an integer number into an :ref:`int<class_int>`. This method removes any non-number character and stops at the first decimal point (``.``). See also :ref:`is_valid_int()<class_StringName_method_is_valid_int>`.
+Chuyển đổi chuỗi biểu diễn một số nguyên thành :ref:`int<class_int>`. Phương thức này loại bỏ mọi ký tự không phải chữ số và dừng tại dấu chấm thập phân đầu tiên (``.``). Xem thêm :ref:`is_valid_int()<class_StringName_method_is_valid_int>`.
 
 ::
 
@@ -1857,24 +1857,24 @@ Converts the string representing an integer number into an :ref:`int<class_int>`
 
 :ref:`String<class_String>` **to_kebab_case**\ (\ ) |const| :ref:`🔗<class_StringName_method_to_kebab_case>`
 
-Returns the string converted to ``kebab-case``.
+Trả về chuỗi được chuyển đổi thành ``kebab-case``.
 
-\ **Note:** Numbers followed by a *single* letter are not separated in the conversion to keep some words (such as "2D") together.
+\ **Lưu ý:** Các số theo sau bởi một chữ cái *duy nhất* sẽ không được tách ra khi chuyển đổi để giữ nguyên một số từ (chẳng hạn như "2D").
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    "Node2D".to_kebab_case()               # Returns "node-2d"
-    "2nd place".to_kebab_case()            # Returns "2-nd-place"
-    "Texture3DAssetFolder".to_kebab_case() # Returns "texture-3d-asset-folder"
+    "Node2D".to_kebab_case()               # Trả về "node-2d"
+    "2nd place".to_kebab_case()            # Trả về "2-nd-place"
+    "Texture3DAssetFolder".to_kebab_case() # Trả về "texture-3d-asset-folder"
 
  .. code-tab:: csharp
 
-    "Node2D".ToKebabCase();               // Returns "node-2d"
-    "2nd place".ToKebabCase();            // Returns "2-nd-place"
-    "Texture3DAssetFolder".ToKebabCase(); // Returns "texture-3d-asset-folder"
+    "Node2D".ToKebabCase();               // Trả về "node-2d"
+    "2nd place".ToKebabCase();            // Trả về "2-nd-place"
+    "Texture3DAssetFolder".ToKebabCase(); // Trả về "texture-3d-asset-folder"
 
 
 
@@ -1888,7 +1888,7 @@ Returns the string converted to ``kebab-case``.
 
 :ref:`String<class_String>` **to_lower**\ (\ ) |const| :ref:`🔗<class_StringName_method_to_lower>`
 
-Returns the string converted to ``lowercase``.
+Trả về chuỗi được chuyển đổi thành ``lowercase``.
 
 .. rst-class:: classref-item-separator
 
@@ -1900,13 +1900,13 @@ Returns the string converted to ``lowercase``.
 
 :ref:`PackedByteArray<class_PackedByteArray>` **to_multibyte_char_buffer**\ (\ encoding\: :ref:`String<class_String>` = ""\ ) |const| :ref:`🔗<class_StringName_method_to_multibyte_char_buffer>`
 
-Converts the string to system multibyte code page encoded :ref:`PackedByteArray<class_PackedByteArray>`. If conversion fails, empty array is returned.
+Chuyển đổi chuỗi thành :ref:`PackedByteArray<class_PackedByteArray>` được mã hóa bằng code page đa byte của hệ thống. Nếu chuyển đổi không thành công, một mảng rỗng sẽ được trả về.
 
-The values permitted for ``encoding`` are system dependent. If ``encoding`` is empty string, system default encoding is used.
+Các giá trị được phép cho ``encoding`` phụ thuộc vào hệ thống. Nếu ``encoding`` là chuỗi rỗng, mã hóa mặc định của hệ thống sẽ được sử dụng.
 
-- For Windows, see `Code Page Identifiers <https://learn.microsoft.com/en-us/windows/win32/Intl/code-page-identifiers>`__ .NET names.
+- Đối với Windows, xem `Code Page Identifiers <https://learn.microsoft.com/en-us/windows/win32/Intl/code-page-identifiers>`__ và tên .NET.
 
-- For macOS and Linux/BSD, see ``libiconv`` library documentation and ``iconv --list`` for a list of supported encodings.
+- Đối với macOS và Linux/BSD, xem tài liệu của thư viện ``libiconv`` và ``iconv --list`` để biết danh sách các encoding được hỗ trợ.
 
 .. rst-class:: classref-item-separator
 
@@ -1918,7 +1918,7 @@ The values permitted for ``encoding`` are system dependent. If ``encoding`` is e
 
 :ref:`String<class_String>` **to_pascal_case**\ (\ ) |const| :ref:`🔗<class_StringName_method_to_pascal_case>`
 
-Returns the string converted to ``PascalCase``.
+Trả về chuỗi được chuyển đổi thành ``PascalCase``.
 
 .. rst-class:: classref-item-separator
 
@@ -1930,24 +1930,24 @@ Returns the string converted to ``PascalCase``.
 
 :ref:`String<class_String>` **to_snake_case**\ (\ ) |const| :ref:`🔗<class_StringName_method_to_snake_case>`
 
-Returns the string converted to ``snake_case``.
+Trả về chuỗi được chuyển đổi thành ``snake_case``.
 
-\ **Note:** Numbers followed by a *single* letter are not separated in the conversion to keep some words (such as "2D") together.
+\ **Lưu ý:** Các số theo sau bởi một chữ cái *duy nhất* sẽ không được tách ra khi chuyển đổi để giữ nguyên một số từ (chẳng hạn như "2D").
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    "Node2D".to_snake_case()               # Returns "node_2d"
-    "2nd place".to_snake_case()            # Returns "2_nd_place"
-    "Texture3DAssetFolder".to_snake_case() # Returns "texture_3d_asset_folder"
+    "Node2D".to_snake_case()               # Trả về "node_2d"
+    "2nd place".to_snake_case()            # Trả về "2_nd_place"
+    "Texture3DAssetFolder".to_snake_case() # Trả về "texture_3d_asset_folder"
 
  .. code-tab:: csharp
 
-    "Node2D".ToSnakeCase();               // Returns "node_2d"
-    "2nd place".ToSnakeCase();            // Returns "2_nd_place"
-    "Texture3DAssetFolder".ToSnakeCase(); // Returns "texture_3d_asset_folder"
+    "Node2D".ToSnakeCase();               // Trả về "node_2d"
+    "2nd place".ToSnakeCase();            // Trả về "2_nd_place"
+    "Texture3DAssetFolder".ToSnakeCase(); // Trả về "texture_3d_asset_folder"
 
 
 
@@ -1961,7 +1961,7 @@ Returns the string converted to ``snake_case``.
 
 :ref:`String<class_String>` **to_upper**\ (\ ) |const| :ref:`🔗<class_StringName_method_to_upper>`
 
-Returns the string converted to ``UPPERCASE``.
+Trả về chuỗi được chuyển đổi thành ``UPPERCASE``.
 
 .. rst-class:: classref-item-separator
 
@@ -1973,7 +1973,7 @@ Returns the string converted to ``UPPERCASE``.
 
 :ref:`PackedByteArray<class_PackedByteArray>` **to_utf8_buffer**\ (\ ) |const| :ref:`🔗<class_StringName_method_to_utf8_buffer>`
 
-Converts the string to a `UTF-8 <https://en.wikipedia.org/wiki/UTF-8>`__ encoded :ref:`PackedByteArray<class_PackedByteArray>`. This method is slightly slower than :ref:`to_ascii_buffer()<class_StringName_method_to_ascii_buffer>`, but supports all UTF-8 characters. For most cases, prefer using this method. This is the inverse of :ref:`PackedByteArray.get_string_from_utf8()<class_PackedByteArray_method_get_string_from_utf8>`.
+Chuyển đổi chuỗi thành `UTF-8 <https://en.wikipedia.org/wiki/UTF-8>`__ :ref:`PackedByteArray<class_PackedByteArray>` được mã hóa. Phương thức này chậm hơn một chút so với :ref:`to_ascii_buffer()<class_StringName_method_to_ascii_buffer>`, nhưng hỗ trợ mọi ký tự UTF-8. Trong hầu hết trường hợp, nên ưu tiên sử dụng phương thức này. Đây là phép đảo của :ref:`PackedByteArray.get_string_from_utf8()<class_PackedByteArray_method_get_string_from_utf8>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1985,7 +1985,7 @@ Converts the string to a `UTF-8 <https://en.wikipedia.org/wiki/UTF-8>`__ encoded
 
 :ref:`PackedByteArray<class_PackedByteArray>` **to_utf16_buffer**\ (\ ) |const| :ref:`🔗<class_StringName_method_to_utf16_buffer>`
 
-Converts the string to a `UTF-16 <https://en.wikipedia.org/wiki/UTF-16>`__ encoded :ref:`PackedByteArray<class_PackedByteArray>`. This is the inverse of :ref:`PackedByteArray.get_string_from_utf16()<class_PackedByteArray_method_get_string_from_utf16>`.
+Chuyển đổi chuỗi thành `UTF-16 <https://en.wikipedia.org/wiki/UTF-16>`__ :ref:`PackedByteArray<class_PackedByteArray>` được mã hóa. Đây là phép đảo của :ref:`PackedByteArray.get_string_from_utf16()<class_PackedByteArray_method_get_string_from_utf16>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1997,7 +1997,7 @@ Converts the string to a `UTF-16 <https://en.wikipedia.org/wiki/UTF-16>`__ encod
 
 :ref:`PackedByteArray<class_PackedByteArray>` **to_utf32_buffer**\ (\ ) |const| :ref:`🔗<class_StringName_method_to_utf32_buffer>`
 
-Converts the string to a `UTF-32 <https://en.wikipedia.org/wiki/UTF-32>`__ encoded :ref:`PackedByteArray<class_PackedByteArray>`. This is the inverse of :ref:`PackedByteArray.get_string_from_utf32()<class_PackedByteArray_method_get_string_from_utf32>`.
+Chuyển đổi chuỗi thành `UTF-32 <https://en.wikipedia.org/wiki/UTF-32>`__ :ref:`PackedByteArray<class_PackedByteArray>` được mã hóa. Đây là phép đảo của :ref:`PackedByteArray.get_string_from_utf32()<class_PackedByteArray_method_get_string_from_utf32>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2009,7 +2009,7 @@ Converts the string to a `UTF-32 <https://en.wikipedia.org/wiki/UTF-32>`__ encod
 
 :ref:`PackedByteArray<class_PackedByteArray>` **to_wchar_buffer**\ (\ ) |const| :ref:`🔗<class_StringName_method_to_wchar_buffer>`
 
-Converts the string to a `wide character <https://en.wikipedia.org/wiki/Wide_character>`__ (``wchar_t``, UTF-16 on Windows, UTF-32 on other platforms) encoded :ref:`PackedByteArray<class_PackedByteArray>`. This is the inverse of :ref:`PackedByteArray.get_string_from_wchar()<class_PackedByteArray_method_get_string_from_wchar>`.
+Chuyển đổi chuỗi thành `ký tự rộng <https://en.wikipedia.org/wiki/Wide_character>`__ (``wchar_t``, UTF-16 trên Windows, UTF-32 trên các nền tảng khác) :ref:`PackedByteArray<class_PackedByteArray>` được mã hóa. Đây là phép đảo của :ref:`PackedByteArray.get_string_from_wchar()<class_PackedByteArray_method_get_string_from_wchar>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2021,7 +2021,7 @@ Converts the string to a `wide character <https://en.wikipedia.org/wiki/Wide_cha
 
 :ref:`String<class_String>` **trim_prefix**\ (\ prefix\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_StringName_method_trim_prefix>`
 
-Removes the given ``prefix`` from the start of the string, or returns the string unchanged.
+Xóa ``prefix`` đã cho khỏi đầu chuỗi hoặc trả về chuỗi không thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -2033,7 +2033,7 @@ Removes the given ``prefix`` from the start of the string, or returns the string
 
 :ref:`String<class_String>` **trim_suffix**\ (\ suffix\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_StringName_method_trim_suffix>`
 
-Removes the given ``suffix`` from the end of the string, or returns the string unchanged.
+Xóa ``suffix`` đã cho khỏi cuối chuỗi hoặc trả về chuỗi không thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -2045,9 +2045,9 @@ Removes the given ``suffix`` from the end of the string, or returns the string u
 
 :ref:`int<class_int>` **unicode_at**\ (\ at\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_StringName_method_unicode_at>`
 
-Returns the character code at position ``at``.
+Trả về mã ký tự tại vị trí ``at``.
 
-See also :ref:`String.chr()<class_String_method_chr>`, :ref:`@GDScript.char()<class_@GDScript_method_char>`, and :ref:`@GDScript.ord()<class_@GDScript_method_ord>`.
+Xem thêm :ref:`String.chr()<class_String_method_chr>`, :ref:`@GDScript.char() <class_@GDScript_method_char>` và :ref:`@GDScript.ord() <class_@GDScript_method_ord>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2059,7 +2059,7 @@ See also :ref:`String.chr()<class_String_method_chr>`, :ref:`@GDScript.char()<cl
 
 :ref:`String<class_String>` **uri_decode**\ (\ ) |const| :ref:`🔗<class_StringName_method_uri_decode>`
 
-Decodes the string from its URL-encoded format. This method is meant to properly decode the parameters in a URL when receiving an HTTP request. See also :ref:`uri_encode()<class_StringName_method_uri_encode>`.
+Giải mã chuỗi từ định dạng được mã hóa URL. Phương thức này nhằm giải mã đúng các tham số trong URL khi nhận một HTTP request. Xem thêm :ref:`uri_encode()<class_StringName_method_uri_encode>`.
 
 
 .. tabs::
@@ -2067,16 +2067,16 @@ Decodes the string from its URL-encoded format. This method is meant to properly
  .. code-tab:: gdscript
 
     var url = "$DOCS_URL/?highlight=Godot%20Engine%3%docs"
-    print(url.uri_decode()) # Prints "$DOCS_URL/?highlight=Godot Engine:docs"
+    print(url.uri_decode()) # In "$DOCS_URL/?highlight=Godot Engine:docs"
 
  .. code-tab:: csharp
 
     var url = "$DOCS_URL/?highlight=Godot%20Engine%3%docs"
-    GD.Print(url.URIDecode()) // Prints "$DOCS_URL/?highlight=Godot Engine:docs"
+    GD.Print(url.URIDecode()) // In "$DOCS_URL/?highlight=Godot Engine:docs"
 
 
 
-\ **Note:** This method decodes ``+`` as space.
+\ **Lưu ý:** Phương thức này giải mã ``+`` thành dấu cách.
 
 .. rst-class:: classref-item-separator
 
@@ -2088,7 +2088,7 @@ Decodes the string from its URL-encoded format. This method is meant to properly
 
 :ref:`String<class_String>` **uri_encode**\ (\ ) |const| :ref:`🔗<class_StringName_method_uri_encode>`
 
-Encodes the string to URL-friendly format. This method is meant to properly encode the parameters in a URL when sending an HTTP request. See also :ref:`uri_decode()<class_StringName_method_uri_decode>`.
+Mã hóa chuỗi theo định dạng thân thiện với URL. Phương thức này nhằm mã hóa đúng các tham số trong URL khi gửi một HTTP request. Xem thêm :ref:`uri_decode()<class_StringName_method_uri_decode>`.
 
 
 .. tabs::
@@ -2098,14 +2098,14 @@ Encodes the string to URL-friendly format. This method is meant to properly enco
     var prefix = "$DOCS_URL/?highlight="
     var url = prefix + "Godot Engine:docs".uri_encode()
 
-    print(url) # Prints "$DOCS_URL/?highlight=Godot%20Engine%3%docs"
+    print(url) # In "$DOCS_URL/?highlight=Godot%20Engine%3%docs"
 
  .. code-tab:: csharp
 
     var prefix = "$DOCS_URL/?highlight=";
     var url = prefix + "Godot Engine:docs".URIEncode();
 
-    GD.Print(url); // Prints "$DOCS_URL/?highlight=Godot%20Engine%3%docs"
+    GD.Print(url); // In "$DOCS_URL/?highlight=Godot%20Engine%3%docs"
 
 
 
@@ -2119,7 +2119,7 @@ Encodes the string to URL-friendly format. This method is meant to properly enco
 
 :ref:`String<class_String>` **uri_file_decode**\ (\ ) |const| :ref:`🔗<class_StringName_method_uri_file_decode>`
 
-Decodes the file path from its URL-encoded format. Unlike :ref:`uri_decode()<class_StringName_method_uri_decode>` this method leaves ``+`` as is.
+Giải mã đường dẫn tệp từ định dạng được mã hóa URL. Không giống :ref:`uri_decode()<class_StringName_method_uri_decode>`, phương thức này giữ nguyên ``+``.
 
 .. rst-class:: classref-item-separator
 
@@ -2131,7 +2131,7 @@ Decodes the file path from its URL-encoded format. Unlike :ref:`uri_decode()<cla
 
 :ref:`String<class_String>` **validate_filename**\ (\ ) |const| :ref:`🔗<class_StringName_method_validate_filename>`
 
-Returns a copy of the string with all characters that are not allowed in :ref:`is_valid_filename()<class_StringName_method_is_valid_filename>` replaced with underscores.
+Trả về một bản sao của chuỗi, trong đó tất cả các ký tự không được phép trong :ref:`is_valid_filename()<class_StringName_method_is_valid_filename>` được thay thế bằng dấu gạch dưới.
 
 .. rst-class:: classref-item-separator
 
@@ -2143,7 +2143,7 @@ Returns a copy of the string with all characters that are not allowed in :ref:`i
 
 :ref:`String<class_String>` **validate_node_name**\ (\ ) |const| :ref:`🔗<class_StringName_method_validate_node_name>`
 
-Returns a copy of the string with all characters that are not allowed in :ref:`Node.name<class_Node_property_name>` (``.`` ``:`` ``@`` ``/`` ``"`` ``%``) replaced with underscores.
+Trả về một bản sao của chuỗi, trong đó tất cả các ký tự không được phép trong :ref:`Node.name<class_Node_property_name>` (``.`` ``:`` ``@`` ``/`` ``"`` ``%``) được thay thế bằng dấu gạch dưới.
 
 .. rst-class:: classref-item-separator
 
@@ -2155,7 +2155,7 @@ Returns a copy of the string with all characters that are not allowed in :ref:`N
 
 :ref:`String<class_String>` **xml_escape**\ (\ escape_quotes\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_StringName_method_xml_escape>`
 
-Returns a copy of the string with special characters escaped using the XML standard. If ``escape_quotes`` is ``true``, the single quote (``'``) and double quote (``"``) characters are also escaped.
+Trả về một bản sao của chuỗi, trong đó các ký tự đặc biệt được escape bằng tiêu chuẩn XML. Nếu ``escape_quotes`` là ``true``, các ký tự dấu nháy đơn (``'``) và dấu nháy kép (``"``) cũng được escape.
 
 .. rst-class:: classref-item-separator
 
@@ -2167,7 +2167,7 @@ Returns a copy of the string with special characters escaped using the XML stand
 
 :ref:`String<class_String>` **xml_unescape**\ (\ ) |const| :ref:`🔗<class_StringName_method_xml_unescape>`
 
-Returns a copy of the string with escaped characters replaced by their meanings according to the XML standard.
+Trả về một bản sao của chuỗi, trong đó các ký tự đã được escape được thay thế bằng ý nghĩa tương ứng theo tiêu chuẩn XML.
 
 .. rst-class:: classref-section-separator
 
@@ -2175,16 +2175,16 @@ Returns a copy of the string with escaped characters replaced by their meanings 
 
 .. rst-class:: classref-descriptions-group
 
-Operator Descriptions
----------------------
+Mô tả toán tử
+-------------
 
 .. _class_StringName_operator_neq_String:
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`String<class_String>`\ ) :ref:`🔗<class_StringName_operator_neq_String>`
+:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`String<class_String>`\ ) :ref:`🔗 <class_StringName_operator_neq_String>`
 
-Returns ``true`` if this **StringName** is not equivalent to the given :ref:`String<class_String>`.
+Trả về ``true`` nếu **StringName** này không tương đương với :ref:`String<class_String>` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -2194,9 +2194,9 @@ Returns ``true`` if this **StringName** is not equivalent to the given :ref:`Str
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_StringName_operator_neq_StringName>`
+:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗 <class_StringName_operator_neq_StringName>`
 
-Returns ``true`` if the **StringName** and ``right`` do not refer to the same name. Comparisons between **StringName**\ s are much faster than regular :ref:`String<class_String>` comparisons.
+Trả về ``true`` nếu **StringName** và ``right`` không trỏ đến cùng một tên. So sánh giữa các **StringName**\ s nhanh hơn nhiều so với các phép so sánh :ref:`String<class_String>` thông thường.
 
 .. rst-class:: classref-item-separator
 
@@ -2206,13 +2206,13 @@ Returns ``true`` if the **StringName** and ``right`` do not refer to the same na
 
 .. rst-class:: classref-operator
 
-:ref:`String<class_String>` **operator %**\ (\ right\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_StringName_operator_mod_Variant>`
+:ref:`String<class_String>` **operator %**\ (\ right\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗 <class_StringName_operator_mod_Variant>`
 
-Formats the **StringName**, replacing the placeholders with one or more parameters, returning a :ref:`String<class_String>`. To pass multiple parameters, ``right`` needs to be an :ref:`Array<class_Array>`.
+Định dạng **StringName**, thay thế các placeholder bằng một hoặc nhiều tham số, rồi trả về một :ref:`String<class_String>`. Để truyền nhiều tham số, ``right`` phải là một :ref:`Array<class_Array>`.
 
-For more information, see the :doc:`GDScript format strings <../tutorials/scripting/gdscript/gdscript_format_string>` tutorial.
+Để biết thêm thông tin, hãy xem tutorial :doc:`GDScript format strings <../tutorials/scripting/gdscript/gdscript_format_string>`.
 
-\ **Note:** In C#, this operator is not available. Instead, see `how to interpolate strings with "$" <https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/interpolated>`__.
+\ **Lưu ý:** Trong C#, toán tử này không khả dụng. Thay vào đó, hãy xem `cách nội suy chuỗi bằng "$" <https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/interpolated>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2222,9 +2222,9 @@ For more information, see the :doc:`GDScript format strings <../tutorials/script
 
 .. rst-class:: classref-operator
 
-:ref:`String<class_String>` **operator +**\ (\ right\: :ref:`String<class_String>`\ ) :ref:`🔗<class_StringName_operator_sum_String>`
+:ref:`String<class_String>` **operator +**\ (\ right\: :ref:`String<class_String>`\ ) :ref:`🔗 <class_StringName_operator_sum_String>`
 
-Appends ``right`` at the end of this **StringName**, returning a :ref:`String<class_String>`. This is also known as a string concatenation.
+Nối ``right`` vào cuối **StringName** này và trả về một :ref:`String<class_String>`. Thao tác này còn được gọi là nối chuỗi.
 
 .. rst-class:: classref-item-separator
 
@@ -2234,9 +2234,9 @@ Appends ``right`` at the end of this **StringName**, returning a :ref:`String<cl
 
 .. rst-class:: classref-operator
 
-:ref:`String<class_String>` **operator +**\ (\ right\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_StringName_operator_sum_StringName>`
+:ref:`String<class_String>` **operator +**\ (\ right\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗 <class_StringName_operator_sum_StringName>`
 
-Appends ``right`` at the end of this **StringName**, returning a :ref:`String<class_String>`. This is also known as a string concatenation.
+Nối ``right`` vào cuối **StringName** này và trả về một :ref:`String<class_String>`. Thao tác này còn được gọi là nối chuỗi.
 
 .. rst-class:: classref-item-separator
 
@@ -2246,9 +2246,9 @@ Appends ``right`` at the end of this **StringName**, returning a :ref:`String<cl
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator <**\ (\ right\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_StringName_operator_lt_StringName>`
+:ref:`bool<class_bool>` **operator <**\ (\ right\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗 <class_StringName_operator_lt_StringName>`
 
-Returns ``true`` if the left **StringName**'s pointer comes before ``right``. Note that this will not match their `Unicode order <https://en.wikipedia.org/wiki/List_of_Unicode_characters>`__.
+Trả về ``true`` nếu con trỏ của **StringName** bên trái đứng trước ``right``. Lưu ý rằng thứ tự này sẽ không khớp với `thứ tự Unicode <https://en.wikipedia.org/wiki/List_of_Unicode_characters>`__ của chúng.
 
 .. rst-class:: classref-item-separator
 
@@ -2258,9 +2258,9 @@ Returns ``true`` if the left **StringName**'s pointer comes before ``right``. No
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator <=**\ (\ right\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_StringName_operator_lte_StringName>`
+:ref:`bool<class_bool>` **operator <=**\ (\ right\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗 <class_StringName_operator_lte_StringName>`
 
-Returns ``true`` if the left **StringName**'s pointer comes before ``right`` or if they are the same. Note that this will not match their `Unicode order <https://en.wikipedia.org/wiki/List_of_Unicode_characters>`__.
+Trả về ``true`` nếu con trỏ của **StringName** bên trái đứng trước ``right`` hoặc nếu chúng giống nhau. Lưu ý rằng thứ tự này sẽ không khớp với `thứ tự Unicode <https://en.wikipedia.org/wiki/List_of_Unicode_characters>`__ của chúng.
 
 .. rst-class:: classref-item-separator
 
@@ -2270,9 +2270,9 @@ Returns ``true`` if the left **StringName**'s pointer comes before ``right`` or 
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`String<class_String>`\ ) :ref:`🔗<class_StringName_operator_eq_String>`
+:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`String<class_String>`\ ) :ref:`🔗 <class_StringName_operator_eq_String>`
 
-Returns ``true`` if this **StringName** is equivalent to the given :ref:`String<class_String>`.
+Trả về ``true`` nếu **StringName** này tương đương với :ref:`String<class_String>` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -2282,9 +2282,9 @@ Returns ``true`` if this **StringName** is equivalent to the given :ref:`String<
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_StringName_operator_eq_StringName>`
+:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗 <class_StringName_operator_eq_StringName>`
 
-Returns ``true`` if the **StringName** and ``right`` refer to the same name. Comparisons between **StringName**\ s are much faster than regular :ref:`String<class_String>` comparisons.
+Trả về ``true`` nếu **StringName** và ``right`` trỏ đến cùng một tên. So sánh giữa các **StringName**\ s nhanh hơn nhiều so với các phép so sánh :ref:`String<class_String>` thông thường.
 
 .. rst-class:: classref-item-separator
 
@@ -2294,9 +2294,9 @@ Returns ``true`` if the **StringName** and ``right`` refer to the same name. Com
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator >**\ (\ right\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_StringName_operator_gt_StringName>`
+:ref:`bool<class_bool>` **operator >**\ (\ right\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗 <class_StringName_operator_gt_StringName>`
 
-Returns ``true`` if the left **StringName**'s pointer comes after ``right``. Note that this will not match their `Unicode order <https://en.wikipedia.org/wiki/List_of_Unicode_characters>`__.
+Trả về ``true`` nếu con trỏ của **StringName** bên trái đứng sau ``right``. Lưu ý rằng thứ tự này sẽ không khớp với `thứ tự Unicode <https://en.wikipedia.org/wiki/List_of_Unicode_characters>`__ của chúng.
 
 .. rst-class:: classref-item-separator
 
@@ -2306,16 +2306,16 @@ Returns ``true`` if the left **StringName**'s pointer comes after ``right``. Not
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator >=**\ (\ right\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_StringName_operator_gte_StringName>`
+:ref:`bool<class_bool>` **operator >=**\ (\ right\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗 <class_StringName_operator_gte_StringName>`
 
-Returns ``true`` if the left **StringName**'s pointer comes after ``right`` or if they are the same. Note that this will not match their `Unicode order <https://en.wikipedia.org/wiki/List_of_Unicode_characters>`__.
+Trả về ``true`` nếu con trỏ của **StringName** bên trái đứng sau ``right`` hoặc nếu chúng giống nhau. Lưu ý rằng thứ tự này sẽ không khớp với `thứ tự Unicode <https://en.wikipedia.org/wiki/List_of_Unicode_characters>`__ của chúng.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng ghi đè để có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

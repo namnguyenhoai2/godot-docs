@@ -10,36 +10,36 @@
 RDTextureView
 =============
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Texture view (used by :ref:`RenderingDevice<class_RenderingDevice>`).
+Chế độ xem texture (được sử dụng bởi :ref:`RenderingDevice<class_RenderingDevice>`).
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This object is used by :ref:`RenderingDevice<class_RenderingDevice>`.
+Đối tượng này được sử dụng bởi :ref:`RenderingDevice<class_RenderingDevice>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------------------+----------------------------------------------------------------------+---------+
-   | :ref:`DataFormat<enum_RenderingDevice_DataFormat>`         | :ref:`format_override<class_RDTextureView_property_format_override>` | ``232`` |
-   +------------------------------------------------------------+----------------------------------------------------------------------+---------+
-   | :ref:`TextureSwizzle<enum_RenderingDevice_TextureSwizzle>` | :ref:`swizzle_a<class_RDTextureView_property_swizzle_a>`             | ``6``   |
-   +------------------------------------------------------------+----------------------------------------------------------------------+---------+
-   | :ref:`TextureSwizzle<enum_RenderingDevice_TextureSwizzle>` | :ref:`swizzle_b<class_RDTextureView_property_swizzle_b>`             | ``5``   |
-   +------------------------------------------------------------+----------------------------------------------------------------------+---------+
-   | :ref:`TextureSwizzle<enum_RenderingDevice_TextureSwizzle>` | :ref:`swizzle_g<class_RDTextureView_property_swizzle_g>`             | ``4``   |
-   +------------------------------------------------------------+----------------------------------------------------------------------+---------+
-   | :ref:`TextureSwizzle<enum_RenderingDevice_TextureSwizzle>` | :ref:`swizzle_r<class_RDTextureView_property_swizzle_r>`             | ``3``   |
-   +------------------------------------------------------------+----------------------------------------------------------------------+---------+
+   +-------------------------------------------------------------+----------------------------------------------------------------------+---------+
+   | :ref:`DataFormat <enum_RenderingDevice_DataFormat>`         | :ref:`format_override<class_RDTextureView_property_format_override>` | ``232`` |
+   +-------------------------------------------------------------+----------------------------------------------------------------------+---------+
+   | :ref:`TextureSwizzle <enum_RenderingDevice_TextureSwizzle>` | :ref:`swizzle_a<class_RDTextureView_property_swizzle_a>`             | ``6``   |
+   +-------------------------------------------------------------+----------------------------------------------------------------------+---------+
+   | :ref:`TextureSwizzle <enum_RenderingDevice_TextureSwizzle>` | :ref:`swizzle_b<class_RDTextureView_property_swizzle_b>`             | ``5``   |
+   +-------------------------------------------------------------+----------------------------------------------------------------------+---------+
+   | :ref:`TextureSwizzle <enum_RenderingDevice_TextureSwizzle>` | :ref:`swizzle_g<class_RDTextureView_property_swizzle_g>`             | ``4``   |
+   +-------------------------------------------------------------+----------------------------------------------------------------------+---------+
+   | :ref:`TextureSwizzle <enum_RenderingDevice_TextureSwizzle>` | :ref:`swizzle_r<class_RDTextureView_property_swizzle_r>`             | ``3``   |
+   +-------------------------------------------------------------+----------------------------------------------------------------------+---------+
 
 .. rst-class:: classref-section-separator
 
@@ -47,8 +47,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_RDTextureView_property_format_override:
 
@@ -61,7 +61,7 @@ Property Descriptions
 - |void| **set_format_override**\ (\ value\: :ref:`DataFormat<enum_RenderingDevice_DataFormat>`\ )
 - :ref:`DataFormat<enum_RenderingDevice_DataFormat>` **get_format_override**\ (\ )
 
-Optional override for the data format to return sampled values in. The corresponding :ref:`RDTextureFormat<class_RDTextureFormat>` must have had this added as a shareable format. The default value of :ref:`RenderingDevice.DATA_FORMAT_MAX<class_RenderingDevice_constant_DATA_FORMAT_MAX>` does not override the format.
+Ghi đè tùy chọn cho định dạng dữ liệu mà các giá trị được lấy mẫu sẽ trả về. :ref:`RDTextureFormat<class_RDTextureFormat>` tương ứng phải được thêm định dạng này dưới dạng một định dạng có thể chia sẻ. Giá trị mặc định :ref:`RenderingDevice.DATA_FORMAT_MAX<class_RenderingDevice_constant_DATA_FORMAT_MAX>` không ghi đè định dạng.
 
 .. rst-class:: classref-item-separator
 
@@ -78,7 +78,7 @@ Optional override for the data format to return sampled values in. The correspon
 - |void| **set_swizzle_a**\ (\ value\: :ref:`TextureSwizzle<enum_RenderingDevice_TextureSwizzle>`\ )
 - :ref:`TextureSwizzle<enum_RenderingDevice_TextureSwizzle>` **get_swizzle_a**\ (\ )
 
-The channel to sample when sampling the alpha channel.
+Kênh cần lấy mẫu khi lấy mẫu kênh alpha.
 
 .. rst-class:: classref-item-separator
 
@@ -95,7 +95,7 @@ The channel to sample when sampling the alpha channel.
 - |void| **set_swizzle_b**\ (\ value\: :ref:`TextureSwizzle<enum_RenderingDevice_TextureSwizzle>`\ )
 - :ref:`TextureSwizzle<enum_RenderingDevice_TextureSwizzle>` **get_swizzle_b**\ (\ )
 
-The channel to sample when sampling the blue color channel.
+Kênh cần lấy mẫu khi lấy mẫu kênh màu blue.
 
 .. rst-class:: classref-item-separator
 
@@ -112,7 +112,7 @@ The channel to sample when sampling the blue color channel.
 - |void| **set_swizzle_g**\ (\ value\: :ref:`TextureSwizzle<enum_RenderingDevice_TextureSwizzle>`\ )
 - :ref:`TextureSwizzle<enum_RenderingDevice_TextureSwizzle>` **get_swizzle_g**\ (\ )
 
-The channel to sample when sampling the green color channel.
+Kênh cần lấy mẫu khi lấy mẫu kênh màu green.
 
 .. rst-class:: classref-item-separator
 
@@ -129,14 +129,14 @@ The channel to sample when sampling the green color channel.
 - |void| **set_swizzle_r**\ (\ value\: :ref:`TextureSwizzle<enum_RenderingDevice_TextureSwizzle>`\ )
 - :ref:`TextureSwizzle<enum_RenderingDevice_TextureSwizzle>` **get_swizzle_r**\ (\ )
 
-The channel to sample when sampling the red color channel.
+Kênh cần lấy mẫu khi lấy mẫu kênh màu red.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một thực thể để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

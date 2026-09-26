@@ -10,30 +10,30 @@
 SplineIK3D
 ==========
 
-**Inherits:** :ref:`ChainIK3D<class_ChainIK3D>` **<** :ref:`IKModifier3D<class_IKModifier3D>` **<** :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`ChainIK3D<class_ChainIK3D>` **<** :ref:`IKModifier3D<class_IKModifier3D>` **<** :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` for aligning bones along a :ref:`Path3D<class_Path3D>`.
+Một :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` để căn chỉnh các xương dọc theo một :ref:`Path3D<class_Path3D>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` for aligning bones along a :ref:`Path3D<class_Path3D>`. The smoothness of the fitting depends on the :ref:`Curve3D.bake_interval<class_Curve3D_property_bake_interval>`.
+Một :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` để căn chỉnh các xương dọc theo một :ref:`Path3D<class_Path3D>`. Độ mượt của quá trình khớp phụ thuộc vào :ref:`Curve3D.bake_interval<class_Curve3D_property_bake_interval>`.
 
-If you want the :ref:`Path3D<class_Path3D>` to attach to a specific bone, it is recommended to place a :ref:`ModifierBoneTarget3D<class_ModifierBoneTarget3D>` before the **SplineIK3D** in the :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` list (children of the :ref:`Skeleton3D<class_Skeleton3D>`), and then place a :ref:`Path3D<class_Path3D>` as the :ref:`ModifierBoneTarget3D<class_ModifierBoneTarget3D>`'s child.
+Nếu bạn muốn :ref:`Path3D<class_Path3D>` gắn vào một xương cụ thể, bạn nên đặt một :ref:`ModifierBoneTarget3D<class_ModifierBoneTarget3D>` trước **SplineIK3D** trong danh sách :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` (các nút con của :ref:`Skeleton3D<class_Skeleton3D>`), sau đó đặt một :ref:`Path3D<class_Path3D>` làm nút con của :ref:`ModifierBoneTarget3D<class_ModifierBoneTarget3D>`.
 
-Bone twist is determined based on the :ref:`Curve3D.get_point_tilt()<class_Curve3D_method_get_point_tilt>`.
+Độ xoắn của xương được xác định dựa trên :ref:`Curve3D.get_point_tilt()<class_Curve3D_method_get_point_tilt>`.
 
-If the root bone joint and the start point of the :ref:`Curve3D<class_Curve3D>` are separated, it assumes that there is a linear line segment between them. This means that the vector pointing toward the start point of the :ref:`Curve3D<class_Curve3D>` takes precedence over the shortest intersection point along the :ref:`Curve3D<class_Curve3D>`.
+Nếu khớp xương gốc và điểm bắt đầu của :ref:`Curve3D<class_Curve3D>` bị tách rời, hệ thống giả định có một đoạn thẳng giữa chúng. Điều này có nghĩa là vector hướng về điểm bắt đầu của :ref:`Curve3D<class_Curve3D>` được ưu tiên hơn điểm giao nhau ngắn nhất trên :ref:`Curve3D<class_Curve3D>`.
 
-If the end bone joint exceeds the path length, it is bent as close as possible to the end point of the :ref:`Curve3D<class_Curve3D>`.
+Nếu khớp xương cuối vượt quá độ dài đường dẫn, nó sẽ được uốn cong đến gần điểm cuối của :ref:`Curve3D<class_Curve3D>` nhất có thể.
 
-\ **Note:** All the methods in this class take an ``index`` parameter. This parameter specifies which setting list entry to return if the IK has multiple entries (e.g. ``settings/<index>/root_bone_name``).
+\ **Lưu ý:** Tất cả các phương thức trong lớp này đều nhận tham số ``index``. Tham số này chỉ định mục nhập danh sách thiết lập nào cần trả về nếu IK có nhiều mục nhập (ví dụ: ``settings/<index>/root_bone_name``).
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -45,8 +45,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -75,8 +75,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_SplineIK3D_property_setting_count:
 
@@ -89,7 +89,7 @@ Property Descriptions
 - |void| **set_setting_count**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_setting_count**\ (\ )
 
-The number of settings.
+Số lượng thiết lập.
 
 .. rst-class:: classref-section-separator
 
@@ -97,8 +97,8 @@ The number of settings.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_SplineIK3D_method_get_path_3d:
 
@@ -106,7 +106,7 @@ Method Descriptions
 
 :ref:`NodePath<class_NodePath>` **get_path_3d**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SplineIK3D_method_get_path_3d>`
 
-Returns the node path of the :ref:`Path3D<class_Path3D>` which is describing the path.
+Trả về đường dẫn nút của :ref:`Path3D<class_Path3D>` đang mô tả đường dẫn.
 
 .. rst-class:: classref-item-separator
 
@@ -118,7 +118,7 @@ Returns the node path of the :ref:`Path3D<class_Path3D>` which is describing the
 
 :ref:`int<class_int>` **get_tilt_fade_in**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SplineIK3D_method_get_tilt_fade_in>`
 
-Returns the tilt interpolation method used between the root bone and the start point of the :ref:`Curve3D<class_Curve3D>` when they are apart. See also :ref:`set_tilt_fade_in()<class_SplineIK3D_method_set_tilt_fade_in>`.
+Trả về phương thức nội suy độ nghiêng được sử dụng giữa xương gốc và điểm bắt đầu của :ref:`Curve3D<class_Curve3D>` khi chúng cách xa nhau. Xem thêm :ref:`set_tilt_fade_in()<class_SplineIK3D_method_set_tilt_fade_in>`.
 
 .. rst-class:: classref-item-separator
 
@@ -130,7 +130,7 @@ Returns the tilt interpolation method used between the root bone and the start p
 
 :ref:`int<class_int>` **get_tilt_fade_out**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SplineIK3D_method_get_tilt_fade_out>`
 
-Returns the tilt interpolation method used between the end bone and the end point of the :ref:`Curve3D<class_Curve3D>` when they are apart. See also :ref:`set_tilt_fade_out()<class_SplineIK3D_method_set_tilt_fade_out>`.
+Trả về phương thức nội suy độ nghiêng được sử dụng giữa xương cuối và điểm cuối của :ref:`Curve3D<class_Curve3D>` khi chúng cách xa nhau. Xem thêm :ref:`set_tilt_fade_out()<class_SplineIK3D_method_set_tilt_fade_out>`.
 
 .. rst-class:: classref-item-separator
 
@@ -142,7 +142,7 @@ Returns the tilt interpolation method used between the end bone and the end poin
 
 :ref:`bool<class_bool>` **is_tilt_enabled**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SplineIK3D_method_is_tilt_enabled>`
 
-Returns if the tilt property of the :ref:`Curve3D<class_Curve3D>` affects the bone twist.
+Trả về liệu thuộc tính độ nghiêng của :ref:`Curve3D<class_Curve3D>` có ảnh hưởng đến độ xoắn của xương hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -154,7 +154,7 @@ Returns if the tilt property of the :ref:`Curve3D<class_Curve3D>` affects the bo
 
 |void| **set_path_3d**\ (\ index\: :ref:`int<class_int>`, path_3d\: :ref:`NodePath<class_NodePath>`\ ) :ref:`🔗<class_SplineIK3D_method_set_path_3d>`
 
-Sets the node path of the :ref:`Path3D<class_Path3D>` which is describing the path.
+Đặt đường dẫn nút của :ref:`Path3D<class_Path3D>` đang mô tả đường dẫn.
 
 .. rst-class:: classref-item-separator
 
@@ -166,7 +166,7 @@ Sets the node path of the :ref:`Path3D<class_Path3D>` which is describing the pa
 
 |void| **set_tilt_enabled**\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_SplineIK3D_method_set_tilt_enabled>`
 
-Sets if the tilt property of the :ref:`Curve3D<class_Curve3D>` should affect the bone twist.
+Đặt liệu thuộc tính độ nghiêng của :ref:`Curve3D<class_Curve3D>` có ảnh hưởng đến độ xoắn của xương hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -178,11 +178,11 @@ Sets if the tilt property of the :ref:`Curve3D<class_Curve3D>` should affect the
 
 |void| **set_tilt_fade_in**\ (\ index\: :ref:`int<class_int>`, size\: :ref:`int<class_int>`\ ) :ref:`🔗<class_SplineIK3D_method_set_tilt_fade_in>`
 
-If ``size`` is greater than ``0``, the tilt is interpolated between ``size`` start bones from the start point of the :ref:`Curve3D<class_Curve3D>` when they are apart.
+Nếu ``size`` lớn hơn ``0``, độ nghiêng được nội suy giữa ``size`` xương bắt đầu tính từ điểm bắt đầu của :ref:`Curve3D<class_Curve3D>` khi chúng cách xa nhau.
 
-If ``size`` is equal ``0``, the tilts between the root bone head and the start point of the :ref:`Curve3D<class_Curve3D>` are unified with a tilt of the start point of the :ref:`Curve3D<class_Curve3D>`.
+Nếu ``size`` bằng ``0``, các độ nghiêng giữa đầu xương gốc và điểm bắt đầu của :ref:`Curve3D<class_Curve3D>` được hợp nhất với độ nghiêng của điểm bắt đầu của :ref:`Curve3D<class_Curve3D>`.
 
-If ``size`` is less than ``0``, the tilts between the root bone and the start point of the :ref:`Curve3D<class_Curve3D>` are ``0.0``.
+Nếu ``size`` nhỏ hơn ``0``, các độ nghiêng giữa xương gốc và điểm bắt đầu của :ref:`Curve3D<class_Curve3D>` sẽ được ``0.0``.
 
 .. rst-class:: classref-item-separator
 
@@ -194,18 +194,18 @@ If ``size`` is less than ``0``, the tilts between the root bone and the start po
 
 |void| **set_tilt_fade_out**\ (\ index\: :ref:`int<class_int>`, size\: :ref:`int<class_int>`\ ) :ref:`🔗<class_SplineIK3D_method_set_tilt_fade_out>`
 
-If ``size`` is greater than ``0``, the tilt is interpolated between ``size`` end bones from the end point of the :ref:`Curve3D<class_Curve3D>` when they are apart.
+Nếu ``size`` lớn hơn ``0``, độ nghiêng được nội suy giữa ``size`` xương cuối tính từ điểm cuối của :ref:`Curve3D<class_Curve3D>` khi chúng cách xa nhau.
 
-If ``size`` is equal ``0``, the tilts between the end bone tail and the end point of the :ref:`Curve3D<class_Curve3D>` are unified with a tilt of the end point of the :ref:`Curve3D<class_Curve3D>`.
+Nếu ``size`` bằng ``0``, các độ nghiêng giữa đuôi xương cuối và điểm cuối của :ref:`Curve3D<class_Curve3D>` được hợp nhất với độ nghiêng của điểm cuối của :ref:`Curve3D<class_Curve3D>`.
 
-If ``size`` is less than ``0``, the tilts between the end bone and the end point of the :ref:`Curve3D<class_Curve3D>` are ``0.0``.
+Nếu ``size`` nhỏ hơn ``0``, các độ nghiêng giữa xương cuối và điểm cuối của :ref:`Curve3D<class_Curve3D>` sẽ được ``0.0``.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

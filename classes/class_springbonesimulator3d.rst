@@ -10,34 +10,34 @@
 SpringBoneSimulator3D
 =====================
 
-**Inherits:** :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` to apply inertial wavering to bone chains.
+Một :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` để tạo chuyển động rung do quán tính cho các chuỗi xương.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` can be used to wiggle hair, cloth, and tails. This modifier behaves differently from :ref:`PhysicalBoneSimulator3D<class_PhysicalBoneSimulator3D>` as it attempts to return the original pose after modification.
+:ref:`SkeletonModifier3D<class_SkeletonModifier3D>` này có thể được dùng để làm tóc, vải và đuôi đung đưa. Bộ điều chỉnh này hoạt động khác với :ref:`PhysicalBoneSimulator3D<class_PhysicalBoneSimulator3D>` vì nó cố gắng đưa tư thế ban đầu trở lại sau khi sửa đổi.
 
-If you setup :ref:`set_root_bone()<class_SpringBoneSimulator3D_method_set_root_bone>` and :ref:`set_end_bone()<class_SpringBoneSimulator3D_method_set_end_bone>`, it is treated as one bone chain. Note that it does not support a branched chain like Y-shaped chains.
+Nếu bạn thiết lập :ref:`set_root_bone()<class_SpringBoneSimulator3D_method_set_root_bone>` và :ref:`set_end_bone()<class_SpringBoneSimulator3D_method_set_end_bone>`, chúng được xử lý như một chuỗi xương. Lưu ý rằng nó không hỗ trợ chuỗi phân nhánh, chẳng hạn như chuỗi hình chữ Y.
 
-When a bone chain is created, an array is generated from the bones that exist in between and listed in the joint list.
+Khi một chuỗi xương được tạo, một mảng sẽ được sinh ra từ các xương nằm giữa chúng và được liệt kê trong danh sách khớp.
 
-Several properties can be applied to each joint, such as :ref:`set_joint_stiffness()<class_SpringBoneSimulator3D_method_set_joint_stiffness>`, :ref:`set_joint_drag()<class_SpringBoneSimulator3D_method_set_joint_drag>`, and :ref:`set_joint_gravity()<class_SpringBoneSimulator3D_method_set_joint_gravity>`.
+Có thể áp dụng một số thuộc tính cho từng khớp, chẳng hạn như :ref:`set_joint_stiffness()<class_SpringBoneSimulator3D_method_set_joint_stiffness>`, :ref:`set_joint_drag()<class_SpringBoneSimulator3D_method_set_joint_drag>` và :ref:`set_joint_gravity()<class_SpringBoneSimulator3D_method_set_joint_gravity>`.
 
-For simplicity, you can set values to all joints at the same time by using a :ref:`Curve<class_Curve>`. If you want to specify detailed values individually, set :ref:`set_individual_config()<class_SpringBoneSimulator3D_method_set_individual_config>` to ``true``.
+Để đơn giản, bạn có thể đặt giá trị cho tất cả các khớp cùng lúc bằng cách sử dụng :ref:`Curve<class_Curve>`. Nếu muốn chỉ định giá trị chi tiết cho từng khớp, hãy đặt :ref:`set_individual_config()<class_SpringBoneSimulator3D_method_set_individual_config>` thành ``true``.
 
-For physical simulation, **SpringBoneSimulator3D** can have children as self-standing collisions that are not related to :ref:`PhysicsServer3D<class_PhysicsServer3D>`, see also :ref:`SpringBoneCollision3D<class_SpringBoneCollision3D>`.
+Để mô phỏng vật lý, **SpringBoneSimulator3D** có thể có các nút con làm các đối tượng va chạm độc lập, không liên quan đến :ref:`PhysicsServer3D<class_PhysicsServer3D>`; xem thêm :ref:`SpringBoneCollision3D<class_SpringBoneCollision3D>`.
 
-\ **Warning:** A scaled **SpringBoneSimulator3D** will likely not behave as expected. Make sure that the parent :ref:`Skeleton3D<class_Skeleton3D>` and its bones are not scaled.
+\ **Cảnh báo:** Một **SpringBoneSimulator3D** được scale có thể sẽ không hoạt động như mong đợi. Hãy đảm bảo rằng :ref:`Skeleton3D<class_Skeleton3D>` cha và các xương của nó không được scale.
 
-\ **Note:** Most methods in this class take an ``index`` parameter. This parameter specifies which setting list entry to return if the IK has multiple entries (e.g. ``settings/<index>/root_bone_name``).
+\ **Lưu ý:** Hầu hết các phương thức trong lớp này nhận tham số ``index``. Tham số này chỉ định mục nhập nào trong danh sách thiết lập cần trả về nếu IK có nhiều mục nhập (ví dụ: ``settings/<index>/root_bone_name``).
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -53,167 +53,167 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                     | :ref:`are_all_child_collisions_enabled<class_SpringBoneSimulator3D_method_are_all_child_collisions_enabled>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                        |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`clear_collisions<class_SpringBoneSimulator3D_method_clear_collisions>`\ (\ index\: :ref:`int<class_int>`\ )                                                                                                                |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`clear_exclude_collisions<class_SpringBoneSimulator3D_method_clear_exclude_collisions>`\ (\ index\: :ref:`int<class_int>`\ )                                                                                                |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`clear_settings<class_SpringBoneSimulator3D_method_clear_settings>`\ (\ )                                                                                                                                                   |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                       | :ref:`get_center_bone<class_SpringBoneSimulator3D_method_get_center_bone>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                          |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                 | :ref:`get_center_bone_name<class_SpringBoneSimulator3D_method_get_center_bone_name>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`CenterFrom<enum_SpringBoneSimulator3D_CenterFrom>`    | :ref:`get_center_from<class_SpringBoneSimulator3D_method_get_center_from>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                          |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`NodePath<class_NodePath>`                             | :ref:`get_center_node<class_SpringBoneSimulator3D_method_get_center_node>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                          |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                       | :ref:`get_collision_count<class_SpringBoneSimulator3D_method_get_collision_count>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                  |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`NodePath<class_NodePath>`                             | :ref:`get_collision_path<class_SpringBoneSimulator3D_method_get_collision_path>`\ (\ index\: :ref:`int<class_int>`, collision\: :ref:`int<class_int>`\ ) |const|                                                                 |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                   | :ref:`get_drag<class_SpringBoneSimulator3D_method_get_drag>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                                        |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Curve<class_Curve>`                                   | :ref:`get_drag_damping_curve<class_SpringBoneSimulator3D_method_get_drag_damping_curve>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                            |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                       | :ref:`get_end_bone<class_SpringBoneSimulator3D_method_get_end_bone>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                                |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`BoneDirection<enum_SkeletonModifier3D_BoneDirection>` | :ref:`get_end_bone_direction<class_SpringBoneSimulator3D_method_get_end_bone_direction>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                            |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                   | :ref:`get_end_bone_length<class_SpringBoneSimulator3D_method_get_end_bone_length>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                  |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                 | :ref:`get_end_bone_name<class_SpringBoneSimulator3D_method_get_end_bone_name>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                      |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                       | :ref:`get_exclude_collision_count<class_SpringBoneSimulator3D_method_get_exclude_collision_count>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                  |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`NodePath<class_NodePath>`                             | :ref:`get_exclude_collision_path<class_SpringBoneSimulator3D_method_get_exclude_collision_path>`\ (\ index\: :ref:`int<class_int>`, collision\: :ref:`int<class_int>`\ ) |const|                                                 |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                   | :ref:`get_gravity<class_SpringBoneSimulator3D_method_get_gravity>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                                  |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Curve<class_Curve>`                                   | :ref:`get_gravity_damping_curve<class_SpringBoneSimulator3D_method_get_gravity_damping_curve>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                      |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector3<class_Vector3>`                               | :ref:`get_gravity_direction<class_SpringBoneSimulator3D_method_get_gravity_direction>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                              |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                       | :ref:`get_joint_bone<class_SpringBoneSimulator3D_method_get_joint_bone>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const|                                                                             |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                 | :ref:`get_joint_bone_name<class_SpringBoneSimulator3D_method_get_joint_bone_name>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const|                                                                   |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                       | :ref:`get_joint_count<class_SpringBoneSimulator3D_method_get_joint_count>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                          |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                   | :ref:`get_joint_drag<class_SpringBoneSimulator3D_method_get_joint_drag>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const|                                                                             |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                   | :ref:`get_joint_gravity<class_SpringBoneSimulator3D_method_get_joint_gravity>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const|                                                                       |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector3<class_Vector3>`                               | :ref:`get_joint_gravity_direction<class_SpringBoneSimulator3D_method_get_joint_gravity_direction>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const|                                                   |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                   | :ref:`get_joint_radius<class_SpringBoneSimulator3D_method_get_joint_radius>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const|                                                                         |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`RotationAxis<enum_SkeletonModifier3D_RotationAxis>`   | :ref:`get_joint_rotation_axis<class_SpringBoneSimulator3D_method_get_joint_rotation_axis>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const|                                                           |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector3<class_Vector3>`                               | :ref:`get_joint_rotation_axis_vector<class_SpringBoneSimulator3D_method_get_joint_rotation_axis_vector>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const|                                             |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                   | :ref:`get_joint_stiffness<class_SpringBoneSimulator3D_method_get_joint_stiffness>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const|                                                                   |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                   | :ref:`get_radius<class_SpringBoneSimulator3D_method_get_radius>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                                    |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Curve<class_Curve>`                                   | :ref:`get_radius_damping_curve<class_SpringBoneSimulator3D_method_get_radius_damping_curve>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                        |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                       | :ref:`get_root_bone<class_SpringBoneSimulator3D_method_get_root_bone>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                              |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                 | :ref:`get_root_bone_name<class_SpringBoneSimulator3D_method_get_root_bone_name>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                    |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`RotationAxis<enum_SkeletonModifier3D_RotationAxis>`   | :ref:`get_rotation_axis<class_SpringBoneSimulator3D_method_get_rotation_axis>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                      |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector3<class_Vector3>`                               | :ref:`get_rotation_axis_vector<class_SpringBoneSimulator3D_method_get_rotation_axis_vector>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                        |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                   | :ref:`get_stiffness<class_SpringBoneSimulator3D_method_get_stiffness>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                              |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Curve<class_Curve>`                                   | :ref:`get_stiffness_damping_curve<class_SpringBoneSimulator3D_method_get_stiffness_damping_curve>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                  |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                     | :ref:`is_config_individual<class_SpringBoneSimulator3D_method_is_config_individual>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                     | :ref:`is_end_bone_extended<class_SpringBoneSimulator3D_method_is_end_bone_extended>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`reset<class_SpringBoneSimulator3D_method_reset>`\ (\ )                                                                                                                                                                     |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_center_bone<class_SpringBoneSimulator3D_method_set_center_bone>`\ (\ index\: :ref:`int<class_int>`, bone\: :ref:`int<class_int>`\ )                                                                                    |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_center_bone_name<class_SpringBoneSimulator3D_method_set_center_bone_name>`\ (\ index\: :ref:`int<class_int>`, bone_name\: :ref:`String<class_String>`\ )                                                               |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_center_from<class_SpringBoneSimulator3D_method_set_center_from>`\ (\ index\: :ref:`int<class_int>`, center_from\: :ref:`CenterFrom<enum_SpringBoneSimulator3D_CenterFrom>`\ )                                          |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_center_node<class_SpringBoneSimulator3D_method_set_center_node>`\ (\ index\: :ref:`int<class_int>`, node_path\: :ref:`NodePath<class_NodePath>`\ )                                                                     |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_collision_count<class_SpringBoneSimulator3D_method_set_collision_count>`\ (\ index\: :ref:`int<class_int>`, count\: :ref:`int<class_int>`\ )                                                                           |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_collision_path<class_SpringBoneSimulator3D_method_set_collision_path>`\ (\ index\: :ref:`int<class_int>`, collision\: :ref:`int<class_int>`, node_path\: :ref:`NodePath<class_NodePath>`\ )                            |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_drag<class_SpringBoneSimulator3D_method_set_drag>`\ (\ index\: :ref:`int<class_int>`, drag\: :ref:`float<class_float>`\ )                                                                                              |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_drag_damping_curve<class_SpringBoneSimulator3D_method_set_drag_damping_curve>`\ (\ index\: :ref:`int<class_int>`, curve\: :ref:`Curve<class_Curve>`\ )                                                                 |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_enable_all_child_collisions<class_SpringBoneSimulator3D_method_set_enable_all_child_collisions>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                                               |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_end_bone<class_SpringBoneSimulator3D_method_set_end_bone>`\ (\ index\: :ref:`int<class_int>`, bone\: :ref:`int<class_int>`\ )                                                                                          |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_end_bone_direction<class_SpringBoneSimulator3D_method_set_end_bone_direction>`\ (\ index\: :ref:`int<class_int>`, bone_direction\: :ref:`BoneDirection<enum_SkeletonModifier3D_BoneDirection>`\ )                      |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_end_bone_length<class_SpringBoneSimulator3D_method_set_end_bone_length>`\ (\ index\: :ref:`int<class_int>`, length\: :ref:`float<class_float>`\ )                                                                      |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_end_bone_name<class_SpringBoneSimulator3D_method_set_end_bone_name>`\ (\ index\: :ref:`int<class_int>`, bone_name\: :ref:`String<class_String>`\ )                                                                     |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_exclude_collision_count<class_SpringBoneSimulator3D_method_set_exclude_collision_count>`\ (\ index\: :ref:`int<class_int>`, count\: :ref:`int<class_int>`\ )                                                           |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_exclude_collision_path<class_SpringBoneSimulator3D_method_set_exclude_collision_path>`\ (\ index\: :ref:`int<class_int>`, collision\: :ref:`int<class_int>`, node_path\: :ref:`NodePath<class_NodePath>`\ )            |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_extend_end_bone<class_SpringBoneSimulator3D_method_set_extend_end_bone>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                                                                       |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_gravity<class_SpringBoneSimulator3D_method_set_gravity>`\ (\ index\: :ref:`int<class_int>`, gravity\: :ref:`float<class_float>`\ )                                                                                     |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_gravity_damping_curve<class_SpringBoneSimulator3D_method_set_gravity_damping_curve>`\ (\ index\: :ref:`int<class_int>`, curve\: :ref:`Curve<class_Curve>`\ )                                                           |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_gravity_direction<class_SpringBoneSimulator3D_method_set_gravity_direction>`\ (\ index\: :ref:`int<class_int>`, gravity_direction\: :ref:`Vector3<class_Vector3>`\ )                                                   |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_individual_config<class_SpringBoneSimulator3D_method_set_individual_config>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                                                                   |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_joint_drag<class_SpringBoneSimulator3D_method_set_joint_drag>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, drag\: :ref:`float<class_float>`\ )                                                   |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_joint_gravity<class_SpringBoneSimulator3D_method_set_joint_gravity>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, gravity\: :ref:`float<class_float>`\ )                                          |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_joint_gravity_direction<class_SpringBoneSimulator3D_method_set_joint_gravity_direction>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, gravity_direction\: :ref:`Vector3<class_Vector3>`\ )        |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_joint_radius<class_SpringBoneSimulator3D_method_set_joint_radius>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, radius\: :ref:`float<class_float>`\ )                                             |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_joint_rotation_axis<class_SpringBoneSimulator3D_method_set_joint_rotation_axis>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, axis\: :ref:`RotationAxis<enum_SkeletonModifier3D_RotationAxis>`\ ) |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_joint_rotation_axis_vector<class_SpringBoneSimulator3D_method_set_joint_rotation_axis_vector>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, vector\: :ref:`Vector3<class_Vector3>`\ )             |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_joint_stiffness<class_SpringBoneSimulator3D_method_set_joint_stiffness>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, stiffness\: :ref:`float<class_float>`\ )                                    |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_radius<class_SpringBoneSimulator3D_method_set_radius>`\ (\ index\: :ref:`int<class_int>`, radius\: :ref:`float<class_float>`\ )                                                                                        |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_radius_damping_curve<class_SpringBoneSimulator3D_method_set_radius_damping_curve>`\ (\ index\: :ref:`int<class_int>`, curve\: :ref:`Curve<class_Curve>`\ )                                                             |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_root_bone<class_SpringBoneSimulator3D_method_set_root_bone>`\ (\ index\: :ref:`int<class_int>`, bone\: :ref:`int<class_int>`\ )                                                                                        |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_root_bone_name<class_SpringBoneSimulator3D_method_set_root_bone_name>`\ (\ index\: :ref:`int<class_int>`, bone_name\: :ref:`String<class_String>`\ )                                                                   |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_rotation_axis<class_SpringBoneSimulator3D_method_set_rotation_axis>`\ (\ index\: :ref:`int<class_int>`, axis\: :ref:`RotationAxis<enum_SkeletonModifier3D_RotationAxis>`\ )                                            |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_rotation_axis_vector<class_SpringBoneSimulator3D_method_set_rotation_axis_vector>`\ (\ index\: :ref:`int<class_int>`, vector\: :ref:`Vector3<class_Vector3>`\ )                                                        |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_stiffness<class_SpringBoneSimulator3D_method_set_stiffness>`\ (\ index\: :ref:`int<class_int>`, stiffness\: :ref:`float<class_float>`\ )                                                                               |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_stiffness_damping_curve<class_SpringBoneSimulator3D_method_set_stiffness_damping_curve>`\ (\ index\: :ref:`int<class_int>`, curve\: :ref:`Curve<class_Curve>`\ )                                                       |
-   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | :ref:`are_all_child_collisions_enabled<class_SpringBoneSimulator3D_method_are_all_child_collisions_enabled>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                         |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`clear_collisions<class_SpringBoneSimulator3D_method_clear_collisions>`\ (\ index\: :ref:`int<class_int>`\ )                                                                                                                 |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`clear_exclude_collisions<class_SpringBoneSimulator3D_method_clear_exclude_collisions>`\ (\ index\: :ref:`int<class_int>`\ )                                                                                                 |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`clear_settings<class_SpringBoneSimulator3D_method_clear_settings>`\ (\ )                                                                                                                                                    |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                        | :ref:`get_center_bone<class_SpringBoneSimulator3D_method_get_center_bone>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                           |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                  | :ref:`get_center_bone_name<class_SpringBoneSimulator3D_method_get_center_bone_name>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                 |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`CenterFrom <enum_SpringBoneSimulator3D_CenterFrom>`    | :ref:`get_center_from<class_SpringBoneSimulator3D_method_get_center_from>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                           |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`NodePath<class_NodePath>`                              | :ref:`get_center_node<class_SpringBoneSimulator3D_method_get_center_node>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                           |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                        | :ref:`get_collision_count<class_SpringBoneSimulator3D_method_get_collision_count>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                   |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`NodePath<class_NodePath>`                              | :ref:`get_collision_path<class_SpringBoneSimulator3D_method_get_collision_path>`\ (\ index\: :ref:`int<class_int>`, collision\: :ref:`int<class_int>`\ ) |const|                                                                  |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                    | :ref:`get_drag<class_SpringBoneSimulator3D_method_get_drag>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                                         |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Curve<class_Curve>`                                    | :ref:`get_drag_damping_curve<class_SpringBoneSimulator3D_method_get_drag_damping_curve>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                             |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                        | :ref:`get_end_bone<class_SpringBoneSimulator3D_method_get_end_bone>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                                 |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`BoneDirection <enum_SkeletonModifier3D_BoneDirection>` | :ref:`get_end_bone_direction<class_SpringBoneSimulator3D_method_get_end_bone_direction>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                             |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                    | :ref:`get_end_bone_length<class_SpringBoneSimulator3D_method_get_end_bone_length>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                   |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                  | :ref:`get_end_bone_name<class_SpringBoneSimulator3D_method_get_end_bone_name>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                       |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                        | :ref:`get_exclude_collision_count<class_SpringBoneSimulator3D_method_get_exclude_collision_count>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                   |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`NodePath<class_NodePath>`                              | :ref:`get_exclude_collision_path<class_SpringBoneSimulator3D_method_get_exclude_collision_path>`\ (\ index\: :ref:`int<class_int>`, collision\: :ref:`int<class_int>`\ ) |const|                                                  |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                    | :ref:`get_gravity<class_SpringBoneSimulator3D_method_get_gravity>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                                   |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Curve<class_Curve>`                                    | :ref:`get_gravity_damping_curve<class_SpringBoneSimulator3D_method_get_gravity_damping_curve>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                       |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector3<class_Vector3>`                                | :ref:`get_gravity_direction<class_SpringBoneSimulator3D_method_get_gravity_direction>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                               |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                        | :ref:`get_joint_bone<class_SpringBoneSimulator3D_method_get_joint_bone>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const|                                                                              |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                  | :ref:`get_joint_bone_name<class_SpringBoneSimulator3D_method_get_joint_bone_name>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const|                                                                    |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                        | :ref:`get_joint_count<class_SpringBoneSimulator3D_method_get_joint_count>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                           |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                    | :ref:`get_joint_drag<class_SpringBoneSimulator3D_method_get_joint_drag>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const|                                                                              |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                    | :ref:`get_joint_gravity<class_SpringBoneSimulator3D_method_get_joint_gravity>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const|                                                                        |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector3<class_Vector3>`                                | :ref:`get_joint_gravity_direction<class_SpringBoneSimulator3D_method_get_joint_gravity_direction>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const|                                                    |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                    | :ref:`get_joint_radius<class_SpringBoneSimulator3D_method_get_joint_radius>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const|                                                                          |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`RotationAxis <enum_SkeletonModifier3D_RotationAxis>`   | :ref:`get_joint_rotation_axis<class_SpringBoneSimulator3D_method_get_joint_rotation_axis>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const|                                                            |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector3<class_Vector3>`                                | :ref:`get_joint_rotation_axis_vector<class_SpringBoneSimulator3D_method_get_joint_rotation_axis_vector>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const|                                              |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                    | :ref:`get_joint_stiffness<class_SpringBoneSimulator3D_method_get_joint_stiffness>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const|                                                                    |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                    | :ref:`get_radius<class_SpringBoneSimulator3D_method_get_radius>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                                     |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Curve<class_Curve>`                                    | :ref:`get_radius_damping_curve<class_SpringBoneSimulator3D_method_get_radius_damping_curve>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                         |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                        | :ref:`get_root_bone<class_SpringBoneSimulator3D_method_get_root_bone>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                               |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                  | :ref:`get_root_bone_name<class_SpringBoneSimulator3D_method_get_root_bone_name>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                     |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`RotationAxis <enum_SkeletonModifier3D_RotationAxis>`   | :ref:`get_rotation_axis<class_SpringBoneSimulator3D_method_get_rotation_axis>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                       |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector3<class_Vector3>`                                | :ref:`get_rotation_axis_vector<class_SpringBoneSimulator3D_method_get_rotation_axis_vector>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                         |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                    | :ref:`get_stiffness<class_SpringBoneSimulator3D_method_get_stiffness>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                               |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Curve<class_Curve>`                                    | :ref:`get_stiffness_damping_curve<class_SpringBoneSimulator3D_method_get_stiffness_damping_curve>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                   |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | :ref:`is_config_individual<class_SpringBoneSimulator3D_method_is_config_individual>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                 |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | :ref:`is_end_bone_extended<class_SpringBoneSimulator3D_method_is_end_bone_extended>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                 |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`reset<class_SpringBoneSimulator3D_method_reset>`\ (\ )                                                                                                                                                                      |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_center_bone<class_SpringBoneSimulator3D_method_set_center_bone>`\ (\ index\: :ref:`int<class_int>`, bone\: :ref:`int<class_int>`\ )                                                                                     |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_center_bone_name<class_SpringBoneSimulator3D_method_set_center_bone_name>`\ (\ index\: :ref:`int<class_int>`, bone_name\: :ref:`String<class_String>`\ )                                                                |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_center_from<class_SpringBoneSimulator3D_method_set_center_from>`\ (\ index\: :ref:`int<class_int>`, center_from\: :ref:`CenterFrom <enum_SpringBoneSimulator3D_CenterFrom>`\ )                                          |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_center_node<class_SpringBoneSimulator3D_method_set_center_node>`\ (\ index\: :ref:`int<class_int>`, node_path\: :ref:`NodePath<class_NodePath>`\ )                                                                      |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_collision_count<class_SpringBoneSimulator3D_method_set_collision_count>`\ (\ index\: :ref:`int<class_int>`, count\: :ref:`int<class_int>`\ )                                                                            |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_collision_path<class_SpringBoneSimulator3D_method_set_collision_path>`\ (\ index\: :ref:`int<class_int>`, collision\: :ref:`int<class_int>`, node_path\: :ref:`NodePath<class_NodePath>`\ )                             |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_drag<class_SpringBoneSimulator3D_method_set_drag>`\ (\ index\: :ref:`int<class_int>`, drag\: :ref:`float<class_float>`\ )                                                                                               |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_drag_damping_curve<class_SpringBoneSimulator3D_method_set_drag_damping_curve>`\ (\ index\: :ref:`int<class_int>`, curve\: :ref:`Curve<class_Curve>`\ )                                                                  |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_enable_all_child_collisions<class_SpringBoneSimulator3D_method_set_enable_all_child_collisions>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                                                |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_end_bone<class_SpringBoneSimulator3D_method_set_end_bone>`\ (\ index\: :ref:`int<class_int>`, bone\: :ref:`int<class_int>`\ )                                                                                           |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_end_bone_direction<class_SpringBoneSimulator3D_method_set_end_bone_direction>`\ (\ index\: :ref:`int<class_int>`, bone_direction\: :ref:`BoneDirection <enum_SkeletonModifier3D_BoneDirection>`\ )                      |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_end_bone_length<class_SpringBoneSimulator3D_method_set_end_bone_length>`\ (\ index\: :ref:`int<class_int>`, length\: :ref:`float<class_float>`\ )                                                                       |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_end_bone_name<class_SpringBoneSimulator3D_method_set_end_bone_name>`\ (\ index\: :ref:`int<class_int>`, bone_name\: :ref:`String<class_String>`\ )                                                                      |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_exclude_collision_count<class_SpringBoneSimulator3D_method_set_exclude_collision_count>`\ (\ index\: :ref:`int<class_int>`, count\: :ref:`int<class_int>`\ )                                                            |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_exclude_collision_path<class_SpringBoneSimulator3D_method_set_exclude_collision_path>`\ (\ index\: :ref:`int<class_int>`, collision\: :ref:`int<class_int>`, node_path\: :ref:`NodePath<class_NodePath>`\ )             |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_extend_end_bone<class_SpringBoneSimulator3D_method_set_extend_end_bone>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                                                                        |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_gravity<class_SpringBoneSimulator3D_method_set_gravity>`\ (\ index\: :ref:`int<class_int>`, gravity\: :ref:`float<class_float>`\ )                                                                                      |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_gravity_damping_curve<class_SpringBoneSimulator3D_method_set_gravity_damping_curve>`\ (\ index\: :ref:`int<class_int>`, curve\: :ref:`Curve<class_Curve>`\ )                                                            |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_gravity_direction<class_SpringBoneSimulator3D_method_set_gravity_direction>`\ (\ index\: :ref:`int<class_int>`, gravity_direction\: :ref:`Vector3<class_Vector3>`\ )                                                    |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_individual_config<class_SpringBoneSimulator3D_method_set_individual_config>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                                                                    |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_joint_drag<class_SpringBoneSimulator3D_method_set_joint_drag>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, drag\: :ref:`float<class_float>`\ )                                                    |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_joint_gravity<class_SpringBoneSimulator3D_method_set_joint_gravity>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, gravity\: :ref:`float<class_float>`\ )                                           |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_joint_gravity_direction<class_SpringBoneSimulator3D_method_set_joint_gravity_direction>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, gravity_direction\: :ref:`Vector3<class_Vector3>`\ )         |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_joint_radius<class_SpringBoneSimulator3D_method_set_joint_radius>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, radius\: :ref:`float<class_float>`\ )                                              |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_joint_rotation_axis<class_SpringBoneSimulator3D_method_set_joint_rotation_axis>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, axis\: :ref:`RotationAxis <enum_SkeletonModifier3D_RotationAxis>`\ ) |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_joint_rotation_axis_vector<class_SpringBoneSimulator3D_method_set_joint_rotation_axis_vector>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, vector\: :ref:`Vector3<class_Vector3>`\ )              |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_joint_stiffness<class_SpringBoneSimulator3D_method_set_joint_stiffness>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, stiffness\: :ref:`float<class_float>`\ )                                     |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_radius<class_SpringBoneSimulator3D_method_set_radius>`\ (\ index\: :ref:`int<class_int>`, radius\: :ref:`float<class_float>`\ )                                                                                         |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_radius_damping_curve<class_SpringBoneSimulator3D_method_set_radius_damping_curve>`\ (\ index\: :ref:`int<class_int>`, curve\: :ref:`Curve<class_Curve>`\ )                                                              |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_root_bone<class_SpringBoneSimulator3D_method_set_root_bone>`\ (\ index\: :ref:`int<class_int>`, bone\: :ref:`int<class_int>`\ )                                                                                         |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_root_bone_name<class_SpringBoneSimulator3D_method_set_root_bone_name>`\ (\ index\: :ref:`int<class_int>`, bone_name\: :ref:`String<class_String>`\ )                                                                    |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_rotation_axis<class_SpringBoneSimulator3D_method_set_rotation_axis>`\ (\ index\: :ref:`int<class_int>`, axis\: :ref:`RotationAxis <enum_SkeletonModifier3D_RotationAxis>`\ )                                            |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_rotation_axis_vector<class_SpringBoneSimulator3D_method_set_rotation_axis_vector>`\ (\ index\: :ref:`int<class_int>`, vector\: :ref:`Vector3<class_Vector3>`\ )                                                         |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_stiffness<class_SpringBoneSimulator3D_method_set_stiffness>`\ (\ index\: :ref:`int<class_int>`, stiffness\: :ref:`float<class_float>`\ )                                                                                |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_stiffness_damping_curve<class_SpringBoneSimulator3D_method_set_stiffness_damping_curve>`\ (\ index\: :ref:`int<class_int>`, curve\: :ref:`Curve<class_Curve>`\ )                                                        |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -221,14 +221,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các phép liệt kê
+----------------
 
 .. _enum_SpringBoneSimulator3D_CenterFrom:
 
 .. rst-class:: classref-enumeration
 
-enum **CenterFrom**: :ref:`🔗<enum_SpringBoneSimulator3D_CenterFrom>`
+enum **CenterFrom**: :ref:`🔗 <enum_SpringBoneSimulator3D_CenterFrom>`
 
 .. _class_SpringBoneSimulator3D_constant_CENTER_FROM_WORLD_ORIGIN:
 
@@ -236,7 +236,7 @@ enum **CenterFrom**: :ref:`🔗<enum_SpringBoneSimulator3D_CenterFrom>`
 
 :ref:`CenterFrom<enum_SpringBoneSimulator3D_CenterFrom>` **CENTER_FROM_WORLD_ORIGIN** = ``0``
 
-The world origin is defined as center.
+Gốc tọa độ thế giới được xác định là tâm.
 
 .. _class_SpringBoneSimulator3D_constant_CENTER_FROM_NODE:
 
@@ -244,9 +244,9 @@ The world origin is defined as center.
 
 :ref:`CenterFrom<enum_SpringBoneSimulator3D_CenterFrom>` **CENTER_FROM_NODE** = ``1``
 
-The :ref:`Node3D<class_Node3D>` specified by :ref:`set_center_node()<class_SpringBoneSimulator3D_method_set_center_node>` is defined as center.
+:ref:`Node3D<class_Node3D>` được chỉ định bởi :ref:`set_center_node()<class_SpringBoneSimulator3D_method_set_center_node>` được xác định là tâm.
 
-If :ref:`Node3D<class_Node3D>` is not found, the parent :ref:`Skeleton3D<class_Skeleton3D>` is treated as center.
+Nếu không tìm thấy :ref:`Node3D<class_Node3D>`, :ref:`Skeleton3D<class_Skeleton3D>` cha được xem là tâm.
 
 .. _class_SpringBoneSimulator3D_constant_CENTER_FROM_BONE:
 
@@ -254,9 +254,9 @@ If :ref:`Node3D<class_Node3D>` is not found, the parent :ref:`Skeleton3D<class_S
 
 :ref:`CenterFrom<enum_SpringBoneSimulator3D_CenterFrom>` **CENTER_FROM_BONE** = ``2``
 
-The bone pose origin of the parent :ref:`Skeleton3D<class_Skeleton3D>` specified by :ref:`set_center_bone()<class_SpringBoneSimulator3D_method_set_center_bone>` is defined as center.
+Gốc tư thế xương của :ref:`Skeleton3D<class_Skeleton3D>` cha được chỉ định bởi :ref:`set_center_bone()<class_SpringBoneSimulator3D_method_set_center_bone>` được xác định là tâm.
 
-If :ref:`Node3D<class_Node3D>` is not found, the parent :ref:`Skeleton3D<class_Skeleton3D>` is treated as center.
+Nếu không tìm thấy :ref:`Node3D<class_Node3D>`, :ref:`Skeleton3D<class_Skeleton3D>` cha được xem là tâm.
 
 .. rst-class:: classref-section-separator
 
@@ -264,8 +264,8 @@ If :ref:`Node3D<class_Node3D>` is not found, the parent :ref:`Skeleton3D<class_S
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_SpringBoneSimulator3D_property_external_force:
 
@@ -278,9 +278,9 @@ Property Descriptions
 - |void| **set_external_force**\ (\ value\: :ref:`Vector3<class_Vector3>`\ )
 - :ref:`Vector3<class_Vector3>` **get_external_force**\ (\ )
 
-The constant force that always affected bones. It is equal to the result when the parent :ref:`Skeleton3D<class_Skeleton3D>` moves at this speed in the opposite direction.
+Lực không đổi luôn tác động lên các xương. Lực này bằng với kết quả khi :ref:`Skeleton3D<class_Skeleton3D>` cha di chuyển với tốc độ này theo hướng ngược lại.
 
-This is useful for effects such as wind and anti-gravity.
+Điều này hữu ích cho các hiệu ứng như gió và chống trọng lực.
 
 .. rst-class:: classref-item-separator
 
@@ -297,9 +297,9 @@ This is useful for effects such as wind and anti-gravity.
 - |void| **set_mutable_bone_axes**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **are_bone_axes_mutable**\ (\ )
 
-If ``true``, the solver retrieves the bone axis from the bone pose every frame.
+Nếu ``true``, solver sẽ lấy trục xương từ tư thế xương ở mỗi frame.
 
-If ``false``, the solver retrieves the bone axis from the bone rest and caches it, which increases performance slightly, but position changes in the bone pose made before processing this **SpringBoneSimulator3D** are ignored.
+Nếu ``false``, solver sẽ lấy trục xương từ trạng thái nghỉ của xương và lưu vào bộ nhớ đệm, giúp tăng nhẹ hiệu suất, nhưng các thay đổi vị trí trong tư thế xương được thực hiện trước khi xử lý **SpringBoneSimulator3D** này sẽ bị bỏ qua.
 
 .. rst-class:: classref-item-separator
 
@@ -316,7 +316,7 @@ If ``false``, the solver retrieves the bone axis from the bone rest and caches i
 - |void| **set_setting_count**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_setting_count**\ (\ )
 
-The number of settings.
+Số lượng thiết lập.
 
 .. rst-class:: classref-section-separator
 
@@ -324,8 +324,8 @@ The number of settings.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_SpringBoneSimulator3D_method_are_all_child_collisions_enabled:
 
@@ -333,7 +333,7 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **are_all_child_collisions_enabled**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_are_all_child_collisions_enabled>`
 
-Returns ``true`` if all child :ref:`SpringBoneCollision3D<class_SpringBoneCollision3D>`\ s are contained in the collision list at ``index`` in the settings.
+Trả về ``true`` nếu tất cả :ref:`SpringBoneCollision3D<class_SpringBoneCollision3D>`\  con đều nằm trong danh sách va chạm tại ``index`` trong các thiết lập.
 
 .. rst-class:: classref-item-separator
 
@@ -345,7 +345,7 @@ Returns ``true`` if all child :ref:`SpringBoneCollision3D<class_SpringBoneCollis
 
 |void| **clear_collisions**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_clear_collisions>`
 
-Clears all collisions from the collision list at ``index`` in the settings when :ref:`are_all_child_collisions_enabled()<class_SpringBoneSimulator3D_method_are_all_child_collisions_enabled>` is ``false``.
+Xóa tất cả va chạm khỏi danh sách va chạm tại ``index`` trong các thiết lập khi :ref:`are_all_child_collisions_enabled()<class_SpringBoneSimulator3D_method_are_all_child_collisions_enabled>` là ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -357,7 +357,7 @@ Clears all collisions from the collision list at ``index`` in the settings when 
 
 |void| **clear_exclude_collisions**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_clear_exclude_collisions>`
 
-Clears all exclude collisions from the collision list at ``index`` in the settings when :ref:`are_all_child_collisions_enabled()<class_SpringBoneSimulator3D_method_are_all_child_collisions_enabled>` is ``true``.
+Xóa tất cả va chạm loại trừ khỏi danh sách va chạm loại trừ tại ``index`` trong các thiết lập khi :ref:`are_all_child_collisions_enabled()<class_SpringBoneSimulator3D_method_are_all_child_collisions_enabled>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -369,7 +369,7 @@ Clears all exclude collisions from the collision list at ``index`` in the settin
 
 |void| **clear_settings**\ (\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_clear_settings>`
 
-Clears all settings.
+Xóa tất cả thiết lập.
 
 .. rst-class:: classref-item-separator
 
@@ -381,7 +381,7 @@ Clears all settings.
 
 :ref:`int<class_int>` **get_center_bone**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_center_bone>`
 
-Returns the center bone index of the bone chain.
+Trả về chỉ số xương trung tâm của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -393,7 +393,7 @@ Returns the center bone index of the bone chain.
 
 :ref:`String<class_String>` **get_center_bone_name**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_center_bone_name>`
 
-Returns the center bone name of the bone chain.
+Trả về tên xương trung tâm của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -405,7 +405,7 @@ Returns the center bone name of the bone chain.
 
 :ref:`CenterFrom<enum_SpringBoneSimulator3D_CenterFrom>` **get_center_from**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_center_from>`
 
-Returns what the center originates from in the bone chain.
+Trả về nguồn gốc của tâm trong chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -417,7 +417,7 @@ Returns what the center originates from in the bone chain.
 
 :ref:`NodePath<class_NodePath>` **get_center_node**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_center_node>`
 
-Returns the center node path of the bone chain.
+Trả về đường dẫn node trung tâm của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -429,7 +429,7 @@ Returns the center node path of the bone chain.
 
 :ref:`int<class_int>` **get_collision_count**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_collision_count>`
 
-Returns the collision count of the bone chain's collision list when :ref:`are_all_child_collisions_enabled()<class_SpringBoneSimulator3D_method_are_all_child_collisions_enabled>` is ``false``.
+Trả về số lượng va chạm trong danh sách va chạm của chuỗi xương khi :ref:`are_all_child_collisions_enabled()<class_SpringBoneSimulator3D_method_are_all_child_collisions_enabled>` là ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -441,7 +441,7 @@ Returns the collision count of the bone chain's collision list when :ref:`are_al
 
 :ref:`NodePath<class_NodePath>` **get_collision_path**\ (\ index\: :ref:`int<class_int>`, collision\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_collision_path>`
 
-Returns the node path of the :ref:`SpringBoneCollision3D<class_SpringBoneCollision3D>` at ``collision`` in the bone chain's collision list when :ref:`are_all_child_collisions_enabled()<class_SpringBoneSimulator3D_method_are_all_child_collisions_enabled>` is ``false``.
+Trả về đường dẫn node của :ref:`SpringBoneCollision3D<class_SpringBoneCollision3D>` tại ``collision`` trong danh sách va chạm của chuỗi xương khi :ref:`are_all_child_collisions_enabled()<class_SpringBoneSimulator3D_method_are_all_child_collisions_enabled>` là ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -453,7 +453,7 @@ Returns the node path of the :ref:`SpringBoneCollision3D<class_SpringBoneCollisi
 
 :ref:`float<class_float>` **get_drag**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_drag>`
 
-Returns the drag force damping curve of the bone chain.
+Trả về đường cong giảm chấn của lực kéo của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -465,7 +465,7 @@ Returns the drag force damping curve of the bone chain.
 
 :ref:`Curve<class_Curve>` **get_drag_damping_curve**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_drag_damping_curve>`
 
-Returns the drag force damping curve of the bone chain.
+Trả về đường cong giảm chấn của lực kéo của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -477,7 +477,7 @@ Returns the drag force damping curve of the bone chain.
 
 :ref:`int<class_int>` **get_end_bone**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_end_bone>`
 
-Returns the end bone index of the bone chain.
+Trả về chỉ số xương cuối của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -489,7 +489,7 @@ Returns the end bone index of the bone chain.
 
 :ref:`BoneDirection<enum_SkeletonModifier3D_BoneDirection>` **get_end_bone_direction**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_end_bone_direction>`
 
-Returns the tail direction of the end bone of the bone chain when :ref:`is_end_bone_extended()<class_SpringBoneSimulator3D_method_is_end_bone_extended>` is ``true``.
+Trả về hướng đuôi của xương cuối trong chuỗi xương khi :ref:`is_end_bone_extended()<class_SpringBoneSimulator3D_method_is_end_bone_extended>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -501,7 +501,7 @@ Returns the tail direction of the end bone of the bone chain when :ref:`is_end_b
 
 :ref:`float<class_float>` **get_end_bone_length**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_end_bone_length>`
 
-Returns the end bone tail length of the bone chain when :ref:`is_end_bone_extended()<class_SpringBoneSimulator3D_method_is_end_bone_extended>` is ``true``.
+Trả về độ dài đuôi của xương cuối trong chuỗi xương khi :ref:`is_end_bone_extended()<class_SpringBoneSimulator3D_method_is_end_bone_extended>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -513,7 +513,7 @@ Returns the end bone tail length of the bone chain when :ref:`is_end_bone_extend
 
 :ref:`String<class_String>` **get_end_bone_name**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_end_bone_name>`
 
-Returns the end bone name of the bone chain.
+Trả về tên xương cuối của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -525,7 +525,7 @@ Returns the end bone name of the bone chain.
 
 :ref:`int<class_int>` **get_exclude_collision_count**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_exclude_collision_count>`
 
-Returns the exclude collision count of the bone chain's exclude collision list when :ref:`are_all_child_collisions_enabled()<class_SpringBoneSimulator3D_method_are_all_child_collisions_enabled>` is ``true``.
+Trả về số lượng va chạm loại trừ trong danh sách va chạm loại trừ của chuỗi xương khi :ref:`are_all_child_collisions_enabled()<class_SpringBoneSimulator3D_method_are_all_child_collisions_enabled>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -537,7 +537,7 @@ Returns the exclude collision count of the bone chain's exclude collision list w
 
 :ref:`NodePath<class_NodePath>` **get_exclude_collision_path**\ (\ index\: :ref:`int<class_int>`, collision\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_exclude_collision_path>`
 
-Returns the node path of the :ref:`SpringBoneCollision3D<class_SpringBoneCollision3D>` at ``collision`` in the bone chain's exclude collision list when :ref:`are_all_child_collisions_enabled()<class_SpringBoneSimulator3D_method_are_all_child_collisions_enabled>` is ``true``.
+Trả về đường dẫn node của :ref:`SpringBoneCollision3D<class_SpringBoneCollision3D>` tại ``collision`` trong danh sách va chạm loại trừ của chuỗi xương khi :ref:`are_all_child_collisions_enabled()<class_SpringBoneSimulator3D_method_are_all_child_collisions_enabled>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -549,7 +549,7 @@ Returns the node path of the :ref:`SpringBoneCollision3D<class_SpringBoneCollisi
 
 :ref:`float<class_float>` **get_gravity**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_gravity>`
 
-Returns the gravity amount of the bone chain.
+Trả về độ lớn trọng lực của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -561,7 +561,7 @@ Returns the gravity amount of the bone chain.
 
 :ref:`Curve<class_Curve>` **get_gravity_damping_curve**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_gravity_damping_curve>`
 
-Returns the gravity amount damping curve of the bone chain.
+Trả về đường cong giảm chấn của độ lớn trọng lực của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -573,7 +573,7 @@ Returns the gravity amount damping curve of the bone chain.
 
 :ref:`Vector3<class_Vector3>` **get_gravity_direction**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_gravity_direction>`
 
-Returns the gravity direction of the bone chain.
+Trả về hướng trọng lực của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -585,7 +585,7 @@ Returns the gravity direction of the bone chain.
 
 :ref:`int<class_int>` **get_joint_bone**\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_joint_bone>`
 
-Returns the bone index at ``joint`` in the bone chain's joint list.
+Trả về chỉ số xương tại ``joint`` trong danh sách khớp của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -597,7 +597,7 @@ Returns the bone index at ``joint`` in the bone chain's joint list.
 
 :ref:`String<class_String>` **get_joint_bone_name**\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_joint_bone_name>`
 
-Returns the bone name at ``joint`` in the bone chain's joint list.
+Trả về tên xương tại ``joint`` trong danh sách khớp của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -609,7 +609,7 @@ Returns the bone name at ``joint`` in the bone chain's joint list.
 
 :ref:`int<class_int>` **get_joint_count**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_joint_count>`
 
-Returns the joint count of the bone chain's joint list.
+Trả về số lượng khớp trong danh sách khớp của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -621,7 +621,7 @@ Returns the joint count of the bone chain's joint list.
 
 :ref:`float<class_float>` **get_joint_drag**\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_joint_drag>`
 
-Returns the drag force at ``joint`` in the bone chain's joint list.
+Trả về lực kéo tại ``joint`` trong danh sách khớp của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -633,7 +633,7 @@ Returns the drag force at ``joint`` in the bone chain's joint list.
 
 :ref:`float<class_float>` **get_joint_gravity**\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_joint_gravity>`
 
-Returns the gravity amount at ``joint`` in the bone chain's joint list.
+Trả về độ lớn trọng lực tại ``joint`` trong danh sách khớp của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -645,7 +645,7 @@ Returns the gravity amount at ``joint`` in the bone chain's joint list.
 
 :ref:`Vector3<class_Vector3>` **get_joint_gravity_direction**\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_joint_gravity_direction>`
 
-Returns the gravity direction at ``joint`` in the bone chain's joint list.
+Trả về hướng trọng lực tại ``joint`` trong danh sách khớp của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -657,7 +657,7 @@ Returns the gravity direction at ``joint`` in the bone chain's joint list.
 
 :ref:`float<class_float>` **get_joint_radius**\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_joint_radius>`
 
-Returns the radius at ``joint`` in the bone chain's joint list.
+Trả về bán kính tại ``joint`` trong danh sách khớp của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -669,7 +669,7 @@ Returns the radius at ``joint`` in the bone chain's joint list.
 
 :ref:`RotationAxis<enum_SkeletonModifier3D_RotationAxis>` **get_joint_rotation_axis**\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_joint_rotation_axis>`
 
-Returns the rotation axis at ``joint`` in the bone chain's joint list.
+Trả về trục xoay tại ``joint`` trong danh sách khớp của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -681,9 +681,9 @@ Returns the rotation axis at ``joint`` in the bone chain's joint list.
 
 :ref:`Vector3<class_Vector3>` **get_joint_rotation_axis_vector**\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_joint_rotation_axis_vector>`
 
-Returns the rotation axis vector for the specified joint in the bone chain. This vector represents the axis around which the joint can rotate. It is determined based on the rotation axis set for the joint.
+Trả về vector trục xoay cho khớp được chỉ định trong chuỗi xương. Vector này biểu thị trục mà khớp có thể xoay quanh. Trục này được xác định dựa trên trục xoay được thiết lập cho khớp.
 
-If :ref:`get_joint_rotation_axis()<class_SpringBoneSimulator3D_method_get_joint_rotation_axis>` is :ref:`SkeletonModifier3D.ROTATION_AXIS_ALL<class_SkeletonModifier3D_constant_ROTATION_AXIS_ALL>`, this method returns ``Vector3(0, 0, 0)``.
+Nếu :ref:`get_joint_rotation_axis()<class_SpringBoneSimulator3D_method_get_joint_rotation_axis>` là :ref:`SkeletonModifier3D.ROTATION_AXIS_ALL<class_SkeletonModifier3D_constant_ROTATION_AXIS_ALL>`, phương thức này trả về ``Vector3(0, 0, 0)``.
 
 .. rst-class:: classref-item-separator
 
@@ -695,7 +695,7 @@ If :ref:`get_joint_rotation_axis()<class_SpringBoneSimulator3D_method_get_joint_
 
 :ref:`float<class_float>` **get_joint_stiffness**\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_joint_stiffness>`
 
-Returns the stiffness force at ``joint`` in the bone chain's joint list.
+Trả về lực độ cứng tại ``joint`` trong danh sách khớp của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -707,7 +707,7 @@ Returns the stiffness force at ``joint`` in the bone chain's joint list.
 
 :ref:`float<class_float>` **get_radius**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_radius>`
 
-Returns the joint radius of the bone chain.
+Trả về bán kính khớp của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -719,7 +719,7 @@ Returns the joint radius of the bone chain.
 
 :ref:`Curve<class_Curve>` **get_radius_damping_curve**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_radius_damping_curve>`
 
-Returns the joint radius damping curve of the bone chain.
+Trả về đường cong giảm chấn bán kính khớp của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -731,7 +731,7 @@ Returns the joint radius damping curve of the bone chain.
 
 :ref:`int<class_int>` **get_root_bone**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_root_bone>`
 
-Returns the root bone index of the bone chain.
+Trả về chỉ mục xương gốc của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -743,7 +743,7 @@ Returns the root bone index of the bone chain.
 
 :ref:`String<class_String>` **get_root_bone_name**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_root_bone_name>`
 
-Returns the root bone name of the bone chain.
+Trả về tên xương gốc của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -755,7 +755,7 @@ Returns the root bone name of the bone chain.
 
 :ref:`RotationAxis<enum_SkeletonModifier3D_RotationAxis>` **get_rotation_axis**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_rotation_axis>`
 
-Returns the rotation axis of the bone chain.
+Trả về trục xoay của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -767,9 +767,9 @@ Returns the rotation axis of the bone chain.
 
 :ref:`Vector3<class_Vector3>` **get_rotation_axis_vector**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_rotation_axis_vector>`
 
-Returns the rotation axis vector of the bone chain. This vector represents the axis around which the bone chain can rotate. It is determined based on the rotation axis set for the bone chain.
+Trả về vector trục xoay của chuỗi xương. Vector này biểu thị trục mà chuỗi xương có thể xoay quanh. Trục này được xác định dựa trên trục xoay được đặt cho chuỗi xương.
 
-If :ref:`get_rotation_axis()<class_SpringBoneSimulator3D_method_get_rotation_axis>` is :ref:`SkeletonModifier3D.ROTATION_AXIS_ALL<class_SkeletonModifier3D_constant_ROTATION_AXIS_ALL>`, this method returns ``Vector3(0, 0, 0)``.
+Nếu :ref:`get_rotation_axis()<class_SpringBoneSimulator3D_method_get_rotation_axis>` là :ref:`SkeletonModifier3D.ROTATION_AXIS_ALL<class_SkeletonModifier3D_constant_ROTATION_AXIS_ALL>`, phương thức này trả về ``Vector3(0, 0, 0)``.
 
 .. rst-class:: classref-item-separator
 
@@ -781,7 +781,7 @@ If :ref:`get_rotation_axis()<class_SpringBoneSimulator3D_method_get_rotation_axi
 
 :ref:`float<class_float>` **get_stiffness**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_stiffness>`
 
-Returns the stiffness force of the bone chain.
+Trả về lực độ cứng của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -793,7 +793,7 @@ Returns the stiffness force of the bone chain.
 
 :ref:`Curve<class_Curve>` **get_stiffness_damping_curve**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_get_stiffness_damping_curve>`
 
-Returns the stiffness force damping curve of the bone chain.
+Trả về đường cong giảm chấn lực độ cứng của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -805,7 +805,7 @@ Returns the stiffness force damping curve of the bone chain.
 
 :ref:`bool<class_bool>` **is_config_individual**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_is_config_individual>`
 
-Returns ``true`` if the config can be edited individually for each joint.
+Trả về ``true`` nếu có thể chỉnh sửa cấu hình riêng cho từng khớp.
 
 .. rst-class:: classref-item-separator
 
@@ -817,7 +817,7 @@ Returns ``true`` if the config can be edited individually for each joint.
 
 :ref:`bool<class_bool>` **is_end_bone_extended**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpringBoneSimulator3D_method_is_end_bone_extended>`
 
-Returns ``true`` if the end bone is extended to have a tail.
+Trả về ``true`` nếu xương cuối được kéo dài để có phần đuôi.
 
 .. rst-class:: classref-item-separator
 
@@ -829,9 +829,9 @@ Returns ``true`` if the end bone is extended to have a tail.
 
 |void| **reset**\ (\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_reset>`
 
-Resets a simulating state with respect to the current bone pose.
+Đặt lại trạng thái mô phỏng theo tư thế xương hiện tại.
 
-It is useful to prevent the simulation result getting violent. For example, calling this immediately after a call to :ref:`AnimationPlayer.play()<class_AnimationPlayer_method_play>` without a fading, or within the previous :ref:`SkeletonModifier3D.modification_processed<class_SkeletonModifier3D_signal_modification_processed>` signal if it's condition changes significantly.
+Điều này hữu ích để ngăn kết quả mô phỏng trở nên quá mạnh. Ví dụ: gọi phương thức này ngay sau khi gọi :ref:`AnimationPlayer.play()<class_AnimationPlayer_method_play>` mà không làm mờ, hoặc trong :ref:`SkeletonModifier3D.modification_processed<class_SkeletonModifier3D_signal_modification_processed>` trước đó nếu điều kiện của tín hiệu thay đổi đáng kể.
 
 .. rst-class:: classref-item-separator
 
@@ -843,7 +843,7 @@ It is useful to prevent the simulation result getting violent. For example, call
 
 |void| **set_center_bone**\ (\ index\: :ref:`int<class_int>`, bone\: :ref:`int<class_int>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_center_bone>`
 
-Sets the center bone index of the bone chain.
+Đặt chỉ mục xương trung tâm của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -855,7 +855,7 @@ Sets the center bone index of the bone chain.
 
 |void| **set_center_bone_name**\ (\ index\: :ref:`int<class_int>`, bone_name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_center_bone_name>`
 
-Sets the center bone name of the bone chain.
+Đặt tên xương trung tâm của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -867,13 +867,13 @@ Sets the center bone name of the bone chain.
 
 |void| **set_center_from**\ (\ index\: :ref:`int<class_int>`, center_from\: :ref:`CenterFrom<enum_SpringBoneSimulator3D_CenterFrom>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_center_from>`
 
-Sets what the center originates from in the bone chain.
+Đặt nguồn gốc của xương trung tâm trong chuỗi xương.
 
-Bone movement is calculated based on the difference in relative distance between center and bone in the previous and next frames.
+Chuyển động của xương được tính dựa trên sự chênh lệch về khoảng cách tương đối giữa xương trung tâm và xương trong các khung hình trước và sau.
 
-For example, if the parent :ref:`Skeleton3D<class_Skeleton3D>` is used as the center, the bones are considered to have not moved if the :ref:`Skeleton3D<class_Skeleton3D>` moves in the world.
+Ví dụ: nếu :ref:`Skeleton3D<class_Skeleton3D>` cha được dùng làm tâm, các xương được xem là không chuyển động nếu :ref:`Skeleton3D<class_Skeleton3D>` di chuyển trong thế giới.
 
-In this case, only a change in the bone pose is considered to be a bone movement.
+Trong trường hợp này, chỉ thay đổi trong tư thế xương được xem là chuyển động của xương.
 
 .. rst-class:: classref-item-separator
 
@@ -885,7 +885,7 @@ In this case, only a change in the bone pose is considered to be a bone movement
 
 |void| **set_center_node**\ (\ index\: :ref:`int<class_int>`, node_path\: :ref:`NodePath<class_NodePath>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_center_node>`
 
-Sets the center node path of the bone chain.
+Đặt node path của xương trung tâm trong chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -897,7 +897,7 @@ Sets the center node path of the bone chain.
 
 |void| **set_collision_count**\ (\ index\: :ref:`int<class_int>`, count\: :ref:`int<class_int>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_collision_count>`
 
-Sets the number of collisions in the collision list at ``index`` in the settings when :ref:`are_all_child_collisions_enabled()<class_SpringBoneSimulator3D_method_are_all_child_collisions_enabled>` is ``false``.
+Đặt số lượng va chạm trong danh sách va chạm tại ``index`` trong phần cài đặt khi :ref:`are_all_child_collisions_enabled()<class_SpringBoneSimulator3D_method_are_all_child_collisions_enabled>` là ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -909,7 +909,7 @@ Sets the number of collisions in the collision list at ``index`` in the settings
 
 |void| **set_collision_path**\ (\ index\: :ref:`int<class_int>`, collision\: :ref:`int<class_int>`, node_path\: :ref:`NodePath<class_NodePath>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_collision_path>`
 
-Sets the node path of the :ref:`SpringBoneCollision3D<class_SpringBoneCollision3D>` at ``collision`` in the bone chain's collision list when :ref:`are_all_child_collisions_enabled()<class_SpringBoneSimulator3D_method_are_all_child_collisions_enabled>` is ``false``.
+Đặt node path của :ref:`SpringBoneCollision3D<class_SpringBoneCollision3D>` tại ``collision`` trong danh sách va chạm của chuỗi xương khi :ref:`are_all_child_collisions_enabled()<class_SpringBoneSimulator3D_method_are_all_child_collisions_enabled>` là ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -921,9 +921,9 @@ Sets the node path of the :ref:`SpringBoneCollision3D<class_SpringBoneCollision3
 
 |void| **set_drag**\ (\ index\: :ref:`int<class_int>`, drag\: :ref:`float<class_float>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_drag>`
 
-Sets the drag force of the bone chain. The greater the value, the more suppressed the wiggling.
+Đặt lực cản của chuỗi xương. Giá trị càng lớn thì chuyển động lắc càng bị hạn chế.
 
-The value is scaled by :ref:`set_drag_damping_curve()<class_SpringBoneSimulator3D_method_set_drag_damping_curve>` and cached in each joint setting in the joint list.
+Giá trị này được nhân theo tỉ lệ với :ref:`set_drag_damping_curve()<class_SpringBoneSimulator3D_method_set_drag_damping_curve>` và lưu vào bộ nhớ đệm trong từng cài đặt khớp của danh sách khớp.
 
 .. rst-class:: classref-item-separator
 
@@ -935,7 +935,7 @@ The value is scaled by :ref:`set_drag_damping_curve()<class_SpringBoneSimulator3
 
 |void| **set_drag_damping_curve**\ (\ index\: :ref:`int<class_int>`, curve\: :ref:`Curve<class_Curve>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_drag_damping_curve>`
 
-Sets the drag force damping curve of the bone chain.
+Đặt đường cong giảm chấn lực cản của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -947,9 +947,9 @@ Sets the drag force damping curve of the bone chain.
 
 |void| **set_enable_all_child_collisions**\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_enable_all_child_collisions>`
 
-If ``enabled`` is ``true``, all child :ref:`SpringBoneCollision3D<class_SpringBoneCollision3D>`\ s are colliding and :ref:`set_exclude_collision_path()<class_SpringBoneSimulator3D_method_set_exclude_collision_path>` is enabled as an exclusion list at ``index`` in the settings.
+Nếu ``enabled`` là ``true``, tất cả :ref:`SpringBoneCollision3D<class_SpringBoneCollision3D>`\  con đều va chạm và :ref:`set_exclude_collision_path()<class_SpringBoneSimulator3D_method_set_exclude_collision_path>` được bật dưới dạng danh sách loại trừ tại ``index`` trong phần cài đặt.
 
-If ``enabled`` is ``false``, you need to manually register all valid collisions with :ref:`set_collision_path()<class_SpringBoneSimulator3D_method_set_collision_path>`.
+Nếu ``enabled`` là ``false``, bạn cần đăng ký thủ công tất cả các va chạm hợp lệ với :ref:`set_collision_path()<class_SpringBoneSimulator3D_method_set_collision_path>`.
 
 .. rst-class:: classref-item-separator
 
@@ -961,7 +961,7 @@ If ``enabled`` is ``false``, you need to manually register all valid collisions 
 
 |void| **set_end_bone**\ (\ index\: :ref:`int<class_int>`, bone\: :ref:`int<class_int>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_end_bone>`
 
-Sets the end bone index of the bone chain.
+Đặt chỉ mục xương cuối của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -973,7 +973,7 @@ Sets the end bone index of the bone chain.
 
 |void| **set_end_bone_direction**\ (\ index\: :ref:`int<class_int>`, bone_direction\: :ref:`BoneDirection<enum_SkeletonModifier3D_BoneDirection>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_end_bone_direction>`
 
-Sets the end bone tail direction of the bone chain when :ref:`is_end_bone_extended()<class_SpringBoneSimulator3D_method_is_end_bone_extended>` is ``true``.
+Đặt hướng phần đuôi của xương cuối trong chuỗi xương khi :ref:`is_end_bone_extended()<class_SpringBoneSimulator3D_method_is_end_bone_extended>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -985,7 +985,7 @@ Sets the end bone tail direction of the bone chain when :ref:`is_end_bone_extend
 
 |void| **set_end_bone_length**\ (\ index\: :ref:`int<class_int>`, length\: :ref:`float<class_float>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_end_bone_length>`
 
-Sets the end bone tail length of the bone chain when :ref:`is_end_bone_extended()<class_SpringBoneSimulator3D_method_is_end_bone_extended>` is ``true``.
+Đặt độ dài phần đuôi của xương cuối trong chuỗi xương khi :ref:`is_end_bone_extended()<class_SpringBoneSimulator3D_method_is_end_bone_extended>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -997,9 +997,9 @@ Sets the end bone tail length of the bone chain when :ref:`is_end_bone_extended(
 
 |void| **set_end_bone_name**\ (\ index\: :ref:`int<class_int>`, bone_name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_end_bone_name>`
 
-Sets the end bone name of the bone chain.
+Đặt tên xương cuối của chuỗi xương.
 
-\ **Note:** End bone must be the root bone or a child of the root bone. If they are the same, the tail must be extended by :ref:`set_extend_end_bone()<class_SpringBoneSimulator3D_method_set_extend_end_bone>` to jiggle the bone.
+\ **Lưu ý:** Xương cuối phải là xương gốc hoặc là con của xương gốc. Nếu chúng giống nhau, phải kéo dài phần đuôi bằng :ref:`set_extend_end_bone()<class_SpringBoneSimulator3D_method_set_extend_end_bone>` để làm xương lắc lư.
 
 .. rst-class:: classref-item-separator
 
@@ -1011,7 +1011,7 @@ Sets the end bone name of the bone chain.
 
 |void| **set_exclude_collision_count**\ (\ index\: :ref:`int<class_int>`, count\: :ref:`int<class_int>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_exclude_collision_count>`
 
-Sets the number of exclude collisions in the exclude collision list at ``index`` in the settings when :ref:`are_all_child_collisions_enabled()<class_SpringBoneSimulator3D_method_are_all_child_collisions_enabled>` is ``true``.
+Đặt số lượng va chạm loại trừ trong danh sách va chạm loại trừ tại ``index`` trong phần cài đặt khi :ref:`are_all_child_collisions_enabled()<class_SpringBoneSimulator3D_method_are_all_child_collisions_enabled>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -1023,7 +1023,7 @@ Sets the number of exclude collisions in the exclude collision list at ``index``
 
 |void| **set_exclude_collision_path**\ (\ index\: :ref:`int<class_int>`, collision\: :ref:`int<class_int>`, node_path\: :ref:`NodePath<class_NodePath>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_exclude_collision_path>`
 
-Sets the node path of the :ref:`SpringBoneCollision3D<class_SpringBoneCollision3D>` at ``collision`` in the bone chain's exclude collision list when :ref:`are_all_child_collisions_enabled()<class_SpringBoneSimulator3D_method_are_all_child_collisions_enabled>` is ``true``.
+Đặt node path của :ref:`SpringBoneCollision3D<class_SpringBoneCollision3D>` tại ``collision`` trong danh sách va chạm loại trừ của chuỗi xương khi :ref:`are_all_child_collisions_enabled()<class_SpringBoneSimulator3D_method_are_all_child_collisions_enabled>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -1035,9 +1035,9 @@ Sets the node path of the :ref:`SpringBoneCollision3D<class_SpringBoneCollision3
 
 |void| **set_extend_end_bone**\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_extend_end_bone>`
 
-If ``enabled`` is ``true``, the end bone is extended to have a tail.
+Nếu ``enabled`` là ``true``, xương cuối được kéo dài để có phần đuôi.
 
-The extended tail config is allocated to the last element in the joint list. In other words, if you set ``enabled`` to ``false``, the config of the last element in the joint list has no effect in the simulated result.
+Cấu hình phần đuôi mở rộng được cấp phát cho phần tử cuối cùng trong danh sách khớp. Nói cách khác, nếu bạn đặt ``enabled`` thành ``false``, cấu hình của phần tử cuối cùng trong danh sách khớp sẽ không ảnh hưởng đến kết quả mô phỏng.
 
 .. rst-class:: classref-item-separator
 
@@ -1049,11 +1049,11 @@ The extended tail config is allocated to the last element in the joint list. In 
 
 |void| **set_gravity**\ (\ index\: :ref:`int<class_int>`, gravity\: :ref:`float<class_float>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_gravity>`
 
-Sets the gravity amount of the bone chain. This value is not an acceleration, but a constant velocity of movement in :ref:`set_gravity_direction()<class_SpringBoneSimulator3D_method_set_gravity_direction>`.
+Đặt mức trọng lực của chuỗi xương. Giá trị này không phải là gia tốc mà là vận tốc chuyển động không đổi trong :ref:`set_gravity_direction()<class_SpringBoneSimulator3D_method_set_gravity_direction>`.
 
-If ``gravity`` is not ``0``, the modified pose will not return to the original pose since it is always affected by gravity.
+Nếu ``gravity`` không phải là ``0``, tư thế đã sửa đổi sẽ không trở về tư thế ban đầu vì luôn chịu tác động của trọng lực.
 
-The value is scaled by :ref:`set_gravity_damping_curve()<class_SpringBoneSimulator3D_method_set_gravity_damping_curve>` and cached in each joint setting in the joint list.
+Giá trị này được nhân theo tỉ lệ với :ref:`set_gravity_damping_curve()<class_SpringBoneSimulator3D_method_set_gravity_damping_curve>` và lưu vào bộ nhớ đệm trong từng cài đặt khớp của danh sách khớp.
 
 .. rst-class:: classref-item-separator
 
@@ -1065,7 +1065,7 @@ The value is scaled by :ref:`set_gravity_damping_curve()<class_SpringBoneSimulat
 
 |void| **set_gravity_damping_curve**\ (\ index\: :ref:`int<class_int>`, curve\: :ref:`Curve<class_Curve>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_gravity_damping_curve>`
 
-Sets the gravity amount damping curve of the bone chain.
+Đặt đường cong giảm chấn mức trọng lực của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -1077,9 +1077,9 @@ Sets the gravity amount damping curve of the bone chain.
 
 |void| **set_gravity_direction**\ (\ index\: :ref:`int<class_int>`, gravity_direction\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_gravity_direction>`
 
-Sets the gravity direction of the bone chain. This value is internally normalized and then multiplied by :ref:`set_gravity()<class_SpringBoneSimulator3D_method_set_gravity>`.
+Đặt hướng trọng lực của chuỗi xương. Giá trị này được chuẩn hóa nội bộ, sau đó nhân với :ref:`set_gravity()<class_SpringBoneSimulator3D_method_set_gravity>`.
 
-The value is cached in each joint setting in the joint list.
+Giá trị này được lưu vào bộ nhớ đệm trong từng cài đặt khớp của danh sách khớp.
 
 .. rst-class:: classref-item-separator
 
@@ -1091,7 +1091,7 @@ The value is cached in each joint setting in the joint list.
 
 |void| **set_individual_config**\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_individual_config>`
 
-If ``enabled`` is ``true``, the config can be edited individually for each joint.
+Nếu ``enabled`` là ``true``, có thể chỉnh sửa cấu hình riêng cho từng khớp.
 
 .. rst-class:: classref-item-separator
 
@@ -1103,7 +1103,7 @@ If ``enabled`` is ``true``, the config can be edited individually for each joint
 
 |void| **set_joint_drag**\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, drag\: :ref:`float<class_float>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_joint_drag>`
 
-Sets the drag force at ``joint`` in the bone chain's joint list when :ref:`is_config_individual()<class_SpringBoneSimulator3D_method_is_config_individual>` is ``true``.
+Đặt lực cản tại ``joint`` trong danh sách khớp của chuỗi xương khi :ref:`is_config_individual()<class_SpringBoneSimulator3D_method_is_config_individual>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -1115,7 +1115,7 @@ Sets the drag force at ``joint`` in the bone chain's joint list when :ref:`is_co
 
 |void| **set_joint_gravity**\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, gravity\: :ref:`float<class_float>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_joint_gravity>`
 
-Sets the gravity amount at ``joint`` in the bone chain's joint list when :ref:`is_config_individual()<class_SpringBoneSimulator3D_method_is_config_individual>` is ``true``.
+Đặt mức trọng lực tại ``joint`` trong danh sách khớp của chuỗi xương khi :ref:`is_config_individual()<class_SpringBoneSimulator3D_method_is_config_individual>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -1127,7 +1127,7 @@ Sets the gravity amount at ``joint`` in the bone chain's joint list when :ref:`i
 
 |void| **set_joint_gravity_direction**\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, gravity_direction\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_joint_gravity_direction>`
 
-Sets the gravity direction at ``joint`` in the bone chain's joint list when :ref:`is_config_individual()<class_SpringBoneSimulator3D_method_is_config_individual>` is ``true``.
+Đặt hướng trọng lực tại ``joint`` trong danh sách khớp của chuỗi xương khi :ref:`is_config_individual()<class_SpringBoneSimulator3D_method_is_config_individual>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -1139,7 +1139,7 @@ Sets the gravity direction at ``joint`` in the bone chain's joint list when :ref
 
 |void| **set_joint_radius**\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, radius\: :ref:`float<class_float>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_joint_radius>`
 
-Sets the joint radius at ``joint`` in the bone chain's joint list when :ref:`is_config_individual()<class_SpringBoneSimulator3D_method_is_config_individual>` is ``true``.
+Đặt bán kính khớp tại ``joint`` trong danh sách khớp của chuỗi xương khi :ref:`is_config_individual()<class_SpringBoneSimulator3D_method_is_config_individual>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -1151,13 +1151,13 @@ Sets the joint radius at ``joint`` in the bone chain's joint list when :ref:`is_
 
 |void| **set_joint_rotation_axis**\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, axis\: :ref:`RotationAxis<enum_SkeletonModifier3D_RotationAxis>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_joint_rotation_axis>`
 
-Sets the rotation axis at ``joint`` in the bone chain's joint list when :ref:`is_config_individual()<class_SpringBoneSimulator3D_method_is_config_individual>` is ``true``.
+Đặt trục xoay tại ``joint`` trong danh sách khớp của chuỗi xương khi :ref:`is_config_individual()<class_SpringBoneSimulator3D_method_is_config_individual>` là ``true``.
 
-The axes are based on the reference pose's space, if ``axis`` is :ref:`SkeletonModifier3D.ROTATION_AXIS_CUSTOM<class_SkeletonModifier3D_constant_ROTATION_AXIS_CUSTOM>`, you can specify any axis.
+Các trục dựa trên không gian của tư thế tham chiếu. Nếu ``axis`` là :ref:`SkeletonModifier3D.ROTATION_AXIS_CUSTOM<class_SkeletonModifier3D_constant_ROTATION_AXIS_CUSTOM>`, bạn có thể chỉ định bất kỳ trục nào.
 
-In here, the reference pose is the bone pose immediately before the simulation.
+Ở đây, tư thế tham chiếu là tư thế xương ngay trước khi mô phỏng.
 
-\ **Note:** The rotation axis and the forward vector shouldn't be colinear to avoid unintended rotation since **SpringBoneSimulator3D** does not factor in twisting forces.
+\ **Lưu ý:** Trục xoay và vector hướng về phía trước không nên đồng tuyến để tránh xoay ngoài ý muốn, vì **SpringBoneSimulator3D** không tính đến các lực xoắn.
 
 .. rst-class:: classref-item-separator
 
@@ -1169,11 +1169,11 @@ In here, the reference pose is the bone pose immediately before the simulation.
 
 |void| **set_joint_rotation_axis_vector**\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, vector\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_joint_rotation_axis_vector>`
 
-Sets the rotation axis vector for the specified joint in the bone chain.
+Đặt vector trục xoay cho khớp được chỉ định trong chuỗi xương.
 
-This vector is normalized by an internal process and represents the axis around which the bone chain can rotate.
+Vector này được chuẩn hóa bằng một quy trình nội bộ và biểu diễn trục mà chuỗi xương có thể xoay quanh.
 
-If the vector length is ``0``, it is considered synonymous with :ref:`SkeletonModifier3D.ROTATION_AXIS_ALL<class_SkeletonModifier3D_constant_ROTATION_AXIS_ALL>`.
+Nếu độ dài vector là ``0``, nó được xem là đồng nghĩa với :ref:`SkeletonModifier3D.ROTATION_AXIS_ALL<class_SkeletonModifier3D_constant_ROTATION_AXIS_ALL>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1185,7 +1185,7 @@ If the vector length is ``0``, it is considered synonymous with :ref:`SkeletonMo
 
 |void| **set_joint_stiffness**\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, stiffness\: :ref:`float<class_float>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_joint_stiffness>`
 
-Sets the stiffness force at ``joint`` in the bone chain's joint list when :ref:`is_config_individual()<class_SpringBoneSimulator3D_method_is_config_individual>` is ``true``.
+Đặt lực độ cứng tại ``joint`` trong danh sách khớp của chuỗi xương khi :ref:`is_config_individual()<class_SpringBoneSimulator3D_method_is_config_individual>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -1197,9 +1197,9 @@ Sets the stiffness force at ``joint`` in the bone chain's joint list when :ref:`
 
 |void| **set_radius**\ (\ index\: :ref:`int<class_int>`, radius\: :ref:`float<class_float>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_radius>`
 
-Sets the joint radius of the bone chain. It is used to move and slide with the :ref:`SpringBoneCollision3D<class_SpringBoneCollision3D>` in the collision list.
+Đặt bán kính khớp của chuỗi xương. Giá trị này được dùng để di chuyển và trượt cùng với :ref:`SpringBoneCollision3D<class_SpringBoneCollision3D>` trong danh sách va chạm.
 
-The value is scaled by :ref:`set_radius_damping_curve()<class_SpringBoneSimulator3D_method_set_radius_damping_curve>` and cached in each joint setting in the joint list.
+Giá trị được nhân tỷ lệ với :ref:`set_radius_damping_curve()<class_SpringBoneSimulator3D_method_set_radius_damping_curve>` và lưu vào bộ nhớ đệm trong từng thiết lập khớp của danh sách khớp.
 
 .. rst-class:: classref-item-separator
 
@@ -1211,7 +1211,7 @@ The value is scaled by :ref:`set_radius_damping_curve()<class_SpringBoneSimulato
 
 |void| **set_radius_damping_curve**\ (\ index\: :ref:`int<class_int>`, curve\: :ref:`Curve<class_Curve>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_radius_damping_curve>`
 
-Sets the joint radius damping curve of the bone chain.
+Đặt đường cong giảm chấn bán kính khớp của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -1223,7 +1223,7 @@ Sets the joint radius damping curve of the bone chain.
 
 |void| **set_root_bone**\ (\ index\: :ref:`int<class_int>`, bone\: :ref:`int<class_int>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_root_bone>`
 
-Sets the root bone index of the bone chain.
+Đặt chỉ mục xương gốc của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -1235,7 +1235,7 @@ Sets the root bone index of the bone chain.
 
 |void| **set_root_bone_name**\ (\ index\: :ref:`int<class_int>`, bone_name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_root_bone_name>`
 
-Sets the root bone name of the bone chain.
+Đặt tên xương gốc của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -1247,13 +1247,13 @@ Sets the root bone name of the bone chain.
 
 |void| **set_rotation_axis**\ (\ index\: :ref:`int<class_int>`, axis\: :ref:`RotationAxis<enum_SkeletonModifier3D_RotationAxis>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_rotation_axis>`
 
-Sets the rotation axis of the bone chain. If set to a specific axis, it acts like a hinge joint. The value is cached in each joint setting in the joint list.
+Đặt trục xoay của chuỗi xương. Nếu được đặt thành một trục cụ thể, nó hoạt động như một khớp bản lề. Giá trị được lưu vào bộ nhớ đệm trong từng thiết lập khớp của danh sách khớp.
 
-The axes are based on the reference pose's space, if ``axis`` is :ref:`SkeletonModifier3D.ROTATION_AXIS_CUSTOM<class_SkeletonModifier3D_constant_ROTATION_AXIS_CUSTOM>`, you can specify any axis.
+Các trục dựa trên không gian của tư thế tham chiếu. Nếu ``axis`` là :ref:`SkeletonModifier3D.ROTATION_AXIS_CUSTOM<class_SkeletonModifier3D_constant_ROTATION_AXIS_CUSTOM>`, bạn có thể chỉ định bất kỳ trục nào.
 
-In here, the reference pose is the bone pose immediately before the simulation.
+Ở đây, tư thế tham chiếu là tư thế xương ngay trước khi mô phỏng.
 
-\ **Note:** The rotation axis vector and the forward vector shouldn't be colinear to avoid unintended rotation since **SpringBoneSimulator3D** does not factor in twisting forces.
+\ **Lưu ý:** Vector trục xoay và vector hướng tiến không nên đồng phẳng để tránh xoay ngoài ý muốn, vì **SpringBoneSimulator3D** không tính đến các lực xoắn.
 
 .. rst-class:: classref-item-separator
 
@@ -1265,11 +1265,11 @@ In here, the reference pose is the bone pose immediately before the simulation.
 
 |void| **set_rotation_axis_vector**\ (\ index\: :ref:`int<class_int>`, vector\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_rotation_axis_vector>`
 
-Sets the rotation axis vector of the bone chain. The value is cached in each joint setting in the joint list.
+Đặt vector trục xoay của chuỗi xương. Giá trị được lưu vào bộ nhớ đệm trong từng thiết lập khớp của danh sách khớp.
 
-This vector is normalized by an internal process and represents the axis around which the bone chain can rotate.
+Vector này được chuẩn hóa bằng một quy trình nội bộ và biểu diễn trục mà chuỗi xương có thể xoay quanh.
 
-If the vector length is ``0``, it is considered synonymous with :ref:`SkeletonModifier3D.ROTATION_AXIS_ALL<class_SkeletonModifier3D_constant_ROTATION_AXIS_ALL>`.
+Nếu độ dài vector là ``0``, nó được xem là đồng nghĩa với :ref:`SkeletonModifier3D.ROTATION_AXIS_ALL<class_SkeletonModifier3D_constant_ROTATION_AXIS_ALL>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1281,11 +1281,11 @@ If the vector length is ``0``, it is considered synonymous with :ref:`SkeletonMo
 
 |void| **set_stiffness**\ (\ index\: :ref:`int<class_int>`, stiffness\: :ref:`float<class_float>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_stiffness>`
 
-Sets the stiffness force of the bone chain. The greater the value, the faster it recovers to its initial pose.
+Đặt lực độ cứng của chuỗi xương. Giá trị càng lớn thì chuỗi xương phục hồi về tư thế ban đầu càng nhanh.
 
-If ``stiffness`` is ``0``, the modified pose will not return to the original pose.
+Nếu ``stiffness`` là ``0``, tư thế đã sửa đổi sẽ không trở về tư thế ban đầu.
 
-The value is scaled by :ref:`set_stiffness_damping_curve()<class_SpringBoneSimulator3D_method_set_stiffness_damping_curve>` and cached in each joint setting in the joint list.
+Giá trị được nhân tỷ lệ với :ref:`set_stiffness_damping_curve()<class_SpringBoneSimulator3D_method_set_stiffness_damping_curve>` và lưu vào bộ nhớ đệm trong từng thiết lập khớp của danh sách khớp.
 
 .. rst-class:: classref-item-separator
 
@@ -1297,14 +1297,14 @@ The value is scaled by :ref:`set_stiffness_damping_curve()<class_SpringBoneSimul
 
 |void| **set_stiffness_damping_curve**\ (\ index\: :ref:`int<class_int>`, curve\: :ref:`Curve<class_Curve>`\ ) :ref:`🔗<class_SpringBoneSimulator3D_method_set_stiffness_damping_curve>`
 
-Sets the stiffness force damping curve of the bone chain.
+Đặt đường cong giảm chấn lực độ cứng của chuỗi xương.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của đối tượng.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận thêm bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một đối tượng để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

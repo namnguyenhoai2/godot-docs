@@ -10,27 +10,27 @@
 ShaderInclude
 =============
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A snippet of shader code to be included in a :ref:`Shader<class_Shader>` with ``#include``.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A shader include file, saved with the ``.gdshaderinc`` extension. This class allows you to define a custom shader snippet that can be included in a :ref:`Shader<class_Shader>` by using the preprocessor directive ``#include``, followed by the file path (e.g. ``#include "res://shader_lib.gdshaderinc"``). The snippet doesn't have to be a valid shader on its own.
+Một đoạn mã shader được đưa vào một :ref:`Shader<class_Shader>` với ``#include``.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Tệp include của shader, được lưu với phần mở rộng ``.gdshaderinc``. Lớp này cho phép bạn định nghĩa một đoạn mã shader tùy chỉnh có thể được đưa vào một :ref:`Shader<class_Shader>` bằng cách sử dụng chỉ thị tiền xử lý ``#include``, theo sau là đường dẫn tệp (ví dụ: ``#include "res://shader_lib.gdshaderinc"``). Đoạn mã không nhất thiết phải là một shader hợp lệ khi đứng riêng.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Shader preprocessor <../tutorials/shaders/shader_reference/shader_preprocessor>`
+- :doc:`Bộ tiền xử lý shader <../tutorials/shaders/shader_reference/shader_preprocessor>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -46,8 +46,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ShaderInclude_property_code:
 
@@ -60,14 +60,14 @@ Property Descriptions
 - |void| **set_code**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_code**\ (\ )
 
-Returns the code of the shader include file. The returned text is what the user has written, not the full generated code used internally.
+Trả về mã của tệp include shader. Văn bản được trả về là nội dung người dùng đã viết, không phải toàn bộ mã được tạo và sử dụng nội bộ.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

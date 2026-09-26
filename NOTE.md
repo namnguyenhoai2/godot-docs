@@ -63,3 +63,22 @@ uv run sphinx-build -b dummy --keep-going . _build/check
 host on R2
 300baicodethieunhi.com/godot
 300baicodethieunhi.com/react
+
+
+class_transform2d.rst
+class_transform3d.rst
+class_treeitem.rst
+class_tween.rst
+class_rdpipelinecolorblendstateattachment.rst
+class_rect2.rst
+class_rect2i.rst
+class_renderingdevice.rst
+class_renderingserver.rst
+class_resourceimportercsvtranslation.rst
+class_richtextlabel.rst
+class_signal.rst
+class_textedit.rst
+class_textserver.rst
+class_tilemap.rst
+class_tilemaplayer.rst
+

@@ -10,27 +10,27 @@
 TriangleMesh
 ============
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Triangle geometry for efficient, physicsless intersection queries.
+Hình học tam giác để thực hiện các truy vấn giao cắt không cần vật lý một cách hiệu quả.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Creates a bounding volume hierarchy (BVH) tree structure around triangle geometry.
+Tạo cấu trúc cây phân cấp thể tích bao quanh (BVH) cho hình học tam giác.
 
-The triangle BVH tree can be used for efficient intersection queries without involving a physics engine.
+Cây BVH tam giác có thể được sử dụng để thực hiện các truy vấn giao cắt hiệu quả mà không cần đến physics engine.
 
-For example, this can be used in editor tools to select objects with complex shapes based on the mouse cursor position.
+Ví dụ: có thể sử dụng tính năng này trong các công cụ editor để chọn các đối tượng có hình dạng phức tạp dựa trên vị trí con trỏ chuột.
 
-\ **Performance:** Creating the BVH tree for complex geometry is a slow process and best done in a background thread.
+\ **Hiệu năng:** Việc tạo cây BVH cho hình học phức tạp là một quá trình chậm và tốt nhất nên được thực hiện trong một background thread.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -51,8 +51,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_TriangleMesh_method_create_from_faces:
 
@@ -60,9 +60,9 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **create_from_faces**\ (\ faces\: :ref:`PackedVector3Array<class_PackedVector3Array>`\ ) :ref:`🔗<class_TriangleMesh_method_create_from_faces>`
 
-Creates the BVH tree from an array of faces. Each 3 vertices of the input ``faces`` array represent one triangle (face).
+Tạo cây BVH từ một mảng các mặt. Mỗi 3 đỉnh của mảng ``faces`` đầu vào biểu diễn một tam giác (mặt).
 
-Returns ``true`` if the tree is successfully built, ``false`` otherwise.
+Trả về ``true`` nếu cây được xây dựng thành công, nếu không thì trả về ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -74,7 +74,7 @@ Returns ``true`` if the tree is successfully built, ``false`` otherwise.
 
 :ref:`PackedVector3Array<class_PackedVector3Array>` **get_faces**\ (\ ) |const| :ref:`🔗<class_TriangleMesh_method_get_faces>`
 
-Returns a copy of the geometry faces. Each 3 vertices of the array represent one triangle (face).
+Trả về một bản sao của các mặt hình học. Mỗi 3 đỉnh của mảng biểu diễn một tam giác (mặt).
 
 .. rst-class:: classref-item-separator
 
@@ -86,19 +86,19 @@ Returns a copy of the geometry faces. Each 3 vertices of the array represent one
 
 :ref:`Dictionary<class_Dictionary>` **intersect_ray**\ (\ begin\: :ref:`Vector3<class_Vector3>`, dir\: :ref:`Vector3<class_Vector3>`\ ) |const| :ref:`🔗<class_TriangleMesh_method_intersect_ray>`
 
-Tests for intersection with a ray starting at ``begin`` and facing ``dir`` and extending toward infinity.
+Kiểm tra giao cắt với một tia bắt đầu tại ``begin``, hướng theo ``dir`` và kéo dài đến vô hạn.
 
-If an intersection with a triangle happens, returns a :ref:`Dictionary<class_Dictionary>` with the following fields:
+Nếu xảy ra giao cắt với một tam giác, trả về một :ref:`Dictionary<class_Dictionary>` có các trường sau:
 
-\ ``position``: The position on the intersected triangle.
+\ ``position``: Vị trí trên tam giác được giao cắt.
 
-\ ``normal``: The normal of the intersected triangle.
+\ ``normal``: Pháp tuyến của tam giác được giao cắt.
 
-\ ``face_index``: The index of the intersected triangle.
+\ ``face_index``: Chỉ số của tam giác được giao cắt.
 
-Returns an empty :ref:`Dictionary<class_Dictionary>` if no intersection happens.
+Trả về một :ref:`Dictionary<class_Dictionary>` rỗng nếu không xảy ra giao cắt.
 
-See also :ref:`intersect_segment()<class_TriangleMesh_method_intersect_segment>`, which is similar but uses a finite-length segment.
+Xem thêm :ref:`intersect_segment()<class_TriangleMesh_method_intersect_segment>`, tương tự nhưng sử dụng một đoạn có độ dài hữu hạn.
 
 .. rst-class:: classref-item-separator
 
@@ -110,26 +110,26 @@ See also :ref:`intersect_segment()<class_TriangleMesh_method_intersect_segment>`
 
 :ref:`Dictionary<class_Dictionary>` **intersect_segment**\ (\ begin\: :ref:`Vector3<class_Vector3>`, end\: :ref:`Vector3<class_Vector3>`\ ) |const| :ref:`🔗<class_TriangleMesh_method_intersect_segment>`
 
-Tests for intersection with a segment going from ``begin`` to ``end``.
+Kiểm tra giao cắt với một đoạn đi từ ``begin`` đến ``end``.
 
-If an intersection with a triangle happens returns a :ref:`Dictionary<class_Dictionary>` with the following fields:
+Nếu xảy ra giao cắt với một tam giác, trả về một :ref:`Dictionary<class_Dictionary>` có các trường sau:
 
-\ ``position``: The position on the intersected triangle.
+\ ``position``: Vị trí trên tam giác được giao cắt.
 
-\ ``normal``: The normal of the intersected triangle.
+\ ``normal``: Pháp tuyến của tam giác được giao cắt.
 
-\ ``face_index``: The index of the intersected triangle.
+\ ``face_index``: Chỉ số của tam giác được giao cắt.
 
-Returns an empty :ref:`Dictionary<class_Dictionary>` if no intersection happens.
+Trả về một :ref:`Dictionary<class_Dictionary>` rỗng nếu không xảy ra giao cắt.
 
-See also :ref:`intersect_ray()<class_TriangleMesh_method_intersect_ray>`, which is similar but uses an infinite-length ray.
+Xem thêm :ref:`intersect_ray()<class_TriangleMesh_method_intersect_ray>`, tương tự nhưng sử dụng một tia có độ dài vô hạn.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

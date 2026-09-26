@@ -10,41 +10,41 @@
 RetargetModifier3D
 ==================
 
-**Inherits:** :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A modifier to transfer parent skeleton poses (or global poses) to child skeletons in model space with different rests.
+Một modifier để chuyển các tư thế của skeleton cha (hoặc các tư thế toàn cục) sang các skeleton con trong không gian mô hình với các rest khác nhau.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Retrieves the pose (or global pose) relative to the parent Skeleton's rest in model space and transfers it to the child Skeleton.
+Lấy tư thế (hoặc tư thế toàn cục) tương đối so với rest của Skeleton cha trong không gian mô hình và chuyển tư thế đó sang Skeleton con.
 
-This modifier rewrites the pose of the child skeleton directly in the parent skeleton's update process. This means that it overwrites the mapped bone pose set in the normal process on the target skeleton. If you want to set the target skeleton bone pose after retargeting, you will need to add a :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` child to the target skeleton and thereby modify the pose.
+Modifier này ghi đè trực tiếp tư thế của skeleton con trong quá trình cập nhật skeleton cha. Điều này có nghĩa là nó ghi đè tư thế xương được ánh xạ đã thiết lập trong quy trình thông thường trên skeleton đích. Nếu muốn thiết lập tư thế xương của skeleton đích sau khi retarget, bạn cần thêm một :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` con vào skeleton đích và do đó sửa đổi tư thế.
 
-\ **Note:** When the :ref:`use_global_pose<class_RetargetModifier3D_property_use_global_pose>` is enabled, even if it is an unmapped bone, it can cause visual problems because the global pose is applied ignoring the parent bone's pose **if it has mapped bone children**. See also :ref:`use_global_pose<class_RetargetModifier3D_property_use_global_pose>`.
+\ **Lưu ý:** Khi :ref:`use_global_pose<class_RetargetModifier3D_property_use_global_pose>` được bật, ngay cả khi đó là một xương không được ánh xạ, nó vẫn có thể gây ra vấn đề hiển thị vì tư thế toàn cục được áp dụng mà bỏ qua tư thế của xương cha **nếu nó có các xương con được ánh xạ**. Xem thêm :ref:`use_global_pose<class_RetargetModifier3D_property_use_global_pose>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------------------------------+---------------------------------------------------------------------------+-----------+
-   | |bitfield|\[:ref:`TransformFlag<enum_RetargetModifier3D_TransformFlag>`\] | :ref:`enable<class_RetargetModifier3D_property_enable>`                   | ``7``     |
-   +---------------------------------------------------------------------------+---------------------------------------------------------------------------+-----------+
-   | :ref:`SkeletonProfile<class_SkeletonProfile>`                             | :ref:`profile<class_RetargetModifier3D_property_profile>`                 |           |
-   +---------------------------------------------------------------------------+---------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                                   | :ref:`use_global_pose<class_RetargetModifier3D_property_use_global_pose>` | ``false`` |
-   +---------------------------------------------------------------------------+---------------------------------------------------------------------------+-----------+
+   +----------------------------------------------------------------------------+---------------------------------------------------------------------------+-----------+
+   | |bitfield|\[:ref:`TransformFlag <enum_RetargetModifier3D_TransformFlag>`\] | :ref:`enable<class_RetargetModifier3D_property_enable>`                   | ``7``     |
+   +----------------------------------------------------------------------------+---------------------------------------------------------------------------+-----------+
+   | :ref:`SkeletonProfile<class_SkeletonProfile>`                              | :ref:`profile<class_RetargetModifier3D_property_profile>`                 |           |
+   +----------------------------------------------------------------------------+---------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                                    | :ref:`use_global_pose<class_RetargetModifier3D_property_use_global_pose>` | ``false`` |
+   +----------------------------------------------------------------------------+---------------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -69,14 +69,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_RetargetModifier3D_TransformFlag:
 
 .. rst-class:: classref-enumeration
 
-flags **TransformFlag**: :ref:`🔗<enum_RetargetModifier3D_TransformFlag>`
+các cờ **TransformFlag**: :ref:`🔗 <enum_RetargetModifier3D_TransformFlag>`
 
 .. _class_RetargetModifier3D_constant_TRANSFORM_FLAG_POSITION:
 
@@ -84,7 +84,7 @@ flags **TransformFlag**: :ref:`🔗<enum_RetargetModifier3D_TransformFlag>`
 
 :ref:`TransformFlag<enum_RetargetModifier3D_TransformFlag>` **TRANSFORM_FLAG_POSITION** = ``1``
 
-If set, allows to retarget the position.
+Nếu được đặt, cho phép retarget vị trí.
 
 .. _class_RetargetModifier3D_constant_TRANSFORM_FLAG_ROTATION:
 
@@ -92,7 +92,7 @@ If set, allows to retarget the position.
 
 :ref:`TransformFlag<enum_RetargetModifier3D_TransformFlag>` **TRANSFORM_FLAG_ROTATION** = ``2``
 
-If set, allows to retarget the rotation.
+Nếu được đặt, cho phép retarget phép xoay.
 
 .. _class_RetargetModifier3D_constant_TRANSFORM_FLAG_SCALE:
 
@@ -100,7 +100,7 @@ If set, allows to retarget the rotation.
 
 :ref:`TransformFlag<enum_RetargetModifier3D_TransformFlag>` **TRANSFORM_FLAG_SCALE** = ``4``
 
-If set, allows to retarget the scale.
+Nếu được đặt, cho phép retarget tỷ lệ.
 
 .. _class_RetargetModifier3D_constant_TRANSFORM_FLAG_ALL:
 
@@ -108,7 +108,7 @@ If set, allows to retarget the scale.
 
 :ref:`TransformFlag<enum_RetargetModifier3D_TransformFlag>` **TRANSFORM_FLAG_ALL** = ``7``
 
-If set, allows to retarget the position/rotation/scale.
+Nếu được đặt, cho phép retarget vị trí/phép xoay/tỷ lệ.
 
 .. rst-class:: classref-section-separator
 
@@ -116,8 +116,8 @@ If set, allows to retarget the position/rotation/scale.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_RetargetModifier3D_property_enable:
 
@@ -130,7 +130,7 @@ Property Descriptions
 - |void| **set_enable_flags**\ (\ value\: |bitfield|\[:ref:`TransformFlag<enum_RetargetModifier3D_TransformFlag>`\]\ )
 - |bitfield|\[:ref:`TransformFlag<enum_RetargetModifier3D_TransformFlag>`\] **get_enable_flags**\ (\ )
 
-Flags to control the process of the transform elements individually when :ref:`use_global_pose<class_RetargetModifier3D_property_use_global_pose>` is disabled.
+Các cờ để điều khiển riêng lẻ quá trình xử lý các phần tử biến đổi khi :ref:`use_global_pose<class_RetargetModifier3D_property_use_global_pose>` bị tắt.
 
 .. rst-class:: classref-item-separator
 
@@ -140,14 +140,14 @@ Flags to control the process of the transform elements individually when :ref:`u
 
 .. rst-class:: classref-property
 
-:ref:`SkeletonProfile<class_SkeletonProfile>` **profile** :ref:`🔗<class_RetargetModifier3D_property_profile>`
+:ref:`SkeletonProfile<class_SkeletonProfile>` **profile** :ref:`🔗 <class_RetargetModifier3D_property_profile>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_profile**\ (\ value\: :ref:`SkeletonProfile<class_SkeletonProfile>`\ )
 - :ref:`SkeletonProfile<class_SkeletonProfile>` **get_profile**\ (\ )
 
-:ref:`SkeletonProfile<class_SkeletonProfile>` for retargeting bones with names matching the bone list.
+:ref:`SkeletonProfile<class_SkeletonProfile>` để retarget các xương có tên khớp với danh sách xương.
 
 .. rst-class:: classref-item-separator
 
@@ -164,15 +164,15 @@ Flags to control the process of the transform elements individually when :ref:`u
 - |void| **set_use_global_pose**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_using_global_pose**\ (\ )
 
-If ``false``, in case the target skeleton has fewer bones than the source skeleton, the source bone parent's transform will be ignored.
+Nếu ``false``, trong trường hợp skeleton đích có ít xương hơn skeleton nguồn, phép biến đổi của xương cha nguồn sẽ bị bỏ qua.
 
-Instead, it is possible to retarget between models with different body shapes, and position, rotation, and scale can be retargeted separately.
+Thay vào đó, có thể retarget giữa các mô hình có hình dạng cơ thể khác nhau, đồng thời retarget riêng vị trí, phép xoay và tỷ lệ.
 
-If ``true``, retargeting is performed taking into account global pose.
+Nếu ``true``, việc retarget được thực hiện có tính đến tư thế toàn cục.
 
-In case the target skeleton has fewer bones than the source skeleton, the source bone parent's transform is taken into account. However, bone length between skeletons must match exactly, if not, the bones will be forced to expand or shrink.
+Trong trường hợp skeleton đích có ít xương hơn skeleton nguồn, phép biến đổi của xương cha nguồn sẽ được tính đến. Tuy nhiên, độ dài xương giữa các skeleton phải khớp chính xác; nếu không, các xương sẽ bị buộc phải giãn ra hoặc thu nhỏ lại.
 
-This is useful for using dummy bone with length ``0`` to match postures when retargeting between models with different number of bones.
+Điều này hữu ích khi sử dụng xương giả có độ dài ``0`` để khớp các tư thế khi retarget giữa các mô hình có số lượng xương khác nhau.
 
 .. rst-class:: classref-section-separator
 
@@ -180,8 +180,8 @@ This is useful for using dummy bone with length ``0`` to match postures when ret
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_RetargetModifier3D_method_is_position_enabled:
 
@@ -189,7 +189,7 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **is_position_enabled**\ (\ ) |const| :ref:`🔗<class_RetargetModifier3D_method_is_position_enabled>`
 
-Returns ``true`` if :ref:`enable<class_RetargetModifier3D_property_enable>` has :ref:`TRANSFORM_FLAG_POSITION<class_RetargetModifier3D_constant_TRANSFORM_FLAG_POSITION>`.
+Trả về ``true`` nếu :ref:`enable<class_RetargetModifier3D_property_enable>` có :ref:`TRANSFORM_FLAG_POSITION<class_RetargetModifier3D_constant_TRANSFORM_FLAG_POSITION>`.
 
 .. rst-class:: classref-item-separator
 
@@ -201,7 +201,7 @@ Returns ``true`` if :ref:`enable<class_RetargetModifier3D_property_enable>` has 
 
 :ref:`bool<class_bool>` **is_rotation_enabled**\ (\ ) |const| :ref:`🔗<class_RetargetModifier3D_method_is_rotation_enabled>`
 
-Returns ``true`` if :ref:`enable<class_RetargetModifier3D_property_enable>` has :ref:`TRANSFORM_FLAG_ROTATION<class_RetargetModifier3D_constant_TRANSFORM_FLAG_ROTATION>`.
+Trả về ``true`` nếu :ref:`enable<class_RetargetModifier3D_property_enable>` có :ref:`TRANSFORM_FLAG_ROTATION<class_RetargetModifier3D_constant_TRANSFORM_FLAG_ROTATION>`.
 
 .. rst-class:: classref-item-separator
 
@@ -213,7 +213,7 @@ Returns ``true`` if :ref:`enable<class_RetargetModifier3D_property_enable>` has 
 
 :ref:`bool<class_bool>` **is_scale_enabled**\ (\ ) |const| :ref:`🔗<class_RetargetModifier3D_method_is_scale_enabled>`
 
-Returns ``true`` if :ref:`enable<class_RetargetModifier3D_property_enable>` has :ref:`TRANSFORM_FLAG_SCALE<class_RetargetModifier3D_constant_TRANSFORM_FLAG_SCALE>`.
+Trả về ``true`` nếu :ref:`enable<class_RetargetModifier3D_property_enable>` có :ref:`TRANSFORM_FLAG_SCALE<class_RetargetModifier3D_constant_TRANSFORM_FLAG_SCALE>`.
 
 .. rst-class:: classref-item-separator
 
@@ -225,7 +225,7 @@ Returns ``true`` if :ref:`enable<class_RetargetModifier3D_property_enable>` has 
 
 |void| **set_position_enabled**\ (\ enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_RetargetModifier3D_method_set_position_enabled>`
 
-Sets :ref:`TRANSFORM_FLAG_POSITION<class_RetargetModifier3D_constant_TRANSFORM_FLAG_POSITION>` into :ref:`enable<class_RetargetModifier3D_property_enable>`.
+Đặt :ref:`TRANSFORM_FLAG_POSITION<class_RetargetModifier3D_constant_TRANSFORM_FLAG_POSITION>` vào :ref:`enable<class_RetargetModifier3D_property_enable>`.
 
 .. rst-class:: classref-item-separator
 
@@ -237,7 +237,7 @@ Sets :ref:`TRANSFORM_FLAG_POSITION<class_RetargetModifier3D_constant_TRANSFORM_F
 
 |void| **set_rotation_enabled**\ (\ enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_RetargetModifier3D_method_set_rotation_enabled>`
 
-Sets :ref:`TRANSFORM_FLAG_ROTATION<class_RetargetModifier3D_constant_TRANSFORM_FLAG_ROTATION>` into :ref:`enable<class_RetargetModifier3D_property_enable>`.
+Đặt :ref:`TRANSFORM_FLAG_ROTATION<class_RetargetModifier3D_constant_TRANSFORM_FLAG_ROTATION>` vào :ref:`enable<class_RetargetModifier3D_property_enable>`.
 
 .. rst-class:: classref-item-separator
 
@@ -249,14 +249,14 @@ Sets :ref:`TRANSFORM_FLAG_ROTATION<class_RetargetModifier3D_constant_TRANSFORM_F
 
 |void| **set_scale_enabled**\ (\ enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_RetargetModifier3D_method_set_scale_enabled>`
 
-Sets :ref:`TRANSFORM_FLAG_SCALE<class_RetargetModifier3D_constant_TRANSFORM_FLAG_SCALE>` into :ref:`enable<class_RetargetModifier3D_property_enable>`.
+Đặt :ref:`TRANSFORM_FLAG_SCALE<class_RetargetModifier3D_constant_TRANSFORM_FLAG_SCALE>` vào :ref:`enable<class_RetargetModifier3D_property_enable>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

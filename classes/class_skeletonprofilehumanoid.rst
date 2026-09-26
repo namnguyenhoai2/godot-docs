@@ -10,18 +10,18 @@
 SkeletonProfileHumanoid
 =======================
 
-**Inherits:** :ref:`SkeletonProfile<class_SkeletonProfile>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`SkeletonProfile<class_SkeletonProfile>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A humanoid :ref:`SkeletonProfile<class_SkeletonProfile>` preset.
+Một preset humanoid :ref:`SkeletonProfile<class_SkeletonProfile>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A :ref:`SkeletonProfile<class_SkeletonProfile>` as a preset that is optimized for the human form. This exists for standardization, so all parameters are read-only.
+Một :ref:`SkeletonProfile<class_SkeletonProfile>` dưới dạng preset được tối ưu hóa cho hình dạng con người. Tính năng này tồn tại để chuẩn hóa, vì vậy tất cả tham số đều chỉ đọc.
 
-A humanoid skeleton profile contains 56 bones divided into 4 groups: ``"Body"``, ``"Face"``, ``"LeftHand"``, and ``"RightHand"``. It is structured as follows:
+Một skeleton profile humanoid chứa 56 xương được chia thành 4 nhóm: ``"Body"``, ``"Face"``, ``"LeftHand"`` và ``"RightHand"``. Cấu trúc của nó như sau:
 
 .. code:: text
 
@@ -84,35 +84,35 @@ A humanoid skeleton profile contains 56 bones divided into 4 groups: ``"Body"``,
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- :doc:`Retargeting 3D Skeletons <../tutorials/assets_pipeline/retargeting_3d_skeletons>`
+- :doc:`Định tuyến lại các skeleton 3D <../tutorials/assets_pipeline/retargeting_3d_skeletons>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------+-----------------+------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`               | bone_size       | ``56`` (overrides :ref:`SkeletonProfile<class_SkeletonProfile_property_bone_size>`)            |
-   +-------------------------------------+-----------------+------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`               | group_size      | ``4`` (overrides :ref:`SkeletonProfile<class_SkeletonProfile_property_group_size>`)            |
-   +-------------------------------------+-----------------+------------------------------------------------------------------------------------------------+
-   | :ref:`StringName<class_StringName>` | root_bone       | ``&"Root"`` (overrides :ref:`SkeletonProfile<class_SkeletonProfile_property_root_bone>`)       |
-   +-------------------------------------+-----------------+------------------------------------------------------------------------------------------------+
-   | :ref:`StringName<class_StringName>` | scale_base_bone | ``&"Hips"`` (overrides :ref:`SkeletonProfile<class_SkeletonProfile_property_scale_base_bone>`) |
-   +-------------------------------------+-----------------+------------------------------------------------------------------------------------------------+
+   +-------------------------------------+-----------------+---------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`               | bone_size       | ``56`` (ghi đè :ref:`SkeletonProfile<class_SkeletonProfile_property_bone_size>`)            |
+   +-------------------------------------+-----------------+---------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`               | group_size      | ``4`` (ghi đè :ref:`SkeletonProfile<class_SkeletonProfile_property_group_size>`)            |
+   +-------------------------------------+-----------------+---------------------------------------------------------------------------------------------+
+   | :ref:`StringName<class_StringName>` | root_bone       | ``&"Root"`` (ghi đè :ref:`SkeletonProfile<class_SkeletonProfile_property_root_bone>`)       |
+   +-------------------------------------+-----------------+---------------------------------------------------------------------------------------------+
+   | :ref:`StringName<class_StringName>` | scale_base_bone | ``&"Hips"`` (ghi đè :ref:`SkeletonProfile<class_SkeletonProfile_property_scale_base_bone>`) |
+   +-------------------------------------+-----------------+---------------------------------------------------------------------------------------------+
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

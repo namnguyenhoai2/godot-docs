@@ -10,23 +10,23 @@
 TranslationDomain
 =================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A self-contained collection of :ref:`Translation<class_Translation>` resources.
+Một tập hợp độc lập của các tài nguyên :ref:`Translation<class_Translation>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**TranslationDomain** is a self-contained collection of :ref:`Translation<class_Translation>` resources. Translations can be added to or removed from it.
+**TranslationDomain** là một tập hợp độc lập của các tài nguyên :ref:`Translation<class_Translation>`. Có thể thêm hoặc xóa bản dịch khỏi đó.
 
-If you're working with the main translation domain, it is more convenient to use the wrap methods on :ref:`TranslationServer<class_TranslationServer>`.
+Nếu bạn đang làm việc với translation domain chính, sẽ thuận tiện hơn khi sử dụng các phương thức wrap trên :ref:`TranslationServer<class_TranslationServer>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -55,8 +55,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -95,8 +95,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_TranslationDomain_property_enabled:
 
@@ -109,7 +109,7 @@ Property Descriptions
 - |void| **set_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_enabled**\ (\ )
 
-If ``true``, translation is enabled. Otherwise, :ref:`translate()<class_TranslationDomain_method_translate>` and :ref:`translate_plural()<class_TranslationDomain_method_translate_plural>` will return the input message unchanged regardless of the current locale.
+Nếu ``true``, bản dịch được bật. Nếu không, :ref:`translate()<class_TranslationDomain_method_translate>` và :ref:`translate_plural()<class_TranslationDomain_method_translate_plural>` sẽ trả về thông báo đầu vào không thay đổi bất kể locale hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -126,9 +126,9 @@ If ``true``, translation is enabled. Otherwise, :ref:`translate()<class_Translat
 - |void| **set_pseudolocalization_accents_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_pseudolocalization_accents_enabled**\ (\ )
 
-Replace all characters with their accented variants during pseudolocalization.
+Thay thế tất cả ký tự bằng các biến thể có dấu trong quá trình giả bản địa hóa.
 
-\ **Note:** Updating this property does not automatically update texts in the scene tree. Please propagate the :ref:`MainLoop.NOTIFICATION_TRANSLATION_CHANGED<class_MainLoop_constant_NOTIFICATION_TRANSLATION_CHANGED>` notification manually after you have finished modifying pseudolocalization related options.
+\ **Lưu ý:** Việc cập nhật thuộc tính này không tự động cập nhật văn bản trong scene tree. Vui lòng truyền thông báo :ref:`MainLoop.NOTIFICATION_TRANSLATION_CHANGED<class_MainLoop_constant_NOTIFICATION_TRANSLATION_CHANGED>` theo cách thủ công sau khi hoàn tất việc sửa đổi các tùy chọn liên quan đến giả bản địa hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -145,9 +145,9 @@ Replace all characters with their accented variants during pseudolocalization.
 - |void| **set_pseudolocalization_double_vowels_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_pseudolocalization_double_vowels_enabled**\ (\ )
 
-Double vowels in strings during pseudolocalization to simulate the lengthening of text due to localization.
+Nhân đôi nguyên âm trong các chuỗi trong quá trình giả bản địa hóa để mô phỏng việc văn bản dài ra do bản địa hóa.
 
-\ **Note:** Updating this property does not automatically update texts in the scene tree. Please propagate the :ref:`MainLoop.NOTIFICATION_TRANSLATION_CHANGED<class_MainLoop_constant_NOTIFICATION_TRANSLATION_CHANGED>` notification manually after you have finished modifying pseudolocalization related options.
+\ **Lưu ý:** Việc cập nhật thuộc tính này không tự động cập nhật văn bản trong scene tree. Vui lòng truyền thông báo :ref:`MainLoop.NOTIFICATION_TRANSLATION_CHANGED<class_MainLoop_constant_NOTIFICATION_TRANSLATION_CHANGED>` theo cách thủ công sau khi hoàn tất việc sửa đổi các tùy chọn liên quan đến giả bản địa hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -164,9 +164,9 @@ Double vowels in strings during pseudolocalization to simulate the lengthening o
 - |void| **set_pseudolocalization_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_pseudolocalization_enabled**\ (\ )
 
-If ``true``, enables pseudolocalization for the project. This can be used to spot untranslatable strings or layout issues that may occur once the project is localized to languages that have longer strings than the source language.
+Nếu ``true``, bật tính năng giả bản địa hóa cho dự án. Tính năng này có thể được dùng để phát hiện các chuỗi không thể dịch hoặc các vấn đề về bố cục có thể xảy ra khi dự án được bản địa hóa sang những ngôn ngữ có chuỗi dài hơn ngôn ngữ nguồn.
 
-\ **Note:** Updating this property does not automatically update texts in the scene tree. Please propagate the :ref:`MainLoop.NOTIFICATION_TRANSLATION_CHANGED<class_MainLoop_constant_NOTIFICATION_TRANSLATION_CHANGED>` notification manually after you have finished modifying pseudolocalization related options.
+\ **Lưu ý:** Việc cập nhật thuộc tính này không tự động cập nhật văn bản trong scene tree. Vui lòng truyền thông báo :ref:`MainLoop.NOTIFICATION_TRANSLATION_CHANGED<class_MainLoop_constant_NOTIFICATION_TRANSLATION_CHANGED>` theo cách thủ công sau khi hoàn tất việc sửa đổi các tùy chọn liên quan đến giả bản địa hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -183,9 +183,9 @@ If ``true``, enables pseudolocalization for the project. This can be used to spo
 - |void| **set_pseudolocalization_expansion_ratio**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_pseudolocalization_expansion_ratio**\ (\ )
 
-The expansion ratio to use during pseudolocalization. A value of ``0.3`` is sufficient for most practical purposes, and will increase the length of each string by 30%.
+Tỷ lệ mở rộng được sử dụng trong quá trình giả bản địa hóa. Giá trị ``0.3`` là đủ cho hầu hết mục đích thực tế và sẽ làm tăng độ dài của mỗi chuỗi thêm 30%.
 
-\ **Note:** Updating this property does not automatically update texts in the scene tree. Please propagate the :ref:`MainLoop.NOTIFICATION_TRANSLATION_CHANGED<class_MainLoop_constant_NOTIFICATION_TRANSLATION_CHANGED>` notification manually after you have finished modifying pseudolocalization related options.
+\ **Lưu ý:** Việc cập nhật thuộc tính này không tự động cập nhật văn bản trong scene tree. Vui lòng truyền thông báo :ref:`MainLoop.NOTIFICATION_TRANSLATION_CHANGED<class_MainLoop_constant_NOTIFICATION_TRANSLATION_CHANGED>` theo cách thủ công sau khi hoàn tất việc sửa đổi các tùy chọn liên quan đến giả bản địa hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -202,9 +202,9 @@ The expansion ratio to use during pseudolocalization. A value of ``0.3`` is suff
 - |void| **set_pseudolocalization_fake_bidi_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_pseudolocalization_fake_bidi_enabled**\ (\ )
 
-If ``true``, emulate bidirectional (right-to-left) text when pseudolocalization is enabled. This can be used to spot issues with RTL layout and UI mirroring that will crop up if the project is localized to RTL languages such as Arabic or Hebrew.
+Nếu ``true``, mô phỏng văn bản hai chiều (từ phải sang trái) khi bật giả bản địa hóa. Tính năng này có thể được dùng để phát hiện các vấn đề về bố cục RTL và việc phản chiếu UI, vốn sẽ xuất hiện nếu dự án được bản địa hóa sang các ngôn ngữ RTL như tiếng Ả Rập hoặc tiếng Do Thái.
 
-\ **Note:** Updating this property does not automatically update texts in the scene tree. Please propagate the :ref:`MainLoop.NOTIFICATION_TRANSLATION_CHANGED<class_MainLoop_constant_NOTIFICATION_TRANSLATION_CHANGED>` notification manually after you have finished modifying pseudolocalization related options.
+\ **Lưu ý:** Việc cập nhật thuộc tính này không tự động cập nhật văn bản trong scene tree. Vui lòng truyền thông báo :ref:`MainLoop.NOTIFICATION_TRANSLATION_CHANGED<class_MainLoop_constant_NOTIFICATION_TRANSLATION_CHANGED>` theo cách thủ công sau khi hoàn tất việc sửa đổi các tùy chọn liên quan đến giả bản địa hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -221,9 +221,9 @@ If ``true``, emulate bidirectional (right-to-left) text when pseudolocalization 
 - |void| **set_pseudolocalization_override_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_pseudolocalization_override_enabled**\ (\ )
 
-Replace all characters in the string with ``*``. Useful for finding non-localizable strings.
+Thay thế tất cả ký tự trong chuỗi bằng ``*``. Hữu ích để tìm các chuỗi không thể bản địa hóa.
 
-\ **Note:** Updating this property does not automatically update texts in the scene tree. Please propagate the :ref:`MainLoop.NOTIFICATION_TRANSLATION_CHANGED<class_MainLoop_constant_NOTIFICATION_TRANSLATION_CHANGED>` notification manually after you have finished modifying pseudolocalization related options.
+\ **Lưu ý:** Việc cập nhật thuộc tính này không tự động cập nhật văn bản trong scene tree. Vui lòng truyền thông báo :ref:`MainLoop.NOTIFICATION_TRANSLATION_CHANGED<class_MainLoop_constant_NOTIFICATION_TRANSLATION_CHANGED>` theo cách thủ công sau khi hoàn tất việc sửa đổi các tùy chọn liên quan đến giả bản địa hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -240,9 +240,9 @@ Replace all characters in the string with ``*``. Useful for finding non-localiza
 - |void| **set_pseudolocalization_prefix**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_pseudolocalization_prefix**\ (\ )
 
-Prefix that will be prepended to the pseudolocalized string.
+Tiền tố sẽ được thêm vào đầu chuỗi đã được giả bản địa hóa.
 
-\ **Note:** Updating this property does not automatically update texts in the scene tree. Please propagate the :ref:`MainLoop.NOTIFICATION_TRANSLATION_CHANGED<class_MainLoop_constant_NOTIFICATION_TRANSLATION_CHANGED>` notification manually after you have finished modifying pseudolocalization related options.
+\ **Lưu ý:** Việc cập nhật thuộc tính này không tự động cập nhật văn bản trong scene tree. Vui lòng truyền thông báo :ref:`MainLoop.NOTIFICATION_TRANSLATION_CHANGED<class_MainLoop_constant_NOTIFICATION_TRANSLATION_CHANGED>` theo cách thủ công sau khi hoàn tất việc sửa đổi các tùy chọn liên quan đến giả bản địa hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -259,9 +259,9 @@ Prefix that will be prepended to the pseudolocalized string.
 - |void| **set_pseudolocalization_skip_placeholders_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_pseudolocalization_skip_placeholders_enabled**\ (\ )
 
-Skip placeholders for string formatting like ``%s`` or ``%f`` during pseudolocalization. Useful to identify strings which need additional control characters to display correctly.
+Bỏ qua các placeholder dùng cho việc định dạng chuỗi như ``%s`` hoặc ``%f`` trong quá trình giả bản địa hóa. Hữu ích để xác định các chuỗi cần thêm ký tự điều khiển nhằm hiển thị chính xác.
 
-\ **Note:** Updating this property does not automatically update texts in the scene tree. Please propagate the :ref:`MainLoop.NOTIFICATION_TRANSLATION_CHANGED<class_MainLoop_constant_NOTIFICATION_TRANSLATION_CHANGED>` notification manually after you have finished modifying pseudolocalization related options.
+\ **Lưu ý:** Việc cập nhật thuộc tính này không tự động cập nhật văn bản trong scene tree. Vui lòng truyền thông báo :ref:`MainLoop.NOTIFICATION_TRANSLATION_CHANGED<class_MainLoop_constant_NOTIFICATION_TRANSLATION_CHANGED>` theo cách thủ công sau khi hoàn tất việc sửa đổi các tùy chọn liên quan đến giả bản địa hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -278,9 +278,9 @@ Skip placeholders for string formatting like ``%s`` or ``%f`` during pseudolocal
 - |void| **set_pseudolocalization_suffix**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_pseudolocalization_suffix**\ (\ )
 
-Suffix that will be appended to the pseudolocalized string.
+Hậu tố sẽ được thêm vào cuối chuỗi đã được giả bản địa hóa.
 
-\ **Note:** Updating this property does not automatically update texts in the scene tree. Please propagate the :ref:`MainLoop.NOTIFICATION_TRANSLATION_CHANGED<class_MainLoop_constant_NOTIFICATION_TRANSLATION_CHANGED>` notification manually after you have finished modifying pseudolocalization related options.
+\ **Lưu ý:** Việc cập nhật thuộc tính này không tự động cập nhật văn bản trong scene tree. Vui lòng truyền thông báo :ref:`MainLoop.NOTIFICATION_TRANSLATION_CHANGED<class_MainLoop_constant_NOTIFICATION_TRANSLATION_CHANGED>` theo cách thủ công sau khi hoàn tất việc sửa đổi các tùy chọn liên quan đến giả bản địa hóa.
 
 .. rst-class:: classref-section-separator
 
@@ -288,8 +288,8 @@ Suffix that will be appended to the pseudolocalized string.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_TranslationDomain_method_add_translation:
 
@@ -297,7 +297,7 @@ Method Descriptions
 
 |void| **add_translation**\ (\ translation\: :ref:`Translation<class_Translation>`\ ) :ref:`🔗<class_TranslationDomain_method_add_translation>`
 
-Adds a translation.
+Thêm một bản dịch.
 
 .. rst-class:: classref-item-separator
 
@@ -309,7 +309,7 @@ Adds a translation.
 
 |void| **clear**\ (\ ) :ref:`🔗<class_TranslationDomain_method_clear>`
 
-Removes all translations.
+Xóa tất cả bản dịch.
 
 .. rst-class:: classref-item-separator
 
@@ -321,7 +321,7 @@ Removes all translations.
 
 :ref:`Array<class_Array>`\[:ref:`Translation<class_Translation>`\] **find_translations**\ (\ locale\: :ref:`String<class_String>`, exact\: :ref:`bool<class_bool>`\ ) |const| :ref:`🔗<class_TranslationDomain_method_find_translations>`
 
-Returns the :ref:`Translation<class_Translation>` instances that match ``locale`` (see :ref:`TranslationServer.compare_locales()<class_TranslationServer_method_compare_locales>`). If ``exact`` is ``true``, only instances whose locale exactly equals ``locale`` will be returned.
+Trả về các instance :ref:`Translation<class_Translation>` khớp với ``locale`` (xem :ref:`TranslationServer.compare_locales()<class_TranslationServer_method_compare_locales>`). Nếu ``exact`` là ``true``, chỉ những instance có locale khớp chính xác với ``locale`` mới được trả về.
 
 .. rst-class:: classref-item-separator
 
@@ -333,7 +333,7 @@ Returns the :ref:`Translation<class_Translation>` instances that match ``locale`
 
 :ref:`String<class_String>` **get_locale_override**\ (\ ) |const| :ref:`🔗<class_TranslationDomain_method_get_locale_override>`
 
-Returns the locale override of the domain. Returns an empty string if locale override is disabled.
+Trả về locale override của domain. Trả về một chuỗi rỗng nếu locale override bị tắt.
 
 .. rst-class:: classref-item-separator
 
@@ -345,9 +345,9 @@ Returns the locale override of the domain. Returns an empty string if locale ove
 
 :ref:`Translation<class_Translation>` **get_translation_object**\ (\ locale\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_TranslationDomain_method_get_translation_object>`
 
-**Deprecated:** Use :ref:`find_translations()<class_TranslationDomain_method_find_translations>` instead.
+**Đã lỗi thời:** Thay vào đó, hãy sử dụng :ref:`find_translations()<class_TranslationDomain_method_find_translations>`.
 
-Returns the :ref:`Translation<class_Translation>` instance that best matches ``locale``. Returns ``null`` if there are no matches.
+Trả về instance :ref:`Translation<class_Translation>` khớp tốt nhất với ``locale``. Trả về ``null`` nếu không có kết quả khớp.
 
 .. rst-class:: classref-item-separator
 
@@ -359,7 +359,7 @@ Returns the :ref:`Translation<class_Translation>` instance that best matches ``l
 
 :ref:`Array<class_Array>`\[:ref:`Translation<class_Translation>`\] **get_translations**\ (\ ) |const| :ref:`🔗<class_TranslationDomain_method_get_translations>`
 
-Returns all available :ref:`Translation<class_Translation>` instances as added by :ref:`add_translation()<class_TranslationDomain_method_add_translation>`.
+Trả về tất cả instance :ref:`Translation<class_Translation>` hiện có được thêm bởi :ref:`add_translation()<class_TranslationDomain_method_add_translation>`.
 
 .. rst-class:: classref-item-separator
 
@@ -371,7 +371,7 @@ Returns all available :ref:`Translation<class_Translation>` instances as added b
 
 :ref:`bool<class_bool>` **has_translation**\ (\ translation\: :ref:`Translation<class_Translation>`\ ) |const| :ref:`🔗<class_TranslationDomain_method_has_translation>`
 
-Returns ``true`` if this translation domain contains the given ``translation``.
+Trả về ``true`` nếu translation domain này chứa ``translation`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -383,7 +383,7 @@ Returns ``true`` if this translation domain contains the given ``translation``.
 
 :ref:`bool<class_bool>` **has_translation_for_locale**\ (\ locale\: :ref:`String<class_String>`, exact\: :ref:`bool<class_bool>`\ ) |const| :ref:`🔗<class_TranslationDomain_method_has_translation_for_locale>`
 
-Returns ``true`` if there are any :ref:`Translation<class_Translation>` instances that match ``locale`` (see :ref:`TranslationServer.compare_locales()<class_TranslationServer_method_compare_locales>`). If ``exact`` is ``true``, only instances whose locale exactly equals ``locale`` are considered.
+Trả về ``true`` nếu có bất kỳ instance :ref:`Translation<class_Translation>` nào khớp với ``locale`` (xem :ref:`TranslationServer.compare_locales()<class_TranslationServer_method_compare_locales>`). Nếu ``exact`` là ``true``, chỉ những instance có locale khớp chính xác với ``locale`` mới được xem xét.
 
 .. rst-class:: classref-item-separator
 
@@ -395,7 +395,7 @@ Returns ``true`` if there are any :ref:`Translation<class_Translation>` instance
 
 :ref:`StringName<class_StringName>` **pseudolocalize**\ (\ message\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_TranslationDomain_method_pseudolocalize>`
 
-Returns the pseudolocalized string based on the ``message`` passed in.
+Trả về chuỗi giả bản địa hóa dựa trên ``message`` được truyền vào.
 
 .. rst-class:: classref-item-separator
 
@@ -407,7 +407,7 @@ Returns the pseudolocalized string based on the ``message`` passed in.
 
 |void| **remove_translation**\ (\ translation\: :ref:`Translation<class_Translation>`\ ) :ref:`🔗<class_TranslationDomain_method_remove_translation>`
 
-Removes the given translation.
+Xóa bản dịch đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -419,11 +419,11 @@ Removes the given translation.
 
 |void| **set_locale_override**\ (\ locale\: :ref:`String<class_String>`\ ) :ref:`🔗<class_TranslationDomain_method_set_locale_override>`
 
-Sets the locale override of the domain.
+Thiết lập locale override của domain.
 
-If ``locale`` is an empty string, locale override is disabled. Otherwise, ``locale`` will be standardized to match known locales (e.g. ``en-US`` would be matched to ``en_US``).
+Nếu ``locale`` là một chuỗi rỗng, locale override sẽ bị tắt. Nếu không, ``locale`` sẽ được chuẩn hóa để khớp với các locale đã biết (ví dụ: ``en-US`` sẽ được khớp với ``en_US``).
 
-\ **Note:** Calling this method does not automatically update texts in the scene tree. Please propagate the :ref:`MainLoop.NOTIFICATION_TRANSLATION_CHANGED<class_MainLoop_constant_NOTIFICATION_TRANSLATION_CHANGED>` signal manually.
+\ **Lưu ý:** Việc gọi phương thức này không tự động cập nhật các văn bản trong scene tree. Vui lòng tự phát tín hiệu :ref:`MainLoop.NOTIFICATION_TRANSLATION_CHANGED<class_MainLoop_constant_NOTIFICATION_TRANSLATION_CHANGED>`.
 
 .. rst-class:: classref-item-separator
 
@@ -435,7 +435,7 @@ If ``locale`` is an empty string, locale override is disabled. Otherwise, ``loca
 
 :ref:`StringName<class_StringName>` **translate**\ (\ message\: :ref:`StringName<class_StringName>`, context\: :ref:`StringName<class_StringName>` = &""\ ) |const| :ref:`🔗<class_TranslationDomain_method_translate>`
 
-Returns the current locale's translation for the given message and context.
+Trả về bản dịch của locale hiện tại cho message và context đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -447,16 +447,16 @@ Returns the current locale's translation for the given message and context.
 
 :ref:`StringName<class_StringName>` **translate_plural**\ (\ message\: :ref:`StringName<class_StringName>`, message_plural\: :ref:`StringName<class_StringName>`, n\: :ref:`int<class_int>`, context\: :ref:`StringName<class_StringName>` = &""\ ) |const| :ref:`🔗<class_TranslationDomain_method_translate_plural>`
 
-Returns the current locale's translation for the given message, plural message and context.
+Trả về bản dịch của locale hiện tại cho message, plural message và context đã cho.
 
-The number ``n`` is the number or quantity of the plural object. It will be used to guide the translation system to fetch the correct plural form for the selected language.
+Số ``n`` là số hoặc số lượng của đối tượng plural. Nó được dùng để hướng dẫn hệ thống dịch lấy đúng dạng plural cho ngôn ngữ đã chọn.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải override phương thức này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể được gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

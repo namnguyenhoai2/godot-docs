@@ -10,29 +10,29 @@
 SkinReference
 =============
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A reference-counted holder object for a skeleton RID used in the :ref:`RenderingServer<class_RenderingServer>`.
+Một đối tượng holder được đếm tham chiếu cho skeleton RID được sử dụng trong :ref:`RenderingServer<class_RenderingServer>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-An internal object containing a mapping from a :ref:`Skin<class_Skin>` used within the context of a particular :ref:`MeshInstance3D<class_MeshInstance3D>` to refer to the skeleton's :ref:`RID<class_RID>` in the RenderingServer.
+Một đối tượng nội bộ chứa ánh xạ từ :ref:`Skin<class_Skin>` được sử dụng trong ngữ cảnh của một :ref:`MeshInstance3D<class_MeshInstance3D>` cụ thể để tham chiếu đến :ref:`RID<class_RID>` của skeleton trong RenderingServer.
 
-See also :ref:`MeshInstance3D.get_skin_reference()<class_MeshInstance3D_method_get_skin_reference>` and :ref:`RenderingServer.instance_attach_skeleton()<class_RenderingServer_method_instance_attach_skeleton>`.
+Xem thêm :ref:`MeshInstance3D.get_skin_reference()<class_MeshInstance3D_method_get_skin_reference>` và :ref:`RenderingServer.instance_attach_skeleton()<class_RenderingServer_method_instance_attach_skeleton>`.
 
-Note that despite the similar naming, the skeleton RID used in the :ref:`RenderingServer<class_RenderingServer>` does not have a direct one-to-one correspondence to a :ref:`Skeleton3D<class_Skeleton3D>` node.
+Lưu ý rằng mặc dù có cách đặt tên tương tự, skeleton RID được sử dụng trong :ref:`RenderingServer<class_RenderingServer>` không tương ứng trực tiếp một-một với một node :ref:`Skeleton3D<class_Skeleton3D>`.
 
-In particular, a :ref:`Skeleton3D<class_Skeleton3D>` node with no :ref:`MeshInstance3D<class_MeshInstance3D>` children may be unknown to the :ref:`RenderingServer<class_RenderingServer>`.
+Cụ thể, một node :ref:`Skeleton3D<class_Skeleton3D>` không có các node con :ref:`MeshInstance3D<class_MeshInstance3D>` có thể không được :ref:`RenderingServer<class_RenderingServer>` nhận biết.
 
-On the other hand, a :ref:`Skeleton3D<class_Skeleton3D>` with multiple :ref:`MeshInstance3D<class_MeshInstance3D>` nodes which each have different :ref:`MeshInstance3D.skin<class_MeshInstance3D_property_skin>` objects may have multiple SkinReference instances (and hence, multiple skeleton :ref:`RID<class_RID>`\ s).
+Mặt khác, một :ref:`Skeleton3D<class_Skeleton3D>` có nhiều node :ref:`MeshInstance3D<class_MeshInstance3D>`, trong đó mỗi node có các đối tượng :ref:`MeshInstance3D.skin<class_MeshInstance3D_property_skin>` khác nhau, có thể có nhiều instance SkinReference (và do đó có nhiều skeleton :ref:`RID<class_RID>`\ s).
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -49,8 +49,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_SkinReference_method_get_skeleton:
 
@@ -58,7 +58,7 @@ Method Descriptions
 
 :ref:`RID<class_RID>` **get_skeleton**\ (\ ) |const| :ref:`🔗<class_SkinReference_method_get_skeleton>`
 
-Returns the :ref:`RID<class_RID>` owned by this SkinReference, as returned by :ref:`RenderingServer.skeleton_create()<class_RenderingServer_method_skeleton_create>`.
+Trả về :ref:`RID<class_RID>` do SkinReference này sở hữu, như được trả về bởi :ref:`RenderingServer.skeleton_create()<class_RenderingServer_method_skeleton_create>`.
 
 .. rst-class:: classref-item-separator
 
@@ -70,16 +70,16 @@ Returns the :ref:`RID<class_RID>` owned by this SkinReference, as returned by :r
 
 :ref:`Skin<class_Skin>` **get_skin**\ (\ ) |const| :ref:`🔗<class_SkinReference_method_get_skin>`
 
-Returns the :ref:`Skin<class_Skin>` connected to this SkinReference. In the case of :ref:`MeshInstance3D<class_MeshInstance3D>` with no :ref:`MeshInstance3D.skin<class_MeshInstance3D_property_skin>` assigned, this will reference an internal default :ref:`Skin<class_Skin>` owned by that :ref:`MeshInstance3D<class_MeshInstance3D>`.
+Trả về :ref:`Skin<class_Skin>` được kết nối với SkinReference này. Trong trường hợp :ref:`MeshInstance3D<class_MeshInstance3D>` không được gán :ref:`MeshInstance3D.skin<class_MeshInstance3D_property_skin>`, giá trị này sẽ tham chiếu đến một :ref:`Skin<class_Skin>` mặc định nội bộ do :ref:`MeshInstance3D<class_MeshInstance3D>` đó sở hữu.
 
-Note that a single :ref:`Skin<class_Skin>` may have more than one **SkinReference** in the case that it is shared by meshes across multiple :ref:`Skeleton3D<class_Skeleton3D>` nodes.
+Lưu ý rằng một :ref:`Skin<class_Skin>` có thể có nhiều hơn một **SkinReference** trong trường hợp nó được các mesh dùng chung trên nhiều node :ref:`Skeleton3D<class_Skeleton3D>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override phương thức này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để xây dựng một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

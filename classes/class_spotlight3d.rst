@@ -10,57 +10,57 @@
 SpotLight3D
 ===========
 
-**Inherits:** :ref:`Light3D<class_Light3D>` **<** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Light3D<class_Light3D>` **<** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A spotlight, such as a reflector spotlight or a lantern.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A Spotlight is a type of :ref:`Light3D<class_Light3D>` node that emits lights in a specific direction, in the shape of a cone. The light is attenuated through the distance. This attenuation can be configured by changing the energy, radius and attenuation parameters of :ref:`Light3D<class_Light3D>`.
-
-Light is emitted in the -Z direction of the node's global basis. For an unrotated light, this means that the light is emitted forwards, illuminating the front side of a 3D model (see :ref:`Vector3.FORWARD<class_Vector3_constant_FORWARD>` and :ref:`Vector3.MODEL_FRONT<class_Vector3_constant_MODEL_FRONT>`).
-
-\ **Note:** When using the Mobile rendering method, only 8 spot lights can be displayed on each mesh resource. Attempting to display more than 8 spot lights on a single mesh resource will result in spot lights flickering in and out as the camera moves. When using the Compatibility rendering method, only 8 spot lights can be displayed on each mesh resource by default, but this can be increased by adjusting :ref:`ProjectSettings.rendering/limits/opengl/max_lights_per_object<class_ProjectSettings_property_rendering/limits/opengl/max_lights_per_object>`.
-
-\ **Note:** When using the Mobile or Compatibility rendering methods, spot lights will only correctly affect meshes whose visibility AABB intersects with the light's AABB. If using a shader to deform the mesh in a way that makes it go outside its AABB, :ref:`GeometryInstance3D.extra_cull_margin<class_GeometryInstance3D_property_extra_cull_margin>` must be increased on the mesh. Otherwise, the light may not be visible on the mesh.
+Đèn chiếu, chẳng hạn như đèn chiếu phản xạ hoặc đèn lồng.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
----------
+Mô tả
+-----
 
-- `3D lights and shadows <../tutorials/3d/lights_and_shadows.html#spot-light>`__
+Spotlight là một loại node :ref:`Light3D<class_Light3D>` phát ra ánh sáng theo một hướng cụ thể, có dạng hình nón. Ánh sáng bị suy giảm theo khoảng cách. Có thể cấu hình sự suy giảm này bằng cách thay đổi các tham số energy, radius và attenuation của :ref:`Light3D<class_Light3D>`.
 
-- :doc:`Faking global illumination <../tutorials/3d/global_illumination/faking_global_illumination>`
+Ánh sáng được phát ra theo hướng -Z của basis toàn cục của node. Đối với đèn chưa xoay, điều này có nghĩa là ánh sáng được phát ra phía trước, chiếu sáng mặt trước của một mô hình 3D (xem :ref:`Vector3.FORWARD<class_Vector3_constant_FORWARD>` và :ref:`Vector3.MODEL_FRONT<class_Vector3_constant_MODEL_FRONT>`).
 
-- `Third Person Shooter (TPS) Demo <https://godotengine.org/asset-library/asset/2710>`__
+\ **Lưu ý:** Khi sử dụng phương thức kết xuất Mobile, mỗi tài nguyên mesh chỉ có thể hiển thị 8 đèn chiếu. Nếu cố hiển thị hơn 8 đèn chiếu trên một tài nguyên mesh, các đèn chiếu sẽ liên tục bật tắt khi camera di chuyển. Khi sử dụng phương thức kết xuất Compatibility, theo mặc định mỗi tài nguyên mesh chỉ có thể hiển thị 8 đèn chiếu, nhưng có thể tăng giới hạn này bằng cách điều chỉnh :ref:`ProjectSettings.rendering/limits/opengl/max_lights_per_object <class_ProjectSettings_property_rendering/limits/opengl/max_lights_per_object>`.
+
+\ **Lưu ý:** Khi sử dụng phương thức kết xuất Mobile hoặc Compatibility, đèn chiếu chỉ tác động chính xác đến các mesh có AABB khả kiến giao với AABB của đèn. Nếu dùng shader để biến dạng mesh theo cách khiến mesh vượt ra ngoài AABB của nó, cần tăng :ref:`GeometryInstance3D.extra_cull_margin<class_GeometryInstance3D_property_extra_cull_margin>` trên mesh. Nếu không, ánh sáng có thể không hiển thị trên mesh.
+
+.. rst-class:: classref-introduction-group
+
+Tutorial
+--------
+
+- `Đèn và bóng 3D <../tutorials/3d/lights_and_shadows.html#spot-light>`__
+
+- :doc:`Giả lập chiếu sáng toàn cục <../tutorials/3d/global_illumination/faking_global_illumination>`
+
+- `Bản demo Third Person Shooter (TPS) <https://godotengine.org/asset-library/asset/2710>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
 
-   +---------------------------+----------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>` | light_specular                                                                   | ``0.5`` (overrides :ref:`Light3D<class_Light3D_property_light_specular>`)     |
-   +---------------------------+----------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>` | shadow_bias                                                                      | ``0.03`` (overrides :ref:`Light3D<class_Light3D_property_shadow_bias>`)       |
-   +---------------------------+----------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>` | shadow_normal_bias                                                               | ``1.0`` (overrides :ref:`Light3D<class_Light3D_property_shadow_normal_bias>`) |
-   +---------------------------+----------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>` | :ref:`spot_angle<class_SpotLight3D_property_spot_angle>`                         | ``45.0``                                                                      |
-   +---------------------------+----------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>` | :ref:`spot_angle_attenuation<class_SpotLight3D_property_spot_angle_attenuation>` | ``1.0``                                                                       |
-   +---------------------------+----------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>` | :ref:`spot_attenuation<class_SpotLight3D_property_spot_attenuation>`             | ``1.0``                                                                       |
-   +---------------------------+----------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>` | :ref:`spot_range<class_SpotLight3D_property_spot_range>`                         | ``5.0``                                                                       |
-   +---------------------------+----------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+   +---------------------------+----------------------------------------------------------------------------------+-----------------------------------------------------------------------------+
+   | :ref:`float<class_float>` | light_specular                                                                   | ``0.5`` (ghi đè :ref:`Light3D<class_Light3D_property_light_specular>`)“     |
+   +---------------------------+----------------------------------------------------------------------------------+-----------------------------------------------------------------------------+
+   | :ref:`float<class_float>` | shadow_bias                                                                      | ``0.03`` (ghi đè :ref:`Light3D<class_Light3D_property_shadow_bias>`)“       |
+   +---------------------------+----------------------------------------------------------------------------------+-----------------------------------------------------------------------------+
+   | :ref:`float<class_float>` | shadow_normal_bias                                                               | ``1.0`` (ghi đè :ref:`Light3D<class_Light3D_property_shadow_normal_bias>`)“ |
+   +---------------------------+----------------------------------------------------------------------------------+-----------------------------------------------------------------------------+
+   | :ref:`float<class_float>` | :ref:`spot_angle<class_SpotLight3D_property_spot_angle>`                         | ``45.0``                                                                    |
+   +---------------------------+----------------------------------------------------------------------------------+-----------------------------------------------------------------------------+
+   | :ref:`float<class_float>` | :ref:`spot_angle_attenuation<class_SpotLight3D_property_spot_angle_attenuation>` | ``1.0``                                                                     |
+   +---------------------------+----------------------------------------------------------------------------------+-----------------------------------------------------------------------------+
+   | :ref:`float<class_float>` | :ref:`spot_attenuation<class_SpotLight3D_property_spot_attenuation>`             | ``1.0``                                                                     |
+   +---------------------------+----------------------------------------------------------------------------------+-----------------------------------------------------------------------------+
+   | :ref:`float<class_float>` | :ref:`spot_range<class_SpotLight3D_property_spot_range>`                         | ``5.0``                                                                     |
+   +---------------------------+----------------------------------------------------------------------------------+-----------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -68,8 +68,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_SpotLight3D_property_spot_angle:
 
@@ -82,9 +82,9 @@ Property Descriptions
 - |void| **set_param**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ )
 
-The spotlight's angle in degrees. This is the angular radius, meaning the angle from the -Z axis, the cone's center, to the edge of the cone. The default angular radius of 45 degrees corresponds to a cone with an angular diameter of 90 degrees.
+Góc của đèn chiếu tính theo độ. Đây là bán kính góc, nghĩa là góc từ trục -Z, tâm của hình nón, đến mép hình nón. Bán kính góc mặc định là 45 độ, tương ứng với hình nón có đường kính góc 90 độ.
 
-\ **Note:** :ref:`spot_angle<class_SpotLight3D_property_spot_angle>` is not affected by :ref:`Node3D.scale<class_Node3D_property_scale>` (the light's scale or its parent's scale).
+\ **Lưu ý:** :ref:`spot_angle<class_SpotLight3D_property_spot_angle>` không bị ảnh hưởng bởi :ref:`Node3D.scale<class_Node3D_property_scale>` (tỷ lệ của đèn hoặc tỷ lệ của node cha).
 
 .. rst-class:: classref-item-separator
 
@@ -101,7 +101,7 @@ The spotlight's angle in degrees. This is the angular radius, meaning the angle 
 - |void| **set_param**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ )
 
-The spotlight's *angular* attenuation curve. See also :ref:`spot_attenuation<class_SpotLight3D_property_spot_attenuation>`.
+Đường cong suy giảm *góc* của đèn chiếu. Xem thêm :ref:`spot_attenuation<class_SpotLight3D_property_spot_attenuation>`.
 
 .. rst-class:: classref-item-separator
 
@@ -118,13 +118,13 @@ The spotlight's *angular* attenuation curve. See also :ref:`spot_attenuation<cla
 - |void| **set_param**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ )
 
-Controls the distance attenuation function for spotlights.
+Điều khiển hàm suy giảm khoảng cách cho đèn chiếu.
 
-A value of ``0.0`` will maintain a constant brightness through most of the range, but smoothly attenuate the light at the edge of the range. Use a value of ``2.0`` for physically accurate lights as it results in the proper inverse square attenutation.
+Giá trị ``0.0`` sẽ duy trì độ sáng không đổi trong phần lớn phạm vi, nhưng làm suy giảm ánh sáng một cách mượt mà ở rìa phạm vi. Sử dụng giá trị ``2.0`` cho các đèn chính xác về mặt vật lý, vì giá trị này tạo ra sự suy giảm theo bình phương nghịch đảo phù hợp.
 
-\ **Note:** Setting attenuation to ``2.0`` or higher may result in distant objects receiving minimal light, even within range. For example, with a range of ``4096``, an object at ``100`` units is attenuated by a factor of ``0.0001``. With a default brightness of ``1``, the light would not be visible at that distance.
+\ **Lưu ý:** Đặt attenuation thành ``2.0`` hoặc cao hơn có thể khiến các vật thể ở xa nhận được rất ít ánh sáng, ngay cả khi vẫn nằm trong phạm vi. Ví dụ, với phạm vi ``4096``, một vật thể cách ``100`` đơn vị sẽ bị suy giảm theo hệ số ``0.0001``. Với độ sáng mặc định là ``1``, ánh sáng sẽ không thể nhìn thấy ở khoảng cách đó.
 
-\ **Note:** Using negative or values higher than ``10.0`` may lead to unexpected results.
+\ **Lưu ý:** Việc sử dụng giá trị âm hoặc giá trị lớn hơn ``10.0`` có thể dẫn đến kết quả không mong muốn.
 
 .. rst-class:: classref-item-separator
 
@@ -141,16 +141,16 @@ A value of ``0.0`` will maintain a constant brightness through most of the range
 - |void| **set_param**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ )
 
-The maximal range that can be reached by the spotlight. Note that the effectively lit area may appear to be smaller depending on the :ref:`spot_attenuation<class_SpotLight3D_property_spot_attenuation>` in use. No matter the :ref:`spot_attenuation<class_SpotLight3D_property_spot_attenuation>` in use, the light will never reach anything outside this range.
+Phạm vi tối đa mà đèn chiếu có thể vươn tới. Lưu ý rằng vùng được chiếu sáng thực tế có thể trông nhỏ hơn tùy thuộc vào :ref:`spot_attenuation<class_SpotLight3D_property_spot_attenuation>` đang được sử dụng. Bất kể đang sử dụng :ref:`spot_attenuation<class_SpotLight3D_property_spot_attenuation>` nào, ánh sáng sẽ không bao giờ vươn tới bất kỳ thứ gì bên ngoài phạm vi này.
 
-\ **Note:** :ref:`spot_range<class_SpotLight3D_property_spot_range>` is not affected by :ref:`Node3D.scale<class_Node3D_property_scale>` (the light's scale or its parent's scale).
+\ **Lưu ý:** :ref:`spot_range<class_SpotLight3D_property_spot_range>` không bị ảnh hưởng bởi :ref:`Node3D.scale<class_Node3D_property_scale>` (tỷ lệ của đèn hoặc tỷ lệ của node cha).
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè method này thì nó mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè method này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có side effect. Nó không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Method này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Method này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Method này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Method này mô tả một toán tử hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

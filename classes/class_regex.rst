@@ -10,18 +10,18 @@
 RegEx
 =====
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Class for searching text for patterns using regular expressions.
+Lớp dùng để tìm kiếm các mẫu trong văn bản bằng biểu thức chính quy.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A regular expression (or regex) is a compact language that can be used to recognize strings that follow a specific pattern, such as URLs, email addresses, complete sentences, etc. For example, a regex of ``ab[0-9]`` would find any string that is ``ab`` followed by any number from ``0`` to ``9``. For a more in-depth look, you can easily find various tutorials and detailed explanations on the Internet.
+Biểu thức chính quy (hay regex) là một ngôn ngữ cô đọng có thể dùng để nhận diện các chuỗi tuân theo một mẫu cụ thể, chẳng hạn như URL, địa chỉ email, câu hoàn chỉnh, v.v. Ví dụ, regex ``ab[0-9]`` sẽ tìm bất kỳ chuỗi nào ``ab`` theo sau là một số bất kỳ từ ``0`` đến ``9``. Để tìm hiểu sâu hơn, bạn có thể dễ dàng tìm thấy nhiều hướng dẫn và phần giải thích chi tiết trên Internet.
 
-To begin, the RegEx object needs to be compiled with the search pattern using :ref:`compile()<class_RegEx_method_compile>` before it can be used. Alternatively, the static method :ref:`create_from_string()<class_RegEx_method_create_from_string>` can be used to create and compile a RegEx object in a single method call.
+Để bắt đầu, đối tượng RegEx cần được biên dịch với mẫu tìm kiếm bằng :ref:`compile()<class_RegEx_method_compile>` trước khi có thể sử dụng. Ngoài ra, có thể dùng phương thức tĩnh :ref:`create_from_string()<class_RegEx_method_create_from_string>` để tạo và biên dịch một đối tượng RegEx trong một lần gọi phương thức.
 
 ::
 
@@ -30,9 +30,9 @@ To begin, the RegEx object needs to be compiled with the search pattern using :r
     # Shorthand to create and compile a regex (used in the examples below):
     var regex2 = RegEx.create_from_string("\\w-(\\d+)")
 
-The search pattern must be escaped first for GDScript before it is escaped for the expression. For example, ``compile("\\d+")`` would be read by RegEx as ``\d+``. Similarly, ``compile("\"(?:\\\\.|[^\"])*\"")`` would be read as ``"(?:\\.|[^"])*"``. In GDScript, you can also use raw string literals (r-strings). For example, ``compile(r'"(?:\\.|[^"])*"')`` would be read the same.
+Trước tiên, mẫu tìm kiếm phải được escape cho GDScript rồi mới được escape cho biểu thức. Ví dụ, ``compile("\\d+")`` sẽ được RegEx đọc là ``\d+``. Tương tự, ``compile("\"(?:\\\\.|[^\"])*\"")`` sẽ được đọc là ``"(?:\\.|[^"])*"``. Trong GDScript, bạn cũng có thể dùng các literal chuỗi thô (r-string). Ví dụ, ``compile(r'"(?:\\.|[^"])*"')`` sẽ được đọc giống như vậy.
 
-Using :ref:`search()<class_RegEx_method_search>`, you can find the pattern within the given text. If a pattern is found, :ref:`RegExMatch<class_RegExMatch>` is returned and you can retrieve details of the results using methods such as :ref:`RegExMatch.get_string()<class_RegExMatch_method_get_string>` and :ref:`RegExMatch.get_start()<class_RegExMatch_method_get_start>`.
+Bằng cách sử dụng :ref:`search()<class_RegEx_method_search>`, bạn có thể tìm mẫu trong văn bản đã cho. Nếu tìm thấy mẫu, :ref:`RegExMatch<class_RegExMatch>` sẽ được trả về và bạn có thể lấy thông tin chi tiết về kết quả bằng các phương thức như :ref:`RegExMatch.get_string()<class_RegExMatch_method_get_string>` và :ref:`RegExMatch.get_start()<class_RegExMatch_method_get_start>`.
 
 ::
 
@@ -41,9 +41,9 @@ Using :ref:`search()<class_RegEx_method_search>`, you can find the pattern withi
     if result:
         print(result.get_string()) # Prints "n-0123"
 
-The results of capturing groups ``()`` can be retrieved by passing the group number to the various methods in :ref:`RegExMatch<class_RegExMatch>`. Group 0 is the default and will always refer to the entire pattern. In the above example, calling ``result.get_string(1)`` would give you ``0123``.
+Có thể lấy kết quả của các nhóm bắt ``()`` bằng cách truyền số nhóm vào các phương thức khác nhau trong :ref:`RegExMatch<class_RegExMatch>`. Nhóm 0 là mặc định và luôn đại diện cho toàn bộ mẫu. Trong ví dụ trên, gọi ``result.get_string(1)`` sẽ cho bạn ``0123``.
 
-This version of RegEx also supports named capturing groups, and the names can be used to retrieve the results. If two or more groups have the same name, the name would only refer to the first one with a match.
+Phiên bản RegEx này cũng hỗ trợ các nhóm bắt có tên, và có thể dùng tên để lấy kết quả. Nếu hai hoặc nhiều nhóm có cùng tên, tên đó chỉ tham chiếu đến nhóm đầu tiên có kết quả khớp.
 
 ::
 
@@ -52,7 +52,7 @@ This version of RegEx also supports named capturing groups, and the names can be
     if result:
         print(result.get_string("digit")) # Prints "2f"
 
-If you need to process multiple results, :ref:`search_all()<class_RegEx_method_search_all>` generates a list of all non-overlapping results. This can be combined with a ``for`` loop for convenience.
+Nếu cần xử lý nhiều kết quả, :ref:`search_all()<class_RegEx_method_search_all>` tạo ra một danh sách gồm tất cả các kết quả không chồng lấp. Có thể kết hợp cách này với vòng lặp ``for`` để thuận tiện hơn.
 
 ::
 
@@ -60,7 +60,7 @@ If you need to process multiple results, :ref:`search_all()<class_RegEx_method_s
     for result in regex.search_all("d01, d03, d0c, x3f and x42"):
         print(result.get_string("digit"))
 
-\ **Example:** Split a string using a RegEx:
+\ **Ví dụ:** Tách một chuỗi bằng RegEx:
 
 ::
 
@@ -70,14 +70,14 @@ If you need to process multiple results, :ref:`search_all()<class_RegEx_method_s
         results.push_back(result.get_string())
     print(results) # Prints ["One", "Two", "Three"]
 
-\ **Note:** Godot's regex implementation is based on the `PCRE2 <https://www.pcre.org/>`__ library. You can view the full pattern reference `here <https://www.pcre.org/current/doc/html/pcre2pattern.html>`__.
+\ **Lưu ý:** Việc triển khai regex của Godot dựa trên thư viện `PCRE2 <https://www.pcre.org/>`__. Bạn có thể xem toàn bộ tài liệu tham khảo về mẫu `tại đây <https://www.pcre.org/current/doc/html/pcre2pattern.html>`__.
 
-\ **Tip:** You can use `Regexr <https://regexr.com/>`__ to test regular expressions online.
+\ **Mẹo:** Bạn có thể sử dụng `Regexr <https://regexr.com/>`__ để kiểm thử biểu thức chính quy trực tuyến.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -85,7 +85,7 @@ Methods
    +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                           | :ref:`clear<class_RegEx_method_clear>`\ (\ )                                                                                                                                                                                                    |
    +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                            | :ref:`compile<class_RegEx_method_compile>`\ (\ pattern\: :ref:`String<class_String>`, show_error\: :ref:`bool<class_bool>` = true\ )                                                                                                            |
+   | :ref:`Error <enum_@GlobalScope_Error>`                           | :ref:`compile<class_RegEx_method_compile>`\ (\ pattern\: :ref:`String<class_String>`, show_error\: :ref:`bool<class_bool>` = true\ )                                                                                                            |
    +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RegEx<class_RegEx>`                                        | :ref:`create_from_string<class_RegEx_method_create_from_string>`\ (\ pattern\: :ref:`String<class_String>`, show_error\: :ref:`bool<class_bool>` = true\ ) |static|                                                                             |
    +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -110,8 +110,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_RegEx_method_clear:
 
@@ -119,7 +119,7 @@ Method Descriptions
 
 |void| **clear**\ (\ ) :ref:`🔗<class_RegEx_method_clear>`
 
-This method resets the state of the object, as if it was freshly created. Namely, it unassigns the regular expression of this object.
+Phương thức này đặt lại trạng thái của đối tượng, như thể đối tượng vừa được tạo mới. Cụ thể, nó hủy gán biểu thức chính quy khỏi đối tượng này.
 
 .. rst-class:: classref-item-separator
 
@@ -131,7 +131,7 @@ This method resets the state of the object, as if it was freshly created. Namely
 
 :ref:`Error<enum_@GlobalScope_Error>` **compile**\ (\ pattern\: :ref:`String<class_String>`, show_error\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_RegEx_method_compile>`
 
-Compiles and assign the search pattern to use. Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` if the compilation is successful. If compilation fails, returns :ref:`@GlobalScope.FAILED<class_@GlobalScope_constant_FAILED>` and when ``show_error`` is ``true``, details are printed to standard output.
+Biên dịch và gán mẫu tìm kiếm cần sử dụng. Trả về :ref:`@GlobalScope.OK <class_@GlobalScope_constant_OK>` nếu biên dịch thành công. Nếu biên dịch thất bại, trả về :ref:`@GlobalScope.FAILED <class_@GlobalScope_constant_FAILED>` và khi ``show_error`` là ``true``, thông tin chi tiết sẽ được in ra đầu ra chuẩn.
 
 .. rst-class:: classref-item-separator
 
@@ -143,7 +143,7 @@ Compiles and assign the search pattern to use. Returns :ref:`@GlobalScope.OK<cla
 
 :ref:`RegEx<class_RegEx>` **create_from_string**\ (\ pattern\: :ref:`String<class_String>`, show_error\: :ref:`bool<class_bool>` = true\ ) |static| :ref:`🔗<class_RegEx_method_create_from_string>`
 
-Creates and compiles a new **RegEx** object. See also :ref:`compile()<class_RegEx_method_compile>`.
+Tạo và biên dịch một đối tượng **RegEx** mới. Xem thêm :ref:`compile()<class_RegEx_method_compile>`.
 
 .. rst-class:: classref-item-separator
 
@@ -155,7 +155,7 @@ Creates and compiles a new **RegEx** object. See also :ref:`compile()<class_RegE
 
 :ref:`int<class_int>` **get_group_count**\ (\ ) |const| :ref:`🔗<class_RegEx_method_get_group_count>`
 
-Returns the number of capturing groups in compiled pattern.
+Trả về số lượng nhóm bắt trong mẫu đã biên dịch.
 
 .. rst-class:: classref-item-separator
 
@@ -167,7 +167,7 @@ Returns the number of capturing groups in compiled pattern.
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_names**\ (\ ) |const| :ref:`🔗<class_RegEx_method_get_names>`
 
-Returns an array of names of named capturing groups in the compiled pattern. They are ordered by appearance.
+Trả về một mảng chứa tên của các nhóm bắt có tên trong mẫu đã biên dịch. Các tên được sắp xếp theo thứ tự xuất hiện.
 
 .. rst-class:: classref-item-separator
 
@@ -179,7 +179,7 @@ Returns an array of names of named capturing groups in the compiled pattern. The
 
 :ref:`String<class_String>` **get_pattern**\ (\ ) |const| :ref:`🔗<class_RegEx_method_get_pattern>`
 
-Returns the original search pattern that was compiled.
+Trả về mẫu tìm kiếm ban đầu đã được biên dịch.
 
 .. rst-class:: classref-item-separator
 
@@ -191,7 +191,7 @@ Returns the original search pattern that was compiled.
 
 :ref:`bool<class_bool>` **is_valid**\ (\ ) |const| :ref:`🔗<class_RegEx_method_is_valid>`
 
-Returns whether this object has a valid search pattern assigned.
+Trả về liệu đối tượng này có được gán một mẫu tìm kiếm hợp lệ hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -203,9 +203,9 @@ Returns whether this object has a valid search pattern assigned.
 
 :ref:`RegExMatch<class_RegExMatch>` **search**\ (\ subject\: :ref:`String<class_String>`, offset\: :ref:`int<class_int>` = 0, end\: :ref:`int<class_int>` = -1\ ) |const| :ref:`🔗<class_RegEx_method_search>`
 
-Searches the text for the compiled pattern. Returns a :ref:`RegExMatch<class_RegExMatch>` container of the first matching result if found, otherwise ``null``.
+Tìm kiếm mẫu đã biên dịch trong văn bản. Trả về một vùng chứa :ref:`RegExMatch<class_RegExMatch>` của kết quả khớp đầu tiên nếu tìm thấy, nếu không thì trả về ``null``.
 
-The region to search within can be specified with ``offset`` and ``end``. This is useful when searching for another match in the same ``subject`` by calling this method again after a previous success. Note that setting these parameters differs from passing over a shortened string. For example, the start anchor ``^`` is not affected by ``offset``, and the character before ``offset`` will be checked for the word boundary ``\b``.
+Có thể chỉ định vùng cần tìm kiếm bằng ``offset`` và ``end``. Điều này hữu ích khi tìm một kết quả khớp khác trong cùng ``subject`` bằng cách gọi lại phương thức này sau một lần thành công trước đó. Lưu ý rằng việc đặt các tham số này khác với việc truyền vào một chuỗi đã được rút ngắn. Ví dụ, anchor bắt đầu ``^`` không bị ảnh hưởng bởi ``offset``, và ký tự trước ``offset`` sẽ được kiểm tra để xác định ranh giới từ ``\b``.
 
 .. rst-class:: classref-item-separator
 
@@ -217,9 +217,9 @@ The region to search within can be specified with ``offset`` and ``end``. This i
 
 :ref:`Array<class_Array>`\[:ref:`RegExMatch<class_RegExMatch>`\] **search_all**\ (\ subject\: :ref:`String<class_String>`, offset\: :ref:`int<class_int>` = 0, end\: :ref:`int<class_int>` = -1\ ) |const| :ref:`🔗<class_RegEx_method_search_all>`
 
-Searches the text for the compiled pattern. Returns an array of :ref:`RegExMatch<class_RegExMatch>` containers for each non-overlapping result. If no results were found, an empty array is returned instead.
+Tìm kiếm mẫu đã biên dịch trong văn bản. Trả về một mảng gồm các vùng chứa :ref:`RegExMatch<class_RegExMatch>` cho từng kết quả không chồng lấp. Nếu không tìm thấy kết quả nào, thay vào đó sẽ trả về một mảng rỗng.
 
-The region to search within can be specified with ``offset`` and ``end``. This is useful when searching for another match in the same ``subject`` by calling this method again after a previous success. Note that setting these parameters differs from passing over a shortened string. For example, the start anchor ``^`` is not affected by ``offset``, and the character before ``offset`` will be checked for the word boundary ``\b``.
+Có thể chỉ định vùng cần tìm kiếm bằng ``offset`` và ``end``. Điều này hữu ích khi tìm một kết quả khớp khác trong cùng ``subject`` bằng cách gọi lại phương thức này sau một lần thành công trước đó. Lưu ý rằng việc đặt các tham số này khác với việc truyền vào một chuỗi đã được rút ngắn. Ví dụ, anchor bắt đầu ``^`` không bị ảnh hưởng bởi ``offset``, và ký tự trước ``offset`` sẽ được kiểm tra để xác định ranh giới từ ``\b``.
 
 .. rst-class:: classref-item-separator
 
@@ -231,16 +231,16 @@ The region to search within can be specified with ``offset`` and ``end``. This i
 
 :ref:`String<class_String>` **sub**\ (\ subject\: :ref:`String<class_String>`, replacement\: :ref:`String<class_String>`, all\: :ref:`bool<class_bool>` = false, offset\: :ref:`int<class_int>` = 0, end\: :ref:`int<class_int>` = -1\ ) |const| :ref:`🔗<class_RegEx_method_sub>`
 
-Searches the text for the compiled pattern and replaces it with the specified string. Escapes and backreferences such as ``$1`` and ``$name`` are expanded and resolved. By default, only the first instance is replaced, but it can be changed for all instances (global replacement).
+Tìm kiếm mẫu đã biên dịch trong văn bản và thay thế mẫu bằng chuỗi được chỉ định. Các escape và backreference như ``$1`` và ``$name`` sẽ được mở rộng và phân giải. Theo mặc định, chỉ instance đầu tiên được thay thế, nhưng có thể thay đổi để thay thế tất cả các instance (thay thế toàn cục).
 
-The region to search within can be specified with ``offset`` and ``end``. This is useful when searching for another match in the same ``subject`` by calling this method again after a previous success. Note that setting these parameters differs from passing over a shortened string. For example, the start anchor ``^`` is not affected by ``offset``, and the character before ``offset`` will be checked for the word boundary ``\b``.
+Có thể chỉ định vùng cần tìm kiếm bằng ``offset`` và ``end``. Điều này hữu ích khi tìm một kết quả khớp khác trong cùng ``subject`` bằng cách gọi lại phương thức này sau một lần thành công trước đó. Lưu ý rằng việc đặt các tham số này khác với việc truyền vào một chuỗi đã được rút ngắn. Ví dụ, anchor bắt đầu ``^`` không bị ảnh hưởng bởi ``offset``, và ký tự trước ``offset`` sẽ được kiểm tra để xác định ranh giới từ ``\b``.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

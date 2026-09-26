@@ -10,57 +10,57 @@
 TextureButton
 =============
 
-**Inherits:** :ref:`BaseButton<class_BaseButton>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`BaseButton<class_BaseButton>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Texture-based button. Supports Pressed, Hover, Disabled and Focused states.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-**TextureButton** has the same functionality as :ref:`Button<class_Button>`, except it uses sprites instead of Godot's :ref:`Theme<class_Theme>` resource. It is faster to create, but it doesn't support localization like more complex :ref:`Control<class_Control>`\ s.
-
-See also :ref:`BaseButton<class_BaseButton>` which contains common properties and methods associated with this node.
-
-\ **Note:** Setting a texture for the "normal" state (:ref:`texture_normal<class_TextureButton_property_texture_normal>`) is recommended. If :ref:`texture_normal<class_TextureButton_property_texture_normal>` is not set, the **TextureButton** will still receive input events and be clickable, but the user will not be able to see it unless they activate another one of its states with a texture assigned (e.g., hover over it to show :ref:`texture_hover<class_TextureButton_property_texture_hover>`).
+Nút dựa trên texture. Hỗ trợ các trạng thái Pressed, Hover, Disabled và Focused.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+**TextureButton** có cùng chức năng với :ref:`Button<class_Button>`, ngoại trừ việc sử dụng sprite thay vì resource :ref:`Theme<class_Theme>` của Godot. Việc tạo nó nhanh hơn, nhưng không hỗ trợ localization như các :ref:`Control<class_Control>`\ s phức tạp hơn.
+
+Xem thêm :ref:`BaseButton<class_BaseButton>`, chứa các thuộc tính và phương thức phổ biến liên quan đến node này.
+
+\ **Lưu ý:** Bạn nên thiết lập texture cho trạng thái "normal" (:ref:`texture_normal<class_TextureButton_property_texture_normal>`). Nếu chưa thiết lập :ref:`texture_normal<class_TextureButton_property_texture_normal>`, **TextureButton** vẫn sẽ nhận các sự kiện đầu vào và có thể nhấp được, nhưng người dùng sẽ không nhìn thấy nó trừ khi kích hoạt một trạng thái khác có texture được gán (ví dụ: di chuột qua nó để hiển thị :ref:`texture_hover<class_TextureButton_property_texture_hover>`).
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- `3D Voxel Demo <https://godotengine.org/asset-library/asset/2755>`__
+- `Bản trình diễn Voxel 3D <https://godotengine.org/asset-library/asset/2755>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +----------------------------------------------------+------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                            | :ref:`flip_h<class_TextureButton_property_flip_h>`                           | ``false`` |
-   +----------------------------------------------------+------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                            | :ref:`flip_v<class_TextureButton_property_flip_v>`                           | ``false`` |
-   +----------------------------------------------------+------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                            | :ref:`ignore_texture_size<class_TextureButton_property_ignore_texture_size>` | ``false`` |
-   +----------------------------------------------------+------------------------------------------------------------------------------+-----------+
-   | :ref:`StretchMode<enum_TextureButton_StretchMode>` | :ref:`stretch_mode<class_TextureButton_property_stretch_mode>`               | ``2``     |
-   +----------------------------------------------------+------------------------------------------------------------------------------+-----------+
-   | :ref:`BitMap<class_BitMap>`                        | :ref:`texture_click_mask<class_TextureButton_property_texture_click_mask>`   |           |
-   +----------------------------------------------------+------------------------------------------------------------------------------+-----------+
-   | :ref:`Texture2D<class_Texture2D>`                  | :ref:`texture_disabled<class_TextureButton_property_texture_disabled>`       |           |
-   +----------------------------------------------------+------------------------------------------------------------------------------+-----------+
-   | :ref:`Texture2D<class_Texture2D>`                  | :ref:`texture_focused<class_TextureButton_property_texture_focused>`         |           |
-   +----------------------------------------------------+------------------------------------------------------------------------------+-----------+
-   | :ref:`Texture2D<class_Texture2D>`                  | :ref:`texture_hover<class_TextureButton_property_texture_hover>`             |           |
-   +----------------------------------------------------+------------------------------------------------------------------------------+-----------+
-   | :ref:`Texture2D<class_Texture2D>`                  | :ref:`texture_normal<class_TextureButton_property_texture_normal>`           |           |
-   +----------------------------------------------------+------------------------------------------------------------------------------+-----------+
-   | :ref:`Texture2D<class_Texture2D>`                  | :ref:`texture_pressed<class_TextureButton_property_texture_pressed>`         |           |
-   +----------------------------------------------------+------------------------------------------------------------------------------+-----------+
+   +-----------------------------------------------------+------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                             | :ref:`flip_h<class_TextureButton_property_flip_h>`                           | ``false`` |
+   +-----------------------------------------------------+------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                             | :ref:`flip_v<class_TextureButton_property_flip_v>`                           | ``false`` |
+   +-----------------------------------------------------+------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                             | :ref:`ignore_texture_size<class_TextureButton_property_ignore_texture_size>` | ``false`` |
+   +-----------------------------------------------------+------------------------------------------------------------------------------+-----------+
+   | :ref:`StretchMode <enum_TextureButton_StretchMode>` | :ref:`stretch_mode<class_TextureButton_property_stretch_mode>`               | ``2``     |
+   +-----------------------------------------------------+------------------------------------------------------------------------------+-----------+
+   | :ref:`BitMap<class_BitMap>`                         | :ref:`texture_click_mask<class_TextureButton_property_texture_click_mask>`   |           |
+   +-----------------------------------------------------+------------------------------------------------------------------------------+-----------+
+   | :ref:`Texture2D<class_Texture2D>`                   | :ref:`texture_disabled<class_TextureButton_property_texture_disabled>`       |           |
+   +-----------------------------------------------------+------------------------------------------------------------------------------+-----------+
+   | :ref:`Texture2D<class_Texture2D>`                   | :ref:`texture_focused<class_TextureButton_property_texture_focused>`         |           |
+   +-----------------------------------------------------+------------------------------------------------------------------------------+-----------+
+   | :ref:`Texture2D<class_Texture2D>`                   | :ref:`texture_hover<class_TextureButton_property_texture_hover>`             |           |
+   +-----------------------------------------------------+------------------------------------------------------------------------------+-----------+
+   | :ref:`Texture2D<class_Texture2D>`                   | :ref:`texture_normal<class_TextureButton_property_texture_normal>`           |           |
+   +-----------------------------------------------------+------------------------------------------------------------------------------+-----------+
+   | :ref:`Texture2D<class_Texture2D>`                   | :ref:`texture_pressed<class_TextureButton_property_texture_pressed>`         |           |
+   +-----------------------------------------------------+------------------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-section-separator
 
@@ -68,14 +68,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_TextureButton_StretchMode:
 
 .. rst-class:: classref-enumeration
 
-enum **StretchMode**: :ref:`🔗<enum_TextureButton_StretchMode>`
+enum **StretchMode**: :ref:`🔗 <enum_TextureButton_StretchMode>`
 
 .. _class_TextureButton_constant_STRETCH_SCALE:
 
@@ -83,7 +83,7 @@ enum **StretchMode**: :ref:`🔗<enum_TextureButton_StretchMode>`
 
 :ref:`StretchMode<enum_TextureButton_StretchMode>` **STRETCH_SCALE** = ``0``
 
-Scale to fit the node's bounding rectangle.
+Thu phóng để vừa với hình chữ nhật bao quanh node.
 
 .. _class_TextureButton_constant_STRETCH_TILE:
 
@@ -91,7 +91,7 @@ Scale to fit the node's bounding rectangle.
 
 :ref:`StretchMode<enum_TextureButton_StretchMode>` **STRETCH_TILE** = ``1``
 
-Tile inside the node's bounding rectangle.
+Lặp texture bên trong hình chữ nhật bao quanh node.
 
 .. _class_TextureButton_constant_STRETCH_KEEP:
 
@@ -99,7 +99,7 @@ Tile inside the node's bounding rectangle.
 
 :ref:`StretchMode<enum_TextureButton_StretchMode>` **STRETCH_KEEP** = ``2``
 
-The texture keeps its original size and stays in the bounding rectangle's top-left corner.
+Texture giữ nguyên kích thước ban đầu và nằm ở góc trên bên trái của hình chữ nhật bao quanh.
 
 .. _class_TextureButton_constant_STRETCH_KEEP_CENTERED:
 
@@ -107,7 +107,7 @@ The texture keeps its original size and stays in the bounding rectangle's top-le
 
 :ref:`StretchMode<enum_TextureButton_StretchMode>` **STRETCH_KEEP_CENTERED** = ``3``
 
-The texture keeps its original size and stays centered in the node's bounding rectangle.
+Texture giữ nguyên kích thước ban đầu và nằm chính giữa hình chữ nhật bao quanh node.
 
 .. _class_TextureButton_constant_STRETCH_KEEP_ASPECT:
 
@@ -115,7 +115,7 @@ The texture keeps its original size and stays centered in the node's bounding re
 
 :ref:`StretchMode<enum_TextureButton_StretchMode>` **STRETCH_KEEP_ASPECT** = ``4``
 
-Scale the texture to fit the node's bounding rectangle, but maintain the texture's aspect ratio.
+Thu phóng texture để vừa với hình chữ nhật bao quanh node, nhưng vẫn giữ nguyên tỷ lệ khung hình của texture.
 
 .. _class_TextureButton_constant_STRETCH_KEEP_ASPECT_CENTERED:
 
@@ -123,7 +123,7 @@ Scale the texture to fit the node's bounding rectangle, but maintain the texture
 
 :ref:`StretchMode<enum_TextureButton_StretchMode>` **STRETCH_KEEP_ASPECT_CENTERED** = ``5``
 
-Scale the texture to fit the node's bounding rectangle, center it, and maintain its aspect ratio.
+Thu phóng texture để vừa với hình chữ nhật bao quanh node, căn giữa và giữ nguyên tỷ lệ khung hình.
 
 .. _class_TextureButton_constant_STRETCH_KEEP_ASPECT_COVERED:
 
@@ -131,7 +131,7 @@ Scale the texture to fit the node's bounding rectangle, center it, and maintain 
 
 :ref:`StretchMode<enum_TextureButton_StretchMode>` **STRETCH_KEEP_ASPECT_COVERED** = ``6``
 
-Scale the texture so that the shorter side fits the bounding rectangle. The other side clips to the node's limits.
+Thu phóng texture sao cho cạnh ngắn hơn vừa với hình chữ nhật bao quanh. Cạnh còn lại sẽ bị cắt theo giới hạn của node.
 
 .. rst-class:: classref-section-separator
 
@@ -139,8 +139,8 @@ Scale the texture so that the shorter side fits the bounding rectangle. The othe
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_TextureButton_property_flip_h:
 
@@ -153,7 +153,7 @@ Property Descriptions
 - |void| **set_flip_h**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_flipped_h**\ (\ )
 
-If ``true``, texture is flipped horizontally.
+Nếu ``true``, texture sẽ được lật theo chiều ngang.
 
 .. rst-class:: classref-item-separator
 
@@ -170,7 +170,7 @@ If ``true``, texture is flipped horizontally.
 - |void| **set_flip_v**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_flipped_v**\ (\ )
 
-If ``true``, texture is flipped vertically.
+Nếu ``true``, texture sẽ được lật theo chiều dọc.
 
 .. rst-class:: classref-item-separator
 
@@ -187,7 +187,7 @@ If ``true``, texture is flipped vertically.
 - |void| **set_ignore_texture_size**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_ignore_texture_size**\ (\ )
 
-If ``true``, the size of the texture won't be considered for minimum size calculation, so the **TextureButton** can be shrunk down past the texture size.
+Nếu ``true``, kích thước của texture sẽ không được tính khi tính kích thước tối thiểu, vì vậy **TextureButton** có thể được thu nhỏ xuống nhỏ hơn kích thước texture.
 
 .. rst-class:: classref-item-separator
 
@@ -204,7 +204,7 @@ If ``true``, the size of the texture won't be considered for minimum size calcul
 - |void| **set_stretch_mode**\ (\ value\: :ref:`StretchMode<enum_TextureButton_StretchMode>`\ )
 - :ref:`StretchMode<enum_TextureButton_StretchMode>` **get_stretch_mode**\ (\ )
 
-Controls the texture's behavior when you resize the node's bounding rectangle. See the :ref:`StretchMode<enum_TextureButton_StretchMode>` constants for available options.
+Điều khiển cách texture hoạt động khi bạn thay đổi kích thước hình chữ nhật bao quanh node. Xem các hằng số :ref:`StretchMode <enum_TextureButton_StretchMode>` để biết các tùy chọn hiện có.
 
 .. rst-class:: classref-item-separator
 
@@ -214,14 +214,14 @@ Controls the texture's behavior when you resize the node's bounding rectangle. S
 
 .. rst-class:: classref-property
 
-:ref:`BitMap<class_BitMap>` **texture_click_mask** :ref:`🔗<class_TextureButton_property_texture_click_mask>`
+:ref:`BitMap<class_BitMap>` **texture_click_mask** :ref:`🔗 <class_TextureButton_property_texture_click_mask>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_click_mask**\ (\ value\: :ref:`BitMap<class_BitMap>`\ )
 - :ref:`BitMap<class_BitMap>` **get_click_mask**\ (\ )
 
-Pure black and white :ref:`BitMap<class_BitMap>` image to use for click detection. On the mask, white pixels represent the button's clickable area. Use it to create buttons with curved shapes.
+Hình ảnh :ref:`BitMap<class_BitMap>` đen trắng thuần túy dùng để phát hiện thao tác nhấp. Trên mask, các pixel trắng biểu thị vùng có thể nhấp của nút. Sử dụng nó để tạo các nút có hình dạng cong.
 
 .. rst-class:: classref-item-separator
 
@@ -231,14 +231,14 @@ Pure black and white :ref:`BitMap<class_BitMap>` image to use for click detectio
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **texture_disabled** :ref:`🔗<class_TextureButton_property_texture_disabled>`
+:ref:`Texture2D<class_Texture2D>` **texture_disabled** :ref:`🔗 <class_TextureButton_property_texture_disabled>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_texture_disabled**\ (\ value\: :ref:`Texture2D<class_Texture2D>`\ )
 - :ref:`Texture2D<class_Texture2D>` **get_texture_disabled**\ (\ )
 
-Texture to display when the node is disabled. See :ref:`BaseButton.disabled<class_BaseButton_property_disabled>`. If not assigned, the **TextureButton** displays :ref:`texture_normal<class_TextureButton_property_texture_normal>` instead.
+Texture hiển thị khi node bị vô hiệu hóa. Xem :ref:`BaseButton.disabled<class_BaseButton_property_disabled>`. Nếu chưa được gán, **TextureButton** sẽ hiển thị :ref:`texture_normal<class_TextureButton_property_texture_normal>` thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -248,14 +248,14 @@ Texture to display when the node is disabled. See :ref:`BaseButton.disabled<clas
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **texture_focused** :ref:`🔗<class_TextureButton_property_texture_focused>`
+:ref:`Texture2D<class_Texture2D>` **texture_focused** :ref:`🔗 <class_TextureButton_property_texture_focused>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_texture_focused**\ (\ value\: :ref:`Texture2D<class_Texture2D>`\ )
 - :ref:`Texture2D<class_Texture2D>` **get_texture_focused**\ (\ )
 
-Texture to *overlay on the base texture* when the node has mouse or keyboard focus. Because :ref:`texture_focused<class_TextureButton_property_texture_focused>` is displayed on top of the base texture, a partially transparent texture should be used to ensure the base texture remains visible. A texture that represents an outline or an underline works well for this purpose. To disable the focus visual effect, assign a fully transparent texture of any size. Note that disabling the focus visual effect will harm keyboard/controller navigation usability, so this is not recommended for accessibility reasons.
+Texture dùng để *chồng lên texture cơ sở* khi node có focus chuột hoặc bàn phím. Vì :ref:`texture_focused<class_TextureButton_property_texture_focused>` được hiển thị bên trên texture cơ sở, nên sử dụng texture bán trong suốt để bảo đảm texture cơ sở vẫn hiển thị. Texture biểu thị đường viền hoặc gạch chân rất phù hợp cho mục đích này. Để tắt hiệu ứng hiển thị khi focus, hãy gán một texture hoàn toàn trong suốt với kích thước bất kỳ. Lưu ý rằng việc tắt hiệu ứng hiển thị khi focus sẽ làm giảm khả năng sử dụng điều hướng bằng bàn phím/tay cầm, vì vậy không nên làm vậy vì lý do accessibility.
 
 .. rst-class:: classref-item-separator
 
@@ -265,14 +265,14 @@ Texture to *overlay on the base texture* when the node has mouse or keyboard foc
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **texture_hover** :ref:`🔗<class_TextureButton_property_texture_hover>`
+:ref:`Texture2D<class_Texture2D>` **texture_hover** :ref:`🔗 <class_TextureButton_property_texture_hover>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_texture_hover**\ (\ value\: :ref:`Texture2D<class_Texture2D>`\ )
 - :ref:`Texture2D<class_Texture2D>` **get_texture_hover**\ (\ )
 
-Texture to display when the mouse hovers over the node. If not assigned, the **TextureButton** displays :ref:`texture_normal<class_TextureButton_property_texture_normal>` instead when hovered over.
+Texture hiển thị khi chuột di qua node. Nếu chưa được gán, **TextureButton** sẽ hiển thị :ref:`texture_normal<class_TextureButton_property_texture_normal>` thay thế khi được di chuột qua.
 
 .. rst-class:: classref-item-separator
 
@@ -282,14 +282,14 @@ Texture to display when the mouse hovers over the node. If not assigned, the **T
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **texture_normal** :ref:`🔗<class_TextureButton_property_texture_normal>`
+:ref:`Texture2D<class_Texture2D>` **texture_normal** :ref:`🔗 <class_TextureButton_property_texture_normal>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_texture_normal**\ (\ value\: :ref:`Texture2D<class_Texture2D>`\ )
 - :ref:`Texture2D<class_Texture2D>` **get_texture_normal**\ (\ )
 
-Texture to display by default, when the node is **not** in the disabled, hover or pressed state. This texture is still displayed in the focused state, with :ref:`texture_focused<class_TextureButton_property_texture_focused>` drawn on top.
+Texture hiển thị theo mặc định, khi node **không** ở trạng thái disabled, hover hoặc pressed. Texture này vẫn được hiển thị ở trạng thái focused, với :ref:`texture_focused<class_TextureButton_property_texture_focused>` được vẽ bên trên.
 
 .. rst-class:: classref-item-separator
 
@@ -299,21 +299,21 @@ Texture to display by default, when the node is **not** in the disabled, hover o
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **texture_pressed** :ref:`🔗<class_TextureButton_property_texture_pressed>`
+:ref:`Texture2D<class_Texture2D>` **texture_pressed** :ref:`🔗 <class_TextureButton_property_texture_pressed>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_texture_pressed**\ (\ value\: :ref:`Texture2D<class_Texture2D>`\ )
 - :ref:`Texture2D<class_Texture2D>` **get_texture_pressed**\ (\ )
 
-Texture to display on mouse down over the node, if the node has keyboard focus and the player presses the Enter key or if the player presses the :ref:`BaseButton.shortcut<class_BaseButton_property_shortcut>` key. If not assigned, the **TextureButton** displays :ref:`texture_hover<class_TextureButton_property_texture_hover>` instead when pressed.
+Texture hiển thị khi nhấn chuột trên node, nếu node đang có focus bàn phím và người chơi nhấn phím Enter hoặc nếu người chơi nhấn phím :ref:`BaseButton.shortcut<class_BaseButton_property_shortcut>`. Nếu chưa được gán, **TextureButton** sẽ hiển thị :ref:`texture_hover<class_TextureButton_property_texture_hover>` thay thế khi được nhấn.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này ở vai trò toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

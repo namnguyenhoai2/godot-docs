@@ -10,64 +10,64 @@
 RDShaderSource
 ==============
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Shader source code (used by :ref:`RenderingDevice<class_RenderingDevice>`).
+Mã nguồn shader (được sử dụng bởi :ref:`RenderingDevice<class_RenderingDevice>`).
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Shader source code in text form.
+Mã nguồn shader ở dạng văn bản.
 
-See also :ref:`RDShaderFile<class_RDShaderFile>`. **RDShaderSource** is only meant to be used with the :ref:`RenderingDevice<class_RenderingDevice>` API. It should not be confused with Godot's own :ref:`Shader<class_Shader>` resource, which is what Godot's various nodes use for high-level shader programming.
+Xem thêm :ref:`RDShaderFile<class_RDShaderFile>`. **RDShaderSource** chỉ предназнач để sử dụng với API :ref:`RenderingDevice<class_RenderingDevice>`. Không nên nhầm lẫn nó với resource :ref:`Shader<class_Shader>` của Godot, vốn được các node khác nhau của Godot sử dụng cho việc lập trình shader cấp cao.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------------------+---------------------------------------------------------------------------------------------------+--------+
-   | :ref:`ShaderLanguage<enum_RenderingDevice_ShaderLanguage>` | :ref:`language<class_RDShaderSource_property_language>`                                           | ``0``  |
-   +------------------------------------------------------------+---------------------------------------------------------------------------------------------------+--------+
-   | :ref:`String<class_String>`                                | :ref:`source_any_hit<class_RDShaderSource_property_source_any_hit>`                               | ``""`` |
-   +------------------------------------------------------------+---------------------------------------------------------------------------------------------------+--------+
-   | :ref:`String<class_String>`                                | :ref:`source_closest_hit<class_RDShaderSource_property_source_closest_hit>`                       | ``""`` |
-   +------------------------------------------------------------+---------------------------------------------------------------------------------------------------+--------+
-   | :ref:`String<class_String>`                                | :ref:`source_compute<class_RDShaderSource_property_source_compute>`                               | ``""`` |
-   +------------------------------------------------------------+---------------------------------------------------------------------------------------------------+--------+
-   | :ref:`String<class_String>`                                | :ref:`source_fragment<class_RDShaderSource_property_source_fragment>`                             | ``""`` |
-   +------------------------------------------------------------+---------------------------------------------------------------------------------------------------+--------+
-   | :ref:`String<class_String>`                                | :ref:`source_intersection<class_RDShaderSource_property_source_intersection>`                     | ``""`` |
-   +------------------------------------------------------------+---------------------------------------------------------------------------------------------------+--------+
-   | :ref:`String<class_String>`                                | :ref:`source_miss<class_RDShaderSource_property_source_miss>`                                     | ``""`` |
-   +------------------------------------------------------------+---------------------------------------------------------------------------------------------------+--------+
-   | :ref:`String<class_String>`                                | :ref:`source_raygen<class_RDShaderSource_property_source_raygen>`                                 | ``""`` |
-   +------------------------------------------------------------+---------------------------------------------------------------------------------------------------+--------+
-   | :ref:`String<class_String>`                                | :ref:`source_tesselation_control<class_RDShaderSource_property_source_tesselation_control>`       | ``""`` |
-   +------------------------------------------------------------+---------------------------------------------------------------------------------------------------+--------+
-   | :ref:`String<class_String>`                                | :ref:`source_tesselation_evaluation<class_RDShaderSource_property_source_tesselation_evaluation>` | ``""`` |
-   +------------------------------------------------------------+---------------------------------------------------------------------------------------------------+--------+
-   | :ref:`String<class_String>`                                | :ref:`source_vertex<class_RDShaderSource_property_source_vertex>`                                 | ``""`` |
-   +------------------------------------------------------------+---------------------------------------------------------------------------------------------------+--------+
+   +-------------------------------------------------------------+---------------------------------------------------------------------------------------------------+--------+
+   | :ref:`ShaderLanguage <enum_RenderingDevice_ShaderLanguage>` | :ref:`language<class_RDShaderSource_property_language>`                                           | ``0``  |
+   +-------------------------------------------------------------+---------------------------------------------------------------------------------------------------+--------+
+   | :ref:`String<class_String>`                                 | :ref:`source_any_hit<class_RDShaderSource_property_source_any_hit>`                               | ``""`` |
+   +-------------------------------------------------------------+---------------------------------------------------------------------------------------------------+--------+
+   | :ref:`String<class_String>`                                 | :ref:`source_closest_hit<class_RDShaderSource_property_source_closest_hit>`                       | ``""`` |
+   +-------------------------------------------------------------+---------------------------------------------------------------------------------------------------+--------+
+   | :ref:`String<class_String>`                                 | :ref:`source_compute<class_RDShaderSource_property_source_compute>`                               | ``""`` |
+   +-------------------------------------------------------------+---------------------------------------------------------------------------------------------------+--------+
+   | :ref:`String<class_String>`                                 | :ref:`source_fragment<class_RDShaderSource_property_source_fragment>`                             | ``""`` |
+   +-------------------------------------------------------------+---------------------------------------------------------------------------------------------------+--------+
+   | :ref:`String<class_String>`                                 | :ref:`source_intersection<class_RDShaderSource_property_source_intersection>`                     | ``""`` |
+   +-------------------------------------------------------------+---------------------------------------------------------------------------------------------------+--------+
+   | :ref:`String<class_String>`                                 | :ref:`source_miss<class_RDShaderSource_property_source_miss>`                                     | ``""`` |
+   +-------------------------------------------------------------+---------------------------------------------------------------------------------------------------+--------+
+   | :ref:`String<class_String>`                                 | :ref:`source_raygen<class_RDShaderSource_property_source_raygen>`                                 | ``""`` |
+   +-------------------------------------------------------------+---------------------------------------------------------------------------------------------------+--------+
+   | :ref:`String<class_String>`                                 | :ref:`source_tesselation_control<class_RDShaderSource_property_source_tesselation_control>`       | ``""`` |
+   +-------------------------------------------------------------+---------------------------------------------------------------------------------------------------+--------+
+   | :ref:`String<class_String>`                                 | :ref:`source_tesselation_evaluation<class_RDShaderSource_property_source_tesselation_evaluation>` | ``""`` |
+   +-------------------------------------------------------------+---------------------------------------------------------------------------------------------------+--------+
+   | :ref:`String<class_String>`                                 | :ref:`source_vertex<class_RDShaderSource_property_source_vertex>`                                 | ``""`` |
+   +-------------------------------------------------------------+---------------------------------------------------------------------------------------------------+--------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
 
-   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>` | :ref:`get_stage_source<class_RDShaderSource_method_get_stage_source>`\ (\ stage\: :ref:`ShaderStage<enum_RenderingDevice_ShaderStage>`\ ) |const|                               |
-   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                      | :ref:`set_stage_source<class_RDShaderSource_method_set_stage_source>`\ (\ stage\: :ref:`ShaderStage<enum_RenderingDevice_ShaderStage>`, source\: :ref:`String<class_String>`\ ) |
-   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +-----------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>` | :ref:`get_stage_source<class_RDShaderSource_method_get_stage_source>`\ (\ stage\: :ref:`ShaderStage <enum_RenderingDevice_ShaderStage>`\ ) |const|                               |
+   +-----------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                      | :ref:`set_stage_source<class_RDShaderSource_method_set_stage_source>`\ (\ stage\: :ref:`ShaderStage <enum_RenderingDevice_ShaderStage>`, source\: :ref:`String<class_String>`\ ) |
+   +-----------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -75,8 +75,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_RDShaderSource_property_language:
 
@@ -89,7 +89,7 @@ Property Descriptions
 - |void| **set_language**\ (\ value\: :ref:`ShaderLanguage<enum_RenderingDevice_ShaderLanguage>`\ )
 - :ref:`ShaderLanguage<enum_RenderingDevice_ShaderLanguage>` **get_language**\ (\ )
 
-The language the shader is written in.
+Ngôn ngữ được sử dụng để viết shader.
 
 .. rst-class:: classref-item-separator
 
@@ -106,7 +106,7 @@ The language the shader is written in.
 - |void| **set_stage_source**\ (\ stage\: :ref:`ShaderStage<enum_RenderingDevice_ShaderStage>`, source\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_stage_source**\ (\ stage\: :ref:`ShaderStage<enum_RenderingDevice_ShaderStage>`\ ) |const|
 
-Source code for the shader's any hit stage.
+Mã nguồn cho any hit stage của shader.
 
 .. rst-class:: classref-item-separator
 
@@ -123,7 +123,7 @@ Source code for the shader's any hit stage.
 - |void| **set_stage_source**\ (\ stage\: :ref:`ShaderStage<enum_RenderingDevice_ShaderStage>`, source\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_stage_source**\ (\ stage\: :ref:`ShaderStage<enum_RenderingDevice_ShaderStage>`\ ) |const|
 
-Source code for the shader's closest hit stage.
+Mã nguồn cho closest hit stage của shader.
 
 .. rst-class:: classref-item-separator
 
@@ -140,7 +140,7 @@ Source code for the shader's closest hit stage.
 - |void| **set_stage_source**\ (\ stage\: :ref:`ShaderStage<enum_RenderingDevice_ShaderStage>`, source\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_stage_source**\ (\ stage\: :ref:`ShaderStage<enum_RenderingDevice_ShaderStage>`\ ) |const|
 
-Source code for the shader's compute stage.
+Mã nguồn cho compute stage của shader.
 
 .. rst-class:: classref-item-separator
 
@@ -157,7 +157,7 @@ Source code for the shader's compute stage.
 - |void| **set_stage_source**\ (\ stage\: :ref:`ShaderStage<enum_RenderingDevice_ShaderStage>`, source\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_stage_source**\ (\ stage\: :ref:`ShaderStage<enum_RenderingDevice_ShaderStage>`\ ) |const|
 
-Source code for the shader's fragment stage.
+Mã nguồn cho fragment stage của shader.
 
 .. rst-class:: classref-item-separator
 
@@ -174,7 +174,7 @@ Source code for the shader's fragment stage.
 - |void| **set_stage_source**\ (\ stage\: :ref:`ShaderStage<enum_RenderingDevice_ShaderStage>`, source\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_stage_source**\ (\ stage\: :ref:`ShaderStage<enum_RenderingDevice_ShaderStage>`\ ) |const|
 
-Source code for the shader's intersection stage.
+Mã nguồn cho intersection stage của shader.
 
 .. rst-class:: classref-item-separator
 
@@ -191,7 +191,7 @@ Source code for the shader's intersection stage.
 - |void| **set_stage_source**\ (\ stage\: :ref:`ShaderStage<enum_RenderingDevice_ShaderStage>`, source\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_stage_source**\ (\ stage\: :ref:`ShaderStage<enum_RenderingDevice_ShaderStage>`\ ) |const|
 
-Source code for the shader's miss stage.
+Mã nguồn cho miss stage của shader.
 
 .. rst-class:: classref-item-separator
 
@@ -208,7 +208,7 @@ Source code for the shader's miss stage.
 - |void| **set_stage_source**\ (\ stage\: :ref:`ShaderStage<enum_RenderingDevice_ShaderStage>`, source\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_stage_source**\ (\ stage\: :ref:`ShaderStage<enum_RenderingDevice_ShaderStage>`\ ) |const|
 
-Source code for the shader's ray generation stage.
+Mã nguồn cho ray generation stage của shader.
 
 .. rst-class:: classref-item-separator
 
@@ -225,7 +225,7 @@ Source code for the shader's ray generation stage.
 - |void| **set_stage_source**\ (\ stage\: :ref:`ShaderStage<enum_RenderingDevice_ShaderStage>`, source\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_stage_source**\ (\ stage\: :ref:`ShaderStage<enum_RenderingDevice_ShaderStage>`\ ) |const|
 
-Source code for the shader's tessellation control stage.
+Mã nguồn cho tessellation control stage của shader.
 
 .. rst-class:: classref-item-separator
 
@@ -242,7 +242,7 @@ Source code for the shader's tessellation control stage.
 - |void| **set_stage_source**\ (\ stage\: :ref:`ShaderStage<enum_RenderingDevice_ShaderStage>`, source\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_stage_source**\ (\ stage\: :ref:`ShaderStage<enum_RenderingDevice_ShaderStage>`\ ) |const|
 
-Source code for the shader's tessellation evaluation stage.
+Mã nguồn cho tessellation evaluation stage của shader.
 
 .. rst-class:: classref-item-separator
 
@@ -259,7 +259,7 @@ Source code for the shader's tessellation evaluation stage.
 - |void| **set_stage_source**\ (\ stage\: :ref:`ShaderStage<enum_RenderingDevice_ShaderStage>`, source\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_stage_source**\ (\ stage\: :ref:`ShaderStage<enum_RenderingDevice_ShaderStage>`\ ) |const|
 
-Source code for the shader's vertex stage.
+Mã nguồn cho vertex stage của shader.
 
 .. rst-class:: classref-section-separator
 
@@ -267,8 +267,8 @@ Source code for the shader's vertex stage.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_RDShaderSource_method_get_stage_source:
 
@@ -276,7 +276,7 @@ Method Descriptions
 
 :ref:`String<class_String>` **get_stage_source**\ (\ stage\: :ref:`ShaderStage<enum_RenderingDevice_ShaderStage>`\ ) |const| :ref:`🔗<class_RDShaderSource_method_get_stage_source>`
 
-Returns source code for the specified shader ``stage``. Equivalent to getting one of :ref:`source_compute<class_RDShaderSource_property_source_compute>`, :ref:`source_fragment<class_RDShaderSource_property_source_fragment>`, :ref:`source_tesselation_control<class_RDShaderSource_property_source_tesselation_control>`, :ref:`source_tesselation_evaluation<class_RDShaderSource_property_source_tesselation_evaluation>` or :ref:`source_vertex<class_RDShaderSource_property_source_vertex>`.
+Trả về mã nguồn cho ``stage`` shader được chỉ định. Tương đương với việc lấy một trong :ref:`source_compute<class_RDShaderSource_property_source_compute>`, :ref:`source_fragment<class_RDShaderSource_property_source_fragment>`, :ref:`source_tesselation_control<class_RDShaderSource_property_source_tesselation_control>`, :ref:`source_tesselation_evaluation<class_RDShaderSource_property_source_tesselation_evaluation>` hoặc :ref:`source_vertex<class_RDShaderSource_property_source_vertex>`.
 
 .. rst-class:: classref-item-separator
 
@@ -288,16 +288,16 @@ Returns source code for the specified shader ``stage``. Equivalent to getting on
 
 |void| **set_stage_source**\ (\ stage\: :ref:`ShaderStage<enum_RenderingDevice_ShaderStage>`, source\: :ref:`String<class_String>`\ ) :ref:`🔗<class_RDShaderSource_method_set_stage_source>`
 
-Sets ``source`` code for the specified shader ``stage``. Equivalent to setting one of :ref:`source_compute<class_RDShaderSource_property_source_compute>`, :ref:`source_fragment<class_RDShaderSource_property_source_fragment>`, :ref:`source_tesselation_control<class_RDShaderSource_property_source_tesselation_control>`, :ref:`source_tesselation_evaluation<class_RDShaderSource_property_source_tesselation_evaluation>` or :ref:`source_vertex<class_RDShaderSource_property_source_vertex>`.
+Thiết lập mã ``source`` cho ``stage`` shader được chỉ định. Tương đương với việc thiết lập một trong :ref:`source_compute<class_RDShaderSource_property_source_compute>`, :ref:`source_fragment<class_RDShaderSource_property_source_fragment>`, :ref:`source_tesselation_control<class_RDShaderSource_property_source_tesselation_control>`, :ref:`source_tesselation_evaluation<class_RDShaderSource_property_source_tesselation_evaluation>` hoặc :ref:`source_vertex<class_RDShaderSource_property_source_vertex>`.
 
-\ **Note:** If you set the compute shader source code using this method directly, remember to remove the Godot-specific hint ``#[compute]``.
+\ **Lưu ý:** Nếu bạn thiết lập mã nguồn compute shader bằng cách gọi trực tiếp phương thức này, hãy nhớ xóa gợi ý dành riêng cho Godot ``#[compute]``.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,68 +10,68 @@
 ScrollContainer
 ===============
 
-**Inherits:** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`EditorInspector<class_EditorInspector>`
+**Được kế thừa bởi:** :ref:`EditorInspector<class_EditorInspector>`
 
-A container used to provide scrollbars to a child control when needed.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A container used to provide a child control with scrollbars when needed. Scrollbars will automatically be drawn at the right (for vertical) or bottom (for horizontal) and will enable dragging to move the viewable Control (and its children) within the ScrollContainer. Scrollbars will also automatically resize the grabber based on the :ref:`Control.custom_minimum_size<class_Control_property_custom_minimum_size>` of the Control relative to the ScrollContainer.
+Một container dùng để cung cấp thanh cuộn cho control con khi cần.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Một container dùng để cung cấp thanh cuộn cho control con khi cần. Các thanh cuộn sẽ tự động được vẽ ở bên phải (đối với chiều dọc) hoặc bên dưới (đối với chiều ngang), đồng thời cho phép kéo để di chuyển Control có thể nhìn thấy (và các thành phần con của nó) trong ScrollContainer. Các thanh cuộn cũng sẽ tự động thay đổi kích thước của nút kéo dựa trên :ref:`Control.custom_minimum_size<class_Control_property_custom_minimum_size>` của Control so với ScrollContainer.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Using Containers <../tutorials/ui/gui_containers>`
+- :doc:`Sử dụng Container <../tutorials/ui/gui_containers>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                    | clip_contents                                                                                      | ``true`` (overrides :ref:`Control<class_Control_property_clip_contents>`)           |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                    | :ref:`draw_focus_border<class_ScrollContainer_property_draw_focus_border>`                         | ``false``                                                                           |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                    | :ref:`follow_focus<class_ScrollContainer_property_follow_focus>`                                   | ``false``                                                                           |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`ScrollMode<enum_ScrollContainer_ScrollMode>`         | :ref:`horizontal_scroll_mode<class_ScrollContainer_property_horizontal_scroll_mode>`               | ``1``                                                                               |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                    | propagate_maximum_size                                                                             | ``false`` (overrides :ref:`Control<class_Control_property_propagate_maximum_size>`) |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                      | :ref:`scroll_deadzone<class_ScrollContainer_property_scroll_deadzone>`                             | ``0``                                                                               |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`ScrollHintMode<enum_ScrollContainer_ScrollHintMode>` | :ref:`scroll_hint_mode<class_ScrollContainer_property_scroll_hint_mode>`                           | ``0``                                                                               |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                      | :ref:`scroll_horizontal<class_ScrollContainer_property_scroll_horizontal>`                         | ``0``                                                                               |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                    | :ref:`scroll_horizontal_by_default<class_ScrollContainer_property_scroll_horizontal_by_default>`   | ``false``                                                                           |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                  | :ref:`scroll_horizontal_custom_step<class_ScrollContainer_property_scroll_horizontal_custom_step>` | ``-1.0``                                                                            |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                      | :ref:`scroll_vertical<class_ScrollContainer_property_scroll_vertical>`                             | ``0``                                                                               |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                  | :ref:`scroll_vertical_custom_step<class_ScrollContainer_property_scroll_vertical_custom_step>`     | ``-1.0``                                                                            |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                    | :ref:`tile_scroll_hint<class_ScrollContainer_property_tile_scroll_hint>`                           | ``false``                                                                           |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`ScrollMode<enum_ScrollContainer_ScrollMode>`         | :ref:`vertical_scroll_mode<class_ScrollContainer_property_vertical_scroll_mode>`                   | ``1``                                                                               |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                     | clip_contents                                                                                      | ``true`` (ghi đè :ref:`Control<class_Control_property_clip_contents>`)           |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                     | :ref:`draw_focus_border<class_ScrollContainer_property_draw_focus_border>`                         | ``false``                                                                        |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                     | :ref:`follow_focus<class_ScrollContainer_property_follow_focus>`                                   | ``false``                                                                        |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`ScrollMode <enum_ScrollContainer_ScrollMode>`         | :ref:`horizontal_scroll_mode<class_ScrollContainer_property_horizontal_scroll_mode>`               | ``1``                                                                            |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                     | propagate_maximum_size                                                                             | ``false`` (ghi đè :ref:`Control<class_Control_property_propagate_maximum_size>`) |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                       | :ref:`scroll_deadzone<class_ScrollContainer_property_scroll_deadzone>`                             | ``0``                                                                            |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`ScrollHintMode <enum_ScrollContainer_ScrollHintMode>` | :ref:`scroll_hint_mode<class_ScrollContainer_property_scroll_hint_mode>`                           | ``0``                                                                            |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                       | :ref:`scroll_horizontal<class_ScrollContainer_property_scroll_horizontal>`                         | ``0``                                                                            |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                     | :ref:`scroll_horizontal_by_default<class_ScrollContainer_property_scroll_horizontal_by_default>`   | ``false``                                                                        |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                   | :ref:`scroll_horizontal_custom_step<class_ScrollContainer_property_scroll_horizontal_custom_step>` | ``-1.0``                                                                         |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                       | :ref:`scroll_vertical<class_ScrollContainer_property_scroll_vertical>`                             | ``0``                                                                            |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                   | :ref:`scroll_vertical_custom_step<class_ScrollContainer_property_scroll_vertical_custom_step>`     | ``-1.0``                                                                         |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                     | :ref:`tile_scroll_hint<class_ScrollContainer_property_tile_scroll_hint>`                           | ``false``                                                                        |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`ScrollMode <enum_ScrollContainer_ScrollMode>`         | :ref:`vertical_scroll_mode<class_ScrollContainer_property_vertical_scroll_mode>`                   | ``1``                                                                            |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -86,7 +86,7 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Theme Properties
+Thuộc tính Theme
 ----------------
 
 .. table::
@@ -116,8 +116,8 @@ Theme Properties
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_ScrollContainer_signal_scroll_ended:
 
@@ -125,9 +125,9 @@ Signals
 
 **scroll_ended**\ (\ ) :ref:`🔗<class_ScrollContainer_signal_scroll_ended>`
 
-Emitted when scrolling stops when dragging the scrollable area *with a touch event*. This signal is *not* emitted when scrolling by dragging the scrollbar, scrolling with the mouse wheel or scrolling with keyboard/gamepad events.
+Được phát ra khi thao tác cuộn dừng sau khi kéo vùng có thể cuộn *bằng sự kiện chạm*. Tín hiệu này *không được* phát ra khi cuộn bằng cách kéo thanh cuộn, cuộn bằng con lăn chuột hoặc cuộn bằng các sự kiện bàn phím/tay cầm.
 
-\ **Note:** This signal is only emitted on Android or iOS, or on desktop/web platforms when :ref:`ProjectSettings.input_devices/pointing/emulate_touch_from_mouse<class_ProjectSettings_property_input_devices/pointing/emulate_touch_from_mouse>` is enabled.
+\ **Lưu ý:** Tín hiệu này chỉ được phát ra trên Android hoặc iOS, hoặc trên các nền tảng máy tính để bàn/web khi :ref:`ProjectSettings.input_devices/pointing/emulate_touch_from_mouse <class_ProjectSettings_property_input_devices/pointing/emulate_touch_from_mouse>` được bật.
 
 .. rst-class:: classref-item-separator
 
@@ -139,9 +139,9 @@ Emitted when scrolling stops when dragging the scrollable area *with a touch eve
 
 **scroll_started**\ (\ ) :ref:`🔗<class_ScrollContainer_signal_scroll_started>`
 
-Emitted when scrolling starts when dragging the scrollable area *with a touch event*. This signal is *not* emitted when scrolling by dragging the scrollbar, scrolling with the mouse wheel or scrolling with keyboard/gamepad events.
+Được phát ra khi thao tác cuộn bắt đầu sau khi kéo vùng có thể cuộn *bằng sự kiện chạm*. Tín hiệu này *không được* phát ra khi cuộn bằng cách kéo thanh cuộn, cuộn bằng con lăn chuột hoặc cuộn bằng các sự kiện bàn phím/tay cầm.
 
-\ **Note:** This signal is only emitted on Android or iOS, or on desktop/web platforms when :ref:`ProjectSettings.input_devices/pointing/emulate_touch_from_mouse<class_ProjectSettings_property_input_devices/pointing/emulate_touch_from_mouse>` is enabled.
+\ **Lưu ý:** Tín hiệu này chỉ được phát ra trên Android hoặc iOS, hoặc trên các nền tảng máy tính để bàn/web khi :ref:`ProjectSettings.input_devices/pointing/emulate_touch_from_mouse <class_ProjectSettings_property_input_devices/pointing/emulate_touch_from_mouse>` được bật.
 
 .. rst-class:: classref-section-separator
 
@@ -149,14 +149,14 @@ Emitted when scrolling starts when dragging the scrollable area *with a touch ev
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_ScrollContainer_ScrollMode:
 
 .. rst-class:: classref-enumeration
 
-enum **ScrollMode**: :ref:`🔗<enum_ScrollContainer_ScrollMode>`
+enum **ScrollMode**: :ref:`🔗 <enum_ScrollContainer_ScrollMode>`
 
 .. _class_ScrollContainer_constant_SCROLL_MODE_DISABLED:
 
@@ -164,7 +164,7 @@ enum **ScrollMode**: :ref:`🔗<enum_ScrollContainer_ScrollMode>`
 
 :ref:`ScrollMode<enum_ScrollContainer_ScrollMode>` **SCROLL_MODE_DISABLED** = ``0``
 
-Scrolling disabled, scrollbar will be invisible.
+Tắt tính năng cuộn, thanh cuộn sẽ bị ẩn.
 
 .. _class_ScrollContainer_constant_SCROLL_MODE_AUTO:
 
@@ -172,7 +172,7 @@ Scrolling disabled, scrollbar will be invisible.
 
 :ref:`ScrollMode<enum_ScrollContainer_ScrollMode>` **SCROLL_MODE_AUTO** = ``1``
 
-Scrolling enabled, scrollbar will be visible only if necessary, i.e. container's content is bigger than the container.
+Bật tính năng cuộn, thanh cuộn chỉ hiển thị khi cần, tức là khi nội dung của container lớn hơn container.
 
 .. _class_ScrollContainer_constant_SCROLL_MODE_SHOW_ALWAYS:
 
@@ -180,7 +180,7 @@ Scrolling enabled, scrollbar will be visible only if necessary, i.e. container's
 
 :ref:`ScrollMode<enum_ScrollContainer_ScrollMode>` **SCROLL_MODE_SHOW_ALWAYS** = ``2``
 
-Scrolling enabled, scrollbar will be always visible.
+Bật tính năng cuộn, thanh cuộn luôn hiển thị.
 
 .. _class_ScrollContainer_constant_SCROLL_MODE_SHOW_NEVER:
 
@@ -188,7 +188,7 @@ Scrolling enabled, scrollbar will be always visible.
 
 :ref:`ScrollMode<enum_ScrollContainer_ScrollMode>` **SCROLL_MODE_SHOW_NEVER** = ``3``
 
-Scrolling enabled, scrollbar will be hidden.
+Bật tính năng cuộn, thanh cuộn sẽ bị ẩn.
 
 .. _class_ScrollContainer_constant_SCROLL_MODE_RESERVE:
 
@@ -196,7 +196,7 @@ Scrolling enabled, scrollbar will be hidden.
 
 :ref:`ScrollMode<enum_ScrollContainer_ScrollMode>` **SCROLL_MODE_RESERVE** = ``4``
 
-Combines :ref:`SCROLL_MODE_AUTO<class_ScrollContainer_constant_SCROLL_MODE_AUTO>` and :ref:`SCROLL_MODE_SHOW_ALWAYS<class_ScrollContainer_constant_SCROLL_MODE_SHOW_ALWAYS>`. The scrollbar is only visible if necessary, but the content size is adjusted as if it was always visible. It's useful for ensuring that content size stays the same regardless if the scrollbar is visible.
+Kết hợp :ref:`SCROLL_MODE_AUTO<class_ScrollContainer_constant_SCROLL_MODE_AUTO>` và :ref:`SCROLL_MODE_SHOW_ALWAYS<class_ScrollContainer_constant_SCROLL_MODE_SHOW_ALWAYS>`. Thanh cuộn chỉ hiển thị khi cần, nhưng kích thước nội dung được điều chỉnh như thể thanh cuộn luôn hiển thị. Điều này hữu ích để đảm bảo kích thước nội dung không đổi bất kể thanh cuộn có hiển thị hay không.
 
 .. _class_ScrollContainer_constant_SCROLL_MODE_MAXIMIZE_FIRST:
 
@@ -204,7 +204,7 @@ Combines :ref:`SCROLL_MODE_AUTO<class_ScrollContainer_constant_SCROLL_MODE_AUTO>
 
 :ref:`ScrollMode<enum_ScrollContainer_ScrollMode>` **SCROLL_MODE_MAXIMIZE_FIRST** = ``5``
 
-Behaves like :ref:`SCROLL_MODE_AUTO<class_ScrollContainer_constant_SCROLL_MODE_AUTO>`, but makes the **ScrollContainer** report a minimum size based on its content (limited by :ref:`Control.custom_maximum_size<class_Control_property_custom_maximum_size>` when set on the corresponding axis). This allows it to grow first and only start scrolling once constrained.
+Hoạt động giống :ref:`SCROLL_MODE_AUTO<class_ScrollContainer_constant_SCROLL_MODE_AUTO>`, nhưng khiến **ScrollContainer** báo cáo kích thước tối thiểu dựa trên nội dung của nó (bị giới hạn bởi :ref:`Control.custom_maximum_size<class_Control_property_custom_maximum_size>` khi được đặt trên trục tương ứng). Điều này cho phép nó phát triển trước và chỉ bắt đầu cuộn khi bị giới hạn.
 
 .. rst-class:: classref-item-separator
 
@@ -214,7 +214,7 @@ Behaves like :ref:`SCROLL_MODE_AUTO<class_ScrollContainer_constant_SCROLL_MODE_A
 
 .. rst-class:: classref-enumeration
 
-enum **ScrollHintMode**: :ref:`🔗<enum_ScrollContainer_ScrollHintMode>`
+enum **ScrollHintMode**: :ref:`🔗 <enum_ScrollContainer_ScrollHintMode>`
 
 .. _class_ScrollContainer_constant_SCROLL_HINT_MODE_DISABLED:
 
@@ -222,7 +222,7 @@ enum **ScrollHintMode**: :ref:`🔗<enum_ScrollContainer_ScrollHintMode>`
 
 :ref:`ScrollHintMode<enum_ScrollContainer_ScrollHintMode>` **SCROLL_HINT_MODE_DISABLED** = ``0``
 
-Scroll hints will never be shown.
+Không bao giờ hiển thị gợi ý cuộn.
 
 .. _class_ScrollContainer_constant_SCROLL_HINT_MODE_ALL:
 
@@ -230,7 +230,7 @@ Scroll hints will never be shown.
 
 :ref:`ScrollHintMode<enum_ScrollContainer_ScrollHintMode>` **SCROLL_HINT_MODE_ALL** = ``1``
 
-Scroll hints will be shown at the top and bottom (if vertical), or left and right (if horizontal).
+Gợi ý cuộn sẽ hiển thị ở trên cùng và dưới cùng (nếu là chiều dọc), hoặc bên trái và bên phải (nếu là chiều ngang).
 
 .. _class_ScrollContainer_constant_SCROLL_HINT_MODE_TOP_AND_LEFT:
 
@@ -238,7 +238,7 @@ Scroll hints will be shown at the top and bottom (if vertical), or left and righ
 
 :ref:`ScrollHintMode<enum_ScrollContainer_ScrollHintMode>` **SCROLL_HINT_MODE_TOP_AND_LEFT** = ``2``
 
-Scroll hints will be shown at the top (if vertical), or the left (if horizontal).
+Gợi ý cuộn sẽ hiển thị ở trên cùng (nếu là chiều dọc), hoặc bên trái (nếu là chiều ngang).
 
 .. _class_ScrollContainer_constant_SCROLL_HINT_MODE_BOTTOM_AND_RIGHT:
 
@@ -246,7 +246,7 @@ Scroll hints will be shown at the top (if vertical), or the left (if horizontal)
 
 :ref:`ScrollHintMode<enum_ScrollContainer_ScrollHintMode>` **SCROLL_HINT_MODE_BOTTOM_AND_RIGHT** = ``3``
 
-Scroll hints will be shown at the bottom (if horizontal), or the right (if horizontal).
+Gợi ý cuộn sẽ hiển thị ở dưới cùng (nếu là chiều ngang), hoặc bên phải (nếu là chiều ngang).
 
 .. rst-class:: classref-section-separator
 
@@ -254,8 +254,8 @@ Scroll hints will be shown at the bottom (if horizontal), or the right (if horiz
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ScrollContainer_property_draw_focus_border:
 
@@ -268,7 +268,7 @@ Property Descriptions
 - |void| **set_draw_focus_border**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_draw_focus_border**\ (\ )
 
-If ``true``, :ref:`focus<class_ScrollContainer_theme_style_focus>` is drawn when the ScrollContainer or one of its descendant nodes is focused.
+Nếu ``true``, :ref:`focus<class_ScrollContainer_theme_style_focus>` sẽ được vẽ khi ScrollContainer hoặc một trong các node con của nó được focus.
 
 .. rst-class:: classref-item-separator
 
@@ -285,7 +285,7 @@ If ``true``, :ref:`focus<class_ScrollContainer_theme_style_focus>` is drawn when
 - |void| **set_follow_focus**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_following_focus**\ (\ )
 
-If ``true``, the ScrollContainer will automatically scroll to focused children (including indirect children) to make sure they are fully visible.
+Nếu ``true``, ScrollContainer sẽ tự động cuộn đến các node con đang được focus (bao gồm cả các node con gián tiếp) để đảm bảo chúng hiển thị đầy đủ.
 
 .. rst-class:: classref-item-separator
 
@@ -302,7 +302,7 @@ If ``true``, the ScrollContainer will automatically scroll to focused children (
 - |void| **set_horizontal_scroll_mode**\ (\ value\: :ref:`ScrollMode<enum_ScrollContainer_ScrollMode>`\ )
 - :ref:`ScrollMode<enum_ScrollContainer_ScrollMode>` **get_horizontal_scroll_mode**\ (\ )
 
-Controls whether horizontal scrollbar can be used and when it should be visible.
+Kiểm soát việc có thể sử dụng thanh cuộn ngang hay không và thời điểm thanh cuộn này hiển thị.
 
 .. rst-class:: classref-item-separator
 
@@ -319,7 +319,7 @@ Controls whether horizontal scrollbar can be used and when it should be visible.
 - |void| **set_deadzone**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_deadzone**\ (\ )
 
-Deadzone for touch scrolling. Lower deadzone makes the scrolling more sensitive.
+Vùng chết cho thao tác cuộn bằng cảm ứng. Vùng chết càng nhỏ thì thao tác cuộn càng nhạy.
 
 .. rst-class:: classref-item-separator
 
@@ -336,9 +336,9 @@ Deadzone for touch scrolling. Lower deadzone makes the scrolling more sensitive.
 - |void| **set_scroll_hint_mode**\ (\ value\: :ref:`ScrollHintMode<enum_ScrollContainer_ScrollHintMode>`\ )
 - :ref:`ScrollHintMode<enum_ScrollContainer_ScrollHintMode>` **get_scroll_hint_mode**\ (\ )
 
-The way which scroll hints (indicators that show that the content can still be scrolled in a certain direction) will be shown.
+Cách hiển thị các gợi ý cuộn (các chỉ báo cho biết nội dung vẫn có thể được cuộn theo một hướng nhất định).
 
-\ **Note:** Hints won't be shown if the content can be scrolled both vertically and horizontally.
+\ **Lưu ý:** Gợi ý sẽ không hiển thị nếu nội dung có thể được cuộn theo cả chiều dọc và chiều ngang.
 
 .. rst-class:: classref-item-separator
 
@@ -355,9 +355,9 @@ The way which scroll hints (indicators that show that the content can still be s
 - |void| **set_h_scroll**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_h_scroll**\ (\ )
 
-The current horizontal scroll value.
+Giá trị cuộn ngang hiện tại.
 
-\ **Note:** If you are setting this value in the :ref:`Node._ready()<class_Node_private_method__ready>` function or earlier, it needs to be wrapped with :ref:`Object.set_deferred()<class_Object_method_set_deferred>`, since scroll bar's :ref:`Range.max_value<class_Range_property_max_value>` is not initialized yet.
+\ **Lưu ý:** Nếu bạn đặt giá trị này trong hàm :ref:`Node._ready()<class_Node_private_method__ready>` hoặc sớm hơn, cần bọc nó bằng :ref:`Object.set_deferred()<class_Object_method_set_deferred>`, vì :ref:`Range.max_value<class_Range_property_max_value>` của thanh cuộn chưa được khởi tạo.
 
 ::
 
@@ -379,9 +379,9 @@ The current horizontal scroll value.
 - |void| **set_scroll_horizontal_by_default**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_scroll_horizontal_by_default**\ (\ )
 
-If ``true``, the mouse wheel scrolls the view horizontally, and holding :kbd:`Shift` scrolls vertically.
+Nếu ``true``, con lăn chuột sẽ cuộn chế độ xem theo chiều ngang, còn khi giữ :kbd:`Shift` sẽ cuộn theo chiều dọc.
 
-If ``false`` (default), the mouse wheel scrolls the view vertically, and holding :kbd:`Shift` scrolls horizontally.
+Nếu ``false`` (mặc định), con lăn chuột sẽ cuộn chế độ xem theo chiều dọc, còn khi giữ :kbd:`Shift` sẽ cuộn theo chiều ngang.
 
 .. rst-class:: classref-item-separator
 
@@ -398,7 +398,7 @@ If ``false`` (default), the mouse wheel scrolls the view vertically, and holding
 - |void| **set_horizontal_custom_step**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_horizontal_custom_step**\ (\ )
 
-Overrides the :ref:`ScrollBar.custom_step<class_ScrollBar_property_custom_step>` used when clicking the internal scroll bar's horizontal increment and decrement buttons or when using arrow keys when the :ref:`ScrollBar<class_ScrollBar>` is focused.
+Ghi đè :ref:`ScrollBar.custom_step<class_ScrollBar_property_custom_step>` được sử dụng khi nhấp vào các nút tăng và giảm của thanh cuộn ngang bên trong hoặc khi sử dụng các phím mũi tên lúc :ref:`ScrollBar<class_ScrollBar>` được focus.
 
 .. rst-class:: classref-item-separator
 
@@ -415,9 +415,9 @@ Overrides the :ref:`ScrollBar.custom_step<class_ScrollBar_property_custom_step>`
 - |void| **set_v_scroll**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_v_scroll**\ (\ )
 
-The current vertical scroll value.
+Giá trị cuộn dọc hiện tại.
 
-\ **Note:** Setting it early needs to be deferred, just like in :ref:`scroll_horizontal<class_ScrollContainer_property_scroll_horizontal>`.
+\ **Lưu ý:** Việc đặt giá trị này sớm cần được trì hoãn, tương tự như trong :ref:`scroll_horizontal<class_ScrollContainer_property_scroll_horizontal>`.
 
 ::
 
@@ -439,7 +439,7 @@ The current vertical scroll value.
 - |void| **set_vertical_custom_step**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_vertical_custom_step**\ (\ )
 
-Overrides the :ref:`ScrollBar.custom_step<class_ScrollBar_property_custom_step>` used when clicking the internal scroll bar's vertical increment and decrement buttons or when using arrow keys when the :ref:`ScrollBar<class_ScrollBar>` is focused.
+Ghi đè :ref:`ScrollBar.custom_step<class_ScrollBar_property_custom_step>` được sử dụng khi nhấp vào các nút tăng và giảm của thanh cuộn dọc bên trong hoặc khi sử dụng các phím mũi tên lúc :ref:`ScrollBar<class_ScrollBar>` được focus.
 
 .. rst-class:: classref-item-separator
 
@@ -456,7 +456,7 @@ Overrides the :ref:`ScrollBar.custom_step<class_ScrollBar_property_custom_step>`
 - |void| **set_tile_scroll_hint**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_scroll_hint_tiled**\ (\ )
 
-If ``true``, the scroll hint texture will be tiled instead of stretched. See :ref:`scroll_hint_mode<class_ScrollContainer_property_scroll_hint_mode>`.
+Nếu ``true``, texture gợi ý cuộn sẽ được lát thay vì kéo giãn. Xem :ref:`scroll_hint_mode<class_ScrollContainer_property_scroll_hint_mode>`.
 
 .. rst-class:: classref-item-separator
 
@@ -473,7 +473,7 @@ If ``true``, the scroll hint texture will be tiled instead of stretched. See :re
 - |void| **set_vertical_scroll_mode**\ (\ value\: :ref:`ScrollMode<enum_ScrollContainer_ScrollMode>`\ )
 - :ref:`ScrollMode<enum_ScrollContainer_ScrollMode>` **get_vertical_scroll_mode**\ (\ )
 
-Controls whether vertical scrollbar can be used and when it should be visible.
+Kiểm soát việc có thể sử dụng thanh cuộn dọc hay không và khi nào thanh cuộn này sẽ hiển thị.
 
 .. rst-class:: classref-section-separator
 
@@ -481,8 +481,8 @@ Controls whether vertical scrollbar can be used and when it should be visible.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_ScrollContainer_method_ensure_control_visible:
 
@@ -490,9 +490,9 @@ Method Descriptions
 
 |void| **ensure_control_visible**\ (\ control\: :ref:`Control<class_Control>`\ ) :ref:`🔗<class_ScrollContainer_method_ensure_control_visible>`
 
-Ensures the given ``control`` is visible (must be a direct or indirect child of the ScrollContainer). Used by :ref:`follow_focus<class_ScrollContainer_property_follow_focus>`.
+Đảm bảo ``control`` đã cho hiển thị (phải là node con trực tiếp hoặc gián tiếp của ScrollContainer). Được :ref:`follow_focus<class_ScrollContainer_property_follow_focus>` sử dụng.
 
-\ **Note:** This will not work on a node that was just added during the same frame. If you want to scroll to a newly added child, you must wait until the next frame using :ref:`SceneTree.process_frame<class_SceneTree_signal_process_frame>`:
+\ **Lưu ý:** Thao tác này sẽ không hoạt động trên node vừa được thêm trong cùng một frame. Nếu muốn cuộn đến một node con mới được thêm, bạn phải chờ đến frame tiếp theo bằng cách sử dụng :ref:`SceneTree.process_frame<class_SceneTree_signal_process_frame>`:
 
 ::
 
@@ -510,9 +510,9 @@ Ensures the given ``control`` is visible (must be a direct or indirect child of 
 
 :ref:`HScrollBar<class_HScrollBar>` **get_h_scroll_bar**\ (\ ) :ref:`🔗<class_ScrollContainer_method_get_h_scroll_bar>`
 
-Returns the horizontal scrollbar :ref:`HScrollBar<class_HScrollBar>` of this **ScrollContainer**.
+Trả về :ref:`HScrollBar<class_HScrollBar>` thanh cuộn ngang của **ScrollContainer** này.
 
-\ **Warning:** This is a required internal node, removing and freeing it may cause a crash. If you wish to disable or hide a scrollbar, you can use :ref:`horizontal_scroll_mode<class_ScrollContainer_property_horizontal_scroll_mode>`.
+\ **Cảnh báo:** Đây là node nội bộ bắt buộc; việc xóa và giải phóng node này có thể gây crash. Nếu muốn vô hiệu hóa hoặc ẩn thanh cuộn, bạn có thể sử dụng :ref:`horizontal_scroll_mode<class_ScrollContainer_property_horizontal_scroll_mode>`.
 
 .. rst-class:: classref-item-separator
 
@@ -524,9 +524,9 @@ Returns the horizontal scrollbar :ref:`HScrollBar<class_HScrollBar>` of this **S
 
 :ref:`VScrollBar<class_VScrollBar>` **get_v_scroll_bar**\ (\ ) :ref:`🔗<class_ScrollContainer_method_get_v_scroll_bar>`
 
-Returns the vertical scrollbar :ref:`VScrollBar<class_VScrollBar>` of this **ScrollContainer**.
+Trả về :ref:`VScrollBar<class_VScrollBar>` thanh cuộn dọc của **ScrollContainer** này.
 
-\ **Warning:** This is a required internal node, removing and freeing it may cause a crash. If you wish to disable or hide a scrollbar, you can use :ref:`vertical_scroll_mode<class_ScrollContainer_property_vertical_scroll_mode>`.
+\ **Cảnh báo:** Đây là node nội bộ bắt buộc; việc xóa và giải phóng node này có thể gây crash. Nếu muốn vô hiệu hóa hoặc ẩn thanh cuộn, bạn có thể sử dụng :ref:`vertical_scroll_mode<class_ScrollContainer_property_vertical_scroll_mode>`.
 
 .. rst-class:: classref-section-separator
 
@@ -534,8 +534,8 @@ Returns the vertical scrollbar :ref:`VScrollBar<class_VScrollBar>` of this **Scr
 
 .. rst-class:: classref-descriptions-group
 
-Theme Property Descriptions
----------------------------
+Mô tả thuộc tính theme
+----------------------
 
 .. _class_ScrollContainer_theme_color_scroll_hint_horizontal_color:
 
@@ -543,7 +543,7 @@ Theme Property Descriptions
 
 :ref:`Color<class_Color>` **scroll_hint_horizontal_color** = ``Color(0, 0, 0, 1)`` :ref:`🔗<class_ScrollContainer_theme_color_scroll_hint_horizontal_color>`
 
-:ref:`Color<class_Color>` used to modulate the :ref:`scroll_hint_horizontal<class_ScrollContainer_theme_icon_scroll_hint_horizontal>` texture.
+:ref:`Color<class_Color>` được dùng để điều chỉnh :ref:`scroll_hint_horizontal<class_ScrollContainer_theme_icon_scroll_hint_horizontal>` texture.
 
 .. rst-class:: classref-item-separator
 
@@ -555,7 +555,7 @@ Theme Property Descriptions
 
 :ref:`Color<class_Color>` **scroll_hint_vertical_color** = ``Color(0, 0, 0, 1)`` :ref:`🔗<class_ScrollContainer_theme_color_scroll_hint_vertical_color>`
 
-:ref:`Color<class_Color>` used to modulate the :ref:`scroll_hint_vertical<class_ScrollContainer_theme_icon_scroll_hint_vertical>` texture.
+:ref:`Color<class_Color>` được dùng để điều chỉnh :ref:`scroll_hint_vertical<class_ScrollContainer_theme_icon_scroll_hint_vertical>` texture.
 
 .. rst-class:: classref-item-separator
 
@@ -567,7 +567,7 @@ Theme Property Descriptions
 
 :ref:`int<class_int>` **scrollbar_h_separation** = ``0`` :ref:`🔗<class_ScrollContainer_theme_constant_scrollbar_h_separation>`
 
-The space between the ScrollContainer's vertical scroll bar and its content, in pixels. No space will be added when the content's minimum size is larger than the ScrollContainer's size.
+Khoảng cách giữa thanh cuộn dọc của ScrollContainer và nội dung của nó, tính bằng pixel. Sẽ không thêm khoảng cách nếu kích thước tối thiểu của nội dung lớn hơn kích thước của ScrollContainer.
 
 .. rst-class:: classref-item-separator
 
@@ -579,7 +579,7 @@ The space between the ScrollContainer's vertical scroll bar and its content, in 
 
 :ref:`int<class_int>` **scrollbar_v_separation** = ``0`` :ref:`🔗<class_ScrollContainer_theme_constant_scrollbar_v_separation>`
 
-The space between the ScrollContainer's horizontal scroll bar and its content, in pixels. No space will be added when the content's minimum size is larger than the ScrollContainer's size.
+Khoảng cách giữa thanh cuộn ngang của ScrollContainer và nội dung của nó, tính bằng pixel. Sẽ không thêm khoảng cách nếu kích thước tối thiểu của nội dung lớn hơn kích thước của ScrollContainer.
 
 .. rst-class:: classref-item-separator
 
@@ -589,9 +589,9 @@ The space between the ScrollContainer's horizontal scroll bar and its content, i
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **scroll_hint_horizontal** :ref:`🔗<class_ScrollContainer_theme_icon_scroll_hint_horizontal>`
+:ref:`Texture2D<class_Texture2D>` **scroll_hint_horizontal** :ref:`🔗 <class_ScrollContainer_theme_icon_scroll_hint_horizontal>`
 
-The indicator that will be shown when the content can still be scrolled horizontally. See :ref:`scroll_hint_mode<class_ScrollContainer_property_scroll_hint_mode>`.
+Chỉ báo sẽ hiển thị khi nội dung vẫn có thể được cuộn theo chiều ngang. Xem :ref:`scroll_hint_mode<class_ScrollContainer_property_scroll_hint_mode>`.
 
 .. rst-class:: classref-item-separator
 
@@ -601,9 +601,9 @@ The indicator that will be shown when the content can still be scrolled horizont
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **scroll_hint_vertical** :ref:`🔗<class_ScrollContainer_theme_icon_scroll_hint_vertical>`
+:ref:`Texture2D<class_Texture2D>` **scroll_hint_vertical** :ref:`🔗 <class_ScrollContainer_theme_icon_scroll_hint_vertical>`
 
-The indicator that will be shown when the content can still be scrolled vertically. See :ref:`scroll_hint_mode<class_ScrollContainer_property_scroll_hint_mode>`.
+Chỉ báo sẽ hiển thị khi nội dung vẫn có thể được cuộn theo chiều dọc. Xem :ref:`scroll_hint_mode<class_ScrollContainer_property_scroll_hint_mode>`.
 
 .. rst-class:: classref-item-separator
 
@@ -613,9 +613,9 @@ The indicator that will be shown when the content can still be scrolled vertical
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **focus** :ref:`🔗<class_ScrollContainer_theme_style_focus>`
+:ref:`StyleBox<class_StyleBox>` **focus** :ref:`🔗 <class_ScrollContainer_theme_style_focus>`
 
-The focus border :ref:`StyleBox<class_StyleBox>` of the **ScrollContainer**. Only used if :ref:`draw_focus_border<class_ScrollContainer_property_draw_focus_border>` is ``true``.
+:ref:`StyleBox<class_StyleBox>` viền focus của **ScrollContainer**. Chỉ được sử dụng nếu :ref:`draw_focus_border<class_ScrollContainer_property_draw_focus_border>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -625,16 +625,16 @@ The focus border :ref:`StyleBox<class_StyleBox>` of the **ScrollContainer**. Onl
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **panel** :ref:`🔗<class_ScrollContainer_theme_style_panel>`
+:ref:`StyleBox<class_StyleBox>` **panel** :ref:`🔗 <class_ScrollContainer_theme_style_panel>`
 
-The background :ref:`StyleBox<class_StyleBox>` of the **ScrollContainer**.
+:ref:`StyleBox<class_StyleBox>` nền của **ScrollContainer**.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

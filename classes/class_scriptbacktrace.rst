@@ -10,23 +10,23 @@
 ScriptBacktrace
 ===============
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A captured backtrace of a specific script language.
+Một backtrace đã được thu thập của một ngôn ngữ script cụ thể.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**ScriptBacktrace** holds an already captured backtrace of a specific script language, such as GDScript or C#, which are captured using :ref:`Engine.capture_script_backtraces()<class_Engine_method_capture_script_backtraces>`.
+**ScriptBacktrace** chứa một backtrace đã được thu thập của một ngôn ngữ script cụ thể, chẳng hạn như GDScript hoặc C#, được thu thập bằng :ref:`Engine.capture_script_backtraces()<class_Engine_method_capture_script_backtraces>`.
 
-See :ref:`ProjectSettings.debug/settings/gdscript/always_track_call_stacks<class_ProjectSettings_property_debug/settings/gdscript/always_track_call_stacks>` and :ref:`ProjectSettings.debug/settings/gdscript/always_track_local_variables<class_ProjectSettings_property_debug/settings/gdscript/always_track_local_variables>` for ways of controlling the contents of this class.
+Xem :ref:`ProjectSettings.debug/settings/gdscript/always_track_call_stacks <class_ProjectSettings_property_debug/settings/gdscript/always_track_call_stacks>` và :ref:`ProjectSettings.debug/settings/gdscript/always_track_local_variables <class_ProjectSettings_property_debug/settings/gdscript/always_track_local_variables>` để biết cách kiểm soát nội dung của class này.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -71,8 +71,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_ScriptBacktrace_method_format:
 
@@ -80,9 +80,9 @@ Method Descriptions
 
 :ref:`String<class_String>` **format**\ (\ indent_all\: :ref:`int<class_int>` = 0, indent_frames\: :ref:`int<class_int>` = 4\ ) |const| :ref:`🔗<class_ScriptBacktrace_method_format>`
 
-Converts the backtrace to a :ref:`String<class_String>`, where the entire string will be indented by ``indent_all`` number of spaces, and the individual stack frames will be additionally indented by ``indent_frames`` number of spaces.
+Chuyển đổi backtrace thành một :ref:`String<class_String>`, trong đó toàn bộ chuỗi sẽ được thụt lề bằng ``indent_all`` khoảng trắng, và các stack frame riêng lẻ sẽ được thụt lề thêm bằng ``indent_frames`` khoảng trắng.
 
-\ **Note:** Calling :ref:`Object.to_string()<class_Object_method_to_string>` on a **ScriptBacktrace** will produce the same output as calling :ref:`format()<class_ScriptBacktrace_method_format>` with all parameters left at their default values.
+\ **Lưu ý:** Việc gọi :ref:`Object.to_string()<class_Object_method_to_string>` trên một **ScriptBacktrace** sẽ tạo ra cùng kết quả như gọi :ref:`format()<class_ScriptBacktrace_method_format>` với tất cả tham số giữ nguyên giá trị mặc định.
 
 .. rst-class:: classref-item-separator
 
@@ -94,7 +94,7 @@ Converts the backtrace to a :ref:`String<class_String>`, where the entire string
 
 :ref:`int<class_int>` **get_frame_count**\ (\ ) |const| :ref:`🔗<class_ScriptBacktrace_method_get_frame_count>`
 
-Returns the number of stack frames in the backtrace.
+Trả về số lượng stack frame trong backtrace.
 
 .. rst-class:: classref-item-separator
 
@@ -106,7 +106,7 @@ Returns the number of stack frames in the backtrace.
 
 :ref:`String<class_String>` **get_frame_file**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ScriptBacktrace_method_get_frame_file>`
 
-Returns the file name of the call site represented by the stack frame at the specified index.
+Trả về tên tệp của vị trí gọi được biểu thị bởi stack frame tại index đã chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -118,7 +118,7 @@ Returns the file name of the call site represented by the stack frame at the spe
 
 :ref:`String<class_String>` **get_frame_function**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ScriptBacktrace_method_get_frame_function>`
 
-Returns the name of the function called at the stack frame at the specified index.
+Trả về tên của hàm được gọi tại stack frame ở index đã chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -130,7 +130,7 @@ Returns the name of the function called at the stack frame at the specified inde
 
 :ref:`int<class_int>` **get_frame_line**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ScriptBacktrace_method_get_frame_line>`
 
-Returns the line number of the call site represented by the stack frame at the specified index.
+Trả về số dòng của vị trí gọi được biểu thị bởi stack frame tại index đã chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -142,9 +142,9 @@ Returns the line number of the call site represented by the stack frame at the s
 
 :ref:`int<class_int>` **get_global_variable_count**\ (\ ) |const| :ref:`🔗<class_ScriptBacktrace_method_get_global_variable_count>`
 
-Returns the number of global variables (e.g. autoload singletons) in the backtrace.
+Trả về số lượng biến toàn cục (ví dụ: các singleton autoload) trong backtrace.
 
-\ **Note:** This will be non-zero only if the ``include_variables`` parameter was ``true`` when capturing the backtrace with :ref:`Engine.capture_script_backtraces()<class_Engine_method_capture_script_backtraces>`.
+\ **Lưu ý:** Giá trị này chỉ khác 0 nếu tham số ``include_variables`` là ``true`` khi thu thập backtrace bằng :ref:`Engine.capture_script_backtraces()<class_Engine_method_capture_script_backtraces>`.
 
 .. rst-class:: classref-item-separator
 
@@ -156,7 +156,7 @@ Returns the number of global variables (e.g. autoload singletons) in the backtra
 
 :ref:`String<class_String>` **get_global_variable_name**\ (\ variable_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ScriptBacktrace_method_get_global_variable_name>`
 
-Returns the name of the global variable at the specified index.
+Trả về tên của biến toàn cục tại index đã chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -168,9 +168,9 @@ Returns the name of the global variable at the specified index.
 
 :ref:`Variant<class_Variant>` **get_global_variable_value**\ (\ variable_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ScriptBacktrace_method_get_global_variable_value>`
 
-Returns the value of the global variable at the specified index.
+Trả về giá trị của biến toàn cục tại index đã chỉ định.
 
-\ **Warning:** With GDScript backtraces, the returned :ref:`Variant<class_Variant>` will be the variable's actual value, including any object references. This means that storing the returned :ref:`Variant<class_Variant>` will prevent any such object from being deallocated, so it's generally recommended not to do so.
+\ **Cảnh báo:** Với các backtrace GDScript, :ref:`Variant<class_Variant>` được trả về sẽ là giá trị thực của biến, bao gồm mọi tham chiếu đến object. Điều này có nghĩa là việc lưu :ref:`Variant<class_Variant>` được trả về sẽ ngăn mọi object như vậy được giải phóng, vì vậy nói chung bạn không nên làm vậy.
 
 .. rst-class:: classref-item-separator
 
@@ -182,7 +182,7 @@ Returns the value of the global variable at the specified index.
 
 :ref:`String<class_String>` **get_language_name**\ (\ ) |const| :ref:`🔗<class_ScriptBacktrace_method_get_language_name>`
 
-Returns the name of the script language that this backtrace was captured from.
+Trả về tên của ngôn ngữ script mà từ đó backtrace này được thu thập.
 
 .. rst-class:: classref-item-separator
 
@@ -194,9 +194,9 @@ Returns the name of the script language that this backtrace was captured from.
 
 :ref:`int<class_int>` **get_local_variable_count**\ (\ frame_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ScriptBacktrace_method_get_local_variable_count>`
 
-Returns the number of local variables in the stack frame at the specified index.
+Trả về số lượng biến cục bộ trong stack frame tại index đã chỉ định.
 
-\ **Note:** This will be non-zero only if the ``include_variables`` parameter was ``true`` when capturing the backtrace with :ref:`Engine.capture_script_backtraces()<class_Engine_method_capture_script_backtraces>`.
+\ **Lưu ý:** Giá trị này chỉ khác 0 nếu tham số ``include_variables`` là ``true`` khi thu thập backtrace bằng :ref:`Engine.capture_script_backtraces()<class_Engine_method_capture_script_backtraces>`.
 
 .. rst-class:: classref-item-separator
 
@@ -208,7 +208,7 @@ Returns the number of local variables in the stack frame at the specified index.
 
 :ref:`String<class_String>` **get_local_variable_name**\ (\ frame_index\: :ref:`int<class_int>`, variable_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ScriptBacktrace_method_get_local_variable_name>`
 
-Returns the name of the local variable at the specified ``variable_index`` in the stack frame at the specified ``frame_index``.
+Trả về tên của biến cục bộ tại ``variable_index`` đã chỉ định trong stack frame tại ``frame_index`` đã chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -220,9 +220,9 @@ Returns the name of the local variable at the specified ``variable_index`` in th
 
 :ref:`Variant<class_Variant>` **get_local_variable_value**\ (\ frame_index\: :ref:`int<class_int>`, variable_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ScriptBacktrace_method_get_local_variable_value>`
 
-Returns the value of the local variable at the specified ``variable_index`` in the stack frame at the specified ``frame_index``.
+Trả về giá trị của biến cục bộ tại ``variable_index`` đã chỉ định trong stack frame tại ``frame_index`` đã chỉ định.
 
-\ **Warning:** With GDScript backtraces, the returned :ref:`Variant<class_Variant>` will be the variable's actual value, including any object references. This means that storing the returned :ref:`Variant<class_Variant>` will prevent any such object from being deallocated, so it's generally recommended not to do so.
+\ **Cảnh báo:** Với các backtrace GDScript, :ref:`Variant<class_Variant>` được trả về sẽ là giá trị thực của biến, bao gồm mọi tham chiếu đến object. Điều này có nghĩa là việc lưu :ref:`Variant<class_Variant>` được trả về sẽ ngăn mọi object như vậy được giải phóng, vì vậy nói chung bạn không nên làm vậy.
 
 .. rst-class:: classref-item-separator
 
@@ -234,9 +234,9 @@ Returns the value of the local variable at the specified ``variable_index`` in t
 
 :ref:`int<class_int>` **get_member_variable_count**\ (\ frame_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ScriptBacktrace_method_get_member_variable_count>`
 
-Returns the number of member variables in the stack frame at the specified index.
+Trả về số lượng biến thành viên trong stack frame tại index đã chỉ định.
 
-\ **Note:** This will be non-zero only if the ``include_variables`` parameter was ``true`` when capturing the backtrace with :ref:`Engine.capture_script_backtraces()<class_Engine_method_capture_script_backtraces>`.
+\ **Lưu ý:** Giá trị này chỉ khác 0 nếu tham số ``include_variables`` là ``true`` khi thu thập backtrace bằng :ref:`Engine.capture_script_backtraces()<class_Engine_method_capture_script_backtraces>`.
 
 .. rst-class:: classref-item-separator
 
@@ -248,7 +248,7 @@ Returns the number of member variables in the stack frame at the specified index
 
 :ref:`String<class_String>` **get_member_variable_name**\ (\ frame_index\: :ref:`int<class_int>`, variable_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ScriptBacktrace_method_get_member_variable_name>`
 
-Returns the name of the member variable at the specified ``variable_index`` in the stack frame at the specified ``frame_index``.
+Trả về tên của biến thành viên tại ``variable_index`` được chỉ định trong stack frame tại ``frame_index`` được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -260,9 +260,9 @@ Returns the name of the member variable at the specified ``variable_index`` in t
 
 :ref:`Variant<class_Variant>` **get_member_variable_value**\ (\ frame_index\: :ref:`int<class_int>`, variable_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ScriptBacktrace_method_get_member_variable_value>`
 
-Returns the value of the member variable at the specified ``variable_index`` in the stack frame at the specified ``frame_index``.
+Trả về giá trị của biến thành viên tại ``variable_index`` được chỉ định trong stack frame tại ``frame_index`` được chỉ định.
 
-\ **Warning:** With GDScript backtraces, the returned :ref:`Variant<class_Variant>` will be the variable's actual value, including any object references. This means that storing the returned :ref:`Variant<class_Variant>` will prevent any such object from being deallocated, so it's generally recommended not to do so.
+\ **Cảnh báo:** Với các backtrace GDScript, :ref:`Variant<class_Variant>` được trả về sẽ là giá trị thực của biến, bao gồm mọi tham chiếu đến object. Điều này có nghĩa là việc lưu :ref:`Variant<class_Variant>` được trả về sẽ ngăn mọi object như vậy được giải phóng, vì vậy nói chung bạn không nên làm vậy.
 
 .. rst-class:: classref-item-separator
 
@@ -274,14 +274,14 @@ Returns the value of the member variable at the specified ``variable_index`` in 
 
 :ref:`bool<class_bool>` **is_empty**\ (\ ) |const| :ref:`🔗<class_ScriptBacktrace_method_is_empty>`
 
-Returns ``true`` if the backtrace has no stack frames.
+Trả về ``true`` nếu backtrace không có stack frame nào.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè method này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Method này bắt buộc phải được ghi đè khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Method này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Method này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Method này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Method này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

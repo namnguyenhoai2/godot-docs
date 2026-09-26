@@ -10,28 +10,28 @@
 SkeletonModification2DCCDIK
 ===========================
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc gỡ bỏ trong các phiên bản tương lai.
 
-**Inherits:** :ref:`SkeletonModification2D<class_SkeletonModification2D>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`SkeletonModification2D<class_SkeletonModification2D>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A modification that uses CCDIK to manipulate a series of bones to reach a target in 2D.
+Một modification sử dụng CCDIK để điều khiển một chuỗi bone nhằm tiếp cận một target trong 2D.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This :ref:`SkeletonModification2D<class_SkeletonModification2D>` uses an algorithm called Cyclic Coordinate Descent Inverse Kinematics, or CCDIK, to manipulate a chain of bones in a :ref:`Skeleton2D<class_Skeleton2D>` so it reaches a defined target.
+:ref:`SkeletonModification2D<class_SkeletonModification2D>` sử dụng một thuật toán có tên Cyclic Coordinate Descent Inverse Kinematics, hay CCDIK, để điều khiển một chain bone trong :ref:`Skeleton2D<class_Skeleton2D>` sao cho chain này tiếp cận một target được xác định.
 
-CCDIK works by rotating a set of bones, typically called a "bone chain", on a single axis. Each bone is rotated to face the target from the tip (by default), which over a chain of bones allow it to rotate properly to reach the target. Because the bones only rotate on a single axis, CCDIK *can* look more robotic than other IK solvers.
+CCDIK hoạt động bằng cách xoay một tập hợp bone, thường được gọi là "bone chain", quanh một trục duy nhất. Mỗi bone được xoay để hướng về target từ đầu mút (theo mặc định); qua một chain bone, cơ chế này cho phép chain xoay đúng cách để tiếp cận target. Vì các bone chỉ xoay quanh một trục duy nhất, CCDIK *có thể* trông có vẻ cơ học hơn các IK solver khác.
 
-\ **Note:** The CCDIK modifier has ``ccdik_joints``, which are the data objects that hold the data for each joint in the CCDIK chain. This is different from a bone! CCDIK joints hold the data needed for each bone in the bone chain used by CCDIK.
+\ **Lưu ý:** CCDIK modifier có ``ccdik_joints``, là các đối tượng dữ liệu chứa dữ liệu cho từng joint trong CCDIK chain. Điều này khác với một bone! CCDIK joint chứa dữ liệu cần thiết cho từng bone trong bone chain được CCDIK sử dụng.
 
-CCDIK also fully supports angle constraints, allowing for more control over how a solution is met.
+CCDIK cũng hỗ trợ đầy đủ các ràng buộc góc, cho phép kiểm soát tốt hơn cách đạt được nghiệm.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -47,41 +47,41 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`NodePath<class_NodePath>` | :ref:`get_ccdik_joint_bone2d_node<class_SkeletonModification2DCCDIK_method_get_ccdik_joint_bone2d_node>`\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const|                                                   |
-   +---------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`           | :ref:`get_ccdik_joint_bone_index<class_SkeletonModification2DCCDIK_method_get_ccdik_joint_bone_index>`\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const|                                                     |
-   +---------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`         | :ref:`get_ccdik_joint_constraint_angle_invert<class_SkeletonModification2DCCDIK_method_get_ccdik_joint_constraint_angle_invert>`\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const|                           |
-   +---------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`       | :ref:`get_ccdik_joint_constraint_angle_max<class_SkeletonModification2DCCDIK_method_get_ccdik_joint_constraint_angle_max>`\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const|                                 |
-   +---------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`       | :ref:`get_ccdik_joint_constraint_angle_min<class_SkeletonModification2DCCDIK_method_get_ccdik_joint_constraint_angle_min>`\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const|                                 |
-   +---------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`         | :ref:`get_ccdik_joint_enable_constraint<class_SkeletonModification2DCCDIK_method_get_ccdik_joint_enable_constraint>`\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const|                                       |
-   +---------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`         | :ref:`get_ccdik_joint_rotate_from_joint<class_SkeletonModification2DCCDIK_method_get_ccdik_joint_rotate_from_joint>`\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const|                                       |
-   +---------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                          | :ref:`set_ccdik_joint_bone2d_node<class_SkeletonModification2DCCDIK_method_set_ccdik_joint_bone2d_node>`\ (\ joint_idx\: :ref:`int<class_int>`, bone2d_nodepath\: :ref:`NodePath<class_NodePath>`\ )        |
-   +---------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                          | :ref:`set_ccdik_joint_bone_index<class_SkeletonModification2DCCDIK_method_set_ccdik_joint_bone_index>`\ (\ joint_idx\: :ref:`int<class_int>`, bone_idx\: :ref:`int<class_int>`\ )                           |
-   +---------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                          | :ref:`set_ccdik_joint_constraint_angle_invert<class_SkeletonModification2DCCDIK_method_set_ccdik_joint_constraint_angle_invert>`\ (\ joint_idx\: :ref:`int<class_int>`, invert\: :ref:`bool<class_bool>`\ ) |
-   +---------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                          | :ref:`set_ccdik_joint_constraint_angle_max<class_SkeletonModification2DCCDIK_method_set_ccdik_joint_constraint_angle_max>`\ (\ joint_idx\: :ref:`int<class_int>`, angle_max\: :ref:`float<class_float>`\ )  |
-   +---------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                          | :ref:`set_ccdik_joint_constraint_angle_min<class_SkeletonModification2DCCDIK_method_set_ccdik_joint_constraint_angle_min>`\ (\ joint_idx\: :ref:`int<class_int>`, angle_min\: :ref:`float<class_float>`\ )  |
-   +---------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                          | :ref:`set_ccdik_joint_enable_constraint<class_SkeletonModification2DCCDIK_method_set_ccdik_joint_enable_constraint>`\ (\ joint_idx\: :ref:`int<class_int>`, enable_constraint\: :ref:`bool<class_bool>`\ )  |
-   +---------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                          | :ref:`set_ccdik_joint_rotate_from_joint<class_SkeletonModification2DCCDIK_method_set_ccdik_joint_rotate_from_joint>`\ (\ joint_idx\: :ref:`int<class_int>`, rotate_from_joint\: :ref:`bool<class_bool>`\ )  |
-   +---------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +---------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`NodePath<class_NodePath>` | :ref:`get_ccdik_joint_bone2d_node<class_SkeletonModification2DCCDIK_method_get_ccdik_joint_bone2d_node>`\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const|                                                    |
+   +---------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`           | :ref:`get_ccdik_joint_bone_index<class_SkeletonModification2DCCDIK_method_get_ccdik_joint_bone_index>`\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const|                                                      |
+   +---------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`         | :ref:`get_ccdik_joint_constraint_angle_invert<class_SkeletonModification2DCCDIK_method_get_ccdik_joint_constraint_angle_invert>`\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const|                            |
+   +---------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`       | :ref:`get_ccdik_joint_constraint_angle_max<class_SkeletonModification2DCCDIK_method_get_ccdik_joint_constraint_angle_max>`\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const|                                  |
+   +---------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`       | :ref:`get_ccdik_joint_constraint_angle_min<class_SkeletonModification2DCCDIK_method_get_ccdik_joint_constraint_angle_min>`\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const|                                  |
+   +---------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`         | :ref:`get_ccdik_joint_enable_constraint<class_SkeletonModification2DCCDIK_method_get_ccdik_joint_enable_constraint>`\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const|                                        |
+   +---------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`         | :ref:`get_ccdik_joint_rotate_from_joint<class_SkeletonModification2DCCDIK_method_get_ccdik_joint_rotate_from_joint>`\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const|                                        |
+   +---------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                          | :ref:`set_ccdik_joint_bone2d_node<class_SkeletonModification2DCCDIK_method_set_ccdik_joint_bone2d_node>`\ (\ joint_idx\: :ref:`int<class_int>`, bone2d_nodepath\: :ref:`NodePath<class_NodePath>`\ )         |
+   +---------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                          | :ref:`set_ccdik_joint_bone_index<class_SkeletonModification2DCCDIK_method_set_ccdik_joint_bone_index>`\ (\ joint_idx\: :ref:`int<class_int>`, bone_idx\: :ref:`int<class_int>`\ )                            |
+   +---------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                          | :ref:`set_ccdik_joint_constraint_angle_invert<class_SkeletonModification2DCCDIK_method_set_ccdik_joint_constraint_angle_invert>`\ (\ joint_idx\: :ref:`int<class_int>`, invert\: :ref:`bool<class_bool>`\ )  |
+   +---------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                          | :ref:`set_ccdik_joint_constraint_angle_max<class_SkeletonModification2DCCDIK_method_set_ccdik_joint_constraint_angle_max>`\ (\ joint_idx\: :ref:`int<class_int>`, angle_max\: :ref:`float<class_float>`\ )の |
+   +---------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                          | :ref:`set_ccdik_joint_constraint_angle_min<class_SkeletonModification2DCCDIK_method_set_ccdik_joint_constraint_angle_min>`\ (\ joint_idx\: :ref:`int<class_int>`, angle_min\: :ref:`float<class_float>`\ )の |
+   +---------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                          | :ref:`set_ccdik_joint_enable_constraint<class_SkeletonModification2DCCDIK_method_set_ccdik_joint_enable_constraint>`\ (\ joint_idx\: :ref:`int<class_int>`, enable_constraint\: :ref:`bool<class_bool>`\ )の |
+   +---------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                          | :ref:`set_ccdik_joint_rotate_from_joint<class_SkeletonModification2DCCDIK_method_set_ccdik_joint_rotate_from_joint>`\ (\ joint_idx\: :ref:`int<class_int>`, rotate_from_joint\: :ref:`bool<class_bool>`\ )の |
+   +---------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -89,8 +89,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_SkeletonModification2DCCDIK_property_ccdik_data_chain_length:
 
@@ -103,7 +103,7 @@ Property Descriptions
 - |void| **set_ccdik_data_chain_length**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_ccdik_data_chain_length**\ (\ )
 
-The number of CCDIK joints in the CCDIK modification.
+Số lượng CCDIK joint trong CCDIK modification.
 
 .. rst-class:: classref-item-separator
 
@@ -120,7 +120,7 @@ The number of CCDIK joints in the CCDIK modification.
 - |void| **set_target_node**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_target_node**\ (\ )
 
-The NodePath to the node that is the target for the CCDIK modification. This node is what the CCDIK chain will attempt to rotate the bone chain to.
+NodePath đến node là target của CCDIK modification. Node này là nơi mà CCDIK chain sẽ cố gắng xoay bone chain hướng tới.
 
 .. rst-class:: classref-item-separator
 
@@ -137,7 +137,7 @@ The NodePath to the node that is the target for the CCDIK modification. This nod
 - |void| **set_tip_node**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_tip_node**\ (\ )
 
-The end position of the CCDIK chain. Typically, this should be a child of a :ref:`Bone2D<class_Bone2D>` node attached to the final :ref:`Bone2D<class_Bone2D>` in the CCDIK chain.
+Vị trí cuối của CCDIK chain. Thông thường, đây phải là một node con của node :ref:`Bone2D<class_Bone2D>` được gắn vào :ref:`Bone2D<class_Bone2D>` cuối cùng trong CCDIK chain.
 
 .. rst-class:: classref-section-separator
 
@@ -145,8 +145,8 @@ The end position of the CCDIK chain. Typically, this should be a child of a :ref
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_SkeletonModification2DCCDIK_method_get_ccdik_joint_bone2d_node:
 
@@ -154,7 +154,7 @@ Method Descriptions
 
 :ref:`NodePath<class_NodePath>` **get_ccdik_joint_bone2d_node**\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SkeletonModification2DCCDIK_method_get_ccdik_joint_bone2d_node>`
 
-Returns the :ref:`Bone2D<class_Bone2D>` node assigned to the CCDIK joint at ``joint_idx``.
+Trả về node :ref:`Bone2D<class_Bone2D>` được gán cho CCDIK joint tại ``joint_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -166,7 +166,7 @@ Returns the :ref:`Bone2D<class_Bone2D>` node assigned to the CCDIK joint at ``jo
 
 :ref:`int<class_int>` **get_ccdik_joint_bone_index**\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SkeletonModification2DCCDIK_method_get_ccdik_joint_bone_index>`
 
-Returns the index of the :ref:`Bone2D<class_Bone2D>` node assigned to the CCDIK joint at ``joint_idx``.
+Trả về chỉ mục của node :ref:`Bone2D<class_Bone2D>` được gán cho CCDIK joint tại ``joint_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -178,7 +178,7 @@ Returns the index of the :ref:`Bone2D<class_Bone2D>` node assigned to the CCDIK 
 
 :ref:`bool<class_bool>` **get_ccdik_joint_constraint_angle_invert**\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SkeletonModification2DCCDIK_method_get_ccdik_joint_constraint_angle_invert>`
 
-Returns whether the CCDIK joint at ``joint_idx`` uses an inverted joint constraint. See :ref:`set_ccdik_joint_constraint_angle_invert()<class_SkeletonModification2DCCDIK_method_set_ccdik_joint_constraint_angle_invert>` for details.
+Trả về việc CCDIK joint tại ``joint_idx`` có sử dụng ràng buộc joint đảo ngược hay không. Xem :ref:`set_ccdik_joint_constraint_angle_invert()<class_SkeletonModification2DCCDIK_method_set_ccdik_joint_constraint_angle_invert>` để biết chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -190,7 +190,7 @@ Returns whether the CCDIK joint at ``joint_idx`` uses an inverted joint constrai
 
 :ref:`float<class_float>` **get_ccdik_joint_constraint_angle_max**\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SkeletonModification2DCCDIK_method_get_ccdik_joint_constraint_angle_max>`
 
-Returns the maximum angle constraint for the joint at ``joint_idx``.
+Trả về ràng buộc góc tối đa cho joint tại ``joint_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -202,7 +202,7 @@ Returns the maximum angle constraint for the joint at ``joint_idx``.
 
 :ref:`float<class_float>` **get_ccdik_joint_constraint_angle_min**\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SkeletonModification2DCCDIK_method_get_ccdik_joint_constraint_angle_min>`
 
-Returns the minimum angle constraint for the joint at ``joint_idx``.
+Trả về ràng buộc góc tối thiểu cho joint tại ``joint_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -214,7 +214,7 @@ Returns the minimum angle constraint for the joint at ``joint_idx``.
 
 :ref:`bool<class_bool>` **get_ccdik_joint_enable_constraint**\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SkeletonModification2DCCDIK_method_get_ccdik_joint_enable_constraint>`
 
-Returns whether angle constraints on the CCDIK joint at ``joint_idx`` are enabled.
+Trả về việc các ràng buộc góc trên CCDIK joint tại ``joint_idx`` có được bật hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -226,7 +226,7 @@ Returns whether angle constraints on the CCDIK joint at ``joint_idx`` are enable
 
 :ref:`bool<class_bool>` **get_ccdik_joint_rotate_from_joint**\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SkeletonModification2DCCDIK_method_get_ccdik_joint_rotate_from_joint>`
 
-Returns whether the joint at ``joint_idx`` is set to rotate from the joint, ``true``, or to rotate from the tip, ``false``. The default is to rotate from the tip.
+Trả về việc joint tại ``joint_idx`` được đặt để xoay từ joint, ``true``, hay xoay từ đầu mút, ``false``. Mặc định là xoay từ đầu mút.
 
 .. rst-class:: classref-item-separator
 
@@ -238,7 +238,7 @@ Returns whether the joint at ``joint_idx`` is set to rotate from the joint, ``tr
 
 |void| **set_ccdik_joint_bone2d_node**\ (\ joint_idx\: :ref:`int<class_int>`, bone2d_nodepath\: :ref:`NodePath<class_NodePath>`\ ) :ref:`🔗<class_SkeletonModification2DCCDIK_method_set_ccdik_joint_bone2d_node>`
 
-Sets the :ref:`Bone2D<class_Bone2D>` node assigned to the CCDIK joint at ``joint_idx``.
+Đặt node :ref:`Bone2D<class_Bone2D>` được gán cho CCDIK joint tại ``joint_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -250,7 +250,7 @@ Sets the :ref:`Bone2D<class_Bone2D>` node assigned to the CCDIK joint at ``joint
 
 |void| **set_ccdik_joint_bone_index**\ (\ joint_idx\: :ref:`int<class_int>`, bone_idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_SkeletonModification2DCCDIK_method_set_ccdik_joint_bone_index>`
 
-Sets the bone index, ``bone_idx``, of the CCDIK joint at ``joint_idx``. When possible, this will also update the ``bone2d_node`` of the CCDIK joint based on data provided by the linked skeleton.
+Thiết lập chỉ mục xương, ``bone_idx``, của khớp CCDIK tại ``joint_idx``. Khi có thể, thao tác này cũng sẽ cập nhật ``bone2d_node`` của khớp CCDIK dựa trên dữ liệu do skeleton được liên kết cung cấp.
 
 .. rst-class:: classref-item-separator
 
@@ -262,9 +262,9 @@ Sets the bone index, ``bone_idx``, of the CCDIK joint at ``joint_idx``. When pos
 
 |void| **set_ccdik_joint_constraint_angle_invert**\ (\ joint_idx\: :ref:`int<class_int>`, invert\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_SkeletonModification2DCCDIK_method_set_ccdik_joint_constraint_angle_invert>`
 
-Sets whether the CCDIK joint at ``joint_idx`` uses an inverted joint constraint.
+Thiết lập liệu khớp CCDIK tại ``joint_idx`` có sử dụng ràng buộc khớp đảo ngược hay không.
 
-An inverted joint constraint only constraints the CCDIK joint to the angles *outside of* the inputted minimum and maximum angles. For this reason, it is referred to as an inverted joint constraint, as it constraints the joint to the outside of the inputted values.
+Ràng buộc khớp đảo ngược chỉ giới hạn khớp CCDIK ở các góc *bên ngoài* khoảng góc tối thiểu và tối đa đã nhập. Vì lý do này, nó được gọi là ràng buộc khớp đảo ngược, vì nó giới hạn khớp ở bên ngoài các giá trị đã nhập.
 
 .. rst-class:: classref-item-separator
 
@@ -276,7 +276,7 @@ An inverted joint constraint only constraints the CCDIK joint to the angles *out
 
 |void| **set_ccdik_joint_constraint_angle_max**\ (\ joint_idx\: :ref:`int<class_int>`, angle_max\: :ref:`float<class_float>`\ ) :ref:`🔗<class_SkeletonModification2DCCDIK_method_set_ccdik_joint_constraint_angle_max>`
 
-Sets the maximum angle constraint for the joint at ``joint_idx``.
+Thiết lập ràng buộc góc tối đa cho khớp tại ``joint_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -288,7 +288,7 @@ Sets the maximum angle constraint for the joint at ``joint_idx``.
 
 |void| **set_ccdik_joint_constraint_angle_min**\ (\ joint_idx\: :ref:`int<class_int>`, angle_min\: :ref:`float<class_float>`\ ) :ref:`🔗<class_SkeletonModification2DCCDIK_method_set_ccdik_joint_constraint_angle_min>`
 
-Sets the minimum angle constraint for the joint at ``joint_idx``.
+Thiết lập ràng buộc góc tối thiểu cho khớp tại ``joint_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -300,7 +300,7 @@ Sets the minimum angle constraint for the joint at ``joint_idx``.
 
 |void| **set_ccdik_joint_enable_constraint**\ (\ joint_idx\: :ref:`int<class_int>`, enable_constraint\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_SkeletonModification2DCCDIK_method_set_ccdik_joint_enable_constraint>`
 
-Determines whether angle constraints on the CCDIK joint at ``joint_idx`` are enabled. When ``true``, constraints will be enabled and taken into account when solving.
+Xác định xem các ràng buộc góc trên khớp CCDIK tại ``joint_idx`` có được bật hay không. Khi ``true``, các ràng buộc sẽ được bật và được tính đến trong quá trình giải.
 
 .. rst-class:: classref-item-separator
 
@@ -312,14 +312,14 @@ Determines whether angle constraints on the CCDIK joint at ``joint_idx`` are ena
 
 |void| **set_ccdik_joint_rotate_from_joint**\ (\ joint_idx\: :ref:`int<class_int>`, rotate_from_joint\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_SkeletonModification2DCCDIK_method_set_ccdik_joint_rotate_from_joint>`
 
-Sets whether the joint at ``joint_idx`` is set to rotate from the joint, ``true``, or to rotate from the tip, ``false``.
+Thiết lập liệu khớp tại ``joint_idx`` được đặt để xoay từ khớp, ``true``, hay xoay từ đầu mút, ``false``.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

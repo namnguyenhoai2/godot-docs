@@ -10,23 +10,23 @@
 TileMapPattern
 ==============
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Holds a pattern to be copied from or pasted into :ref:`TileMap<class_TileMap>`\ s.
+Lưu giữ một mẫu để sao chép từ hoặc dán vào các :ref:`TileMap<class_TileMap>`\ s.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This resource holds a set of cells to help bulk manipulations of :ref:`TileMap<class_TileMap>`.
+Tài nguyên này lưu giữ một tập hợp các ô để hỗ trợ thao tác hàng loạt trên :ref:`TileMap<class_TileMap>`.
 
-A pattern always starts at the ``(0, 0)`` coordinates and cannot have cells with negative coordinates.
+Một mẫu luôn bắt đầu tại tọa độ ``(0, 0)`` và không thể có các ô với tọa độ âm.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -59,8 +59,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_TileMapPattern_method_get_cell_alternative_tile:
 
@@ -68,7 +68,7 @@ Method Descriptions
 
 :ref:`int<class_int>` **get_cell_alternative_tile**\ (\ coords\: :ref:`Vector2i<class_Vector2i>`\ ) |const| :ref:`🔗<class_TileMapPattern_method_get_cell_alternative_tile>`
 
-Returns the tile alternative ID of the cell at ``coords``.
+Trả về ID tile thay thế của ô tại ``coords``.
 
 .. rst-class:: classref-item-separator
 
@@ -80,7 +80,7 @@ Returns the tile alternative ID of the cell at ``coords``.
 
 :ref:`Vector2i<class_Vector2i>` **get_cell_atlas_coords**\ (\ coords\: :ref:`Vector2i<class_Vector2i>`\ ) |const| :ref:`🔗<class_TileMapPattern_method_get_cell_atlas_coords>`
 
-Returns the tile atlas coordinates ID of the cell at ``coords``.
+Trả về ID tọa độ atlas của tile tại ``coords``.
 
 .. rst-class:: classref-item-separator
 
@@ -92,7 +92,7 @@ Returns the tile atlas coordinates ID of the cell at ``coords``.
 
 :ref:`int<class_int>` **get_cell_source_id**\ (\ coords\: :ref:`Vector2i<class_Vector2i>`\ ) |const| :ref:`🔗<class_TileMapPattern_method_get_cell_source_id>`
 
-Returns the tile source ID of the cell at ``coords``.
+Trả về ID nguồn của tile tại ``coords``.
 
 .. rst-class:: classref-item-separator
 
@@ -104,7 +104,7 @@ Returns the tile source ID of the cell at ``coords``.
 
 :ref:`Vector2i<class_Vector2i>` **get_size**\ (\ ) |const| :ref:`🔗<class_TileMapPattern_method_get_size>`
 
-Returns the size, in cells, of the pattern.
+Trả về kích thước của mẫu, tính theo số ô.
 
 .. rst-class:: classref-item-separator
 
@@ -116,7 +116,7 @@ Returns the size, in cells, of the pattern.
 
 :ref:`Array<class_Array>`\[:ref:`Vector2i<class_Vector2i>`\] **get_used_cells**\ (\ ) |const| :ref:`🔗<class_TileMapPattern_method_get_used_cells>`
 
-Returns the list of used cell coordinates in the pattern.
+Trả về danh sách các tọa độ ô được sử dụng trong mẫu.
 
 .. rst-class:: classref-item-separator
 
@@ -128,7 +128,7 @@ Returns the list of used cell coordinates in the pattern.
 
 :ref:`bool<class_bool>` **has_cell**\ (\ coords\: :ref:`Vector2i<class_Vector2i>`\ ) |const| :ref:`🔗<class_TileMapPattern_method_has_cell>`
 
-Returns whether the pattern has a tile at the given coordinates.
+Trả về liệu mẫu có tile tại tọa độ đã cho hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -140,7 +140,7 @@ Returns whether the pattern has a tile at the given coordinates.
 
 :ref:`bool<class_bool>` **is_empty**\ (\ ) |const| :ref:`🔗<class_TileMapPattern_method_is_empty>`
 
-Returns whether the pattern is empty or not.
+Trả về liệu mẫu có rỗng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -152,7 +152,7 @@ Returns whether the pattern is empty or not.
 
 |void| **remove_cell**\ (\ coords\: :ref:`Vector2i<class_Vector2i>`, update_size\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_TileMapPattern_method_remove_cell>`
 
-Remove the cell at the given coordinates.
+Xóa ô tại tọa độ đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -164,7 +164,7 @@ Remove the cell at the given coordinates.
 
 |void| **set_cell**\ (\ coords\: :ref:`Vector2i<class_Vector2i>`, source_id\: :ref:`int<class_int>` = -1, atlas_coords\: :ref:`Vector2i<class_Vector2i>` = Vector2i(-1, -1), alternative_tile\: :ref:`int<class_int>` = -1\ ) :ref:`🔗<class_TileMapPattern_method_set_cell>`
 
-Sets the tile identifiers for the cell at coordinates ``coords``. See :ref:`TileMap.set_cell()<class_TileMap_method_set_cell>`.
+Thiết lập các mã định danh tile cho ô tại tọa độ ``coords``. Xem :ref:`TileMap.set_cell()<class_TileMap_method_set_cell>`.
 
 .. rst-class:: classref-item-separator
 
@@ -176,14 +176,14 @@ Sets the tile identifiers for the cell at coordinates ``coords``. See :ref:`Tile
 
 |void| **set_size**\ (\ size\: :ref:`Vector2i<class_Vector2i>`\ ) :ref:`🔗<class_TileMapPattern_method_set_size>`
 
-Sets the size of the pattern.
+Thiết lập kích thước của mẫu.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả tại đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, nên có thể được gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

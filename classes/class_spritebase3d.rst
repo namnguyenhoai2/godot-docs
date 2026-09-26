@@ -10,86 +10,86 @@
 SpriteBase3D
 ============
 
-**Inherits:** :ref:`GeometryInstance3D<class_GeometryInstance3D>` **<** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa từ:** :ref:`GeometryInstance3D<class_GeometryInstance3D>` **<** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`AnimatedSprite3D<class_AnimatedSprite3D>`, :ref:`Sprite3D<class_Sprite3D>`
+**Được kế thừa bởi:** :ref:`AnimatedSprite3D<class_AnimatedSprite3D>`, :ref:`Sprite3D<class_Sprite3D>`
 
-2D sprite node in 3D environment.
+Node sprite 2D trong môi trường 3D.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A node that displays 2D texture information in a 3D environment. See also :ref:`Sprite3D<class_Sprite3D>` where many other properties are defined.
+Một node hiển thị thông tin kết cấu 2D trong môi trường 3D. Xem thêm :ref:`Sprite3D<class_Sprite3D>`, nơi định nghĩa nhiều thuộc tính khác.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`float<class_float>`                                       | :ref:`alpha_antialiasing_edge<class_SpriteBase3D_property_alpha_antialiasing_edge>` | ``0.0``               |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`AlphaAntiAliasing<enum_BaseMaterial3D_AlphaAntiAliasing>` | :ref:`alpha_antialiasing_mode<class_SpriteBase3D_property_alpha_antialiasing_mode>` | ``0``                 |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`AlphaCutMode<enum_SpriteBase3D_AlphaCutMode>`             | :ref:`alpha_cut<class_SpriteBase3D_property_alpha_cut>`                             | ``0``                 |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`float<class_float>`                                       | :ref:`alpha_hash_scale<class_SpriteBase3D_property_alpha_hash_scale>`               | ``1.0``               |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`float<class_float>`                                       | :ref:`alpha_scissor_threshold<class_SpriteBase3D_property_alpha_scissor_threshold>` | ``0.5``               |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`Axis<enum_Vector3_Axis>`                                  | :ref:`axis<class_SpriteBase3D_property_axis>`                                       | ``2``                 |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`BillboardMode<enum_BaseMaterial3D_BillboardMode>`         | :ref:`billboard<class_SpriteBase3D_property_billboard>`                             | ``0``                 |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                                         | :ref:`centered<class_SpriteBase3D_property_centered>`                               | ``true``              |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                                         | :ref:`double_sided<class_SpriteBase3D_property_double_sided>`                       | ``true``              |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                                         | :ref:`fixed_size<class_SpriteBase3D_property_fixed_size>`                           | ``false``             |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                                         | :ref:`flip_h<class_SpriteBase3D_property_flip_h>`                                   | ``false``             |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                                         | :ref:`flip_v<class_SpriteBase3D_property_flip_v>`                                   | ``false``             |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`Color<class_Color>`                                       | :ref:`modulate<class_SpriteBase3D_property_modulate>`                               | ``Color(1, 1, 1, 1)`` |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                                         | :ref:`no_depth_test<class_SpriteBase3D_property_no_depth_test>`                     | ``false``             |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`Vector2<class_Vector2>`                                   | :ref:`offset<class_SpriteBase3D_property_offset>`                                   | ``Vector2(0, 0)``     |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`float<class_float>`                                       | :ref:`pixel_size<class_SpriteBase3D_property_pixel_size>`                           | ``0.01``              |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`int<class_int>`                                           | :ref:`render_priority<class_SpriteBase3D_property_render_priority>`                 | ``0``                 |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                                         | :ref:`shaded<class_SpriteBase3D_property_shaded>`                                   | ``false``             |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`TextureFilter<enum_BaseMaterial3D_TextureFilter>`         | :ref:`texture_filter<class_SpriteBase3D_property_texture_filter>`                   | ``3``                 |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                                         | :ref:`transparent<class_SpriteBase3D_property_transparent>`                         | ``true``              |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`                                        | :ref:`alpha_antialiasing_edge<class_SpriteBase3D_property_alpha_antialiasing_edge>` | ``0.0``               |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`AlphaAntiAliasing <enum_BaseMaterial3D_AlphaAntiAliasing>` | :ref:`alpha_antialiasing_mode<class_SpriteBase3D_property_alpha_antialiasing_mode>` | ``0``                 |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`AlphaCutMode <enum_SpriteBase3D_AlphaCutMode>`             | :ref:`alpha_cut<class_SpriteBase3D_property_alpha_cut>`                             | ``0``                 |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`                                        | :ref:`alpha_hash_scale<class_SpriteBase3D_property_alpha_hash_scale>`               | ``1.0``               |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`                                        | :ref:`alpha_scissor_threshold<class_SpriteBase3D_property_alpha_scissor_threshold>` | ``0.5``               |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`Axis <enum_Vector3_Axis>`                                  | :ref:`axis<class_SpriteBase3D_property_axis>`                                       | ``2``                 |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`BillboardMode <enum_BaseMaterial3D_BillboardMode>`         | :ref:`billboard<class_SpriteBase3D_property_billboard>`                             | ``0``                 |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`centered<class_SpriteBase3D_property_centered>`                               | ``true``              |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`double_sided<class_SpriteBase3D_property_double_sided>`                       | ``true``              |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`fixed_size<class_SpriteBase3D_property_fixed_size>`                           | ``false``             |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`flip_h<class_SpriteBase3D_property_flip_h>`                                   | ``false``             |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`flip_v<class_SpriteBase3D_property_flip_v>`                                   | ``false``             |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`Color<class_Color>`                                        | :ref:`modulate<class_SpriteBase3D_property_modulate>`                               | ``Color(1, 1, 1, 1)`` |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`no_depth_test<class_SpriteBase3D_property_no_depth_test>`                     | ``false``             |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`Vector2<class_Vector2>`                                    | :ref:`offset<class_SpriteBase3D_property_offset>`                                   | ``Vector2(0, 0)``     |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`                                        | :ref:`pixel_size<class_SpriteBase3D_property_pixel_size>`                           | ``0.01``              |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`int<class_int>`                                            | :ref:`render_priority<class_SpriteBase3D_property_render_priority>`                 | ``0``                 |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`shaded<class_SpriteBase3D_property_shaded>`                                   | ``false``             |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`TextureFilter <enum_BaseMaterial3D_TextureFilter>`         | :ref:`texture_filter<class_SpriteBase3D_property_texture_filter>`                   | ``3``                 |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`transparent<class_SpriteBase3D_property_transparent>`                         | ``true``              |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------+-----------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`TriangleMesh<class_TriangleMesh>` | :ref:`generate_triangle_mesh<class_SpriteBase3D_method_generate_triangle_mesh>`\ (\ ) |const|                                                                |
-   +-----------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                 | :ref:`get_draw_flag<class_SpriteBase3D_method_get_draw_flag>`\ (\ flag\: :ref:`DrawFlags<enum_SpriteBase3D_DrawFlags>`\ ) |const|                            |
-   +-----------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Rect2<class_Rect2>`               | :ref:`get_item_rect<class_SpriteBase3D_method_get_item_rect>`\ (\ ) |const|                                                                                  |
-   +-----------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                  | :ref:`set_draw_flag<class_SpriteBase3D_method_set_draw_flag>`\ (\ flag\: :ref:`DrawFlags<enum_SpriteBase3D_DrawFlags>`, enabled\: :ref:`bool<class_bool>`\ ) |
-   +-----------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`TriangleMesh<class_TriangleMesh>` | :ref:`generate_triangle_mesh<class_SpriteBase3D_method_generate_triangle_mesh>`\ (\ ) |const|                                                                 |
+   +-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                 | :ref:`get_draw_flag<class_SpriteBase3D_method_get_draw_flag>`\ (\ flag\: :ref:`DrawFlags <enum_SpriteBase3D_DrawFlags>`\ ) |const|                            |
+   +-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Rect2<class_Rect2>`               | :ref:`get_item_rect<class_SpriteBase3D_method_get_item_rect>`\ (\ ) |const|                                                                                   |
+   +-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                  | :ref:`set_draw_flag<class_SpriteBase3D_method_set_draw_flag>`\ (\ flag\: :ref:`DrawFlags <enum_SpriteBase3D_DrawFlags>`, enabled\: :ref:`bool<class_bool>`\ ) |
+   +-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -97,14 +97,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_SpriteBase3D_DrawFlags:
 
 .. rst-class:: classref-enumeration
 
-enum **DrawFlags**: :ref:`🔗<enum_SpriteBase3D_DrawFlags>`
+enum **DrawFlags**: :ref:`🔗 <enum_SpriteBase3D_DrawFlags>`
 
 .. _class_SpriteBase3D_constant_FLAG_TRANSPARENT:
 
@@ -112,7 +112,7 @@ enum **DrawFlags**: :ref:`🔗<enum_SpriteBase3D_DrawFlags>`
 
 :ref:`DrawFlags<enum_SpriteBase3D_DrawFlags>` **FLAG_TRANSPARENT** = ``0``
 
-If set, the texture's transparency and the opacity are used to make those parts of the sprite invisible.
+Nếu được bật, độ trong suốt và độ mờ của kết cấu sẽ được dùng để làm cho những phần đó của sprite trở nên vô hình.
 
 .. _class_SpriteBase3D_constant_FLAG_SHADED:
 
@@ -120,7 +120,7 @@ If set, the texture's transparency and the opacity are used to make those parts 
 
 :ref:`DrawFlags<enum_SpriteBase3D_DrawFlags>` **FLAG_SHADED** = ``1``
 
-If set, lights in the environment affect the sprite.
+Nếu được bật, ánh sáng trong môi trường sẽ ảnh hưởng đến sprite.
 
 .. _class_SpriteBase3D_constant_FLAG_DOUBLE_SIDED:
 
@@ -128,7 +128,7 @@ If set, lights in the environment affect the sprite.
 
 :ref:`DrawFlags<enum_SpriteBase3D_DrawFlags>` **FLAG_DOUBLE_SIDED** = ``2``
 
-If set, texture can be seen from the back as well. If not, the texture is invisible when looking at it from behind.
+Nếu được bật, kết cấu cũng có thể được nhìn thấy từ phía sau. Nếu không, kết cấu sẽ vô hình khi nhìn từ phía sau.
 
 .. _class_SpriteBase3D_constant_FLAG_DISABLE_DEPTH_TEST:
 
@@ -136,7 +136,7 @@ If set, texture can be seen from the back as well. If not, the texture is invisi
 
 :ref:`DrawFlags<enum_SpriteBase3D_DrawFlags>` **FLAG_DISABLE_DEPTH_TEST** = ``3``
 
-Disables the depth test, so this object is drawn on top of all others. However, objects drawn after it in the draw order may cover it.
+Tắt kiểm tra độ sâu, vì vậy đối tượng này được vẽ lên trên tất cả các đối tượng khác. Tuy nhiên, các đối tượng được vẽ sau nó trong thứ tự vẽ có thể che phủ nó.
 
 .. _class_SpriteBase3D_constant_FLAG_FIXED_SIZE:
 
@@ -144,7 +144,7 @@ Disables the depth test, so this object is drawn on top of all others. However, 
 
 :ref:`DrawFlags<enum_SpriteBase3D_DrawFlags>` **FLAG_FIXED_SIZE** = ``4``
 
-Label is scaled by depth so that it always appears the same size on screen.
+Nhãn được thu phóng theo độ sâu để luôn hiển thị với cùng kích thước trên màn hình.
 
 .. _class_SpriteBase3D_constant_FLAG_MAX:
 
@@ -152,7 +152,7 @@ Label is scaled by depth so that it always appears the same size on screen.
 
 :ref:`DrawFlags<enum_SpriteBase3D_DrawFlags>` **FLAG_MAX** = ``5``
 
-Represents the size of the :ref:`DrawFlags<enum_SpriteBase3D_DrawFlags>` enum.
+Đại diện cho kích thước của enum :ref:`DrawFlags <enum_SpriteBase3D_DrawFlags>`.
 
 .. rst-class:: classref-item-separator
 
@@ -162,7 +162,7 @@ Represents the size of the :ref:`DrawFlags<enum_SpriteBase3D_DrawFlags>` enum.
 
 .. rst-class:: classref-enumeration
 
-enum **AlphaCutMode**: :ref:`🔗<enum_SpriteBase3D_AlphaCutMode>`
+enum **AlphaCutMode**: :ref:`🔗 <enum_SpriteBase3D_AlphaCutMode>`
 
 .. _class_SpriteBase3D_constant_ALPHA_CUT_DISABLED:
 
@@ -170,7 +170,7 @@ enum **AlphaCutMode**: :ref:`🔗<enum_SpriteBase3D_AlphaCutMode>`
 
 :ref:`AlphaCutMode<enum_SpriteBase3D_AlphaCutMode>` **ALPHA_CUT_DISABLED** = ``0``
 
-This mode performs standard alpha blending. It can display translucent areas, but transparency sorting issues may be visible when multiple transparent materials are overlapping.
+Chế độ này thực hiện alpha blending tiêu chuẩn. Chế độ này có thể hiển thị các vùng bán trong suốt, nhưng có thể thấy các vấn đề sắp xếp độ trong suốt khi nhiều material trong suốt chồng lên nhau.
 
 .. _class_SpriteBase3D_constant_ALPHA_CUT_DISCARD:
 
@@ -178,7 +178,7 @@ This mode performs standard alpha blending. It can display translucent areas, bu
 
 :ref:`AlphaCutMode<enum_SpriteBase3D_AlphaCutMode>` **ALPHA_CUT_DISCARD** = ``1``
 
-This mode only allows fully transparent or fully opaque pixels. Harsh edges will be visible unless some form of screen-space antialiasing is enabled (see :ref:`ProjectSettings.rendering/anti_aliasing/quality/screen_space_aa<class_ProjectSettings_property_rendering/anti_aliasing/quality/screen_space_aa>`). On the bright side, this mode doesn't suffer from transparency sorting issues when multiple transparent materials are overlapping. This mode is also known as *alpha testing* or *1-bit transparency*.
+Chế độ này chỉ cho phép các pixel hoàn toàn trong suốt hoặc hoàn toàn đục. Các cạnh gắt sẽ hiển thị trừ khi bật một dạng antialiasing trong không gian màn hình (xem :ref:`ProjectSettings.rendering/anti_aliasing/quality/screen_space_aa <class_ProjectSettings_property_rendering/anti_aliasing/quality/screen_space_aa>`). Mặt khác, chế độ này không gặp vấn đề sắp xếp độ trong suốt khi nhiều material trong suốt chồng lên nhau. Chế độ này còn được gọi là *alpha testing* hoặc *độ trong suốt 1 bit*.
 
 .. _class_SpriteBase3D_constant_ALPHA_CUT_OPAQUE_PREPASS:
 
@@ -186,7 +186,7 @@ This mode only allows fully transparent or fully opaque pixels. Harsh edges will
 
 :ref:`AlphaCutMode<enum_SpriteBase3D_AlphaCutMode>` **ALPHA_CUT_OPAQUE_PREPASS** = ``2``
 
-This mode draws fully opaque pixels in the depth prepass. This is slower than :ref:`ALPHA_CUT_DISABLED<class_SpriteBase3D_constant_ALPHA_CUT_DISABLED>` or :ref:`ALPHA_CUT_DISCARD<class_SpriteBase3D_constant_ALPHA_CUT_DISCARD>`, but it allows displaying translucent areas and smooth edges while using proper sorting.
+Chế độ này vẽ các pixel hoàn toàn đục trong depth prepass. Chế độ này chậm hơn :ref:`ALPHA_CUT_DISABLED<class_SpriteBase3D_constant_ALPHA_CUT_DISABLED>` hoặc :ref:`ALPHA_CUT_DISCARD<class_SpriteBase3D_constant_ALPHA_CUT_DISCARD>`, nhưng cho phép hiển thị các vùng bán trong suốt và các cạnh mượt mà trong khi vẫn sử dụng cách sắp xếp thích hợp.
 
 .. _class_SpriteBase3D_constant_ALPHA_CUT_HASH:
 
@@ -194,7 +194,7 @@ This mode draws fully opaque pixels in the depth prepass. This is slower than :r
 
 :ref:`AlphaCutMode<enum_SpriteBase3D_AlphaCutMode>` **ALPHA_CUT_HASH** = ``3``
 
-This mode draws cuts off all values below a spatially-deterministic threshold, the rest will remain opaque.
+Chế độ này loại bỏ tất cả các giá trị dưới một ngưỡng được xác định theo không gian một cách nhất quán; các giá trị còn lại vẫn đục.
 
 .. rst-class:: classref-section-separator
 
@@ -202,8 +202,8 @@ This mode draws cuts off all values below a spatially-deterministic threshold, t
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_SpriteBase3D_property_alpha_antialiasing_edge:
 
@@ -216,7 +216,7 @@ Property Descriptions
 - |void| **set_alpha_antialiasing_edge**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_alpha_antialiasing_edge**\ (\ )
 
-Threshold at which antialiasing will be applied on the alpha channel.
+Ngưỡng mà antialiasing sẽ được áp dụng cho kênh alpha.
 
 .. rst-class:: classref-item-separator
 
@@ -233,7 +233,7 @@ Threshold at which antialiasing will be applied on the alpha channel.
 - |void| **set_alpha_antialiasing**\ (\ value\: :ref:`AlphaAntiAliasing<enum_BaseMaterial3D_AlphaAntiAliasing>`\ )
 - :ref:`AlphaAntiAliasing<enum_BaseMaterial3D_AlphaAntiAliasing>` **get_alpha_antialiasing**\ (\ )
 
-The type of alpha antialiasing to apply.
+Loại alpha antialiasing cần áp dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -250,7 +250,7 @@ The type of alpha antialiasing to apply.
 - |void| **set_alpha_cut_mode**\ (\ value\: :ref:`AlphaCutMode<enum_SpriteBase3D_AlphaCutMode>`\ )
 - :ref:`AlphaCutMode<enum_SpriteBase3D_AlphaCutMode>` **get_alpha_cut_mode**\ (\ )
 
-The alpha cutting mode to use for the sprite.
+Chế độ cắt alpha cần sử dụng cho sprite.
 
 .. rst-class:: classref-item-separator
 
@@ -267,7 +267,7 @@ The alpha cutting mode to use for the sprite.
 - |void| **set_alpha_hash_scale**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_alpha_hash_scale**\ (\ )
 
-The hashing scale for Alpha Hash. Recommended values between ``0`` and ``2``.
+Tỷ lệ hashing cho Alpha Hash. Các giá trị từ ``0`` đến ``2`` được khuyến nghị.
 
 .. rst-class:: classref-item-separator
 
@@ -284,7 +284,7 @@ The hashing scale for Alpha Hash. Recommended values between ``0`` and ``2``.
 - |void| **set_alpha_scissor_threshold**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_alpha_scissor_threshold**\ (\ )
 
-Threshold at which the alpha scissor will discard values.
+Ngưỡng mà alpha scissor sẽ loại bỏ các giá trị.
 
 .. rst-class:: classref-item-separator
 
@@ -301,7 +301,7 @@ Threshold at which the alpha scissor will discard values.
 - |void| **set_axis**\ (\ value\: :ref:`Axis<enum_Vector3_Axis>`\ )
 - :ref:`Axis<enum_Vector3_Axis>` **get_axis**\ (\ )
 
-The direction in which the front of the texture faces.
+Hướng mà mặt trước của kết cấu hướng về.
 
 .. rst-class:: classref-item-separator
 
@@ -318,9 +318,9 @@ The direction in which the front of the texture faces.
 - |void| **set_billboard_mode**\ (\ value\: :ref:`BillboardMode<enum_BaseMaterial3D_BillboardMode>`\ )
 - :ref:`BillboardMode<enum_BaseMaterial3D_BillboardMode>` **get_billboard_mode**\ (\ )
 
-The billboard mode to use for the sprite.
+Chế độ billboard cần sử dụng cho sprite.
 
-\ **Note:** When billboarding is enabled and the material also casts shadows, billboards will face **the** camera in the scene when rendering shadows. In scenes with multiple cameras, the intended shadow cannot be determined and this will result in undefined behavior. See `GitHub Pull Request #72638 <https://github.com/godotengine/godot/pull/72638>`__ for details.
+\ **Lưu ý:** Khi billboarding được bật và material cũng đổ bóng, billboard sẽ hướng về phía **camera** trong cảnh khi kết xuất bóng. Trong các cảnh có nhiều camera, không thể xác định bóng dự kiến, dẫn đến hành vi không xác định. Xem `GitHub Pull Request #72638 <https://github.com/godotengine/godot/pull/72638>`__ để biết chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -337,7 +337,7 @@ The billboard mode to use for the sprite.
 - |void| **set_centered**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_centered**\ (\ )
 
-If ``true``, texture will be centered.
+Nếu ``true``, kết cấu sẽ được căn giữa.
 
 .. rst-class:: classref-item-separator
 
@@ -354,7 +354,7 @@ If ``true``, texture will be centered.
 - |void| **set_draw_flag**\ (\ flag\: :ref:`DrawFlags<enum_SpriteBase3D_DrawFlags>`, enabled\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_draw_flag**\ (\ flag\: :ref:`DrawFlags<enum_SpriteBase3D_DrawFlags>`\ ) |const|
 
-If ``true``, texture can be seen from the back as well, if ``false``, it is invisible when looking at it from behind.
+Nếu ``true``, kết cấu cũng có thể được nhìn thấy từ phía sau; nếu ``false``, kết cấu sẽ vô hình khi nhìn từ phía sau.
 
 .. rst-class:: classref-item-separator
 
@@ -371,7 +371,7 @@ If ``true``, texture can be seen from the back as well, if ``false``, it is invi
 - |void| **set_draw_flag**\ (\ flag\: :ref:`DrawFlags<enum_SpriteBase3D_DrawFlags>`, enabled\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_draw_flag**\ (\ flag\: :ref:`DrawFlags<enum_SpriteBase3D_DrawFlags>`\ ) |const|
 
-If ``true``, the texture is rendered at the same size regardless of distance. The texture's size on screen is the same as if the camera was ``1.0`` units away from the texture's origin, regardless of the actual distance from the camera. The :ref:`Camera3D<class_Camera3D>`'s field of view (or :ref:`Camera3D.size<class_Camera3D_property_size>` when in orthogonal/frustum mode) still affects the size the sprite is drawn at.
+Nếu ``true``, kết cấu được kết xuất với cùng kích thước bất kể khoảng cách. Kích thước của kết cấu trên màn hình giống như khi camera cách gốc của kết cấu ``1.0`` đơn vị, bất kể khoảng cách thực tế đến camera. Trường nhìn của :ref:`Camera3D<class_Camera3D>` (hoặc :ref:`Camera3D.size<class_Camera3D_property_size>` khi ở chế độ orthogonal/frustum) vẫn ảnh hưởng đến kích thước mà sprite được vẽ.
 
 .. rst-class:: classref-item-separator
 
@@ -388,7 +388,7 @@ If ``true``, the texture is rendered at the same size regardless of distance. Th
 - |void| **set_flip_h**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_flipped_h**\ (\ )
 
-If ``true``, texture is flipped horizontally.
+Nếu ``true``, kết cấu bị lật theo chiều ngang.
 
 .. rst-class:: classref-item-separator
 
@@ -405,7 +405,7 @@ If ``true``, texture is flipped horizontally.
 - |void| **set_flip_v**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_flipped_v**\ (\ )
 
-If ``true``, texture is flipped vertically.
+Nếu ``true``, kết cấu bị lật theo chiều dọc.
 
 .. rst-class:: classref-item-separator
 
@@ -422,11 +422,11 @@ If ``true``, texture is flipped vertically.
 - |void| **set_modulate**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_modulate**\ (\ )
 
-A color value used to *multiply* the texture's colors. Can be used for mood-coloring or to simulate the color of ambient light.
+Giá trị màu dùng để *nhân* các màu của kết cấu. Có thể dùng để tạo màu sắc theo không khí hoặc mô phỏng màu của ánh sáng môi trường.
 
-\ **Note:** Unlike :ref:`CanvasItem.modulate<class_CanvasItem_property_modulate>` for 2D, colors with values above ``1.0`` (overbright) are not supported.
+\ **Lưu ý:** Không giống :ref:`CanvasItem.modulate<class_CanvasItem_property_modulate>` trong 2D, các màu có giá trị trên ``1.0`` (overbright) không được hỗ trợ.
 
-\ **Note:** If a :ref:`GeometryInstance3D.material_override<class_GeometryInstance3D_property_material_override>` is defined on the **SpriteBase3D**, the material override must be configured to take vertex colors into account for albedo. Otherwise, the color defined in :ref:`modulate<class_SpriteBase3D_property_modulate>` will be ignored. For a :ref:`BaseMaterial3D<class_BaseMaterial3D>`, :ref:`BaseMaterial3D.vertex_color_use_as_albedo<class_BaseMaterial3D_property_vertex_color_use_as_albedo>` must be ``true``. For a :ref:`ShaderMaterial<class_ShaderMaterial>`, ``ALBEDO *= COLOR.rgb;`` must be inserted in the shader's ``fragment()`` function.
+\ **Lưu ý:** Nếu một :ref:`GeometryInstance3D.material_override<class_GeometryInstance3D_property_material_override>` được định nghĩa trên **SpriteBase3D**, material override phải được cấu hình để tính đến màu vertex cho albedo. Nếu không, màu được định nghĩa trong :ref:`modulate<class_SpriteBase3D_property_modulate>` sẽ bị bỏ qua. Đối với một :ref:`BaseMaterial3D<class_BaseMaterial3D>`, :ref:`BaseMaterial3D.vertex_color_use_as_albedo<class_BaseMaterial3D_property_vertex_color_use_as_albedo>` phải là ``true``. Đối với một :ref:`ShaderMaterial<class_ShaderMaterial>`, ``ALBEDO *= COLOR.rgb;`` phải được chèn vào hàm ``fragment()`` của shader.
 
 .. rst-class:: classref-item-separator
 
@@ -443,7 +443,7 @@ A color value used to *multiply* the texture's colors. Can be used for mood-colo
 - |void| **set_draw_flag**\ (\ flag\: :ref:`DrawFlags<enum_SpriteBase3D_DrawFlags>`, enabled\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_draw_flag**\ (\ flag\: :ref:`DrawFlags<enum_SpriteBase3D_DrawFlags>`\ ) |const|
 
-If ``true``, depth testing is disabled and the object will be drawn in render order.
+Nếu ``true``, kiểm tra độ sâu bị tắt và đối tượng sẽ được vẽ theo thứ tự kết xuất.
 
 .. rst-class:: classref-item-separator
 
@@ -460,9 +460,9 @@ If ``true``, depth testing is disabled and the object will be drawn in render or
 - |void| **set_offset**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_offset**\ (\ )
 
-The texture's drawing offset.
+Độ lệch khi vẽ kết cấu.
 
-\ **Note:** When you increase :ref:`offset<class_SpriteBase3D_property_offset>`.y in Sprite3D, the sprite moves upward in world space (i.e., +Y is up).
+\ **Lưu ý:** Khi tăng :ref:`offset<class_SpriteBase3D_property_offset>`.y trong Sprite3D, sprite sẽ di chuyển lên trên trong không gian thế giới (tức là +Y hướng lên).
 
 .. rst-class:: classref-item-separator
 
@@ -479,7 +479,7 @@ The texture's drawing offset.
 - |void| **set_pixel_size**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_pixel_size**\ (\ )
 
-The size of one pixel's width on the sprite to scale it in 3D.
+Độ rộng của một pixel trên sprite dùng để thu phóng nó trong 3D.
 
 .. rst-class:: classref-item-separator
 
@@ -496,11 +496,11 @@ The size of one pixel's width on the sprite to scale it in 3D.
 - |void| **set_render_priority**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_render_priority**\ (\ )
 
-Sets the render priority for the sprite. Higher priority objects will be sorted in front of lower priority objects.
+Thiết lập độ ưu tiên render cho sprite. Các đối tượng có độ ưu tiên cao hơn sẽ được sắp xếp ở phía trước các đối tượng có độ ưu tiên thấp hơn.
 
-\ **Note:** This only applies if :ref:`alpha_cut<class_SpriteBase3D_property_alpha_cut>` is set to :ref:`ALPHA_CUT_DISABLED<class_SpriteBase3D_constant_ALPHA_CUT_DISABLED>` (default value).
+\ **Lưu ý:** Điều này chỉ áp dụng nếu :ref:`alpha_cut<class_SpriteBase3D_property_alpha_cut>` được đặt thành :ref:`ALPHA_CUT_DISABLED<class_SpriteBase3D_constant_ALPHA_CUT_DISABLED>` (giá trị mặc định).
 
-\ **Note:** This only applies to sorting of transparent objects. This will not impact how transparent objects are sorted relative to opaque objects. This is because opaque objects are not sorted, while transparent objects are sorted from back to front (subject to priority).
+\ **Lưu ý:** Điều này chỉ áp dụng cho việc sắp xếp các đối tượng trong suốt. Điều này không ảnh hưởng đến cách các đối tượng trong suốt được sắp xếp tương đối với các đối tượng không trong suốt. Lý do là các đối tượng không trong suốt không được sắp xếp, trong khi các đối tượng trong suốt được sắp xếp từ sau ra trước (phụ thuộc vào độ ưu tiên).
 
 .. rst-class:: classref-item-separator
 
@@ -517,7 +517,7 @@ Sets the render priority for the sprite. Higher priority objects will be sorted 
 - |void| **set_draw_flag**\ (\ flag\: :ref:`DrawFlags<enum_SpriteBase3D_DrawFlags>`, enabled\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_draw_flag**\ (\ flag\: :ref:`DrawFlags<enum_SpriteBase3D_DrawFlags>`\ ) |const|
 
-If ``true``, the :ref:`Light3D<class_Light3D>` in the :ref:`Environment<class_Environment>` has effects on the sprite.
+Nếu ``true``, thì :ref:`Light3D<class_Light3D>` trong :ref:`Environment<class_Environment>` sẽ có hiệu lực đối với sprite.
 
 .. rst-class:: classref-item-separator
 
@@ -534,9 +534,9 @@ If ``true``, the :ref:`Light3D<class_Light3D>` in the :ref:`Environment<class_En
 - |void| **set_texture_filter**\ (\ value\: :ref:`TextureFilter<enum_BaseMaterial3D_TextureFilter>`\ )
 - :ref:`TextureFilter<enum_BaseMaterial3D_TextureFilter>` **get_texture_filter**\ (\ )
 
-Filter flags for the texture.
+Các cờ filter của texture.
 
-\ **Note:** Linear filtering may cause artifacts around the edges, which are especially noticeable on opaque textures. To prevent this, use textures with transparent or identical colors around the edges.
+\ **Lưu ý:** Linear filtering có thể gây ra các hiện tượng bất thường quanh các cạnh, đặc biệt dễ nhận thấy trên các texture không trong suốt. Để ngăn điều này, hãy sử dụng các texture có màu trong suốt hoặc màu giống hệt nhau quanh các cạnh.
 
 .. rst-class:: classref-item-separator
 
@@ -553,7 +553,7 @@ Filter flags for the texture.
 - |void| **set_draw_flag**\ (\ flag\: :ref:`DrawFlags<enum_SpriteBase3D_DrawFlags>`, enabled\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_draw_flag**\ (\ flag\: :ref:`DrawFlags<enum_SpriteBase3D_DrawFlags>`\ ) |const|
 
-If ``true``, the texture's transparency and the opacity are used to make those parts of the sprite invisible.
+Nếu ``true``, độ trong suốt của texture và độ opacity được sử dụng để làm cho những phần đó của sprite trở nên vô hình.
 
 .. rst-class:: classref-section-separator
 
@@ -561,8 +561,8 @@ If ``true``, the texture's transparency and the opacity are used to make those p
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả method
+------------
 
 .. _class_SpriteBase3D_method_generate_triangle_mesh:
 
@@ -570,7 +570,7 @@ Method Descriptions
 
 :ref:`TriangleMesh<class_TriangleMesh>` **generate_triangle_mesh**\ (\ ) |const| :ref:`🔗<class_SpriteBase3D_method_generate_triangle_mesh>`
 
-Returns a :ref:`TriangleMesh<class_TriangleMesh>` with the sprite's vertices following its current configuration (such as its :ref:`axis<class_SpriteBase3D_property_axis>` and :ref:`pixel_size<class_SpriteBase3D_property_pixel_size>`).
+Trả về một :ref:`TriangleMesh<class_TriangleMesh>` với các đỉnh của sprite tuân theo cấu hình hiện tại của nó (chẳng hạn như :ref:`axis<class_SpriteBase3D_property_axis>` và :ref:`pixel_size<class_SpriteBase3D_property_pixel_size>`).
 
 .. rst-class:: classref-item-separator
 
@@ -582,7 +582,7 @@ Returns a :ref:`TriangleMesh<class_TriangleMesh>` with the sprite's vertices fol
 
 :ref:`bool<class_bool>` **get_draw_flag**\ (\ flag\: :ref:`DrawFlags<enum_SpriteBase3D_DrawFlags>`\ ) |const| :ref:`🔗<class_SpriteBase3D_method_get_draw_flag>`
 
-Returns the value of the specified flag.
+Trả về giá trị của cờ được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -594,7 +594,7 @@ Returns the value of the specified flag.
 
 :ref:`Rect2<class_Rect2>` **get_item_rect**\ (\ ) |const| :ref:`🔗<class_SpriteBase3D_method_get_item_rect>`
 
-Returns the rectangle representing this sprite.
+Trả về hình chữ nhật đại diện cho sprite này.
 
 .. rst-class:: classref-item-separator
 
@@ -606,14 +606,14 @@ Returns the rectangle representing this sprite.
 
 |void| **set_draw_flag**\ (\ flag\: :ref:`DrawFlags<enum_SpriteBase3D_DrawFlags>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_SpriteBase3D_method_set_draw_flag>`
 
-If ``true``, the specified flag will be enabled.
+Nếu ``true``, cờ được chỉ định sẽ được bật.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Method này thường cần được người dùng override để có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Method này bắt buộc phải được override khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có side effect. Nó không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Method này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Method này được sử dụng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Method này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Method này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,29 +10,29 @@
 Time
 ====
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-A singleton for working with time data.
+Một singleton để làm việc với dữ liệu thời gian.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-The Time singleton allows converting time between various formats and also getting time information from the system.
+Singleton Time cho phép chuyển đổi thời gian giữa nhiều định dạng khác nhau và lấy thông tin thời gian từ hệ thống.
 
-This class conforms with as many of the ISO 8601 standards as possible. All dates follow the Proleptic Gregorian calendar. As such, the day before ``1582-10-15`` is ``1582-10-14``, not ``1582-10-04``. The year before 1 AD (aka 1 BC) is number ``0``, with the year before that (2 BC) being ``-1``, etc.
+Lớp này tuân thủ nhiều nhất có thể các tiêu chuẩn ISO 8601. Tất cả ngày tháng đều theo lịch Gregory kéo dài. Vì vậy, ngày trước ``1582-10-15`` là ``1582-10-14``, không phải ``1582-10-04``. Năm trước năm 1 sau Công nguyên (còn gọi là năm 1 trước Công nguyên) được đánh số ``0``, và năm trước đó (năm 2 trước Công nguyên) là ``-1``, v.v.
 
-Conversion methods assume "the same timezone", and do not handle timezone conversions or DST automatically. Leap seconds are also not handled, they must be done manually if desired. Suffixes such as "Z" are not handled, you need to strip them away manually.
+Các phương thức chuyển đổi giả định "cùng timezone" và không tự động xử lý việc chuyển đổi timezone hoặc DST. Giây nhuận cũng không được xử lý; nếu muốn sử dụng, bạn phải tự xử lý. Các hậu tố như "Z" không được xử lý; bạn cần tự xóa chúng.
 
-When getting time information from the system, the time can either be in the local timezone or UTC depending on the ``utc`` parameter. However, the :ref:`get_unix_time_from_system()<class_Time_method_get_unix_time_from_system>` method always uses UTC as it returns the seconds passed since the `Unix epoch <https://en.wikipedia.org/wiki/Unix_time>`__.
+Khi lấy thông tin thời gian từ hệ thống, thời gian có thể ở timezone cục bộ hoặc UTC tùy thuộc vào tham số ``utc``. Tuy nhiên, phương thức :ref:`get_unix_time_from_system()<class_Time_method_get_unix_time_from_system>` luôn sử dụng UTC vì nó trả về số giây đã trôi qua kể từ `kỷ nguyên Unix <https://en.wikipedia.org/wiki/Unix_time>`__.
 
-\ **Important:** The ``_from_system`` methods use the system clock that the user can manually set. **Never use** this method for precise time calculation since its results are subject to automatic adjustments by the user or the operating system. **Always use** :ref:`get_ticks_usec()<class_Time_method_get_ticks_usec>` or :ref:`get_ticks_msec()<class_Time_method_get_ticks_msec>` for precise time calculation instead, since they are guaranteed to be monotonic (i.e. never decrease).
+\ **Quan trọng:** Các phương thức ``_from_system`` sử dụng đồng hồ hệ thống mà người dùng có thể tự đặt. **Không bao giờ sử dụng** phương thức này để tính toán thời gian chính xác vì kết quả của nó có thể bị người dùng hoặc hệ điều hành tự động điều chỉnh. **Luôn sử dụng** :ref:`get_ticks_usec()<class_Time_method_get_ticks_usec>` hoặc :ref:`get_ticks_msec()<class_Time_method_get_ticks_msec>` để tính toán thời gian chính xác thay vào đó, vì chúng được đảm bảo luôn tăng đơn điệu (tức là không bao giờ giảm).
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -87,14 +87,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_Time_Month:
 
 .. rst-class:: classref-enumeration
 
-enum **Month**: :ref:`🔗<enum_Time_Month>`
+enum **Month**: :ref:`🔗 <enum_Time_Month>`
 
 .. _class_Time_constant_MONTH_JANUARY:
 
@@ -102,7 +102,7 @@ enum **Month**: :ref:`🔗<enum_Time_Month>`
 
 :ref:`Month<enum_Time_Month>` **MONTH_JANUARY** = ``1``
 
-The month of January, represented numerically as ``01``.
+Tháng January, được biểu diễn bằng số là ``01``.
 
 .. _class_Time_constant_MONTH_FEBRUARY:
 
@@ -110,7 +110,7 @@ The month of January, represented numerically as ``01``.
 
 :ref:`Month<enum_Time_Month>` **MONTH_FEBRUARY** = ``2``
 
-The month of February, represented numerically as ``02``.
+Tháng February, được biểu diễn bằng số là ``02``.
 
 .. _class_Time_constant_MONTH_MARCH:
 
@@ -118,7 +118,7 @@ The month of February, represented numerically as ``02``.
 
 :ref:`Month<enum_Time_Month>` **MONTH_MARCH** = ``3``
 
-The month of March, represented numerically as ``03``.
+Tháng March, được biểu diễn bằng số là ``03``.
 
 .. _class_Time_constant_MONTH_APRIL:
 
@@ -126,7 +126,7 @@ The month of March, represented numerically as ``03``.
 
 :ref:`Month<enum_Time_Month>` **MONTH_APRIL** = ``4``
 
-The month of April, represented numerically as ``04``.
+Tháng April, được biểu diễn bằng số là ``04``.
 
 .. _class_Time_constant_MONTH_MAY:
 
@@ -134,7 +134,7 @@ The month of April, represented numerically as ``04``.
 
 :ref:`Month<enum_Time_Month>` **MONTH_MAY** = ``5``
 
-The month of May, represented numerically as ``05``.
+Tháng May, được biểu diễn bằng số là ``05``.
 
 .. _class_Time_constant_MONTH_JUNE:
 
@@ -142,7 +142,7 @@ The month of May, represented numerically as ``05``.
 
 :ref:`Month<enum_Time_Month>` **MONTH_JUNE** = ``6``
 
-The month of June, represented numerically as ``06``.
+Tháng June, được biểu diễn bằng số là ``06``.
 
 .. _class_Time_constant_MONTH_JULY:
 
@@ -150,7 +150,7 @@ The month of June, represented numerically as ``06``.
 
 :ref:`Month<enum_Time_Month>` **MONTH_JULY** = ``7``
 
-The month of July, represented numerically as ``07``.
+Tháng July, được biểu diễn bằng số là ``07``.
 
 .. _class_Time_constant_MONTH_AUGUST:
 
@@ -158,7 +158,7 @@ The month of July, represented numerically as ``07``.
 
 :ref:`Month<enum_Time_Month>` **MONTH_AUGUST** = ``8``
 
-The month of August, represented numerically as ``08``.
+Tháng 8, được biểu diễn bằng số là ``08``.
 
 .. _class_Time_constant_MONTH_SEPTEMBER:
 
@@ -166,7 +166,7 @@ The month of August, represented numerically as ``08``.
 
 :ref:`Month<enum_Time_Month>` **MONTH_SEPTEMBER** = ``9``
 
-The month of September, represented numerically as ``09``.
+Tháng 9, được biểu diễn bằng số là ``09``.
 
 .. _class_Time_constant_MONTH_OCTOBER:
 
@@ -174,7 +174,7 @@ The month of September, represented numerically as ``09``.
 
 :ref:`Month<enum_Time_Month>` **MONTH_OCTOBER** = ``10``
 
-The month of October, represented numerically as ``10``.
+Tháng 10, được biểu diễn bằng số là ``10``.
 
 .. _class_Time_constant_MONTH_NOVEMBER:
 
@@ -182,7 +182,7 @@ The month of October, represented numerically as ``10``.
 
 :ref:`Month<enum_Time_Month>` **MONTH_NOVEMBER** = ``11``
 
-The month of November, represented numerically as ``11``.
+Tháng 11, được biểu diễn bằng số là ``11``.
 
 .. _class_Time_constant_MONTH_DECEMBER:
 
@@ -190,7 +190,7 @@ The month of November, represented numerically as ``11``.
 
 :ref:`Month<enum_Time_Month>` **MONTH_DECEMBER** = ``12``
 
-The month of December, represented numerically as ``12``.
+Tháng 12, được biểu diễn bằng số là ``12``.
 
 .. rst-class:: classref-item-separator
 
@@ -200,7 +200,7 @@ The month of December, represented numerically as ``12``.
 
 .. rst-class:: classref-enumeration
 
-enum **Weekday**: :ref:`🔗<enum_Time_Weekday>`
+enum **Weekday**: :ref:`🔗 <enum_Time_Weekday>`
 
 .. _class_Time_constant_WEEKDAY_SUNDAY:
 
@@ -208,7 +208,7 @@ enum **Weekday**: :ref:`🔗<enum_Time_Weekday>`
 
 :ref:`Weekday<enum_Time_Weekday>` **WEEKDAY_SUNDAY** = ``0``
 
-The day of the week Sunday, represented numerically as ``0``.
+Ngày Chủ nhật trong tuần, được biểu diễn bằng số là ``0``.
 
 .. _class_Time_constant_WEEKDAY_MONDAY:
 
@@ -216,7 +216,7 @@ The day of the week Sunday, represented numerically as ``0``.
 
 :ref:`Weekday<enum_Time_Weekday>` **WEEKDAY_MONDAY** = ``1``
 
-The day of the week Monday, represented numerically as ``1``.
+Ngày thứ Hai trong tuần, được biểu diễn bằng số là ``1``.
 
 .. _class_Time_constant_WEEKDAY_TUESDAY:
 
@@ -224,7 +224,7 @@ The day of the week Monday, represented numerically as ``1``.
 
 :ref:`Weekday<enum_Time_Weekday>` **WEEKDAY_TUESDAY** = ``2``
 
-The day of the week Tuesday, represented numerically as ``2``.
+Ngày thứ Ba trong tuần, được biểu diễn bằng số là ``2``.
 
 .. _class_Time_constant_WEEKDAY_WEDNESDAY:
 
@@ -232,7 +232,7 @@ The day of the week Tuesday, represented numerically as ``2``.
 
 :ref:`Weekday<enum_Time_Weekday>` **WEEKDAY_WEDNESDAY** = ``3``
 
-The day of the week Wednesday, represented numerically as ``3``.
+Ngày thứ Tư trong tuần, được biểu diễn bằng số là ``3``.
 
 .. _class_Time_constant_WEEKDAY_THURSDAY:
 
@@ -240,7 +240,7 @@ The day of the week Wednesday, represented numerically as ``3``.
 
 :ref:`Weekday<enum_Time_Weekday>` **WEEKDAY_THURSDAY** = ``4``
 
-The day of the week Thursday, represented numerically as ``4``.
+Ngày thứ Năm trong tuần, được biểu diễn bằng số là ``4``.
 
 .. _class_Time_constant_WEEKDAY_FRIDAY:
 
@@ -248,7 +248,7 @@ The day of the week Thursday, represented numerically as ``4``.
 
 :ref:`Weekday<enum_Time_Weekday>` **WEEKDAY_FRIDAY** = ``5``
 
-The day of the week Friday, represented numerically as ``5``.
+Ngày thứ Sáu trong tuần, được biểu diễn bằng số là ``5``.
 
 .. _class_Time_constant_WEEKDAY_SATURDAY:
 
@@ -256,7 +256,7 @@ The day of the week Friday, represented numerically as ``5``.
 
 :ref:`Weekday<enum_Time_Weekday>` **WEEKDAY_SATURDAY** = ``6``
 
-The day of the week Saturday, represented numerically as ``6``.
+Ngày thứ Bảy trong tuần, được biểu diễn bằng số là ``6``.
 
 .. rst-class:: classref-section-separator
 
@@ -264,8 +264,8 @@ The day of the week Saturday, represented numerically as ``6``.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Time_method_get_date_dict_from_system:
 
@@ -273,9 +273,9 @@ Method Descriptions
 
 :ref:`Dictionary<class_Dictionary>` **get_date_dict_from_system**\ (\ utc\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_Time_method_get_date_dict_from_system>`
 
-Returns the current date as a dictionary of keys: ``year``, ``month``, ``day``, and ``weekday``.
+Trả về ngày hiện tại dưới dạng một dictionary gồm các khóa: ``year``, ``month``, ``day`` và ``weekday``.
 
-The returned values are in the system's local time when ``utc`` is ``false``, otherwise they are in UTC.
+Các giá trị được trả về là theo giờ địa phương của hệ thống khi ``utc`` là ``false``, nếu không thì chúng là theo UTC.
 
 .. rst-class:: classref-item-separator
 
@@ -287,7 +287,7 @@ The returned values are in the system's local time when ``utc`` is ``false``, ot
 
 :ref:`Dictionary<class_Dictionary>` **get_date_dict_from_unix_time**\ (\ unix_time_val\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Time_method_get_date_dict_from_unix_time>`
 
-Converts the given Unix timestamp to a dictionary of keys: ``year``, ``month``, ``day``, and ``weekday``.
+Chuyển đổi Unix timestamp đã cho thành một dictionary gồm các khóa: ``year``, ``month``, ``day`` và ``weekday``.
 
 .. rst-class:: classref-item-separator
 
@@ -299,9 +299,9 @@ Converts the given Unix timestamp to a dictionary of keys: ``year``, ``month``, 
 
 :ref:`String<class_String>` **get_date_string_from_system**\ (\ utc\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_Time_method_get_date_string_from_system>`
 
-Returns the current date as an ISO 8601 date string (YYYY-MM-DD).
+Trả về ngày hiện tại dưới dạng chuỗi ngày ISO 8601 (YYYY-MM-DD).
 
-The returned values are in the system's local time when ``utc`` is ``false``, otherwise they are in UTC.
+Các giá trị được trả về là theo giờ địa phương của hệ thống khi ``utc`` là ``false``, nếu không thì chúng là theo UTC.
 
 .. rst-class:: classref-item-separator
 
@@ -313,7 +313,7 @@ The returned values are in the system's local time when ``utc`` is ``false``, ot
 
 :ref:`String<class_String>` **get_date_string_from_unix_time**\ (\ unix_time_val\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Time_method_get_date_string_from_unix_time>`
 
-Converts the given Unix timestamp to an ISO 8601 date string (YYYY-MM-DD).
+Chuyển đổi Unix timestamp đã cho thành chuỗi ngày ISO 8601 (YYYY-MM-DD).
 
 .. rst-class:: classref-item-separator
 
@@ -325,11 +325,11 @@ Converts the given Unix timestamp to an ISO 8601 date string (YYYY-MM-DD).
 
 :ref:`Dictionary<class_Dictionary>` **get_datetime_dict_from_datetime_string**\ (\ datetime\: :ref:`String<class_String>`, weekday\: :ref:`bool<class_bool>`\ ) |const| :ref:`🔗<class_Time_method_get_datetime_dict_from_datetime_string>`
 
-Converts the given ISO 8601 date and time string (YYYY-MM-DDTHH:MM:SS) to a dictionary of keys: ``year``, ``month``, ``day``, ``weekday``, ``hour``, ``minute``, and ``second``.
+Chuyển đổi chuỗi ngày và giờ ISO 8601 đã cho (YYYY-MM-DDTHH:MM:SS) thành một dictionary gồm các khóa: ``year``, ``month``, ``day``, ``weekday``, ``hour``, ``minute`` và ``second``.
 
-If ``weekday`` is ``false``, then the ``weekday`` entry is excluded (the calculation is relatively expensive).
+Nếu ``weekday`` là ``false``, mục ``weekday`` sẽ bị loại trừ (việc tính toán tương đối tốn kém).
 
-\ **Note:** Any decimal fraction in the time string will be ignored silently.
+\ **Lưu ý:** Mọi phần thập phân trong chuỗi thời gian sẽ bị âm thầm bỏ qua.
 
 .. rst-class:: classref-item-separator
 
@@ -341,7 +341,7 @@ If ``weekday`` is ``false``, then the ``weekday`` entry is excluded (the calcula
 
 :ref:`Dictionary<class_Dictionary>` **get_datetime_dict_from_system**\ (\ utc\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_Time_method_get_datetime_dict_from_system>`
 
-Returns the current date as a dictionary of keys: ``year``, ``month``, ``day``, ``weekday``, ``hour``, ``minute``, ``second``, and ``dst`` (Daylight Savings Time).
+Trả về ngày hiện tại dưới dạng một dictionary gồm các khóa: ``year``, ``month``, ``day``, ``weekday``, ``hour``, ``minute``, ``second`` và ``dst`` (Giờ mùa hè).
 
 .. rst-class:: classref-item-separator
 
@@ -353,9 +353,9 @@ Returns the current date as a dictionary of keys: ``year``, ``month``, ``day``, 
 
 :ref:`Dictionary<class_Dictionary>` **get_datetime_dict_from_unix_time**\ (\ unix_time_val\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Time_method_get_datetime_dict_from_unix_time>`
 
-Converts the given Unix timestamp to a dictionary of keys: ``year``, ``month``, ``day``, ``weekday``, ``hour``, ``minute``, and ``second``.
+Chuyển đổi Unix timestamp đã cho thành một dictionary gồm các khóa: ``year``, ``month``, ``day``, ``weekday``, ``hour``, ``minute`` và ``second``.
 
-The returned Dictionary's values will be the same as the :ref:`get_datetime_dict_from_system()<class_Time_method_get_datetime_dict_from_system>` if the Unix timestamp is the current time, with the exception of Daylight Savings Time as it cannot be determined from the epoch.
+Các giá trị của Dictionary được trả về sẽ giống với :ref:`get_datetime_dict_from_system()<class_Time_method_get_datetime_dict_from_system>` nếu Unix timestamp là thời điểm hiện tại, ngoại trừ Giờ mùa hè vì không thể xác định được từ epoch.
 
 .. rst-class:: classref-item-separator
 
@@ -367,13 +367,13 @@ The returned Dictionary's values will be the same as the :ref:`get_datetime_dict
 
 :ref:`String<class_String>` **get_datetime_string_from_datetime_dict**\ (\ datetime\: :ref:`Dictionary<class_Dictionary>`, use_space\: :ref:`bool<class_bool>`\ ) |const| :ref:`🔗<class_Time_method_get_datetime_string_from_datetime_dict>`
 
-Converts the given dictionary of keys to an ISO 8601 date and time string (YYYY-MM-DDTHH:MM:SS).
+Chuyển đổi dictionary gồm các khóa đã cho thành chuỗi ngày và giờ ISO 8601 (YYYY-MM-DDTHH:MM:SS).
 
-The given dictionary can be populated with the following keys: ``year``, ``month``, ``day``, ``hour``, ``minute``, and ``second``. Any other entries (including ``dst``) are ignored.
+Dictionary đã cho có thể được điền bằng các khóa sau: ``year``, ``month``, ``day``, ``hour``, ``minute`` và ``second``. Mọi mục khác (bao gồm ``dst``) đều bị bỏ qua.
 
-If the dictionary is empty, ``0`` is returned. If some keys are omitted, they default to the equivalent values for the Unix epoch timestamp 0 (1970-01-01 at 00:00:00).
+Nếu dictionary trống, ``0`` được trả về. Nếu một số khóa bị bỏ qua, chúng sẽ mặc định là các giá trị tương ứng với Unix epoch timestamp 0 (1970-01-01 lúc 00:00:00).
 
-If ``use_space`` is ``true``, the date and time bits are separated by an empty space character instead of the letter T.
+Nếu ``use_space`` là ``true``, phần ngày và giờ được ngăn cách bằng một ký tự khoảng trắng thay vì chữ T.
 
 .. rst-class:: classref-item-separator
 
@@ -385,11 +385,11 @@ If ``use_space`` is ``true``, the date and time bits are separated by an empty s
 
 :ref:`String<class_String>` **get_datetime_string_from_system**\ (\ utc\: :ref:`bool<class_bool>` = false, use_space\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_Time_method_get_datetime_string_from_system>`
 
-Returns the current date and time as an ISO 8601 date and time string (YYYY-MM-DDTHH:MM:SS).
+Trả về ngày và giờ hiện tại dưới dạng chuỗi ngày và giờ ISO 8601 (YYYY-MM-DDTHH:MM:SS).
 
-The returned values are in the system's local time when ``utc`` is ``false``, otherwise they are in UTC.
+Các giá trị được trả về là theo giờ địa phương của hệ thống khi ``utc`` là ``false``, nếu không thì chúng là theo UTC.
 
-If ``use_space`` is ``true``, the date and time bits are separated by an empty space character instead of the letter T.
+Nếu ``use_space`` là ``true``, phần ngày và giờ được ngăn cách bằng một ký tự khoảng trắng thay vì chữ T.
 
 .. rst-class:: classref-item-separator
 
@@ -401,9 +401,9 @@ If ``use_space`` is ``true``, the date and time bits are separated by an empty s
 
 :ref:`String<class_String>` **get_datetime_string_from_unix_time**\ (\ unix_time_val\: :ref:`int<class_int>`, use_space\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_Time_method_get_datetime_string_from_unix_time>`
 
-Converts the given Unix timestamp to an ISO 8601 date and time string (YYYY-MM-DDTHH:MM:SS).
+Chuyển đổi Unix timestamp đã cho thành chuỗi ngày và giờ ISO 8601 (YYYY-MM-DDTHH:MM:SS).
 
-If ``use_space`` is ``true``, the date and time bits are separated by an empty space character instead of the letter T.
+Nếu ``use_space`` là ``true``, phần ngày và giờ được ngăn cách bằng một ký tự khoảng trắng thay vì chữ T.
 
 .. rst-class:: classref-item-separator
 
@@ -415,7 +415,7 @@ If ``use_space`` is ``true``, the date and time bits are separated by an empty s
 
 :ref:`String<class_String>` **get_offset_string_from_offset_minutes**\ (\ offset_minutes\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Time_method_get_offset_string_from_offset_minutes>`
 
-Converts the given timezone offset in minutes to a timezone offset string. For example, -480 returns "-08:00", 345 returns "+05:45", and 0 returns "+00:00".
+Chuyển đổi độ lệch múi giờ đã cho tính bằng phút thành chuỗi độ lệch múi giờ. Ví dụ: -480 trả về "-08:00", 345 trả về "+05:45" và 0 trả về "+00:00".
 
 .. rst-class:: classref-item-separator
 
@@ -427,9 +427,9 @@ Converts the given timezone offset in minutes to a timezone offset string. For e
 
 :ref:`int<class_int>` **get_ticks_msec**\ (\ ) |const| :ref:`🔗<class_Time_method_get_ticks_msec>`
 
-Returns the amount of time passed in milliseconds since the engine started.
+Trả về lượng thời gian đã trôi qua tính bằng mili giây kể từ khi engine khởi động.
 
-Will always be positive or 0 and uses a 64-bit value (it will wrap after roughly 500 million years).
+Giá trị này luôn dương hoặc bằng 0 và sử dụng giá trị 64-bit (sẽ quay vòng sau khoảng 500 triệu năm).
 
 .. rst-class:: classref-item-separator
 
@@ -441,9 +441,9 @@ Will always be positive or 0 and uses a 64-bit value (it will wrap after roughly
 
 :ref:`int<class_int>` **get_ticks_usec**\ (\ ) |const| :ref:`🔗<class_Time_method_get_ticks_usec>`
 
-Returns the amount of time passed in microseconds since the engine started.
+Trả về lượng thời gian đã trôi qua tính bằng micro giây kể từ khi engine khởi động.
 
-Will always be positive or 0 and uses a 64-bit value (it will wrap after roughly half a million years).
+Giá trị này luôn dương hoặc bằng 0 và sử dụng giá trị 64-bit (sẽ quay vòng sau khoảng nửa triệu năm).
 
 .. rst-class:: classref-item-separator
 
@@ -455,9 +455,9 @@ Will always be positive or 0 and uses a 64-bit value (it will wrap after roughly
 
 :ref:`Dictionary<class_Dictionary>` **get_time_dict_from_system**\ (\ utc\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_Time_method_get_time_dict_from_system>`
 
-Returns the current time as a dictionary of keys: ``hour``, ``minute``, and ``second``.
+Trả về thời gian hiện tại dưới dạng một dictionary gồm các khóa: ``hour``, ``minute`` và ``second``.
 
-The returned values are in the system's local time when ``utc`` is ``false``, otherwise they are in UTC.
+Các giá trị được trả về là theo giờ địa phương của hệ thống khi ``utc`` là ``false``, nếu không thì chúng là theo UTC.
 
 .. rst-class:: classref-item-separator
 
@@ -469,7 +469,7 @@ The returned values are in the system's local time when ``utc`` is ``false``, ot
 
 :ref:`Dictionary<class_Dictionary>` **get_time_dict_from_unix_time**\ (\ unix_time_val\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Time_method_get_time_dict_from_unix_time>`
 
-Converts the given time to a dictionary of keys: ``hour``, ``minute``, and ``second``.
+Chuyển đổi thời gian đã cho thành một dictionary gồm các khóa: ``hour``, ``minute`` và ``second``.
 
 .. rst-class:: classref-item-separator
 
@@ -481,9 +481,9 @@ Converts the given time to a dictionary of keys: ``hour``, ``minute``, and ``sec
 
 :ref:`String<class_String>` **get_time_string_from_system**\ (\ utc\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_Time_method_get_time_string_from_system>`
 
-Returns the current time as an ISO 8601 time string (HH:MM:SS).
+Trả về thời gian hiện tại dưới dạng chuỗi thời gian ISO 8601 (HH:MM:SS).
 
-The returned values are in the system's local time when ``utc`` is ``false``, otherwise they are in UTC.
+Các giá trị được trả về là theo giờ địa phương của hệ thống khi ``utc`` là ``false``, nếu không thì chúng là theo UTC.
 
 .. rst-class:: classref-item-separator
 
@@ -495,7 +495,7 @@ The returned values are in the system's local time when ``utc`` is ``false``, ot
 
 :ref:`String<class_String>` **get_time_string_from_unix_time**\ (\ unix_time_val\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Time_method_get_time_string_from_unix_time>`
 
-Converts the given Unix timestamp to an ISO 8601 time string (HH:MM:SS).
+Chuyển đổi Unix timestamp đã cho thành chuỗi thời gian ISO 8601 (HH:MM:SS).
 
 .. rst-class:: classref-item-separator
 
@@ -507,11 +507,11 @@ Converts the given Unix timestamp to an ISO 8601 time string (HH:MM:SS).
 
 :ref:`Dictionary<class_Dictionary>` **get_time_zone_from_system**\ (\ ) |const| :ref:`🔗<class_Time_method_get_time_zone_from_system>`
 
-Returns the current time zone as a dictionary of keys: ``bias`` and ``name``.
+Trả về múi giờ hiện tại dưới dạng một dictionary gồm các khóa: ``bias`` và ``name``.
 
-- ``bias`` is the offset from UTC in minutes, since not all time zones are multiples of an hour from UTC.
+- ``bias`` là độ lệch so với UTC tính bằng phút, vì không phải mọi múi giờ đều lệch UTC một số giờ nguyên.
 
-- ``name`` is the localized name of the time zone, according to the OS locale settings of the current user.
+- ``name`` là tên được bản địa hóa của múi giờ, theo cài đặt locale của OS đối với người dùng hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -523,15 +523,15 @@ Returns the current time zone as a dictionary of keys: ``bias`` and ``name``.
 
 :ref:`int<class_int>` **get_unix_time_from_datetime_dict**\ (\ datetime\: :ref:`Dictionary<class_Dictionary>`\ ) |const| :ref:`🔗<class_Time_method_get_unix_time_from_datetime_dict>`
 
-Converts a dictionary of time values to a Unix timestamp.
+Chuyển đổi dictionary gồm các giá trị thời gian thành Unix timestamp.
 
-The given dictionary can be populated with the following keys: ``year``, ``month``, ``day``, ``hour``, ``minute``, and ``second``. Any other entries (including ``dst``) are ignored.
+Dictionary đã cho có thể được điền bằng các khóa sau: ``year``, ``month``, ``day``, ``hour``, ``minute`` và ``second``. Mọi mục khác (bao gồm ``dst``) đều bị bỏ qua.
 
-If the dictionary is empty, ``0`` is returned. If some keys are omitted, they default to the equivalent values for the Unix epoch timestamp 0 (1970-01-01 at 00:00:00).
+Nếu dictionary trống, ``0`` được trả về. Nếu một số khóa bị bỏ qua, chúng sẽ mặc định là các giá trị tương ứng với Unix epoch timestamp 0 (1970-01-01 lúc 00:00:00).
 
-You can pass the output from :ref:`get_datetime_dict_from_unix_time()<class_Time_method_get_datetime_dict_from_unix_time>` directly into this function and get the same as what was put in.
+Bạn có thể truyền trực tiếp đầu ra từ :ref:`get_datetime_dict_from_unix_time()<class_Time_method_get_datetime_dict_from_unix_time>` vào hàm này và nhận được kết quả giống với giá trị đã được đưa vào.
 
-\ **Note:** Unix timestamps are often in UTC. This method does not do any timezone conversion, so the timestamp will be in the same timezone as the given datetime dictionary.
+\ **Lưu ý:** Dấu thời gian Unix thường ở UTC. Phương thức này không thực hiện chuyển đổi múi giờ, vì vậy dấu thời gian sẽ ở cùng múi giờ với từ điển datetime đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -543,11 +543,11 @@ You can pass the output from :ref:`get_datetime_dict_from_unix_time()<class_Time
 
 :ref:`int<class_int>` **get_unix_time_from_datetime_string**\ (\ datetime\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_Time_method_get_unix_time_from_datetime_string>`
 
-Converts the given ISO 8601 date and/or time string to a Unix timestamp. The string can contain a date only, a time only, or both.
+Chuyển đổi chuỗi ngày và/hoặc giờ ISO 8601 đã cho thành dấu thời gian Unix. Chuỗi có thể chỉ chứa ngày, chỉ chứa giờ hoặc chứa cả hai.
 
-\ **Note:** Unix timestamps are often in UTC. This method does not do any timezone conversion, so the timestamp will be in the same timezone as the given datetime string.
+\ **Lưu ý:** Dấu thời gian Unix thường ở UTC. Phương thức này không thực hiện chuyển đổi múi giờ, vì vậy dấu thời gian sẽ ở cùng múi giờ với chuỗi datetime đã cho.
 
-\ **Note:** Any decimal fraction in the time string will be ignored silently.
+\ **Lưu ý:** Mọi phần thập phân trong chuỗi thời gian sẽ bị âm thầm bỏ qua.
 
 .. rst-class:: classref-item-separator
 
@@ -559,16 +559,16 @@ Converts the given ISO 8601 date and/or time string to a Unix timestamp. The str
 
 :ref:`float<class_float>` **get_unix_time_from_system**\ (\ ) |const| :ref:`🔗<class_Time_method_get_unix_time_from_system>`
 
-Returns the current Unix timestamp in seconds based on the system time in UTC. This method is implemented by the operating system and always returns the time in UTC. The Unix timestamp is the number of seconds passed since 1970-01-01 at 00:00:00, the `Unix epoch <https://en.wikipedia.org/wiki/Unix_time>`__.
+Trả về dấu thời gian Unix hiện tại tính bằng giây, dựa trên thời gian hệ thống theo UTC. Phương thức này được hệ điều hành triển khai và luôn trả về thời gian theo UTC. Dấu thời gian Unix là số giây đã trôi qua kể từ 1970-01-01 lúc 00:00:00, `kỷ nguyên Unix <https://en.wikipedia.org/wiki/Unix_time>`__.
 
-\ **Note:** Unlike other methods that use integer timestamps, this method returns the timestamp as a :ref:`float<class_float>` for sub-second precision.
+\ **Lưu ý:** Không giống các phương thức khác sử dụng dấu thời gian kiểu số nguyên, phương thức này trả về dấu thời gian dưới dạng :ref:`float<class_float>` để đạt độ chính xác dưới một giây.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận thêm bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

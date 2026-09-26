@@ -10,31 +10,31 @@
 ResourceImporterOggVorbis
 =========================
 
-**Inherits:** :ref:`ResourceImporter<class_ResourceImporter>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`ResourceImporter<class_ResourceImporter>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Imports an Ogg Vorbis audio file for playback.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Ogg Vorbis is a lossy audio format, with better audio quality compared to :ref:`ResourceImporterMP3<class_ResourceImporterMP3>` at a given bitrate.
-
-In most cases, it's recommended to use Ogg Vorbis over MP3. However, if you're using an MP3 sound source with no higher quality source available, then it's recommended to use the MP3 file directly to avoid double lossy compression.
-
-Ogg Vorbis requires more CPU to decode than :ref:`ResourceImporterWAV<class_ResourceImporterWAV>`. If you need to play a lot of simultaneous sounds, it's recommended to use WAV for those sounds instead, especially if targeting low-end devices.
+Nhập tệp âm thanh Ogg Vorbis để phát lại.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Ogg Vorbis là một định dạng âm thanh nén mất dữ liệu, có chất lượng âm thanh tốt hơn :ref:`ResourceImporterMP3<class_ResourceImporterMP3>` ở cùng một bitrate.
+
+Trong hầu hết trường hợp, bạn nên sử dụng Ogg Vorbis thay cho MP3. Tuy nhiên, nếu bạn đang sử dụng nguồn âm thanh MP3 và không có nguồn nào chất lượng cao hơn, bạn nên sử dụng trực tiếp tệp MP3 để tránh nén mất dữ liệu hai lần.
+
+Ogg Vorbis yêu cầu nhiều CPU hơn :ref:`ResourceImporterWAV<class_ResourceImporterWAV>` để giải mã. Nếu cần phát nhiều âm thanh đồng thời, bạn nên sử dụng WAV cho các âm thanh đó, đặc biệt nếu nhắm đến các thiết bị cấp thấp.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Importing audio samples <../tutorials/assets_pipeline/importing_audio_samples>`
+- :doc:`Nhập mẫu âm thanh <../tutorials/assets_pipeline/importing_audio_samples>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -54,8 +54,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -72,8 +72,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ResourceImporterOggVorbis_property_bar_beats:
 
@@ -81,9 +81,9 @@ Property Descriptions
 
 :ref:`int<class_int>` **bar_beats** = ``4`` :ref:`🔗<class_ResourceImporterOggVorbis_property_bar_beats>`
 
-The number of beats within a single bar in the audio track. This is only relevant for music that wishes to make use of interactive music functionality, not sound effects.
+Số nhịp trong một ô nhịp của bản nhạc. Điều này chỉ liên quan đến nhạc muốn sử dụng chức năng interactive music, không áp dụng cho hiệu ứng âm thanh.
 
-A more convenient editor for :ref:`bar_beats<class_ResourceImporterOggVorbis_property_bar_beats>` is provided in the **Advanced Import Settings** dialog, as it lets you preview your changes without having to reimport the audio.
+Một trình chỉnh sửa thuận tiện hơn cho :ref:`bar_beats<class_ResourceImporterOggVorbis_property_bar_beats>` được cung cấp trong hộp thoại **Advanced Import Settings**, cho phép bạn xem trước các thay đổi mà không cần nhập lại âm thanh.
 
 .. rst-class:: classref-item-separator
 
@@ -95,9 +95,9 @@ A more convenient editor for :ref:`bar_beats<class_ResourceImporterOggVorbis_pro
 
 :ref:`int<class_int>` **beat_count** = ``0`` :ref:`🔗<class_ResourceImporterOggVorbis_property_beat_count>`
 
-The length of the audio track, in beats. The actual duration of the audio file might be longer than what is indicated by this property. This is only relevant for music that wishes to make use of interactive music functionality, not sound effects.
+Độ dài của bản nhạc, tính bằng nhịp. Thời lượng thực tế của tệp âm thanh có thể dài hơn giá trị được chỉ định bởi thuộc tính này. Điều này chỉ liên quan đến nhạc muốn sử dụng chức năng interactive music, không áp dụng cho hiệu ứng âm thanh.
 
-A more convenient editor for :ref:`beat_count<class_ResourceImporterOggVorbis_property_beat_count>` is provided in the **Advanced Import Settings** dialog, as it lets you preview your changes without having to reimport the audio.
+Một trình chỉnh sửa thuận tiện hơn cho :ref:`beat_count<class_ResourceImporterOggVorbis_property_beat_count>` được cung cấp trong hộp thoại **Advanced Import Settings**, cho phép bạn xem trước các thay đổi mà không cần nhập lại âm thanh.
 
 .. rst-class:: classref-item-separator
 
@@ -109,9 +109,9 @@ A more convenient editor for :ref:`beat_count<class_ResourceImporterOggVorbis_pr
 
 :ref:`float<class_float>` **bpm** = ``0`` :ref:`🔗<class_ResourceImporterOggVorbis_property_bpm>`
 
-The tempo of the audio track, measured in beats per minute. This should match the BPM measure that was used to compose the track. This is only relevant for music that wishes to make use of interactive music functionality, not sound effects.
+Tempo của bản nhạc, được đo bằng số nhịp mỗi phút. Giá trị này phải khớp với số BPM được sử dụng để soạn bản nhạc. Điều này chỉ liên quan đến nhạc muốn sử dụng chức năng interactive music, không áp dụng cho hiệu ứng âm thanh.
 
-A more convenient editor for :ref:`bpm<class_ResourceImporterOggVorbis_property_bpm>` is provided in the **Advanced Import Settings** dialog, as it lets you preview your changes without having to reimport the audio.
+Một trình chỉnh sửa thuận tiện hơn cho :ref:`bpm<class_ResourceImporterOggVorbis_property_bpm>` được cung cấp trong hộp thoại **Advanced Import Settings**, cho phép bạn xem trước các thay đổi mà không cần nhập lại âm thanh.
 
 .. rst-class:: classref-item-separator
 
@@ -123,9 +123,9 @@ A more convenient editor for :ref:`bpm<class_ResourceImporterOggVorbis_property_
 
 :ref:`bool<class_bool>` **loop** = ``false`` :ref:`🔗<class_ResourceImporterOggVorbis_property_loop>`
 
-If enabled, the audio will begin playing either from the beginning or from :ref:`loop_offset<class_ResourceImporterOggVorbis_property_loop_offset>`, after playback ends by either reaching the end of the audio or reaching the end of the last beat according to the amount specified in :ref:`beat_count<class_ResourceImporterOggVorbis_property_beat_count>`.
+Nếu được bật, âm thanh sẽ bắt đầu phát lại từ đầu hoặc từ :ref:`loop_offset<class_ResourceImporterOggVorbis_property_loop_offset>` sau khi quá trình phát kết thúc do đã đến cuối âm thanh hoặc đến cuối nhịp cuối cùng theo số lượng được chỉ định trong :ref:`beat_count<class_ResourceImporterOggVorbis_property_beat_count>`.
 
-\ **Note:** In :ref:`AudioStreamPlayer<class_AudioStreamPlayer>`, the :ref:`AudioStreamPlayer.finished<class_AudioStreamPlayer_signal_finished>` signal won't be emitted for looping audio when it reaches the end of the audio file, as the audio will keep playing indefinitely.
+\ **Lưu ý:** Trong :ref:`AudioStreamPlayer<class_AudioStreamPlayer>`, tín hiệu :ref:`AudioStreamPlayer.finished<class_AudioStreamPlayer_signal_finished>` sẽ không được phát ra đối với âm thanh lặp khi âm thanh đến cuối tệp, vì âm thanh sẽ tiếp tục phát vô thời hạn.
 
 .. rst-class:: classref-item-separator
 
@@ -137,11 +137,11 @@ If enabled, the audio will begin playing either from the beginning or from :ref:
 
 :ref:`float<class_float>` **loop_offset** = ``0`` :ref:`🔗<class_ResourceImporterOggVorbis_property_loop_offset>`
 
-Determines where audio will start to loop after playback reaches the end of the audio. This can be used to only loop a part of the audio file, which is useful for some ambient sounds or music. The value is determined in seconds relative to the beginning of the audio. A value of ``0.0`` will loop the entire audio file.
+Xác định vị trí âm thanh sẽ bắt đầu lặp sau khi phát đến cuối âm thanh. Có thể dùng thuộc tính này để chỉ lặp một phần của tệp âm thanh, hữu ích cho một số âm thanh môi trường hoặc bản nhạc. Giá trị được xác định theo giây, tính từ đầu âm thanh. Giá trị ``0.0`` sẽ lặp toàn bộ tệp âm thanh.
 
-Only has an effect if :ref:`loop<class_ResourceImporterOggVorbis_property_loop>` is ``true``.
+Chỉ có tác dụng nếu :ref:`loop<class_ResourceImporterOggVorbis_property_loop>` là ``true``.
 
-A more convenient editor for :ref:`loop_offset<class_ResourceImporterOggVorbis_property_loop_offset>` is provided in the **Advanced Import Settings** dialog, as it lets you preview your changes without having to reimport the audio.
+Một trình chỉnh sửa thuận tiện hơn cho :ref:`loop_offset<class_ResourceImporterOggVorbis_property_loop_offset>` được cung cấp trong hộp thoại **Advanced Import Settings**, cho phép bạn xem trước các thay đổi mà không cần nhập lại âm thanh.
 
 .. rst-class:: classref-section-separator
 
@@ -149,8 +149,8 @@ A more convenient editor for :ref:`loop_offset<class_ResourceImporterOggVorbis_p
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_ResourceImporterOggVorbis_method_load_from_buffer:
 
@@ -158,9 +158,9 @@ Method Descriptions
 
 :ref:`AudioStreamOggVorbis<class_AudioStreamOggVorbis>` **load_from_buffer**\ (\ stream_data\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) |static| :ref:`🔗<class_ResourceImporterOggVorbis_method_load_from_buffer>`
 
-**Deprecated:** Use :ref:`AudioStreamOggVorbis.load_from_buffer()<class_AudioStreamOggVorbis_method_load_from_buffer>` instead.
+**Đã lỗi thời:** Thay vào đó, hãy sử dụng :ref:`AudioStreamOggVorbis.load_from_buffer()<class_AudioStreamOggVorbis_method_load_from_buffer>`.
 
-Creates a new :ref:`AudioStreamOggVorbis<class_AudioStreamOggVorbis>` instance from the given buffer. The buffer must contain Ogg Vorbis data.
+Tạo một thực thể :ref:`AudioStreamOggVorbis<class_AudioStreamOggVorbis>` mới từ buffer được cung cấp. Buffer phải chứa dữ liệu Ogg Vorbis.
 
 .. rst-class:: classref-item-separator
 
@@ -172,16 +172,16 @@ Creates a new :ref:`AudioStreamOggVorbis<class_AudioStreamOggVorbis>` instance f
 
 :ref:`AudioStreamOggVorbis<class_AudioStreamOggVorbis>` **load_from_file**\ (\ path\: :ref:`String<class_String>`\ ) |static| :ref:`🔗<class_ResourceImporterOggVorbis_method_load_from_file>`
 
-**Deprecated:** Use :ref:`AudioStreamOggVorbis.load_from_file()<class_AudioStreamOggVorbis_method_load_from_file>` instead.
+**Đã lỗi thời:** Thay vào đó, hãy sử dụng :ref:`AudioStreamOggVorbis.load_from_file()<class_AudioStreamOggVorbis_method_load_from_file>`.
 
-Creates a new :ref:`AudioStreamOggVorbis<class_AudioStreamOggVorbis>` instance from the given file path. The file must be in Ogg Vorbis format.
+Tạo một thực thể :ref:`AudioStreamOggVorbis<class_AudioStreamOggVorbis>` mới từ đường dẫn tệp được cung cấp. Tệp phải ở định dạng Ogg Vorbis.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một thực thể để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

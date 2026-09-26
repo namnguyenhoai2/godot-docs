@@ -10,23 +10,23 @@
 StreamPeerBuffer
 ================
 
-**Inherits:** :ref:`StreamPeer<class_StreamPeer>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`StreamPeer<class_StreamPeer>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A stream peer used to handle binary data streams.
+Một stream peer dùng để xử lý các luồng dữ liệu nhị phân.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A data buffer stream peer that uses a byte array as the stream. This object can be used to handle binary data from network sessions. To handle binary data stored in files, :ref:`FileAccess<class_FileAccess>` can be used directly.
+Một stream peer bộ đệm dữ liệu sử dụng mảng byte làm luồng. Đối tượng này có thể được dùng để xử lý dữ liệu nhị phân từ các phiên mạng. Để xử lý dữ liệu nhị phân được lưu trong tệp, :ref:`FileAccess<class_FileAccess>` có thể được sử dụng trực tiếp.
 
-A **StreamPeerBuffer** object keeps an internal cursor which is the offset in bytes to the start of the buffer. Get and put operations are performed at the cursor position and will move the cursor accordingly.
+Một đối tượng **StreamPeerBuffer** duy trì một con trỏ nội bộ, là độ lệch tính bằng byte đến đầu bộ đệm. Các thao tác lấy và ghi được thực hiện tại vị trí con trỏ và sẽ di chuyển con trỏ tương ứng.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -37,8 +37,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -63,8 +63,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_StreamPeerBuffer_property_data_array:
 
@@ -77,9 +77,9 @@ Property Descriptions
 - |void| **set_data_array**\ (\ value\: :ref:`PackedByteArray<class_PackedByteArray>`\ )
 - :ref:`PackedByteArray<class_PackedByteArray>` **get_data_array**\ (\ )
 
-The underlying data buffer. Setting this value resets the cursor.
+Bộ đệm dữ liệu bên dưới. Việc thiết lập giá trị này sẽ đặt lại con trỏ.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedByteArray<class_PackedByteArray>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với nó sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedByteArray<class_PackedByteArray>` để biết thêm chi tiết.
 
 .. rst-class:: classref-section-separator
 
@@ -87,8 +87,8 @@ The underlying data buffer. Setting this value resets the cursor.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_StreamPeerBuffer_method_clear:
 
@@ -96,7 +96,7 @@ Method Descriptions
 
 |void| **clear**\ (\ ) :ref:`🔗<class_StreamPeerBuffer_method_clear>`
 
-Clears the :ref:`data_array<class_StreamPeerBuffer_property_data_array>` and resets the cursor.
+Xóa :ref:`data_array<class_StreamPeerBuffer_property_data_array>` và đặt lại con trỏ.
 
 .. rst-class:: classref-item-separator
 
@@ -108,7 +108,7 @@ Clears the :ref:`data_array<class_StreamPeerBuffer_property_data_array>` and res
 
 :ref:`StreamPeerBuffer<class_StreamPeerBuffer>` **duplicate**\ (\ ) |const| :ref:`🔗<class_StreamPeerBuffer_method_duplicate>`
 
-Returns a new **StreamPeerBuffer** with the same :ref:`data_array<class_StreamPeerBuffer_property_data_array>` content.
+Trả về một **StreamPeerBuffer** mới với cùng nội dung :ref:`data_array<class_StreamPeerBuffer_property_data_array>`.
 
 .. rst-class:: classref-item-separator
 
@@ -120,7 +120,7 @@ Returns a new **StreamPeerBuffer** with the same :ref:`data_array<class_StreamPe
 
 :ref:`int<class_int>` **get_position**\ (\ ) |const| :ref:`🔗<class_StreamPeerBuffer_method_get_position>`
 
-Returns the current cursor position.
+Trả về vị trí hiện tại của con trỏ.
 
 .. rst-class:: classref-item-separator
 
@@ -132,7 +132,7 @@ Returns the current cursor position.
 
 :ref:`int<class_int>` **get_size**\ (\ ) |const| :ref:`🔗<class_StreamPeerBuffer_method_get_size>`
 
-Returns the size of :ref:`data_array<class_StreamPeerBuffer_property_data_array>`.
+Trả về kích thước của :ref:`data_array<class_StreamPeerBuffer_property_data_array>`.
 
 .. rst-class:: classref-item-separator
 
@@ -144,7 +144,7 @@ Returns the size of :ref:`data_array<class_StreamPeerBuffer_property_data_array>
 
 |void| **resize**\ (\ size\: :ref:`int<class_int>`\ ) :ref:`🔗<class_StreamPeerBuffer_method_resize>`
 
-Resizes the :ref:`data_array<class_StreamPeerBuffer_property_data_array>`. This *doesn't* update the cursor.
+Thay đổi kích thước của :ref:`data_array<class_StreamPeerBuffer_property_data_array>`. Việc này *không* cập nhật con trỏ.
 
 .. rst-class:: classref-item-separator
 
@@ -156,14 +156,14 @@ Resizes the :ref:`data_array<class_StreamPeerBuffer_property_data_array>`. This 
 
 |void| **seek**\ (\ position\: :ref:`int<class_int>`\ ) :ref:`🔗<class_StreamPeerBuffer_method_seek>`
 
-Moves the cursor to the specified position. ``position`` must be a valid index of :ref:`data_array<class_StreamPeerBuffer_property_data_array>`.
+Di chuyển con trỏ đến vị trí được chỉ định. ``position`` phải là một chỉ mục hợp lệ của :ref:`data_array<class_StreamPeerBuffer_property_data_array>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một thực thể để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

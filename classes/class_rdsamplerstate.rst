@@ -10,56 +10,56 @@
 RDSamplerState
 ==============
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Sampler state (used by :ref:`RenderingDevice<class_RenderingDevice>`).
+Trạng thái sampler (được sử dụng bởi :ref:`RenderingDevice<class_RenderingDevice>`).
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This object is used by :ref:`RenderingDevice<class_RenderingDevice>`.
+Đối tượng này được sử dụng bởi :ref:`RenderingDevice<class_RenderingDevice>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
 
-   +--------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`                                          | :ref:`anisotropy_max<class_RDSamplerState_property_anisotropy_max>`     | ``1.0``   |
-   +--------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`SamplerBorderColor<enum_RenderingDevice_SamplerBorderColor>` | :ref:`border_color<class_RDSamplerState_property_border_color>`         | ``2``     |
-   +--------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`CompareOperator<enum_RenderingDevice_CompareOperator>`       | :ref:`compare_op<class_RDSamplerState_property_compare_op>`             | ``7``     |
-   +--------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                            | :ref:`enable_compare<class_RDSamplerState_property_enable_compare>`     | ``false`` |
-   +--------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`                                          | :ref:`lod_bias<class_RDSamplerState_property_lod_bias>`                 | ``0.0``   |
-   +--------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`SamplerFilter<enum_RenderingDevice_SamplerFilter>`           | :ref:`mag_filter<class_RDSamplerState_property_mag_filter>`             | ``0``     |
-   +--------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`                                          | :ref:`max_lod<class_RDSamplerState_property_max_lod>`                   | ``1e+20`` |
-   +--------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`SamplerFilter<enum_RenderingDevice_SamplerFilter>`           | :ref:`min_filter<class_RDSamplerState_property_min_filter>`             | ``0``     |
-   +--------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`                                          | :ref:`min_lod<class_RDSamplerState_property_min_lod>`                   | ``0.0``   |
-   +--------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`SamplerFilter<enum_RenderingDevice_SamplerFilter>`           | :ref:`mip_filter<class_RDSamplerState_property_mip_filter>`             | ``0``     |
-   +--------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`SamplerRepeatMode<enum_RenderingDevice_SamplerRepeatMode>`   | :ref:`repeat_u<class_RDSamplerState_property_repeat_u>`                 | ``2``     |
-   +--------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`SamplerRepeatMode<enum_RenderingDevice_SamplerRepeatMode>`   | :ref:`repeat_v<class_RDSamplerState_property_repeat_v>`                 | ``2``     |
-   +--------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`SamplerRepeatMode<enum_RenderingDevice_SamplerRepeatMode>`   | :ref:`repeat_w<class_RDSamplerState_property_repeat_w>`                 | ``2``     |
-   +--------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                            | :ref:`unnormalized_uvw<class_RDSamplerState_property_unnormalized_uvw>` | ``false`` |
-   +--------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                            | :ref:`use_anisotropy<class_RDSamplerState_property_use_anisotropy>`     | ``false`` |
-   +--------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
+   +---------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`                                           | :ref:`anisotropy_max<class_RDSamplerState_property_anisotropy_max>`     | ``1.0``   |
+   +---------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
+   | :ref:`SamplerBorderColor <enum_RenderingDevice_SamplerBorderColor>` | :ref:`border_color<class_RDSamplerState_property_border_color>`         | ``2``     |
+   +---------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
+   | :ref:`CompareOperator <enum_RenderingDevice_CompareOperator>`       | :ref:`compare_op<class_RDSamplerState_property_compare_op>`             | ``7``     |
+   +---------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                             | :ref:`enable_compare<class_RDSamplerState_property_enable_compare>`     | ``false`` |
+   +---------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`                                           | :ref:`lod_bias<class_RDSamplerState_property_lod_bias>`                 | ``0.0``   |
+   +---------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
+   | :ref:`SamplerFilter <enum_RenderingDevice_SamplerFilter>`           | :ref:`mag_filter<class_RDSamplerState_property_mag_filter>`             | ``0``     |
+   +---------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`                                           | :ref:`max_lod<class_RDSamplerState_property_max_lod>`                   | ``1e+20`` |
+   +---------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
+   | :ref:`SamplerFilter <enum_RenderingDevice_SamplerFilter>`           | :ref:`min_filter<class_RDSamplerState_property_min_filter>`             | ``0``     |
+   +---------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`                                           | :ref:`min_lod<class_RDSamplerState_property_min_lod>`                   | ``0.0``   |
+   +---------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
+   | :ref:`SamplerFilter <enum_RenderingDevice_SamplerFilter>`           | :ref:`mip_filter<class_RDSamplerState_property_mip_filter>`             | ``0``     |
+   +---------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
+   | :ref:`SamplerRepeatMode <enum_RenderingDevice_SamplerRepeatMode>`   | :ref:`repeat_u<class_RDSamplerState_property_repeat_u>`                 | ``2``     |
+   +---------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
+   | :ref:`SamplerRepeatMode <enum_RenderingDevice_SamplerRepeatMode>`   | :ref:`repeat_v<class_RDSamplerState_property_repeat_v>`                 | ``2``     |
+   +---------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
+   | :ref:`SamplerRepeatMode <enum_RenderingDevice_SamplerRepeatMode>`   | :ref:`repeat_w<class_RDSamplerState_property_repeat_w>`                 | ``2``     |
+   +---------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                             | :ref:`unnormalized_uvw<class_RDSamplerState_property_unnormalized_uvw>` | ``false`` |
+   +---------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                             | :ref:`use_anisotropy<class_RDSamplerState_property_use_anisotropy>`     | ``false`` |
+   +---------------------------------------------------------------------+-------------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-section-separator
 
@@ -67,8 +67,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_RDSamplerState_property_anisotropy_max:
 
@@ -81,9 +81,9 @@ Property Descriptions
 - |void| **set_anisotropy_max**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_anisotropy_max**\ (\ )
 
-Maximum anisotropy that can be used when sampling. Only effective if :ref:`use_anisotropy<class_RDSamplerState_property_use_anisotropy>` is ``true``. Higher values result in a sharper sampler at oblique angles, at the cost of performance (due to memory bandwidth). This value may be limited by the graphics hardware in use. Most graphics hardware only supports values up to ``16.0``.
+Mức anisotropy tối đa có thể sử dụng khi sampling. Chỉ có hiệu lực nếu :ref:`use_anisotropy<class_RDSamplerState_property_use_anisotropy>` là ``true``. Giá trị cao hơn tạo ra sampler sắc nét hơn ở các góc xiên, nhưng làm giảm hiệu năng (do băng thông bộ nhớ). Giá trị này có thể bị giới hạn bởi phần cứng đồ họa đang sử dụng. Hầu hết phần cứng đồ họa chỉ hỗ trợ các giá trị tối đa là ``16.0``.
 
-If :ref:`anisotropy_max<class_RDSamplerState_property_anisotropy_max>` is ``1.0``, forcibly disables anisotropy even if :ref:`use_anisotropy<class_RDSamplerState_property_use_anisotropy>` is ``true``.
+Nếu :ref:`anisotropy_max<class_RDSamplerState_property_anisotropy_max>` là ``1.0``, buộc tắt anisotropy ngay cả khi :ref:`use_anisotropy<class_RDSamplerState_property_use_anisotropy>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -100,7 +100,7 @@ If :ref:`anisotropy_max<class_RDSamplerState_property_anisotropy_max>` is ``1.0`
 - |void| **set_border_color**\ (\ value\: :ref:`SamplerBorderColor<enum_RenderingDevice_SamplerBorderColor>`\ )
 - :ref:`SamplerBorderColor<enum_RenderingDevice_SamplerBorderColor>` **get_border_color**\ (\ )
 
-The border color that will be returned when sampling outside the sampler's bounds and the :ref:`repeat_u<class_RDSamplerState_property_repeat_u>`, :ref:`repeat_v<class_RDSamplerState_property_repeat_v>` or :ref:`repeat_w<class_RDSamplerState_property_repeat_w>` modes have repeating disabled.
+Màu viền được trả về khi sampling bên ngoài giới hạn của sampler và các chế độ :ref:`repeat_u<class_RDSamplerState_property_repeat_u>`, :ref:`repeat_v<class_RDSamplerState_property_repeat_v>` hoặc :ref:`repeat_w<class_RDSamplerState_property_repeat_w>` đã tắt tính năng lặp.
 
 .. rst-class:: classref-item-separator
 
@@ -117,7 +117,7 @@ The border color that will be returned when sampling outside the sampler's bound
 - |void| **set_compare_op**\ (\ value\: :ref:`CompareOperator<enum_RenderingDevice_CompareOperator>`\ )
 - :ref:`CompareOperator<enum_RenderingDevice_CompareOperator>` **get_compare_op**\ (\ )
 
-The compare operation to use. Only effective if :ref:`enable_compare<class_RDSamplerState_property_enable_compare>` is ``true``.
+Thao tác so sánh cần sử dụng. Chỉ có hiệu lực nếu :ref:`enable_compare<class_RDSamplerState_property_enable_compare>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -134,7 +134,7 @@ The compare operation to use. Only effective if :ref:`enable_compare<class_RDSam
 - |void| **set_enable_compare**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_enable_compare**\ (\ )
 
-If ``true``, returned values will be based on the comparison operation defined in :ref:`compare_op<class_RDSamplerState_property_compare_op>`. This is a hardware-based approach and is therefore faster than performing this manually in a shader. For example, compare operations are used for shadow map rendering by comparing depth values from a shadow sampler.
+Nếu ``true``, các giá trị trả về sẽ dựa trên thao tác so sánh được định nghĩa trong :ref:`compare_op<class_RDSamplerState_property_compare_op>`. Đây là phương pháp dựa trên phần cứng nên nhanh hơn so với việc thực hiện thủ công trong shader. Ví dụ, các thao tác so sánh được sử dụng để render shadow map bằng cách so sánh các giá trị độ sâu từ shadow sampler.
 
 .. rst-class:: classref-item-separator
 
@@ -151,7 +151,7 @@ If ``true``, returned values will be based on the comparison operation defined i
 - |void| **set_lod_bias**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_lod_bias**\ (\ )
 
-The mipmap LOD bias to use. Positive values will make the sampler blurrier at a given distance, while negative values will make the sampler sharper at a given distance (at the risk of looking grainy). Recommended values are between ``-0.5`` and ``0.0``. Only effective if the sampler has mipmaps available.
+Độ lệch LOD của mipmap cần sử dụng. Các giá trị dương sẽ khiến sampler mờ hơn ở một khoảng cách nhất định, trong khi các giá trị âm sẽ khiến sampler sắc nét hơn ở khoảng cách đó (nhưng có nguy cơ trông bị nhiễu hạt). Các giá trị được khuyến nghị nằm trong khoảng từ ``-0.5`` đến ``0.0``. Chỉ có hiệu lực nếu sampler có sẵn mipmap.
 
 .. rst-class:: classref-item-separator
 
@@ -168,7 +168,7 @@ The mipmap LOD bias to use. Positive values will make the sampler blurrier at a 
 - |void| **set_mag_filter**\ (\ value\: :ref:`SamplerFilter<enum_RenderingDevice_SamplerFilter>`\ )
 - :ref:`SamplerFilter<enum_RenderingDevice_SamplerFilter>` **get_mag_filter**\ (\ )
 
-The sampler's magnification filter. It is the filtering method used when sampling texels that appear bigger than on-screen pixels.
+Bộ lọc phóng đại của sampler. Đây là phương pháp filtering được sử dụng khi sampling các texel có vẻ lớn hơn pixel trên màn hình.
 
 .. rst-class:: classref-item-separator
 
@@ -185,7 +185,7 @@ The sampler's magnification filter. It is the filtering method used when samplin
 - |void| **set_max_lod**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_max_lod**\ (\ )
 
-The maximum mipmap LOD bias to display (lowest resolution). Only effective if the sampler has mipmaps available.
+Độ lệch LOD tối đa của mipmap cần hiển thị (độ phân giải thấp nhất). Chỉ có hiệu lực nếu sampler có sẵn mipmap.
 
 .. rst-class:: classref-item-separator
 
@@ -202,7 +202,7 @@ The maximum mipmap LOD bias to display (lowest resolution). Only effective if th
 - |void| **set_min_filter**\ (\ value\: :ref:`SamplerFilter<enum_RenderingDevice_SamplerFilter>`\ )
 - :ref:`SamplerFilter<enum_RenderingDevice_SamplerFilter>` **get_min_filter**\ (\ )
 
-The sampler's minification filter. It is the filtering method used when sampling texels that appear smaller than on-screen pixels.
+Bộ lọc thu nhỏ của sampler. Đây là phương pháp filtering được sử dụng khi sampling các texel có vẻ nhỏ hơn pixel trên màn hình.
 
 .. rst-class:: classref-item-separator
 
@@ -219,7 +219,7 @@ The sampler's minification filter. It is the filtering method used when sampling
 - |void| **set_min_lod**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_min_lod**\ (\ )
 
-The minimum mipmap LOD bias to display (highest resolution). Only effective if the sampler has mipmaps available.
+Độ lệch LOD tối thiểu của mipmap cần hiển thị (độ phân giải cao nhất). Chỉ có hiệu lực nếu sampler có sẵn mipmap.
 
 .. rst-class:: classref-item-separator
 
@@ -236,7 +236,7 @@ The minimum mipmap LOD bias to display (highest resolution). Only effective if t
 - |void| **set_mip_filter**\ (\ value\: :ref:`SamplerFilter<enum_RenderingDevice_SamplerFilter>`\ )
 - :ref:`SamplerFilter<enum_RenderingDevice_SamplerFilter>` **get_mip_filter**\ (\ )
 
-The filtering method to use for mipmaps.
+Phương pháp filtering cần sử dụng cho mipmap.
 
 .. rst-class:: classref-item-separator
 
@@ -253,7 +253,7 @@ The filtering method to use for mipmaps.
 - |void| **set_repeat_u**\ (\ value\: :ref:`SamplerRepeatMode<enum_RenderingDevice_SamplerRepeatMode>`\ )
 - :ref:`SamplerRepeatMode<enum_RenderingDevice_SamplerRepeatMode>` **get_repeat_u**\ (\ )
 
-The repeat mode to use along the U axis of UV coordinates. This affects the returned values if sampling outside the UV bounds.
+Chế độ lặp cần sử dụng dọc theo trục U của tọa độ UV. Chế độ này ảnh hưởng đến các giá trị trả về khi sampling bên ngoài giới hạn UV.
 
 .. rst-class:: classref-item-separator
 
@@ -270,7 +270,7 @@ The repeat mode to use along the U axis of UV coordinates. This affects the retu
 - |void| **set_repeat_v**\ (\ value\: :ref:`SamplerRepeatMode<enum_RenderingDevice_SamplerRepeatMode>`\ )
 - :ref:`SamplerRepeatMode<enum_RenderingDevice_SamplerRepeatMode>` **get_repeat_v**\ (\ )
 
-The repeat mode to use along the V axis of UV coordinates. This affects the returned values if sampling outside the UV bounds.
+Chế độ lặp cần sử dụng dọc theo trục V của tọa độ UV. Chế độ này ảnh hưởng đến các giá trị trả về khi sampling bên ngoài giới hạn UV.
 
 .. rst-class:: classref-item-separator
 
@@ -287,7 +287,7 @@ The repeat mode to use along the V axis of UV coordinates. This affects the retu
 - |void| **set_repeat_w**\ (\ value\: :ref:`SamplerRepeatMode<enum_RenderingDevice_SamplerRepeatMode>`\ )
 - :ref:`SamplerRepeatMode<enum_RenderingDevice_SamplerRepeatMode>` **get_repeat_w**\ (\ )
 
-The repeat mode to use along the W axis of UV coordinates. This affects the returned values if sampling outside the UV bounds. Only effective for 3D samplers.
+Chế độ lặp cần sử dụng dọc theo trục W của tọa độ UV. Chế độ này ảnh hưởng đến các giá trị trả về khi sampling bên ngoài giới hạn UV. Chỉ có hiệu lực đối với sampler 3D.
 
 .. rst-class:: classref-item-separator
 
@@ -304,7 +304,7 @@ The repeat mode to use along the W axis of UV coordinates. This affects the retu
 - |void| **set_unnormalized_uvw**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_unnormalized_uvw**\ (\ )
 
-If ``true``, the texture will be sampled with coordinates ranging from 0 to the texture's resolution. Otherwise, the coordinates will be normalized and range from 0 to 1.
+Nếu ``true``, texture sẽ được sampling bằng các tọa độ nằm trong khoảng từ 0 đến độ phân giải của texture. Nếu không, các tọa độ sẽ được chuẩn hóa và nằm trong khoảng từ 0 đến 1.
 
 .. rst-class:: classref-item-separator
 
@@ -321,14 +321,14 @@ If ``true``, the texture will be sampled with coordinates ranging from 0 to the 
 - |void| **set_use_anisotropy**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_use_anisotropy**\ (\ )
 
-If ``true``, perform anisotropic sampling. See :ref:`anisotropy_max<class_RDSamplerState_property_anisotropy_max>`.
+Nếu ``true``, thực hiện anisotropic sampling. Xem :ref:`anisotropy_max<class_RDSamplerState_property_anisotropy_max>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể được gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

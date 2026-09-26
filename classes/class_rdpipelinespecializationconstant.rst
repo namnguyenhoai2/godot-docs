@@ -10,23 +10,23 @@
 RDPipelineSpecializationConstant
 ================================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Pipeline specialization constant (used by :ref:`RenderingDevice<class_RenderingDevice>`).
+Hằng số specialization của pipeline (được sử dụng bởi :ref:`RenderingDevice<class_RenderingDevice>`).
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A *specialization constant* is a way to create additional variants of shaders without actually increasing the number of shader versions that are compiled. This allows improving performance by reducing the number of shader versions and reducing ``if`` branching, while still allowing shaders to be flexible for different use cases.
+Một *specialization constant* là một cách để tạo thêm các biến thể của shader mà không thực sự tăng số lượng phiên bản shader được biên dịch. Điều này cho phép cải thiện hiệu suất bằng cách giảm số lượng phiên bản shader và giảm việc phân nhánh ``if``, đồng thời vẫn cho phép các shader linh hoạt cho nhiều trường hợp sử dụng khác nhau.
 
-This object is used by :ref:`RenderingDevice<class_RenderingDevice>`.
+Đối tượng này được sử dụng bởi :ref:`RenderingDevice<class_RenderingDevice>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -43,8 +43,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_RDPipelineSpecializationConstant_property_constant_id:
 
@@ -57,7 +57,7 @@ Property Descriptions
 - |void| **set_constant_id**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_constant_id**\ (\ )
 
-The identifier of the specialization constant. This is a value starting from ``0`` and that increments for every different specialization constant for a given shader.
+Mã định danh của specialization constant. Đây là một giá trị bắt đầu từ ``0`` và tăng lên đối với mỗi specialization constant khác nhau của một shader nhất định.
 
 .. rst-class:: classref-item-separator
 
@@ -67,21 +67,21 @@ The identifier of the specialization constant. This is a value starting from ``0
 
 .. rst-class:: classref-property
 
-:ref:`Variant<class_Variant>` **value** :ref:`🔗<class_RDPipelineSpecializationConstant_property_value>`
+:ref:`Variant<class_Variant>` **value** :ref:`🔗 <class_RDPipelineSpecializationConstant_property_value>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_value**\ (\ value\: :ref:`Variant<class_Variant>`\ )
 - :ref:`Variant<class_Variant>` **get_value**\ (\ )
 
-The specialization constant's value. Only :ref:`bool<class_bool>`, :ref:`int<class_int>` and :ref:`float<class_float>` types are valid for specialization constants.
+Giá trị của specialization constant. Chỉ các kiểu :ref:`bool<class_bool>`, :ref:`int<class_int>` và :ref:`float<class_float>` là hợp lệ cho specialization constant.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Không cần instance để gọi phương thức này, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

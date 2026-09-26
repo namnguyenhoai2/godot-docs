@@ -10,32 +10,32 @@
 TubeTrailMesh
 =============
 
-**Inherits:** :ref:`PrimitiveMesh<class_PrimitiveMesh>` **<** :ref:`Mesh<class_Mesh>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`PrimitiveMesh<class_PrimitiveMesh>` **<** :ref:`Mesh<class_Mesh>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Represents a straight tube-shaped :ref:`PrimitiveMesh<class_PrimitiveMesh>` with variable width.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-**TubeTrailMesh** represents a straight tube-shaped mesh with variable width. The tube is composed of a number of cylindrical sections, each with the same :ref:`section_length<class_TubeTrailMesh_property_section_length>` and number of :ref:`section_rings<class_TubeTrailMesh_property_section_rings>`. A :ref:`curve<class_TubeTrailMesh_property_curve>` is sampled along the total length of the tube, meaning that the curve determines the radius of the tube along its length.
-
-This primitive mesh is usually used for particle trails.
+Đại diện cho một :ref:`PrimitiveMesh<class_PrimitiveMesh>` hình ống thẳng có độ rộng thay đổi.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
----------
+Mô tả
+-----
 
-- :doc:`3D Particle trails <../tutorials/3d/particles/trails>`
+**TubeTrailMesh** đại diện cho một mesh hình ống thẳng có độ rộng thay đổi. Ống được tạo thành từ một số đoạn hình trụ, mỗi đoạn có cùng :ref:`section_length<class_TubeTrailMesh_property_section_length>` và số lượng :ref:`section_rings<class_TubeTrailMesh_property_section_rings>`. Một :ref:`curve<class_TubeTrailMesh_property_curve>` được lấy mẫu dọc theo toàn bộ chiều dài của ống, nghĩa là đường cong xác định bán kính của ống dọc theo chiều dài của nó.
 
- :doc:`Hệ thống particle (3D) <../tutorials/3d/particles/index>`
+Mesh nguyên thủy này thường được dùng cho các particle trail.
+
+.. rst-class:: classref-introduction-group
+
+Tutorial
+--------
+
+- :doc:`Particle trail 3D <../tutorials/3d/particles/trails>`
+
+- :doc:`Hệ thống particle (3D) <../tutorials/3d/particles/index>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -64,8 +64,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_TubeTrailMesh_property_cap_bottom:
 
@@ -78,7 +78,7 @@ Property Descriptions
 - |void| **set_cap_bottom**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_cap_bottom**\ (\ )
 
-If ``true``, generates a cap at the bottom of the tube. This can be set to ``false`` to speed up generation and rendering when the cap is never seen by the camera.
+Nếu ``true``, tạo một nắp ở đáy ống. Có thể đặt thành ``false`` để tăng tốc độ tạo và render khi camera không bao giờ nhìn thấy nắp.
 
 .. rst-class:: classref-item-separator
 
@@ -95,7 +95,7 @@ If ``true``, generates a cap at the bottom of the tube. This can be set to ``fal
 - |void| **set_cap_top**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_cap_top**\ (\ )
 
-If ``true``, generates a cap at the top of the tube. This can be set to ``false`` to speed up generation and rendering when the cap is never seen by the camera.
+Nếu ``true``, tạo một nắp ở đỉnh ống. Có thể đặt thành ``false`` để tăng tốc độ tạo và render khi camera không bao giờ nhìn thấy nắp.
 
 .. rst-class:: classref-item-separator
 
@@ -105,14 +105,14 @@ If ``true``, generates a cap at the top of the tube. This can be set to ``false`
 
 .. rst-class:: classref-property
 
-:ref:`Curve<class_Curve>` **curve** :ref:`🔗<class_TubeTrailMesh_property_curve>`
+:ref:`Curve<class_Curve>` **curve** :ref:`🔗 <class_TubeTrailMesh_property_curve>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_curve**\ (\ value\: :ref:`Curve<class_Curve>`\ )
 - :ref:`Curve<class_Curve>` **get_curve**\ (\ )
 
-Determines the radius of the tube along its length. The radius of a particular section ring is obtained by multiplying the baseline :ref:`radius<class_TubeTrailMesh_property_radius>` by the value of this curve at the given distance. For values smaller than ``0``, the faces will be inverted. Should be a unit :ref:`Curve<class_Curve>`.
+Xác định bán kính của ống dọc theo chiều dài của nó. Bán kính của một vòng thuộc một đoạn cụ thể được lấy bằng cách nhân :ref:`radius<class_TubeTrailMesh_property_radius>` cơ sở với giá trị của đường cong này tại khoảng cách đã cho. Với các giá trị nhỏ hơn ``0``, các mặt sẽ bị đảo ngược. Nên là một :ref:`Curve<class_Curve>` đơn vị.
 
 .. rst-class:: classref-item-separator
 
@@ -129,7 +129,7 @@ Determines the radius of the tube along its length. The radius of a particular s
 - |void| **set_radial_steps**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_radial_steps**\ (\ )
 
-The number of sides on the tube. For example, a value of ``5`` means the tube will be pentagonal. Higher values result in a more detailed tube at the cost of performance.
+Số cạnh của ống. Ví dụ: giá trị ``5`` nghĩa là ống sẽ có hình ngũ giác. Các giá trị cao hơn tạo ra ống chi tiết hơn nhưng làm giảm hiệu năng.
 
 .. rst-class:: classref-item-separator
 
@@ -146,7 +146,7 @@ The number of sides on the tube. For example, a value of ``5`` means the tube wi
 - |void| **set_radius**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_radius**\ (\ )
 
-The baseline radius of the tube. The radius of a particular section ring is obtained by multiplying this radius by the value of the :ref:`curve<class_TubeTrailMesh_property_curve>` at the given distance.
+Bán kính cơ sở của ống. Bán kính của một vòng thuộc một đoạn cụ thể được lấy bằng cách nhân bán kính này với giá trị của :ref:`curve<class_TubeTrailMesh_property_curve>` tại khoảng cách đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -163,7 +163,7 @@ The baseline radius of the tube. The radius of a particular section ring is obta
 - |void| **set_section_length**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_section_length**\ (\ )
 
-The length of a section of the tube.
+Chiều dài của một đoạn ống.
 
 .. rst-class:: classref-item-separator
 
@@ -180,7 +180,7 @@ The length of a section of the tube.
 - |void| **set_section_rings**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_section_rings**\ (\ )
 
-The number of rings in a section. The :ref:`curve<class_TubeTrailMesh_property_curve>` is sampled on each ring to determine its radius. Higher values result in a more detailed tube at the cost of performance.
+Số vòng trong một đoạn. :ref:`curve<class_TubeTrailMesh_property_curve>` được lấy mẫu trên mỗi vòng để xác định bán kính của nó. Các giá trị cao hơn tạo ra ống chi tiết hơn nhưng làm giảm hiệu năng.
 
 .. rst-class:: classref-item-separator
 
@@ -197,14 +197,14 @@ The number of rings in a section. The :ref:`curve<class_TubeTrailMesh_property_c
 - |void| **set_sections**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_sections**\ (\ )
 
-The total number of sections on the tube.
+Tổng số đoạn trên ống.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

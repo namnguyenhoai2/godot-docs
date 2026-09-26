@@ -10,25 +10,25 @@
 RenderData
 ==========
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`RenderDataExtension<class_RenderDataExtension>`, :ref:`RenderDataRD<class_RenderDataRD>`
+**Được kế thừa bởi:** :ref:`RenderDataExtension<class_RenderDataExtension>`, :ref:`RenderDataRD<class_RenderDataRD>`
 
-Abstract render data object, holds frame data related to rendering a single frame of a viewport.
+Đối tượng dữ liệu render trừu tượng, chứa dữ liệu khung hình liên quan đến việc render một khung hình duy nhất của viewport.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Abstract render data object, exists for the duration of rendering a single viewport. See also :ref:`RenderDataRD<class_RenderDataRD>`, :ref:`RenderSceneData<class_RenderSceneData>`, and :ref:`RenderSceneDataRD<class_RenderSceneDataRD>`.
+Đối tượng dữ liệu render trừu tượng, tồn tại trong suốt quá trình render một viewport duy nhất. Xem thêm :ref:`RenderDataRD<class_RenderDataRD>`, :ref:`RenderSceneData<class_RenderSceneData>` và :ref:`RenderSceneDataRD<class_RenderSceneDataRD>`.
 
-\ **Note:** This is an internal rendering server object. Do not instantiate this class from a script.
+\ **Lưu ý:** Đây là đối tượng máy chủ render nội bộ. Không khởi tạo class này từ script.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -49,8 +49,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả các phương thức
+---------------------
 
 .. _class_RenderData_method_get_camera_attributes:
 
@@ -58,7 +58,7 @@ Method Descriptions
 
 :ref:`RID<class_RID>` **get_camera_attributes**\ (\ ) |const| :ref:`🔗<class_RenderData_method_get_camera_attributes>`
 
-Returns the :ref:`RID<class_RID>` of the camera attributes object in the :ref:`RenderingServer<class_RenderingServer>` being used to render this viewport.
+Trả về :ref:`RID<class_RID>` của đối tượng thuộc tính camera trong :ref:`RenderingServer<class_RenderingServer>` đang được sử dụng để render viewport này.
 
 .. rst-class:: classref-item-separator
 
@@ -70,7 +70,7 @@ Returns the :ref:`RID<class_RID>` of the camera attributes object in the :ref:`R
 
 :ref:`RID<class_RID>` **get_environment**\ (\ ) |const| :ref:`🔗<class_RenderData_method_get_environment>`
 
-Returns the :ref:`RID<class_RID>` of the environment object in the :ref:`RenderingServer<class_RenderingServer>` being used to render this viewport.
+Trả về :ref:`RID<class_RID>` của đối tượng môi trường trong :ref:`RenderingServer<class_RenderingServer>` đang được sử dụng để render viewport này.
 
 .. rst-class:: classref-item-separator
 
@@ -82,7 +82,7 @@ Returns the :ref:`RID<class_RID>` of the environment object in the :ref:`Renderi
 
 :ref:`RenderSceneBuffers<class_RenderSceneBuffers>` **get_render_scene_buffers**\ (\ ) |const| :ref:`🔗<class_RenderData_method_get_render_scene_buffers>`
 
-Returns the :ref:`RenderSceneBuffers<class_RenderSceneBuffers>` object managing the scene buffers for rendering this viewport.
+Trả về đối tượng :ref:`RenderSceneBuffers<class_RenderSceneBuffers>` quản lý các scene buffer để render viewport này.
 
 .. rst-class:: classref-item-separator
 
@@ -94,14 +94,14 @@ Returns the :ref:`RenderSceneBuffers<class_RenderSceneBuffers>` object managing 
 
 :ref:`RenderSceneData<class_RenderSceneData>` **get_render_scene_data**\ (\ ) |const| :ref:`🔗<class_RenderData_method_get_render_scene_data>`
 
-Returns the :ref:`RenderSceneData<class_RenderSceneData>` object managing this frames scene data.
+Trả về đối tượng :ref:`RenderSceneData<class_RenderSceneData>` quản lý dữ liệu scene của khung hình này.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

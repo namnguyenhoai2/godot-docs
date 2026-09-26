@@ -10,91 +10,91 @@
 ResourceImporterScene
 =====================
 
-**Inherits:** :ref:`ResourceImporter<class_ResourceImporter>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`ResourceImporter<class_ResourceImporter>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Imports a glTF, FBX, COLLADA, or Blender 3D scene.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-See also :ref:`ResourceImporterOBJ<class_ResourceImporterOBJ>`, which is used for OBJ models that can be imported as an independent :ref:`Mesh<class_Mesh>` or a scene.
-
-Additional options (such as extracting individual meshes or materials to files) are available in the **Advanced Import Settings** dialog. This dialog can be accessed by double-clicking a 3D scene in the FileSystem dock or by selecting a 3D scene in the FileSystem dock, going to the Import dock and choosing **Advanced**.
-
-\ **Note:** **ResourceImporterScene** is *not* used for :ref:`PackedScene<class_PackedScene>`\ s, such as ``.tscn`` and ``.scn`` files.
+Nhập một scene glTF, FBX, COLLADA hoặc Blender 3D.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Xem thêm :ref:`ResourceImporterOBJ<class_ResourceImporterOBJ>`, được dùng cho các model OBJ có thể được nhập dưới dạng một :ref:`Mesh<class_Mesh>` độc lập hoặc một scene.
+
+Các tùy chọn bổ sung (chẳng hạn như trích xuất từng mesh hoặc material thành các tệp) có sẵn trong hộp thoại **Advanced Import Settings**. Có thể mở hộp thoại này bằng cách nhấp đúp vào một scene 3D trong dock FileSystem hoặc chọn một scene 3D trong dock FileSystem, đi đến dock Import rồi chọn **Advanced**.
+
+\ **Lưu ý:** **ResourceImporterScene** không được *dùng* cho :ref:`PackedScene<class_PackedScene>`\ s, chẳng hạn như các tệp ``.tscn`` và ``.scn``.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Importing 3D scenes <../tutorials/assets_pipeline/importing_3d_scenes/index>`
+- :doc:`Nhập scene 3D <../tutorials/assets_pipeline/importing_3d_scenes/index>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`Dictionary<class_Dictionary>` | :ref:`_subresources<class_ResourceImporterScene_property__subresources>`                                                         | ``{}``    |
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`           | :ref:`animation/fps<class_ResourceImporterScene_property_animation/fps>`                                                         | ``30``    |
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`             | :ref:`animation/import<class_ResourceImporterScene_property_animation/import>`                                                   | ``true``  |
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`             | :ref:`animation/import_rest_as_RESET<class_ResourceImporterScene_property_animation/import_rest_as_RESET>`                       | ``false`` |
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`             | :ref:`animation/remove_immutable_tracks<class_ResourceImporterScene_property_animation/remove_immutable_tracks>`                 | ``true``  |
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`             | :ref:`animation/trimming<class_ResourceImporterScene_property_animation/trimming>`                                               | ``false`` |
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`             | :ref:`array_mesh/deduplicate_surfaces<class_ResourceImporterScene_property_array_mesh/deduplicate_surfaces>`                     | ``true``  |
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`String<class_String>`         | :ref:`import_script/path<class_ResourceImporterScene_property_import_script/path>`                                               | ``""``    |
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`               | :ref:`materials/extract<class_ResourceImporterScene_property_materials/extract>`                                                 | ``0``     |
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`               | :ref:`materials/extract_format<class_ResourceImporterScene_property_materials/extract_format>`                                   | ``0``     |
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`String<class_String>`         | :ref:`materials/extract_path<class_ResourceImporterScene_property_materials/extract_path>`                                       | ``""``    |
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`             | :ref:`mesh_library/use_node_names_as_mesh_names<class_ResourceImporterScene_property_mesh_library/use_node_names_as_mesh_names>` | ``false`` |
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`             | :ref:`meshes/create_shadow_meshes<class_ResourceImporterScene_property_meshes/create_shadow_meshes>`                             | ``true``  |
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`             | :ref:`meshes/ensure_tangents<class_ResourceImporterScene_property_meshes/ensure_tangents>`                                       | ``true``  |
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`             | :ref:`meshes/force_disable_compression<class_ResourceImporterScene_property_meshes/force_disable_compression>`                   | ``false`` |
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`             | :ref:`meshes/generate_lods<class_ResourceImporterScene_property_meshes/generate_lods>`                                           | ``true``  |
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`               | :ref:`meshes/light_baking<class_ResourceImporterScene_property_meshes/light_baking>`                                             | ``1``     |
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`           | :ref:`meshes/lightmap_texel_size<class_ResourceImporterScene_property_meshes/lightmap_texel_size>`                               | ``0.2``   |
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`             | :ref:`nodes/apply_root_scale<class_ResourceImporterScene_property_nodes/apply_root_scale>`                                       | ``true``  |
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`             | :ref:`nodes/import_as_skeleton_bones<class_ResourceImporterScene_property_nodes/import_as_skeleton_bones>`                       | ``false`` |
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`String<class_String>`         | :ref:`nodes/root_name<class_ResourceImporterScene_property_nodes/root_name>`                                                     | ``""``    |
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`           | :ref:`nodes/root_scale<class_ResourceImporterScene_property_nodes/root_scale>`                                                   | ``1.0``   |
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`Script<class_Script>`         | :ref:`nodes/root_script<class_ResourceImporterScene_property_nodes/root_script>`                                                 | ``null``  |
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`String<class_String>`         | :ref:`nodes/root_type<class_ResourceImporterScene_property_nodes/root_type>`                                                     | ``""``    |
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`             | :ref:`nodes/use_name_suffixes<class_ResourceImporterScene_property_nodes/use_name_suffixes>`                                     | ``true``  |
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`             | :ref:`nodes/use_node_type_suffixes<class_ResourceImporterScene_property_nodes/use_node_type_suffixes>`                           | ``true``  |
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`             | :ref:`skins/use_named_skins<class_ResourceImporterScene_property_skins/use_named_skins>`                                         | ``true``  |
-   +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-----------+
+   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`Dictionary<class_Dictionary>` | :ref:`_subresources<class_ResourceImporterScene_property__subresources>`                                                          | ``{}``    |
+   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`           | :ref:`animation/fps <class_ResourceImporterScene_property_animation/fps>`                                                         | ``30``    |
+   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`             | :ref:`animation/import <class_ResourceImporterScene_property_animation/import>`                                                   | ``true``  |
+   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`             | :ref:`animation/import_rest_as_RESET <class_ResourceImporterScene_property_animation/import_rest_as_RESET>`                       | ``false`` |
+   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`             | :ref:`animation/remove_immutable_tracks <class_ResourceImporterScene_property_animation/remove_immutable_tracks>`                 | ``true``  |
+   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`             | :ref:`animation/trimming <class_ResourceImporterScene_property_animation/trimming>`                                               | ``false`` |
+   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`             | :ref:`array_mesh/deduplicate_surfaces <class_ResourceImporterScene_property_array_mesh/deduplicate_surfaces>`                     | ``true``  |
+   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`String<class_String>`         | :ref:`import_script/path <class_ResourceImporterScene_property_import_script/path>`                                               | ``""``    |
+   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`               | :ref:`materials/extract <class_ResourceImporterScene_property_materials/extract>`                                                 | ``0``     |
+   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`               | :ref:`materials/extract_format <class_ResourceImporterScene_property_materials/extract_format>`                                   | ``0``     |
+   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`String<class_String>`         | :ref:`materials/extract_path <class_ResourceImporterScene_property_materials/extract_path>`                                       | ``""``    |
+   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`             | :ref:`mesh_library/use_node_names_as_mesh_names <class_ResourceImporterScene_property_mesh_library/use_node_names_as_mesh_names>` | ``false`` |
+   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`             | :ref:`meshes/create_shadow_meshes <class_ResourceImporterScene_property_meshes/create_shadow_meshes>`                             | ``true``  |
+   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`             | :ref:`meshes/ensure_tangents <class_ResourceImporterScene_property_meshes/ensure_tangents>`                                       | ``true``  |
+   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`             | :ref:`meshes/force_disable_compression <class_ResourceImporterScene_property_meshes/force_disable_compression>`                   | ``false`` |
+   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`             | :ref:`meshes/generate_lods <class_ResourceImporterScene_property_meshes/generate_lods>`                                           | ``true``  |
+   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`               | :ref:`meshes/light_baking <class_ResourceImporterScene_property_meshes/light_baking>`                                             | ``1``     |
+   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`           | :ref:`meshes/lightmap_texel_size <class_ResourceImporterScene_property_meshes/lightmap_texel_size>`                               | ``0.2``   |
+   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`             | :ref:`nodes/apply_root_scale <class_ResourceImporterScene_property_nodes/apply_root_scale>`                                       | ``true``  |
+   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`             | :ref:`nodes/import_as_skeleton_bones <class_ResourceImporterScene_property_nodes/import_as_skeleton_bones>`                       | ``false`` |
+   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`String<class_String>`         | :ref:`nodes/root_name <class_ResourceImporterScene_property_nodes/root_name>`                                                     | ``""``    |
+   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`           | :ref:`nodes/root_scale <class_ResourceImporterScene_property_nodes/root_scale>`                                                   | ``1.0``   |
+   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`Script<class_Script>`         | :ref:`nodes/root_script <class_ResourceImporterScene_property_nodes/root_script>`                                                 | ``null``  |
+   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`String<class_String>`         | :ref:`nodes/root_type <class_ResourceImporterScene_property_nodes/root_type>`                                                     | ``""``    |
+   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`             | :ref:`nodes/use_name_suffixes <class_ResourceImporterScene_property_nodes/use_name_suffixes>`                                     | ``true``  |
+   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`             | :ref:`nodes/use_node_type_suffixes <class_ResourceImporterScene_property_nodes/use_node_type_suffixes>`                           | ``true``  |
+   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`             | :ref:`skins/use_named_skins <class_ResourceImporterScene_property_skins/use_named_skins>`                                         | ``true``  |
+   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-section-separator
 
@@ -102,8 +102,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ResourceImporterScene_property__subresources:
 
@@ -111,7 +111,7 @@ Property Descriptions
 
 :ref:`Dictionary<class_Dictionary>` **_subresources** = ``{}`` :ref:`🔗<class_ResourceImporterScene_property__subresources>`
 
-Contains properties for the scene's subresources. This is an internal option which is not visible in the Import dock.
+Chứa các thuộc tính cho những subresource của scene. Đây là một tùy chọn nội bộ không hiển thị trong dock Import.
 
 .. rst-class:: classref-item-separator
 
@@ -121,9 +121,9 @@ Contains properties for the scene's subresources. This is an internal option whi
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **animation/fps** = ``30`` :ref:`🔗<class_ResourceImporterScene_property_animation/fps>`
+:ref:`float<class_float>` **animation/fps** = ``30`` :ref:`🔗 <class_ResourceImporterScene_property_animation/fps>`
 
-The number of frames per second to use for baking animation curves to a series of points with linear interpolation. It's recommended to configure this value to match the value you're using as a baseline in your 3D modeling software. Higher values result in more precise animation with fast movement changes, at the cost of higher file sizes and memory usage. Thanks to interpolation, there is usually not much benefit in going above 30 FPS (as the animation will still appear smooth at higher rendering framerates).
+Số khung hình trên giây được dùng để bake các đường cong animation thành một chuỗi điểm với phép nội suy tuyến tính. Bạn nên cấu hình giá trị này khớp với giá trị đang dùng làm cơ sở trong phần mềm tạo model 3D. Giá trị cao hơn cho animation chính xác hơn với các thay đổi chuyển động nhanh, nhưng làm tăng kích thước tệp và mức sử dụng bộ nhớ. Nhờ phép nội suy, thông thường không có nhiều lợi ích khi vượt quá 30 FPS (vì animation vẫn sẽ trông mượt ở framerate render cao hơn).
 
 .. rst-class:: classref-item-separator
 
@@ -133,9 +133,9 @@ The number of frames per second to use for baking animation curves to a series o
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **animation/import** = ``true`` :ref:`🔗<class_ResourceImporterScene_property_animation/import>`
+:ref:`bool<class_bool>` **animation/import** = ``true`` :ref:`🔗 <class_ResourceImporterScene_property_animation/import>`
 
-If ``true``, import animations from the 3D scene.
+Nếu ``true``, nhập các animation từ scene 3D.
 
 .. rst-class:: classref-item-separator
 
@@ -145,9 +145,9 @@ If ``true``, import animations from the 3D scene.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **animation/import_rest_as_RESET** = ``false`` :ref:`🔗<class_ResourceImporterScene_property_animation/import_rest_as_RESET>`
+:ref:`bool<class_bool>` **animation/import_rest_as_RESET** = ``false`` :ref:`🔗 <class_ResourceImporterScene_property_animation/import_rest_as_RESET>`
 
-If ``true``, adds an :ref:`Animation<class_Animation>` named ``RESET``, containing the :ref:`Skeleton3D.get_bone_rest()<class_Skeleton3D_method_get_bone_rest>` from :ref:`Skeleton3D<class_Skeleton3D>` nodes. This can be useful to extract an animation in the reference pose.
+Nếu ``true``, thêm một :ref:`Animation<class_Animation>` có tên ``RESET``, chứa :ref:`Skeleton3D.get_bone_rest()<class_Skeleton3D_method_get_bone_rest>` từ các node :ref:`Skeleton3D<class_Skeleton3D>`. Điều này có thể hữu ích để trích xuất một animation ở tư thế tham chiếu.
 
 .. rst-class:: classref-item-separator
 
@@ -157,9 +157,9 @@ If ``true``, adds an :ref:`Animation<class_Animation>` named ``RESET``, containi
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **animation/remove_immutable_tracks** = ``true`` :ref:`🔗<class_ResourceImporterScene_property_animation/remove_immutable_tracks>`
+:ref:`bool<class_bool>` **animation/remove_immutable_tracks** = ``true`` :ref:`🔗 <class_ResourceImporterScene_property_animation/remove_immutable_tracks>`
 
-If ``true``, remove animation tracks that only contain default values. This can reduce output file size and memory usage with certain 3D scenes, depending on the contents of their animation tracks.
+Nếu ``true``, xóa các track animation chỉ chứa các giá trị mặc định. Điều này có thể giảm kích thước tệp đầu ra và mức sử dụng bộ nhớ với một số scene 3D, tùy thuộc vào nội dung của các track animation.
 
 .. rst-class:: classref-item-separator
 
@@ -169,9 +169,9 @@ If ``true``, remove animation tracks that only contain default values. This can 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **animation/trimming** = ``false`` :ref:`🔗<class_ResourceImporterScene_property_animation/trimming>`
+:ref:`bool<class_bool>` **animation/trimming** = ``false`` :ref:`🔗 <class_ResourceImporterScene_property_animation/trimming>`
 
-If ``true``, trim the beginning and end of animations if there are no keyframe changes. This can reduce output file size and memory usage with certain 3D scenes, depending on the contents of their animation tracks.
+Nếu ``true``, cắt phần đầu và phần cuối của animation nếu không có thay đổi keyframe. Điều này có thể giảm kích thước tệp đầu ra và mức sử dụng bộ nhớ với một số scene 3D, tùy thuộc vào nội dung của các track animation.
 
 .. rst-class:: classref-item-separator
 
@@ -181,9 +181,9 @@ If ``true``, trim the beginning and end of animations if there are no keyframe c
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **array_mesh/deduplicate_surfaces** = ``true`` :ref:`🔗<class_ResourceImporterScene_property_array_mesh/deduplicate_surfaces>`
+:ref:`bool<class_bool>` **array_mesh/deduplicate_surfaces** = ``true`` :ref:`🔗 <class_ResourceImporterScene_property_array_mesh/deduplicate_surfaces>`
 
-If the 3D model file contains only one mesh, this option has no effect. If ``true`` and the 3D model file contains multiple meshes with the same surface names and formats, the surfaces will be merged together when the meshes are merged. This is useful for reducing the number of surfaces in the resulting mesh, and avoids duplicating materials. If ``false`` and the 3D model file contains multiple meshes, the surfaces will always be kept separate.
+Nếu tệp model 3D chỉ chứa một mesh, tùy chọn này không có tác dụng. Nếu ``true`` và tệp model 3D chứa nhiều mesh có cùng tên và định dạng surface, các surface sẽ được hợp nhất khi các mesh được hợp nhất. Điều này hữu ích để giảm số lượng surface trong mesh kết quả và tránh nhân bản material. Nếu ``false`` và tệp model 3D chứa nhiều mesh, các surface sẽ luôn được giữ riêng biệt.
 
 .. rst-class:: classref-item-separator
 
@@ -193,9 +193,9 @@ If the 3D model file contains only one mesh, this option has no effect. If ``tru
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **import_script/path** = ``""`` :ref:`🔗<class_ResourceImporterScene_property_import_script/path>`
+:ref:`String<class_String>` **import_script/path** = ``""`` :ref:`🔗 <class_ResourceImporterScene_property_import_script/path>`
 
-Path to an import script, which can run code after the import process has completed for custom processing. See `Using import scripts for automation <../tutorials/assets_pipeline/importing_3d_scenes/import_configuration.html#using-import-scripts-for-automation>`__ for more information.
+Đường dẫn đến import script, có thể chạy code sau khi quá trình import hoàn tất để thực hiện xử lý tùy chỉnh. Xem `Using import scripts for automation <../tutorials/assets_pipeline/importing_3d_scenes/import_configuration.html#using-import-scripts-for-automation>`__ để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -205,15 +205,15 @@ Path to an import script, which can run code after the import process has comple
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **materials/extract** = ``0`` :ref:`🔗<class_ResourceImporterScene_property_materials/extract>`
+:ref:`int<class_int>` **materials/extract** = ``0`` :ref:`🔗 <class_ResourceImporterScene_property_materials/extract>`
 
-Material extraction mode.
+Chế độ trích xuất material.
 
-- ``0 (Keep Internal)``, materials are not extracted.
+- ``0 (Keep Internal)``, material không được trích xuất.
 
-- ``1 (Extract Once)``, materials are extracted once and reused on subsequent import.
+- ``1 (Extract Once)``, material được trích xuất một lần và được tái sử dụng trong các lần import tiếp theo.
 
-- ``2 (Extract and Overwrite)``, materials are extracted and overwritten on every import.
+- ``2 (Extract and Overwrite)``, material được trích xuất và ghi đè trong mỗi lần import.
 
 .. rst-class:: classref-item-separator
 
@@ -223,15 +223,15 @@ Material extraction mode.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **materials/extract_format** = ``0`` :ref:`🔗<class_ResourceImporterScene_property_materials/extract_format>`
+:ref:`int<class_int>` **materials/extract_format** = ``0`` :ref:`🔗 <class_ResourceImporterScene_property_materials/extract_format>`
 
-Extracted material file format.
+Định dạng tệp material được trích xuất.
 
-- ``0 (Text)``, text file format (``*.tres``).
+- ``0 (Text)``, định dạng tệp văn bản (``*.tres``).
 
-- ``1 (Binary)``, binary file format (``*.res``).
+- ``1 (Binary)``, định dạng tệp nhị phân (``*.res``).
 
-- ``2 (Material)``, binary file format (``*.material``).
+- ``2 (Material)``, định dạng tệp nhị phân (``*.material``).
 
 .. rst-class:: classref-item-separator
 
@@ -241,9 +241,9 @@ Extracted material file format.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **materials/extract_path** = ``""`` :ref:`🔗<class_ResourceImporterScene_property_materials/extract_path>`
+:ref:`String<class_String>` **materials/extract_path** = ``""`` :ref:`🔗 <class_ResourceImporterScene_property_materials/extract_path>`
 
-Path extracted materials are saved to. If empty, source scene path is used.
+Đường dẫn lưu các material được trích xuất. Nếu để trống, đường dẫn scene nguồn sẽ được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -253,9 +253,9 @@ Path extracted materials are saved to. If empty, source scene path is used.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **mesh_library/use_node_names_as_mesh_names** = ``false`` :ref:`🔗<class_ResourceImporterScene_property_mesh_library/use_node_names_as_mesh_names>`
+:ref:`bool<class_bool>` **mesh_library/use_node_names_as_mesh_names** = ``false`` :ref:`🔗 <class_ResourceImporterScene_property_mesh_library/use_node_names_as_mesh_names>`
 
-If ``true``, the mesh names will be set to the names of the nodes in the 3D model file. If ``false``, the mesh names will be set to the names of the meshes in the 3D model file. Enabling this is a common work-around when the author of the 3D model file did not properly set the mesh names in Blender or other 3D modeling apps. For example, a file may have a node named "Turret" with a mesh named "Cube.002", so enabling this option will set the mesh name to "Turret" instead of "Cube_002".
+Nếu ``true``, tên mesh sẽ được đặt theo tên các node trong tệp model 3D. Nếu ``false``, tên mesh sẽ được đặt theo tên các mesh trong tệp model 3D. Bật tùy chọn này là một cách khắc phục phổ biến khi tác giả tệp model 3D không đặt đúng tên mesh trong Blender hoặc các ứng dụng tạo model 3D khác. Ví dụ, một tệp có thể có node tên là "Turret" với mesh tên là "Cube.002", vì vậy bật tùy chọn này sẽ đặt tên mesh thành "Turret" thay vì "Cube_002".
 
 .. rst-class:: classref-item-separator
 
@@ -265,9 +265,9 @@ If ``true``, the mesh names will be set to the names of the nodes in the 3D mode
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **meshes/create_shadow_meshes** = ``true`` :ref:`🔗<class_ResourceImporterScene_property_meshes/create_shadow_meshes>`
+:ref:`bool<class_bool>` **meshes/create_shadow_meshes** = ``true`` :ref:`🔗 <class_ResourceImporterScene_property_meshes/create_shadow_meshes>`
 
-If ``true``, enables the generation of shadow meshes on import. This optimizes shadow rendering without reducing quality by welding vertices together when possible. This in turn reduces the memory bandwidth required to render shadows. Shadow mesh generation currently doesn't support using a lower detail level than the source mesh (but shadow rendering will make use of LODs when relevant).
+Nếu ``true``, bật việc tạo shadow mesh khi import. Tùy chọn này tối ưu hóa việc render shadow mà không làm giảm chất lượng bằng cách hàn các vertex với nhau khi có thể. Nhờ đó, băng thông bộ nhớ cần thiết để render shadow cũng giảm xuống. Hiện tại, việc tạo shadow mesh không hỗ trợ sử dụng mức độ chi tiết thấp hơn mesh nguồn (nhưng việc render shadow sẽ sử dụng LOD khi phù hợp).
 
 .. rst-class:: classref-item-separator
 
@@ -277,11 +277,11 @@ If ``true``, enables the generation of shadow meshes on import. This optimizes s
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **meshes/ensure_tangents** = ``true`` :ref:`🔗<class_ResourceImporterScene_property_meshes/ensure_tangents>`
+:ref:`bool<class_bool>` **meshes/ensure_tangents** = ``true`` :ref:`🔗 <class_ResourceImporterScene_property_meshes/ensure_tangents>`
 
-If ``true``, generate vertex tangents using `Mikktspace <http://www.mikktspace.com/>`__ if the input meshes don't have tangent data. When possible, it's recommended to let the 3D modeling software generate tangents on export instead of relying on this option. Tangents are required for correct display of normal and height maps, along with any material/shader features that require tangents.
+Nếu ``true``, tạo tangent cho vertex bằng `Mikktspace <http://www.mikktspace.com/>`__ nếu các mesh đầu vào không có dữ liệu tangent. Khi có thể, bạn nên để phần mềm tạo model 3D tạo tangent khi export thay vì phụ thuộc vào tùy chọn này. Tangent là cần thiết để hiển thị chính xác normal map và height map, cùng với mọi tính năng material/shader yêu cầu tangent.
 
-If you don't need material features that require tangents, disabling this can reduce output file size and speed up importing if the source 3D file doesn't contain tangents.
+Nếu bạn không cần các tính năng material yêu cầu tangent, việc tắt tùy chọn này có thể giảm kích thước tệp đầu ra và tăng tốc quá trình import nếu tệp 3D nguồn không chứa tangent.
 
 .. rst-class:: classref-item-separator
 
@@ -291,9 +291,9 @@ If you don't need material features that require tangents, disabling this can re
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **meshes/force_disable_compression** = ``false`` :ref:`🔗<class_ResourceImporterScene_property_meshes/force_disable_compression>`
+:ref:`bool<class_bool>` **meshes/force_disable_compression** = ``false`` :ref:`🔗 <class_ResourceImporterScene_property_meshes/force_disable_compression>`
 
-If ``true``, mesh compression will not be used. Consider enabling if you notice blocky artifacts in your mesh normals or UVs, or if you have meshes that are larger than a few thousand meters in each direction.
+Nếu ``true``, sẽ không sử dụng tính năng nén mesh. Hãy cân nhắc bật tùy chọn này nếu bạn nhận thấy các hiện tượng méo dạng khối trong normal hoặc UV của mesh, hoặc nếu bạn có các mesh lớn hơn vài nghìn mét theo mỗi hướng.
 
 .. rst-class:: classref-item-separator
 
@@ -303,9 +303,9 @@ If ``true``, mesh compression will not be used. Consider enabling if you notice 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **meshes/generate_lods** = ``true`` :ref:`🔗<class_ResourceImporterScene_property_meshes/generate_lods>`
+:ref:`bool<class_bool>` **meshes/generate_lods** = ``true`` :ref:`🔗 <class_ResourceImporterScene_property_meshes/generate_lods>`
 
-If ``true``, generates lower detail variants of the mesh which will be displayed in the distance to improve rendering performance. Not all meshes benefit from LOD, especially if they are never rendered from far away. Disabling this can reduce output file size and speed up importing. See `Mesh level of detail (LOD) <../tutorials/3d/mesh_lod.html#doc-mesh-lod>`__ for more information.
+Nếu ``true``, tạo các phiên bản mesh có mức độ chi tiết thấp hơn để hiển thị ở khoảng cách xa nhằm cải thiện hiệu suất render. Không phải mesh nào cũng hưởng lợi từ LOD, đặc biệt nếu chúng không bao giờ được render từ xa. Tắt tùy chọn này có thể giảm kích thước tệp đầu ra và tăng tốc quá trình import. Xem `Mesh level of detail (LOD) <../tutorials/3d/mesh_lod.html#doc-mesh-lod>`__ để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -315,9 +315,9 @@ If ``true``, generates lower detail variants of the mesh which will be displayed
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **meshes/light_baking** = ``1`` :ref:`🔗<class_ResourceImporterScene_property_meshes/light_baking>`
+:ref:`int<class_int>` **meshes/light_baking** = ``1`` :ref:`🔗 <class_ResourceImporterScene_property_meshes/light_baking>`
 
-Configures the meshes' :ref:`GeometryInstance3D.gi_mode<class_GeometryInstance3D_property_gi_mode>` in the 3D scene. If set to **Static Lightmaps**, sets the meshes' GI mode to Static and generates UV2 on import for :ref:`LightmapGI<class_LightmapGI>` baking.
+Cấu hình :ref:`GeometryInstance3D.gi_mode<class_GeometryInstance3D_property_gi_mode>` của các mesh trong scene 3D. Nếu được đặt thành **Static Lightmaps**, đặt chế độ GI của các mesh thành Static và tạo UV2 khi import để thực hiện :ref:`LightmapGI<class_LightmapGI>` baking.
 
 .. rst-class:: classref-item-separator
 
@@ -327,11 +327,11 @@ Configures the meshes' :ref:`GeometryInstance3D.gi_mode<class_GeometryInstance3D
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **meshes/lightmap_texel_size** = ``0.2`` :ref:`🔗<class_ResourceImporterScene_property_meshes/lightmap_texel_size>`
+:ref:`float<class_float>` **meshes/lightmap_texel_size** = ``0.2`` :ref:`🔗 <class_ResourceImporterScene_property_meshes/lightmap_texel_size>`
 
-Controls the size of each texel on the baked lightmap. A smaller value results in more precise lightmaps, at the cost of larger lightmap sizes and longer bake times.
+Kiểm soát kích thước của mỗi texel trên lightmap đã bake. Giá trị nhỏ hơn tạo ra lightmap chính xác hơn, nhưng làm tăng kích thước lightmap và thời gian bake.
 
-\ **Note:** Only effective if :ref:`meshes/light_baking<class_ResourceImporterScene_property_meshes/light_baking>` is set to **Static Lightmaps**.
+\ **Note:** Chỉ có hiệu lực nếu :ref:`meshes/light_baking <class_ResourceImporterScene_property_meshes/light_baking>` được đặt thành **Static Lightmaps**.
 
 .. rst-class:: classref-item-separator
 
@@ -341,9 +341,9 @@ Controls the size of each texel on the baked lightmap. A smaller value results i
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **nodes/apply_root_scale** = ``true`` :ref:`🔗<class_ResourceImporterScene_property_nodes/apply_root_scale>`
+:ref:`bool<class_bool>` **nodes/apply_root_scale** = ``true`` :ref:`🔗 <class_ResourceImporterScene_property_nodes/apply_root_scale>`
 
-If ``true``, :ref:`nodes/root_scale<class_ResourceImporterScene_property_nodes/root_scale>` will be applied to the descendant nodes, meshes, animations, bones, etc. This means that if you add a child node later on within the imported scene, it won't be scaled. If ``false``, :ref:`nodes/root_scale<class_ResourceImporterScene_property_nodes/root_scale>` will multiply the scale of the root node instead.
+Nếu ``true``, :ref:`nodes/root_scale <class_ResourceImporterScene_property_nodes/root_scale>` sẽ được áp dụng cho các node hậu duệ, mesh, animation, bone, v.v. Điều này có nghĩa là nếu sau đó bạn thêm một node con vào scene đã import, node đó sẽ không được scale. Nếu ``false``, :ref:`nodes/root_scale <class_ResourceImporterScene_property_nodes/root_scale>` sẽ thay vào đó nhân với scale của node gốc.
 
 .. rst-class:: classref-item-separator
 
@@ -353,9 +353,9 @@ If ``true``, :ref:`nodes/root_scale<class_ResourceImporterScene_property_nodes/r
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **nodes/import_as_skeleton_bones** = ``false`` :ref:`🔗<class_ResourceImporterScene_property_nodes/import_as_skeleton_bones>`
+:ref:`bool<class_bool>` **nodes/import_as_skeleton_bones** = ``false`` :ref:`🔗 <class_ResourceImporterScene_property_nodes/import_as_skeleton_bones>`
 
-Treat all nodes in the imported scene as if they are bones within a single :ref:`Skeleton3D<class_Skeleton3D>`. Can be used to guarantee that imported animations target skeleton bones rather than nodes. May also be used to assign the ``"Root"`` bone in a :ref:`BoneMap<class_BoneMap>`. See :doc:`Retargeting 3D Skeletons <../tutorials/assets_pipeline/retargeting_3d_skeletons>` for more information.
+Coi tất cả các node trong scene đã nhập như các bone trong một :ref:`Skeleton3D<class_Skeleton3D>`. Có thể dùng để đảm bảo các animation đã nhập nhắm đến các bone của skeleton thay vì các node. Cũng có thể dùng để gán bone ``"Root"`` trong một :ref:`BoneMap<class_BoneMap>`. Xem :doc:`Retargeting 3D Skeletons <../tutorials/assets_pipeline/retargeting_3d_skeletons>` để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -365,9 +365,9 @@ Treat all nodes in the imported scene as if they are bones within a single :ref:
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **nodes/root_name** = ``""`` :ref:`🔗<class_ResourceImporterScene_property_nodes/root_name>`
+:ref:`String<class_String>` **nodes/root_name** = ``""`` :ref:`🔗 <class_ResourceImporterScene_property_nodes/root_name>`
 
-Override for the root node name. If empty, the root node will use what the scene specifies, or the file name if the scene does not specify a root name.
+Ghi đè tên node gốc. Nếu để trống, node gốc sẽ sử dụng tên do scene chỉ định, hoặc tên tệp nếu scene không chỉ định tên gốc.
 
 .. rst-class:: classref-item-separator
 
@@ -377,9 +377,9 @@ Override for the root node name. If empty, the root node will use what the scene
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **nodes/root_scale** = ``1.0`` :ref:`🔗<class_ResourceImporterScene_property_nodes/root_scale>`
+:ref:`float<class_float>` **nodes/root_scale** = ``1.0`` :ref:`🔗 <class_ResourceImporterScene_property_nodes/root_scale>`
 
-The uniform scale to use for the scene root. The default value of ``1.0`` will not perform any rescaling. See :ref:`nodes/apply_root_scale<class_ResourceImporterScene_property_nodes/apply_root_scale>` for details of how this scale is applied.
+Tỷ lệ đồng nhất được sử dụng cho gốc của scene. Giá trị mặc định ``1.0`` sẽ không thực hiện việc đổi tỷ lệ. Xem :ref:`nodes/apply_root_scale <class_ResourceImporterScene_property_nodes/apply_root_scale>` để biết chi tiết về cách áp dụng tỷ lệ này.
 
 .. rst-class:: classref-item-separator
 
@@ -389,9 +389,9 @@ The uniform scale to use for the scene root. The default value of ``1.0`` will n
 
 .. rst-class:: classref-property
 
-:ref:`Script<class_Script>` **nodes/root_script** = ``null`` :ref:`🔗<class_ResourceImporterScene_property_nodes/root_script>`
+:ref:`Script<class_Script>` **nodes/root_script** = ``null`` :ref:`🔗 <class_ResourceImporterScene_property_nodes/root_script>`
 
-If set to a valid script, attaches the script to the root node of the imported scene. If the type of the root node is not compatible with the script, the root node will be replaced with a type that is compatible with the script. This setting can also be used on other non-mesh nodes in the scene to attach scripts to them.
+Nếu được đặt thành một script hợp lệ, script sẽ được gắn vào node gốc của scene đã nhập. Nếu kiểu của node gốc không tương thích với script, node gốc sẽ được thay thế bằng một kiểu tương thích với script. Thiết lập này cũng có thể được sử dụng trên các node không phải mesh khác trong scene để gắn script vào chúng.
 
 .. rst-class:: classref-item-separator
 
@@ -401,9 +401,9 @@ If set to a valid script, attaches the script to the root node of the imported s
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **nodes/root_type** = ``""`` :ref:`🔗<class_ResourceImporterScene_property_nodes/root_type>`
+:ref:`String<class_String>` **nodes/root_type** = ``""`` :ref:`🔗 <class_ResourceImporterScene_property_nodes/root_type>`
 
-Override for the root node type. If empty, the root node will use what the scene specifies, or :ref:`Node3D<class_Node3D>` if the scene does not specify a root type. Using a node type that inherits from :ref:`Node3D<class_Node3D>` is recommended. Otherwise, you'll lose the ability to position the node directly in the 3D editor.
+Ghi đè kiểu node gốc. Nếu để trống, node gốc sẽ sử dụng kiểu do scene chỉ định, hoặc :ref:`Node3D<class_Node3D>` nếu scene không chỉ định kiểu gốc. Khuyến nghị sử dụng một kiểu node kế thừa từ :ref:`Node3D<class_Node3D>`. Nếu không, bạn sẽ mất khả năng định vị node trực tiếp trong trình chỉnh sửa 3D.
 
 .. rst-class:: classref-item-separator
 
@@ -413,9 +413,9 @@ Override for the root node type. If empty, the root node will use what the scene
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **nodes/use_name_suffixes** = ``true`` :ref:`🔗<class_ResourceImporterScene_property_nodes/use_name_suffixes>`
+:ref:`bool<class_bool>` **nodes/use_name_suffixes** = ``true`` :ref:`🔗 <class_ResourceImporterScene_property_nodes/use_name_suffixes>`
 
-If ``true``, will use suffixes in the names of imported objects such as nodes and resources to determine types and properties, such as ``-noimp`` to skip import of a node or animation, ``-alpha`` to enable alpha transparency on a material, and ``-vcol`` to enable vertex colors on a material. Disabling this makes editor-imported files more similar to the original files, and more similar to files imported at runtime. See :doc:`Node type customization using name suffixes <../tutorials/assets_pipeline/importing_3d_scenes/node_type_customization>` for more information.
+Nếu là ``true``, sẽ sử dụng các hậu tố trong tên của các đối tượng đã nhập, chẳng hạn như node và resource, để xác định kiểu và thuộc tính, chẳng hạn như ``-noimp`` để bỏ qua việc nhập một node hoặc animation, ``-alpha`` để bật độ trong suốt alpha trên material và ``-vcol`` để bật màu vertex trên material. Tắt tùy chọn này khiến các tệp được nhập trong trình chỉnh sửa giống với các tệp gốc hơn và giống với các tệp được nhập tại runtime hơn. Xem :doc:`Node type customization using name suffixes <../tutorials/assets_pipeline/importing_3d_scenes/node_type_customization>` để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -425,9 +425,9 @@ If ``true``, will use suffixes in the names of imported objects such as nodes an
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **nodes/use_node_type_suffixes** = ``true`` :ref:`🔗<class_ResourceImporterScene_property_nodes/use_node_type_suffixes>`
+:ref:`bool<class_bool>` **nodes/use_node_type_suffixes** = ``true`` :ref:`🔗 <class_ResourceImporterScene_property_nodes/use_node_type_suffixes>`
 
-If ``true``, will use suffixes in the node names to determine the node type, such as ``-col`` for collision shapes. This is only used when :ref:`nodes/use_name_suffixes<class_ResourceImporterScene_property_nodes/use_name_suffixes>` is ``true``. Disabling this makes editor-imported files more similar to the original files, and more similar to files imported at runtime. See :doc:`Node type customization using name suffixes <../tutorials/assets_pipeline/importing_3d_scenes/node_type_customization>` for more information.
+Nếu là ``true``, sẽ sử dụng các hậu tố trong tên node để xác định kiểu node, chẳng hạn như ``-col`` cho các hình dạng va chạm. Tùy chọn này chỉ được sử dụng khi :ref:`nodes/use_name_suffixes <class_ResourceImporterScene_property_nodes/use_name_suffixes>` là ``true``. Tắt tùy chọn này khiến các tệp được nhập trong trình chỉnh sửa giống với các tệp gốc hơn và giống với các tệp được nhập tại runtime hơn. Xem :doc:`Node type customization using name suffixes <../tutorials/assets_pipeline/importing_3d_scenes/node_type_customization>` để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -437,24 +437,24 @@ If ``true``, will use suffixes in the node names to determine the node type, suc
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **skins/use_named_skins** = ``true`` :ref:`🔗<class_ResourceImporterScene_property_skins/use_named_skins>`
+:ref:`bool<class_bool>` **skins/use_named_skins** = ``true`` :ref:`🔗 <class_ResourceImporterScene_property_skins/use_named_skins>`
 
-If checked, use named :ref:`Skin<class_Skin>`\ s for animation. The :ref:`MeshInstance3D<class_MeshInstance3D>` node contains 3 properties of relevance here: a skeleton :ref:`NodePath<class_NodePath>` pointing to the :ref:`Skeleton3D<class_Skeleton3D>` node (usually ``..``), a mesh, and a skin:
+Nếu được chọn, sử dụng các :ref:`Skin<class_Skin>`\  có tên cho animation. Node :ref:`MeshInstance3D<class_MeshInstance3D>` chứa 3 thuộc tính liên quan ở đây: một :ref:`NodePath<class_NodePath>` skeleton trỏ đến node :ref:`Skeleton3D<class_Skeleton3D>` (thường là ``..``), một mesh và một skin:
 
-- The :ref:`Skeleton3D<class_Skeleton3D>` node contains a list of bones with names, their pose and rest, a name, and a parent bone.
+- Node :ref:`Skeleton3D<class_Skeleton3D>` chứa danh sách các bone cùng tên, pose và rest của chúng, một tên và bone cha.
 
-- The mesh is all of the raw vertex data needed to display a mesh. In terms of the mesh, it knows how vertices are weight-painted and uses some internal numbering often imported from 3D modeling software.
+- Mesh là toàn bộ dữ liệu vertex thô cần thiết để hiển thị một mesh. Xét trên mesh, nó biết các vertex được gán trọng số như thế nào và sử dụng một số đánh số nội bộ thường được nhập từ phần mềm dựng hình 3D.
 
-- The skin contains the information necessary to bind this mesh onto this Skeleton3D. For each of the internal bone IDs chosen by the 3D modeling software, it contains two things. Firstly, a matrix known as the Bind Pose Matrix, Inverse Bind Matrix, or IBM for short. Secondly, the :ref:`Skin<class_Skin>` contains each bone's name (if :ref:`skins/use_named_skins<class_ResourceImporterScene_property_skins/use_named_skins>` is ``true``), or the bone's index within the :ref:`Skeleton3D<class_Skeleton3D>` list (if :ref:`skins/use_named_skins<class_ResourceImporterScene_property_skins/use_named_skins>` is ``false``).
+- Skin chứa thông tin cần thiết để liên kết mesh này với Skeleton3D này. Với mỗi ID bone nội bộ do phần mềm dựng hình 3D chọn, nó chứa hai thành phần. Thứ nhất là một ma trận được gọi là Bind Pose Matrix, Inverse Bind Matrix hoặc viết tắt là IBM. Thứ hai, :ref:`Skin<class_Skin>` chứa tên của từng bone (nếu :ref:`skins/use_named_skins <class_ResourceImporterScene_property_skins/use_named_skins>` là ``true``), hoặc chỉ số của bone trong danh sách :ref:`Skeleton3D<class_Skeleton3D>` (nếu :ref:`skins/use_named_skins <class_ResourceImporterScene_property_skins/use_named_skins>` là ``false``).
 
-Together, this information is enough to tell Godot how to use the bone poses in the :ref:`Skeleton3D<class_Skeleton3D>` node to render the mesh from each :ref:`MeshInstance3D<class_MeshInstance3D>`. Note that each :ref:`MeshInstance3D<class_MeshInstance3D>` may share binds, as is common in models exported from Blender, or each :ref:`MeshInstance3D<class_MeshInstance3D>` may use a separate :ref:`Skin<class_Skin>` object, as is common in models exported from other tools such as Maya.
+Kết hợp lại, thông tin này đủ để cho Godot biết cách sử dụng các pose của bone trong node :ref:`Skeleton3D<class_Skeleton3D>` để render mesh từ mỗi :ref:`MeshInstance3D<class_MeshInstance3D>`. Lưu ý rằng mỗi :ref:`MeshInstance3D<class_MeshInstance3D>` có thể dùng chung các bind, như thường thấy trong các model được export từ Blender, hoặc mỗi :ref:`MeshInstance3D<class_MeshInstance3D>` có thể sử dụng một đối tượng :ref:`Skin<class_Skin>` riêng, như thường thấy trong các model được export từ những công cụ khác như Maya.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường được người dùng override để có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,23 +10,23 @@
 ResourceUID
 ===========
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-A singleton that manages the unique identifiers of all resources within a project.
+Một singleton quản lý các mã định danh duy nhất của mọi tài nguyên trong một project.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Resource UIDs (Unique IDentifiers) allow the engine to keep references between resources intact, even if files are renamed or moved. They can be accessed with ``uid://``.
+UID của tài nguyên (Unique IDentifier - mã định danh duy nhất) cho phép engine duy trì nguyên vẹn các tham chiếu giữa các tài nguyên, ngay cả khi tệp được đổi tên hoặc di chuyển. Có thể truy cập chúng bằng ``uid://``.
 
-\ **ResourceUID** keeps track of all registered resource UIDs in a project, generates new UIDs, and converts between their string and integer representations.
+\ **ResourceUID** theo dõi tất cả UID của tài nguyên đã đăng ký trong một project, tạo UID mới và chuyển đổi giữa biểu diễn dạng chuỗi và số nguyên của chúng.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -63,8 +63,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Constants
----------
+Các hằng số
+-----------
 
 .. _class_ResourceUID_constant_INVALID_ID:
 
@@ -72,9 +72,9 @@ Constants
 
 **INVALID_ID** = ``-1`` :ref:`🔗<class_ResourceUID_constant_INVALID_ID>`
 
-The value to use for an invalid UID, for example if the resource could not be loaded.
+Giá trị được sử dụng cho một UID không hợp lệ, chẳng hạn khi không thể tải tài nguyên.
 
-Its text representation is ``uid://<invalid>``.
+Biểu diễn dạng văn bản của nó là ``uid://<invalid>``.
 
 .. rst-class:: classref-section-separator
 
@@ -82,8 +82,8 @@ Its text representation is ``uid://<invalid>``.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả các phương thức
+---------------------
 
 .. _class_ResourceUID_method_add_id:
 
@@ -91,9 +91,9 @@ Method Descriptions
 
 |void| **add_id**\ (\ id\: :ref:`int<class_int>`, path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_ResourceUID_method_add_id>`
 
-Adds a new UID value which is mapped to the given resource path.
+Thêm một giá trị UID mới được ánh xạ tới đường dẫn tài nguyên đã cho.
 
-Fails with an error if the UID already exists, so be sure to check :ref:`has_id()<class_ResourceUID_method_has_id>` beforehand, or use :ref:`set_id()<class_ResourceUID_method_set_id>` instead.
+Phương thức sẽ thất bại với một lỗi nếu UID đã tồn tại, vì vậy hãy nhớ kiểm tra :ref:`has_id()<class_ResourceUID_method_has_id>` trước hoặc sử dụng :ref:`set_id()<class_ResourceUID_method_set_id>` thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -105,9 +105,9 @@ Fails with an error if the UID already exists, so be sure to check :ref:`has_id(
 
 :ref:`int<class_int>` **create_id**\ (\ ) :ref:`🔗<class_ResourceUID_method_create_id>`
 
-Generates a random resource UID which is guaranteed to be unique within the list of currently loaded UIDs.
+Tạo một UID tài nguyên ngẫu nhiên, được đảm bảo là duy nhất trong danh sách các UID hiện đang được tải.
 
-In order for this UID to be registered, you must call :ref:`add_id()<class_ResourceUID_method_add_id>` or :ref:`set_id()<class_ResourceUID_method_set_id>`.
+Để UID này được đăng ký, bạn phải gọi :ref:`add_id()<class_ResourceUID_method_add_id>` hoặc :ref:`set_id()<class_ResourceUID_method_set_id>`.
 
 .. rst-class:: classref-item-separator
 
@@ -119,7 +119,7 @@ In order for this UID to be registered, you must call :ref:`add_id()<class_Resou
 
 :ref:`int<class_int>` **create_id_for_path**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_ResourceUID_method_create_id_for_path>`
 
-Like :ref:`create_id()<class_ResourceUID_method_create_id>`, but the UID is seeded with the provided ``path`` and project name. UIDs generated for that path will be always the same within the current project.
+Tương tự :ref:`create_id()<class_ResourceUID_method_create_id>`, nhưng UID được khởi tạo bằng ``path`` và tên project được cung cấp. Các UID được tạo cho đường dẫn đó sẽ luôn giống nhau trong project hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -131,7 +131,7 @@ Like :ref:`create_id()<class_ResourceUID_method_create_id>`, but the UID is seed
 
 :ref:`String<class_String>` **ensure_path**\ (\ path_or_uid\: :ref:`String<class_String>`\ ) |static| :ref:`🔗<class_ResourceUID_method_ensure_path>`
 
-Returns a path, converting ``path_or_uid`` if necessary. Fails and returns an empty string if an invalid UID is provided.
+Trả về một đường dẫn, chuyển đổi ``path_or_uid`` nếu cần. Phương thức sẽ thất bại và trả về một chuỗi rỗng nếu UID được cung cấp không hợp lệ.
 
 .. rst-class:: classref-item-separator
 
@@ -143,9 +143,9 @@ Returns a path, converting ``path_or_uid`` if necessary. Fails and returns an em
 
 :ref:`String<class_String>` **get_id_path**\ (\ id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ResourceUID_method_get_id_path>`
 
-Returns the path that the given UID value refers to.
+Trả về đường dẫn mà giá trị UID đã cho tham chiếu tới.
 
-Fails with an error if the UID does not exist, so be sure to check :ref:`has_id()<class_ResourceUID_method_has_id>` beforehand.
+Phương thức sẽ thất bại với một lỗi nếu UID không tồn tại, vì vậy hãy nhớ kiểm tra :ref:`has_id()<class_ResourceUID_method_has_id>` trước.
 
 .. rst-class:: classref-item-separator
 
@@ -157,7 +157,7 @@ Fails with an error if the UID does not exist, so be sure to check :ref:`has_id(
 
 :ref:`bool<class_bool>` **has_id**\ (\ id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ResourceUID_method_has_id>`
 
-Returns whether the given UID value is known to the cache.
+Trả về việc giá trị UID đã cho có được biết trong cache hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -169,7 +169,7 @@ Returns whether the given UID value is known to the cache.
 
 :ref:`String<class_String>` **id_to_text**\ (\ id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ResourceUID_method_id_to_text>`
 
-Converts the given UID to a ``uid://`` string value.
+Chuyển đổi UID đã cho thành một giá trị chuỗi ``uid://``.
 
 .. rst-class:: classref-item-separator
 
@@ -181,7 +181,7 @@ Converts the given UID to a ``uid://`` string value.
 
 :ref:`String<class_String>` **path_to_uid**\ (\ path\: :ref:`String<class_String>`\ ) |static| :ref:`🔗<class_ResourceUID_method_path_to_uid>`
 
-Converts the provided resource ``path`` to a UID. Returns the unchanged path if it has no associated UID.
+Chuyển đổi ``path`` tài nguyên đã cung cấp thành một UID. Trả về đường dẫn không thay đổi nếu đường dẫn đó không có UID liên kết.
 
 .. rst-class:: classref-item-separator
 
@@ -193,9 +193,9 @@ Converts the provided resource ``path`` to a UID. Returns the unchanged path if 
 
 |void| **remove_id**\ (\ id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_ResourceUID_method_remove_id>`
 
-Removes a loaded UID value from the cache.
+Xóa một giá trị UID đã tải khỏi cache.
 
-Fails with an error if the UID does not exist, so be sure to check :ref:`has_id()<class_ResourceUID_method_has_id>` beforehand.
+Phương thức sẽ thất bại với một lỗi nếu UID không tồn tại, vì vậy hãy nhớ kiểm tra :ref:`has_id()<class_ResourceUID_method_has_id>` trước.
 
 .. rst-class:: classref-item-separator
 
@@ -207,9 +207,9 @@ Fails with an error if the UID does not exist, so be sure to check :ref:`has_id(
 
 |void| **set_id**\ (\ id\: :ref:`int<class_int>`, path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_ResourceUID_method_set_id>`
 
-Updates the resource path of an existing UID.
+Cập nhật đường dẫn tài nguyên của một UID hiện có.
 
-Fails with an error if the UID does not exist, so be sure to check :ref:`has_id()<class_ResourceUID_method_has_id>` beforehand, or use :ref:`add_id()<class_ResourceUID_method_add_id>` instead.
+Phương thức sẽ thất bại với một lỗi nếu UID không tồn tại, vì vậy hãy nhớ kiểm tra :ref:`has_id()<class_ResourceUID_method_has_id>` trước hoặc sử dụng :ref:`add_id()<class_ResourceUID_method_add_id>` thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -221,7 +221,7 @@ Fails with an error if the UID does not exist, so be sure to check :ref:`has_id(
 
 :ref:`int<class_int>` **text_to_id**\ (\ text_id\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_ResourceUID_method_text_to_id>`
 
-Extracts the UID value from the given ``uid://`` string.
+Trích xuất giá trị UID từ chuỗi ``uid://`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -233,14 +233,14 @@ Extracts the UID value from the given ``uid://`` string.
 
 :ref:`String<class_String>` **uid_to_path**\ (\ uid\: :ref:`String<class_String>`\ ) |static| :ref:`🔗<class_ResourceUID_method_uid_to_path>`
 
-Converts the provided ``uid`` to a path. Prints an error if the UID is invalid.
+Chuyển đổi ``uid`` đã cung cấp thành một đường dẫn. In lỗi nếu UID không hợp lệ.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

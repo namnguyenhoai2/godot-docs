@@ -10,73 +10,73 @@
 TextMesh
 ========
 
-**Inherits:** :ref:`PrimitiveMesh<class_PrimitiveMesh>` **<** :ref:`Mesh<class_Mesh>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`PrimitiveMesh<class_PrimitiveMesh>` **<** :ref:`Mesh<class_Mesh>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Generate a :ref:`PrimitiveMesh<class_PrimitiveMesh>` from the text.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Generate a :ref:`PrimitiveMesh<class_PrimitiveMesh>` from the text.
-
-TextMesh can be generated only when using dynamic fonts with vector glyph contours. Bitmap fonts (including bitmap data in the TrueType/OpenType containers, like color emoji fonts) are not supported.
-
-The UV layout is arranged in 4 horizontal strips, top to bottom: 40% of the height for the front face, 40% for the back face, 10% for the outer edges and 10% for the inner edges.
+Tạo một :ref:`PrimitiveMesh<class_PrimitiveMesh>` từ văn bản.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Tạo một :ref:`PrimitiveMesh<class_PrimitiveMesh>` từ văn bản.
+
+Chỉ có thể tạo TextMesh khi sử dụng các font động có đường bao glyph vector. Font bitmap (bao gồm dữ liệu bitmap trong các container TrueType/OpenType, chẳng hạn như font emoji màu) không được hỗ trợ.
+
+Bố cục UV được sắp xếp thành 4 dải ngang, từ trên xuống dưới: 40% chiều cao cho mặt trước, 40% cho mặt sau, 10% cho các cạnh ngoài và 10% cho các cạnh trong.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`3D text <../tutorials/3d/3d_text>`
+- :doc:`Văn bản 3D <../tutorials/3d/3d_text>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
-   | :ref:`AutowrapMode<enum_TextServer_AutowrapMode>`                         | :ref:`autowrap_mode<class_TextMesh_property_autowrap_mode>`                                                 | ``0``             |
-   +---------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
-   | :ref:`float<class_float>`                                                 | :ref:`curve_step<class_TextMesh_property_curve_step>`                                                       | ``0.5``           |
-   +---------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
-   | :ref:`float<class_float>`                                                 | :ref:`depth<class_TextMesh_property_depth>`                                                                 | ``0.05``          |
-   +---------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
-   | :ref:`Font<class_Font>`                                                   | :ref:`font<class_TextMesh_property_font>`                                                                   |                   |
-   +---------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
-   | :ref:`int<class_int>`                                                     | :ref:`font_size<class_TextMesh_property_font_size>`                                                         | ``16``            |
-   +---------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
-   | :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>`         | :ref:`horizontal_alignment<class_TextMesh_property_horizontal_alignment>`                                   | ``1``             |
-   +---------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
-   | |bitfield|\[:ref:`JustificationFlag<enum_TextServer_JustificationFlag>`\] | :ref:`justification_flags<class_TextMesh_property_justification_flags>`                                     | ``163``           |
-   +---------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
-   | :ref:`String<class_String>`                                               | :ref:`language<class_TextMesh_property_language>`                                                           | ``""``            |
-   +---------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
-   | :ref:`float<class_float>`                                                 | :ref:`line_spacing<class_TextMesh_property_line_spacing>`                                                   | ``0.0``           |
-   +---------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
-   | :ref:`Vector2<class_Vector2>`                                             | :ref:`offset<class_TextMesh_property_offset>`                                                               | ``Vector2(0, 0)`` |
-   +---------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
-   | :ref:`float<class_float>`                                                 | :ref:`pixel_size<class_TextMesh_property_pixel_size>`                                                       | ``0.01``          |
-   +---------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
-   | :ref:`StructuredTextParser<enum_TextServer_StructuredTextParser>`         | :ref:`structured_text_bidi_override<class_TextMesh_property_structured_text_bidi_override>`                 | ``0``             |
-   +---------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
-   | :ref:`Array<class_Array>`                                                 | :ref:`structured_text_bidi_override_options<class_TextMesh_property_structured_text_bidi_override_options>` | ``[]``            |
-   +---------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
-   | :ref:`String<class_String>`                                               | :ref:`text<class_TextMesh_property_text>`                                                                   | ``""``            |
-   +---------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
-   | :ref:`Direction<enum_TextServer_Direction>`                               | :ref:`text_direction<class_TextMesh_property_text_direction>`                                               | ``0``             |
-   +---------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
-   | :ref:`bool<class_bool>`                                                   | :ref:`uppercase<class_TextMesh_property_uppercase>`                                                         | ``false``         |
-   +---------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
-   | :ref:`VerticalAlignment<enum_@GlobalScope_VerticalAlignment>`             | :ref:`vertical_alignment<class_TextMesh_property_vertical_alignment>`                                       | ``1``             |
-   +---------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
-   | :ref:`float<class_float>`                                                 | :ref:`width<class_TextMesh_property_width>`                                                                 | ``500.0``         |
-   +---------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
+   +----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
+   | :ref:`AutowrapMode <enum_TextServer_AutowrapMode>`                         | :ref:`autowrap_mode<class_TextMesh_property_autowrap_mode>`                                                 | ``0``             |
+   +----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
+   | :ref:`float<class_float>`                                                  | :ref:`curve_step<class_TextMesh_property_curve_step>`                                                       | ``0.5``           |
+   +----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
+   | :ref:`float<class_float>`                                                  | :ref:`depth<class_TextMesh_property_depth>`                                                                 | ``0.05``          |
+   +----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
+   | :ref:`Font<class_Font>`                                                    | :ref:`font<class_TextMesh_property_font>`                                                                   |                   |
+   +----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
+   | :ref:`int<class_int>`                                                      | :ref:`font_size<class_TextMesh_property_font_size>`                                                         | ``16``            |
+   +----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
+   | :ref:`HorizontalAlignment <enum_@GlobalScope_HorizontalAlignment>`         | :ref:`horizontal_alignment<class_TextMesh_property_horizontal_alignment>`                                   | ``1``             |
+   +----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
+   | |bitfield|\[:ref:`JustificationFlag <enum_TextServer_JustificationFlag>`\] | :ref:`justification_flags<class_TextMesh_property_justification_flags>`                                     | ``163``           |
+   +----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
+   | :ref:`String<class_String>`                                                | :ref:`language<class_TextMesh_property_language>`                                                           | ``""``            |
+   +----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
+   | :ref:`float<class_float>`                                                  | :ref:`line_spacing<class_TextMesh_property_line_spacing>`                                                   | ``0.0``           |
+   +----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
+   | :ref:`Vector2<class_Vector2>`                                              | :ref:`offset<class_TextMesh_property_offset>`                                                               | ``Vector2(0, 0)`` |
+   +----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
+   | :ref:`float<class_float>`                                                  | :ref:`pixel_size<class_TextMesh_property_pixel_size>`                                                       | ``0.01``          |
+   +----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
+   | :ref:`StructuredTextParser <enum_TextServer_StructuredTextParser>`         | :ref:`structured_text_bidi_override<class_TextMesh_property_structured_text_bidi_override>`                 | ``0``             |
+   +----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
+   | :ref:`Array<class_Array>`                                                  | :ref:`structured_text_bidi_override_options<class_TextMesh_property_structured_text_bidi_override_options>` | ``[]``            |
+   +----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
+   | :ref:`String<class_String>`                                                | :ref:`text<class_TextMesh_property_text>`                                                                   | ``""``            |
+   +----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
+   | :ref:`Direction <enum_TextServer_Direction>`                               | :ref:`text_direction<class_TextMesh_property_text_direction>`                                               | ``0``             |
+   +----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
+   | :ref:`bool<class_bool>`                                                    | :ref:`uppercase<class_TextMesh_property_uppercase>`                                                         | ``false``         |
+   +----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
+   | :ref:`VerticalAlignment <enum_@GlobalScope_VerticalAlignment>`             | :ref:`vertical_alignment<class_TextMesh_property_vertical_alignment>`                                       | ``1``             |
+   +----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
+   | :ref:`float<class_float>`                                                  | :ref:`width<class_TextMesh_property_width>`                                                                 | ``500.0``         |
+   +----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -84,8 +84,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_TextMesh_property_autowrap_mode:
 
@@ -98,7 +98,7 @@ Property Descriptions
 - |void| **set_autowrap_mode**\ (\ value\: :ref:`AutowrapMode<enum_TextServer_AutowrapMode>`\ )
 - :ref:`AutowrapMode<enum_TextServer_AutowrapMode>` **get_autowrap_mode**\ (\ )
 
-If set to something other than :ref:`TextServer.AUTOWRAP_OFF<class_TextServer_constant_AUTOWRAP_OFF>`, the text gets wrapped inside the node's bounding rectangle. If you resize the node, it will change its height automatically to show all the text.
+Nếu được đặt thành giá trị khác :ref:`TextServer.AUTOWRAP_OFF<class_TextServer_constant_AUTOWRAP_OFF>`, văn bản sẽ được ngắt dòng bên trong hình chữ nhật giới hạn của node. Nếu bạn thay đổi kích thước node, chiều cao của node sẽ tự động thay đổi để hiển thị toàn bộ văn bản.
 
 .. rst-class:: classref-item-separator
 
@@ -115,9 +115,9 @@ If set to something other than :ref:`TextServer.AUTOWRAP_OFF<class_TextServer_co
 - |void| **set_curve_step**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_curve_step**\ (\ )
 
-Step (in pixels) used to approximate Bézier curves. Lower values result in smoother curves, but is slower to generate and render. Consider adjusting this according to the font size and the typical viewing distance.
+Bước (tính bằng pixel) dùng để xấp xỉ các đường cong Bézier. Giá trị thấp hơn tạo ra các đường cong mượt hơn, nhưng việc tạo và kết xuất sẽ chậm hơn. Hãy cân nhắc điều chỉnh giá trị này tùy theo cỡ font và khoảng cách quan sát thông thường.
 
-\ **Note:** Changing this property will regenerate the mesh, which is a slow operation, especially with large font sizes and long texts.
+\ **Lưu ý:** Việc thay đổi thuộc tính này sẽ tạo lại mesh, đây là một thao tác chậm, đặc biệt với cỡ font lớn và văn bản dài.
 
 .. rst-class:: classref-item-separator
 
@@ -134,7 +134,7 @@ Step (in pixels) used to approximate Bézier curves. Lower values result in smoo
 - |void| **set_depth**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_depth**\ (\ )
 
-Depths of the mesh, if set to ``0.0`` only front surface, is generated, and UV layout is changed to use full texture for the front face only.
+Độ sâu của mesh; nếu được đặt thành ``0.0`` thì chỉ tạo bề mặt trước, và bố cục UV được thay đổi để chỉ sử dụng toàn bộ texture cho mặt trước.
 
 .. rst-class:: classref-item-separator
 
@@ -144,14 +144,14 @@ Depths of the mesh, if set to ``0.0`` only front surface, is generated, and UV l
 
 .. rst-class:: classref-property
 
-:ref:`Font<class_Font>` **font** :ref:`🔗<class_TextMesh_property_font>`
+:ref:`Font<class_Font>` **font** :ref:`🔗 <class_TextMesh_property_font>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_font**\ (\ value\: :ref:`Font<class_Font>`\ )
 - :ref:`Font<class_Font>` **get_font**\ (\ )
 
-Font configuration used to display text.
+Cấu hình font dùng để hiển thị văn bản.
 
 .. rst-class:: classref-item-separator
 
@@ -168,9 +168,9 @@ Font configuration used to display text.
 - |void| **set_font_size**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_font_size**\ (\ )
 
-Font size of the **TextMesh**'s text. This property works in tandem with :ref:`pixel_size<class_TextMesh_property_pixel_size>`. Higher values will result in a more detailed font, regardless of :ref:`curve_step<class_TextMesh_property_curve_step>` and :ref:`pixel_size<class_TextMesh_property_pixel_size>`. Consider keeping this value below 63 (inclusive) for good performance, and adjust :ref:`pixel_size<class_TextMesh_property_pixel_size>` as needed to enlarge text.
+Cỡ font của văn bản của **TextMesh**. Thuộc tính này hoạt động cùng với :ref:`pixel_size<class_TextMesh_property_pixel_size>`. Giá trị cao hơn sẽ tạo ra font chi tiết hơn, bất kể :ref:`curve_step<class_TextMesh_property_curve_step>` và :ref:`pixel_size<class_TextMesh_property_pixel_size>`. Để có hiệu năng tốt, hãy cân nhắc giữ giá trị này ở mức không quá 63 (bao gồm 63), và điều chỉnh :ref:`pixel_size<class_TextMesh_property_pixel_size>` khi cần để phóng to văn bản.
 
-\ **Note:** Changing this property will regenerate the mesh, which is a slow operation, especially with large font sizes and long texts. To change the text's size in real-time efficiently, change the node's :ref:`Node3D.scale<class_Node3D_property_scale>` instead.
+\ **Lưu ý:** Việc thay đổi thuộc tính này sẽ tạo lại mesh, đây là một thao tác chậm, đặc biệt với cỡ font lớn và văn bản dài. Để thay đổi cỡ văn bản hiệu quả trong thời gian thực, hãy thay đổi :ref:`Node3D.scale<class_Node3D_property_scale>` của node.
 
 .. rst-class:: classref-item-separator
 
@@ -187,7 +187,7 @@ Font size of the **TextMesh**'s text. This property works in tandem with :ref:`p
 - |void| **set_horizontal_alignment**\ (\ value\: :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>`\ )
 - :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>` **get_horizontal_alignment**\ (\ )
 
-Controls the text's horizontal alignment. Supports left, center, right, and fill (also known as justify).
+Điều khiển căn chỉnh ngang của văn bản. Hỗ trợ trái, giữa, phải và fill (còn gọi là justify).
 
 .. rst-class:: classref-item-separator
 
@@ -204,7 +204,7 @@ Controls the text's horizontal alignment. Supports left, center, right, and fill
 - |void| **set_justification_flags**\ (\ value\: |bitfield|\[:ref:`JustificationFlag<enum_TextServer_JustificationFlag>`\]\ )
 - |bitfield|\[:ref:`JustificationFlag<enum_TextServer_JustificationFlag>`\] **get_justification_flags**\ (\ )
 
-Line fill alignment rules.
+Các quy tắc căn chỉnh fill của dòng.
 
 .. rst-class:: classref-item-separator
 
@@ -221,7 +221,7 @@ Line fill alignment rules.
 - |void| **set_language**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_language**\ (\ )
 
-Language code used for line-breaking and text shaping algorithms. If left empty, the current locale is used instead.
+Mã ngôn ngữ dùng cho các thuật toán ngắt dòng và shaping văn bản. Nếu để trống, locale hiện tại sẽ được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -238,7 +238,7 @@ Language code used for line-breaking and text shaping algorithms. If left empty,
 - |void| **set_line_spacing**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_line_spacing**\ (\ )
 
-Additional vertical spacing between lines (in pixels), spacing is added to line descent. This value can be negative.
+Khoảng cách dọc bổ sung giữa các dòng (tính bằng pixel); khoảng cách được cộng vào độ đi xuống của dòng. Giá trị này có thể là số âm.
 
 .. rst-class:: classref-item-separator
 
@@ -255,9 +255,9 @@ Additional vertical spacing between lines (in pixels), spacing is added to line 
 - |void| **set_offset**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_offset**\ (\ )
 
-The text drawing offset (in pixels).
+Độ lệch khi vẽ văn bản (tính bằng pixel).
 
-\ **Note:** Changing this property will regenerate the mesh, which is a slow operation. To change the text's position in real-time efficiently, change the node's :ref:`Node3D.position<class_Node3D_property_position>` instead.
+\ **Lưu ý:** Việc thay đổi thuộc tính này sẽ tạo lại mesh, đây là một thao tác chậm. Để thay đổi vị trí văn bản hiệu quả trong thời gian thực, hãy thay đổi :ref:`Node3D.position<class_Node3D_property_position>` của node.
 
 .. rst-class:: classref-item-separator
 
@@ -274,9 +274,9 @@ The text drawing offset (in pixels).
 - |void| **set_pixel_size**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_pixel_size**\ (\ )
 
-The size of one pixel's width on the text to scale it in 3D. This property works in tandem with :ref:`font_size<class_TextMesh_property_font_size>`.
+Độ rộng của một pixel trên văn bản dùng để scale văn bản trong 3D. Thuộc tính này hoạt động cùng với :ref:`font_size<class_TextMesh_property_font_size>`.
 
-\ **Note:** Changing this property will regenerate the mesh, which is a slow operation, especially with large font sizes and long texts. To change the text's size in real-time efficiently, change the node's :ref:`Node3D.scale<class_Node3D_property_scale>` instead.
+\ **Lưu ý:** Việc thay đổi thuộc tính này sẽ tạo lại mesh, đây là một thao tác chậm, đặc biệt với cỡ font lớn và văn bản dài. Để thay đổi cỡ văn bản hiệu quả trong thời gian thực, hãy thay đổi :ref:`Node3D.scale<class_Node3D_property_scale>` của node.
 
 .. rst-class:: classref-item-separator
 
@@ -293,7 +293,7 @@ The size of one pixel's width on the text to scale it in 3D. This property works
 - |void| **set_structured_text_bidi_override**\ (\ value\: :ref:`StructuredTextParser<enum_TextServer_StructuredTextParser>`\ )
 - :ref:`StructuredTextParser<enum_TextServer_StructuredTextParser>` **get_structured_text_bidi_override**\ (\ )
 
-Set BiDi algorithm override for the structured text.
+Đặt ghi đè thuật toán BiDi cho văn bản có cấu trúc.
 
 .. rst-class:: classref-item-separator
 
@@ -310,7 +310,7 @@ Set BiDi algorithm override for the structured text.
 - |void| **set_structured_text_bidi_override_options**\ (\ value\: :ref:`Array<class_Array>`\ )
 - :ref:`Array<class_Array>` **get_structured_text_bidi_override_options**\ (\ )
 
-Set additional options for BiDi override.
+Đặt các tùy chọn bổ sung cho ghi đè BiDi.
 
 .. rst-class:: classref-item-separator
 
@@ -327,9 +327,9 @@ Set additional options for BiDi override.
 - |void| **set_text**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_text**\ (\ )
 
-The text to generate mesh from.
+Văn bản dùng để tạo mesh.
 
-\ **Note:** Due to being a :ref:`Resource<class_Resource>`, it doesn't follow the rules of :ref:`Node.auto_translate_mode<class_Node_property_auto_translate_mode>`. If disabling translation is desired, it should be done manually with :ref:`Object.set_message_translation()<class_Object_method_set_message_translation>`.
+\ **Lưu ý:** Vì là một :ref:`Resource<class_Resource>`, nó không tuân theo các quy tắc của :ref:`Node.auto_translate_mode<class_Node_property_auto_translate_mode>`. Nếu muốn tắt việc dịch, bạn phải thực hiện thủ công bằng :ref:`Object.set_message_translation()<class_Object_method_set_message_translation>`.
 
 .. rst-class:: classref-item-separator
 
@@ -346,7 +346,7 @@ The text to generate mesh from.
 - |void| **set_text_direction**\ (\ value\: :ref:`Direction<enum_TextServer_Direction>`\ )
 - :ref:`Direction<enum_TextServer_Direction>` **get_text_direction**\ (\ )
 
-Base text writing direction.
+Hướng viết cơ sở của văn bản.
 
 .. rst-class:: classref-item-separator
 
@@ -363,7 +363,7 @@ Base text writing direction.
 - |void| **set_uppercase**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_uppercase**\ (\ )
 
-If ``true``, all the text displays as UPPERCASE.
+Nếu ``true``, toàn bộ văn bản sẽ được hiển thị bằng CHỮ IN HOA.
 
 .. rst-class:: classref-item-separator
 
@@ -380,7 +380,7 @@ If ``true``, all the text displays as UPPERCASE.
 - |void| **set_vertical_alignment**\ (\ value\: :ref:`VerticalAlignment<enum_@GlobalScope_VerticalAlignment>`\ )
 - :ref:`VerticalAlignment<enum_@GlobalScope_VerticalAlignment>` **get_vertical_alignment**\ (\ )
 
-Controls the text's vertical alignment. Supports top, center, and bottom.
+Điều khiển căn chỉnh dọc của văn bản. Hỗ trợ trên, giữa và dưới.
 
 .. rst-class:: classref-item-separator
 
@@ -397,14 +397,14 @@ Controls the text's vertical alignment. Supports top, center, and bottom.
 - |void| **set_width**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_width**\ (\ )
 
-Text width (in pixels), used for fill alignment.
+Độ rộng văn bản (tính bằng pixel), dùng cho căn chỉnh fill.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

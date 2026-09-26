@@ -10,38 +10,38 @@
 RDVertexAttribute
 =================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Vertex attribute (used by :ref:`RenderingDevice<class_RenderingDevice>`).
+Thuộc tính đỉnh (được sử dụng bởi :ref:`RenderingDevice<class_RenderingDevice>`).
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This object is used by :ref:`RenderingDevice<class_RenderingDevice>`.
+Đối tượng này được sử dụng bởi :ref:`RenderingDevice<class_RenderingDevice>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +--------------------------------------------------------------+--------------------------------------------------------------+----------------+
-   | :ref:`int<class_int>`                                        | :ref:`binding<class_RDVertexAttribute_property_binding>`     | ``4294967295`` |
-   +--------------------------------------------------------------+--------------------------------------------------------------+----------------+
-   | :ref:`DataFormat<enum_RenderingDevice_DataFormat>`           | :ref:`format<class_RDVertexAttribute_property_format>`       | ``232``        |
-   +--------------------------------------------------------------+--------------------------------------------------------------+----------------+
-   | :ref:`VertexFrequency<enum_RenderingDevice_VertexFrequency>` | :ref:`frequency<class_RDVertexAttribute_property_frequency>` | ``0``          |
-   +--------------------------------------------------------------+--------------------------------------------------------------+----------------+
-   | :ref:`int<class_int>`                                        | :ref:`location<class_RDVertexAttribute_property_location>`   | ``0``          |
-   +--------------------------------------------------------------+--------------------------------------------------------------+----------------+
-   | :ref:`int<class_int>`                                        | :ref:`offset<class_RDVertexAttribute_property_offset>`       | ``0``          |
-   +--------------------------------------------------------------+--------------------------------------------------------------+----------------+
-   | :ref:`int<class_int>`                                        | :ref:`stride<class_RDVertexAttribute_property_stride>`       | ``0``          |
-   +--------------------------------------------------------------+--------------------------------------------------------------+----------------+
+   +---------------------------------------------------------------+--------------------------------------------------------------+----------------+
+   | :ref:`int<class_int>`                                         | :ref:`binding<class_RDVertexAttribute_property_binding>`     | ``4294967295`` |
+   +---------------------------------------------------------------+--------------------------------------------------------------+----------------+
+   | :ref:`DataFormat <enum_RenderingDevice_DataFormat>`           | :ref:`format<class_RDVertexAttribute_property_format>`       | ``232``        |
+   +---------------------------------------------------------------+--------------------------------------------------------------+----------------+
+   | :ref:`VertexFrequency <enum_RenderingDevice_VertexFrequency>` | :ref:`frequency<class_RDVertexAttribute_property_frequency>` | ``0``          |
+   +---------------------------------------------------------------+--------------------------------------------------------------+----------------+
+   | :ref:`int<class_int>`                                         | :ref:`location<class_RDVertexAttribute_property_location>`   | ``0``          |
+   +---------------------------------------------------------------+--------------------------------------------------------------+----------------+
+   | :ref:`int<class_int>`                                         | :ref:`offset<class_RDVertexAttribute_property_offset>`       | ``0``          |
+   +---------------------------------------------------------------+--------------------------------------------------------------+----------------+
+   | :ref:`int<class_int>`                                         | :ref:`stride<class_RDVertexAttribute_property_stride>`       | ``0``          |
+   +---------------------------------------------------------------+--------------------------------------------------------------+----------------+
 
 .. rst-class:: classref-section-separator
 
@@ -49,8 +49,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_RDVertexAttribute_property_binding:
 
@@ -63,9 +63,9 @@ Property Descriptions
 - |void| **set_binding**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_binding**\ (\ )
 
-The index of the buffer in the vertex buffer array to bind this vertex attribute. When set to ``-1``, it defaults to the index of the attribute.
+Chỉ mục của buffer trong mảng vertex buffer để liên kết thuộc tính đỉnh này. Khi được đặt thành ``-1``, giá trị mặc định là chỉ mục của thuộc tính.
 
-\ **Note:** You cannot mix binding explicitly assigned attributes with implicitly assigned ones (i.e. ``-1``). Either all attributes must have their binding set to ``-1``, or all must have explicit bindings.
+\ **Lưu ý:** Bạn không thể kết hợp các thuộc tính được gán binding một cách tường minh với các thuộc tính được gán ngầm (tức là ``-1``). Tất cả thuộc tính phải có binding được đặt thành ``-1``, hoặc tất cả phải có binding tường minh.
 
 .. rst-class:: classref-item-separator
 
@@ -82,7 +82,7 @@ The index of the buffer in the vertex buffer array to bind this vertex attribute
 - |void| **set_format**\ (\ value\: :ref:`DataFormat<enum_RenderingDevice_DataFormat>`\ )
 - :ref:`DataFormat<enum_RenderingDevice_DataFormat>` **get_format**\ (\ )
 
-The way that this attribute's data is interpreted when sent to a shader.
+Cách diễn giải dữ liệu của thuộc tính này khi được gửi đến shader.
 
 .. rst-class:: classref-item-separator
 
@@ -99,7 +99,7 @@ The way that this attribute's data is interpreted when sent to a shader.
 - |void| **set_frequency**\ (\ value\: :ref:`VertexFrequency<enum_RenderingDevice_VertexFrequency>`\ )
 - :ref:`VertexFrequency<enum_RenderingDevice_VertexFrequency>` **get_frequency**\ (\ )
 
-The rate at which this attribute is pulled from its vertex buffer.
+Tần suất thuộc tính này được lấy từ vertex buffer của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -116,7 +116,7 @@ The rate at which this attribute is pulled from its vertex buffer.
 - |void| **set_location**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_location**\ (\ )
 
-The location in the shader that this attribute is bound to.
+Vị trí trong shader mà thuộc tính này được liên kết.
 
 .. rst-class:: classref-item-separator
 
@@ -133,7 +133,7 @@ The location in the shader that this attribute is bound to.
 - |void| **set_offset**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_offset**\ (\ )
 
-The number of bytes between the start of the vertex buffer and the first instance of this attribute.
+Số byte giữa đầu vertex buffer và vị trí bắt đầu của trường hợp đầu tiên của thuộc tính này.
 
 .. rst-class:: classref-item-separator
 
@@ -150,14 +150,14 @@ The number of bytes between the start of the vertex buffer and the first instanc
 - |void| **set_stride**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_stride**\ (\ )
 
-The number of bytes between the starts of consecutive instances of this attribute.
+Số byte giữa vị trí bắt đầu của các trường hợp liên tiếp của thuộc tính này.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

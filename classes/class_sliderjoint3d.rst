@@ -10,84 +10,84 @@
 SliderJoint3D
 =============
 
-**Inherits:** :ref:`Joint3D<class_Joint3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Joint3D<class_Joint3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A physics joint that restricts the movement of a 3D physics body along an axis relative to another physics body.
+Một joint vật lý hạn chế chuyển động của một physics body 3D dọc theo một trục so với một physics body khác.
 
 .. rst-class:: classref-introduction-group
 
-Description
+Mô tả
+-----
+
+Một joint vật lý hạn chế chuyển động của một physics body 3D dọc theo một trục so với một physics body khác. Ví dụ, Body A có thể là một :ref:`StaticBody3D<class_StaticBody3D>` đại diện cho đế piston, trong khi Body B có thể là một :ref:`RigidBody3D<class_RigidBody3D>` đại diện cho đầu piston, chuyển động lên xuống.
+
+.. rst-class:: classref-reftable-group
+
+Các thuộc tính
+--------------
+
+.. table::
+   :widths: auto
+
+   +---------------------------+-----------------------------------------------------------------------------------------------+----------+
+   | :ref:`float<class_float>` | :ref:`angular_limit/damping <class_SliderJoint3D_property_angular_limit/damping>`             | ``0.0``  |
+   +---------------------------+-----------------------------------------------------------------------------------------------+----------+
+   | :ref:`float<class_float>` | :ref:`angular_limit/lower_angle <class_SliderJoint3D_property_angular_limit/lower_angle>`     | ``0.0``  |
+   +---------------------------+-----------------------------------------------------------------------------------------------+----------+
+   | :ref:`float<class_float>` | :ref:`angular_limit/restitution <class_SliderJoint3D_property_angular_limit/restitution>`     | ``0.7``  |
+   +---------------------------+-----------------------------------------------------------------------------------------------+----------+
+   | :ref:`float<class_float>` | :ref:`angular_limit/softness <class_SliderJoint3D_property_angular_limit/softness>`           | ``1.0``  |
+   +---------------------------+-----------------------------------------------------------------------------------------------+----------+
+   | :ref:`float<class_float>` | :ref:`angular_limit/upper_angle <class_SliderJoint3D_property_angular_limit/upper_angle>`     | ``0.0``  |
+   +---------------------------+-----------------------------------------------------------------------------------------------+----------+
+   | :ref:`float<class_float>` | :ref:`angular_motion/damping <class_SliderJoint3D_property_angular_motion/damping>`           | ``1.0``  |
+   +---------------------------+-----------------------------------------------------------------------------------------------+----------+
+   | :ref:`float<class_float>` | :ref:`angular_motion/restitution <class_SliderJoint3D_property_angular_motion/restitution>`   | ``0.7``  |
+   +---------------------------+-----------------------------------------------------------------------------------------------+----------+
+   | :ref:`float<class_float>` | :ref:`angular_motion/softness <class_SliderJoint3D_property_angular_motion/softness>`         | ``1.0``  |
+   +---------------------------+-----------------------------------------------------------------------------------------------+----------+
+   | :ref:`float<class_float>` | :ref:`angular_ortho/damping <class_SliderJoint3D_property_angular_ortho/damping>`             | ``1.0``  |
+   +---------------------------+-----------------------------------------------------------------------------------------------+----------+
+   | :ref:`float<class_float>` | :ref:`angular_ortho/restitution <class_SliderJoint3D_property_angular_ortho/restitution>`     | ``0.7``  |
+   +---------------------------+-----------------------------------------------------------------------------------------------+----------+
+   | :ref:`float<class_float>` | :ref:`angular_ortho/softness <class_SliderJoint3D_property_angular_ortho/softness>`           | ``1.0``  |
+   +---------------------------+-----------------------------------------------------------------------------------------------+----------+
+   | :ref:`float<class_float>` | :ref:`linear_limit/damping <class_SliderJoint3D_property_linear_limit/damping>`               | ``1.0``  |
+   +---------------------------+-----------------------------------------------------------------------------------------------+----------+
+   | :ref:`float<class_float>` | :ref:`linear_limit/lower_distance <class_SliderJoint3D_property_linear_limit/lower_distance>` | ``-1.0`` |
+   +---------------------------+-----------------------------------------------------------------------------------------------+----------+
+   | :ref:`float<class_float>` | :ref:`linear_limit/restitution <class_SliderJoint3D_property_linear_limit/restitution>`       | ``0.7``  |
+   +---------------------------+-----------------------------------------------------------------------------------------------+----------+
+   | :ref:`float<class_float>` | :ref:`linear_limit/softness <class_SliderJoint3D_property_linear_limit/softness>`             | ``1.0``  |
+   +---------------------------+-----------------------------------------------------------------------------------------------+----------+
+   | :ref:`float<class_float>` | :ref:`linear_limit/upper_distance <class_SliderJoint3D_property_linear_limit/upper_distance>` | ``1.0``  |
+   +---------------------------+-----------------------------------------------------------------------------------------------+----------+
+   | :ref:`float<class_float>` | :ref:`linear_motion/damping <class_SliderJoint3D_property_linear_motion/damping>`             | ``0.0``  |
+   +---------------------------+-----------------------------------------------------------------------------------------------+----------+
+   | :ref:`float<class_float>` | :ref:`linear_motion/restitution <class_SliderJoint3D_property_linear_motion/restitution>`     | ``0.7``  |
+   +---------------------------+-----------------------------------------------------------------------------------------------+----------+
+   | :ref:`float<class_float>` | :ref:`linear_motion/softness <class_SliderJoint3D_property_linear_motion/softness>`           | ``1.0``  |
+   +---------------------------+-----------------------------------------------------------------------------------------------+----------+
+   | :ref:`float<class_float>` | :ref:`linear_ortho/damping <class_SliderJoint3D_property_linear_ortho/damping>`               | ``1.0``  |
+   +---------------------------+-----------------------------------------------------------------------------------------------+----------+
+   | :ref:`float<class_float>` | :ref:`linear_ortho/restitution <class_SliderJoint3D_property_linear_ortho/restitution>`       | ``0.7``  |
+   +---------------------------+-----------------------------------------------------------------------------------------------+----------+
+   | :ref:`float<class_float>` | :ref:`linear_ortho/softness <class_SliderJoint3D_property_linear_ortho/softness>`             | ``1.0``  |
+   +---------------------------+-----------------------------------------------------------------------------------------------+----------+
+
+.. rst-class:: classref-reftable-group
+
+Phương thức
 -----------
 
-A physics joint that restricts the movement of a 3D physics body along an axis relative to another physics body. For example, Body A could be a :ref:`StaticBody3D<class_StaticBody3D>` representing a piston base, while Body B could be a :ref:`RigidBody3D<class_RigidBody3D>` representing the piston head, moving up and down.
-
-.. rst-class:: classref-reftable-group
-
-Properties
-----------
-
 .. table::
    :widths: auto
 
-   +---------------------------+----------------------------------------------------------------------------------------------+----------+
-   | :ref:`float<class_float>` | :ref:`angular_limit/damping<class_SliderJoint3D_property_angular_limit/damping>`             | ``0.0``  |
-   +---------------------------+----------------------------------------------------------------------------------------------+----------+
-   | :ref:`float<class_float>` | :ref:`angular_limit/lower_angle<class_SliderJoint3D_property_angular_limit/lower_angle>`     | ``0.0``  |
-   +---------------------------+----------------------------------------------------------------------------------------------+----------+
-   | :ref:`float<class_float>` | :ref:`angular_limit/restitution<class_SliderJoint3D_property_angular_limit/restitution>`     | ``0.7``  |
-   +---------------------------+----------------------------------------------------------------------------------------------+----------+
-   | :ref:`float<class_float>` | :ref:`angular_limit/softness<class_SliderJoint3D_property_angular_limit/softness>`           | ``1.0``  |
-   +---------------------------+----------------------------------------------------------------------------------------------+----------+
-   | :ref:`float<class_float>` | :ref:`angular_limit/upper_angle<class_SliderJoint3D_property_angular_limit/upper_angle>`     | ``0.0``  |
-   +---------------------------+----------------------------------------------------------------------------------------------+----------+
-   | :ref:`float<class_float>` | :ref:`angular_motion/damping<class_SliderJoint3D_property_angular_motion/damping>`           | ``1.0``  |
-   +---------------------------+----------------------------------------------------------------------------------------------+----------+
-   | :ref:`float<class_float>` | :ref:`angular_motion/restitution<class_SliderJoint3D_property_angular_motion/restitution>`   | ``0.7``  |
-   +---------------------------+----------------------------------------------------------------------------------------------+----------+
-   | :ref:`float<class_float>` | :ref:`angular_motion/softness<class_SliderJoint3D_property_angular_motion/softness>`         | ``1.0``  |
-   +---------------------------+----------------------------------------------------------------------------------------------+----------+
-   | :ref:`float<class_float>` | :ref:`angular_ortho/damping<class_SliderJoint3D_property_angular_ortho/damping>`             | ``1.0``  |
-   +---------------------------+----------------------------------------------------------------------------------------------+----------+
-   | :ref:`float<class_float>` | :ref:`angular_ortho/restitution<class_SliderJoint3D_property_angular_ortho/restitution>`     | ``0.7``  |
-   +---------------------------+----------------------------------------------------------------------------------------------+----------+
-   | :ref:`float<class_float>` | :ref:`angular_ortho/softness<class_SliderJoint3D_property_angular_ortho/softness>`           | ``1.0``  |
-   +---------------------------+----------------------------------------------------------------------------------------------+----------+
-   | :ref:`float<class_float>` | :ref:`linear_limit/damping<class_SliderJoint3D_property_linear_limit/damping>`               | ``1.0``  |
-   +---------------------------+----------------------------------------------------------------------------------------------+----------+
-   | :ref:`float<class_float>` | :ref:`linear_limit/lower_distance<class_SliderJoint3D_property_linear_limit/lower_distance>` | ``-1.0`` |
-   +---------------------------+----------------------------------------------------------------------------------------------+----------+
-   | :ref:`float<class_float>` | :ref:`linear_limit/restitution<class_SliderJoint3D_property_linear_limit/restitution>`       | ``0.7``  |
-   +---------------------------+----------------------------------------------------------------------------------------------+----------+
-   | :ref:`float<class_float>` | :ref:`linear_limit/softness<class_SliderJoint3D_property_linear_limit/softness>`             | ``1.0``  |
-   +---------------------------+----------------------------------------------------------------------------------------------+----------+
-   | :ref:`float<class_float>` | :ref:`linear_limit/upper_distance<class_SliderJoint3D_property_linear_limit/upper_distance>` | ``1.0``  |
-   +---------------------------+----------------------------------------------------------------------------------------------+----------+
-   | :ref:`float<class_float>` | :ref:`linear_motion/damping<class_SliderJoint3D_property_linear_motion/damping>`             | ``0.0``  |
-   +---------------------------+----------------------------------------------------------------------------------------------+----------+
-   | :ref:`float<class_float>` | :ref:`linear_motion/restitution<class_SliderJoint3D_property_linear_motion/restitution>`     | ``0.7``  |
-   +---------------------------+----------------------------------------------------------------------------------------------+----------+
-   | :ref:`float<class_float>` | :ref:`linear_motion/softness<class_SliderJoint3D_property_linear_motion/softness>`           | ``1.0``  |
-   +---------------------------+----------------------------------------------------------------------------------------------+----------+
-   | :ref:`float<class_float>` | :ref:`linear_ortho/damping<class_SliderJoint3D_property_linear_ortho/damping>`               | ``1.0``  |
-   +---------------------------+----------------------------------------------------------------------------------------------+----------+
-   | :ref:`float<class_float>` | :ref:`linear_ortho/restitution<class_SliderJoint3D_property_linear_ortho/restitution>`       | ``0.7``  |
-   +---------------------------+----------------------------------------------------------------------------------------------+----------+
-   | :ref:`float<class_float>` | :ref:`linear_ortho/softness<class_SliderJoint3D_property_linear_ortho/softness>`             | ``1.0``  |
-   +---------------------------+----------------------------------------------------------------------------------------------+----------+
-
-.. rst-class:: classref-reftable-group
-
-Methods
--------
-
-.. table::
-   :widths: auto
-
-   +---------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>` | :ref:`get_param<class_SliderJoint3D_method_get_param>`\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`\ ) |const|                            |
-   +---------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                    | :ref:`set_param<class_SliderJoint3D_method_set_param>`\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`, value\: :ref:`float<class_float>`\ ) |
-   +---------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+   +---------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>` | :ref:`get_param<class_SliderJoint3D_method_get_param>`\ (\ param\: :ref:`Param <enum_SliderJoint3D_Param>`\ ) |const|                            |
+   +---------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                    | :ref:`set_param<class_SliderJoint3D_method_set_param>`\ (\ param\: :ref:`Param <enum_SliderJoint3D_Param>`, value\: :ref:`float<class_float>`\ ) |
+   +---------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -95,14 +95,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_SliderJoint3D_Param:
 
 .. rst-class:: classref-enumeration
 
-enum **Param**: :ref:`🔗<enum_SliderJoint3D_Param>`
+enum **Param**: :ref:`🔗 <enum_SliderJoint3D_Param>`
 
 .. _class_SliderJoint3D_constant_PARAM_LINEAR_LIMIT_UPPER:
 
@@ -110,7 +110,7 @@ enum **Param**: :ref:`🔗<enum_SliderJoint3D_Param>`
 
 :ref:`Param<enum_SliderJoint3D_Param>` **PARAM_LINEAR_LIMIT_UPPER** = ``0``
 
-Constant for accessing :ref:`linear_limit/upper_distance<class_SliderJoint3D_property_linear_limit/upper_distance>`. The maximum difference between the pivot points on their X axis before damping happens.
+Hằng số dùng để truy cập :ref:`linear_limit/upper_distance <class_SliderJoint3D_property_linear_limit/upper_distance>`. Độ chênh lệch tối đa giữa các điểm pivot trên trục X trước khi damping xảy ra.
 
 .. _class_SliderJoint3D_constant_PARAM_LINEAR_LIMIT_LOWER:
 
@@ -118,7 +118,7 @@ Constant for accessing :ref:`linear_limit/upper_distance<class_SliderJoint3D_pro
 
 :ref:`Param<enum_SliderJoint3D_Param>` **PARAM_LINEAR_LIMIT_LOWER** = ``1``
 
-Constant for accessing :ref:`linear_limit/lower_distance<class_SliderJoint3D_property_linear_limit/lower_distance>`. The minimum difference between the pivot points on their X axis before damping happens.
+Hằng số dùng để truy cập :ref:`linear_limit/lower_distance <class_SliderJoint3D_property_linear_limit/lower_distance>`. Độ chênh lệch tối thiểu giữa các điểm pivot trên trục X trước khi damping xảy ra.
 
 .. _class_SliderJoint3D_constant_PARAM_LINEAR_LIMIT_SOFTNESS:
 
@@ -126,7 +126,7 @@ Constant for accessing :ref:`linear_limit/lower_distance<class_SliderJoint3D_pro
 
 :ref:`Param<enum_SliderJoint3D_Param>` **PARAM_LINEAR_LIMIT_SOFTNESS** = ``2``
 
-Constant for accessing :ref:`linear_limit/softness<class_SliderJoint3D_property_linear_limit/softness>`. A factor applied to the movement across the slider axis once the limits get surpassed. The lower, the slower the movement.
+Hằng số dùng để truy cập :ref:`linear_limit/softness <class_SliderJoint3D_property_linear_limit/softness>`. Hệ số áp dụng cho chuyển động dọc theo trục slider sau khi vượt quá các giới hạn. Hệ số càng thấp, chuyển động càng chậm.
 
 .. _class_SliderJoint3D_constant_PARAM_LINEAR_LIMIT_RESTITUTION:
 
@@ -134,7 +134,7 @@ Constant for accessing :ref:`linear_limit/softness<class_SliderJoint3D_property_
 
 :ref:`Param<enum_SliderJoint3D_Param>` **PARAM_LINEAR_LIMIT_RESTITUTION** = ``3``
 
-Constant for accessing :ref:`linear_limit/restitution<class_SliderJoint3D_property_linear_limit/restitution>`. The amount of restitution once the limits are surpassed. The lower, the more velocity-energy gets lost.
+Hằng số dùng để truy cập :ref:`linear_limit/restitution <class_SliderJoint3D_property_linear_limit/restitution>`. Mức restitution sau khi vượt quá các giới hạn. Mức càng thấp, càng nhiều năng lượng vận tốc bị mất.
 
 .. _class_SliderJoint3D_constant_PARAM_LINEAR_LIMIT_DAMPING:
 
@@ -142,7 +142,7 @@ Constant for accessing :ref:`linear_limit/restitution<class_SliderJoint3D_proper
 
 :ref:`Param<enum_SliderJoint3D_Param>` **PARAM_LINEAR_LIMIT_DAMPING** = ``4``
 
-Constant for accessing :ref:`linear_limit/damping<class_SliderJoint3D_property_linear_limit/damping>`. The amount of damping once the slider limits are surpassed.
+Hằng số dùng để truy cập :ref:`linear_limit/damping <class_SliderJoint3D_property_linear_limit/damping>`. Mức damping sau khi vượt quá các giới hạn của slider.
 
 .. _class_SliderJoint3D_constant_PARAM_LINEAR_MOTION_SOFTNESS:
 
@@ -150,7 +150,7 @@ Constant for accessing :ref:`linear_limit/damping<class_SliderJoint3D_property_l
 
 :ref:`Param<enum_SliderJoint3D_Param>` **PARAM_LINEAR_MOTION_SOFTNESS** = ``5``
 
-Constant for accessing :ref:`linear_motion/softness<class_SliderJoint3D_property_linear_motion/softness>`. A factor applied to the movement across the slider axis as long as the slider is in the limits. The lower, the slower the movement.
+Hằng số dùng để truy cập :ref:`linear_motion/softness <class_SliderJoint3D_property_linear_motion/softness>`. Hệ số áp dụng cho chuyển động dọc theo trục slider trong khi slider vẫn nằm trong các giới hạn. Hệ số càng thấp, chuyển động càng chậm.
 
 .. _class_SliderJoint3D_constant_PARAM_LINEAR_MOTION_RESTITUTION:
 
@@ -158,7 +158,7 @@ Constant for accessing :ref:`linear_motion/softness<class_SliderJoint3D_property
 
 :ref:`Param<enum_SliderJoint3D_Param>` **PARAM_LINEAR_MOTION_RESTITUTION** = ``6``
 
-Constant for accessing :ref:`linear_motion/restitution<class_SliderJoint3D_property_linear_motion/restitution>`. The amount of restitution inside the slider limits.
+Hằng số dùng để truy cập :ref:`linear_motion/restitution <class_SliderJoint3D_property_linear_motion/restitution>`. Mức restitution bên trong các giới hạn của slider.
 
 .. _class_SliderJoint3D_constant_PARAM_LINEAR_MOTION_DAMPING:
 
@@ -166,7 +166,7 @@ Constant for accessing :ref:`linear_motion/restitution<class_SliderJoint3D_prope
 
 :ref:`Param<enum_SliderJoint3D_Param>` **PARAM_LINEAR_MOTION_DAMPING** = ``7``
 
-Constant for accessing :ref:`linear_motion/damping<class_SliderJoint3D_property_linear_motion/damping>`. The amount of damping inside the slider limits.
+Hằng số dùng để truy cập :ref:`linear_motion/damping <class_SliderJoint3D_property_linear_motion/damping>`. Mức damping bên trong các giới hạn của slider.
 
 .. _class_SliderJoint3D_constant_PARAM_LINEAR_ORTHOGONAL_SOFTNESS:
 
@@ -174,7 +174,7 @@ Constant for accessing :ref:`linear_motion/damping<class_SliderJoint3D_property_
 
 :ref:`Param<enum_SliderJoint3D_Param>` **PARAM_LINEAR_ORTHOGONAL_SOFTNESS** = ``8``
 
-Constant for accessing :ref:`linear_ortho/softness<class_SliderJoint3D_property_linear_ortho/softness>`. A factor applied to the movement across axes orthogonal to the slider.
+Hằng số dùng để truy cập :ref:`linear_ortho/softness <class_SliderJoint3D_property_linear_ortho/softness>`. Hệ số áp dụng cho chuyển động trên các trục vuông góc với thanh trượt.
 
 .. _class_SliderJoint3D_constant_PARAM_LINEAR_ORTHOGONAL_RESTITUTION:
 
@@ -182,7 +182,7 @@ Constant for accessing :ref:`linear_ortho/softness<class_SliderJoint3D_property_
 
 :ref:`Param<enum_SliderJoint3D_Param>` **PARAM_LINEAR_ORTHOGONAL_RESTITUTION** = ``9``
 
-Constant for accessing :ref:`linear_motion/restitution<class_SliderJoint3D_property_linear_motion/restitution>`. The amount of restitution when movement is across axes orthogonal to the slider.
+Hằng số dùng để truy cập :ref:`linear_motion/restitution <class_SliderJoint3D_property_linear_motion/restitution>`. Mức độ restitution khi chuyển động trên các trục vuông góc với thanh trượt.
 
 .. _class_SliderJoint3D_constant_PARAM_LINEAR_ORTHOGONAL_DAMPING:
 
@@ -190,7 +190,7 @@ Constant for accessing :ref:`linear_motion/restitution<class_SliderJoint3D_prope
 
 :ref:`Param<enum_SliderJoint3D_Param>` **PARAM_LINEAR_ORTHOGONAL_DAMPING** = ``10``
 
-Constant for accessing :ref:`linear_motion/damping<class_SliderJoint3D_property_linear_motion/damping>`. The amount of damping when movement is across axes orthogonal to the slider.
+Hằng số dùng để truy cập :ref:`linear_motion/damping <class_SliderJoint3D_property_linear_motion/damping>`. Mức độ damping khi chuyển động trên các trục vuông góc với thanh trượt.
 
 .. _class_SliderJoint3D_constant_PARAM_ANGULAR_LIMIT_UPPER:
 
@@ -198,7 +198,7 @@ Constant for accessing :ref:`linear_motion/damping<class_SliderJoint3D_property_
 
 :ref:`Param<enum_SliderJoint3D_Param>` **PARAM_ANGULAR_LIMIT_UPPER** = ``11``
 
-Constant for accessing :ref:`angular_limit/upper_angle<class_SliderJoint3D_property_angular_limit/upper_angle>`. The upper limit of rotation in the slider.
+Hằng số dùng để truy cập :ref:`angular_limit/upper_angle <class_SliderJoint3D_property_angular_limit/upper_angle>`. Giới hạn trên của chuyển động quay trong thanh trượt.
 
 .. _class_SliderJoint3D_constant_PARAM_ANGULAR_LIMIT_LOWER:
 
@@ -206,7 +206,7 @@ Constant for accessing :ref:`angular_limit/upper_angle<class_SliderJoint3D_prope
 
 :ref:`Param<enum_SliderJoint3D_Param>` **PARAM_ANGULAR_LIMIT_LOWER** = ``12``
 
-Constant for accessing :ref:`angular_limit/lower_angle<class_SliderJoint3D_property_angular_limit/lower_angle>`. The lower limit of rotation in the slider.
+Hằng số dùng để truy cập :ref:`angular_limit/lower_angle <class_SliderJoint3D_property_angular_limit/lower_angle>`. Giới hạn dưới của chuyển động quay trong thanh trượt.
 
 .. _class_SliderJoint3D_constant_PARAM_ANGULAR_LIMIT_SOFTNESS:
 
@@ -214,7 +214,7 @@ Constant for accessing :ref:`angular_limit/lower_angle<class_SliderJoint3D_prope
 
 :ref:`Param<enum_SliderJoint3D_Param>` **PARAM_ANGULAR_LIMIT_SOFTNESS** = ``13``
 
-Constant for accessing :ref:`angular_limit/softness<class_SliderJoint3D_property_angular_limit/softness>`. A factor applied to the all rotation once the limit is surpassed.
+Hằng số dùng để truy cập :ref:`angular_limit/softness <class_SliderJoint3D_property_angular_limit/softness>`. Hệ số áp dụng cho toàn bộ chuyển động quay khi vượt quá giới hạn.
 
 .. _class_SliderJoint3D_constant_PARAM_ANGULAR_LIMIT_RESTITUTION:
 
@@ -222,7 +222,7 @@ Constant for accessing :ref:`angular_limit/softness<class_SliderJoint3D_property
 
 :ref:`Param<enum_SliderJoint3D_Param>` **PARAM_ANGULAR_LIMIT_RESTITUTION** = ``14``
 
-Constant for accessing :ref:`angular_limit/restitution<class_SliderJoint3D_property_angular_limit/restitution>`. The amount of restitution of the rotation when the limit is surpassed.
+Hằng số dùng để truy cập :ref:`angular_limit/restitution <class_SliderJoint3D_property_angular_limit/restitution>`. Mức độ restitution của chuyển động quay khi vượt quá giới hạn.
 
 .. _class_SliderJoint3D_constant_PARAM_ANGULAR_LIMIT_DAMPING:
 
@@ -230,7 +230,7 @@ Constant for accessing :ref:`angular_limit/restitution<class_SliderJoint3D_prope
 
 :ref:`Param<enum_SliderJoint3D_Param>` **PARAM_ANGULAR_LIMIT_DAMPING** = ``15``
 
-Constant for accessing :ref:`angular_limit/damping<class_SliderJoint3D_property_angular_limit/damping>`. The amount of damping of the rotation when the limit is surpassed.
+Hằng số dùng để truy cập :ref:`angular_limit/damping <class_SliderJoint3D_property_angular_limit/damping>`. Mức độ damping của chuyển động quay khi vượt quá giới hạn.
 
 .. _class_SliderJoint3D_constant_PARAM_ANGULAR_MOTION_SOFTNESS:
 
@@ -238,7 +238,7 @@ Constant for accessing :ref:`angular_limit/damping<class_SliderJoint3D_property_
 
 :ref:`Param<enum_SliderJoint3D_Param>` **PARAM_ANGULAR_MOTION_SOFTNESS** = ``16``
 
-Constant for accessing :ref:`angular_motion/softness<class_SliderJoint3D_property_angular_motion/softness>`. A factor applied to the all rotation in the limits.
+Hằng số dùng để truy cập :ref:`angular_motion/softness <class_SliderJoint3D_property_angular_motion/softness>`. Hệ số áp dụng cho toàn bộ chuyển động quay trong các giới hạn.
 
 .. _class_SliderJoint3D_constant_PARAM_ANGULAR_MOTION_RESTITUTION:
 
@@ -246,7 +246,7 @@ Constant for accessing :ref:`angular_motion/softness<class_SliderJoint3D_propert
 
 :ref:`Param<enum_SliderJoint3D_Param>` **PARAM_ANGULAR_MOTION_RESTITUTION** = ``17``
 
-Constant for accessing :ref:`angular_motion/restitution<class_SliderJoint3D_property_angular_motion/restitution>`. The amount of restitution of the rotation in the limits.
+Hằng số dùng để truy cập :ref:`angular_motion/restitution <class_SliderJoint3D_property_angular_motion/restitution>`. Mức độ restitution của chuyển động quay trong các giới hạn.
 
 .. _class_SliderJoint3D_constant_PARAM_ANGULAR_MOTION_DAMPING:
 
@@ -254,7 +254,7 @@ Constant for accessing :ref:`angular_motion/restitution<class_SliderJoint3D_prop
 
 :ref:`Param<enum_SliderJoint3D_Param>` **PARAM_ANGULAR_MOTION_DAMPING** = ``18``
 
-Constant for accessing :ref:`angular_motion/damping<class_SliderJoint3D_property_angular_motion/damping>`. The amount of damping of the rotation in the limits.
+Hằng số dùng để truy cập :ref:`angular_motion/damping <class_SliderJoint3D_property_angular_motion/damping>`. Mức độ damping của chuyển động quay trong các giới hạn.
 
 .. _class_SliderJoint3D_constant_PARAM_ANGULAR_ORTHOGONAL_SOFTNESS:
 
@@ -262,7 +262,7 @@ Constant for accessing :ref:`angular_motion/damping<class_SliderJoint3D_property
 
 :ref:`Param<enum_SliderJoint3D_Param>` **PARAM_ANGULAR_ORTHOGONAL_SOFTNESS** = ``19``
 
-Constant for accessing :ref:`angular_ortho/softness<class_SliderJoint3D_property_angular_ortho/softness>`. A factor applied to the all rotation across axes orthogonal to the slider.
+Hằng số dùng để truy cập :ref:`angular_ortho/softness <class_SliderJoint3D_property_angular_ortho/softness>`. Hệ số áp dụng cho toàn bộ chuyển động quay trên các trục vuông góc với thanh trượt.
 
 .. _class_SliderJoint3D_constant_PARAM_ANGULAR_ORTHOGONAL_RESTITUTION:
 
@@ -270,7 +270,7 @@ Constant for accessing :ref:`angular_ortho/softness<class_SliderJoint3D_property
 
 :ref:`Param<enum_SliderJoint3D_Param>` **PARAM_ANGULAR_ORTHOGONAL_RESTITUTION** = ``20``
 
-Constant for accessing :ref:`angular_ortho/restitution<class_SliderJoint3D_property_angular_ortho/restitution>`. The amount of restitution of the rotation across axes orthogonal to the slider.
+Hằng số dùng để truy cập :ref:`angular_ortho/restitution <class_SliderJoint3D_property_angular_ortho/restitution>`. Mức độ restitution của chuyển động quay trên các trục vuông góc với thanh trượt.
 
 .. _class_SliderJoint3D_constant_PARAM_ANGULAR_ORTHOGONAL_DAMPING:
 
@@ -278,7 +278,7 @@ Constant for accessing :ref:`angular_ortho/restitution<class_SliderJoint3D_prope
 
 :ref:`Param<enum_SliderJoint3D_Param>` **PARAM_ANGULAR_ORTHOGONAL_DAMPING** = ``21``
 
-Constant for accessing :ref:`angular_ortho/damping<class_SliderJoint3D_property_angular_ortho/damping>`. The amount of damping of the rotation across axes orthogonal to the slider.
+Hằng số dùng để truy cập :ref:`angular_ortho/damping <class_SliderJoint3D_property_angular_ortho/damping>`. Mức độ damping của chuyển động quay trên các trục vuông góc với thanh trượt.
 
 .. _class_SliderJoint3D_constant_PARAM_MAX:
 
@@ -286,7 +286,7 @@ Constant for accessing :ref:`angular_ortho/damping<class_SliderJoint3D_property_
 
 :ref:`Param<enum_SliderJoint3D_Param>` **PARAM_MAX** = ``22``
 
-Represents the size of the :ref:`Param<enum_SliderJoint3D_Param>` enum.
+Biểu thị kích thước của enum :ref:`Param <enum_SliderJoint3D_Param>`.
 
 .. rst-class:: classref-section-separator
 
@@ -294,23 +294,23 @@ Represents the size of the :ref:`Param<enum_SliderJoint3D_Param>` enum.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_SliderJoint3D_property_angular_limit/damping:
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **angular_limit/damping** = ``0.0`` :ref:`🔗<class_SliderJoint3D_property_angular_limit/damping>`
+:ref:`float<class_float>` **angular_limit/damping** = ``0.0`` :ref:`🔗 <class_SliderJoint3D_property_angular_limit/damping>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`\ ) |const|
 
-The amount of damping of the rotation when the limit is surpassed.
+Mức độ damping của chuyển động quay khi vượt quá giới hạn.
 
-A lower damping value allows a rotation initiated by body A to travel to body B slower.
+Giá trị damping thấp hơn khiến chuyển động quay do body A khởi tạo truyền đến body B chậm hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -320,14 +320,14 @@ A lower damping value allows a rotation initiated by body A to travel to body B 
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **angular_limit/lower_angle** = ``0.0`` :ref:`🔗<class_SliderJoint3D_property_angular_limit/lower_angle>`
+:ref:`float<class_float>` **angular_limit/lower_angle** = ``0.0`` :ref:`🔗 <class_SliderJoint3D_property_angular_limit/lower_angle>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`\ ) |const|
 
-The lower limit of rotation in the slider.
+Giới hạn dưới của chuyển động quay trong thanh trượt.
 
 .. rst-class:: classref-item-separator
 
@@ -337,16 +337,16 @@ The lower limit of rotation in the slider.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **angular_limit/restitution** = ``0.7`` :ref:`🔗<class_SliderJoint3D_property_angular_limit/restitution>`
+:ref:`float<class_float>` **angular_limit/restitution** = ``0.7`` :ref:`🔗 <class_SliderJoint3D_property_angular_limit/restitution>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`\ ) |const|
 
-The amount of restitution of the rotation when the limit is surpassed.
+Mức độ restitution của chuyển động quay khi vượt quá giới hạn.
 
-Does not affect damping.
+Không ảnh hưởng đến damping.
 
 .. rst-class:: classref-item-separator
 
@@ -356,16 +356,16 @@ Does not affect damping.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **angular_limit/softness** = ``1.0`` :ref:`🔗<class_SliderJoint3D_property_angular_limit/softness>`
+:ref:`float<class_float>` **angular_limit/softness** = ``1.0`` :ref:`🔗 <class_SliderJoint3D_property_angular_limit/softness>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`\ ) |const|
 
-A factor applied to the all rotation once the limit is surpassed.
+Hệ số áp dụng cho toàn bộ chuyển động quay khi vượt quá giới hạn.
 
-Makes all rotation slower when between 0 and 1.
+Làm chậm toàn bộ chuyển động quay khi giá trị nằm trong khoảng từ 0 đến 1.
 
 .. rst-class:: classref-item-separator
 
@@ -375,14 +375,14 @@ Makes all rotation slower when between 0 and 1.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **angular_limit/upper_angle** = ``0.0`` :ref:`🔗<class_SliderJoint3D_property_angular_limit/upper_angle>`
+:ref:`float<class_float>` **angular_limit/upper_angle** = ``0.0`` :ref:`🔗 <class_SliderJoint3D_property_angular_limit/upper_angle>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`\ ) |const|
 
-The upper limit of rotation in the slider.
+Giới hạn trên của chuyển động quay trong thanh trượt.
 
 .. rst-class:: classref-item-separator
 
@@ -392,14 +392,14 @@ The upper limit of rotation in the slider.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **angular_motion/damping** = ``1.0`` :ref:`🔗<class_SliderJoint3D_property_angular_motion/damping>`
+:ref:`float<class_float>` **angular_motion/damping** = ``1.0`` :ref:`🔗 <class_SliderJoint3D_property_angular_motion/damping>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`\ ) |const|
 
-The amount of damping of the rotation in the limits.
+Mức độ damping của chuyển động quay trong các giới hạn.
 
 .. rst-class:: classref-item-separator
 
@@ -409,14 +409,14 @@ The amount of damping of the rotation in the limits.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **angular_motion/restitution** = ``0.7`` :ref:`🔗<class_SliderJoint3D_property_angular_motion/restitution>`
+:ref:`float<class_float>` **angular_motion/restitution** = ``0.7`` :ref:`🔗 <class_SliderJoint3D_property_angular_motion/restitution>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`\ ) |const|
 
-The amount of restitution of the rotation in the limits.
+Mức độ restitution của chuyển động quay trong các giới hạn.
 
 .. rst-class:: classref-item-separator
 
@@ -426,14 +426,14 @@ The amount of restitution of the rotation in the limits.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **angular_motion/softness** = ``1.0`` :ref:`🔗<class_SliderJoint3D_property_angular_motion/softness>`
+:ref:`float<class_float>` **angular_motion/softness** = ``1.0`` :ref:`🔗 <class_SliderJoint3D_property_angular_motion/softness>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`\ ) |const|
 
-A factor applied to the all rotation in the limits.
+Hệ số áp dụng cho toàn bộ chuyển động quay trong các giới hạn.
 
 .. rst-class:: classref-item-separator
 
@@ -443,14 +443,14 @@ A factor applied to the all rotation in the limits.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **angular_ortho/damping** = ``1.0`` :ref:`🔗<class_SliderJoint3D_property_angular_ortho/damping>`
+:ref:`float<class_float>` **angular_ortho/damping** = ``1.0`` :ref:`🔗 <class_SliderJoint3D_property_angular_ortho/damping>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`\ ) |const|
 
-The amount of damping of the rotation across axes orthogonal to the slider.
+Mức độ damping của chuyển động quay trên các trục vuông góc với thanh trượt.
 
 .. rst-class:: classref-item-separator
 
@@ -460,14 +460,14 @@ The amount of damping of the rotation across axes orthogonal to the slider.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **angular_ortho/restitution** = ``0.7`` :ref:`🔗<class_SliderJoint3D_property_angular_ortho/restitution>`
+:ref:`float<class_float>` **angular_ortho/restitution** = ``0.7`` :ref:`🔗 <class_SliderJoint3D_property_angular_ortho/restitution>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`\ ) |const|
 
-The amount of restitution of the rotation across axes orthogonal to the slider.
+Mức độ restitution của chuyển động quay trên các trục vuông góc với thanh trượt.
 
 .. rst-class:: classref-item-separator
 
@@ -477,14 +477,14 @@ The amount of restitution of the rotation across axes orthogonal to the slider.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **angular_ortho/softness** = ``1.0`` :ref:`🔗<class_SliderJoint3D_property_angular_ortho/softness>`
+:ref:`float<class_float>` **angular_ortho/softness** = ``1.0`` :ref:`🔗 <class_SliderJoint3D_property_angular_ortho/softness>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`\ ) |const|
 
-A factor applied to the all rotation across axes orthogonal to the slider.
+Hệ số áp dụng cho toàn bộ chuyển động quay trên các trục vuông góc với thanh trượt.
 
 .. rst-class:: classref-item-separator
 
@@ -494,14 +494,14 @@ A factor applied to the all rotation across axes orthogonal to the slider.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **linear_limit/damping** = ``1.0`` :ref:`🔗<class_SliderJoint3D_property_linear_limit/damping>`
+:ref:`float<class_float>` **linear_limit/damping** = ``1.0`` :ref:`🔗 <class_SliderJoint3D_property_linear_limit/damping>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`\ ) |const|
 
-The amount of damping that happens once the limit defined by :ref:`linear_limit/lower_distance<class_SliderJoint3D_property_linear_limit/lower_distance>` and :ref:`linear_limit/upper_distance<class_SliderJoint3D_property_linear_limit/upper_distance>` is surpassed.
+Mức độ damping xảy ra khi vượt quá giới hạn được xác định bởi :ref:`linear_limit/lower_distance <class_SliderJoint3D_property_linear_limit/lower_distance>` và :ref:`linear_limit/upper_distance <class_SliderJoint3D_property_linear_limit/upper_distance>`.
 
 .. rst-class:: classref-item-separator
 
@@ -511,14 +511,14 @@ The amount of damping that happens once the limit defined by :ref:`linear_limit/
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **linear_limit/lower_distance** = ``-1.0`` :ref:`🔗<class_SliderJoint3D_property_linear_limit/lower_distance>`
+:ref:`float<class_float>` **linear_limit/lower_distance** = ``-1.0`` :ref:`🔗 <class_SliderJoint3D_property_linear_limit/lower_distance>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`\ ) |const|
 
-The minimum difference between the pivot points on their X axis before damping happens.
+Khoảng chênh lệch tối thiểu giữa các điểm pivot trên trục X của chúng trước khi damping xảy ra.
 
 .. rst-class:: classref-item-separator
 
@@ -528,14 +528,14 @@ The minimum difference between the pivot points on their X axis before damping h
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **linear_limit/restitution** = ``0.7`` :ref:`🔗<class_SliderJoint3D_property_linear_limit/restitution>`
+:ref:`float<class_float>` **linear_limit/restitution** = ``0.7`` :ref:`🔗 <class_SliderJoint3D_property_linear_limit/restitution>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`\ ) |const|
 
-The amount of restitution once the limits are surpassed. The lower, the more velocity-energy gets lost.
+Mức độ restitution khi vượt quá các giới hạn. Giá trị càng thấp thì càng mất nhiều năng lượng vận tốc.
 
 .. rst-class:: classref-item-separator
 
@@ -545,14 +545,14 @@ The amount of restitution once the limits are surpassed. The lower, the more vel
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **linear_limit/softness** = ``1.0`` :ref:`🔗<class_SliderJoint3D_property_linear_limit/softness>`
+:ref:`float<class_float>` **linear_limit/softness** = ``1.0`` :ref:`🔗 <class_SliderJoint3D_property_linear_limit/softness>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`\ ) |const|
 
-A factor applied to the movement across the slider axis once the limits get surpassed. The lower, the slower the movement.
+Hệ số áp dụng cho chuyển động dọc theo trục thanh trượt khi vượt quá các giới hạn. Giá trị càng thấp thì chuyển động càng chậm.
 
 .. rst-class:: classref-item-separator
 
@@ -562,14 +562,14 @@ A factor applied to the movement across the slider axis once the limits get surp
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **linear_limit/upper_distance** = ``1.0`` :ref:`🔗<class_SliderJoint3D_property_linear_limit/upper_distance>`
+:ref:`float<class_float>` **linear_limit/upper_distance** = ``1.0`` :ref:`🔗 <class_SliderJoint3D_property_linear_limit/upper_distance>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`\ ) |const|
 
-The maximum difference between the pivot points on their X axis before damping happens.
+Khoảng chênh lệch tối đa giữa các điểm pivot trên trục X của chúng trước khi damping xảy ra.
 
 .. rst-class:: classref-item-separator
 
@@ -579,14 +579,14 @@ The maximum difference between the pivot points on their X axis before damping h
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **linear_motion/damping** = ``0.0`` :ref:`🔗<class_SliderJoint3D_property_linear_motion/damping>`
+:ref:`float<class_float>` **linear_motion/damping** = ``0.0`` :ref:`🔗 <class_SliderJoint3D_property_linear_motion/damping>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`\ ) |const|
 
-The amount of damping inside the slider limits.
+Mức độ damping bên trong các giới hạn của thanh trượt.
 
 .. rst-class:: classref-item-separator
 
@@ -596,14 +596,14 @@ The amount of damping inside the slider limits.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **linear_motion/restitution** = ``0.7`` :ref:`🔗<class_SliderJoint3D_property_linear_motion/restitution>`
+:ref:`float<class_float>` **linear_motion/restitution** = ``0.7`` :ref:`🔗 <class_SliderJoint3D_property_linear_motion/restitution>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`\ ) |const|
 
-The amount of restitution inside the slider limits.
+Mức độ restitution trong giới hạn của thanh trượt.
 
 .. rst-class:: classref-item-separator
 
@@ -613,14 +613,14 @@ The amount of restitution inside the slider limits.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **linear_motion/softness** = ``1.0`` :ref:`🔗<class_SliderJoint3D_property_linear_motion/softness>`
+:ref:`float<class_float>` **linear_motion/softness** = ``1.0`` :ref:`🔗 <class_SliderJoint3D_property_linear_motion/softness>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`\ ) |const|
 
-A factor applied to the movement across the slider axis as long as the slider is in the limits. The lower, the slower the movement.
+Hệ số được áp dụng cho chuyển động dọc theo trục của thanh trượt khi thanh trượt đang ở trong giới hạn. Hệ số càng thấp thì chuyển động càng chậm.
 
 .. rst-class:: classref-item-separator
 
@@ -630,14 +630,14 @@ A factor applied to the movement across the slider axis as long as the slider is
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **linear_ortho/damping** = ``1.0`` :ref:`🔗<class_SliderJoint3D_property_linear_ortho/damping>`
+:ref:`float<class_float>` **linear_ortho/damping** = ``1.0`` :ref:`🔗 <class_SliderJoint3D_property_linear_ortho/damping>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`\ ) |const|
 
-The amount of damping when movement is across axes orthogonal to the slider.
+Mức độ damping khi chuyển động dọc theo các trục vuông góc với thanh trượt.
 
 .. rst-class:: classref-item-separator
 
@@ -647,14 +647,14 @@ The amount of damping when movement is across axes orthogonal to the slider.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **linear_ortho/restitution** = ``0.7`` :ref:`🔗<class_SliderJoint3D_property_linear_ortho/restitution>`
+:ref:`float<class_float>` **linear_ortho/restitution** = ``0.7`` :ref:`🔗 <class_SliderJoint3D_property_linear_ortho/restitution>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`\ ) |const|
 
-The amount of restitution when movement is across axes orthogonal to the slider.
+Mức độ restitution khi chuyển động dọc theo các trục vuông góc với thanh trượt.
 
 .. rst-class:: classref-item-separator
 
@@ -664,14 +664,14 @@ The amount of restitution when movement is across axes orthogonal to the slider.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **linear_ortho/softness** = ``1.0`` :ref:`🔗<class_SliderJoint3D_property_linear_ortho/softness>`
+:ref:`float<class_float>` **linear_ortho/softness** = ``1.0`` :ref:`🔗 <class_SliderJoint3D_property_linear_ortho/softness>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`\ ) |const|
 
-A factor applied to the movement across axes orthogonal to the slider.
+Hệ số được áp dụng cho chuyển động dọc theo các trục vuông góc với thanh trượt.
 
 .. rst-class:: classref-section-separator
 
@@ -679,8 +679,8 @@ A factor applied to the movement across axes orthogonal to the slider.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_SliderJoint3D_method_get_param:
 
@@ -688,7 +688,7 @@ Method Descriptions
 
 :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`\ ) |const| :ref:`🔗<class_SliderJoint3D_method_get_param>`
 
-Returns the value of the given parameter.
+Trả về giá trị của tham số đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -700,14 +700,14 @@ Returns the value of the given parameter.
 
 |void| **set_param**\ (\ param\: :ref:`Param<enum_SliderJoint3D_Param>`, value\: :ref:`float<class_float>`\ ) :ref:`🔗<class_SliderJoint3D_method_set_param>`
 
-Assigns ``value`` to the given parameter.
+Gán ``value`` cho tham số đã cho.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

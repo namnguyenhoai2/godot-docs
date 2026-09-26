@@ -10,21 +10,21 @@
 RenderDataExtension
 ===================
 
-**Inherits:** :ref:`RenderData<class_RenderData>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RenderData<class_RenderData>` **<** :ref:`Object<class_Object>`
 
-This class allows for a RenderData implementation to be made in GDExtension.
+Lớp này cho phép tạo một triển khai RenderData trong GDExtension.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This class allows for a RenderData implementation to be made in GDExtension.
+Lớp này cho phép tạo một triển khai RenderData trong GDExtension.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -45,8 +45,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_RenderDataExtension_private_method__get_camera_attributes:
 
@@ -54,7 +54,7 @@ Method Descriptions
 
 :ref:`RID<class_RID>` **_get_camera_attributes**\ (\ ) |virtual| |const| :ref:`🔗<class_RenderDataExtension_private_method__get_camera_attributes>`
 
-Implement this in GDExtension to return the :ref:`RID<class_RID>` for the implementation's camera attributes object.
+Triển khai phương thức này trong GDExtension để trả về :ref:`RID<class_RID>` cho đối tượng thuộc tính camera của triển khai.
 
 .. rst-class:: classref-item-separator
 
@@ -66,7 +66,7 @@ Implement this in GDExtension to return the :ref:`RID<class_RID>` for the implem
 
 :ref:`RID<class_RID>` **_get_environment**\ (\ ) |virtual| |const| :ref:`🔗<class_RenderDataExtension_private_method__get_environment>`
 
-Implement this in GDExtension to return the :ref:`RID<class_RID>` of the implementation's environment object.
+Triển khai phương thức này trong GDExtension để trả về :ref:`RID<class_RID>` của đối tượng môi trường của triển khai.
 
 .. rst-class:: classref-item-separator
 
@@ -78,7 +78,7 @@ Implement this in GDExtension to return the :ref:`RID<class_RID>` of the impleme
 
 :ref:`RenderSceneBuffers<class_RenderSceneBuffers>` **_get_render_scene_buffers**\ (\ ) |virtual| |const| :ref:`🔗<class_RenderDataExtension_private_method__get_render_scene_buffers>`
 
-Implement this in GDExtension to return the implementation's :ref:`RenderSceneBuffers<class_RenderSceneBuffers>` object.
+Triển khai phương thức này trong GDExtension để trả về đối tượng :ref:`RenderSceneBuffers<class_RenderSceneBuffers>` của triển khai.
 
 .. rst-class:: classref-item-separator
 
@@ -90,14 +90,14 @@ Implement this in GDExtension to return the implementation's :ref:`RenderSceneBu
 
 :ref:`RenderSceneData<class_RenderSceneData>` **_get_render_scene_data**\ (\ ) |virtual| |const| :ref:`🔗<class_RenderDataExtension_private_method__get_render_scene_data>`
 
-Implement this in GDExtension to return the implementation's :ref:`RenderSceneDataExtension<class_RenderSceneDataExtension>` object.
+Triển khai phương thức này trong GDExtension để trả về đối tượng :ref:`RenderSceneDataExtension<class_RenderSceneDataExtension>` của triển khai.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

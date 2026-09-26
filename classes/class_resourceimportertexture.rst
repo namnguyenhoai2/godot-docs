@@ -10,85 +10,85 @@
 ResourceImporterTexture
 =======================
 
-**Inherits:** :ref:`ResourceImporter<class_ResourceImporter>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`ResourceImporter<class_ResourceImporter>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Imports an image for use in 2D or 3D rendering.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-This importer imports :ref:`CompressedTexture2D<class_CompressedTexture2D>` resources. If you need to process the image in scripts in a more convenient way, use :ref:`ResourceImporterImage<class_ResourceImporterImage>` instead. See also :ref:`ResourceImporterLayeredTexture<class_ResourceImporterLayeredTexture>`.
+Nhập một hình ảnh để sử dụng cho việc kết xuất 2D hoặc 3D.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Trình importer này nhập các tài nguyên :ref:`CompressedTexture2D<class_CompressedTexture2D>`. Nếu cần xử lý hình ảnh trong scripts theo cách thuận tiện hơn, hãy sử dụng :ref:`ResourceImporterImage<class_ResourceImporterImage>` thay thế. Xem thêm :ref:`ResourceImporterLayeredTexture<class_ResourceImporterLayeredTexture>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Importing images <../tutorials/assets_pipeline/importing_images>`
+- :doc:`Nhập hình ảnh <../tutorials/assets_pipeline/importing_images>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`       | :ref:`compress/channel_pack<class_ResourceImporterTexture_property_compress/channel_pack>`                                     | ``0``     |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`       | :ref:`compress/hdr_compression<class_ResourceImporterTexture_property_compress/hdr_compression>`                               | ``1``     |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`     | :ref:`compress/high_quality<class_ResourceImporterTexture_property_compress/high_quality>`                                     | ``false`` |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`   | :ref:`compress/lossy_quality<class_ResourceImporterTexture_property_compress/lossy_quality>`                                   | ``0.7``   |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`       | :ref:`compress/mode<class_ResourceImporterTexture_property_compress/mode>`                                                     | ``0``     |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`       | :ref:`compress/normal_map<class_ResourceImporterTexture_property_compress/normal_map>`                                         | ``0``     |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`   | :ref:`compress/rdo_quality_loss<class_ResourceImporterTexture_property_compress/rdo_quality_loss>`                             | ``0.0``   |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`       | :ref:`compress/uastc_level<class_ResourceImporterTexture_property_compress/uastc_level>`                                       | ``0``     |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`       | :ref:`detect_3d/compress_to<class_ResourceImporterTexture_property_detect_3d/compress_to>`                                     | ``1``     |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`     | :ref:`editor/convert_colors_with_editor_theme<class_ResourceImporterTexture_property_editor/convert_colors_with_editor_theme>` | ``false`` |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`     | :ref:`editor/scale_with_editor_scale<class_ResourceImporterTexture_property_editor/scale_with_editor_scale>`                   | ``false`` |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`     | :ref:`mipmaps/generate<class_ResourceImporterTexture_property_mipmaps/generate>`                                               | ``false`` |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`       | :ref:`mipmaps/limit<class_ResourceImporterTexture_property_mipmaps/limit>`                                                     | ``-1``    |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`       | :ref:`process/channel_remap/alpha<class_ResourceImporterTexture_property_process/channel_remap/alpha>`                         | ``3``     |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`       | :ref:`process/channel_remap/blue<class_ResourceImporterTexture_property_process/channel_remap/blue>`                           | ``2``     |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`       | :ref:`process/channel_remap/green<class_ResourceImporterTexture_property_process/channel_remap/green>`                         | ``1``     |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`       | :ref:`process/channel_remap/red<class_ResourceImporterTexture_property_process/channel_remap/red>`                             | ``0``     |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`     | :ref:`process/fix_alpha_border<class_ResourceImporterTexture_property_process/fix_alpha_border>`                               | ``true``  |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`     | :ref:`process/hdr_as_srgb<class_ResourceImporterTexture_property_process/hdr_as_srgb>`                                         | ``false`` |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`     | :ref:`process/hdr_clamp_exposure<class_ResourceImporterTexture_property_process/hdr_clamp_exposure>`                           | ``false`` |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`     | :ref:`process/normal_map_invert_y<class_ResourceImporterTexture_property_process/normal_map_invert_y>`                         | ``false`` |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`     | :ref:`process/premult_alpha<class_ResourceImporterTexture_property_process/premult_alpha>`                                     | ``false`` |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`       | :ref:`process/size_limit<class_ResourceImporterTexture_property_process/size_limit>`                                           | ``0``     |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`       | :ref:`roughness/mode<class_ResourceImporterTexture_property_roughness/mode>`                                                   | ``0``     |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`String<class_String>` | :ref:`roughness/src_normal<class_ResourceImporterTexture_property_roughness/src_normal>`                                       | ``""``    |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`   | :ref:`svg/scale<class_ResourceImporterTexture_property_svg/scale>`                                                             | ``1.0``   |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------+-----------+
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`       | :ref:`compress/channel_pack <class_ResourceImporterTexture_property_compress/channel_pack>`                                     | ``0``     |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`       | :ref:`compress/hdr_compression <class_ResourceImporterTexture_property_compress/hdr_compression>`                               | ``1``     |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`     | :ref:`compress/high_quality <class_ResourceImporterTexture_property_compress/high_quality>`                                     | ``false`` |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`   | :ref:`compress/lossy_quality <class_ResourceImporterTexture_property_compress/lossy_quality>`                                   | ``0.7``   |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`       | :ref:`compress/mode <class_ResourceImporterTexture_property_compress/mode>`                                                     | ``0``     |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`       | :ref:`compress/normal_map <class_ResourceImporterTexture_property_compress/normal_map>`                                         | ``0``     |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`   | :ref:`compress/rdo_quality_loss <class_ResourceImporterTexture_property_compress/rdo_quality_loss>`                             | ``0.0``   |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`       | :ref:`compress/uastc_level <class_ResourceImporterTexture_property_compress/uastc_level>`                                       | ``0``     |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`       | :ref:`detect_3d/compress_to <class_ResourceImporterTexture_property_detect_3d/compress_to>`                                     | ``1``     |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`     | :ref:`editor/convert_colors_with_editor_theme <class_ResourceImporterTexture_property_editor/convert_colors_with_editor_theme>` | ``false`` |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`     | :ref:`editor/scale_with_editor_scale <class_ResourceImporterTexture_property_editor/scale_with_editor_scale>`                   | ``false`` |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`     | :ref:`mipmaps/generate <class_ResourceImporterTexture_property_mipmaps/generate>`                                               | ``false`` |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`       | :ref:`mipmaps/limit <class_ResourceImporterTexture_property_mipmaps/limit>`                                                     | ``-1``    |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`       | :ref:`process/channel_remap/alpha <class_ResourceImporterTexture_property_process/channel_remap/alpha>`                         | ``3``     |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`       | :ref:`process/channel_remap/blue <class_ResourceImporterTexture_property_process/channel_remap/blue>`                           | ``2``     |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`       | :ref:`process/channel_remap/green <class_ResourceImporterTexture_property_process/channel_remap/green>`                         | ``1``     |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`       | :ref:`process/channel_remap/red <class_ResourceImporterTexture_property_process/channel_remap/red>`                             | ``0``     |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`     | :ref:`process/fix_alpha_border <class_ResourceImporterTexture_property_process/fix_alpha_border>`                               | ``true``  |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`     | :ref:`process/hdr_as_srgb <class_ResourceImporterTexture_property_process/hdr_as_srgb>`                                         | ``false`` |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`     | :ref:`process/hdr_clamp_exposure <class_ResourceImporterTexture_property_process/hdr_clamp_exposure>`                           | ``false`` |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`     | :ref:`process/normal_map_invert_y <class_ResourceImporterTexture_property_process/normal_map_invert_y>`                         | ``false`` |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`     | :ref:`process/premult_alpha <class_ResourceImporterTexture_property_process/premult_alpha>`                                     | ``false`` |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`       | :ref:`process/size_limit <class_ResourceImporterTexture_property_process/size_limit>`                                           | ``0``     |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`       | :ref:`roughness/mode <class_ResourceImporterTexture_property_roughness/mode>`                                                   | ``0``     |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`String<class_String>` | :ref:`roughness/src_normal <class_ResourceImporterTexture_property_roughness/src_normal>`                                       | ``""``    |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`   | :ref:`svg/scale <class_ResourceImporterTexture_property_svg/scale>`                                                             | ``1.0``   |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-section-separator
 
@@ -96,20 +96,20 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ResourceImporterTexture_property_compress/channel_pack:
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **compress/channel_pack** = ``0`` :ref:`🔗<class_ResourceImporterTexture_property_compress/channel_pack>`
+:ref:`int<class_int>` **compress/channel_pack** = ``0`` :ref:`🔗 <class_ResourceImporterTexture_property_compress/channel_pack>`
 
-Controls how color channels should be used in the imported texture.
+Kiểm soát cách các kênh màu được sử dụng trong texture đã nhập.
 
-\ **sRGB Friendly:** Prevents the R and RG color formats from being used, as they do not support nonlinear sRGB encoding.
+\ **Thân thiện với sRGB:** Ngăn không cho sử dụng các định dạng màu R và RG vì chúng không hỗ trợ mã hóa sRGB phi tuyến.
 
-\ **Optimized:** Allows the RG color format to be used if the texture does not use the blue channel. This reduces memory usage if the texture's blue channel can be discarded (all pixels must have a blue value of ``0``).
+\ **Tối ưu hóa:** Cho phép sử dụng định dạng màu RG nếu texture không sử dụng kênh blue. Điều này làm giảm mức sử dụng bộ nhớ nếu có thể loại bỏ kênh blue của texture (tất cả pixel phải có giá trị blue là ``0``).
 
 .. rst-class:: classref-item-separator
 
@@ -119,17 +119,17 @@ Controls how color channels should be used in the imported texture.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **compress/hdr_compression** = ``1`` :ref:`🔗<class_ResourceImporterTexture_property_compress/hdr_compression>`
+:ref:`int<class_int>` **compress/hdr_compression** = ``1`` :ref:`🔗 <class_ResourceImporterTexture_property_compress/hdr_compression>`
 
-Controls how VRAM compression should be performed for HDR images.
+Kiểm soát cách thực hiện nén VRAM cho hình ảnh HDR.
 
-\ **Disabled:** Never use VRAM compression for HDR textures, regardless of whether they're opaque or transparent. Instead, the texture is converted to RGBE9995 (9-bits per channel + 5-bit exponent = 32 bits per pixel) to reduce memory usage compared to a half-float or single-precision float image format.
+\ **Đã tắt:** Không bao giờ sử dụng nén VRAM cho texture HDR, bất kể chúng đục hay trong suốt. Thay vào đó, texture được chuyển đổi thành RGBE9995 (9 bit mỗi kênh + số mũ 5 bit = 32 bit mỗi pixel) để giảm mức sử dụng bộ nhớ so với định dạng hình ảnh half-float hoặc float độ chính xác đơn.
 
-\ **Opaque Only:** Only uses VRAM compression for opaque HDR textures. This is due to a limitation of HDR formats, as there is no VRAM-compressed HDR format that supports transparency at the same time.
+\ **Chỉ kết cấu mờ đục:** Chỉ sử dụng tính năng nén VRAM cho các kết cấu HDR mờ đục. Nguyên nhân là do giới hạn của các định dạng HDR, vì không có định dạng HDR được nén VRAM nào đồng thời hỗ trợ độ trong suốt.
 
-\ **Always:** Force VRAM compression even for HDR textures with an alpha channel. To perform this, the alpha channel is discarded on import.
+\ **Luôn luôn:** Buộc nén VRAM ngay cả đối với các kết cấu HDR có kênh alpha. Để thực hiện việc này, kênh alpha sẽ bị loại bỏ khi import.
 
-\ **Note:** Only effective on Radiance HDR (``.hdr``) and OpenEXR (``.exr``) images.
+\ **Lưu ý:** Chỉ có hiệu lực đối với hình ảnh Radiance HDR (``.hdr``) và OpenEXR (``.exr``).
 
 .. rst-class:: classref-item-separator
 
@@ -139,13 +139,13 @@ Controls how VRAM compression should be performed for HDR images.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **compress/high_quality** = ``false`` :ref:`🔗<class_ResourceImporterTexture_property_compress/high_quality>`
+:ref:`bool<class_bool>` **compress/high_quality** = ``false`` :ref:`🔗 <class_ResourceImporterTexture_property_compress/high_quality>`
 
-If ``true``, uses BPTC compression on desktop platforms and ASTC compression on mobile platforms. When using BPTC, BC7 is used for SDR textures and BC6H is used for HDR textures.
+Nếu ``true``, sử dụng tính năng nén BPTC trên các nền tảng máy tính để bàn và tính năng nén ASTC trên các nền tảng di động. Khi sử dụng BPTC, BC7 được dùng cho các kết cấu SDR còn BC6H được dùng cho các kết cấu HDR.
 
-If ``false``, uses the faster but lower-quality S3TC compression on desktop platforms and ETC2 on mobile/web platforms. When using S3TC, DXT1 (BC1) is used for opaque textures and DXT5 (BC3) is used for transparent or normal map (RGTC) textures.
+Nếu ``false``, sử dụng tính năng nén S3TC nhanh hơn nhưng chất lượng thấp hơn trên các nền tảng máy tính để bàn và ETC2 trên các nền tảng di động/web. Khi sử dụng S3TC, DXT1 (BC1) được dùng cho các kết cấu mờ đục còn DXT5 (BC3) được dùng cho các kết cấu trong suốt hoặc kết cấu bản đồ pháp tuyến (RGTC).
 
-BPTC and ASTC support VRAM compression for HDR textures, but S3TC and ETC2 do not (see :ref:`compress/hdr_compression<class_ResourceImporterTexture_property_compress/hdr_compression>`).
+BPTC và ASTC hỗ trợ nén VRAM cho các kết cấu HDR, nhưng S3TC và ETC2 thì không (xem :ref:`compress/hdr_compression <class_ResourceImporterTexture_property_compress/hdr_compression>`).
 
 .. rst-class:: classref-item-separator
 
@@ -155,9 +155,9 @@ BPTC and ASTC support VRAM compression for HDR textures, but S3TC and ETC2 do no
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **compress/lossy_quality** = ``0.7`` :ref:`🔗<class_ResourceImporterTexture_property_compress/lossy_quality>`
+:ref:`float<class_float>` **compress/lossy_quality** = ``0.7`` :ref:`🔗 <class_ResourceImporterTexture_property_compress/lossy_quality>`
 
-The quality to use when using the **Lossy** compression mode. Higher values result in better quality, at the cost of larger file sizes. Lossy quality does not affect memory usage of the imported texture, only its file size on disk.
+Chất lượng sẽ sử dụng khi dùng chế độ nén **Mất dữ liệu**. Giá trị cao hơn cho chất lượng tốt hơn, đổi lại là kích thước tệp lớn hơn. Chất lượng mất dữ liệu không ảnh hưởng đến mức sử dụng bộ nhớ của kết cấu đã import, mà chỉ ảnh hưởng đến kích thước tệp trên ổ đĩa.
 
 .. rst-class:: classref-item-separator
 
@@ -167,21 +167,21 @@ The quality to use when using the **Lossy** compression mode. Higher values resu
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **compress/mode** = ``0`` :ref:`🔗<class_ResourceImporterTexture_property_compress/mode>`
+:ref:`int<class_int>` **compress/mode** = ``0`` :ref:`🔗 <class_ResourceImporterTexture_property_compress/mode>`
 
-The compression mode to use. Each compression mode provides a different tradeoff:
+Chế độ nén sẽ sử dụng. Mỗi chế độ nén đem lại một sự đánh đổi khác nhau:
 
-\ **Lossless**: Original quality, high memory usage, high size on disk, fast import.
+\ **Không mất dữ liệu**: Chất lượng nguyên gốc, mức sử dụng bộ nhớ cao, kích thước trên ổ đĩa lớn, import nhanh.
 
-\ **Lossy:** Reduced quality, high memory usage, low size on disk, fast import.
+\ **Mất dữ liệu:** Chất lượng giảm, mức sử dụng bộ nhớ cao, kích thước trên ổ đĩa nhỏ, import nhanh.
 
-\ **VRAM Compressed:** Reduced quality, low memory usage, low size on disk, slowest import. Only use for textures in 3D scenes, not for 2D elements.
+\ **Nén VRAM:** Chất lượng giảm, mức sử dụng bộ nhớ thấp, kích thước trên ổ đĩa nhỏ, import chậm nhất. Chỉ sử dụng cho các kết cấu trong cảnh 3D, không dùng cho các phần tử 2D.
 
-\ **VRAM Uncompressed:** Original quality, high memory usage, highest size on disk, fastest import.
+\ **VRAM không nén:** Chất lượng nguyên gốc, mức sử dụng bộ nhớ cao, kích thước trên ổ đĩa lớn nhất, import nhanh nhất.
 
-\ **Basis Universal:** Reduced quality, low memory usage, lowest size on disk, slow import. Only use for textures in 3D scenes, not for 2D elements.
+\ **Basis Universal:** Chất lượng giảm, mức sử dụng bộ nhớ thấp, kích thước trên ổ đĩa nhỏ nhất, import chậm. Chỉ sử dụng cho các kết cấu trong cảnh 3D, không dùng cho các phần tử 2D.
 
-See `Compress mode <../tutorials/assets_pipeline/importing_images.html#compress-mode>`__ in the manual for more details.
+Xem `Chế độ nén <../tutorials/assets_pipeline/importing_images.html#compress-mode>`__ trong tài liệu hướng dẫn để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -191,11 +191,11 @@ See `Compress mode <../tutorials/assets_pipeline/importing_images.html#compress-
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **compress/normal_map** = ``0`` :ref:`🔗<class_ResourceImporterTexture_property_compress/normal_map>`
+:ref:`int<class_int>` **compress/normal_map** = ``0`` :ref:`🔗 <class_ResourceImporterTexture_property_compress/normal_map>`
 
-When using a texture as normal map, only the red and green channels are required. Given regular texture compression algorithms produce artifacts that don't look that nice in normal maps, the RGTC compression format is the best fit for this data. Forcing this option to Enable will make Godot import the image as RGTC compressed. By default, it's set to Detect. This means that if the texture is ever detected to be used as a normal map, it will be changed to Enable and reimported automatically.
+Khi sử dụng một kết cấu làm bản đồ pháp tuyến, chỉ cần các kênh đỏ và xanh lá. Vì các thuật toán nén kết cấu thông thường tạo ra các hiện tượng nhiễu không đẹp mắt trên bản đồ pháp tuyến, định dạng nén RGTC là lựa chọn phù hợp nhất cho loại dữ liệu này. Buộc tùy chọn này thành Enable sẽ khiến Godot import hình ảnh dưới dạng nén RGTC. Theo mặc định, tùy chọn này được đặt thành Detect. Điều này có nghĩa là nếu kết cấu được phát hiện đang được sử dụng làm bản đồ pháp tuyến, tùy chọn sẽ được chuyển thành Enable và tự động import lại.
 
-Note that RGTC compression affects the resulting normal map image. You will have to adjust custom shaders that use the normal map's blue channel to take this into account. Built-in material shaders already ignore the blue channel in a normal map (regardless of the actual normal map's contents).
+Lưu ý rằng tính năng nén RGTC ảnh hưởng đến hình ảnh bản đồ pháp tuyến kết quả. Bạn sẽ phải điều chỉnh các shader tùy chỉnh sử dụng kênh xanh dương của bản đồ pháp tuyến để tính đến điều này. Các shader vật liệu tích hợp sẵn đã bỏ qua kênh xanh dương trong bản đồ pháp tuyến (bất kể nội dung thực tế của bản đồ pháp tuyến).
 
 .. rst-class:: classref-item-separator
 
@@ -205,13 +205,13 @@ Note that RGTC compression affects the resulting normal map image. You will have
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **compress/rdo_quality_loss** = ``0.0`` :ref:`🔗<class_ResourceImporterTexture_property_compress/rdo_quality_loss>`
+:ref:`float<class_float>` **compress/rdo_quality_loss** = ``0.0`` :ref:`🔗 <class_ResourceImporterTexture_property_compress/rdo_quality_loss>`
 
-If greater than or equal to ``0.01``, enables Rate-Distortion Optimization (RDO) to reduce file size. Higher values result in smaller file sizes but lower quality.
+Nếu lớn hơn hoặc bằng ``0.01``, bật Tối ưu hóa Tỷ lệ-Méo (Rate-Distortion Optimization - RDO) để giảm kích thước tệp. Giá trị cao hơn cho kích thước tệp nhỏ hơn nhưng chất lượng thấp hơn.
 
-\ **Note:** Enabling RDO makes encoding times significantly longer, especially when the image is large.
+\ **Lưu ý:** Bật RDO khiến thời gian mã hóa dài hơn đáng kể, đặc biệt khi hình ảnh có kích thước lớn.
 
-See also :ref:`ProjectSettings.rendering/textures/basis_universal/rdo_dict_size<class_ProjectSettings_property_rendering/textures/basis_universal/rdo_dict_size>` and :ref:`ProjectSettings.rendering/textures/basis_universal/zstd_supercompression_level<class_ProjectSettings_property_rendering/textures/basis_universal/zstd_supercompression_level>` if you want to reduce the file size further.
+Xem thêm :ref:`ProjectSettings.rendering/textures/basis_universal/rdo_dict_size <class_ProjectSettings_property_rendering/textures/basis_universal/rdo_dict_size>` và :ref:`ProjectSettings.rendering/textures/basis_universal/zstd_supercompression_level <class_ProjectSettings_property_rendering/textures/basis_universal/zstd_supercompression_level>` nếu bạn muốn tiếp tục giảm kích thước tệp.
 
 .. rst-class:: classref-item-separator
 
@@ -221,9 +221,9 @@ See also :ref:`ProjectSettings.rendering/textures/basis_universal/rdo_dict_size<
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **compress/uastc_level** = ``0`` :ref:`🔗<class_ResourceImporterTexture_property_compress/uastc_level>`
+:ref:`int<class_int>` **compress/uastc_level** = ``0`` :ref:`🔗 <class_ResourceImporterTexture_property_compress/uastc_level>`
 
-The UASTC encoding level. Higher values result in better quality but make encoding times longer.
+Mức mã hóa UASTC. Giá trị cao hơn cho chất lượng tốt hơn nhưng khiến thời gian mã hóa dài hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -233,11 +233,11 @@ The UASTC encoding level. Higher values result in better quality but make encodi
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **detect_3d/compress_to** = ``1`` :ref:`🔗<class_ResourceImporterTexture_property_detect_3d/compress_to>`
+:ref:`int<class_int>` **detect_3d/compress_to** = ``1`` :ref:`🔗 <class_ResourceImporterTexture_property_detect_3d/compress_to>`
 
-This changes the :ref:`compress/mode<class_ResourceImporterTexture_property_compress/mode>` option that is used when a texture is detected as being used in 3D.
+Tùy chọn này thay đổi tùy chọn :ref:`compress/mode <class_ResourceImporterTexture_property_compress/mode>` được sử dụng khi phát hiện một kết cấu đang được sử dụng trong 3D.
 
-Changing this import option only has an effect if a texture is detected as being used in 3D. Changing this to **Disabled** then reimporting will not change the existing compress mode on a texture (if it's detected to be used in 3D), but choosing **VRAM Compressed** or **Basis Universal** will.
+Việc thay đổi tùy chọn import này chỉ có hiệu lực nếu phát hiện kết cấu đang được sử dụng trong 3D. Thay đổi tùy chọn này thành **Disabled** rồi import lại sẽ không thay đổi chế độ nén hiện có của kết cấu (nếu kết cấu được phát hiện đang được sử dụng trong 3D), nhưng chọn **VRAM Compressed** hoặc **Basis Universal** thì sẽ thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -247,11 +247,11 @@ Changing this import option only has an effect if a texture is detected as being
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **editor/convert_colors_with_editor_theme** = ``false`` :ref:`🔗<class_ResourceImporterTexture_property_editor/convert_colors_with_editor_theme>`
+:ref:`bool<class_bool>` **editor/convert_colors_with_editor_theme** = ``false`` :ref:`🔗 <class_ResourceImporterTexture_property_editor/convert_colors_with_editor_theme>`
 
-If ``true``, converts the imported image's colors to match :ref:`EditorSettings.interface/theme/icon_and_font_color<class_EditorSettings_property_interface/theme/icon_and_font_color>`. This assumes the image uses the exact same colors as :doc:`Godot's own color palette for editor icons <../engine_details/editor/creating_icons>`, with the source file designed for a dark editor theme. This should be enabled for editor plugin icons and custom class icons, but should be left disabled otherwise.
+Nếu ``true``, chuyển đổi màu của hình ảnh đã import để khớp với :ref:`EditorSettings.interface/theme/icon_and_font_color <class_EditorSettings_property_interface/theme/icon_and_font_color>`. Điều này giả định hình ảnh sử dụng chính xác các màu giống với :doc:`bảng màu riêng của Godot cho các biểu tượng của trình chỉnh sửa <../engine_details/editor/creating_icons>`, trong đó tệp nguồn được thiết kế cho giao diện tối của trình chỉnh sửa. Nên bật tùy chọn này cho các biểu tượng plugin trình chỉnh sửa và biểu tượng lớp tùy chỉnh, nhưng nên tắt trong các trường hợp khác.
 
-\ **Note:** Only available for SVG images.
+\ **Lưu ý:** Chỉ khả dụng cho hình ảnh SVG.
 
 .. rst-class:: classref-item-separator
 
@@ -261,11 +261,11 @@ If ``true``, converts the imported image's colors to match :ref:`EditorSettings.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **editor/scale_with_editor_scale** = ``false`` :ref:`🔗<class_ResourceImporterTexture_property_editor/scale_with_editor_scale>`
+:ref:`bool<class_bool>` **editor/scale_with_editor_scale** = ``false`` :ref:`🔗 <class_ResourceImporterTexture_property_editor/scale_with_editor_scale>`
 
-If ``true``, scales the imported image to match :ref:`EditorSettings.interface/editor/appearance/custom_display_scale<class_EditorSettings_property_interface/editor/appearance/custom_display_scale>`. This should be enabled for editor plugin icons and custom class icons, but should be left disabled otherwise.
+Nếu ``true``, điều chỉnh tỷ lệ hình ảnh đã import để khớp với :ref:`EditorSettings.interface/editor/appearance/custom_display_scale <class_EditorSettings_property_interface/editor/appearance/custom_display_scale>`. Nên bật tùy chọn này cho các biểu tượng plugin trình chỉnh sửa và biểu tượng lớp tùy chỉnh, nhưng nên tắt trong các trường hợp khác.
 
-\ **Note:** Only available for SVG images.
+\ **Lưu ý:** Chỉ khả dụng cho hình ảnh SVG.
 
 .. rst-class:: classref-item-separator
 
@@ -275,17 +275,17 @@ If ``true``, scales the imported image to match :ref:`EditorSettings.interface/e
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **mipmaps/generate** = ``false`` :ref:`🔗<class_ResourceImporterTexture_property_mipmaps/generate>`
+:ref:`bool<class_bool>` **mipmaps/generate** = ``false`` :ref:`🔗 <class_ResourceImporterTexture_property_mipmaps/generate>`
 
-If ``true``, smaller versions of the texture are generated on import. For example, a 64×64 texture will generate 6 mipmaps (32×32, 16×16, 8×8, 4×4, 2×2, 1×1). This has several benefits:
+Nếu ``true``, các phiên bản nhỏ hơn của kết cấu sẽ được tạo khi import. Ví dụ: một kết cấu 64×64 sẽ tạo ra 6 mipmap (32×32, 16×16, 8×8, 4×4, 2×2, 1×1). Điều này mang lại một số lợi ích:
 
-- Textures will not become grainy in the distance (in 3D), or if scaled down due to :ref:`Camera2D<class_Camera2D>` zoom or :ref:`CanvasItem<class_CanvasItem>` scale (in 2D).
+- Các kết cấu sẽ không bị nhiễu hạt khi ở xa (trong 3D), hoặc khi được thu nhỏ do :ref:`Camera2D<class_Camera2D>` zoom hoặc :ref:`CanvasItem<class_CanvasItem>` scale (trong 2D).
 
-- Performance will improve if the texture is displayed in the distance, since sampling smaller versions of the original texture is faster and requires less memory bandwidth.
+- Hiệu năng sẽ được cải thiện nếu texture được hiển thị ở khoảng cách xa, vì việc lấy mẫu các phiên bản nhỏ hơn của texture gốc nhanh hơn và yêu cầu ít băng thông bộ nhớ hơn.
 
-The downside of mipmaps is that they increase memory usage by roughly 33%.
+Nhược điểm của mipmap là chúng làm tăng mức sử dụng bộ nhớ khoảng 33%.
 
-It's recommended to enable mipmaps in 3D. However, in 2D, this should only be enabled if your project visibly benefits from having mipmaps enabled. If the camera never zooms out significantly, there won't be a benefit to enabling mipmaps but memory usage will increase.
+Bạn nên bật mipmap trong 3D. Tuy nhiên, trong 2D, chỉ nên bật tính năng này nếu dự án của bạn thực sự hưởng lợi từ việc bật mipmap. Nếu camera không bao giờ thu nhỏ đáng kể, việc bật mipmap sẽ không mang lại lợi ích, nhưng mức sử dụng bộ nhớ sẽ tăng.
 
 .. rst-class:: classref-item-separator
 
@@ -295,9 +295,9 @@ It's recommended to enable mipmaps in 3D. However, in 2D, this should only be en
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **mipmaps/limit** = ``-1`` :ref:`🔗<class_ResourceImporterTexture_property_mipmaps/limit>`
+:ref:`int<class_int>` **mipmaps/limit** = ``-1`` :ref:`🔗 <class_ResourceImporterTexture_property_mipmaps/limit>`
 
-Unimplemented. This currently has no effect when changed.
+Chưa được triển khai. Hiện tại, thay đổi giá trị này không có tác dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -307,31 +307,31 @@ Unimplemented. This currently has no effect when changed.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **process/channel_remap/alpha** = ``3`` :ref:`🔗<class_ResourceImporterTexture_property_process/channel_remap/alpha>`
+:ref:`int<class_int>` **process/channel_remap/alpha** = ``3`` :ref:`🔗 <class_ResourceImporterTexture_property_process/channel_remap/alpha>`
 
-Specifies the data source of the output image's alpha channel.
+Chỉ định nguồn dữ liệu của kênh alpha trong hình ảnh đầu ra.
 
-\ **Red:** Use the values from the source image's red channel.
+\ **Red:** Sử dụng các giá trị từ kênh red của hình ảnh nguồn.
 
-\ **Green:** Use the values from the source image's green channel.
+\ **Green:** Sử dụng các giá trị từ kênh green của hình ảnh nguồn.
 
-\ **Blue:** Use the values from the source image's blue channel.
+\ **Blue:** Sử dụng các giá trị từ kênh blue của hình ảnh nguồn.
 
-\ **Alpha:** Use the values from the source image's alpha channel.
+\ **Alpha:** Sử dụng các giá trị từ kênh alpha của hình ảnh nguồn.
 
-\ **Red Inverted:** Use inverted values from the source image's red channel (``1.0 - R``).
+\ **Red Inverted:** Sử dụng các giá trị đảo ngược từ kênh red của hình ảnh nguồn (``1.0 - R``).
 
-\ **Green Inverted:** Use inverted values from the source image's green channel (``1.0 - G``).
+\ **Green Inverted:** Sử dụng các giá trị đảo ngược từ kênh green của hình ảnh nguồn (``1.0 - G``).
 
-\ **Blue Inverted:** Use inverted values from the source image's blue channel (``1.0 - B``).
+\ **Blue Inverted:** Sử dụng các giá trị đảo ngược từ kênh blue của hình ảnh nguồn (``1.0 - B``).
 
-\ **Alpha Inverted:** Use inverted values from the source image's alpha channel (``1.0 - A``).
+\ **Alpha Inverted:** Sử dụng các giá trị đảo ngược từ kênh alpha của hình ảnh nguồn (``1.0 - A``).
 
-\ **Unused:** Set the color channel's value to the default (``1.0`` for alpha, ``0.0`` for red, green or blue).
+\ **Unused:** Đặt giá trị của kênh màu thành giá trị mặc định (``1.0`` cho alpha, ``0.0`` cho red, green hoặc blue).
 
-\ **Zero:** Set the color channel's value to ``0.0``.
+\ **Zero:** Đặt giá trị của kênh màu thành ``0.0``.
 
-\ **One:** Set the color channel's value to ``1.0``.
+\ **One:** Đặt giá trị của kênh màu thành ``1.0``.
 
 .. rst-class:: classref-item-separator
 
@@ -341,31 +341,31 @@ Specifies the data source of the output image's alpha channel.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **process/channel_remap/blue** = ``2`` :ref:`🔗<class_ResourceImporterTexture_property_process/channel_remap/blue>`
+:ref:`int<class_int>` **process/channel_remap/blue** = ``2`` :ref:`🔗 <class_ResourceImporterTexture_property_process/channel_remap/blue>`
 
-Specifies the data source of the output image's blue channel.
+Chỉ định nguồn dữ liệu của kênh blue trong hình ảnh đầu ra.
 
-\ **Red:** Use the values from the source image's red channel.
+\ **Red:** Sử dụng các giá trị từ kênh red của hình ảnh nguồn.
 
-\ **Green:** Use the values from the source image's green channel.
+\ **Green:** Sử dụng các giá trị từ kênh green của hình ảnh nguồn.
 
-\ **Blue:** Use the values from the source image's blue channel.
+\ **Blue:** Sử dụng các giá trị từ kênh blue của hình ảnh nguồn.
 
-\ **Alpha:** Use the values from the source image's alpha channel.
+\ **Alpha:** Sử dụng các giá trị từ kênh alpha của hình ảnh nguồn.
 
-\ **Red Inverted:** Use inverted values from the source image's red channel (``1.0 - R``).
+\ **Red Inverted:** Sử dụng các giá trị đảo ngược từ kênh red của hình ảnh nguồn (``1.0 - R``).
 
-\ **Green Inverted:** Use inverted values from the source image's green channel (``1.0 - G``).
+\ **Green Inverted:** Sử dụng các giá trị đảo ngược từ kênh green của hình ảnh nguồn (``1.0 - G``).
 
-\ **Blue Inverted:** Use inverted values from the source image's blue channel (``1.0 - B``).
+\ **Blue Inverted:** Sử dụng các giá trị đảo ngược từ kênh blue của hình ảnh nguồn (``1.0 - B``).
 
-\ **Alpha Inverted:** Use inverted values from the source image's alpha channel (``1.0 - A``).
+\ **Alpha Inverted:** Sử dụng các giá trị đảo ngược từ kênh alpha của hình ảnh nguồn (``1.0 - A``).
 
-\ **Unused:** Set the color channel's value to the default (``1.0`` for alpha, ``0.0`` for red, green or blue).
+\ **Unused:** Đặt giá trị của kênh màu thành giá trị mặc định (``1.0`` cho alpha, ``0.0`` cho red, green hoặc blue).
 
-\ **Zero:** Set the color channel's value to ``0.0``.
+\ **Zero:** Đặt giá trị của kênh màu thành ``0.0``.
 
-\ **One:** Set the color channel's value to ``1.0``.
+\ **One:** Đặt giá trị của kênh màu thành ``1.0``.
 
 .. rst-class:: classref-item-separator
 
@@ -375,31 +375,31 @@ Specifies the data source of the output image's blue channel.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **process/channel_remap/green** = ``1`` :ref:`🔗<class_ResourceImporterTexture_property_process/channel_remap/green>`
+:ref:`int<class_int>` **process/channel_remap/green** = ``1`` :ref:`🔗 <class_ResourceImporterTexture_property_process/channel_remap/green>`
 
-Specifies the data source of the output image's green channel.
+Chỉ định nguồn dữ liệu của kênh green trong hình ảnh đầu ra.
 
-\ **Red:** Use the values from the source image's red channel.
+\ **Red:** Sử dụng các giá trị từ kênh red của hình ảnh nguồn.
 
-\ **Green:** Use the values from the source image's green channel.
+\ **Green:** Sử dụng các giá trị từ kênh green của hình ảnh nguồn.
 
-\ **Blue:** Use the values from the source image's blue channel.
+\ **Blue:** Sử dụng các giá trị từ kênh blue của hình ảnh nguồn.
 
-\ **Alpha:** Use the values from the source image's alpha channel.
+\ **Alpha:** Sử dụng các giá trị từ kênh alpha của hình ảnh nguồn.
 
-\ **Red Inverted:** Use inverted values from the source image's red channel (``1.0 - R``).
+\ **Red Inverted:** Sử dụng các giá trị đảo ngược từ kênh red của hình ảnh nguồn (``1.0 - R``).
 
-\ **Green Inverted:** Use inverted values from the source image's green channel (``1.0 - G``).
+\ **Green Inverted:** Sử dụng các giá trị đảo ngược từ kênh green của hình ảnh nguồn (``1.0 - G``).
 
-\ **Blue Inverted:** Use inverted values from the source image's blue channel (``1.0 - B``).
+\ **Blue Inverted:** Sử dụng các giá trị đảo ngược từ kênh blue của hình ảnh nguồn (``1.0 - B``).
 
-\ **Alpha Inverted:** Use inverted values from the source image's alpha channel (``1.0 - A``).
+\ **Alpha Inverted:** Sử dụng các giá trị đảo ngược từ kênh alpha của hình ảnh nguồn (``1.0 - A``).
 
-\ **Unused:** Set the color channel's value to the default (``1.0`` for alpha, ``0.0`` for red, green or blue).
+\ **Unused:** Đặt giá trị của kênh màu thành giá trị mặc định (``1.0`` cho alpha, ``0.0`` cho red, green hoặc blue).
 
-\ **Zero:** Set the color channel's value to ``0.0``.
+\ **Zero:** Đặt giá trị của kênh màu thành ``0.0``.
 
-\ **One:** Set the color channel's value to ``1.0``.
+\ **One:** Đặt giá trị của kênh màu thành ``1.0``.
 
 .. rst-class:: classref-item-separator
 
@@ -409,31 +409,31 @@ Specifies the data source of the output image's green channel.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **process/channel_remap/red** = ``0`` :ref:`🔗<class_ResourceImporterTexture_property_process/channel_remap/red>`
+:ref:`int<class_int>` **process/channel_remap/red** = ``0`` :ref:`🔗 <class_ResourceImporterTexture_property_process/channel_remap/red>`
 
-Specifies the data source of the output image's red channel.
+Chỉ định nguồn dữ liệu của kênh red trong hình ảnh đầu ra.
 
-\ **Red:** Use the values from the source image's red channel.
+\ **Red:** Sử dụng các giá trị từ kênh red của hình ảnh nguồn.
 
-\ **Green:** Use the values from the source image's green channel.
+\ **Green:** Sử dụng các giá trị từ kênh green của hình ảnh nguồn.
 
-\ **Blue:** Use the values from the source image's blue channel.
+\ **Blue:** Sử dụng các giá trị từ kênh blue của hình ảnh nguồn.
 
-\ **Alpha:** Use the values from the source image's alpha channel.
+\ **Alpha:** Sử dụng các giá trị từ kênh alpha của hình ảnh nguồn.
 
-\ **Red Inverted:** Use inverted values from the source image's red channel (``1.0 - R``).
+\ **Red Inverted:** Sử dụng các giá trị đảo ngược từ kênh red của hình ảnh nguồn (``1.0 - R``).
 
-\ **Green Inverted:** Use inverted values from the source image's green channel (``1.0 - G``).
+\ **Green Inverted:** Sử dụng các giá trị đảo ngược từ kênh green của hình ảnh nguồn (``1.0 - G``).
 
-\ **Blue Inverted:** Use inverted values from the source image's blue channel (``1.0 - B``).
+\ **Blue Inverted:** Sử dụng các giá trị đảo ngược từ kênh blue của hình ảnh nguồn (``1.0 - B``).
 
-\ **Alpha Inverted:** Use inverted values from the source image's alpha channel (``1.0 - A``).
+\ **Alpha Inverted:** Sử dụng các giá trị đảo ngược từ kênh alpha của hình ảnh nguồn (``1.0 - A``).
 
-\ **Unused:** Set the color channel's value to the default (``1.0`` for alpha, ``0.0`` for red, green or blue).
+\ **Unused:** Đặt giá trị của kênh màu thành giá trị mặc định (``1.0`` cho alpha, ``0.0`` cho red, green hoặc blue).
 
-\ **Zero:** Set the color channel's value to ``0.0``.
+\ **Zero:** Đặt giá trị của kênh màu thành ``0.0``.
 
-\ **One:** Set the color channel's value to ``1.0``.
+\ **One:** Đặt giá trị của kênh màu thành ``1.0``.
 
 .. rst-class:: classref-item-separator
 
@@ -443,11 +443,11 @@ Specifies the data source of the output image's red channel.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **process/fix_alpha_border** = ``true`` :ref:`🔗<class_ResourceImporterTexture_property_process/fix_alpha_border>`
+:ref:`bool<class_bool>` **process/fix_alpha_border** = ``true`` :ref:`🔗 <class_ResourceImporterTexture_property_process/fix_alpha_border>`
 
-If ``true``, puts pixels of the same surrounding color in transition from transparent to opaque areas. For textures displayed with bilinear filtering, this helps to reduce the outline effect when exporting images from an image editor.
+Nếu ``true``, các pixel có cùng màu xung quanh sẽ được chuyển tiếp từ vùng trong suốt sang vùng không trong suốt. Đối với các texture được hiển thị bằng bilinear filtering, điều này giúp giảm hiệu ứng viền khi xuất hình ảnh từ trình chỉnh sửa hình ảnh.
 
-It's recommended to leave this enabled (as it is by default), unless this causes issues for a particular image.
+Bạn nên để tùy chọn này được bật (như mặc định), trừ khi nó gây ra vấn đề với một hình ảnh cụ thể.
 
 .. rst-class:: classref-item-separator
 
@@ -457,11 +457,11 @@ It's recommended to leave this enabled (as it is by default), unless this causes
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **process/hdr_as_srgb** = ``false`` :ref:`🔗<class_ResourceImporterTexture_property_process/hdr_as_srgb>`
+:ref:`bool<class_bool>` **process/hdr_as_srgb** = ``false`` :ref:`🔗 <class_ResourceImporterTexture_property_process/hdr_as_srgb>`
 
-Some HDR images you can find online may be broken and contain data that is encoded using the nonlinear sRGB transfer function (instead of using linear encoding). It is advised not to use those files. If you absolutely have to, enabling :ref:`process/hdr_as_srgb<class_ResourceImporterTexture_property_process/hdr_as_srgb>` will make them look correct.
+Một số hình ảnh HDR bạn có thể tìm thấy trên mạng có thể bị lỗi và chứa dữ liệu được mã hóa bằng hàm truyền sRGB phi tuyến (thay vì mã hóa tuyến tính). Bạn không nên sử dụng những tệp đó. Nếu bắt buộc phải sử dụng, bật :ref:`process/hdr_as_srgb <class_ResourceImporterTexture_property_process/hdr_as_srgb>` sẽ khiến chúng hiển thị chính xác.
 
-\ **Warning:** Enabling :ref:`process/hdr_as_srgb<class_ResourceImporterTexture_property_process/hdr_as_srgb>` on well-formatted HDR images will cause the resulting image to look too dark, so leave this on ``false`` if unsure.
+\ **Warning:** Việc bật :ref:`process/hdr_as_srgb <class_ResourceImporterTexture_property_process/hdr_as_srgb>` trên các hình ảnh HDR được định dạng đúng sẽ khiến hình ảnh kết quả trông quá tối, vì vậy hãy để tùy chọn này ở ``false`` nếu không chắc chắn.
 
 .. rst-class:: classref-item-separator
 
@@ -471,13 +471,13 @@ Some HDR images you can find online may be broken and contain data that is encod
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **process/hdr_clamp_exposure** = ``false`` :ref:`🔗<class_ResourceImporterTexture_property_process/hdr_clamp_exposure>`
+:ref:`bool<class_bool>` **process/hdr_clamp_exposure** = ``false`` :ref:`🔗 <class_ResourceImporterTexture_property_process/hdr_clamp_exposure>`
 
-If ``true``, clamps exposure in the imported high dynamic range images using a smart clamping formula (without introducing *visible* clipping).
+Nếu ``true``, giới hạn exposure trong các hình ảnh có dải tương phản động cao được import bằng công thức giới hạn thông minh (không tạo ra hiện tượng clipping *visible*).
 
-Some HDR panorama images you can find online may contain extremely bright pixels, due to being taken from real life sources without any clipping.
+Một số hình ảnh panorama HDR bạn có thể tìm thấy trên mạng có thể chứa các pixel cực kỳ sáng do được chụp từ những nguồn trong đời thực mà không áp dụng clipping.
 
-While these HDR panorama images are accurate to real life, this can cause the radiance map generated by Godot to contain sparkles when used as a background sky. This can be seen in material reflections (even on rough materials in extreme cases). Enabling :ref:`process/hdr_clamp_exposure<class_ResourceImporterTexture_property_process/hdr_clamp_exposure>` can resolve this.
+Mặc dù các hình ảnh panorama HDR này phản ánh chính xác đời thực, điều này có thể khiến radiance map do Godot tạo ra xuất hiện các đốm sáng khi được dùng làm bầu trời nền. Hiện tượng này có thể thấy trong các phản xạ vật liệu (trong những trường hợp cực đoan, ngay cả với vật liệu thô). Bật :ref:`process/hdr_clamp_exposure <class_ResourceImporterTexture_property_process/hdr_clamp_exposure>` có thể khắc phục vấn đề này.
 
 .. rst-class:: classref-item-separator
 
@@ -487,13 +487,13 @@ While these HDR panorama images are accurate to real life, this can cause the ra
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **process/normal_map_invert_y** = ``false`` :ref:`🔗<class_ResourceImporterTexture_property_process/normal_map_invert_y>`
+:ref:`bool<class_bool>` **process/normal_map_invert_y** = ``false`` :ref:`🔗 <class_ResourceImporterTexture_property_process/normal_map_invert_y>`
 
-**Deprecated:** The same result can be achieved by setting :ref:`process/channel_remap/green<class_ResourceImporterTexture_property_process/channel_remap/green>` to ``Green Inverted``.
+**Deprecated:** Có thể đạt được kết quả tương tự bằng cách đặt :ref:`process/channel_remap/green <class_ResourceImporterTexture_property_process/channel_remap/green>` thành ``Green Inverted``.
 
-If ``true``, convert the normal map from Y- (DirectX-style) to Y+ (OpenGL-style) by inverting its green color channel. This is the normal map convention expected by Godot.
+Nếu ``true``, chuyển normal map từ Y- (kiểu DirectX) sang Y+ (kiểu OpenGL) bằng cách đảo ngược kênh màu xanh lục của nó. Đây là quy ước normal map mà Godot yêu cầu.
 
-More information about normal maps (including a coordinate order table for popular engines) can be found `here <http://wiki.polycount.com/wiki/Normal_Map_Technical_Details>`__.
+Bạn có thể tìm thêm thông tin về normal map (bao gồm bảng thứ tự tọa độ cho các engine phổ biến) `here <http://wiki.polycount.com/wiki/Normal_Map_Technical_Details>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -503,13 +503,13 @@ More information about normal maps (including a coordinate order table for popul
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **process/premult_alpha** = ``false`` :ref:`🔗<class_ResourceImporterTexture_property_process/premult_alpha>`
+:ref:`bool<class_bool>` **process/premult_alpha** = ``false`` :ref:`🔗 <class_ResourceImporterTexture_property_process/premult_alpha>`
 
-An alternative to fixing darkened borders with :ref:`process/fix_alpha_border<class_ResourceImporterTexture_property_process/fix_alpha_border>` is to use premultiplied alpha. By enabling this option, the texture will be converted to this format. A premultiplied alpha texture requires specific materials to be displayed correctly:
+Một cách khác để khắc phục các viền bị tối bằng :ref:`process/fix_alpha_border <class_ResourceImporterTexture_property_process/fix_alpha_border>` là sử dụng alpha premultiplied. Khi bật tùy chọn này, texture sẽ được chuyển đổi sang định dạng này. Texture alpha premultiplied yêu cầu các material cụ thể để được hiển thị chính xác:
 
-- In 2D, a :ref:`CanvasItemMaterial<class_CanvasItemMaterial>` will need to be created and configured to use the :ref:`CanvasItemMaterial.BLEND_MODE_PREMULT_ALPHA<class_CanvasItemMaterial_constant_BLEND_MODE_PREMULT_ALPHA>` blend mode on :ref:`CanvasItem<class_CanvasItem>`\ s that use this texture. In custom ``canvas_item`` shaders, ``render_mode blend_premul_alpha;`` should be used.
+- Trong 2D, cần tạo :ref:`CanvasItemMaterial<class_CanvasItemMaterial>` và cấu hình để sử dụng blend mode :ref:`CanvasItemMaterial.BLEND_MODE_PREMULT_ALPHA<class_CanvasItemMaterial_constant_BLEND_MODE_PREMULT_ALPHA>` trên các :ref:`CanvasItem<class_CanvasItem>`\ s sử dụng texture này. Trong các shader ``canvas_item`` tùy chỉnh, nên sử dụng ``render_mode blend_premul_alpha;``.
 
-- In 3D, a :ref:`BaseMaterial3D<class_BaseMaterial3D>` will need to be created and configured to use the :ref:`BaseMaterial3D.BLEND_MODE_PREMULT_ALPHA<class_BaseMaterial3D_constant_BLEND_MODE_PREMULT_ALPHA>` blend mode on materials that use this texture. In custom ``spatial`` shaders, ``render_mode blend_premul_alpha;`` should be used.
+- Trong 3D, cần tạo :ref:`BaseMaterial3D<class_BaseMaterial3D>` và cấu hình để sử dụng blend mode :ref:`BaseMaterial3D.BLEND_MODE_PREMULT_ALPHA<class_BaseMaterial3D_constant_BLEND_MODE_PREMULT_ALPHA>` trên các material sử dụng texture này. Trong các shader ``spatial`` tùy chỉnh, nên sử dụng ``render_mode blend_premul_alpha;``.
 
 .. rst-class:: classref-item-separator
 
@@ -519,19 +519,19 @@ An alternative to fixing darkened borders with :ref:`process/fix_alpha_border<cl
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **process/size_limit** = ``0`` :ref:`🔗<class_ResourceImporterTexture_property_process/size_limit>`
+:ref:`int<class_int>` **process/size_limit** = ``0`` :ref:`🔗 <class_ResourceImporterTexture_property_process/size_limit>`
 
-If set to a value greater than ``0``, the size of the texture is limited on import to a value smaller than or equal to the value specified here. For non-square textures, the size limit affects the longer dimension, with the shorter dimension scaled to preserve aspect ratio. Resizing is performed using cubic interpolation.
+Nếu được đặt thành giá trị lớn hơn ``0``, kích thước của texture sẽ bị giới hạn khi import ở một giá trị nhỏ hơn hoặc bằng giá trị được chỉ định tại đây. Đối với texture không vuông, giới hạn kích thước áp dụng cho chiều dài hơn, còn chiều ngắn hơn được thu phóng để giữ nguyên tỷ lệ khung hình. Việc thay đổi kích thước được thực hiện bằng phép nội suy cubic.
 
-This can be used to reduce memory usage without affecting the source images, or avoid issues with textures not displaying on mobile/web platforms (as these usually can't display textures larger than 4096×4096).
+Bạn có thể dùng tùy chọn này để giảm mức sử dụng bộ nhớ mà không ảnh hưởng đến hình ảnh nguồn hoặc tránh các vấn đề khiến texture không hiển thị trên nền tảng mobile/web (vì các nền tảng này thường không thể hiển thị texture lớn hơn 4096×4096).
 
-\ **Note:** Even if this is set to ``0``, import size is limited to the following dimensions for technical reasons. Depending on :ref:`compress/mode<class_ResourceImporterTexture_property_compress/mode>`, textures will be downsampled on import if necessary:
+\ **Note:** Ngay cả khi được đặt thành ``0``, kích thước import vẫn bị giới hạn ở các kích thước sau vì lý do kỹ thuật. Tùy thuộc vào :ref:`compress/mode <class_ResourceImporterTexture_property_compress/mode>`, texture sẽ được downsample khi import nếu cần:
 
-- **Lossy:** 16383 pixels width or height, whichever is larger;
+- **Lossy:** chiều rộng hoặc chiều cao 16383 pixel, tùy giá trị nào lớn hơn;
 
-- **Basis Universal:** 16384 pixels width or height, whichever is larger;
+- **Basis Universal:** chiều rộng hoặc chiều cao 16384 pixel, tùy giá trị nào lớn hơn;
 
-- **All other modes:** 32768 pixels width or height, whichever is larger.
+- **All other modes:** chiều rộng hoặc chiều cao 32768 pixel, tùy giá trị nào lớn hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -541,9 +541,9 @@ This can be used to reduce memory usage without affecting the source images, or 
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **roughness/mode** = ``0`` :ref:`🔗<class_ResourceImporterTexture_property_roughness/mode>`
+:ref:`int<class_int>` **roughness/mode** = ``0`` :ref:`🔗 <class_ResourceImporterTexture_property_roughness/mode>`
 
-The color channel to consider as a roughness map in this texture. Only effective if :ref:`roughness/src_normal<class_ResourceImporterTexture_property_roughness/src_normal>` is not empty.
+Kênh màu được xem là roughness map trong texture này. Chỉ có hiệu lực nếu :ref:`roughness/src_normal <class_ResourceImporterTexture_property_roughness/src_normal>` không rỗng.
 
 .. rst-class:: classref-item-separator
 
@@ -553,11 +553,11 @@ The color channel to consider as a roughness map in this texture. Only effective
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **roughness/src_normal** = ``""`` :ref:`🔗<class_ResourceImporterTexture_property_roughness/src_normal>`
+:ref:`String<class_String>` **roughness/src_normal** = ``""`` :ref:`🔗 <class_ResourceImporterTexture_property_roughness/src_normal>`
 
-The path to the texture to consider as a normal map for roughness filtering on import. Specifying this can help decrease specular aliasing slightly in 3D.
+Đường dẫn đến texture được xem là normal map để lọc roughness khi import. Việc chỉ định texture này có thể giúp giảm nhẹ hiện tượng specular aliasing trong 3D.
 
-Roughness filtering on import is only used in 3D rendering, not 2D.
+Lọc roughness khi import chỉ được sử dụng trong kết xuất 3D, không dùng trong 2D.
 
 .. rst-class:: classref-item-separator
 
@@ -567,18 +567,18 @@ Roughness filtering on import is only used in 3D rendering, not 2D.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **svg/scale** = ``1.0`` :ref:`🔗<class_ResourceImporterTexture_property_svg/scale>`
+:ref:`float<class_float>` **svg/scale** = ``1.0`` :ref:`🔗 <class_ResourceImporterTexture_property_svg/scale>`
 
-The scale the SVG should be rendered at, with ``1.0`` being the original design size. Higher values result in a larger image. Note that unlike font oversampling, this affects the size the SVG is rendered at in 2D. See also :ref:`editor/scale_with_editor_scale<class_ResourceImporterTexture_property_editor/scale_with_editor_scale>`.
+Tỷ lệ mà SVG sẽ được render, trong đó ``1.0`` là kích thước thiết kế ban đầu. Giá trị cao hơn sẽ tạo ra hình ảnh lớn hơn. Lưu ý rằng không giống như oversampling phông chữ, điều này ảnh hưởng đến kích thước mà SVG được render trong 2D. Xem thêm :ref:`editor/scale_with_editor_scale <class_ResourceImporterTexture_property_editor/scale_with_editor_scale>`.
 
-\ **Note:** Only available for SVG images.
+\ **Lưu ý:** Chỉ khả dụng cho hình ảnh SVG.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override method này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Method này bắt buộc phải được override khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có side effect. Nó không sửa đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Method này chấp nhận bất kỳ số lượng argument nào sau các argument được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Method này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Method này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Method này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

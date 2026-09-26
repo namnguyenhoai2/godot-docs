@@ -10,23 +10,23 @@
 TCPServer
 =========
 
-**Inherits:** :ref:`SocketServer<class_SocketServer>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`SocketServer<class_SocketServer>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A TCP server.
+Một TCP server.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A TCP server. Listens to connections on a port and returns a :ref:`StreamPeerTCP<class_StreamPeerTCP>` when it gets an incoming connection.
+Một TCP server. Lắng nghe các kết nối trên một cổng và trả về một :ref:`StreamPeerTCP<class_StreamPeerTCP>` khi nhận được kết nối đến.
 
-\ **Note:** When exporting to Android, make sure to enable the ``INTERNET`` permission in the Android export preset before exporting the project or using one-click deploy. Otherwise, network communication of any kind will be blocked by Android.
+\ **Lưu ý:** Khi export sang Android, hãy đảm bảo bật quyền ``INTERNET`` trong preset export Android trước khi export project hoặc sử dụng one-click deploy. Nếu không, Android sẽ chặn mọi loại giao tiếp mạng.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -34,7 +34,7 @@ Methods
    +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                     | :ref:`get_local_port<class_TCPServer_method_get_local_port>`\ (\ ) |const|                                                         |
    +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`     | :ref:`listen<class_TCPServer_method_listen>`\ (\ port\: :ref:`int<class_int>`, bind_address\: :ref:`String<class_String>` = "*"\ ) |
+   | :ref:`Lỗi <enum_@GlobalScope_Error>`      | :ref:`listen<class_TCPServer_method_listen>`\ (\ port\: :ref:`int<class_int>`, bind_address\: :ref:`String<class_String>` = "*"\ ) |
    +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`StreamPeerTCP<class_StreamPeerTCP>` | :ref:`take_connection<class_TCPServer_method_take_connection>`\ (\ )                                                               |
    +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
@@ -45,8 +45,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_TCPServer_method_get_local_port:
 
@@ -54,7 +54,7 @@ Method Descriptions
 
 :ref:`int<class_int>` **get_local_port**\ (\ ) |const| :ref:`🔗<class_TCPServer_method_get_local_port>`
 
-Returns the local port this server is listening to.
+Trả về cổng cục bộ mà server này đang lắng nghe.
 
 .. rst-class:: classref-item-separator
 
@@ -66,13 +66,13 @@ Returns the local port this server is listening to.
 
 :ref:`Error<enum_@GlobalScope_Error>` **listen**\ (\ port\: :ref:`int<class_int>`, bind_address\: :ref:`String<class_String>` = "*"\ ) :ref:`🔗<class_TCPServer_method_listen>`
 
-Listen on the ``port`` binding to ``bind_address``.
+Lắng nghe trên ``port``, liên kết với ``bind_address``.
 
-If ``bind_address`` is set as ``"*"`` (default), the server will listen on all available addresses (both IPv4 and IPv6).
+Nếu ``bind_address`` được đặt thành ``"*"`` (mặc định), server sẽ lắng nghe trên tất cả địa chỉ khả dụng (cả IPv4 và IPv6).
 
-If ``bind_address`` is set as ``"0.0.0.0"`` (for IPv4) or ``"::"`` (for IPv6), the server will listen on all available addresses matching that IP type.
+Nếu ``bind_address`` được đặt thành ``"0.0.0.0"`` (cho IPv4) hoặc ``"::"`` (cho IPv6), server sẽ lắng nghe trên tất cả địa chỉ khả dụng khớp với loại IP đó.
 
-If ``bind_address`` is set to any valid address (e.g. ``"192.168.1.101"``, ``"::1"``, etc.), the server will only listen on the interface with that address (or fail if no interface with the given address exists).
+Nếu ``bind_address`` được đặt thành bất kỳ địa chỉ hợp lệ nào (ví dụ: ``"192.168.1.101"``, ``"::1"``, v.v.), server sẽ chỉ lắng nghe trên interface có địa chỉ đó (hoặc không thành công nếu không tồn tại interface nào có địa chỉ đã cho).
 
 .. rst-class:: classref-item-separator
 
@@ -84,14 +84,14 @@ If ``bind_address`` is set to any valid address (e.g. ``"192.168.1.101"``, ``"::
 
 :ref:`StreamPeerTCP<class_StreamPeerTCP>` **take_connection**\ (\ ) :ref:`🔗<class_TCPServer_method_take_connection>`
 
-If a connection is available, returns a StreamPeerTCP with the connection.
+Nếu có kết nối khả dụng, trả về một StreamPeerTCP cùng với kết nối đó.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override phương thức này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Phương thức không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả tại đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

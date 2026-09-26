@@ -10,24 +10,24 @@
 SkeletonModification2DTwoBoneIK
 ===============================
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc xóa trong các phiên bản tương lai.
 
-**Inherits:** :ref:`SkeletonModification2D<class_SkeletonModification2D>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`SkeletonModification2D<class_SkeletonModification2D>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A modification that rotates two bones using the law of cosines to reach the target.
+Một modification xoay hai xương bằng cách sử dụng định luật cos để đạt đến mục tiêu.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This :ref:`SkeletonModification2D<class_SkeletonModification2D>` uses an algorithm typically called TwoBoneIK. This algorithm works by leveraging the law of cosines and the lengths of the bones to figure out what rotation the bones currently have, and what rotation they need to make a complete triangle, where the first bone, the second bone, and the target form the three vertices of the triangle. Because the algorithm works by making a triangle, it can only operate on two bones.
+:ref:`SkeletonModification2D<class_SkeletonModification2D>` này sử dụng một thuật toán thường được gọi là TwoBoneIK. Thuật toán này tận dụng định luật cos và độ dài của các xương để xác định góc xoay hiện tại của các xương và góc xoay cần thiết để tạo thành một tam giác hoàn chỉnh, trong đó xương thứ nhất, xương thứ hai và mục tiêu tạo thành ba đỉnh của tam giác. Vì thuật toán hoạt động bằng cách tạo một tam giác, nó chỉ có thể hoạt động trên hai xương.
 
-TwoBoneIK is great for arms, legs, and really any joints that can be represented by just two bones that bend to reach a target. This solver is more lightweight than :ref:`SkeletonModification2DFABRIK<class_SkeletonModification2DFABRIK>`, but gives similar, natural looking results.
+TwoBoneIK phù hợp cho cánh tay, chân và thực sự là bất kỳ khớp nào có thể được biểu diễn chỉ bằng hai xương uốn cong để đạt đến một mục tiêu. Solver này nhẹ hơn :ref:`SkeletonModification2DFABRIK<class_SkeletonModification2DFABRIK>`, nhưng vẫn cho kết quả tương tự và trông tự nhiên.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -45,8 +45,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -75,8 +75,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_SkeletonModification2DTwoBoneIK_property_flip_bend_direction:
 
@@ -89,7 +89,7 @@ Property Descriptions
 - |void| **set_flip_bend_direction**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_flip_bend_direction**\ (\ )
 
-If ``true``, the bones in the modification will bend outward as opposed to inwards when contracting. If ``false``, the bones will bend inwards when contracting.
+Nếu ``true``, các xương trong modification sẽ uốn cong ra ngoài thay vì vào trong khi co lại. Nếu ``false``, các xương sẽ uốn cong vào trong khi co lại.
 
 .. rst-class:: classref-item-separator
 
@@ -106,7 +106,7 @@ If ``true``, the bones in the modification will bend outward as opposed to inwar
 - |void| **set_target_maximum_distance**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_target_maximum_distance**\ (\ )
 
-The maximum distance the target can be at. If the target is farther than this distance, the modification will solve as if it's at this maximum distance. When set to ``0``, the modification will solve without distance constraints.
+Khoảng cách tối đa mà mục tiêu có thể ở đó. Nếu mục tiêu xa hơn khoảng cách này, modification sẽ giải như thể mục tiêu đang ở khoảng cách tối đa này. Khi được đặt thành ``0``, modification sẽ giải mà không có giới hạn khoảng cách.
 
 .. rst-class:: classref-item-separator
 
@@ -123,7 +123,7 @@ The maximum distance the target can be at. If the target is farther than this di
 - |void| **set_target_minimum_distance**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_target_minimum_distance**\ (\ )
 
-The minimum distance the target can be at. If the target is closer than this distance, the modification will solve as if it's at this minimum distance. When set to ``0``, the modification will solve without distance constraints.
+Khoảng cách tối thiểu mà mục tiêu có thể ở đó. Nếu mục tiêu gần hơn khoảng cách này, modification sẽ giải như thể mục tiêu đang ở khoảng cách tối thiểu này. Khi được đặt thành ``0``, modification sẽ giải mà không có giới hạn khoảng cách.
 
 .. rst-class:: classref-item-separator
 
@@ -140,7 +140,7 @@ The minimum distance the target can be at. If the target is closer than this dis
 - |void| **set_target_node**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_target_node**\ (\ )
 
-The NodePath to the node that is the target for the TwoBoneIK modification. This node is what the modification will use when bending the :ref:`Bone2D<class_Bone2D>` nodes.
+NodePath đến node là mục tiêu của modification TwoBoneIK. Đây là node mà modification sẽ sử dụng khi uốn cong các node :ref:`Bone2D<class_Bone2D>`.
 
 .. rst-class:: classref-section-separator
 
@@ -148,8 +148,8 @@ The NodePath to the node that is the target for the TwoBoneIK modification. This
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_SkeletonModification2DTwoBoneIK_method_get_joint_one_bone2d_node:
 
@@ -157,7 +157,7 @@ Method Descriptions
 
 :ref:`NodePath<class_NodePath>` **get_joint_one_bone2d_node**\ (\ ) |const| :ref:`🔗<class_SkeletonModification2DTwoBoneIK_method_get_joint_one_bone2d_node>`
 
-Returns the :ref:`Bone2D<class_Bone2D>` node that is being used as the first bone in the TwoBoneIK modification.
+Trả về node :ref:`Bone2D<class_Bone2D>` đang được sử dụng làm xương thứ nhất trong modification TwoBoneIK.
 
 .. rst-class:: classref-item-separator
 
@@ -169,7 +169,7 @@ Returns the :ref:`Bone2D<class_Bone2D>` node that is being used as the first bon
 
 :ref:`int<class_int>` **get_joint_one_bone_idx**\ (\ ) |const| :ref:`🔗<class_SkeletonModification2DTwoBoneIK_method_get_joint_one_bone_idx>`
 
-Returns the index of the :ref:`Bone2D<class_Bone2D>` node that is being used as the first bone in the TwoBoneIK modification.
+Trả về chỉ mục của node :ref:`Bone2D<class_Bone2D>` đang được sử dụng làm xương thứ nhất trong modification TwoBoneIK.
 
 .. rst-class:: classref-item-separator
 
@@ -181,7 +181,7 @@ Returns the index of the :ref:`Bone2D<class_Bone2D>` node that is being used as 
 
 :ref:`NodePath<class_NodePath>` **get_joint_two_bone2d_node**\ (\ ) |const| :ref:`🔗<class_SkeletonModification2DTwoBoneIK_method_get_joint_two_bone2d_node>`
 
-Returns the :ref:`Bone2D<class_Bone2D>` node that is being used as the second bone in the TwoBoneIK modification.
+Trả về node :ref:`Bone2D<class_Bone2D>` đang được sử dụng làm xương thứ hai trong modification TwoBoneIK.
 
 .. rst-class:: classref-item-separator
 
@@ -193,7 +193,7 @@ Returns the :ref:`Bone2D<class_Bone2D>` node that is being used as the second bo
 
 :ref:`int<class_int>` **get_joint_two_bone_idx**\ (\ ) |const| :ref:`🔗<class_SkeletonModification2DTwoBoneIK_method_get_joint_two_bone_idx>`
 
-Returns the index of the :ref:`Bone2D<class_Bone2D>` node that is being used as the second bone in the TwoBoneIK modification.
+Trả về chỉ mục của node :ref:`Bone2D<class_Bone2D>` đang được sử dụng làm xương thứ hai trong modification TwoBoneIK.
 
 .. rst-class:: classref-item-separator
 
@@ -205,7 +205,7 @@ Returns the index of the :ref:`Bone2D<class_Bone2D>` node that is being used as 
 
 |void| **set_joint_one_bone2d_node**\ (\ bone2d_node\: :ref:`NodePath<class_NodePath>`\ ) :ref:`🔗<class_SkeletonModification2DTwoBoneIK_method_set_joint_one_bone2d_node>`
 
-Sets the :ref:`Bone2D<class_Bone2D>` node that is being used as the first bone in the TwoBoneIK modification.
+Thiết lập node :ref:`Bone2D<class_Bone2D>` đang được sử dụng làm xương thứ nhất trong modification TwoBoneIK.
 
 .. rst-class:: classref-item-separator
 
@@ -217,7 +217,7 @@ Sets the :ref:`Bone2D<class_Bone2D>` node that is being used as the first bone i
 
 |void| **set_joint_one_bone_idx**\ (\ bone_idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_SkeletonModification2DTwoBoneIK_method_set_joint_one_bone_idx>`
 
-Sets the index of the :ref:`Bone2D<class_Bone2D>` node that is being used as the first bone in the TwoBoneIK modification.
+Thiết lập chỉ mục của node :ref:`Bone2D<class_Bone2D>` đang được sử dụng làm xương thứ nhất trong modification TwoBoneIK.
 
 .. rst-class:: classref-item-separator
 
@@ -229,7 +229,7 @@ Sets the index of the :ref:`Bone2D<class_Bone2D>` node that is being used as the
 
 |void| **set_joint_two_bone2d_node**\ (\ bone2d_node\: :ref:`NodePath<class_NodePath>`\ ) :ref:`🔗<class_SkeletonModification2DTwoBoneIK_method_set_joint_two_bone2d_node>`
 
-Sets the :ref:`Bone2D<class_Bone2D>` node that is being used as the second bone in the TwoBoneIK modification.
+Thiết lập node :ref:`Bone2D<class_Bone2D>` đang được sử dụng làm xương thứ hai trong modification TwoBoneIK.
 
 .. rst-class:: classref-item-separator
 
@@ -241,14 +241,14 @@ Sets the :ref:`Bone2D<class_Bone2D>` node that is being used as the second bone 
 
 |void| **set_joint_two_bone_idx**\ (\ bone_idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_SkeletonModification2DTwoBoneIK_method_set_joint_two_bone_idx>`
 
-Sets the index of the :ref:`Bone2D<class_Bone2D>` node that is being used as the second bone in the TwoBoneIK modification.
+Thiết lập chỉ mục của node :ref:`Bone2D<class_Bone2D>` đang được sử dụng làm xương thứ hai trong modification TwoBoneIK.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

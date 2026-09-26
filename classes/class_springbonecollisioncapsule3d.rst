@@ -10,21 +10,21 @@
 SpringBoneCollisionCapsule3D
 ============================
 
-**Inherits:** :ref:`SpringBoneCollision3D<class_SpringBoneCollision3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`SpringBoneCollision3D<class_SpringBoneCollision3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A capsule shape collision that interacts with :ref:`SpringBoneSimulator3D<class_SpringBoneSimulator3D>`.
+Một collision hình viên nang tương tác với :ref:`SpringBoneSimulator3D<class_SpringBoneSimulator3D>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A capsule shape collision that interacts with :ref:`SpringBoneSimulator3D<class_SpringBoneSimulator3D>`.
+Một collision hình viên nang tương tác với :ref:`SpringBoneSimulator3D<class_SpringBoneSimulator3D>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -45,8 +45,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_SpringBoneCollisionCapsule3D_property_height:
 
@@ -59,9 +59,9 @@ Property Descriptions
 - |void| **set_height**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_height**\ (\ )
 
-The capsule's full height, including the hemispheres.
+Chiều cao đầy đủ của hình viên nang, bao gồm cả hai bán cầu.
 
-\ **Note:** The :ref:`height<class_SpringBoneCollisionCapsule3D_property_height>` of a capsule must be at least twice its :ref:`radius<class_SpringBoneCollisionCapsule3D_property_radius>`. Otherwise, the capsule becomes a sphere. If the :ref:`height<class_SpringBoneCollisionCapsule3D_property_height>` is less than twice the :ref:`radius<class_SpringBoneCollisionCapsule3D_property_radius>`, the properties adjust to a valid value.
+\ **Lưu ý:** :ref:`height<class_SpringBoneCollisionCapsule3D_property_height>` của hình viên nang phải ít nhất bằng hai lần :ref:`radius<class_SpringBoneCollisionCapsule3D_property_radius>`. Nếu không, hình viên nang sẽ trở thành hình cầu. Nếu :ref:`height<class_SpringBoneCollisionCapsule3D_property_height>` nhỏ hơn hai lần :ref:`radius<class_SpringBoneCollisionCapsule3D_property_radius>`, các thuộc tính sẽ được điều chỉnh về một giá trị hợp lệ.
 
 .. rst-class:: classref-item-separator
 
@@ -78,7 +78,7 @@ The capsule's full height, including the hemispheres.
 - |void| **set_inside**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_inside**\ (\ )
 
-If ``true``, the collision acts to trap the joint within the collision.
+Nếu ``true``, collision sẽ giữ khớp nằm bên trong collision.
 
 .. rst-class:: classref-item-separator
 
@@ -88,14 +88,14 @@ If ``true``, the collision acts to trap the joint within the collision.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **mid_height** :ref:`🔗<class_SpringBoneCollisionCapsule3D_property_mid_height>`
+:ref:`float<class_float>` **mid_height** :ref:`🔗 <class_SpringBoneCollisionCapsule3D_property_mid_height>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_mid_height**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_mid_height**\ (\ )
 
-The capsule's height, excluding the hemispheres. This is the height of the central cylindrical part in the middle of the capsule, and is the distance between the centers of the two hemispheres. This is a wrapper for :ref:`height<class_SpringBoneCollisionCapsule3D_property_height>`.
+Chiều cao của hình viên nang, không bao gồm hai bán cầu. Đây là chiều cao của phần hình trụ ở trung tâm, nằm giữa hình viên nang, và là khoảng cách giữa tâm của hai bán cầu. Đây là wrapper cho :ref:`height<class_SpringBoneCollisionCapsule3D_property_height>`.
 
 .. rst-class:: classref-item-separator
 
@@ -112,16 +112,16 @@ The capsule's height, excluding the hemispheres. This is the height of the centr
 - |void| **set_radius**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_radius**\ (\ )
 
-The capsule's radius.
+Bán kính của hình viên nang.
 
-\ **Note:** The :ref:`radius<class_SpringBoneCollisionCapsule3D_property_radius>` of a capsule cannot be greater than half of its :ref:`height<class_SpringBoneCollisionCapsule3D_property_height>`. Otherwise, the capsule becomes a sphere. If the :ref:`radius<class_SpringBoneCollisionCapsule3D_property_radius>` is greater than half of the :ref:`height<class_SpringBoneCollisionCapsule3D_property_height>`, the properties adjust to a valid value.
+\ **Lưu ý:** :ref:`radius<class_SpringBoneCollisionCapsule3D_property_radius>` của hình viên nang không được lớn hơn một nửa :ref:`height<class_SpringBoneCollisionCapsule3D_property_height>`. Nếu không, hình viên nang sẽ trở thành hình cầu. Nếu :ref:`radius<class_SpringBoneCollisionCapsule3D_property_radius>` lớn hơn một nửa :ref:`height<class_SpringBoneCollisionCapsule3D_property_height>`, các thuộc tính sẽ được điều chỉnh về một giá trị hợp lệ.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể được gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

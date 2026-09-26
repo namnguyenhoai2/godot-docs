@@ -10,63 +10,63 @@
 SubViewport
 ===========
 
-**Inherits:** :ref:`Viewport<class_Viewport>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Viewport<class_Viewport>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-An interface to a game world that doesn't create a window or draw to the screen directly.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-**SubViewport** Isolates a rectangular region of a scene to be displayed independently. This can be used, for example, to display UI in 3D space.
-
-\ **Note:** **SubViewport** is a :ref:`Viewport<class_Viewport>` that isn't a :ref:`Window<class_Window>`, i.e. it doesn't draw anything by itself. To display anything, **SubViewport** must have a non-zero size and be either put inside a :ref:`SubViewportContainer<class_SubViewportContainer>` or assigned to a :ref:`ViewportTexture<class_ViewportTexture>`.
-
-\ **Note:** :ref:`InputEvent<class_InputEvent>`\ s are not passed to a standalone **SubViewport** by default. To ensure :ref:`InputEvent<class_InputEvent>` propagation, a **SubViewport** can be placed inside of a :ref:`SubViewportContainer<class_SubViewportContainer>`.
+Một interface cho thế giới game không tạo cửa sổ hoặc trực tiếp vẽ lên màn hình.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+**SubViewport** Cô lập một vùng hình chữ nhật của scene để hiển thị độc lập. Ví dụ, có thể dùng để hiển thị UI trong không gian 3D.
+
+\ **Lưu ý:** **SubViewport** là một :ref:`Viewport<class_Viewport>` không phải là một :ref:`Window<class_Window>`, tức là bản thân nó không vẽ bất kỳ thứ gì. Để hiển thị bất kỳ nội dung nào, **SubViewport** phải có kích thước khác 0 và được đặt bên trong một :ref:`SubViewportContainer<class_SubViewportContainer>` hoặc được gán cho một :ref:`ViewportTexture<class_ViewportTexture>`.
+
+\ **Lưu ý:** :ref:`InputEvent<class_InputEvent>`\ s không được truyền đến một **SubViewport** độc lập theo mặc định. Để đảm bảo việc truyền :ref:`InputEvent<class_InputEvent>`, có thể đặt một **SubViewport** bên trong một :ref:`SubViewportContainer<class_SubViewportContainer>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Using Viewports <../tutorials/rendering/viewports>`
+- :doc:`Sử dụng Viewport <../tutorials/rendering/viewports>`
 
-- :doc:`Viewport and canvas transforms <../tutorials/2d/2d_transforms>`
+- :doc:`Các phép biến đổi của viewport và canvas <../tutorials/2d/2d_transforms>`
 
-- `GUI in 3D Viewport Demo <https://godotengine.org/asset-library/asset/2807>`__
+- `Demo GUI trong Viewport 3D <https://godotengine.org/asset-library/asset/2807>`__
 
-- `3D in 2D Viewport Demo <https://godotengine.org/asset-library/asset/2804>`__
+- `Demo 3D trong Viewport 2D <https://godotengine.org/asset-library/asset/2804>`__
 
-- `2D in 3D Viewport Demo <https://godotengine.org/asset-library/asset/2803>`__
+- `Demo 2D trong Viewport 3D <https://godotengine.org/asset-library/asset/2803>`__
 
-- `Screen Capture Demo <https://godotengine.org/asset-library/asset/2808>`__
+- `Demo chụp màn hình <https://godotengine.org/asset-library/asset/2808>`__
 
-- `Dynamic Split Screen Demo <https://godotengine.org/asset-library/asset/2806>`__
+- `Demo chia đôi màn hình động <https://godotengine.org/asset-library/asset/2806>`__
 
-- `3D Resolution Scaling Demo <https://godotengine.org/asset-library/asset/2805>`__
+- `Demo điều chỉnh tỷ lệ độ phân giải 3D <https://godotengine.org/asset-library/asset/2805>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------+----------------------------------------------------------------------------------------+------------------------+
-   | :ref:`ClearMode<enum_SubViewport_ClearMode>`   | :ref:`render_target_clear_mode<class_SubViewport_property_render_target_clear_mode>`   | ``0``                  |
-   +------------------------------------------------+----------------------------------------------------------------------------------------+------------------------+
-   | :ref:`UpdateMode<enum_SubViewport_UpdateMode>` | :ref:`render_target_update_mode<class_SubViewport_property_render_target_update_mode>` | ``2``                  |
-   +------------------------------------------------+----------------------------------------------------------------------------------------+------------------------+
-   | :ref:`Vector2i<class_Vector2i>`                | :ref:`size<class_SubViewport_property_size>`                                           | ``Vector2i(512, 512)`` |
-   +------------------------------------------------+----------------------------------------------------------------------------------------+------------------------+
-   | :ref:`Vector2i<class_Vector2i>`                | :ref:`size_2d_override<class_SubViewport_property_size_2d_override>`                   | ``Vector2i(0, 0)``     |
-   +------------------------------------------------+----------------------------------------------------------------------------------------+------------------------+
-   | :ref:`bool<class_bool>`                        | :ref:`size_2d_override_stretch<class_SubViewport_property_size_2d_override_stretch>`   | ``false``              |
-   +------------------------------------------------+----------------------------------------------------------------------------------------+------------------------+
-   | :ref:`int<class_int>`                          | :ref:`view_count<class_SubViewport_property_view_count>`                               | ``1``                  |
-   +------------------------------------------------+----------------------------------------------------------------------------------------+------------------------+
+   +-------------------------------------------------+----------------------------------------------------------------------------------------+------------------------+
+   | :ref:`ClearMode <enum_SubViewport_ClearMode>`   | :ref:`render_target_clear_mode<class_SubViewport_property_render_target_clear_mode>`   | ``0``                  |
+   +-------------------------------------------------+----------------------------------------------------------------------------------------+------------------------+
+   | :ref:`UpdateMode <enum_SubViewport_UpdateMode>` | :ref:`render_target_update_mode<class_SubViewport_property_render_target_update_mode>` | ``2``                  |
+   +-------------------------------------------------+----------------------------------------------------------------------------------------+------------------------+
+   | :ref:`Vector2i<class_Vector2i>`                 | :ref:`size<class_SubViewport_property_size>`                                           | ``Vector2i(512, 512)`` |
+   +-------------------------------------------------+----------------------------------------------------------------------------------------+------------------------+
+   | :ref:`Vector2i<class_Vector2i>`                 | :ref:`size_2d_override<class_SubViewport_property_size_2d_override>`                   | ``Vector2i(0, 0)``     |
+   +-------------------------------------------------+----------------------------------------------------------------------------------------+------------------------+
+   | :ref:`bool<class_bool>`                         | :ref:`size_2d_override_stretch<class_SubViewport_property_size_2d_override_stretch>`   | ``false``              |
+   +-------------------------------------------------+----------------------------------------------------------------------------------------+------------------------+
+   | :ref:`int<class_int>`                           | :ref:`view_count<class_SubViewport_property_view_count>`                               | ``1``                  |
+   +-------------------------------------------------+----------------------------------------------------------------------------------------+------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -74,14 +74,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các enumeration
+---------------
 
 .. _enum_SubViewport_ClearMode:
 
 .. rst-class:: classref-enumeration
 
-enum **ClearMode**: :ref:`🔗<enum_SubViewport_ClearMode>`
+enum **ClearMode**: :ref:`🔗 <enum_SubViewport_ClearMode>`
 
 .. _class_SubViewport_constant_CLEAR_MODE_ALWAYS:
 
@@ -89,7 +89,7 @@ enum **ClearMode**: :ref:`🔗<enum_SubViewport_ClearMode>`
 
 :ref:`ClearMode<enum_SubViewport_ClearMode>` **CLEAR_MODE_ALWAYS** = ``0``
 
-Always clear the render target before drawing.
+Luôn xóa render target trước khi vẽ.
 
 .. _class_SubViewport_constant_CLEAR_MODE_NEVER:
 
@@ -97,7 +97,7 @@ Always clear the render target before drawing.
 
 :ref:`ClearMode<enum_SubViewport_ClearMode>` **CLEAR_MODE_NEVER** = ``1``
 
-Never clear the render target.
+Không bao giờ xóa render target.
 
 .. _class_SubViewport_constant_CLEAR_MODE_ONCE:
 
@@ -105,7 +105,7 @@ Never clear the render target.
 
 :ref:`ClearMode<enum_SubViewport_ClearMode>` **CLEAR_MODE_ONCE** = ``2``
 
-Clear the render target on the next frame, then switch to :ref:`CLEAR_MODE_NEVER<class_SubViewport_constant_CLEAR_MODE_NEVER>`.
+Xóa render target ở frame tiếp theo, sau đó chuyển sang :ref:`CLEAR_MODE_NEVER<class_SubViewport_constant_CLEAR_MODE_NEVER>`.
 
 .. rst-class:: classref-item-separator
 
@@ -115,7 +115,7 @@ Clear the render target on the next frame, then switch to :ref:`CLEAR_MODE_NEVER
 
 .. rst-class:: classref-enumeration
 
-enum **UpdateMode**: :ref:`🔗<enum_SubViewport_UpdateMode>`
+enum **UpdateMode**: :ref:`🔗 <enum_SubViewport_UpdateMode>`
 
 .. _class_SubViewport_constant_UPDATE_DISABLED:
 
@@ -123,7 +123,7 @@ enum **UpdateMode**: :ref:`🔗<enum_SubViewport_UpdateMode>`
 
 :ref:`UpdateMode<enum_SubViewport_UpdateMode>` **UPDATE_DISABLED** = ``0``
 
-Do not update the render target.
+Không cập nhật render target.
 
 .. _class_SubViewport_constant_UPDATE_ONCE:
 
@@ -131,7 +131,7 @@ Do not update the render target.
 
 :ref:`UpdateMode<enum_SubViewport_UpdateMode>` **UPDATE_ONCE** = ``1``
 
-Update the render target once, then switch to :ref:`UPDATE_DISABLED<class_SubViewport_constant_UPDATE_DISABLED>`.
+Cập nhật render target một lần, sau đó chuyển sang :ref:`UPDATE_DISABLED<class_SubViewport_constant_UPDATE_DISABLED>`.
 
 .. _class_SubViewport_constant_UPDATE_WHEN_VISIBLE:
 
@@ -139,7 +139,7 @@ Update the render target once, then switch to :ref:`UPDATE_DISABLED<class_SubVie
 
 :ref:`UpdateMode<enum_SubViewport_UpdateMode>` **UPDATE_WHEN_VISIBLE** = ``2``
 
-Update the render target only when it is visible. This is the default value.
+Chỉ cập nhật render target khi nó hiển thị. Đây là giá trị mặc định.
 
 .. _class_SubViewport_constant_UPDATE_WHEN_PARENT_VISIBLE:
 
@@ -147,7 +147,7 @@ Update the render target only when it is visible. This is the default value.
 
 :ref:`UpdateMode<enum_SubViewport_UpdateMode>` **UPDATE_WHEN_PARENT_VISIBLE** = ``3``
 
-Update the render target only when its parent is visible.
+Chỉ cập nhật render target khi node cha của nó hiển thị.
 
 .. _class_SubViewport_constant_UPDATE_ALWAYS:
 
@@ -155,7 +155,7 @@ Update the render target only when its parent is visible.
 
 :ref:`UpdateMode<enum_SubViewport_UpdateMode>` **UPDATE_ALWAYS** = ``4``
 
-Always update the render target.
+Luôn cập nhật render target.
 
 .. rst-class:: classref-section-separator
 
@@ -163,8 +163,8 @@ Always update the render target.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_SubViewport_property_render_target_clear_mode:
 
@@ -177,9 +177,9 @@ Property Descriptions
 - |void| **set_clear_mode**\ (\ value\: :ref:`ClearMode<enum_SubViewport_ClearMode>`\ )
 - :ref:`ClearMode<enum_SubViewport_ClearMode>` **get_clear_mode**\ (\ )
 
-The clear mode when the sub-viewport is used as a render target.
+Chế độ xóa khi sub-viewport được sử dụng làm render target.
 
-\ **Note:** This property is intended for 2D usage.
+\ **Lưu ý:** Thuộc tính này dành cho việc sử dụng 2D.
 
 .. rst-class:: classref-item-separator
 
@@ -196,7 +196,7 @@ The clear mode when the sub-viewport is used as a render target.
 - |void| **set_update_mode**\ (\ value\: :ref:`UpdateMode<enum_SubViewport_UpdateMode>`\ )
 - :ref:`UpdateMode<enum_SubViewport_UpdateMode>` **get_update_mode**\ (\ )
 
-The update mode when the sub-viewport is used as a render target.
+Chế độ cập nhật khi sub-viewport được sử dụng làm render target.
 
 .. rst-class:: classref-item-separator
 
@@ -213,9 +213,9 @@ The update mode when the sub-viewport is used as a render target.
 - |void| **set_size**\ (\ value\: :ref:`Vector2i<class_Vector2i>`\ )
 - :ref:`Vector2i<class_Vector2i>` **get_size**\ (\ )
 
-The width and height of the sub-viewport. Must be set to a value greater than or equal to 2 pixels on both dimensions. Otherwise, nothing will be displayed.
+Chiều rộng và chiều cao của sub-viewport. Cả hai chiều phải được đặt thành giá trị lớn hơn hoặc bằng 2 pixel. Nếu không, sẽ không có gì được hiển thị.
 
-\ **Note:** If the parent node is a :ref:`SubViewportContainer<class_SubViewportContainer>` and its :ref:`SubViewportContainer.stretch<class_SubViewportContainer_property_stretch>` is ``true``, the viewport size cannot be changed manually.
+\ **Lưu ý:** Nếu node cha là một :ref:`SubViewportContainer<class_SubViewportContainer>` và :ref:`SubViewportContainer.stretch<class_SubViewportContainer_property_stretch>` của nó là ``true``, không thể thay đổi kích thước viewport theo cách thủ công.
 
 .. rst-class:: classref-item-separator
 
@@ -232,7 +232,7 @@ The width and height of the sub-viewport. Must be set to a value greater than or
 - |void| **set_size_2d_override**\ (\ value\: :ref:`Vector2i<class_Vector2i>`\ )
 - :ref:`Vector2i<class_Vector2i>` **get_size_2d_override**\ (\ )
 
-The 2D size override of the sub-viewport. If either the width or height is ``0``, the override is disabled.
+Giá trị ghi đè kích thước 2D của sub-viewport. Nếu chiều rộng hoặc chiều cao là ``0``, giá trị ghi đè sẽ bị vô hiệu hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -249,7 +249,7 @@ The 2D size override of the sub-viewport. If either the width or height is ``0``
 - |void| **set_size_2d_override_stretch**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_size_2d_override_stretch_enabled**\ (\ )
 
-If ``true``, the 2D size override affects stretch as well.
+Nếu là ``true``, giá trị ghi đè kích thước 2D cũng ảnh hưởng đến việc stretch.
 
 .. rst-class:: classref-item-separator
 
@@ -266,14 +266,14 @@ If ``true``, the 2D size override affects stretch as well.
 - |void| **set_view_count**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_view_count**\ (\ )
 
-The number of view layers we are rendering to. Set this to ``2`` to enable stereo rendering.
+Số lượng view layer mà chúng ta render. Đặt thành ``2`` để bật stereo rendering.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override method này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải override method này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có side effect. Nó không sửa đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Method này chấp nhận bất kỳ số lượng argument nào sau các argument được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Method này được dùng để khởi tạo một type.)`
+.. |static| replace:: :abbr:`static (Method này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Method này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

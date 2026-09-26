@@ -10,31 +10,31 @@
 SkeletonProfile
 ===============
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa từ:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`SkeletonProfileHumanoid<class_SkeletonProfileHumanoid>`
+**Được kế thừa bởi:** :ref:`SkeletonProfileHumanoid<class_SkeletonProfileHumanoid>`
 
-Base class for a profile of a virtual skeleton used as a target for retargeting.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-This resource is used in :ref:`EditorScenePostImport<class_EditorScenePostImport>`. Some parameters are referring to bones in :ref:`Skeleton3D<class_Skeleton3D>`, :ref:`Skin<class_Skin>`, :ref:`Animation<class_Animation>`, and some other nodes are rewritten based on the parameters of **SkeletonProfile**.
-
-\ **Note:** These parameters need to be set only when creating a custom profile. In :ref:`SkeletonProfileHumanoid<class_SkeletonProfileHumanoid>`, they are defined internally as read-only values.
+Lớp cơ sở cho một profile của skeleton ảo được dùng làm đích để retargeting.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Resource này được sử dụng trong :ref:`EditorScenePostImport<class_EditorScenePostImport>`. Một số tham số tham chiếu đến các xương trong :ref:`Skeleton3D<class_Skeleton3D>`, :ref:`Skin<class_Skin>`, :ref:`Animation<class_Animation>`, và một số node khác được viết lại dựa trên các tham số của **SkeletonProfile**.
+
+\ **Lưu ý:** Các tham số này chỉ cần được thiết lập khi tạo profile tùy chỉnh. Trong :ref:`SkeletonProfileHumanoid<class_SkeletonProfileHumanoid>`, chúng được định nghĩa nội bộ dưới dạng các giá trị chỉ đọc.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Retargeting 3D Skeletons <../tutorials/assets_pipeline/retargeting_3d_skeletons>`
+- :doc:`Retargeting Skeleton 3D <../tutorials/assets_pipeline/retargeting_3d_skeletons>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -52,55 +52,55 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                    | :ref:`find_bone<class_SkeletonProfile_method_find_bone>`\ (\ bone_name\: :ref:`StringName<class_StringName>`\ ) |const|                                                                       |
-   +----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`StringName<class_StringName>`                      | :ref:`get_bone_name<class_SkeletonProfile_method_get_bone_name>`\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const|                                                                              |
-   +----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`StringName<class_StringName>`                      | :ref:`get_bone_parent<class_SkeletonProfile_method_get_bone_parent>`\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const|                                                                          |
-   +----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`StringName<class_StringName>`                      | :ref:`get_bone_tail<class_SkeletonProfile_method_get_bone_tail>`\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const|                                                                              |
-   +----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`StringName<class_StringName>`                      | :ref:`get_group<class_SkeletonProfile_method_get_group>`\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const|                                                                                      |
-   +----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`StringName<class_StringName>`                      | :ref:`get_group_name<class_SkeletonProfile_method_get_group_name>`\ (\ group_idx\: :ref:`int<class_int>`\ ) |const|                                                                           |
-   +----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                            | :ref:`get_handle_offset<class_SkeletonProfile_method_get_handle_offset>`\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const|                                                                      |
-   +----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Transform3D<class_Transform3D>`                    | :ref:`get_reference_pose<class_SkeletonProfile_method_get_reference_pose>`\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const|                                                                    |
-   +----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`TailDirection<enum_SkeletonProfile_TailDirection>` | :ref:`get_tail_direction<class_SkeletonProfile_method_get_tail_direction>`\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const|                                                                    |
-   +----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Texture2D<class_Texture2D>`                        | :ref:`get_texture<class_SkeletonProfile_method_get_texture>`\ (\ group_idx\: :ref:`int<class_int>`\ ) |const|                                                                                 |
-   +----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                  | :ref:`is_required<class_SkeletonProfile_method_is_required>`\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const|                                                                                  |
-   +----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                   | :ref:`set_bone_name<class_SkeletonProfile_method_set_bone_name>`\ (\ bone_idx\: :ref:`int<class_int>`, bone_name\: :ref:`StringName<class_StringName>`\ )                                     |
-   +----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                   | :ref:`set_bone_parent<class_SkeletonProfile_method_set_bone_parent>`\ (\ bone_idx\: :ref:`int<class_int>`, bone_parent\: :ref:`StringName<class_StringName>`\ )                               |
-   +----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                   | :ref:`set_bone_tail<class_SkeletonProfile_method_set_bone_tail>`\ (\ bone_idx\: :ref:`int<class_int>`, bone_tail\: :ref:`StringName<class_StringName>`\ )                                     |
-   +----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                   | :ref:`set_group<class_SkeletonProfile_method_set_group>`\ (\ bone_idx\: :ref:`int<class_int>`, group\: :ref:`StringName<class_StringName>`\ )                                                 |
-   +----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                   | :ref:`set_group_name<class_SkeletonProfile_method_set_group_name>`\ (\ group_idx\: :ref:`int<class_int>`, group_name\: :ref:`StringName<class_StringName>`\ )                                 |
-   +----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                   | :ref:`set_handle_offset<class_SkeletonProfile_method_set_handle_offset>`\ (\ bone_idx\: :ref:`int<class_int>`, handle_offset\: :ref:`Vector2<class_Vector2>`\ )                               |
-   +----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                   | :ref:`set_reference_pose<class_SkeletonProfile_method_set_reference_pose>`\ (\ bone_idx\: :ref:`int<class_int>`, bone_name\: :ref:`Transform3D<class_Transform3D>`\ )                         |
-   +----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                   | :ref:`set_required<class_SkeletonProfile_method_set_required>`\ (\ bone_idx\: :ref:`int<class_int>`, required\: :ref:`bool<class_bool>`\ )                                                    |
-   +----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                   | :ref:`set_tail_direction<class_SkeletonProfile_method_set_tail_direction>`\ (\ bone_idx\: :ref:`int<class_int>`, tail_direction\: :ref:`TailDirection<enum_SkeletonProfile_TailDirection>`\ ) |
-   +----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                   | :ref:`set_texture<class_SkeletonProfile_method_set_texture>`\ (\ group_idx\: :ref:`int<class_int>`, texture\: :ref:`Texture2D<class_Texture2D>`\ )                                            |
-   +----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +-----------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                     | :ref:`find_bone<class_SkeletonProfile_method_find_bone>`\ (\ bone_name\: :ref:`StringName<class_StringName>`\ ) |const|                                                                        |
+   +-----------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`StringName<class_StringName>`                       | :ref:`get_bone_name<class_SkeletonProfile_method_get_bone_name>`\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const|                                                                               |
+   +-----------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`StringName<class_StringName>`                       | :ref:`get_bone_parent<class_SkeletonProfile_method_get_bone_parent>`\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const|                                                                           |
+   +-----------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`StringName<class_StringName>`                       | :ref:`get_bone_tail<class_SkeletonProfile_method_get_bone_tail>`\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const|                                                                               |
+   +-----------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`StringName<class_StringName>`                       | :ref:`get_group<class_SkeletonProfile_method_get_group>`\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const|                                                                                       |
+   +-----------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`StringName<class_StringName>`                       | :ref:`get_group_name<class_SkeletonProfile_method_get_group_name>`\ (\ group_idx\: :ref:`int<class_int>`\ ) |const|                                                                            |
+   +-----------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                             | :ref:`get_handle_offset<class_SkeletonProfile_method_get_handle_offset>`\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const|                                                                       |
+   +-----------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Transform3D<class_Transform3D>`                     | :ref:`get_reference_pose<class_SkeletonProfile_method_get_reference_pose>`\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const|                                                                     |
+   +-----------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`TailDirection <enum_SkeletonProfile_TailDirection>` | :ref:`get_tail_direction<class_SkeletonProfile_method_get_tail_direction>`\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const|                                                                     |
+   +-----------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Texture2D<class_Texture2D>`                         | :ref:`get_texture<class_SkeletonProfile_method_get_texture>`\ (\ group_idx\: :ref:`int<class_int>`\ ) |const|                                                                                  |
+   +-----------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                   | :ref:`is_required<class_SkeletonProfile_method_is_required>`\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const|                                                                                   |
+   +-----------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                    | :ref:`set_bone_name<class_SkeletonProfile_method_set_bone_name>`\ (\ bone_idx\: :ref:`int<class_int>`, bone_name\: :ref:`StringName<class_StringName>`\ )                                      |
+   +-----------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                    | :ref:`set_bone_parent<class_SkeletonProfile_method_set_bone_parent>`\ (\ bone_idx\: :ref:`int<class_int>`, bone_parent\: :ref:`StringName<class_StringName>`\ )                                |
+   +-----------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                    | :ref:`set_bone_tail<class_SkeletonProfile_method_set_bone_tail>`\ (\ bone_idx\: :ref:`int<class_int>`, bone_tail\: :ref:`StringName<class_StringName>`\ )                                      |
+   +-----------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                    | :ref:`set_group<class_SkeletonProfile_method_set_group>`\ (\ bone_idx\: :ref:`int<class_int>`, group\: :ref:`StringName<class_StringName>`\ )                                                  |
+   +-----------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                    | :ref:`set_group_name<class_SkeletonProfile_method_set_group_name>`\ (\ group_idx\: :ref:`int<class_int>`, group_name\: :ref:`StringName<class_StringName>`\ )                                  |
+   +-----------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                    | :ref:`set_handle_offset<class_SkeletonProfile_method_set_handle_offset>`\ (\ bone_idx\: :ref:`int<class_int>`, handle_offset\: :ref:`Vector2<class_Vector2>`\ )                                |
+   +-----------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                    | :ref:`set_reference_pose<class_SkeletonProfile_method_set_reference_pose>`\ (\ bone_idx\: :ref:`int<class_int>`, bone_name\: :ref:`Transform3D<class_Transform3D>`\ )                          |
+   +-----------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                    | :ref:`set_required<class_SkeletonProfile_method_set_required>`\ (\ bone_idx\: :ref:`int<class_int>`, required\: :ref:`bool<class_bool>`\ )                                                     |
+   +-----------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                    | :ref:`set_tail_direction<class_SkeletonProfile_method_set_tail_direction>`\ (\ bone_idx\: :ref:`int<class_int>`, tail_direction\: :ref:`TailDirection <enum_SkeletonProfile_TailDirection>`\ ) |
+   +-----------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                    | :ref:`set_texture<class_SkeletonProfile_method_set_texture>`\ (\ group_idx\: :ref:`int<class_int>`, texture\: :ref:`Texture2D<class_Texture2D>`\ )                                             |
+   +-----------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -108,8 +108,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_SkeletonProfile_signal_profile_updated:
 
@@ -117,9 +117,9 @@ Signals
 
 **profile_updated**\ (\ ) :ref:`🔗<class_SkeletonProfile_signal_profile_updated>`
 
-This signal is emitted when change the value in profile. This is used to update key name in the :ref:`BoneMap<class_BoneMap>` and to redraw the :ref:`BoneMap<class_BoneMap>` editor.
+Tín hiệu này được phát ra khi thay đổi giá trị trong profile. Tín hiệu này được dùng để cập nhật tên khóa trong :ref:`BoneMap<class_BoneMap>` và vẽ lại editor :ref:`BoneMap<class_BoneMap>`.
 
-\ **Note:** This signal is not connected directly to editor to simplify the reference, instead it is passed on to editor through the :ref:`BoneMap<class_BoneMap>`.
+\ **Lưu ý:** Tín hiệu này không được kết nối trực tiếp với editor để đơn giản hóa việc tham chiếu; thay vào đó, nó được truyền đến editor thông qua :ref:`BoneMap<class_BoneMap>`.
 
 .. rst-class:: classref-section-separator
 
@@ -127,14 +127,14 @@ This signal is emitted when change the value in profile. This is used to update 
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_SkeletonProfile_TailDirection:
 
 .. rst-class:: classref-enumeration
 
-enum **TailDirection**: :ref:`🔗<enum_SkeletonProfile_TailDirection>`
+enum **TailDirection**: :ref:`🔗 <enum_SkeletonProfile_TailDirection>`
 
 .. _class_SkeletonProfile_constant_TAIL_DIRECTION_AVERAGE_CHILDREN:
 
@@ -142,7 +142,7 @@ enum **TailDirection**: :ref:`🔗<enum_SkeletonProfile_TailDirection>`
 
 :ref:`TailDirection<enum_SkeletonProfile_TailDirection>` **TAIL_DIRECTION_AVERAGE_CHILDREN** = ``0``
 
-Direction to the average coordinates of bone children.
+Hướng đến tọa độ trung bình của các xương con.
 
 .. _class_SkeletonProfile_constant_TAIL_DIRECTION_SPECIFIC_CHILD:
 
@@ -150,7 +150,7 @@ Direction to the average coordinates of bone children.
 
 :ref:`TailDirection<enum_SkeletonProfile_TailDirection>` **TAIL_DIRECTION_SPECIFIC_CHILD** = ``1``
 
-Direction to the coordinates of specified bone child.
+Hướng đến tọa độ của xương con được chỉ định.
 
 .. _class_SkeletonProfile_constant_TAIL_DIRECTION_END:
 
@@ -158,7 +158,7 @@ Direction to the coordinates of specified bone child.
 
 :ref:`TailDirection<enum_SkeletonProfile_TailDirection>` **TAIL_DIRECTION_END** = ``2``
 
-Direction is not calculated.
+Hướng không được tính toán.
 
 .. rst-class:: classref-section-separator
 
@@ -166,8 +166,8 @@ Direction is not calculated.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_SkeletonProfile_property_bone_size:
 
@@ -180,9 +180,9 @@ Property Descriptions
 - |void| **set_bone_size**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_bone_size**\ (\ )
 
-The amount of bones in retargeting section's :ref:`BoneMap<class_BoneMap>` editor. For example, :ref:`SkeletonProfileHumanoid<class_SkeletonProfileHumanoid>` has 56 bones.
+Số lượng xương trong editor :ref:`BoneMap<class_BoneMap>` của phần retargeting. Ví dụ: :ref:`SkeletonProfileHumanoid<class_SkeletonProfileHumanoid>` có 56 xương.
 
-The size of elements in :ref:`BoneMap<class_BoneMap>` updates when changing this property in it's assigned **SkeletonProfile**.
+Kích thước của các phần tử trong :ref:`BoneMap<class_BoneMap>` được cập nhật khi thay đổi thuộc tính này trong **SkeletonProfile** được gán cho nó.
 
 .. rst-class:: classref-item-separator
 
@@ -199,9 +199,9 @@ The size of elements in :ref:`BoneMap<class_BoneMap>` updates when changing this
 - |void| **set_group_size**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_group_size**\ (\ )
 
-The amount of groups of bones in retargeting section's :ref:`BoneMap<class_BoneMap>` editor. For example, :ref:`SkeletonProfileHumanoid<class_SkeletonProfileHumanoid>` has 4 groups.
+Số lượng nhóm xương trong editor :ref:`BoneMap<class_BoneMap>` của phần retargeting. Ví dụ: :ref:`SkeletonProfileHumanoid<class_SkeletonProfileHumanoid>` có 4 nhóm.
 
-This property exists to separate the bone list into several sections in the editor.
+Thuộc tính này được dùng để chia danh sách xương thành nhiều phần trong editor.
 
 .. rst-class:: classref-item-separator
 
@@ -218,7 +218,7 @@ This property exists to separate the bone list into several sections in the edit
 - |void| **set_root_bone**\ (\ value\: :ref:`StringName<class_StringName>`\ )
 - :ref:`StringName<class_StringName>` **get_root_bone**\ (\ )
 
-A bone name that will be used as the root bone in :ref:`AnimationTree<class_AnimationTree>`. This should be the bone of the parent of hips that exists at the world origin.
+Tên xương sẽ được dùng làm xương gốc trong :ref:`AnimationTree<class_AnimationTree>`. Đây phải là xương cha của hips tồn tại tại gốc tọa độ thế giới.
 
 .. rst-class:: classref-item-separator
 
@@ -235,7 +235,7 @@ A bone name that will be used as the root bone in :ref:`AnimationTree<class_Anim
 - |void| **set_scale_base_bone**\ (\ value\: :ref:`StringName<class_StringName>`\ )
 - :ref:`StringName<class_StringName>` **get_scale_base_bone**\ (\ )
 
-A bone name which will use model's height as the coefficient for normalization. For example, :ref:`SkeletonProfileHumanoid<class_SkeletonProfileHumanoid>` defines it as ``Hips``.
+Tên xương sẽ dùng chiều cao của model làm hệ số để chuẩn hóa. Ví dụ: :ref:`SkeletonProfileHumanoid<class_SkeletonProfileHumanoid>` định nghĩa nó là ``Hips``.
 
 .. rst-class:: classref-section-separator
 
@@ -243,8 +243,8 @@ A bone name which will use model's height as the coefficient for normalization. 
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_SkeletonProfile_method_find_bone:
 
@@ -252,7 +252,7 @@ Method Descriptions
 
 :ref:`int<class_int>` **find_bone**\ (\ bone_name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_SkeletonProfile_method_find_bone>`
 
-Returns the bone index that matches ``bone_name`` as its name.
+Trả về chỉ số của xương khớp với ``bone_name`` dưới dạng tên của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -264,9 +264,9 @@ Returns the bone index that matches ``bone_name`` as its name.
 
 :ref:`StringName<class_StringName>` **get_bone_name**\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SkeletonProfile_method_get_bone_name>`
 
-Returns the name of the bone at ``bone_idx`` that will be the key name in the :ref:`BoneMap<class_BoneMap>`.
+Trả về tên của xương tại ``bone_idx``, tên này sẽ là tên khóa trong :ref:`BoneMap<class_BoneMap>`.
 
-In the retargeting process, the returned bone name is the bone name of the target skeleton.
+Trong quá trình retargeting, tên xương được trả về là tên xương của skeleton đích.
 
 .. rst-class:: classref-item-separator
 
@@ -278,7 +278,7 @@ In the retargeting process, the returned bone name is the bone name of the targe
 
 :ref:`StringName<class_StringName>` **get_bone_parent**\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SkeletonProfile_method_get_bone_parent>`
 
-Returns the name of the bone which is the parent to the bone at ``bone_idx``. The result is empty if the bone has no parent.
+Trả về tên của xương là xương cha của xương tại ``bone_idx``. Kết quả là chuỗi rỗng nếu xương không có xương cha.
 
 .. rst-class:: classref-item-separator
 
@@ -290,7 +290,7 @@ Returns the name of the bone which is the parent to the bone at ``bone_idx``. Th
 
 :ref:`StringName<class_StringName>` **get_bone_tail**\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SkeletonProfile_method_get_bone_tail>`
 
-Returns the name of the bone which is the tail of the bone at ``bone_idx``.
+Trả về tên của xương là phần đuôi của xương tại ``bone_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -302,7 +302,7 @@ Returns the name of the bone which is the tail of the bone at ``bone_idx``.
 
 :ref:`StringName<class_StringName>` **get_group**\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SkeletonProfile_method_get_group>`
 
-Returns the group of the bone at ``bone_idx``.
+Trả về nhóm của xương tại ``bone_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -314,7 +314,7 @@ Returns the group of the bone at ``bone_idx``.
 
 :ref:`StringName<class_StringName>` **get_group_name**\ (\ group_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SkeletonProfile_method_get_group_name>`
 
-Returns the name of the group at ``group_idx`` that will be the drawing group in the :ref:`BoneMap<class_BoneMap>` editor.
+Trả về tên của nhóm tại ``group_idx``, nhóm này sẽ là nhóm vẽ trong editor :ref:`BoneMap<class_BoneMap>`.
 
 .. rst-class:: classref-item-separator
 
@@ -326,9 +326,9 @@ Returns the name of the group at ``group_idx`` that will be the drawing group in
 
 :ref:`Vector2<class_Vector2>` **get_handle_offset**\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SkeletonProfile_method_get_handle_offset>`
 
-Returns the offset of the bone at ``bone_idx`` that will be the button position in the :ref:`BoneMap<class_BoneMap>` editor.
+Trả về offset của xương tại ``bone_idx``, offset này sẽ là vị trí nút trong editor :ref:`BoneMap<class_BoneMap>`.
 
-This is the offset with origin at the top left corner of the square.
+Đây là offset có gốc tọa độ tại góc trên bên trái của hình vuông.
 
 .. rst-class:: classref-item-separator
 
@@ -340,7 +340,7 @@ This is the offset with origin at the top left corner of the square.
 
 :ref:`Transform3D<class_Transform3D>` **get_reference_pose**\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SkeletonProfile_method_get_reference_pose>`
 
-Returns the reference pose transform for bone ``bone_idx``.
+Trả về phép biến đổi tư thế tham chiếu của xương ``bone_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -352,7 +352,7 @@ Returns the reference pose transform for bone ``bone_idx``.
 
 :ref:`TailDirection<enum_SkeletonProfile_TailDirection>` **get_tail_direction**\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SkeletonProfile_method_get_tail_direction>`
 
-Returns the tail direction of the bone at ``bone_idx``.
+Trả về hướng đuôi của xương tại ``bone_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -364,7 +364,7 @@ Returns the tail direction of the bone at ``bone_idx``.
 
 :ref:`Texture2D<class_Texture2D>` **get_texture**\ (\ group_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SkeletonProfile_method_get_texture>`
 
-Returns the texture of the group at ``group_idx`` that will be the drawing group background image in the :ref:`BoneMap<class_BoneMap>` editor.
+Trả về texture của nhóm tại ``group_idx``, texture này sẽ là ảnh nền của nhóm vẽ trong editor :ref:`BoneMap<class_BoneMap>`.
 
 .. rst-class:: classref-item-separator
 
@@ -376,9 +376,9 @@ Returns the texture of the group at ``group_idx`` that will be the drawing group
 
 :ref:`bool<class_bool>` **is_required**\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SkeletonProfile_method_is_required>`
 
-Returns whether the bone at ``bone_idx`` is required for retargeting.
+Trả về việc xương tại ``bone_idx`` có bắt buộc cho retargeting hay không.
 
-This value is used by the bone map editor. If this method returns ``true``, and no bone is assigned, the handle color will be red on the bone map editor.
+Giá trị này được bone map editor sử dụng. Nếu phương thức này trả về ``true`` và không có xương nào được gán, handle sẽ có màu đỏ trong bone map editor.
 
 .. rst-class:: classref-item-separator
 
@@ -390,9 +390,9 @@ This value is used by the bone map editor. If this method returns ``true``, and 
 
 |void| **set_bone_name**\ (\ bone_idx\: :ref:`int<class_int>`, bone_name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_SkeletonProfile_method_set_bone_name>`
 
-Sets the name of the bone at ``bone_idx`` that will be the key name in the :ref:`BoneMap<class_BoneMap>`.
+Đặt tên của xương tại ``bone_idx``, tên này sẽ là tên khóa trong :ref:`BoneMap<class_BoneMap>`.
 
-In the retargeting process, the setting bone name is the bone name of the target skeleton.
+Trong quá trình retargeting, tên xương được thiết lập là tên xương của skeleton đích.
 
 .. rst-class:: classref-item-separator
 
@@ -404,7 +404,7 @@ In the retargeting process, the setting bone name is the bone name of the target
 
 |void| **set_bone_parent**\ (\ bone_idx\: :ref:`int<class_int>`, bone_parent\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_SkeletonProfile_method_set_bone_parent>`
 
-Sets the bone with name ``bone_parent`` as the parent of the bone at ``bone_idx``. If an empty string is passed, then the bone has no parent.
+Đặt xương có tên ``bone_parent`` làm xương cha của xương tại ``bone_idx``. Nếu truyền vào một chuỗi rỗng, xương sẽ không có xương cha.
 
 .. rst-class:: classref-item-separator
 
@@ -416,7 +416,7 @@ Sets the bone with name ``bone_parent`` as the parent of the bone at ``bone_idx`
 
 |void| **set_bone_tail**\ (\ bone_idx\: :ref:`int<class_int>`, bone_tail\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_SkeletonProfile_method_set_bone_tail>`
 
-Sets the bone with name ``bone_tail`` as the tail of the bone at ``bone_idx``.
+Đặt xương có tên ``bone_tail`` làm phần đuôi của xương tại ``bone_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -428,7 +428,7 @@ Sets the bone with name ``bone_tail`` as the tail of the bone at ``bone_idx``.
 
 |void| **set_group**\ (\ bone_idx\: :ref:`int<class_int>`, group\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_SkeletonProfile_method_set_group>`
 
-Sets the group of the bone at ``bone_idx``.
+Đặt nhóm của xương tại ``bone_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -440,7 +440,7 @@ Sets the group of the bone at ``bone_idx``.
 
 |void| **set_group_name**\ (\ group_idx\: :ref:`int<class_int>`, group_name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_SkeletonProfile_method_set_group_name>`
 
-Sets the name of the group at ``group_idx`` that will be the drawing group in the :ref:`BoneMap<class_BoneMap>` editor.
+Đặt tên của nhóm tại ``group_idx``, nhóm này sẽ là nhóm vẽ trong editor :ref:`BoneMap<class_BoneMap>`.
 
 .. rst-class:: classref-item-separator
 
@@ -452,9 +452,9 @@ Sets the name of the group at ``group_idx`` that will be the drawing group in th
 
 |void| **set_handle_offset**\ (\ bone_idx\: :ref:`int<class_int>`, handle_offset\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_SkeletonProfile_method_set_handle_offset>`
 
-Sets the offset of the bone at ``bone_idx`` that will be the button position in the :ref:`BoneMap<class_BoneMap>` editor.
+Đặt offset của xương tại ``bone_idx``, offset này sẽ là vị trí nút trong editor :ref:`BoneMap<class_BoneMap>`.
 
-This is the offset with origin at the top left corner of the square.
+Đây là offset có gốc tọa độ tại góc trên bên trái của hình vuông.
 
 .. rst-class:: classref-item-separator
 
@@ -466,7 +466,7 @@ This is the offset with origin at the top left corner of the square.
 
 |void| **set_reference_pose**\ (\ bone_idx\: :ref:`int<class_int>`, bone_name\: :ref:`Transform3D<class_Transform3D>`\ ) :ref:`🔗<class_SkeletonProfile_method_set_reference_pose>`
 
-Sets the reference pose transform for bone ``bone_idx``.
+Đặt phép biến đổi tư thế tham chiếu cho xương ``bone_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -478,7 +478,7 @@ Sets the reference pose transform for bone ``bone_idx``.
 
 |void| **set_required**\ (\ bone_idx\: :ref:`int<class_int>`, required\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_SkeletonProfile_method_set_required>`
 
-Sets the required status for bone ``bone_idx`` to ``required``.
+Đặt trạng thái bắt buộc của xương ``bone_idx`` thành ``required``.
 
 .. rst-class:: classref-item-separator
 
@@ -490,9 +490,9 @@ Sets the required status for bone ``bone_idx`` to ``required``.
 
 |void| **set_tail_direction**\ (\ bone_idx\: :ref:`int<class_int>`, tail_direction\: :ref:`TailDirection<enum_SkeletonProfile_TailDirection>`\ ) :ref:`🔗<class_SkeletonProfile_method_set_tail_direction>`
 
-Sets the tail direction of the bone at ``bone_idx``.
+Đặt hướng đuôi của xương tại ``bone_idx``.
 
-\ **Note:** This only specifies the method of calculation. The actual coordinates required should be stored in an external skeleton, so the calculation itself needs to be done externally.
+\ **Lưu ý:** Điều này chỉ chỉ định phương pháp tính toán. Các tọa độ thực tế cần thiết phải được lưu trữ trong một skeleton bên ngoài, vì vậy bản thân phép tính cần được thực hiện bên ngoài.
 
 .. rst-class:: classref-item-separator
 
@@ -504,14 +504,14 @@ Sets the tail direction of the bone at ``bone_idx``.
 
 |void| **set_texture**\ (\ group_idx\: :ref:`int<class_int>`, texture\: :ref:`Texture2D<class_Texture2D>`\ ) :ref:`🔗<class_SkeletonProfile_method_set_texture>`
 
-Sets the texture of the group at ``group_idx`` that will be the drawing group background image in the :ref:`BoneMap<class_BoneMap>` editor.
+Đặt texture của nhóm tại ``group_idx``, texture này sẽ là ảnh nền của nhóm vẽ trong editor :ref:`BoneMap<class_BoneMap>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

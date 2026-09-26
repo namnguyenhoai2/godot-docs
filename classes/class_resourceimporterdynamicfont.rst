@@ -10,31 +10,31 @@
 ResourceImporterDynamicFont
 ===========================
 
-**Inherits:** :ref:`ResourceImporter<class_ResourceImporter>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`ResourceImporter<class_ResourceImporter>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Imports a TTF, TTC, OTF, OTC, WOFF or WOFF2 font file for font rendering that adapts to any size.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Unlike bitmap fonts, dynamic fonts can be resized to any size and still look crisp. Dynamic fonts also optionally support MSDF font rendering, which allows for run-time scale changes with no re-rasterization cost.
-
-While WOFF and especially WOFF2 tend to result in smaller file sizes, there is no universally "better" font format. In most situations, it's recommended to use the font format that was shipped on the font developer's website.
-
-See also :ref:`ResourceImporterBMFont<class_ResourceImporterBMFont>` and :ref:`ResourceImporterImageFont<class_ResourceImporterImageFont>`.
+Nhập tệp phông chữ TTF, TTC, OTF, OTC, WOFF hoặc WOFF2 để kết xuất phông chữ có thể thích ứng với mọi kích thước.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Không giống phông chữ bitmap, phông chữ động có thể được thay đổi kích thước tùy ý mà vẫn sắc nét. Phông chữ động cũng tùy chọn hỗ trợ kết xuất phông chữ MSDF, cho phép thay đổi tỷ lệ trong thời gian chạy mà không phải trả chi phí raster hóa lại.
+
+Mặc dù WOFF và đặc biệt là WOFF2 thường tạo ra kích thước tệp nhỏ hơn, không có định dạng phông chữ nào "tốt hơn" một cách tuyệt đối. Trong hầu hết trường hợp, bạn nên sử dụng định dạng phông chữ được cung cấp trên trang web của nhà phát triển phông chữ.
+
+Xem thêm :ref:`ResourceImporterBMFont<class_ResourceImporterBMFont>` và :ref:`ResourceImporterImageFont<class_ResourceImporterImageFont>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- `Dynamic fonts - Using fonts <../tutorials/ui/gui_using_fonts.html#dynamic-fonts>`__
+- `Phông chữ động - Sử dụng phông chữ <../tutorials/ui/gui_using_fonts.html#dynamic-fonts>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -86,8 +86,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ResourceImporterDynamicFont_property_allow_system_fallback:
 
@@ -95,9 +95,9 @@ Property Descriptions
 
 :ref:`bool<class_bool>` **allow_system_fallback** = ``true`` :ref:`🔗<class_ResourceImporterDynamicFont_property_allow_system_fallback>`
 
-If ``true``, automatically use system fonts as a fallback if a glyph isn't found in this dynamic font. This makes supporting CJK characters or emoji more straightforward, as you don't need to include a CJK/emoji font in your project. See also :ref:`fallbacks<class_ResourceImporterDynamicFont_property_fallbacks>`.
+Nếu ``true``, tự động sử dụng phông chữ hệ thống làm phương án dự phòng nếu không tìm thấy glyph trong phông chữ động này. Điều này giúp hỗ trợ các ký tự CJK hoặc emoji dễ dàng hơn, vì bạn không cần thêm phông chữ CJK/emoji vào dự án. Xem thêm :ref:`fallbacks<class_ResourceImporterDynamicFont_property_fallbacks>`.
 
-\ **Note:** The appearance of system fonts varies across platforms. Loading system fonts is only supported on Windows, macOS, Linux, Android and iOS.
+\ **Lưu ý:** Giao diện của phông chữ hệ thống khác nhau tùy nền tảng. Chỉ hỗ trợ tải phông chữ hệ thống trên Windows, macOS, Linux, Android và iOS.
 
 .. rst-class:: classref-item-separator
 
@@ -109,13 +109,13 @@ If ``true``, automatically use system fonts as a fallback if a glyph isn't found
 
 :ref:`int<class_int>` **antialiasing** = ``1`` :ref:`🔗<class_ResourceImporterDynamicFont_property_antialiasing>`
 
-The font antialiasing method to use.
+Phương thức khử răng cưa phông chữ cần sử dụng.
 
-\ **Disabled:** Most suited for pixel art fonts, although you do not *have* to change the antialiasing from the default **Grayscale** if the font file was well-created and the font is used at an integer multiple of its intended size. If pixel art fonts have a bad appearance at their intended size, try setting :ref:`subpixel_positioning<class_ResourceImporterDynamicFont_property_subpixel_positioning>` to **Disabled** instead.
+\ **Disabled:** Phù hợp nhất với phông chữ pixel, mặc dù bạn không *cần* thay đổi phương thức khử răng cưa mặc định **Grayscale** nếu tệp phông chữ được tạo tốt và phông chữ được sử dụng ở bội số nguyên của kích thước dự kiến. Nếu phông chữ pixel hiển thị không đẹp ở kích thước dự kiến, hãy thử đặt :ref:`subpixel_positioning<class_ResourceImporterDynamicFont_property_subpixel_positioning>` thành **Disabled**.
 
-\ **Grayscale:** Use grayscale antialiasing. This is the approach used by the operating system on macOS, Android and iOS.
+\ **Grayscale:** Sử dụng khử răng cưa thang độ xám. Đây là phương pháp được hệ điều hành sử dụng trên macOS, Android và iOS.
 
-\ **LCD Subpixel:** Use antialiasing with subpixel patterns to make fonts sharper on LCD displays. This is the approach used by the operating system on Windows and most Linux distributions. The downside is that this can introduce "fringing" on edges, especially on display technologies that don't use standard RGB subpixels (such as OLED displays). The LCD subpixel layout is globally controlled by :ref:`ProjectSettings.gui/theme/lcd_subpixel_layout<class_ProjectSettings_property_gui/theme/lcd_subpixel_layout>`, which also allows falling back to grayscale antialiasing.
+\ **LCD Subpixel:** Sử dụng khử răng cưa với các mẫu subpixel để làm phông chữ sắc nét hơn trên màn hình LCD. Đây là phương pháp được hệ điều hành sử dụng trên Windows và hầu hết bản phân phối Linux. Nhược điểm là phương pháp này có thể tạo ra hiện tượng "viền màu" ở các cạnh, đặc biệt trên những công nghệ màn hình không sử dụng subpixel RGB tiêu chuẩn (chẳng hạn màn hình OLED). Bố cục subpixel LCD được điều khiển trên toàn cục bởi :ref:`ProjectSettings.gui/theme/lcd_subpixel_layout <class_ProjectSettings_property_gui/theme/lcd_subpixel_layout>`, tùy chọn này cũng cho phép chuyển về khử răng cưa thang độ xám.
 
 .. rst-class:: classref-item-separator
 
@@ -127,7 +127,7 @@ The font antialiasing method to use.
 
 :ref:`bool<class_bool>` **compress** = ``true`` :ref:`🔗<class_ResourceImporterDynamicFont_property_compress>`
 
-If ``true``, uses lossless compression for the resulting font.
+Nếu ``true``, sử dụng phương pháp nén không mất dữ liệu cho phông chữ kết quả.
 
 .. rst-class:: classref-item-separator
 
@@ -139,7 +139,7 @@ If ``true``, uses lossless compression for the resulting font.
 
 :ref:`bool<class_bool>` **disable_embedded_bitmaps** = ``true`` :ref:`🔗<class_ResourceImporterDynamicFont_property_disable_embedded_bitmaps>`
 
-If set to ``true``, embedded font bitmap loading is disabled (bitmap-only and color fonts ignore this property).
+Nếu được đặt thành ``true``, việc tải bitmap phông chữ được nhúng sẽ bị vô hiệu hóa (phông chữ chỉ có bitmap và phông chữ màu sẽ bỏ qua thuộc tính này).
 
 .. rst-class:: classref-item-separator
 
@@ -151,7 +151,7 @@ If set to ``true``, embedded font bitmap loading is disabled (bitmap-only and co
 
 :ref:`Array<class_Array>` **fallbacks** = ``[]`` :ref:`🔗<class_ResourceImporterDynamicFont_property_fallbacks>`
 
-List of font fallbacks to use if a glyph isn't found in this dynamic font. Fonts at the beginning of the array are attempted first, but fallback fonts that don't support the glyph's language and script are attempted last (see :ref:`language_support<class_ResourceImporterDynamicFont_property_language_support>` and :ref:`script_support<class_ResourceImporterDynamicFont_property_script_support>`). See also :ref:`allow_system_fallback<class_ResourceImporterDynamicFont_property_allow_system_fallback>`.
+Danh sách các phông chữ dự phòng sẽ sử dụng nếu không tìm thấy glyph trong phông chữ động này. Các phông chữ ở đầu mảng được thử trước, nhưng những phông chữ dự phòng không hỗ trợ ngôn ngữ và hệ chữ của glyph sẽ được thử sau cùng (xem :ref:`language_support<class_ResourceImporterDynamicFont_property_language_support>` và :ref:`script_support<class_ResourceImporterDynamicFont_property_script_support>`). Xem thêm :ref:`allow_system_fallback<class_ResourceImporterDynamicFont_property_allow_system_fallback>`.
 
 .. rst-class:: classref-item-separator
 
@@ -163,7 +163,7 @@ List of font fallbacks to use if a glyph isn't found in this dynamic font. Fonts
 
 :ref:`bool<class_bool>` **force_autohinter** = ``false`` :ref:`🔗<class_ResourceImporterDynamicFont_property_force_autohinter>`
 
-If ``true``, forces generation of hinting data for the font using `FreeType <https://freetype.org/>`__'s autohinter. This will make :ref:`hinting<class_ResourceImporterDynamicFont_property_hinting>` effective with fonts that don't include hinting data.
+Nếu ``true``, buộc tạo dữ liệu hinting cho phông chữ bằng autohinter của `FreeType <https://freetype.org/>`__. Điều này sẽ làm cho :ref:`hinting<class_ResourceImporterDynamicFont_property_hinting>` có hiệu lực với những phông chữ không chứa dữ liệu hinting.
 
 .. rst-class:: classref-item-separator
 
@@ -175,9 +175,9 @@ If ``true``, forces generation of hinting data for the font using `FreeType <htt
 
 :ref:`bool<class_bool>` **generate_mipmaps** = ``false`` :ref:`🔗<class_ResourceImporterDynamicFont_property_generate_mipmaps>`
 
-If ``true``, this font will have mipmaps generated. This prevents text from looking grainy when a :ref:`Control<class_Control>` is scaled down, or when a :ref:`Label3D<class_Label3D>` is viewed from a long distance (if :ref:`Label3D.texture_filter<class_Label3D_property_texture_filter>` is set to a mode that displays mipmaps).
+Nếu ``true``, phông chữ này sẽ được tạo mipmap. Điều này ngăn văn bản bị nhiễu hạt khi :ref:`Control<class_Control>` được thu nhỏ hoặc khi :ref:`Label3D<class_Label3D>` được nhìn từ khoảng cách xa (nếu :ref:`Label3D.texture_filter<class_Label3D_property_texture_filter>` được đặt thành chế độ hiển thị mipmap).
 
-Enabling :ref:`generate_mipmaps<class_ResourceImporterDynamicFont_property_generate_mipmaps>` increases font generation time and memory usage. Only enable this setting if you actually need it.
+Bật :ref:`generate_mipmaps<class_ResourceImporterDynamicFont_property_generate_mipmaps>` sẽ làm tăng thời gian tạo phông chữ và mức sử dụng bộ nhớ. Chỉ bật tùy chọn này nếu bạn thực sự cần.
 
 .. rst-class:: classref-item-separator
 
@@ -189,17 +189,17 @@ Enabling :ref:`generate_mipmaps<class_ResourceImporterDynamicFont_property_gener
 
 :ref:`int<class_int>` **hinting** = ``3`` :ref:`🔗<class_ResourceImporterDynamicFont_property_hinting>`
 
-The hinting mode to use. This controls how aggressively glyph edges should be snapped to pixels when rasterizing the font. Depending on personal preference, you may prefer using one hinting mode over the other. Hinting modes other than **None** are only effective if the font contains hinting data (see :ref:`force_autohinter<class_ResourceImporterDynamicFont_property_force_autohinter>`).
+Chế độ hinting cần sử dụng. Chế độ này kiểm soát mức độ mạnh khi các cạnh glyph được căn vào pixel trong quá trình raster hóa phông chữ. Tùy sở thích cá nhân, bạn có thể thích sử dụng chế độ hinting này hơn chế độ kia. Các chế độ hinting khác **None** chỉ có hiệu lực nếu phông chữ chứa dữ liệu hinting (xem :ref:`force_autohinter<class_ResourceImporterDynamicFont_property_force_autohinter>`).
 
-\ **None:** Smoothest appearance, which can make the font look blurry at small sizes.
+\ **None:** Giao diện mượt nhất, nhưng có thể khiến phông chữ bị mờ ở kích thước nhỏ.
 
-\ **Light:** Sharp result by snapping glyph edges to pixels on the Y axis only.
+\ **Light:** Kết quả sắc nét bằng cách chỉ căn các cạnh glyph vào pixel trên trục Y.
 
-\ **Normal:** Sharpest by snapping glyph edges to pixels on both X and Y axes.
+\ **Normal:** Sắc nét nhất bằng cách căn các cạnh glyph vào pixel trên cả trục X và Y.
 
-\ **Light (Except Pixel Fonts):** **Disabled** for pixel style fonts (each glyph's contours contain only straight horizontal and vertical lines), **Light** for other fonts.
+\ **Light (Except Pixel Fonts):** **Disabled** đối với phông chữ kiểu pixel (đường bao của mỗi glyph chỉ chứa các đường ngang và dọc thẳng), **Light** đối với các phông chữ khác.
 
-\ **Normal (Except Pixel Fonts):** **Disabled** for pixel style fonts (each glyph's contours contain only straight horizontal and vertical lines), **Normal** for other fonts.
+\ **Normal (Except Pixel Fonts):** **Disabled** đối với phông chữ kiểu pixel (đường bao của mỗi glyph chỉ chứa các đường ngang và dọc thẳng), **Normal** đối với các phông chữ khác.
 
 .. rst-class:: classref-item-separator
 
@@ -211,7 +211,7 @@ The hinting mode to use. This controls how aggressively glyph edges should be sn
 
 :ref:`bool<class_bool>` **keep_rounding_remainders** = ``true`` :ref:`🔗<class_ResourceImporterDynamicFont_property_keep_rounding_remainders>`
 
-If set to ``true``, when aligning glyphs to the pixel boundaries rounding remainders are accumulated to ensure more uniform glyph distribution. This setting has no effect if subpixel positioning is enabled.
+Nếu được đặt thành ``true``, khi căn glyph vào ranh giới pixel, các phần dư sau khi làm tròn sẽ được tích lũy để đảm bảo phân bố glyph đồng đều hơn. Tùy chọn này không có tác dụng nếu bật định vị subpixel.
 
 .. rst-class:: classref-item-separator
 
@@ -223,7 +223,7 @@ If set to ``true``, when aligning glyphs to the pixel boundaries rounding remain
 
 :ref:`Dictionary<class_Dictionary>` **language_support** = ``{}`` :ref:`🔗<class_ResourceImporterDynamicFont_property_language_support>`
 
-Override the list of languages supported by this font. If left empty, this is supplied by the font metadata. There is usually no need to change this. See also :ref:`script_support<class_ResourceImporterDynamicFont_property_script_support>`.
+Ghi đè danh sách ngôn ngữ được phông chữ này hỗ trợ. Nếu để trống, danh sách này sẽ được cung cấp bởi siêu dữ liệu của phông chữ. Thông thường bạn không cần thay đổi tùy chọn này. Xem thêm :ref:`script_support<class_ResourceImporterDynamicFont_property_script_support>`.
 
 .. rst-class:: classref-item-separator
 
@@ -235,7 +235,7 @@ Override the list of languages supported by this font. If left empty, this is su
 
 :ref:`bool<class_bool>` **modulate_color_glyphs** = ``false`` :ref:`🔗<class_ResourceImporterDynamicFont_property_modulate_color_glyphs>`
 
-If set to ``true``, color modulation is applied when drawing colored glyphs, otherwise it's applied to the monochrome glyphs only.
+Nếu được đặt thành ``true``, việc điều chỉnh màu sẽ được áp dụng khi vẽ các glyph màu; nếu không, việc này chỉ được áp dụng cho các glyph đơn sắc.
 
 .. rst-class:: classref-item-separator
 
@@ -247,7 +247,7 @@ If set to ``true``, color modulation is applied when drawing colored glyphs, oth
 
 :ref:`int<class_int>` **msdf_pixel_range** = ``8`` :ref:`🔗<class_ResourceImporterDynamicFont_property_msdf_pixel_range>`
 
-The width of the range around the shape between the minimum and maximum representable signed distance. If using font outlines, :ref:`msdf_pixel_range<class_ResourceImporterDynamicFont_property_msdf_pixel_range>` must be set to at least *twice* the size of the largest font outline. The default :ref:`msdf_pixel_range<class_ResourceImporterDynamicFont_property_msdf_pixel_range>` value of ``8`` allows outline sizes up to ``4`` to look correct.
+Độ rộng của phạm vi xung quanh hình dạng giữa khoảng cách có dấu nhỏ nhất và lớn nhất có thể biểu diễn. Nếu sử dụng đường viền phông chữ, :ref:`msdf_pixel_range<class_ResourceImporterDynamicFont_property_msdf_pixel_range>` phải được đặt ít nhất bằng *twice* kích thước của đường viền phông chữ lớn nhất. Giá trị mặc định :ref:`msdf_pixel_range<class_ResourceImporterDynamicFont_property_msdf_pixel_range>` là ``8`` cho phép các kích thước đường viền lên đến ``4`` hiển thị chính xác.
 
 .. rst-class:: classref-item-separator
 
@@ -259,7 +259,7 @@ The width of the range around the shape between the minimum and maximum represen
 
 :ref:`int<class_int>` **msdf_size** = ``48`` :ref:`🔗<class_ResourceImporterDynamicFont_property_msdf_size>`
 
-Source font size used to generate MSDF textures. Higher values allow for more precision, but are slower to render and require more memory. Only increase this value if you notice a visible lack of precision in glyph rendering. Only effective if :ref:`multichannel_signed_distance_field<class_ResourceImporterDynamicFont_property_multichannel_signed_distance_field>` is ``true``.
+Kích thước phông chữ nguồn được sử dụng để tạo texture MSDF. Giá trị cao hơn cho phép độ chính xác cao hơn, nhưng kết xuất chậm hơn và cần nhiều bộ nhớ hơn. Chỉ tăng giá trị này nếu bạn nhận thấy độ chính xác khi kết xuất glyph bị thiếu rõ rệt. Chỉ có hiệu lực nếu :ref:`multichannel_signed_distance_field<class_ResourceImporterDynamicFont_property_multichannel_signed_distance_field>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -271,9 +271,9 @@ Source font size used to generate MSDF textures. Higher values allow for more pr
 
 :ref:`bool<class_bool>` **multichannel_signed_distance_field** = ``false`` :ref:`🔗<class_ResourceImporterDynamicFont_property_multichannel_signed_distance_field>`
 
-If set to ``true``, the font will use multichannel signed distance field (MSDF) for crisp rendering at any size. Since this approach does not rely on rasterizing the font every time its size changes, this allows for resizing the font in real-time without any performance penalty. Text will also not look grainy for :ref:`Control<class_Control>`\ s that are scaled down (or for :ref:`Label3D<class_Label3D>`\ s viewed from a long distance).
+Nếu được đặt thành ``true``, phông chữ sẽ sử dụng multichannel signed distance field (MSDF) để kết xuất sắc nét ở mọi kích thước. Vì phương pháp này không phụ thuộc vào việc raster hóa phông chữ mỗi khi kích thước thay đổi, nó cho phép thay đổi kích thước phông chữ trong thời gian thực mà không làm giảm hiệu năng. Văn bản cũng sẽ không bị nhiễu hạt đối với :ref:`Control<class_Control>`\ s được thu nhỏ (hoặc đối với :ref:`Label3D<class_Label3D>`\ s được nhìn từ khoảng cách xa).
 
-MSDF font rendering can be combined with :ref:`generate_mipmaps<class_ResourceImporterDynamicFont_property_generate_mipmaps>` to further improve font rendering quality when scaled down.
+Kết xuất phông chữ MSDF có thể được kết hợp với :ref:`generate_mipmaps<class_ResourceImporterDynamicFont_property_generate_mipmaps>` để cải thiện hơn nữa chất lượng kết xuất phông chữ khi thu nhỏ.
 
 .. rst-class:: classref-item-separator
 
@@ -285,7 +285,7 @@ MSDF font rendering can be combined with :ref:`generate_mipmaps<class_ResourceIm
 
 :ref:`Dictionary<class_Dictionary>` **opentype_features** = ``{}`` :ref:`🔗<class_ResourceImporterDynamicFont_property_opentype_features>`
 
-The OpenType features to enable, disable or set a value for this font. This can be used to enable optional features provided by the font, such as ligatures or alternative glyphs. The list of supported OpenType features varies on a per-font basis.
+Các tính năng OpenType cần bật, tắt hoặc đặt giá trị cho phông chữ này. Có thể sử dụng tùy chọn này để bật các tính năng tùy chọn do phông chữ cung cấp, chẳng hạn như ligature hoặc glyph thay thế. Danh sách các tính năng OpenType được hỗ trợ thay đổi tùy từng phông chữ.
 
 .. rst-class:: classref-item-separator
 
@@ -297,7 +297,7 @@ The OpenType features to enable, disable or set a value for this font. This can 
 
 :ref:`float<class_float>` **oversampling** = ``0.0`` :ref:`🔗<class_ResourceImporterDynamicFont_property_oversampling>`
 
-If set to a positive value, overrides the oversampling factor of the viewport this font is used in. See :ref:`Viewport.oversampling<class_Viewport_property_oversampling>`. This value doesn't override the ``oversampling`` parameter of ``draw_*`` methods.
+Nếu được đặt thành một giá trị dương, thuộc tính này sẽ ghi đè hệ số oversampling của viewport mà font này được sử dụng trong đó. Xem :ref:`Viewport.oversampling<class_Viewport_property_oversampling>`. Giá trị này không ghi đè tham số ``oversampling`` của các phương thức ``draw_*``.
 
 .. rst-class:: classref-item-separator
 
@@ -309,7 +309,7 @@ If set to a positive value, overrides the oversampling factor of the viewport th
 
 :ref:`Array<class_Array>` **preload** = ``[]`` :ref:`🔗<class_ResourceImporterDynamicFont_property_preload>`
 
-The glyph ranges to prerender. This can avoid stuttering during gameplay when new characters need to be rendered, especially if :ref:`subpixel_positioning<class_ResourceImporterDynamicFont_property_subpixel_positioning>` is enabled. The downside of using preloading is that initial project load times will increase, as well as memory usage.
+Các phạm vi glyph cần prerender. Điều này có thể tránh hiện tượng giật trong khi chơi khi cần render các ký tự mới, đặc biệt nếu :ref:`subpixel_positioning<class_ResourceImporterDynamicFont_property_subpixel_positioning>` được bật. Nhược điểm của việc sử dụng tính năng tải trước là thời gian tải project ban đầu sẽ tăng, đồng thời mức sử dụng bộ nhớ cũng tăng.
 
 .. rst-class:: classref-item-separator
 
@@ -321,7 +321,7 @@ The glyph ranges to prerender. This can avoid stuttering during gameplay when ne
 
 :ref:`Dictionary<class_Dictionary>` **script_support** = ``{}`` :ref:`🔗<class_ResourceImporterDynamicFont_property_script_support>`
 
-Override the list of language scripts supported by this font. If left empty, this is supplied by the font metadata. There is usually no need to change this. See also :ref:`language_support<class_ResourceImporterDynamicFont_property_language_support>`.
+Ghi đè danh sách các hệ chữ được font này hỗ trợ. Nếu để trống, danh sách này sẽ được cung cấp bởi metadata của font. Thông thường không cần thay đổi. Xem thêm :ref:`language_support<class_ResourceImporterDynamicFont_property_language_support>`.
 
 .. rst-class:: classref-item-separator
 
@@ -333,24 +333,24 @@ Override the list of language scripts supported by this font. If left empty, thi
 
 :ref:`int<class_int>` **subpixel_positioning** = ``4`` :ref:`🔗<class_ResourceImporterDynamicFont_property_subpixel_positioning>`
 
-Subpixel positioning improves font rendering appearance, especially at smaller font sizes. The downside is that it takes more time to initially render the font, which can cause stuttering during gameplay, especially if used with large font sizes. This should be set to **Disabled** for fonts with a pixel art appearance.
+Định vị subpixel cải thiện hình thức render của font, đặc biệt ở kích thước font nhỏ. Nhược điểm là cần nhiều thời gian hơn để render font lần đầu, điều này có thể gây giật trong khi chơi, đặc biệt khi sử dụng kích thước font lớn. Nên đặt thành **Disabled** đối với các font có hình thức pixel art.
 
-\ **Disabled:** No subpixel positioning. Lowest quality, fastest rendering.
+\ **Disabled:** Không định vị subpixel. Chất lượng thấp nhất, render nhanh nhất.
 
-\ **Auto:** Use subpixel positioning at small font sizes (the chosen quality varies depending on font size). Large fonts will not use subpixel positioning. This is a good tradeoff between performance and quality.
+\ **Auto:** Sử dụng định vị subpixel ở các kích thước font nhỏ (chất lượng được chọn thay đổi tùy theo kích thước font). Font lớn sẽ không sử dụng định vị subpixel. Đây là sự cân bằng tốt giữa hiệu năng và chất lượng.
 
-\ **One Half of a Pixel:** Always perform intermediate subpixel positioning regardless of font size. High quality, slow rendering.
+\ **One Half of a Pixel:** Luôn thực hiện định vị subpixel trung gian bất kể kích thước font. Chất lượng cao, render chậm.
 
-\ **One Quarter of a Pixel:** Always perform precise subpixel positioning regardless of font size. Highest quality, slowest rendering.
+\ **One Quarter of a Pixel:** Luôn thực hiện định vị subpixel chính xác bất kể kích thước font. Chất lượng cao nhất, render chậm nhất.
 
-\ **Auto (Except Pixel Fonts):** **Disabled** for pixel style fonts (each glyph's contours contain only straight horizontal and vertical lines), **Auto** for other fonts.
+\ **Auto (Except Pixel Fonts):** **Disabled** đối với các font kiểu pixel (đường bao của mỗi glyph chỉ chứa các đường ngang và dọc thẳng), **Auto** đối với các font khác.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Không cần có instance để gọi phương thức này, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

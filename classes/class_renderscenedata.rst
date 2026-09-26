@@ -10,25 +10,25 @@
 RenderSceneData
 ===============
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`RenderSceneDataExtension<class_RenderSceneDataExtension>`, :ref:`RenderSceneDataRD<class_RenderSceneDataRD>`
+**Được kế thừa bởi:** :ref:`RenderSceneDataExtension<class_RenderSceneDataExtension>`, :ref:`RenderSceneDataRD<class_RenderSceneDataRD>`
 
-Abstract render data object, holds scene data related to rendering a single frame of a viewport.
+Đối tượng dữ liệu kết xuất trừu tượng, chứa dữ liệu cảnh liên quan đến việc kết xuất một khung hình đơn của viewport.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Abstract scene data object, exists for the duration of rendering a single viewport. See also :ref:`RenderSceneDataRD<class_RenderSceneDataRD>`, :ref:`RenderData<class_RenderData>`, and :ref:`RenderDataRD<class_RenderDataRD>`.
+Đối tượng dữ liệu cảnh trừu tượng, tồn tại trong suốt quá trình kết xuất một viewport đơn. Xem thêm :ref:`RenderSceneDataRD<class_RenderSceneDataRD>`, :ref:`RenderData<class_RenderData>` và :ref:`RenderDataRD<class_RenderDataRD>`.
 
-\ **Note:** This is an internal rendering server object. Do not instantiate this class from a script.
+\ **Lưu ý:** Đây là một đối tượng máy chủ kết xuất nội bộ. Không khởi tạo class này từ script.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -53,8 +53,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_RenderSceneData_method_get_cam_projection:
 
@@ -62,9 +62,9 @@ Method Descriptions
 
 :ref:`Projection<class_Projection>` **get_cam_projection**\ (\ ) |const| :ref:`🔗<class_RenderSceneData_method_get_cam_projection>`
 
-Returns the camera projection used to render this frame.
+Trả về phép chiếu camera được sử dụng để kết xuất khung hình này.
 
-\ **Note:** If more than one view is rendered, this will return a combined projection.
+\ **Lưu ý:** Nếu kết xuất nhiều view, phương thức này sẽ trả về một phép chiếu kết hợp.
 
 .. rst-class:: classref-item-separator
 
@@ -76,9 +76,9 @@ Returns the camera projection used to render this frame.
 
 :ref:`Transform3D<class_Transform3D>` **get_cam_transform**\ (\ ) |const| :ref:`🔗<class_RenderSceneData_method_get_cam_transform>`
 
-Returns the camera transform used to render this frame.
+Trả về phép biến đổi camera được sử dụng để kết xuất khung hình này.
 
-\ **Note:** If more than one view is rendered, this will return a centered transform.
+\ **Lưu ý:** Nếu kết xuất nhiều view, phương thức này sẽ trả về một phép biến đổi được căn giữa.
 
 .. rst-class:: classref-item-separator
 
@@ -90,7 +90,7 @@ Returns the camera transform used to render this frame.
 
 :ref:`RID<class_RID>` **get_uniform_buffer**\ (\ ) |const| :ref:`🔗<class_RenderSceneData_method_get_uniform_buffer>`
 
-Return the :ref:`RID<class_RID>` of the uniform buffer containing the scene data as a UBO.
+Trả về :ref:`RID<class_RID>` của uniform buffer chứa dữ liệu cảnh dưới dạng UBO.
 
 .. rst-class:: classref-item-separator
 
@@ -102,7 +102,7 @@ Return the :ref:`RID<class_RID>` of the uniform buffer containing the scene data
 
 :ref:`int<class_int>` **get_view_count**\ (\ ) |const| :ref:`🔗<class_RenderSceneData_method_get_view_count>`
 
-Returns the number of views being rendered.
+Trả về số lượng view đang được kết xuất.
 
 .. rst-class:: classref-item-separator
 
@@ -114,7 +114,7 @@ Returns the number of views being rendered.
 
 :ref:`Vector3<class_Vector3>` **get_view_eye_offset**\ (\ view\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_RenderSceneData_method_get_view_eye_offset>`
 
-Returns the eye offset per view used to render this frame. This is the offset between our camera transform and the eye transform.
+Trả về độ lệch mắt cho mỗi view được sử dụng để kết xuất khung hình này. Đây là độ lệch giữa phép biến đổi camera và phép biến đổi mắt của chúng ta.
 
 .. rst-class:: classref-item-separator
 
@@ -126,16 +126,16 @@ Returns the eye offset per view used to render this frame. This is the offset be
 
 :ref:`Projection<class_Projection>` **get_view_projection**\ (\ view\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_RenderSceneData_method_get_view_projection>`
 
-Returns the view projection per view used to render this frame.
+Trả về phép chiếu view cho mỗi view được sử dụng để kết xuất khung hình này.
 
-\ **Note:** If a single view is rendered, this returns the camera projection. If more than one view is rendered, this will return a projection for the given view including the eye offset.
+\ **Lưu ý:** Nếu kết xuất một view đơn, phương thức này trả về phép chiếu camera. Nếu kết xuất nhiều view, phương thức này sẽ trả về phép chiếu cho view đã cho, bao gồm cả độ lệch mắt.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

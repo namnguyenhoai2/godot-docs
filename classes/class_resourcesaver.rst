@@ -10,40 +10,40 @@
 ResourceSaver
 =============
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-A singleton for saving :ref:`Resource<class_Resource>`\ s to the filesystem.
+Một singleton dùng để lưu :ref:`Resource<class_Resource>`\ s vào hệ thống tệp.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A singleton for saving resource types to the filesystem.
+Một singleton dùng để lưu các loại resource vào hệ thống tệp.
 
-It uses the many :ref:`ResourceFormatSaver<class_ResourceFormatSaver>` classes registered in the engine (either built-in or from a plugin) to save resource data to text-based (e.g. ``.tres`` or ``.tscn``) or binary files (e.g. ``.res`` or ``.scn``).
+Nó sử dụng nhiều lớp :ref:`ResourceFormatSaver<class_ResourceFormatSaver>` đã được đăng ký trong engine (tích hợp sẵn hoặc từ plugin) để lưu dữ liệu resource vào các tệp dạng văn bản (ví dụ: ``.tres`` hoặc ``.tscn``) hoặc tệp nhị phân (ví dụ: ``.res`` hoặc ``.scn``).
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`add_resource_format_saver<class_ResourceSaver_method_add_resource_format_saver>`\ (\ format_saver\: :ref:`ResourceFormatSaver<class_ResourceFormatSaver>`, at_front\: :ref:`bool<class_bool>` = false\ )      |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_recognized_extensions<class_ResourceSaver_method_get_recognized_extensions>`\ (\ type\: :ref:`Resource<class_Resource>`\ )                                                                                |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`get_resource_id_for_path<class_ResourceSaver_method_get_resource_id_for_path>`\ (\ path\: :ref:`String<class_String>`, generate\: :ref:`bool<class_bool>` = false\ )                                          |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`remove_resource_format_saver<class_ResourceSaver_method_remove_resource_format_saver>`\ (\ format_saver\: :ref:`ResourceFormatSaver<class_ResourceFormatSaver>`\ )                                            |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`             | :ref:`save<class_ResourceSaver_method_save>`\ (\ resource\: :ref:`Resource<class_Resource>`, path\: :ref:`String<class_String>` = "", flags\: |bitfield|\[:ref:`SaverFlags<enum_ResourceSaver_SaverFlags>`\] = 0\ ) |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`             | :ref:`set_uid<class_ResourceSaver_method_set_uid>`\ (\ resource\: :ref:`String<class_String>`, uid\: :ref:`int<class_int>`\ )                                                                                       |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`add_resource_format_saver<class_ResourceSaver_method_add_resource_format_saver>`\ (\ format_saver\: :ref:`ResourceFormatSaver<class_ResourceFormatSaver>`, at_front\: :ref:`bool<class_bool>` = false\ )       |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_recognized_extensions<class_ResourceSaver_method_get_recognized_extensions>`\ (\ type\: :ref:`Resource<class_Resource>`\ )                                                                                 |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`get_resource_id_for_path<class_ResourceSaver_method_get_resource_id_for_path>`\ (\ path\: :ref:`String<class_String>`, generate\: :ref:`bool<class_bool>` = false\ )                                           |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`remove_resource_format_saver<class_ResourceSaver_method_remove_resource_format_saver>`\ (\ format_saver\: :ref:`ResourceFormatSaver<class_ResourceFormatSaver>`\ )                                             |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Lỗi <enum_@GlobalScope_Error>`              | :ref:`save<class_ResourceSaver_method_save>`\ (\ resource\: :ref:`Resource<class_Resource>`, path\: :ref:`String<class_String>` = "", flags\: |bitfield|\[:ref:`SaverFlags <enum_ResourceSaver_SaverFlags>`\] = 0\ ) |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Lỗi <enum_@GlobalScope_Error>`              | :ref:`set_uid<class_ResourceSaver_method_set_uid>`\ (\ resource\: :ref:`String<class_String>`, uid\: :ref:`int<class_int>`\ )                                                                                        |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -51,14 +51,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_ResourceSaver_SaverFlags:
 
 .. rst-class:: classref-enumeration
 
-flags **SaverFlags**: :ref:`🔗<enum_ResourceSaver_SaverFlags>`
+flags **SaverFlags**: :ref:`🔗 <enum_ResourceSaver_SaverFlags>`
 
 .. _class_ResourceSaver_constant_FLAG_NONE:
 
@@ -66,7 +66,7 @@ flags **SaverFlags**: :ref:`🔗<enum_ResourceSaver_SaverFlags>`
 
 :ref:`SaverFlags<enum_ResourceSaver_SaverFlags>` **FLAG_NONE** = ``0``
 
-No resource saving option.
+Không có tùy chọn lưu resource.
 
 .. _class_ResourceSaver_constant_FLAG_RELATIVE_PATHS:
 
@@ -74,7 +74,7 @@ No resource saving option.
 
 :ref:`SaverFlags<enum_ResourceSaver_SaverFlags>` **FLAG_RELATIVE_PATHS** = ``1``
 
-Save the resource with a path relative to the scene which uses it.
+Lưu resource bằng đường dẫn tương đối so với scene sử dụng resource đó.
 
 .. _class_ResourceSaver_constant_FLAG_BUNDLE_RESOURCES:
 
@@ -82,7 +82,7 @@ Save the resource with a path relative to the scene which uses it.
 
 :ref:`SaverFlags<enum_ResourceSaver_SaverFlags>` **FLAG_BUNDLE_RESOURCES** = ``2``
 
-Bundles external resources.
+Đóng gói các resource bên ngoài.
 
 .. _class_ResourceSaver_constant_FLAG_CHANGE_PATH:
 
@@ -90,7 +90,7 @@ Bundles external resources.
 
 :ref:`SaverFlags<enum_ResourceSaver_SaverFlags>` **FLAG_CHANGE_PATH** = ``4``
 
-Changes the :ref:`Resource.resource_path<class_Resource_property_resource_path>` of the saved resource to match its new location.
+Thay đổi :ref:`Resource.resource_path<class_Resource_property_resource_path>` của resource đã lưu để khớp với vị trí mới của nó.
 
 .. _class_ResourceSaver_constant_FLAG_OMIT_EDITOR_PROPERTIES:
 
@@ -98,7 +98,7 @@ Changes the :ref:`Resource.resource_path<class_Resource_property_resource_path>`
 
 :ref:`SaverFlags<enum_ResourceSaver_SaverFlags>` **FLAG_OMIT_EDITOR_PROPERTIES** = ``8``
 
-Do not save editor-specific metadata (identified by their ``__editor`` prefix).
+Không lưu siêu dữ liệu dành riêng cho editor (được xác định bằng tiền tố ``__editor``).
 
 .. _class_ResourceSaver_constant_FLAG_SAVE_BIG_ENDIAN:
 
@@ -106,7 +106,7 @@ Do not save editor-specific metadata (identified by their ``__editor`` prefix).
 
 :ref:`SaverFlags<enum_ResourceSaver_SaverFlags>` **FLAG_SAVE_BIG_ENDIAN** = ``16``
 
-Save as big endian (see :ref:`FileAccess.big_endian<class_FileAccess_property_big_endian>`).
+Lưu dưới dạng big endian (xem :ref:`FileAccess.big_endian<class_FileAccess_property_big_endian>`).
 
 .. _class_ResourceSaver_constant_FLAG_COMPRESS:
 
@@ -114,7 +114,7 @@ Save as big endian (see :ref:`FileAccess.big_endian<class_FileAccess_property_bi
 
 :ref:`SaverFlags<enum_ResourceSaver_SaverFlags>` **FLAG_COMPRESS** = ``32``
 
-Compress the resource on save using :ref:`FileAccess.COMPRESSION_ZSTD<class_FileAccess_constant_COMPRESSION_ZSTD>`. Only available for binary resource types.
+Nén resource khi lưu bằng :ref:`FileAccess.COMPRESSION_ZSTD<class_FileAccess_constant_COMPRESSION_ZSTD>`. Chỉ khả dụng cho các loại resource nhị phân.
 
 .. _class_ResourceSaver_constant_FLAG_REPLACE_SUBRESOURCE_PATHS:
 
@@ -122,7 +122,7 @@ Compress the resource on save using :ref:`FileAccess.COMPRESSION_ZSTD<class_File
 
 :ref:`SaverFlags<enum_ResourceSaver_SaverFlags>` **FLAG_REPLACE_SUBRESOURCE_PATHS** = ``64``
 
-Take over the paths of the saved subresources (see :ref:`Resource.take_over_path()<class_Resource_method_take_over_path>`).
+Tiếp quản các đường dẫn của các subresource đã lưu (xem :ref:`Resource.take_over_path()<class_Resource_method_take_over_path>`).
 
 .. rst-class:: classref-section-separator
 
@@ -130,8 +130,8 @@ Take over the paths of the saved subresources (see :ref:`Resource.take_over_path
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_ResourceSaver_method_add_resource_format_saver:
 
@@ -139,9 +139,9 @@ Method Descriptions
 
 |void| **add_resource_format_saver**\ (\ format_saver\: :ref:`ResourceFormatSaver<class_ResourceFormatSaver>`, at_front\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_ResourceSaver_method_add_resource_format_saver>`
 
-Registers a new :ref:`ResourceFormatSaver<class_ResourceFormatSaver>`. The ResourceSaver will use the ResourceFormatSaver as described in :ref:`save()<class_ResourceSaver_method_save>`.
+Đăng ký một :ref:`ResourceFormatSaver<class_ResourceFormatSaver>` mới. ResourceSaver sẽ sử dụng ResourceFormatSaver như mô tả trong :ref:`save()<class_ResourceSaver_method_save>`.
 
-This method is performed implicitly for ResourceFormatSavers written in GDScript (see :ref:`ResourceFormatSaver<class_ResourceFormatSaver>` for more information).
+Phương thức này được thực hiện ngầm đối với các ResourceFormatSaver được viết bằng GDScript (xem :ref:`ResourceFormatSaver<class_ResourceFormatSaver>` để biết thêm thông tin).
 
 .. rst-class:: classref-item-separator
 
@@ -153,7 +153,7 @@ This method is performed implicitly for ResourceFormatSavers written in GDScript
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_recognized_extensions**\ (\ type\: :ref:`Resource<class_Resource>`\ ) :ref:`🔗<class_ResourceSaver_method_get_recognized_extensions>`
 
-Returns the list of extensions available for saving a resource of a given type.
+Trả về danh sách các phần mở rộng khả dụng để lưu resource thuộc một kiểu nhất định.
 
 .. rst-class:: classref-item-separator
 
@@ -165,7 +165,7 @@ Returns the list of extensions available for saving a resource of a given type.
 
 :ref:`int<class_int>` **get_resource_id_for_path**\ (\ path\: :ref:`String<class_String>`, generate\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_ResourceSaver_method_get_resource_id_for_path>`
 
-Returns the resource ID for the given path. If ``generate`` is ``true``, a new resource ID will be generated if one for the path is not found. If ``generate`` is ``false`` and the path is not found, :ref:`ResourceUID.INVALID_ID<class_ResourceUID_constant_INVALID_ID>` is returned.
+Trả về ID resource tương ứng với đường dẫn đã cho. Nếu ``generate`` là ``true``, một ID resource mới sẽ được tạo nếu không tìm thấy ID cho đường dẫn đó. Nếu ``generate`` là ``false`` và không tìm thấy đường dẫn, :ref:`ResourceUID.INVALID_ID<class_ResourceUID_constant_INVALID_ID>` sẽ được trả về.
 
 .. rst-class:: classref-item-separator
 
@@ -177,7 +177,7 @@ Returns the resource ID for the given path. If ``generate`` is ``true``, a new r
 
 |void| **remove_resource_format_saver**\ (\ format_saver\: :ref:`ResourceFormatSaver<class_ResourceFormatSaver>`\ ) :ref:`🔗<class_ResourceSaver_method_remove_resource_format_saver>`
 
-Unregisters the given :ref:`ResourceFormatSaver<class_ResourceFormatSaver>`.
+Hủy đăng ký :ref:`ResourceFormatSaver<class_ResourceFormatSaver>` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -189,13 +189,13 @@ Unregisters the given :ref:`ResourceFormatSaver<class_ResourceFormatSaver>`.
 
 :ref:`Error<enum_@GlobalScope_Error>` **save**\ (\ resource\: :ref:`Resource<class_Resource>`, path\: :ref:`String<class_String>` = "", flags\: |bitfield|\[:ref:`SaverFlags<enum_ResourceSaver_SaverFlags>`\] = 0\ ) :ref:`🔗<class_ResourceSaver_method_save>`
 
-Saves a resource to disk to the given path, using a :ref:`ResourceFormatSaver<class_ResourceFormatSaver>` that recognizes the resource object. If ``path`` is empty, **ResourceSaver** will try to use :ref:`Resource.resource_path<class_Resource_property_resource_path>`.
+Lưu resource vào đĩa theo đường dẫn đã cho, bằng :ref:`ResourceFormatSaver<class_ResourceFormatSaver>` nhận biết được đối tượng resource. Nếu ``path`` trống, **ResourceSaver** sẽ cố gắng sử dụng :ref:`Resource.resource_path<class_Resource_property_resource_path>`.
 
-The ``flags`` bitmask can be specified to customize the save behavior.
+Có thể chỉ định bitmask ``flags`` để tùy chỉnh hành vi lưu.
 
-Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success.
+Trả về :ref:`@GlobalScope.OK <class_@GlobalScope_constant_OK>` nếu thành công.
 
-\ **Note:** When the project is running, any generated UID associated with the resource will not be saved as the required code is only executed in editor mode.
+\ **Lưu ý:** Khi project đang chạy, mọi UID được tạo và liên kết với resource sẽ không được lưu vì mã bắt buộc chỉ được thực thi trong editor mode.
 
 .. rst-class:: classref-item-separator
 
@@ -207,16 +207,16 @@ Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success.
 
 :ref:`Error<enum_@GlobalScope_Error>` **set_uid**\ (\ resource\: :ref:`String<class_String>`, uid\: :ref:`int<class_int>`\ ) :ref:`🔗<class_ResourceSaver_method_set_uid>`
 
-Sets the UID of the given ``resource`` path to ``uid``. You can generate a new UID using :ref:`ResourceUID.create_id()<class_ResourceUID_method_create_id>`.
+Đặt UID của đường dẫn ``resource`` đã cho thành ``uid``. Bạn có thể tạo UID mới bằng :ref:`ResourceUID.create_id()<class_ResourceUID_method_create_id>`.
 
-Since resources will normally get a UID automatically, this method is only useful in very specific cases.
+Vì resource thường sẽ tự động nhận UID, phương thức này chỉ hữu ích trong những trường hợp rất cụ thể.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

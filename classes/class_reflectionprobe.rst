@@ -13,71 +13,71 @@
 ReflectionProbe
 ===============
 
-**Inherits:** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Captures its surroundings to create fast, accurate reflections from a given point.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Captures its surroundings as a cubemap, and stores versions of it with increasing levels of blur to simulate different material roughnesses.
-
-The **ReflectionProbe** is used to create high-quality reflections at a low performance cost (when :ref:`update_mode<class_ReflectionProbe_property_update_mode>` is :ref:`UPDATE_ONCE<class_ReflectionProbe_constant_UPDATE_ONCE>`). **ReflectionProbe**\ s can be blended together and with the rest of the scene smoothly. **ReflectionProbe**\ s can also be combined with :ref:`VoxelGI<class_VoxelGI>`, SDFGI (:ref:`Environment.sdfgi_enabled<class_Environment_property_sdfgi_enabled>`) and screen-space reflections (:ref:`Environment.ssr_enabled<class_Environment_property_ssr_enabled>`) to get more accurate reflections in specific areas. **ReflectionProbe**\ s render all objects within their :ref:`cull_mask<class_ReflectionProbe_property_cull_mask>`, so updating them can be quite expensive. It is best to update them once with the important static objects and then leave them as-is.
-
-\ **Note:** Unlike :ref:`VoxelGI<class_VoxelGI>` and SDFGI, **ReflectionProbe**\ s only source their environment from a :ref:`WorldEnvironment<class_WorldEnvironment>` node. If you specify an :ref:`Environment<class_Environment>` resource within a :ref:`Camera3D<class_Camera3D>` node, it will be ignored by the **ReflectionProbe**. This can lead to incorrect lighting within the **ReflectionProbe**.
-
-\ **Note:** When using the Mobile rendering method, only ``8`` reflection probes can be displayed on each mesh resource, while the Compatibility rendering method only supports up to ``2`` reflection probes on each mesh. Attempting to display more than ``8`` reflection probes on a single mesh resource using the Mobile renderer will result in reflection probes flickering in and out as the camera moves, while the Compatibility renderer will not render any additional probes if more than ``2`` reflection probes are being used.
-
-\ **Note:** When using the Mobile rendering method, reflection probes will only correctly affect meshes whose visibility AABB intersects with the reflection probe's AABB. If using a shader to deform the mesh in a way that makes it go outside its AABB, :ref:`GeometryInstance3D.extra_cull_margin<class_GeometryInstance3D_property_extra_cull_margin>` must be increased on the mesh. Otherwise, the reflection probe may not be visible on the mesh.
+Thu thập môi trường xung quanh để tạo ra các phản chiếu nhanh và chính xác từ một điểm nhất định.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Thu thập môi trường xung quanh dưới dạng cubemap và lưu trữ các phiên bản của nó với mức độ làm mờ tăng dần để mô phỏng các độ nhám khác nhau của vật liệu.
+
+**ReflectionProbe** được dùng để tạo các phản chiếu chất lượng cao với chi phí hiệu năng thấp (khi :ref:`update_mode<class_ReflectionProbe_property_update_mode>` là :ref:`UPDATE_ONCE<class_ReflectionProbe_constant_UPDATE_ONCE>`). **ReflectionProbe**\ s có thể được hòa trộn mượt mà với nhau và với phần còn lại của cảnh. **ReflectionProbe**\ s cũng có thể được kết hợp với :ref:`VoxelGI<class_VoxelGI>`, SDFGI (:ref:`Environment.sdfgi_enabled<class_Environment_property_sdfgi_enabled>`) và các phản chiếu trong không gian màn hình (:ref:`Environment.ssr_enabled<class_Environment_property_ssr_enabled>`) để tạo ra các phản chiếu chính xác hơn ở những khu vực cụ thể. **ReflectionProbe**\ s kết xuất tất cả đối tượng bên trong :ref:`cull_mask<class_ReflectionProbe_property_cull_mask>` của chúng, vì vậy việc cập nhật chúng có thể khá tốn kém. Tốt nhất là cập nhật chúng một lần với các đối tượng tĩnh quan trọng rồi giữ nguyên như vậy.
+
+\ **Lưu ý:** Không giống :ref:`VoxelGI<class_VoxelGI>` và SDFGI, **ReflectionProbe**\ s chỉ lấy môi trường của chúng từ một node :ref:`WorldEnvironment<class_WorldEnvironment>`. Nếu bạn chỉ định tài nguyên :ref:`Environment<class_Environment>` bên trong một node :ref:`Camera3D<class_Camera3D>`, tài nguyên đó sẽ bị **ReflectionProbe** bỏ qua. Điều này có thể dẫn đến ánh sáng không chính xác bên trong **ReflectionProbe**.
+
+\ **Lưu ý:** Khi sử dụng phương thức kết xuất Mobile, mỗi tài nguyên mesh chỉ có thể hiển thị chính xác ``8`` reflection probe, trong khi phương thức kết xuất Compatibility chỉ hỗ trợ tối đa ``2`` reflection probe trên mỗi mesh. Việc cố hiển thị nhiều hơn ``8`` reflection probe trên một tài nguyên mesh bằng trình kết xuất Mobile sẽ khiến các reflection probe liên tục nhấp nháy khi camera di chuyển, còn trình kết xuất Compatibility sẽ không kết xuất thêm probe nào nếu đang sử dụng nhiều hơn ``2`` reflection probe.
+
+\ **Lưu ý:** Khi sử dụng phương thức kết xuất Mobile, reflection probe chỉ ảnh hưởng chính xác đến các mesh có AABB khả kiến giao với AABB của reflection probe. Nếu sử dụng shader để biến dạng mesh theo cách khiến nó vượt ra ngoài AABB, cần tăng :ref:`GeometryInstance3D.extra_cull_margin<class_GeometryInstance3D_property_extra_cull_margin>` trên mesh. Nếu không, reflection probe có thể không hiển thị trên mesh.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
 - :doc:`Reflection probes <../tutorials/3d/global_illumination/reflection_probes>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
-   | :ref:`Color<class_Color>`                            | :ref:`ambient_color<class_ReflectionProbe_property_ambient_color>`               | ``Color(0, 0, 0, 1)``   |
-   +------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
-   | :ref:`float<class_float>`                            | :ref:`ambient_color_energy<class_ReflectionProbe_property_ambient_color_energy>` | ``1.0``                 |
-   +------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
-   | :ref:`AmbientMode<enum_ReflectionProbe_AmbientMode>` | :ref:`ambient_mode<class_ReflectionProbe_property_ambient_mode>`                 | ``1``                   |
-   +------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
-   | :ref:`float<class_float>`                            | :ref:`blend_distance<class_ReflectionProbe_property_blend_distance>`             | ``1.0``                 |
-   +------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
-   | :ref:`bool<class_bool>`                              | :ref:`box_projection<class_ReflectionProbe_property_box_projection>`             | ``false``               |
-   +------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
-   | :ref:`int<class_int>`                                | :ref:`cull_mask<class_ReflectionProbe_property_cull_mask>`                       | ``1048575``             |
-   +------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
-   | :ref:`bool<class_bool>`                              | :ref:`enable_shadows<class_ReflectionProbe_property_enable_shadows>`             | ``false``               |
-   +------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
-   | :ref:`float<class_float>`                            | :ref:`intensity<class_ReflectionProbe_property_intensity>`                       | ``1.0``                 |
-   +------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
-   | :ref:`bool<class_bool>`                              | :ref:`interior<class_ReflectionProbe_property_interior>`                         | ``false``               |
-   +------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
-   | :ref:`float<class_float>`                            | :ref:`max_distance<class_ReflectionProbe_property_max_distance>`                 | ``0.0``                 |
-   +------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
-   | :ref:`float<class_float>`                            | :ref:`mesh_lod_threshold<class_ReflectionProbe_property_mesh_lod_threshold>`     | ``1.0``                 |
-   +------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
-   | :ref:`Vector3<class_Vector3>`                        | :ref:`origin_offset<class_ReflectionProbe_property_origin_offset>`               | ``Vector3(0, 0, 0)``    |
-   +------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
-   | :ref:`int<class_int>`                                | :ref:`reflection_mask<class_ReflectionProbe_property_reflection_mask>`           | ``1048575``             |
-   +------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
-   | :ref:`Vector3<class_Vector3>`                        | :ref:`size<class_ReflectionProbe_property_size>`                                 | ``Vector3(20, 20, 20)`` |
-   +------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
-   | :ref:`UpdateMode<enum_ReflectionProbe_UpdateMode>`   | :ref:`update_mode<class_ReflectionProbe_property_update_mode>`                   | ``0``                   |
-   +------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
+   +-------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
+   | :ref:`Color<class_Color>`                             | :ref:`ambient_color<class_ReflectionProbe_property_ambient_color>`               | ``Color(0, 0, 0, 1)``   |
+   +-------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
+   | :ref:`float<class_float>`                             | :ref:`ambient_color_energy<class_ReflectionProbe_property_ambient_color_energy>` | ``1.0``                 |
+   +-------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
+   | :ref:`AmbientMode <enum_ReflectionProbe_AmbientMode>` | :ref:`ambient_mode<class_ReflectionProbe_property_ambient_mode>`                 | ``1``                   |
+   +-------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
+   | :ref:`float<class_float>`                             | :ref:`blend_distance<class_ReflectionProbe_property_blend_distance>`             | ``1.0``                 |
+   +-------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
+   | :ref:`bool<class_bool>`                               | :ref:`box_projection<class_ReflectionProbe_property_box_projection>`             | ``false``               |
+   +-------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
+   | :ref:`int<class_int>`                                 | :ref:`cull_mask<class_ReflectionProbe_property_cull_mask>`                       | ``1048575``             |
+   +-------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
+   | :ref:`bool<class_bool>`                               | :ref:`enable_shadows<class_ReflectionProbe_property_enable_shadows>`             | ``false``               |
+   +-------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
+   | :ref:`float<class_float>`                             | :ref:`intensity<class_ReflectionProbe_property_intensity>`                       | ``1.0``                 |
+   +-------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
+   | :ref:`bool<class_bool>`                               | :ref:`interior<class_ReflectionProbe_property_interior>`                         | ``false``               |
+   +-------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
+   | :ref:`float<class_float>`                             | :ref:`max_distance<class_ReflectionProbe_property_max_distance>`                 | ``0.0``                 |
+   +-------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
+   | :ref:`float<class_float>`                             | :ref:`mesh_lod_threshold<class_ReflectionProbe_property_mesh_lod_threshold>`     | ``1.0``                 |
+   +-------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
+   | :ref:`Vector3<class_Vector3>`                         | :ref:`origin_offset<class_ReflectionProbe_property_origin_offset>`               | ``Vector3(0, 0, 0)``    |
+   +-------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
+   | :ref:`int<class_int>`                                 | :ref:`reflection_mask<class_ReflectionProbe_property_reflection_mask>`           | ``1048575``             |
+   +-------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
+   | :ref:`Vector3<class_Vector3>`                         | :ref:`size<class_ReflectionProbe_property_size>`                                 | ``Vector3(20, 20, 20)`` |
+   +-------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
+   | :ref:`UpdateMode <enum_ReflectionProbe_UpdateMode>`   | :ref:`update_mode<class_ReflectionProbe_property_update_mode>`                   | ``0``                   |
+   +-------------------------------------------------------+----------------------------------------------------------------------------------+-------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -85,14 +85,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_ReflectionProbe_UpdateMode:
 
 .. rst-class:: classref-enumeration
 
-enum **UpdateMode**: :ref:`🔗<enum_ReflectionProbe_UpdateMode>`
+enum **UpdateMode**: :ref:`🔗 <enum_ReflectionProbe_UpdateMode>`
 
 .. _class_ReflectionProbe_constant_UPDATE_ONCE:
 
@@ -100,7 +100,7 @@ enum **UpdateMode**: :ref:`🔗<enum_ReflectionProbe_UpdateMode>`
 
 :ref:`UpdateMode<enum_ReflectionProbe_UpdateMode>` **UPDATE_ONCE** = ``0``
 
-Update the probe once on the next frame (recommended for most objects). The corresponding radiance map will be generated over the following six frames. This takes more time to update than :ref:`UPDATE_ALWAYS<class_ReflectionProbe_constant_UPDATE_ALWAYS>`, but it has a lower performance cost and can result in higher-quality reflections. The ReflectionProbe is updated when its transform changes, but not when nearby geometry changes. You can force a **ReflectionProbe** update by moving the **ReflectionProbe** slightly in any direction.
+Cập nhật probe một lần vào frame tiếp theo (được khuyến nghị cho hầu hết đối tượng). Bản đồ bức xạ tương ứng sẽ được tạo trong sáu frame tiếp theo. Việc này mất nhiều thời gian cập nhật hơn :ref:`UPDATE_ALWAYS<class_ReflectionProbe_constant_UPDATE_ALWAYS>`, nhưng có chi phí hiệu năng thấp hơn và có thể tạo ra các phản chiếu chất lượng cao hơn. ReflectionProbe được cập nhật khi transform của nó thay đổi, nhưng không cập nhật khi hình học lân cận thay đổi. Bạn có thể buộc cập nhật **ReflectionProbe** bằng cách di chuyển **ReflectionProbe** một chút theo bất kỳ hướng nào.
 
 .. _class_ReflectionProbe_constant_UPDATE_ALWAYS:
 
@@ -108,7 +108,7 @@ Update the probe once on the next frame (recommended for most objects). The corr
 
 :ref:`UpdateMode<enum_ReflectionProbe_UpdateMode>` **UPDATE_ALWAYS** = ``1``
 
-Update the probe every frame. This provides better results for fast-moving dynamic objects (such as cars). However, it has a significant performance cost. Due to the cost, it's recommended to only use one ReflectionProbe with :ref:`UPDATE_ALWAYS<class_ReflectionProbe_constant_UPDATE_ALWAYS>` at most per scene. For all other use cases, use :ref:`UPDATE_ONCE<class_ReflectionProbe_constant_UPDATE_ONCE>`.
+Cập nhật probe ở mọi frame. Điều này cho kết quả tốt hơn đối với các đối tượng động di chuyển nhanh (chẳng hạn như ô tô). Tuy nhiên, nó có chi phí hiệu năng đáng kể. Do chi phí này, bạn chỉ nên sử dụng nhiều nhất một ReflectionProbe với :ref:`UPDATE_ALWAYS<class_ReflectionProbe_constant_UPDATE_ALWAYS>` cho mỗi cảnh. Đối với mọi trường hợp sử dụng khác, hãy dùng :ref:`UPDATE_ONCE<class_ReflectionProbe_constant_UPDATE_ONCE>`.
 
 .. rst-class:: classref-item-separator
 
@@ -118,7 +118,7 @@ Update the probe every frame. This provides better results for fast-moving dynam
 
 .. rst-class:: classref-enumeration
 
-enum **AmbientMode**: :ref:`🔗<enum_ReflectionProbe_AmbientMode>`
+enum **AmbientMode**: :ref:`🔗 <enum_ReflectionProbe_AmbientMode>`
 
 .. _class_ReflectionProbe_constant_AMBIENT_DISABLED:
 
@@ -126,7 +126,7 @@ enum **AmbientMode**: :ref:`🔗<enum_ReflectionProbe_AmbientMode>`
 
 :ref:`AmbientMode<enum_ReflectionProbe_AmbientMode>` **AMBIENT_DISABLED** = ``0``
 
-Do not apply any ambient lighting inside the **ReflectionProbe**'s box defined by its :ref:`size<class_ReflectionProbe_property_size>`.
+Không áp dụng bất kỳ ánh sáng môi trường nào bên trong vùng hộp của **ReflectionProbe**, được xác định bởi :ref:`size<class_ReflectionProbe_property_size>` của nó.
 
 .. _class_ReflectionProbe_constant_AMBIENT_ENVIRONMENT:
 
@@ -134,7 +134,7 @@ Do not apply any ambient lighting inside the **ReflectionProbe**'s box defined b
 
 :ref:`AmbientMode<enum_ReflectionProbe_AmbientMode>` **AMBIENT_ENVIRONMENT** = ``1``
 
-Apply automatically-sourced environment lighting inside the **ReflectionProbe**'s box defined by its :ref:`size<class_ReflectionProbe_property_size>`.
+Tự động áp dụng ánh sáng môi trường được lấy nguồn bên trong vùng hộp của **ReflectionProbe**, được xác định bởi :ref:`size<class_ReflectionProbe_property_size>` của nó.
 
 .. _class_ReflectionProbe_constant_AMBIENT_COLOR:
 
@@ -142,7 +142,7 @@ Apply automatically-sourced environment lighting inside the **ReflectionProbe**'
 
 :ref:`AmbientMode<enum_ReflectionProbe_AmbientMode>` **AMBIENT_COLOR** = ``2``
 
-Apply custom ambient lighting inside the **ReflectionProbe**'s box defined by its :ref:`size<class_ReflectionProbe_property_size>`. See :ref:`ambient_color<class_ReflectionProbe_property_ambient_color>` and :ref:`ambient_color_energy<class_ReflectionProbe_property_ambient_color_energy>`.
+Áp dụng ánh sáng môi trường tùy chỉnh bên trong vùng hộp của **ReflectionProbe**, được xác định bởi :ref:`size<class_ReflectionProbe_property_size>` của nó. Xem :ref:`ambient_color<class_ReflectionProbe_property_ambient_color>` và :ref:`ambient_color_energy<class_ReflectionProbe_property_ambient_color_energy>`.
 
 .. rst-class:: classref-section-separator
 
@@ -150,8 +150,8 @@ Apply custom ambient lighting inside the **ReflectionProbe**'s box defined by it
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ReflectionProbe_property_ambient_color:
 
@@ -164,7 +164,7 @@ Property Descriptions
 - |void| **set_ambient_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_ambient_color**\ (\ )
 
-The custom ambient color to use within the **ReflectionProbe**'s box defined by its :ref:`size<class_ReflectionProbe_property_size>`. Only effective if :ref:`ambient_mode<class_ReflectionProbe_property_ambient_mode>` is :ref:`AMBIENT_COLOR<class_ReflectionProbe_constant_AMBIENT_COLOR>`.
+Màu môi trường tùy chỉnh được sử dụng bên trong vùng hộp của **ReflectionProbe**, được xác định bởi :ref:`size<class_ReflectionProbe_property_size>` của nó. Chỉ có hiệu lực khi :ref:`ambient_mode<class_ReflectionProbe_property_ambient_mode>` là :ref:`AMBIENT_COLOR<class_ReflectionProbe_constant_AMBIENT_COLOR>`.
 
 .. rst-class:: classref-item-separator
 
@@ -181,7 +181,7 @@ The custom ambient color to use within the **ReflectionProbe**'s box defined by 
 - |void| **set_ambient_color_energy**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_ambient_color_energy**\ (\ )
 
-The custom ambient color energy to use within the **ReflectionProbe**'s box defined by its :ref:`size<class_ReflectionProbe_property_size>`. Only effective if :ref:`ambient_mode<class_ReflectionProbe_property_ambient_mode>` is :ref:`AMBIENT_COLOR<class_ReflectionProbe_constant_AMBIENT_COLOR>`.
+Cường độ màu môi trường tùy chỉnh được sử dụng bên trong vùng hộp của **ReflectionProbe**, được xác định bởi :ref:`size<class_ReflectionProbe_property_size>` của nó. Chỉ có hiệu lực khi :ref:`ambient_mode<class_ReflectionProbe_property_ambient_mode>` là :ref:`AMBIENT_COLOR<class_ReflectionProbe_constant_AMBIENT_COLOR>`.
 
 .. rst-class:: classref-item-separator
 
@@ -198,7 +198,7 @@ The custom ambient color energy to use within the **ReflectionProbe**'s box defi
 - |void| **set_ambient_mode**\ (\ value\: :ref:`AmbientMode<enum_ReflectionProbe_AmbientMode>`\ )
 - :ref:`AmbientMode<enum_ReflectionProbe_AmbientMode>` **get_ambient_mode**\ (\ )
 
-The ambient color to use within the **ReflectionProbe**'s box defined by its :ref:`size<class_ReflectionProbe_property_size>`. The ambient color will smoothly blend with other **ReflectionProbe**\ s and the rest of the scene (outside the **ReflectionProbe**'s box defined by its :ref:`size<class_ReflectionProbe_property_size>`).
+Màu môi trường được sử dụng bên trong vùng hộp của **ReflectionProbe**, được xác định bởi :ref:`size<class_ReflectionProbe_property_size>` của nó. Màu môi trường sẽ hòa trộn mượt mà với các **ReflectionProbe**\ s khác và phần còn lại của cảnh (bên ngoài vùng hộp của **ReflectionProbe**, được xác định bởi :ref:`size<class_ReflectionProbe_property_size>` của nó).
 
 .. rst-class:: classref-item-separator
 
@@ -215,7 +215,7 @@ The ambient color to use within the **ReflectionProbe**'s box defined by its :re
 - |void| **set_blend_distance**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_blend_distance**\ (\ )
 
-Defines the distance in meters over which a probe blends into the scene.
+Xác định khoảng cách tính bằng mét mà probe hòa trộn vào cảnh.
 
 .. rst-class:: classref-item-separator
 
@@ -232,9 +232,9 @@ Defines the distance in meters over which a probe blends into the scene.
 - |void| **set_enable_box_projection**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_box_projection_enabled**\ (\ )
 
-If ``true``, enables box projection. This makes reflections look more correct in rectangle-shaped rooms by offsetting the reflection center depending on the camera's location.
+Nếu ``true``, bật phép chiếu hộp. Điều này làm cho các phản chiếu trông chính xác hơn trong các căn phòng hình chữ nhật bằng cách bù trừ tâm phản chiếu tùy theo vị trí của camera.
 
-\ **Note:** To better fit rectangle-shaped rooms that are not aligned to the grid, you can rotate the **ReflectionProbe** node.
+\ **Lưu ý:** Để phù hợp hơn với các căn phòng hình chữ nhật không được căn theo lưới, bạn có thể xoay node **ReflectionProbe**.
 
 .. rst-class:: classref-item-separator
 
@@ -251,9 +251,9 @@ If ``true``, enables box projection. This makes reflections look more correct in
 - |void| **set_cull_mask**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_cull_mask**\ (\ )
 
-Sets the cull mask which determines what objects are drawn by this probe. Every :ref:`VisualInstance3D<class_VisualInstance3D>` with a layer included in this cull mask will be rendered by the probe. It is best to only include large objects which are likely to take up a lot of space in the reflection in order to save on rendering cost.
+Thiết lập cull mask xác định những đối tượng nào được probe này vẽ. Mọi :ref:`VisualInstance3D<class_VisualInstance3D>` có layer nằm trong cull mask này sẽ được probe kết xuất. Tốt nhất chỉ nên bao gồm các đối tượng lớn có khả năng chiếm nhiều không gian trong phản chiếu để tiết kiệm chi phí kết xuất.
 
-This can also be used to prevent an object from reflecting upon itself (for instance, a **ReflectionProbe** centered on a vehicle).
+Bạn cũng có thể dùng cách này để ngăn một đối tượng phản chiếu chính nó (ví dụ: một **ReflectionProbe** đặt ở chính giữa một phương tiện).
 
 .. rst-class:: classref-item-separator
 
@@ -270,7 +270,7 @@ This can also be used to prevent an object from reflecting upon itself (for inst
 - |void| **set_enable_shadows**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **are_shadows_enabled**\ (\ )
 
-If ``true``, computes shadows in the reflection probe. This makes the reflection probe slower to render; you may want to disable this if using the :ref:`UPDATE_ALWAYS<class_ReflectionProbe_constant_UPDATE_ALWAYS>` :ref:`update_mode<class_ReflectionProbe_property_update_mode>`.
+Nếu ``true``, tính toán bóng trong reflection probe. Điều này khiến reflection probe kết xuất chậm hơn; bạn có thể muốn tắt tùy chọn này khi sử dụng :ref:`UPDATE_ALWAYS<class_ReflectionProbe_constant_UPDATE_ALWAYS>` :ref:`update_mode<class_ReflectionProbe_property_update_mode>`.
 
 .. rst-class:: classref-item-separator
 
@@ -287,7 +287,7 @@ If ``true``, computes shadows in the reflection probe. This makes the reflection
 - |void| **set_intensity**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_intensity**\ (\ )
 
-Defines the reflection intensity. Intensity modulates the strength of the reflection.
+Xác định cường độ phản chiếu. Cường độ điều chỉnh độ mạnh của phản chiếu.
 
 .. rst-class:: classref-item-separator
 
@@ -304,7 +304,7 @@ Defines the reflection intensity. Intensity modulates the strength of the reflec
 - |void| **set_as_interior**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_set_as_interior**\ (\ )
 
-If ``true``, reflections will ignore sky contribution.
+Nếu ``true``, các phản chiếu sẽ bỏ qua đóng góp của bầu trời.
 
 .. rst-class:: classref-item-separator
 
@@ -321,9 +321,9 @@ If ``true``, reflections will ignore sky contribution.
 - |void| **set_max_distance**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_max_distance**\ (\ )
 
-The maximum distance away from the **ReflectionProbe** an object can be before it is culled. Decrease this to improve performance, especially when using the :ref:`UPDATE_ALWAYS<class_ReflectionProbe_constant_UPDATE_ALWAYS>` :ref:`update_mode<class_ReflectionProbe_property_update_mode>`.
+Khoảng cách tối đa tính từ **ReflectionProbe** mà một đối tượng có thể ở trước khi bị loại bỏ. Giảm giá trị này để cải thiện hiệu năng, đặc biệt khi sử dụng :ref:`UPDATE_ALWAYS<class_ReflectionProbe_constant_UPDATE_ALWAYS>` :ref:`update_mode<class_ReflectionProbe_property_update_mode>`.
 
-\ **Note:** The maximum reflection distance is always at least equal to the probe's extents. This means that decreasing :ref:`max_distance<class_ReflectionProbe_property_max_distance>` will not always cull objects from reflections, especially if the reflection probe's box defined by its :ref:`size<class_ReflectionProbe_property_size>` is already large.
+\ **Lưu ý:** Khoảng cách phản chiếu tối đa luôn ít nhất bằng kích thước mở rộng của probe. Điều này có nghĩa là việc giảm :ref:`max_distance<class_ReflectionProbe_property_max_distance>` không phải lúc nào cũng loại bỏ được các đối tượng khỏi phản chiếu, đặc biệt nếu vùng hộp của reflection probe, được xác định bởi :ref:`size<class_ReflectionProbe_property_size>`, đã lớn.
 
 .. rst-class:: classref-item-separator
 
@@ -342,7 +342,7 @@ The maximum distance away from the **ReflectionProbe** an object can be before i
 
 The automatic LOD bias to use for meshes rendered within the **ReflectionProbe** (this is analog to :ref:`Viewport.mesh_lod_threshold<class_Viewport_property_mesh_lod_threshold>`). Higher values will use less detailed versions of meshes that have LOD variations generated. If set to ``0.0``, automatic LOD is disabled. Increase :ref:`mesh_lod_threshold<class_ReflectionProbe_property_mesh_lod_threshold>` to improve performance at the cost of geometry detail, especially when using the :ref:`UPDATE_ALWAYS<class_ReflectionProbe_constant_UPDATE_ALWAYS>` :ref:`update_mode<class_ReflectionProbe_property_update_mode>`.
 
-\ **Note:** :ref:`mesh_lod_threshold<class_ReflectionProbe_property_mesh_lod_threshold>` does not affect :ref:`GeometryInstance3D<class_GeometryInstance3D>` visibility ranges (also known as "manual" LOD or hierarchical LOD).
+\ **Lưu ý:** :ref:`mesh_lod_threshold<class_ReflectionProbe_property_mesh_lod_threshold>` không ảnh hưởng đến các phạm vi khả kiến của :ref:`GeometryInstance3D<class_GeometryInstance3D>` (còn được gọi là LOD "thủ công" hoặc LOD phân cấp).
 
 .. rst-class:: classref-item-separator
 
@@ -359,7 +359,7 @@ The automatic LOD bias to use for meshes rendered within the **ReflectionProbe**
 - |void| **set_origin_offset**\ (\ value\: :ref:`Vector3<class_Vector3>`\ )
 - :ref:`Vector3<class_Vector3>` **get_origin_offset**\ (\ )
 
-Sets the origin offset to be used when this **ReflectionProbe** is in :ref:`box_projection<class_ReflectionProbe_property_box_projection>` mode. This can be set to a non-zero value to ensure a reflection fits a rectangle-shaped room, while reducing the number of objects that "get in the way" of the reflection.
+Thiết lập độ lệch gốc được sử dụng khi **ReflectionProbe** này ở chế độ :ref:`box_projection<class_ReflectionProbe_property_box_projection>`. Có thể đặt giá trị khác không để đảm bảo phản chiếu vừa với một căn phòng hình chữ nhật, đồng thời giảm số lượng đối tượng "cản trở" phản chiếu.
 
 .. rst-class:: classref-item-separator
 
@@ -376,7 +376,7 @@ Sets the origin offset to be used when this **ReflectionProbe** is in :ref:`box_
 - |void| **set_reflection_mask**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_reflection_mask**\ (\ )
 
-Sets the reflection mask which determines what objects have reflections applied from this probe. Every :ref:`VisualInstance3D<class_VisualInstance3D>` with a layer included in this reflection mask will have reflections applied from this probe. See also :ref:`cull_mask<class_ReflectionProbe_property_cull_mask>`, which can be used to exclude objects from appearing in the reflection while still making them affected by the **ReflectionProbe**.
+Thiết lập reflection mask, xác định những đối tượng nào được áp dụng phản chiếu từ probe này. Mọi :ref:`VisualInstance3D<class_VisualInstance3D>` có layer được bao gồm trong reflection mask này sẽ được áp dụng phản chiếu từ probe này. Xem thêm :ref:`cull_mask<class_ReflectionProbe_property_cull_mask>`, có thể được dùng để loại trừ các đối tượng khỏi việc xuất hiện trong phản chiếu nhưng vẫn khiến chúng chịu ảnh hưởng của **ReflectionProbe**.
 
 .. rst-class:: classref-item-separator
 
@@ -393,9 +393,9 @@ Sets the reflection mask which determines what objects have reflections applied 
 - |void| **set_size**\ (\ value\: :ref:`Vector3<class_Vector3>`\ )
 - :ref:`Vector3<class_Vector3>` **get_size**\ (\ )
 
-The size of the reflection probe. The larger the size, the more space covered by the probe, which will lower the perceived resolution. It is best to keep the size only as large as you need it.
+Kích thước của reflection probe. Kích thước càng lớn thì không gian được probe bao phủ càng rộng, từ đó làm giảm độ phân giải cảm nhận được. Tốt nhất là chỉ giữ kích thước lớn đến mức bạn cần.
 
-\ **Note:** To better fit areas that are not aligned to the grid, you can rotate the **ReflectionProbe** node.
+\ **Lưu ý:** Để phù hợp hơn với các khu vực không thẳng hàng với lưới, bạn có thể xoay node **ReflectionProbe**.
 
 .. rst-class:: classref-item-separator
 
@@ -412,14 +412,14 @@ The size of the reflection probe. The larger the size, the more space covered by
 - |void| **set_update_mode**\ (\ value\: :ref:`UpdateMode<enum_ReflectionProbe_UpdateMode>`\ )
 - :ref:`UpdateMode<enum_ReflectionProbe_UpdateMode>` **get_update_mode**\ (\ )
 
-Sets how frequently the **ReflectionProbe** is updated. Can be :ref:`UPDATE_ONCE<class_ReflectionProbe_constant_UPDATE_ONCE>` or :ref:`UPDATE_ALWAYS<class_ReflectionProbe_constant_UPDATE_ALWAYS>`.
+Thiết lập tần suất cập nhật của **ReflectionProbe**. Có thể là :ref:`UPDATE_ONCE<class_ReflectionProbe_constant_UPDATE_ONCE>` hoặc :ref:`UPDATE_ALWAYS<class_ReflectionProbe_constant_UPDATE_ALWAYS>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần override method này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override method này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có side effect. Nó không sửa đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Method này chấp nhận bất kỳ số lượng argument nào sau các argument được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Method này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Method này không cần instance để được gọi, vì vậy có thể được gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Method này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

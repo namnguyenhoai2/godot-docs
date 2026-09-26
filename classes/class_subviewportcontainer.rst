@@ -10,43 +10,43 @@
 SubViewportContainer
 ====================
 
-**Inherits:** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A container used for displaying the contents of a :ref:`SubViewport<class_SubViewport>`.
+Một container được dùng để hiển thị nội dung của một :ref:`SubViewport<class_SubViewport>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A container that displays the contents of underlying :ref:`SubViewport<class_SubViewport>` child nodes. It uses the combined size of the :ref:`SubViewport<class_SubViewport>`\ s as minimum size, unless :ref:`stretch<class_SubViewportContainer_property_stretch>` is enabled.
+Một container hiển thị nội dung của các node con :ref:`SubViewport<class_SubViewport>` bên dưới. Nó sử dụng kích thước kết hợp của các :ref:`SubViewport<class_SubViewport>`\ s làm kích thước tối thiểu, trừ khi :ref:`stretch<class_SubViewportContainer_property_stretch>` được bật.
 
-\ **Note:** Changing a **SubViewportContainer**'s :ref:`Control.scale<class_Control_property_scale>` will cause its contents to appear distorted. To change its visual size without causing distortion, adjust the node's margins instead (if it's not already in a container).
+\ **Lưu ý:** Việc thay đổi :ref:`Control.scale<class_Control_property_scale>` của **SubViewportContainer** sẽ khiến nội dung của nó hiển thị bị méo. Để thay đổi kích thước hiển thị mà không gây méo, hãy điều chỉnh lề của node thay thế (nếu node đó chưa nằm trong một container).
 
-\ **Note:** The **SubViewportContainer** forwards mouse-enter and mouse-exit notifications to its sub-viewports.
+\ **Lưu ý:** **SubViewportContainer** chuyển tiếp các thông báo mouse-enter và mouse-exit đến các sub-viewport của nó.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------+---------------------------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`FocusMode<enum_Control_FocusMode>` | focus_mode                                                                | ``1`` (overrides :ref:`Control<class_Control_property_focus_mode>`) |
-   +------------------------------------------+---------------------------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                  | :ref:`mouse_target<class_SubViewportContainer_property_mouse_target>`     | ``false``                                                           |
-   +------------------------------------------+---------------------------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                  | :ref:`stretch<class_SubViewportContainer_property_stretch>`               | ``false``                                                           |
-   +------------------------------------------+---------------------------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`int<class_int>`                    | :ref:`stretch_shrink<class_SubViewportContainer_property_stretch_shrink>` | ``1``                                                               |
-   +------------------------------------------+---------------------------------------------------------------------------+---------------------------------------------------------------------+
+   +-------------------------------------------+---------------------------------------------------------------------------+------------------------------------------------------------------+
+   | :ref:`FocusMode <enum_Control_FocusMode>` | focus_mode                                                                | ``1`` (ghi đè :ref:`Control<class_Control_property_focus_mode>`) |
+   +-------------------------------------------+---------------------------------------------------------------------------+------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                   | :ref:`mouse_target<class_SubViewportContainer_property_mouse_target>`     | ``false``                                                        |
+   +-------------------------------------------+---------------------------------------------------------------------------+------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                   | :ref:`stretch<class_SubViewportContainer_property_stretch>`               | ``false``                                                        |
+   +-------------------------------------------+---------------------------------------------------------------------------+------------------------------------------------------------------+
+   | :ref:`int<class_int>`                     | :ref:`stretch_shrink<class_SubViewportContainer_property_stretch_shrink>` | ``1``                                                            |
+   +-------------------------------------------+---------------------------------------------------------------------------+------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -61,8 +61,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_SubViewportContainer_property_mouse_target:
 
@@ -75,11 +75,11 @@ Property Descriptions
 - |void| **set_mouse_target**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_mouse_target_enabled**\ (\ )
 
-Configure, if either the **SubViewportContainer** or alternatively the :ref:`Control<class_Control>` nodes of its :ref:`SubViewport<class_SubViewport>` children should be available as targets of mouse-related functionalities, like identifying the drop target in drag-and-drop operations or cursor shape of hovered :ref:`Control<class_Control>` node.
+Định cấu hình để các node **SubViewportContainer** hoặc thay vào đó là các node :ref:`Control<class_Control>` của các node con :ref:`SubViewport<class_SubViewport>` có khả dụng làm mục tiêu cho các chức năng liên quan đến chuột hay không, chẳng hạn như xác định mục tiêu thả trong thao tác kéo và thả hoặc hình dạng con trỏ của node :ref:`Control<class_Control>` đang được di chuột qua.
 
-If ``false``, the :ref:`Control<class_Control>` nodes inside its :ref:`SubViewport<class_SubViewport>` children are considered as targets.
+Nếu ``false``, các node :ref:`Control<class_Control>` bên trong các node con :ref:`SubViewport<class_SubViewport>` được xem là mục tiêu.
 
-If ``true``, the **SubViewportContainer** itself will be considered as a target.
+Nếu ``true``, bản thân **SubViewportContainer** sẽ được xem là mục tiêu.
 
 .. rst-class:: classref-item-separator
 
@@ -96,9 +96,9 @@ If ``true``, the **SubViewportContainer** itself will be considered as a target.
 - |void| **set_stretch**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_stretch_enabled**\ (\ )
 
-If ``true``, the sub-viewport will be automatically resized to the control's size.
+Nếu ``true``, sub-viewport sẽ tự động được thay đổi kích thước theo kích thước của control.
 
-\ **Note:** If ``true``, this will prohibit changing :ref:`SubViewport.size<class_SubViewport_property_size>` of its children manually.
+\ **Lưu ý:** Nếu ``true``, điều này sẽ ngăn việc thay đổi thủ công :ref:`SubViewport.size<class_SubViewport_property_size>` của các node con.
 
 .. rst-class:: classref-item-separator
 
@@ -115,11 +115,11 @@ If ``true``, the sub-viewport will be automatically resized to the control's siz
 - |void| **set_stretch_shrink**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_stretch_shrink**\ (\ )
 
-Divides the sub-viewport's effective resolution by this value while preserving its scale. This can be used to speed up rendering.
+Chia độ phân giải hiệu dụng của sub-viewport cho giá trị này trong khi vẫn giữ nguyên scale của nó. Có thể sử dụng thuộc tính này để tăng tốc độ rendering.
 
-For example, a 1280×720 sub-viewport with :ref:`stretch_shrink<class_SubViewportContainer_property_stretch_shrink>` set to ``2`` will be rendered at 640×360 while occupying the same size in the container.
+Ví dụ: một sub-viewport 1280×720 với :ref:`stretch_shrink<class_SubViewportContainer_property_stretch_shrink>` được đặt thành ``2`` sẽ được render ở 640×360 trong khi vẫn chiếm cùng kích thước trong container.
 
-\ **Note:** :ref:`stretch<class_SubViewportContainer_property_stretch>` must be ``true`` for this property to work.
+\ **Lưu ý:** :ref:`stretch<class_SubViewportContainer_property_stretch>` phải là ``true`` để thuộc tính này hoạt động.
 
 .. rst-class:: classref-section-separator
 
@@ -127,8 +127,8 @@ For example, a 1280×720 sub-viewport with :ref:`stretch_shrink<class_SubViewpor
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_SubViewportContainer_private_method__propagate_input_event:
 
@@ -136,16 +136,16 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_propagate_input_event**\ (\ event\: :ref:`InputEvent<class_InputEvent>`\ ) |virtual| |const| :ref:`🔗<class_SubViewportContainer_private_method__propagate_input_event>`
 
-**Experimental:** This method may be changed or removed in future versions.
+**Thử nghiệm:** Phương thức này có thể được thay đổi hoặc loại bỏ trong các phiên bản tương lai.
 
-Virtual method to be implemented by the user. If it returns ``true``, the ``event`` is propagated to :ref:`SubViewport<class_SubViewport>` children. Propagation doesn't happen if it returns ``false``. If the function is not implemented, all events are propagated to SubViewports.
+Phương thức ảo do người dùng triển khai. Nếu phương thức trả về ``true``, ``event`` được truyền tiếp đến các node con :ref:`SubViewport<class_SubViewport>`. Việc truyền tiếp không xảy ra nếu phương thức trả về ``false``. Nếu hàm chưa được triển khai, tất cả sự kiện sẽ được truyền tiếp đến các SubViewport.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

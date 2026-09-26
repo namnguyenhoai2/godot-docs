@@ -10,38 +10,38 @@
 ScrollBar
 =========
 
-**Inherits:** :ref:`Range<class_Range>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Range<class_Range>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`HScrollBar<class_HScrollBar>`, :ref:`VScrollBar<class_VScrollBar>`
+**Được kế thừa bởi:** :ref:`HScrollBar<class_HScrollBar>`, :ref:`VScrollBar<class_VScrollBar>`
 
-Abstract base class for scrollbars.
+Lớp cơ sở trừu tượng cho các thanh cuộn.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Abstract base class for scrollbars, typically used to navigate through content that extends beyond the visible area of a control. Scrollbars are :ref:`Range<class_Range>`-based controls.
+Lớp cơ sở trừu tượng cho các thanh cuộn, thường được dùng để điều hướng qua nội dung mở rộng vượt quá vùng hiển thị của một control. Thanh cuộn là các control dựa trên :ref:`Range<class_Range>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------+----------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`float<class_float>`                | :ref:`custom_step<class_ScrollBar_property_custom_step>` | ``-1.0``                                                            |
-   +------------------------------------------+----------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`FocusMode<enum_Control_FocusMode>` | focus_mode                                               | ``3`` (overrides :ref:`Control<class_Control_property_focus_mode>`) |
-   +------------------------------------------+----------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`float<class_float>`                | step                                                     | ``0.0`` (overrides :ref:`Range<class_Range_property_step>`)         |
-   +------------------------------------------+----------------------------------------------------------+---------------------------------------------------------------------+
+   +-------------------------------------------+----------------------------------------------------------+------------------------------------------------------------------+
+   | :ref:`float<class_float>`                 | :ref:`custom_step<class_ScrollBar_property_custom_step>` | ``-1.0``                                                         |
+   +-------------------------------------------+----------------------------------------------------------+------------------------------------------------------------------+
+   | :ref:`FocusMode <enum_Control_FocusMode>` | focus_mode                                               | ``3`` (ghi đè :ref:`Control<class_Control_property_focus_mode>`) |
+   +-------------------------------------------+----------------------------------------------------------+------------------------------------------------------------------+
+   | :ref:`float<class_float>`                 | step                                                     | ``0.0`` (ghi đè :ref:`Range<class_Range_property_step>`)         |
+   +-------------------------------------------+----------------------------------------------------------+------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Theme Properties
+Thuộc tính Theme
 ----------------
 
 .. table::
@@ -77,8 +77,8 @@ Theme Properties
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_ScrollBar_signal_scrolling:
 
@@ -86,7 +86,7 @@ Signals
 
 **scrolling**\ (\ ) :ref:`🔗<class_ScrollBar_signal_scrolling>`
 
-Emitted when the scrollbar is being scrolled.
+Được phát ra khi thanh cuộn đang được cuộn.
 
 .. rst-class:: classref-section-separator
 
@@ -94,8 +94,8 @@ Emitted when the scrollbar is being scrolled.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ScrollBar_property_custom_step:
 
@@ -108,7 +108,7 @@ Property Descriptions
 - |void| **set_custom_step**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_custom_step**\ (\ )
 
-Overrides the step used when clicking increment and decrement buttons or when using arrow keys when the **ScrollBar** is focused.
+Ghi đè step được sử dụng khi nhấp vào các nút tăng và giảm hoặc khi sử dụng các phím mũi tên lúc **ScrollBar** được focus.
 
 .. rst-class:: classref-section-separator
 
@@ -116,16 +116,16 @@ Overrides the step used when clicking increment and decrement buttons or when us
 
 .. rst-class:: classref-descriptions-group
 
-Theme Property Descriptions
----------------------------
+Mô tả thuộc tính Theme
+----------------------
 
 .. _class_ScrollBar_theme_icon_decrement:
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **decrement** :ref:`🔗<class_ScrollBar_theme_icon_decrement>`
+:ref:`Texture2D<class_Texture2D>` **decrement** :ref:`🔗 <class_ScrollBar_theme_icon_decrement>`
 
-Icon used as a button to scroll the **ScrollBar** left/up. Supports custom step using the :ref:`custom_step<class_ScrollBar_property_custom_step>` property.
+Icon được dùng làm nút để cuộn **ScrollBar** sang trái/lên. Hỗ trợ step tùy chỉnh bằng thuộc tính :ref:`custom_step<class_ScrollBar_property_custom_step>`.
 
 .. rst-class:: classref-item-separator
 
@@ -135,9 +135,9 @@ Icon used as a button to scroll the **ScrollBar** left/up. Supports custom step 
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **decrement_highlight** :ref:`🔗<class_ScrollBar_theme_icon_decrement_highlight>`
+:ref:`Texture2D<class_Texture2D>` **decrement_highlight** :ref:`🔗 <class_ScrollBar_theme_icon_decrement_highlight>`
 
-Displayed when the mouse cursor hovers over the decrement button.
+Hiển thị khi con trỏ chuột di trên nút giảm.
 
 .. rst-class:: classref-item-separator
 
@@ -147,9 +147,9 @@ Displayed when the mouse cursor hovers over the decrement button.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **decrement_pressed** :ref:`🔗<class_ScrollBar_theme_icon_decrement_pressed>`
+:ref:`Texture2D<class_Texture2D>` **decrement_pressed** :ref:`🔗 <class_ScrollBar_theme_icon_decrement_pressed>`
 
-Displayed when the decrement button is being pressed.
+Hiển thị khi nút giảm đang được nhấn.
 
 .. rst-class:: classref-item-separator
 
@@ -159,9 +159,9 @@ Displayed when the decrement button is being pressed.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **increment** :ref:`🔗<class_ScrollBar_theme_icon_increment>`
+:ref:`Texture2D<class_Texture2D>` **increment** :ref:`🔗 <class_ScrollBar_theme_icon_increment>`
 
-Icon used as a button to scroll the **ScrollBar** right/down. Supports custom step using the :ref:`custom_step<class_ScrollBar_property_custom_step>` property.
+Icon được dùng làm nút để cuộn **ScrollBar** sang phải/xuống. Hỗ trợ step tùy chỉnh bằng thuộc tính :ref:`custom_step<class_ScrollBar_property_custom_step>`.
 
 .. rst-class:: classref-item-separator
 
@@ -171,9 +171,9 @@ Icon used as a button to scroll the **ScrollBar** right/down. Supports custom st
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **increment_highlight** :ref:`🔗<class_ScrollBar_theme_icon_increment_highlight>`
+:ref:`Texture2D<class_Texture2D>` **increment_highlight** :ref:`🔗 <class_ScrollBar_theme_icon_increment_highlight>`
 
-Displayed when the mouse cursor hovers over the increment button.
+Hiển thị khi con trỏ chuột di trên nút tăng.
 
 .. rst-class:: classref-item-separator
 
@@ -183,9 +183,9 @@ Displayed when the mouse cursor hovers over the increment button.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **increment_pressed** :ref:`🔗<class_ScrollBar_theme_icon_increment_pressed>`
+:ref:`Texture2D<class_Texture2D>` **increment_pressed** :ref:`🔗 <class_ScrollBar_theme_icon_increment_pressed>`
 
-Displayed when the increment button is being pressed.
+Hiển thị khi nút tăng đang được nhấn.
 
 .. rst-class:: classref-item-separator
 
@@ -195,9 +195,9 @@ Displayed when the increment button is being pressed.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **grabber** :ref:`🔗<class_ScrollBar_theme_style_grabber>`
+:ref:`StyleBox<class_StyleBox>` **grabber** :ref:`🔗 <class_ScrollBar_theme_style_grabber>`
 
-Used as texture for the grabber, the draggable element representing current scroll.
+Được dùng làm texture cho grabber, phần tử có thể kéo đại diện cho vị trí cuộn hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -207,9 +207,9 @@ Used as texture for the grabber, the draggable element representing current scro
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **grabber_highlight** :ref:`🔗<class_ScrollBar_theme_style_grabber_highlight>`
+:ref:`StyleBox<class_StyleBox>` **grabber_highlight** :ref:`🔗 <class_ScrollBar_theme_style_grabber_highlight>`
 
-Used when the mouse hovers over the grabber.
+Được dùng khi chuột di trên grabber.
 
 .. rst-class:: classref-item-separator
 
@@ -219,9 +219,9 @@ Used when the mouse hovers over the grabber.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **grabber_pressed** :ref:`🔗<class_ScrollBar_theme_style_grabber_pressed>`
+:ref:`StyleBox<class_StyleBox>` **grabber_pressed** :ref:`🔗 <class_ScrollBar_theme_style_grabber_pressed>`
 
-Used when the grabber is being dragged.
+Được dùng khi grabber đang được kéo.
 
 .. rst-class:: classref-item-separator
 
@@ -231,9 +231,9 @@ Used when the grabber is being dragged.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **scroll** :ref:`🔗<class_ScrollBar_theme_style_scroll>`
+:ref:`StyleBox<class_StyleBox>` **scroll** :ref:`🔗 <class_ScrollBar_theme_style_scroll>`
 
-Used as background of this **ScrollBar**.
+Được dùng làm nền của **ScrollBar** này.
 
 .. rst-class:: classref-item-separator
 
@@ -243,16 +243,16 @@ Used as background of this **ScrollBar**.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **scroll_focus** :ref:`🔗<class_ScrollBar_theme_style_scroll_focus>`
+:ref:`StyleBox<class_StyleBox>` **scroll_focus** :ref:`🔗 <class_ScrollBar_theme_style_scroll_focus>`
 
-Used as background when the **ScrollBar** has the GUI focus.
+Được dùng làm nền khi **ScrollBar** có GUI focus.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, nên có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

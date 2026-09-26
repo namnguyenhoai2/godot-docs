@@ -10,35 +10,35 @@
 Translation
 ===========
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`OptimizedTranslation<class_OptimizedTranslation>`
+**Được kế thừa bởi:** :ref:`OptimizedTranslation<class_OptimizedTranslation>`
 
-A language translation that maps a collection of strings to their individual translations.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-**Translation** maps a collection of strings to their individual translations, and also provides convenience methods for pluralization.
-
-A **Translation** consists of messages. A message is identified by its context and untranslated string. Unlike `gettext <https://www.gnu.org/software/gettext/>`__, using an empty context string in Godot means not using any context.
+Bản dịch ngôn ngữ ánh xạ một tập hợp chuỗi sang các bản dịch tương ứng của chúng.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+**Translation** ánh xạ một tập hợp chuỗi sang các bản dịch tương ứng của chúng, đồng thời cung cấp các phương thức tiện ích để pluralization.
+
+Một **Translation** bao gồm các message. Một message được xác định bằng context và chuỗi chưa dịch. Không giống như `gettext <https://www.gnu.org/software/gettext/>`__, việc sử dụng chuỗi context rỗng trong Godot có nghĩa là không sử dụng context.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Internationalizing games <../tutorials/i18n/internationalizing_games>`
+- :doc:`Quốc tế hóa game <../tutorials/i18n/internationalizing_games>`
 
-- :doc:`Localization using gettext <../tutorials/i18n/localization_using_gettext>`
+- :doc:`Localization bằng gettext <../tutorials/i18n/localization_using_gettext>`
 
-- :doc:`Locales <../tutorials/i18n/locales>`
+- :doc:`Locale <../tutorials/i18n/locales>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -52,8 +52,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -86,8 +86,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Translation_property_locale:
 
@@ -100,7 +100,7 @@ Property Descriptions
 - |void| **set_locale**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_locale**\ (\ )
 
-The locale of the translation.
+Locale của bản dịch.
 
 .. rst-class:: classref-item-separator
 
@@ -117,9 +117,9 @@ The locale of the translation.
 - |void| **set_plural_rules_override**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_plural_rules_override**\ (\ )
 
-The plural rules string to enforce. See `GNU gettext <https://www.gnu.org/software/gettext/manual/html_node/Plural-forms.html>`__ for examples and more info.
+Chuỗi quy tắc số nhiều cần áp dụng. Xem `GNU gettext <https://www.gnu.org/software/gettext/manual/html_node/Plural-forms.html>`__ để biết ví dụ và thêm thông tin.
 
-If empty or invalid, default plural rules from :ref:`TranslationServer.get_plural_rules()<class_TranslationServer_method_get_plural_rules>` are used. The English plural rules are used as a fallback.
+Nếu rỗng hoặc không hợp lệ, các quy tắc số nhiều mặc định từ :ref:`TranslationServer.get_plural_rules()<class_TranslationServer_method_get_plural_rules>` sẽ được sử dụng. Các quy tắc số nhiều của tiếng Anh được dùng làm phương án dự phòng.
 
 .. rst-class:: classref-section-separator
 
@@ -127,8 +127,8 @@ If empty or invalid, default plural rules from :ref:`TranslationServer.get_plura
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Translation_private_method__get_message:
 
@@ -136,7 +136,7 @@ Method Descriptions
 
 :ref:`StringName<class_StringName>` **_get_message**\ (\ src_message\: :ref:`StringName<class_StringName>`, context\: :ref:`StringName<class_StringName>`\ ) |virtual| |const| :ref:`🔗<class_Translation_private_method__get_message>`
 
-Virtual method to override :ref:`get_message()<class_Translation_method_get_message>`.
+Phương thức ảo để ghi đè :ref:`get_message()<class_Translation_method_get_message>`.
 
 .. rst-class:: classref-item-separator
 
@@ -148,7 +148,7 @@ Virtual method to override :ref:`get_message()<class_Translation_method_get_mess
 
 :ref:`StringName<class_StringName>` **_get_plural_message**\ (\ src_message\: :ref:`StringName<class_StringName>`, src_plural_message\: :ref:`StringName<class_StringName>`, n\: :ref:`int<class_int>`, context\: :ref:`StringName<class_StringName>`\ ) |virtual| |const| :ref:`🔗<class_Translation_private_method__get_plural_message>`
 
-Virtual method to override :ref:`get_plural_message()<class_Translation_method_get_plural_message>`.
+Phương thức ảo để ghi đè :ref:`get_plural_message()<class_Translation_method_get_plural_message>`.
 
 .. rst-class:: classref-item-separator
 
@@ -160,9 +160,9 @@ Virtual method to override :ref:`get_plural_message()<class_Translation_method_g
 
 |void| **add_message**\ (\ src_message\: :ref:`StringName<class_StringName>`, xlated_message\: :ref:`StringName<class_StringName>`, context\: :ref:`StringName<class_StringName>` = &""\ ) :ref:`🔗<class_Translation_method_add_message>`
 
-Adds a message if nonexistent, followed by its translation.
+Thêm một message nếu chưa tồn tại, sau đó thêm bản dịch của message đó.
 
-An additional context could be used to specify the translation context or differentiate polysemic words.
+Có thể sử dụng context bổ sung để chỉ định context bản dịch hoặc phân biệt các từ đa nghĩa.
 
 .. rst-class:: classref-item-separator
 
@@ -174,9 +174,9 @@ An additional context could be used to specify the translation context or differ
 
 |void| **add_plural_message**\ (\ src_message\: :ref:`StringName<class_StringName>`, xlated_messages\: :ref:`PackedStringArray<class_PackedStringArray>`, context\: :ref:`StringName<class_StringName>` = &""\ ) :ref:`🔗<class_Translation_method_add_plural_message>`
 
-Adds a message involving plural translation if nonexistent, followed by its translation.
+Thêm một message có liên quan đến bản dịch số nhiều nếu chưa tồn tại, sau đó thêm bản dịch của message đó.
 
-An additional context could be used to specify the translation context or differentiate polysemic words.
+Có thể sử dụng context bổ sung để chỉ định context bản dịch hoặc phân biệt các từ đa nghĩa.
 
 .. rst-class:: classref-item-separator
 
@@ -188,7 +188,7 @@ An additional context could be used to specify the translation context or differ
 
 |void| **erase_message**\ (\ src_message\: :ref:`StringName<class_StringName>`, context\: :ref:`StringName<class_StringName>` = &""\ ) :ref:`🔗<class_Translation_method_erase_message>`
 
-Erases a message.
+Xóa một message.
 
 .. rst-class:: classref-item-separator
 
@@ -200,7 +200,7 @@ Erases a message.
 
 :ref:`StringName<class_StringName>` **get_message**\ (\ src_message\: :ref:`StringName<class_StringName>`, context\: :ref:`StringName<class_StringName>` = &""\ ) |const| :ref:`🔗<class_Translation_method_get_message>`
 
-Returns a message's translation.
+Trả về bản dịch của một message.
 
 .. rst-class:: classref-item-separator
 
@@ -212,7 +212,7 @@ Returns a message's translation.
 
 :ref:`int<class_int>` **get_message_count**\ (\ ) |const| :ref:`🔗<class_Translation_method_get_message_count>`
 
-Returns the number of existing messages.
+Trả về số lượng message hiện có.
 
 .. rst-class:: classref-item-separator
 
@@ -224,9 +224,9 @@ Returns the number of existing messages.
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_message_list**\ (\ ) |const| :ref:`🔗<class_Translation_method_get_message_list>`
 
-Returns the keys of all messages, that is, the context and untranslated strings of each message.
+Trả về các khóa của tất cả message, tức là context và chuỗi chưa dịch của từng message.
 
-\ **Note:** If a message does not use a context, the corresponding element is the untranslated string. Otherwise, the corresponding element is the context and untranslated string separated by the EOT character (``U+0004``). This is done for compatibility purposes.
+\ **Lưu ý:** Nếu một message không sử dụng context, phần tử tương ứng là chuỗi chưa dịch. Nếu không, phần tử tương ứng là context và chuỗi chưa dịch được phân tách bằng ký tự EOT (``U+0004``). Điều này được thực hiện nhằm đảm bảo tính tương thích.
 
 ::
 
@@ -250,11 +250,11 @@ Returns the keys of all messages, that is, the context and untranslated strings 
 
 :ref:`StringName<class_StringName>` **get_plural_message**\ (\ src_message\: :ref:`StringName<class_StringName>`, src_plural_message\: :ref:`StringName<class_StringName>`, n\: :ref:`int<class_int>`, context\: :ref:`StringName<class_StringName>` = &""\ ) |const| :ref:`🔗<class_Translation_method_get_plural_message>`
 
-Returns a message's translation involving plurals.
+Trả về bản dịch của một message có liên quan đến số nhiều.
 
-The number ``n`` is the number or quantity of the plural object. It will be used to guide the translation system to fetch the correct plural form for the selected language.
+Số ``n`` là số hoặc số lượng của đối tượng số nhiều. Số này được dùng để hướng dẫn hệ thống dịch lấy đúng dạng số nhiều cho ngôn ngữ đã chọn.
 
-\ **Note:** Plurals are only supported in :doc:`gettext-based translations (PO) <../tutorials/i18n/localization_using_gettext>`, not CSV.
+\ **Lưu ý:** Dạng số nhiều chỉ được hỗ trợ trong các bản dịch dựa trên :doc:`gettext (PO) <../tutorials/i18n/localization_using_gettext>`, không được hỗ trợ trong CSV.
 
 .. rst-class:: classref-item-separator
 
@@ -266,14 +266,14 @@ The number ``n`` is the number or quantity of the plural object. It will be used
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_translated_message_list**\ (\ ) |const| :ref:`🔗<class_Translation_method_get_translated_message_list>`
 
-Returns all the translated strings.
+Trả về tất cả chuỗi đã dịch.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ có thể dùng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,25 +10,25 @@
 Texture2DArray
 ==============
 
-**Inherits:** :ref:`ImageTextureLayered<class_ImageTextureLayered>` **<** :ref:`TextureLayered<class_TextureLayered>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`ImageTextureLayered<class_ImageTextureLayered>` **<** :ref:`TextureLayered<class_TextureLayered>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A single texture resource which consists of multiple, separate images. Each image has the same dimensions and number of mipmap levels.
+Một resource texture duy nhất, bao gồm nhiều hình ảnh riêng biệt. Mỗi hình ảnh có cùng kích thước và cùng số lượng mipmap level.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A Texture2DArray is different from a Texture3D: The Texture2DArray does not support trilinear interpolation between the :ref:`Image<class_Image>`\ s, i.e. no blending. See also :ref:`Cubemap<class_Cubemap>` and :ref:`CubemapArray<class_CubemapArray>`, which are texture arrays with specialized cubemap functions.
+Texture2DArray khác với Texture3D: Texture2DArray không hỗ trợ nội suy trilinear giữa các :ref:`Image<class_Image>`\ s, tức là không có blending. Xem thêm :ref:`Cubemap<class_Cubemap>` và :ref:`CubemapArray<class_CubemapArray>`, là các texture array có các hàm cubemap chuyên dụng.
 
-A Texture2DArray is also different from an :ref:`AtlasTexture<class_AtlasTexture>`: In a Texture2DArray, all images are treated separately. In an atlas, the regions (i.e. the single images) can be of different sizes. Furthermore, you usually need to add a padding around the regions, to prevent accidental UV mapping to more than one region. The same goes for mipmapping: Mipmap chains are handled separately for each layer. In an atlas, the slicing has to be done manually in the fragment shader.
+Texture2DArray cũng khác với một :ref:`AtlasTexture<class_AtlasTexture>`: Trong Texture2DArray, tất cả hình ảnh được xử lý riêng biệt. Trong một atlas, các vùng (tức là các hình ảnh riêng lẻ) có thể có kích thước khác nhau. Ngoài ra, bạn thường cần thêm khoảng đệm xung quanh các vùng để ngăn việc ánh xạ UV nhầm sang nhiều hơn một vùng. Điều tương tự cũng áp dụng cho mipmapping: Các chuỗi mipmap được xử lý riêng cho từng layer. Trong một atlas, việc chia lát phải được thực hiện thủ công trong fragment shader.
 
-To create such a texture file yourself, reimport your image files using the Godot Editor import presets. To create a Texture2DArray from code, use :ref:`ImageTextureLayered.create_from_images()<class_ImageTextureLayered_method_create_from_images>` on an instance of the Texture2DArray class.
+Để tự tạo một tệp texture như vậy, hãy nhập lại các tệp hình ảnh bằng import preset của Godot Editor. Để tạo Texture2DArray từ code, hãy sử dụng :ref:`ImageTextureLayered.create_from_images()<class_ImageTextureLayered_method_create_from_images>` trên một instance của lớp Texture2DArray.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -43,8 +43,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Texture2DArray_method_create_placeholder:
 
@@ -52,14 +52,14 @@ Method Descriptions
 
 :ref:`Resource<class_Resource>` **create_placeholder**\ (\ ) |const| :ref:`🔗<class_Texture2DArray_method_create_placeholder>`
 
-Creates a placeholder version of this resource (:ref:`PlaceholderTexture2DArray<class_PlaceholderTexture2DArray>`).
+Tạo một phiên bản placeholder của resource này (:ref:`PlaceholderTexture2DArray<class_PlaceholderTexture2DArray>`).
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng argument sau các argument được mô tả tại đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ có thể sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

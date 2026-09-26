@@ -10,21 +10,21 @@
 SpriteFrames
 ============
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Sprite frame library for AnimatedSprite2D and AnimatedSprite3D.
+Thư viện khung hình cho AnimatedSprite2D và AnimatedSprite3D.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Sprite frame library for an :ref:`AnimatedSprite2D<class_AnimatedSprite2D>` or :ref:`AnimatedSprite3D<class_AnimatedSprite3D>` node. Contains frames and animation data for playback.
+Thư viện khung hình cho node :ref:`AnimatedSprite2D<class_AnimatedSprite2D>` hoặc :ref:`AnimatedSprite3D<class_AnimatedSprite3D>`. Chứa các khung hình và dữ liệu animation để phát.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -42,7 +42,7 @@ Methods
    +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`get_animation_loop<class_SpriteFrames_method_get_animation_loop>`\ (\ anim\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                          |
    +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`LoopMode<enum_SpriteFrames_LoopMode>`       | :ref:`get_animation_loop_mode<class_SpriteFrames_method_get_animation_loop_mode>`\ (\ anim\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                |
+   | :ref:`LoopMode <enum_SpriteFrames_LoopMode>`      | :ref:`get_animation_loop_mode<class_SpriteFrames_method_get_animation_loop_mode>`\ (\ anim\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                |
    +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_animation_names<class_SpriteFrames_method_get_animation_names>`\ (\ ) |const|                                                                                                                                                    |
    +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -64,7 +64,7 @@ Methods
    +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                            | :ref:`set_animation_loop<class_SpriteFrames_method_set_animation_loop>`\ (\ anim\: :ref:`StringName<class_StringName>`, loop\: :ref:`bool<class_bool>`\ )                                                                                  |
    +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`set_animation_loop_mode<class_SpriteFrames_method_set_animation_loop_mode>`\ (\ anim\: :ref:`StringName<class_StringName>`, loop_mode\: :ref:`LoopMode<enum_SpriteFrames_LoopMode>`\ )                                               |
+   | |void|                                            | :ref:`set_animation_loop_mode<class_SpriteFrames_method_set_animation_loop_mode>`\ (\ anim\: :ref:`StringName<class_StringName>`, loop_mode\: :ref:`LoopMode <enum_SpriteFrames_LoopMode>`\ )                                              |
    +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                            | :ref:`set_animation_speed<class_SpriteFrames_method_set_animation_speed>`\ (\ anim\: :ref:`StringName<class_StringName>`, fps\: :ref:`float<class_float>`\ )                                                                               |
    +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -77,14 +77,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_SpriteFrames_LoopMode:
 
 .. rst-class:: classref-enumeration
 
-enum **LoopMode**: :ref:`🔗<enum_SpriteFrames_LoopMode>`
+enum **LoopMode**: :ref:`🔗 <enum_SpriteFrames_LoopMode>`
 
 .. _class_SpriteFrames_constant_LOOP_NONE:
 
@@ -92,7 +92,7 @@ enum **LoopMode**: :ref:`🔗<enum_SpriteFrames_LoopMode>`
 
 :ref:`LoopMode<enum_SpriteFrames_LoopMode>` **LOOP_NONE** = ``0``
 
-The animation plays once and stops when it reaches the end, or the start if played in reverse.
+Animation phát một lần rồi dừng khi đến cuối, hoặc đến đầu nếu được phát ngược.
 
 .. _class_SpriteFrames_constant_LOOP_LINEAR:
 
@@ -100,7 +100,7 @@ The animation plays once and stops when it reaches the end, or the start if play
 
 :ref:`LoopMode<enum_SpriteFrames_LoopMode>` **LOOP_LINEAR** = ``1``
 
-The animation restarts from the beginning when it reaches the end, or from the end if played in reverse, repeating continuously.
+Animation khởi động lại từ đầu khi đến cuối, hoặc từ cuối nếu được phát ngược, và liên tục lặp lại.
 
 .. _class_SpriteFrames_constant_LOOP_PINGPONG:
 
@@ -108,9 +108,9 @@ The animation restarts from the beginning when it reaches the end, or from the e
 
 :ref:`LoopMode<enum_SpriteFrames_LoopMode>` **LOOP_PINGPONG** = ``2``
 
-The animation alternates direction each time it reaches the end or start, playing forward and then in reverse repeatedly.
+Animation đổi hướng mỗi khi đến cuối hoặc đầu, lần lượt phát xuôi rồi ngược.
 
-\ **Note:** Both :ref:`AnimatedSprite2D<class_AnimatedSprite2D>` and :ref:`AnimatedSprite3D<class_AnimatedSprite3D>` play the first/last frame for its duration only once at each end of the animation loop (instead of twice, once per forward/backward animation direction).
+\ **Lưu ý:** Cả :ref:`AnimatedSprite2D<class_AnimatedSprite2D>` và :ref:`AnimatedSprite3D<class_AnimatedSprite3D>` chỉ phát khung hình đầu/cuối trong khoảng thời lượng của khung hình đó một lần ở mỗi đầu của vòng lặp animation (thay vì hai lần, một lần cho mỗi hướng phát xuôi/ngược).
 
 .. rst-class:: classref-section-separator
 
@@ -118,8 +118,8 @@ The animation alternates direction each time it reaches the end or start, playin
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả các phương thức
+---------------------
 
 .. _class_SpriteFrames_method_add_animation:
 
@@ -127,7 +127,7 @@ Method Descriptions
 
 |void| **add_animation**\ (\ anim\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_SpriteFrames_method_add_animation>`
 
-Adds a new ``anim`` animation to the library.
+Thêm một animation ``anim`` mới vào thư viện.
 
 .. rst-class:: classref-item-separator
 
@@ -139,7 +139,7 @@ Adds a new ``anim`` animation to the library.
 
 |void| **add_frame**\ (\ anim\: :ref:`StringName<class_StringName>`, texture\: :ref:`Texture2D<class_Texture2D>`, duration\: :ref:`float<class_float>` = 1.0, at_position\: :ref:`int<class_int>` = -1\ ) :ref:`🔗<class_SpriteFrames_method_add_frame>`
 
-Adds a frame to the ``anim`` animation. If ``at_position`` is ``-1``, the frame will be added to the end of the animation. ``duration`` specifies the relative duration, see :ref:`get_frame_duration()<class_SpriteFrames_method_get_frame_duration>` for details.
+Thêm một khung hình vào animation ``anim``. Nếu ``at_position`` là ``-1``, khung hình sẽ được thêm vào cuối animation. ``duration`` chỉ định thời lượng tương đối; xem :ref:`get_frame_duration()<class_SpriteFrames_method_get_frame_duration>` để biết chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -151,7 +151,7 @@ Adds a frame to the ``anim`` animation. If ``at_position`` is ``-1``, the frame 
 
 |void| **clear**\ (\ anim\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_SpriteFrames_method_clear>`
 
-Removes all frames from the ``anim`` animation.
+Xóa tất cả khung hình khỏi animation ``anim``.
 
 .. rst-class:: classref-item-separator
 
@@ -163,7 +163,7 @@ Removes all frames from the ``anim`` animation.
 
 |void| **clear_all**\ (\ ) :ref:`🔗<class_SpriteFrames_method_clear_all>`
 
-Removes all animations. An empty ``default`` animation will be created.
+Xóa tất cả animation. Một animation ``default`` trống sẽ được tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -175,7 +175,7 @@ Removes all animations. An empty ``default`` animation will be created.
 
 |void| **duplicate_animation**\ (\ anim_from\: :ref:`StringName<class_StringName>`, anim_to\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_SpriteFrames_method_duplicate_animation>`
 
-Duplicates the animation ``anim_from`` to a new animation named ``anim_to``. Fails if ``anim_to`` already exists, or if ``anim_from`` does not exist.
+Sao chép animation ``anim_from`` thành một animation mới có tên ``anim_to``. Thao tác thất bại nếu ``anim_to`` đã tồn tại hoặc ``anim_from`` không tồn tại.
 
 .. rst-class:: classref-item-separator
 
@@ -187,9 +187,9 @@ Duplicates the animation ``anim_from`` to a new animation named ``anim_to``. Fai
 
 :ref:`bool<class_bool>` **get_animation_loop**\ (\ anim\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_SpriteFrames_method_get_animation_loop>`
 
-**Deprecated:** Use :ref:`get_animation_loop_mode()<class_SpriteFrames_method_get_animation_loop_mode>` instead.
+**Đã lỗi thời:** Hãy sử dụng :ref:`get_animation_loop_mode()<class_SpriteFrames_method_get_animation_loop_mode>` thay thế.
 
-Returns ``true`` if ``get_animation_loop_mode(anim) == LOOP_LINEAR``. Otherwise, returns ``false``.
+Trả về ``true`` nếu ``get_animation_loop_mode(anim) == LOOP_LINEAR``. Nếu không, trả về ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -201,7 +201,7 @@ Returns ``true`` if ``get_animation_loop_mode(anim) == LOOP_LINEAR``. Otherwise,
 
 :ref:`LoopMode<enum_SpriteFrames_LoopMode>` **get_animation_loop_mode**\ (\ anim\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_SpriteFrames_method_get_animation_loop_mode>`
 
-Returns the loop mode for the ``anim`` animation.
+Trả về chế độ lặp của animation ``anim``.
 
 .. rst-class:: classref-item-separator
 
@@ -213,7 +213,7 @@ Returns the loop mode for the ``anim`` animation.
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_animation_names**\ (\ ) |const| :ref:`🔗<class_SpriteFrames_method_get_animation_names>`
 
-Returns an array containing the names associated to each animation. Values are placed in alphabetical order.
+Trả về một mảng chứa tên tương ứng với từng animation. Các giá trị được sắp xếp theo thứ tự bảng chữ cái.
 
 .. rst-class:: classref-item-separator
 
@@ -225,7 +225,7 @@ Returns an array containing the names associated to each animation. Values are p
 
 :ref:`float<class_float>` **get_animation_speed**\ (\ anim\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_SpriteFrames_method_get_animation_speed>`
 
-Returns the speed in frames per second for the ``anim`` animation.
+Trả về tốc độ tính theo số frame trên giây của animation ``anim``.
 
 .. rst-class:: classref-item-separator
 
@@ -237,7 +237,7 @@ Returns the speed in frames per second for the ``anim`` animation.
 
 :ref:`int<class_int>` **get_frame_count**\ (\ anim\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_SpriteFrames_method_get_frame_count>`
 
-Returns the number of frames for the ``anim`` animation.
+Trả về số frame của animation ``anim``.
 
 .. rst-class:: classref-item-separator
 
@@ -249,13 +249,13 @@ Returns the number of frames for the ``anim`` animation.
 
 :ref:`float<class_float>` **get_frame_duration**\ (\ anim\: :ref:`StringName<class_StringName>`, idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpriteFrames_method_get_frame_duration>`
 
-Returns a relative duration of the frame ``idx`` in the ``anim`` animation (defaults to ``1.0``). For example, a frame with a duration of ``2.0`` is displayed twice as long as a frame with a duration of ``1.0``. You can calculate the absolute duration (in seconds) of a frame using the following formula:
+Trả về thời lượng tương đối của frame ``idx`` trong animation ``anim`` (mặc định là ``1.0``). Ví dụ: một frame có thời lượng ``2.0`` được hiển thị lâu gấp đôi một frame có thời lượng ``1.0``. Bạn có thể tính thời lượng tuyệt đối (tính bằng giây) của một frame bằng công thức sau:
 
 ::
 
     absolute_duration = relative_duration / (animation_fps * abs(playing_speed))
 
-In this example, ``playing_speed`` refers to either :ref:`AnimatedSprite2D.get_playing_speed()<class_AnimatedSprite2D_method_get_playing_speed>` or :ref:`AnimatedSprite3D.get_playing_speed()<class_AnimatedSprite3D_method_get_playing_speed>`.
+Trong ví dụ này, ``playing_speed`` tham chiếu đến :ref:`AnimatedSprite2D.get_playing_speed()<class_AnimatedSprite2D_method_get_playing_speed>` hoặc :ref:`AnimatedSprite3D.get_playing_speed()<class_AnimatedSprite3D_method_get_playing_speed>`.
 
 .. rst-class:: classref-item-separator
 
@@ -267,7 +267,7 @@ In this example, ``playing_speed`` refers to either :ref:`AnimatedSprite2D.get_p
 
 :ref:`Texture2D<class_Texture2D>` **get_frame_texture**\ (\ anim\: :ref:`StringName<class_StringName>`, idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SpriteFrames_method_get_frame_texture>`
 
-Returns the texture of the frame ``idx`` in the ``anim`` animation.
+Trả về texture của frame ``idx`` trong animation ``anim``.
 
 .. rst-class:: classref-item-separator
 
@@ -279,7 +279,7 @@ Returns the texture of the frame ``idx`` in the ``anim`` animation.
 
 :ref:`bool<class_bool>` **has_animation**\ (\ anim\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_SpriteFrames_method_has_animation>`
 
-Returns ``true`` if the ``anim`` animation exists.
+Trả về ``true`` nếu animation ``anim`` tồn tại.
 
 .. rst-class:: classref-item-separator
 
@@ -291,7 +291,7 @@ Returns ``true`` if the ``anim`` animation exists.
 
 |void| **remove_animation**\ (\ anim\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_SpriteFrames_method_remove_animation>`
 
-Removes the ``anim`` animation.
+Xóa animation ``anim``.
 
 .. rst-class:: classref-item-separator
 
@@ -303,7 +303,7 @@ Removes the ``anim`` animation.
 
 |void| **remove_frame**\ (\ anim\: :ref:`StringName<class_StringName>`, idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_SpriteFrames_method_remove_frame>`
 
-Removes the ``anim`` animation's frame ``idx``.
+Xóa frame ``idx`` của animation ``anim``.
 
 .. rst-class:: classref-item-separator
 
@@ -315,7 +315,7 @@ Removes the ``anim`` animation's frame ``idx``.
 
 |void| **rename_animation**\ (\ anim\: :ref:`StringName<class_StringName>`, newname\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_SpriteFrames_method_rename_animation>`
 
-Changes the ``anim`` animation's name to ``newname``.
+Đổi tên animation ``anim`` thành ``newname``.
 
 .. rst-class:: classref-item-separator
 
@@ -327,11 +327,11 @@ Changes the ``anim`` animation's name to ``newname``.
 
 |void| **set_animation_loop**\ (\ anim\: :ref:`StringName<class_StringName>`, loop\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_SpriteFrames_method_set_animation_loop>`
 
-**Deprecated:** Use :ref:`set_animation_loop_mode()<class_SpriteFrames_method_set_animation_loop_mode>` instead.
+**Đã lỗi thời:** Hãy sử dụng :ref:`set_animation_loop_mode()<class_SpriteFrames_method_set_animation_loop_mode>` thay thế.
 
-If ``loop`` is ``false`` equivalent to ``set_animation_loop_mode(LOOP_NONE)``.
+Nếu ``loop`` tương đương với ``false`` của ``set_animation_loop_mode(LOOP_NONE)``.
 
-If ``loop`` is ``true`` equivalent to ``set_animation_loop_mode(LOOP_LINEAR)``.
+Nếu ``loop`` tương đương với ``true`` của ``set_animation_loop_mode(LOOP_LINEAR)``.
 
 .. rst-class:: classref-item-separator
 
@@ -343,7 +343,7 @@ If ``loop`` is ``true`` equivalent to ``set_animation_loop_mode(LOOP_LINEAR)``.
 
 |void| **set_animation_loop_mode**\ (\ anim\: :ref:`StringName<class_StringName>`, loop_mode\: :ref:`LoopMode<enum_SpriteFrames_LoopMode>`\ ) :ref:`🔗<class_SpriteFrames_method_set_animation_loop_mode>`
 
-Sets the ``loop_mode`` for the ``anim`` animation.
+Đặt ``loop_mode`` cho animation ``anim``.
 
 .. rst-class:: classref-item-separator
 
@@ -355,7 +355,7 @@ Sets the ``loop_mode`` for the ``anim`` animation.
 
 |void| **set_animation_speed**\ (\ anim\: :ref:`StringName<class_StringName>`, fps\: :ref:`float<class_float>`\ ) :ref:`🔗<class_SpriteFrames_method_set_animation_speed>`
 
-Sets the speed for the ``anim`` animation in frames per second.
+Đặt tốc độ của animation ``anim`` theo số frame trên giây.
 
 .. rst-class:: classref-item-separator
 
@@ -367,14 +367,14 @@ Sets the speed for the ``anim`` animation in frames per second.
 
 |void| **set_frame**\ (\ anim\: :ref:`StringName<class_StringName>`, idx\: :ref:`int<class_int>`, texture\: :ref:`Texture2D<class_Texture2D>`, duration\: :ref:`float<class_float>` = 1.0\ ) :ref:`🔗<class_SpriteFrames_method_set_frame>`
 
-Sets the ``texture`` and the ``duration`` of the frame ``idx`` in the ``anim`` animation. ``duration`` specifies the relative duration, see :ref:`get_frame_duration()<class_SpriteFrames_method_get_frame_duration>` for details.
+Đặt ``texture`` và ``duration`` của frame ``idx`` trong animation ``anim``. ``duration`` chỉ định thời lượng tương đối; xem :ref:`get_frame_duration()<class_SpriteFrames_method_get_frame_duration>` để biết chi tiết.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

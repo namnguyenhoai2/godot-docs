@@ -10,27 +10,27 @@
 SkeletonModification2D
 ======================
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc loại bỏ trong các phiên bản tương lai.
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`SkeletonModification2DCCDIK<class_SkeletonModification2DCCDIK>`, :ref:`SkeletonModification2DFABRIK<class_SkeletonModification2DFABRIK>`, :ref:`SkeletonModification2DJiggle<class_SkeletonModification2DJiggle>`, :ref:`SkeletonModification2DLookAt<class_SkeletonModification2DLookAt>`, :ref:`SkeletonModification2DPhysicalBones<class_SkeletonModification2DPhysicalBones>`, :ref:`SkeletonModification2DStackHolder<class_SkeletonModification2DStackHolder>`, :ref:`SkeletonModification2DTwoBoneIK<class_SkeletonModification2DTwoBoneIK>`
+**Được kế thừa bởi:** :ref:`SkeletonModification2DCCDIK<class_SkeletonModification2DCCDIK>`, :ref:`SkeletonModification2DFABRIK<class_SkeletonModification2DFABRIK>`, :ref:`SkeletonModification2DJiggle<class_SkeletonModification2DJiggle>`, :ref:`SkeletonModification2DLookAt<class_SkeletonModification2DLookAt>`, :ref:`SkeletonModification2DPhysicalBones<class_SkeletonModification2DPhysicalBones>`, :ref:`SkeletonModification2DStackHolder<class_SkeletonModification2DStackHolder>`, :ref:`SkeletonModification2DTwoBoneIK<class_SkeletonModification2DTwoBoneIK>`
 
-Base class for resources that operate on :ref:`Bone2D<class_Bone2D>`\ s in a :ref:`Skeleton2D<class_Skeleton2D>`.
+Lớp cơ sở cho các resource hoạt động trên :ref:`Bone2D<class_Bone2D>`\  trong một :ref:`Skeleton2D<class_Skeleton2D>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This resource provides an interface that can be expanded so code that operates on :ref:`Bone2D<class_Bone2D>` nodes in a :ref:`Skeleton2D<class_Skeleton2D>` can be mixed and matched together to create complex interactions.
+Resource này cung cấp một interface có thể được mở rộng để code hoạt động trên các node :ref:`Bone2D<class_Bone2D>` trong một :ref:`Skeleton2D<class_Skeleton2D>` có thể được kết hợp linh hoạt nhằm tạo ra các tương tác phức tạp.
 
-This is used to provide Godot with a flexible and powerful Inverse Kinematics solution that can be adapted for many different uses.
+Điều này cung cấp cho Godot một giải pháp Inverse Kinematics linh hoạt và mạnh mẽ, có thể được điều chỉnh cho nhiều mục đích sử dụng khác nhau.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -43,8 +43,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -75,8 +75,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_SkeletonModification2D_property_enabled:
 
@@ -89,7 +89,7 @@ Property Descriptions
 - |void| **set_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_enabled**\ (\ )
 
-If ``true``, the modification's :ref:`_execute()<class_SkeletonModification2D_private_method__execute>` function will be called by the :ref:`SkeletonModificationStack2D<class_SkeletonModificationStack2D>`.
+Nếu ``true``, hàm :ref:`_execute()<class_SkeletonModification2D_private_method__execute>` của modification sẽ được :ref:`SkeletonModificationStack2D<class_SkeletonModificationStack2D>` gọi.
 
 .. rst-class:: classref-item-separator
 
@@ -106,7 +106,7 @@ If ``true``, the modification's :ref:`_execute()<class_SkeletonModification2D_pr
 - |void| **set_execution_mode**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_execution_mode**\ (\ )
 
-The execution mode for the modification. This tells the modification stack when to execute the modification. Some modifications have settings that are only available in certain execution modes.
+Chế độ thực thi của modification. Chế độ này cho modification stack biết thời điểm thực thi modification. Một số modification có các thiết lập chỉ khả dụng trong một số chế độ thực thi nhất định.
 
 .. rst-class:: classref-section-separator
 
@@ -114,8 +114,8 @@ The execution mode for the modification. This tells the modification stack when 
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_SkeletonModification2D_private_method__draw_editor_gizmo:
 
@@ -123,9 +123,9 @@ Method Descriptions
 
 |void| **_draw_editor_gizmo**\ (\ ) |virtual| :ref:`🔗<class_SkeletonModification2D_private_method__draw_editor_gizmo>`
 
-Used for drawing **editor-only** modification gizmos. This function will only be called in the Godot editor and can be overridden to draw custom gizmos.
+Được dùng để vẽ các gizmo modification **chỉ dành cho editor**. Hàm này chỉ được gọi trong Godot editor và có thể được ghi đè để vẽ các gizmo tùy chỉnh.
 
-\ **Note:** You will need to use the Skeleton2D from :ref:`SkeletonModificationStack2D.get_skeleton()<class_SkeletonModificationStack2D_method_get_skeleton>` and it's draw functions, as the **SkeletonModification2D** resource cannot draw on its own.
+\ **Lưu ý:** Bạn sẽ cần sử dụng Skeleton2D từ :ref:`SkeletonModificationStack2D.get_skeleton()<class_SkeletonModificationStack2D_method_get_skeleton>` và các hàm vẽ của nó, vì resource **SkeletonModification2D** không thể tự vẽ.
 
 .. rst-class:: classref-item-separator
 
@@ -137,7 +137,7 @@ Used for drawing **editor-only** modification gizmos. This function will only be
 
 |void| **_execute**\ (\ delta\: :ref:`float<class_float>`\ ) |virtual| :ref:`🔗<class_SkeletonModification2D_private_method__execute>`
 
-Executes the given modification. This is where the modification performs whatever function it is designed to do.
+Thực thi modification đã cho. Đây là nơi modification thực hiện chức năng mà nó được thiết kế để thực hiện.
 
 .. rst-class:: classref-item-separator
 
@@ -149,7 +149,7 @@ Executes the given modification. This is where the modification performs whateve
 
 |void| **_setup_modification**\ (\ modification_stack\: :ref:`SkeletonModificationStack2D<class_SkeletonModificationStack2D>`\ ) |virtual| :ref:`🔗<class_SkeletonModification2D_private_method__setup_modification>`
 
-Called when the modification is setup. This is where the modification performs initialization.
+Được gọi khi modification được thiết lập. Đây là nơi modification thực hiện việc khởi tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -161,7 +161,7 @@ Called when the modification is setup. This is where the modification performs i
 
 :ref:`float<class_float>` **clamp_angle**\ (\ angle\: :ref:`float<class_float>`, min\: :ref:`float<class_float>`, max\: :ref:`float<class_float>`, invert\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_SkeletonModification2D_method_clamp_angle>`
 
-Takes an angle and clamps it so it is within the passed-in ``min`` and ``max`` range. ``invert`` will inversely clamp the angle, clamping it to the range outside of the given bounds.
+Nhận một góc và giới hạn góc đó để nằm trong phạm vi ``min`` và ``max`` được truyền vào. ``invert`` sẽ giới hạn góc theo chiều ngược lại, giới hạn góc trong phạm vi nằm ngoài các giới hạn đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -173,7 +173,7 @@ Takes an angle and clamps it so it is within the passed-in ``min`` and ``max`` r
 
 :ref:`bool<class_bool>` **get_editor_draw_gizmo**\ (\ ) |const| :ref:`🔗<class_SkeletonModification2D_method_get_editor_draw_gizmo>`
 
-Returns whether this modification will call :ref:`_draw_editor_gizmo()<class_SkeletonModification2D_private_method__draw_editor_gizmo>` in the Godot editor to draw modification-specific gizmos.
+Trả về việc modification này có gọi :ref:`_draw_editor_gizmo()<class_SkeletonModification2D_private_method__draw_editor_gizmo>` trong Godot editor để vẽ các gizmo dành riêng cho modification hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -185,7 +185,7 @@ Returns whether this modification will call :ref:`_draw_editor_gizmo()<class_Ske
 
 :ref:`bool<class_bool>` **get_is_setup**\ (\ ) |const| :ref:`🔗<class_SkeletonModification2D_method_get_is_setup>`
 
-Returns whether this modification has been successfully setup or not.
+Trả về việc modification này đã được thiết lập thành công hay chưa.
 
 .. rst-class:: classref-item-separator
 
@@ -197,7 +197,7 @@ Returns whether this modification has been successfully setup or not.
 
 :ref:`SkeletonModificationStack2D<class_SkeletonModificationStack2D>` **get_modification_stack**\ (\ ) :ref:`🔗<class_SkeletonModification2D_method_get_modification_stack>`
 
-Returns the :ref:`SkeletonModificationStack2D<class_SkeletonModificationStack2D>` that this modification is bound to. Through the modification stack, you can access the Skeleton2D the modification is operating on.
+Trả về :ref:`SkeletonModificationStack2D<class_SkeletonModificationStack2D>` mà modification này được liên kết với. Thông qua modification stack, bạn có thể truy cập Skeleton2D mà modification đang hoạt động trên đó.
 
 .. rst-class:: classref-item-separator
 
@@ -209,7 +209,7 @@ Returns the :ref:`SkeletonModificationStack2D<class_SkeletonModificationStack2D>
 
 |void| **set_editor_draw_gizmo**\ (\ draw_gizmo\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_SkeletonModification2D_method_set_editor_draw_gizmo>`
 
-Sets whether this modification will call :ref:`_draw_editor_gizmo()<class_SkeletonModification2D_private_method__draw_editor_gizmo>` in the Godot editor to draw modification-specific gizmos.
+Thiết lập việc modification này có gọi :ref:`_draw_editor_gizmo()<class_SkeletonModification2D_private_method__draw_editor_gizmo>` trong Godot editor để vẽ các gizmo dành riêng cho modification hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -221,14 +221,14 @@ Sets whether this modification will call :ref:`_draw_editor_gizmo()<class_Skelet
 
 |void| **set_is_setup**\ (\ is_setup\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_SkeletonModification2D_method_set_is_setup>`
 
-Manually allows you to set the setup state of the modification. This function should only rarely be used, as the :ref:`SkeletonModificationStack2D<class_SkeletonModificationStack2D>` the modification is bound to should handle setting the modification up.
+Cho phép bạn thiết lập thủ công trạng thái thiết lập của modification. Thông thường chỉ nên hiếm khi sử dụng hàm này, vì :ref:`SkeletonModificationStack2D<class_SkeletonModificationStack2D>` mà modification được liên kết với phải chịu trách nhiệm thiết lập modification.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể được gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

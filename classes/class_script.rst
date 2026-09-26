@@ -10,33 +10,33 @@
 Script
 ======
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`CSharpScript<class_CSharpScript>`, :ref:`GDScript<class_GDScript>`, :ref:`ScriptExtension<class_ScriptExtension>`
+**Được kế thừa bởi:** :ref:`CSharpScript<class_CSharpScript>`, :ref:`GDScript<class_GDScript>`, :ref:`ScriptExtension<class_ScriptExtension>`
 
-A class stored as a resource.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A class stored as a resource. A script extends the functionality of all objects that instantiate it.
-
-This is the base class for all scripts and should not be used directly. Trying to create a new script with this class will result in an error.
-
-The ``new`` method of a script subclass creates a new instance. :ref:`Object.set_script()<class_Object_method_set_script>` extends an existing object, if that object's class matches one of the script's base classes.
+Một lớp được lưu trữ dưới dạng tài nguyên.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Một lớp được lưu trữ dưới dạng tài nguyên. Một script mở rộng chức năng của tất cả các đối tượng khởi tạo nó.
+
+Đây là lớp cơ sở cho tất cả các script và không nên được sử dụng trực tiếp. Việc cố gắng tạo một script mới bằng lớp này sẽ dẫn đến lỗi.
+
+Phương thức ``new`` của một lớp con script tạo một instance mới. :ref:`Object.set_script()<class_Object_method_set_script>` mở rộng một đối tượng hiện có nếu lớp của đối tượng đó khớp với một trong các lớp cơ sở của script.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Scripting documentation index <../tutorials/scripting/index>`
+- :doc:`Mục lục tài liệu về scripting <../tutorials/scripting/index>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -48,8 +48,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -87,7 +87,7 @@ Methods
    +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                          | :ref:`is_tool<class_Script_method_is_tool>`\ (\ ) |const|                                                                               |
    +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                            | :ref:`reload<class_Script_method_reload>`\ (\ keep_state\: :ref:`bool<class_bool>` = false\ )                                           |
+   | :ref:`Error <enum_@GlobalScope_Error>`                           | :ref:`reload<class_Script_method_reload>`\ (\ keep_state\: :ref:`bool<class_bool>` = false\ )                                           |
    +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
@@ -96,21 +96,21 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Script_property_source_code:
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **source_code** :ref:`🔗<class_Script_property_source_code>`
+:ref:`String<class_String>` **source_code** :ref:`🔗 <class_Script_property_source_code>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_source_code**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_source_code**\ (\ )
 
-The script source code or an empty string if source code is not available. When set, does not reload the class implementation automatically.
+Mã nguồn của script hoặc một chuỗi rỗng nếu mã nguồn không khả dụng. Khi được thiết lập, mã này không tự động tải lại phần triển khai của lớp.
 
 .. rst-class:: classref-section-separator
 
@@ -118,8 +118,8 @@ The script source code or an empty string if source code is not available. When 
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Script_method_can_instantiate:
 
@@ -127,7 +127,7 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **can_instantiate**\ (\ ) |const| :ref:`🔗<class_Script_method_can_instantiate>`
 
-Returns ``true`` if the script can be instantiated.
+Trả về ``true`` nếu có thể khởi tạo script.
 
 .. rst-class:: classref-item-separator
 
@@ -139,7 +139,7 @@ Returns ``true`` if the script can be instantiated.
 
 :ref:`Script<class_Script>` **get_base_script**\ (\ ) |const| :ref:`🔗<class_Script_method_get_base_script>`
 
-Returns the script directly inherited by this script.
+Trả về script được kế thừa trực tiếp bởi script này.
 
 .. rst-class:: classref-item-separator
 
@@ -151,9 +151,9 @@ Returns the script directly inherited by this script.
 
 :ref:`StringName<class_StringName>` **get_global_name**\ (\ ) |const| :ref:`🔗<class_Script_method_get_global_name>`
 
-Returns the class name associated with the script, if there is one. Returns an empty string otherwise.
+Trả về tên lớp được liên kết với script, nếu có. Nếu không, trả về một chuỗi rỗng.
 
-To give the script a global name, you can use the ``class_name`` keyword in GDScript and the ``[GlobalClass]`` attribute in C#.
+Để đặt tên global cho script, bạn có thể sử dụng từ khóa ``class_name`` trong GDScript và thuộc tính ``[GlobalClass]`` trong C#.
 
 
 .. tabs::
@@ -184,7 +184,7 @@ To give the script a global name, you can use the ``class_name`` keyword in GDSc
 
 :ref:`StringName<class_StringName>` **get_instance_base_type**\ (\ ) |const| :ref:`🔗<class_Script_method_get_instance_base_type>`
 
-Returns the script's base type.
+Trả về kiểu cơ sở của script.
 
 .. rst-class:: classref-item-separator
 
@@ -196,7 +196,7 @@ Returns the script's base type.
 
 :ref:`Variant<class_Variant>` **get_property_default_value**\ (\ property\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Script_method_get_property_default_value>`
 
-Returns the default value of the specified property.
+Trả về giá trị mặc định của thuộc tính được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -208,7 +208,7 @@ Returns the default value of the specified property.
 
 :ref:`Variant<class_Variant>` **get_rpc_config**\ (\ ) |const| :ref:`🔗<class_Script_method_get_rpc_config>`
 
-Returns a :ref:`Dictionary<class_Dictionary>` mapping method names to their RPC configuration defined by this script.
+Trả về một :ref:`Dictionary<class_Dictionary>` ánh xạ tên phương thức với cấu hình RPC do script này định nghĩa.
 
 .. rst-class:: classref-item-separator
 
@@ -220,7 +220,7 @@ Returns a :ref:`Dictionary<class_Dictionary>` mapping method names to their RPC 
 
 :ref:`Dictionary<class_Dictionary>` **get_script_constant_map**\ (\ ) :ref:`🔗<class_Script_method_get_script_constant_map>`
 
-Returns a dictionary containing constant names and their values.
+Trả về một dictionary chứa tên các hằng số và giá trị của chúng.
 
 .. rst-class:: classref-item-separator
 
@@ -232,9 +232,9 @@ Returns a dictionary containing constant names and their values.
 
 :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] **get_script_method_list**\ (\ ) :ref:`🔗<class_Script_method_get_script_method_list>`
 
-Returns the list of methods in this **Script**.
+Trả về danh sách các phương thức trong **Script** này.
 
-\ **Note:** The dictionaries returned by this method are formatted identically to those returned by :ref:`Object.get_method_list()<class_Object_method_get_method_list>`.
+\ **Lưu ý:** Các dictionary được phương thức này trả về có định dạng giống hệt các dictionary được trả về bởi :ref:`Object.get_method_list()<class_Object_method_get_method_list>`.
 
 .. rst-class:: classref-item-separator
 
@@ -246,9 +246,9 @@ Returns the list of methods in this **Script**.
 
 :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] **get_script_property_list**\ (\ ) :ref:`🔗<class_Script_method_get_script_property_list>`
 
-Returns the list of properties in this **Script**.
+Trả về danh sách các thuộc tính trong **Script** này.
 
-\ **Note:** The dictionaries returned by this method are formatted identically to those returned by :ref:`Object.get_property_list()<class_Object_method_get_property_list>`.
+\ **Lưu ý:** Các dictionary được phương thức này trả về có định dạng giống hệt các dictionary được trả về bởi :ref:`Object.get_property_list()<class_Object_method_get_property_list>`.
 
 .. rst-class:: classref-item-separator
 
@@ -260,9 +260,9 @@ Returns the list of properties in this **Script**.
 
 :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] **get_script_signal_list**\ (\ ) :ref:`🔗<class_Script_method_get_script_signal_list>`
 
-Returns the list of signals defined in this **Script**.
+Trả về danh sách các signal được định nghĩa trong **Script** này.
 
-\ **Note:** The dictionaries returned by this method are formatted identically to those returned by :ref:`Object.get_signal_list()<class_Object_method_get_signal_list>`.
+\ **Lưu ý:** Các dictionary được phương thức này trả về có định dạng giống hệt các dictionary được trả về bởi :ref:`Object.get_signal_list()<class_Object_method_get_signal_list>`.
 
 .. rst-class:: classref-item-separator
 
@@ -274,7 +274,7 @@ Returns the list of signals defined in this **Script**.
 
 :ref:`bool<class_bool>` **has_script_method**\ (\ method_name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_Script_method_has_script_method>`
 
-Returns ``true`` if the script, or a base class, defines a method with the given name.
+Trả về ``true`` nếu script hoặc một lớp cơ sở định nghĩa phương thức có tên đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -286,7 +286,7 @@ Returns ``true`` if the script, or a base class, defines a method with the given
 
 :ref:`bool<class_bool>` **has_script_signal**\ (\ signal_name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_Script_method_has_script_signal>`
 
-Returns ``true`` if the script, or a base class, defines a signal with the given name.
+Trả về ``true`` nếu script hoặc một lớp cơ sở định nghĩa signal có tên đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -298,9 +298,9 @@ Returns ``true`` if the script, or a base class, defines a signal with the given
 
 :ref:`bool<class_bool>` **has_source_code**\ (\ ) |const| :ref:`🔗<class_Script_method_has_source_code>`
 
-Returns ``true`` if the script contains non-empty source code.
+Trả về ``true`` nếu script chứa mã nguồn không rỗng.
 
-\ **Note:** If a script does not have source code, this does not mean that it is invalid or unusable. For example, a :ref:`GDScript<class_GDScript>` that was exported with binary tokenization has no source code, but still behaves as expected and could be instantiated. This can be checked with :ref:`can_instantiate()<class_Script_method_can_instantiate>`.
+\ **Lưu ý:** Nếu một script không có mã nguồn, điều đó không có nghĩa là nó không hợp lệ hoặc không thể sử dụng. Ví dụ, một :ref:`GDScript<class_GDScript>` được export bằng binary tokenization không có mã nguồn, nhưng vẫn hoạt động như mong đợi và có thể được khởi tạo. Bạn có thể kiểm tra điều này bằng :ref:`can_instantiate()<class_Script_method_can_instantiate>`.
 
 .. rst-class:: classref-item-separator
 
@@ -312,9 +312,9 @@ Returns ``true`` if the script contains non-empty source code.
 
 :ref:`bool<class_bool>` **instance_has**\ (\ base_object\: :ref:`Object<class_Object>`\ ) |const| :ref:`🔗<class_Script_method_instance_has>`
 
-**Deprecated:** Compare this script with :ref:`Object.get_script()<class_Object_method_get_script>` instead.
+**Không dùng nữa:** Hãy so sánh script này với :ref:`Object.get_script()<class_Object_method_get_script>` thay thế.
 
-Returns ``true`` if ``base_object`` is an instance of this script.
+Trả về ``true`` nếu ``base_object`` là một instance của script này.
 
 .. rst-class:: classref-item-separator
 
@@ -326,7 +326,7 @@ Returns ``true`` if ``base_object`` is an instance of this script.
 
 :ref:`bool<class_bool>` **is_abstract**\ (\ ) |const| :ref:`🔗<class_Script_method_is_abstract>`
 
-Returns ``true`` if the script is an abstract script. An abstract script does not have a constructor and cannot be instantiated.
+Trả về ``true`` nếu script là một abstract script. Abstract script không có constructor và không thể được khởi tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -338,7 +338,7 @@ Returns ``true`` if the script is an abstract script. An abstract script does no
 
 :ref:`bool<class_bool>` **is_tool**\ (\ ) |const| :ref:`🔗<class_Script_method_is_tool>`
 
-Returns ``true`` if the script is a tool script. A tool script can run in the editor.
+Trả về ``true`` nếu script là tool script. Tool script có thể chạy trong editor.
 
 .. rst-class:: classref-item-separator
 
@@ -350,14 +350,14 @@ Returns ``true`` if the script is a tool script. A tool script can run in the ed
 
 :ref:`Error<enum_@GlobalScope_Error>` **reload**\ (\ keep_state\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_Script_method_reload>`
 
-Reloads the script's class implementation. Returns an error code.
+Tải lại phần triển khai của lớp trong script. Trả về một mã lỗi.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

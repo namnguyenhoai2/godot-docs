@@ -10,20 +10,20 @@
 Sprite3D
 ========
 
-**Inherits:** :ref:`SpriteBase3D<class_SpriteBase3D>` **<** :ref:`GeometryInstance3D<class_GeometryInstance3D>` **<** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`SpriteBase3D<class_SpriteBase3D>` **<** :ref:`GeometryInstance3D<class_GeometryInstance3D>` **<** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-2D sprite node in a 3D world.
+Node sprite 2D trong thế giới 3D.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A node that displays a 2D texture in a 3D environment. The texture displayed can be a region from a larger atlas texture, or a frame from a sprite sheet animation. See also :ref:`SpriteBase3D<class_SpriteBase3D>` where properties such as the billboard mode are defined.
+Một node hiển thị texture 2D trong môi trường 3D. Texture được hiển thị có thể là một vùng từ texture atlas lớn hơn hoặc một khung hình từ animation sprite sheet. Xem thêm :ref:`SpriteBase3D<class_SpriteBase3D>`, nơi định nghĩa các thuộc tính như chế độ billboard.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -51,8 +51,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_Sprite3D_signal_frame_changed:
 
@@ -60,7 +60,7 @@ Signals
 
 **frame_changed**\ (\ ) :ref:`🔗<class_Sprite3D_signal_frame_changed>`
 
-Emitted when the :ref:`frame<class_Sprite3D_property_frame>` changes.
+Được phát ra khi :ref:`frame<class_Sprite3D_property_frame>` thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -72,7 +72,7 @@ Emitted when the :ref:`frame<class_Sprite3D_property_frame>` changes.
 
 **texture_changed**\ (\ ) :ref:`🔗<class_Sprite3D_signal_texture_changed>`
 
-Emitted when the :ref:`texture<class_Sprite3D_property_texture>` changes.
+Được phát ra khi :ref:`texture<class_Sprite3D_property_texture>` thay đổi.
 
 .. rst-class:: classref-section-separator
 
@@ -80,8 +80,8 @@ Emitted when the :ref:`texture<class_Sprite3D_property_texture>` changes.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Sprite3D_property_frame:
 
@@ -94,7 +94,7 @@ Property Descriptions
 - |void| **set_frame**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_frame**\ (\ )
 
-Current frame to display from sprite sheet. :ref:`hframes<class_Sprite3D_property_hframes>` or :ref:`vframes<class_Sprite3D_property_vframes>` must be greater than 1. This property is automatically adjusted when :ref:`hframes<class_Sprite3D_property_hframes>` or :ref:`vframes<class_Sprite3D_property_vframes>` are changed to keep pointing to the same visual frame (same column and row). If that's impossible, this value is reset to ``0``.
+Khung hình hiện tại cần hiển thị từ sprite sheet. :ref:`hframes<class_Sprite3D_property_hframes>` hoặc :ref:`vframes<class_Sprite3D_property_vframes>` phải lớn hơn 1. Thuộc tính này tự động được điều chỉnh khi :ref:`hframes<class_Sprite3D_property_hframes>` hoặc :ref:`vframes<class_Sprite3D_property_vframes>` thay đổi để tiếp tục trỏ đến cùng khung hình hiển thị (cùng cột và hàng). Nếu không thể thực hiện, giá trị này được đặt lại thành ``0``.
 
 .. rst-class:: classref-item-separator
 
@@ -111,7 +111,7 @@ Current frame to display from sprite sheet. :ref:`hframes<class_Sprite3D_propert
 - |void| **set_frame_coords**\ (\ value\: :ref:`Vector2i<class_Vector2i>`\ )
 - :ref:`Vector2i<class_Vector2i>` **get_frame_coords**\ (\ )
 
-Coordinates of the frame to display from sprite sheet. This is as an alias for the :ref:`frame<class_Sprite3D_property_frame>` property. :ref:`hframes<class_Sprite3D_property_hframes>` or :ref:`vframes<class_Sprite3D_property_vframes>` must be greater than 1.
+Tọa độ của khung hình cần hiển thị từ sprite sheet. Đây là bí danh của thuộc tính :ref:`frame<class_Sprite3D_property_frame>`. :ref:`hframes<class_Sprite3D_property_hframes>` hoặc :ref:`vframes<class_Sprite3D_property_vframes>` phải lớn hơn 1.
 
 .. rst-class:: classref-item-separator
 
@@ -128,7 +128,7 @@ Coordinates of the frame to display from sprite sheet. This is as an alias for t
 - |void| **set_hframes**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_hframes**\ (\ )
 
-The number of columns in the sprite sheet. When this property is changed, :ref:`frame<class_Sprite3D_property_frame>` is adjusted so that the same visual frame is maintained (same row and column). If that's impossible, :ref:`frame<class_Sprite3D_property_frame>` is reset to ``0``.
+Số cột trong sprite sheet. Khi thuộc tính này thay đổi, :ref:`frame<class_Sprite3D_property_frame>` được điều chỉnh để giữ nguyên khung hình hiển thị (cùng hàng và cột). Nếu không thể thực hiện, :ref:`frame<class_Sprite3D_property_frame>` được đặt lại thành ``0``.
 
 .. rst-class:: classref-item-separator
 
@@ -145,7 +145,7 @@ The number of columns in the sprite sheet. When this property is changed, :ref:`
 - |void| **set_region_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_region_enabled**\ (\ )
 
-If ``true``, the sprite will use :ref:`region_rect<class_Sprite3D_property_region_rect>` and display only the specified part of its texture.
+Nếu ``true``, sprite sẽ sử dụng :ref:`region_rect<class_Sprite3D_property_region_rect>` và chỉ hiển thị phần được chỉ định của texture.
 
 .. rst-class:: classref-item-separator
 
@@ -162,7 +162,7 @@ If ``true``, the sprite will use :ref:`region_rect<class_Sprite3D_property_regio
 - |void| **set_region_rect**\ (\ value\: :ref:`Rect2<class_Rect2>`\ )
 - :ref:`Rect2<class_Rect2>` **get_region_rect**\ (\ )
 
-The region of the atlas texture to display. :ref:`region_enabled<class_Sprite3D_property_region_enabled>` must be ``true``.
+Vùng của texture atlas cần hiển thị. :ref:`region_enabled<class_Sprite3D_property_region_enabled>` phải là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -172,14 +172,14 @@ The region of the atlas texture to display. :ref:`region_enabled<class_Sprite3D_
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **texture** :ref:`🔗<class_Sprite3D_property_texture>`
+:ref:`Texture2D<class_Texture2D>` **texture** :ref:`🔗 <class_Sprite3D_property_texture>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_texture**\ (\ value\: :ref:`Texture2D<class_Texture2D>`\ )
 - :ref:`Texture2D<class_Texture2D>` **get_texture**\ (\ )
 
-:ref:`Texture2D<class_Texture2D>` object to draw. If :ref:`GeometryInstance3D.material_override<class_GeometryInstance3D_property_material_override>` is used, this will be overridden. The size information is still used.
+:ref:`Texture2D<class_Texture2D>` đối tượng cần vẽ. Nếu sử dụng :ref:`GeometryInstance3D.material_override<class_GeometryInstance3D_property_material_override>`, đối tượng này sẽ bị ghi đè. Thông tin kích thước vẫn được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -196,14 +196,14 @@ The region of the atlas texture to display. :ref:`region_enabled<class_Sprite3D_
 - |void| **set_vframes**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_vframes**\ (\ )
 
-The number of rows in the sprite sheet. When this property is changed, :ref:`frame<class_Sprite3D_property_frame>` is adjusted so that the same visual frame is maintained (same row and column). If that's impossible, :ref:`frame<class_Sprite3D_property_frame>` is reset to ``0``.
+Số hàng trong sprite sheet. Khi thuộc tính này thay đổi, :ref:`frame<class_Sprite3D_property_frame>` được điều chỉnh để giữ nguyên khung hình hiển thị (cùng hàng và cột). Nếu không thể thực hiện, :ref:`frame<class_Sprite3D_property_frame>` được đặt lại thành ``0``.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần override phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

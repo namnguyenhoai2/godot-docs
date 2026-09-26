@@ -10,25 +10,25 @@
 SyntaxHighlighter
 =================
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`CodeHighlighter<class_CodeHighlighter>`, :ref:`EditorSyntaxHighlighter<class_EditorSyntaxHighlighter>`
+**Được kế thừa bởi:** :ref:`CodeHighlighter<class_CodeHighlighter>`, :ref:`EditorSyntaxHighlighter<class_EditorSyntaxHighlighter>`
 
-Base class for syntax highlighters. Provides syntax highlighting data to a :ref:`TextEdit<class_TextEdit>`.
+Lớp cơ sở cho các syntax highlighter. Cung cấp dữ liệu syntax highlighting cho một :ref:`TextEdit<class_TextEdit>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Base class for syntax highlighters. Provides syntax highlighting data to a :ref:`TextEdit<class_TextEdit>`. The associated :ref:`TextEdit<class_TextEdit>` will call into the **SyntaxHighlighter** on an as-needed basis.
+Lớp cơ sở cho các syntax highlighter. Cung cấp dữ liệu syntax highlighting cho một :ref:`TextEdit<class_TextEdit>`. :ref:`TextEdit<class_TextEdit>` đi kèm sẽ gọi **SyntaxHighlighter** khi cần.
 
-\ **Note:** A **SyntaxHighlighter** instance should not be used across multiple :ref:`TextEdit<class_TextEdit>` nodes.
+\ **Lưu ý:** Không nên sử dụng một instance **SyntaxHighlighter** trên nhiều node :ref:`TextEdit<class_TextEdit>`.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -42,7 +42,7 @@ Methods
    +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                              | :ref:`clear_highlighting_cache<class_SyntaxHighlighter_method_clear_highlighting_cache>`\ (\ )                                                                   |
    +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>` | :ref:`get_line_syntax_highlighting<class_SyntaxHighlighter_method_get_line_syntax_highlighting>`\ (\ line\: :ref:`int<class_int>`\ )                             |
+   | :ref:`Dictionary<class_Dictionary>` | :ref:`get_line_syntax_highlighting<class_SyntaxHighlighter_method_get_line_syntax_highlighting>`\ (\ line\: :ref:`int<class_int>`\ )__                           |
    +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`TextEdit<class_TextEdit>`     | :ref:`get_text_edit<class_SyntaxHighlighter_method_get_text_edit>`\ (\ ) |const|                                                                                 |
    +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -55,8 +55,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả các phương thức
+---------------------
 
 .. _class_SyntaxHighlighter_private_method__clear_highlighting_cache:
 
@@ -64,7 +64,7 @@ Method Descriptions
 
 |void| **_clear_highlighting_cache**\ (\ ) |virtual| :ref:`🔗<class_SyntaxHighlighter_private_method__clear_highlighting_cache>`
 
-Virtual method which can be overridden to clear any local caches.
+Phương thức ảo có thể được ghi đè để xóa mọi bộ nhớ đệm cục bộ.
 
 .. rst-class:: classref-item-separator
 
@@ -76,9 +76,9 @@ Virtual method which can be overridden to clear any local caches.
 
 :ref:`Dictionary<class_Dictionary>` **_get_line_syntax_highlighting**\ (\ line\: :ref:`int<class_int>`\ ) |virtual| |const| :ref:`🔗<class_SyntaxHighlighter_private_method__get_line_syntax_highlighting>`
 
-Virtual method which can be overridden to return syntax highlighting data.
+Phương thức ảo có thể được ghi đè để trả về dữ liệu syntax highlighting.
 
-See :ref:`get_line_syntax_highlighting()<class_SyntaxHighlighter_method_get_line_syntax_highlighting>` for more details.
+Xem :ref:`get_line_syntax_highlighting()<class_SyntaxHighlighter_method_get_line_syntax_highlighting>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -90,7 +90,7 @@ See :ref:`get_line_syntax_highlighting()<class_SyntaxHighlighter_method_get_line
 
 |void| **_update_cache**\ (\ ) |virtual| :ref:`🔗<class_SyntaxHighlighter_private_method__update_cache>`
 
-Virtual method which can be overridden to update any local caches.
+Phương thức ảo có thể được ghi đè để cập nhật mọi bộ nhớ đệm cục bộ.
 
 .. rst-class:: classref-item-separator
 
@@ -102,9 +102,9 @@ Virtual method which can be overridden to update any local caches.
 
 |void| **clear_highlighting_cache**\ (\ ) :ref:`🔗<class_SyntaxHighlighter_method_clear_highlighting_cache>`
 
-Clears all cached syntax highlighting data.
+Xóa toàn bộ dữ liệu syntax highlighting đã được lưu trong bộ nhớ đệm.
 
-Then calls overridable method :ref:`_clear_highlighting_cache()<class_SyntaxHighlighter_private_method__clear_highlighting_cache>`.
+Sau đó gọi phương thức có thể ghi đè :ref:`_clear_highlighting_cache()<class_SyntaxHighlighter_private_method__clear_highlighting_cache>`.
 
 .. rst-class:: classref-item-separator
 
@@ -116,11 +116,11 @@ Then calls overridable method :ref:`_clear_highlighting_cache()<class_SyntaxHigh
 
 :ref:`Dictionary<class_Dictionary>` **get_line_syntax_highlighting**\ (\ line\: :ref:`int<class_int>`\ ) :ref:`🔗<class_SyntaxHighlighter_method_get_line_syntax_highlighting>`
 
-Returns the syntax highlighting data for the line at index ``line``. If the line is not cached, calls :ref:`_get_line_syntax_highlighting()<class_SyntaxHighlighter_private_method__get_line_syntax_highlighting>` first to calculate the data.
+Trả về dữ liệu syntax highlighting cho dòng tại chỉ mục ``line``. Nếu dòng chưa được lưu trong bộ nhớ đệm, trước tiên gọi :ref:`_get_line_syntax_highlighting()<class_SyntaxHighlighter_private_method__get_line_syntax_highlighting>` để tính toán dữ liệu.
 
-Each entry is a column number containing a nested :ref:`Dictionary<class_Dictionary>`. The column number denotes the start of a region, the region will end if another region is found, or at the end of the line. The nested :ref:`Dictionary<class_Dictionary>` contains the data for that region. Currently only the key ``"color"`` is supported.
+Mỗi mục là một số cột chứa một :ref:`Dictionary<class_Dictionary>` lồng nhau. Số cột biểu thị điểm bắt đầu của một vùng; vùng sẽ kết thúc khi tìm thấy một vùng khác hoặc ở cuối dòng. :ref:`Dictionary<class_Dictionary>` lồng nhau chứa dữ liệu cho vùng đó. Hiện tại chỉ hỗ trợ khóa ``"color"``.
 
-\ **Example:** Possible return value. This means columns ``0`` to ``4`` should be red, and columns ``5`` to the end of the line should be green:
+\ **Ví dụ:** Giá trị trả về có thể có. Điều này có nghĩa là các cột từ ``0`` đến ``4`` sẽ có màu đỏ, còn các cột từ ``5`` đến cuối dòng sẽ có màu xanh lá:
 
 ::
 
@@ -143,7 +143,7 @@ Each entry is a column number containing a nested :ref:`Dictionary<class_Diction
 
 :ref:`TextEdit<class_TextEdit>` **get_text_edit**\ (\ ) |const| :ref:`🔗<class_SyntaxHighlighter_method_get_text_edit>`
 
-Returns the associated :ref:`TextEdit<class_TextEdit>` node.
+Trả về node :ref:`TextEdit<class_TextEdit>` đi kèm.
 
 .. rst-class:: classref-item-separator
 
@@ -155,16 +155,16 @@ Returns the associated :ref:`TextEdit<class_TextEdit>` node.
 
 |void| **update_cache**\ (\ ) :ref:`🔗<class_SyntaxHighlighter_method_update_cache>`
 
-Clears then updates the **SyntaxHighlighter** caches. Override :ref:`_update_cache()<class_SyntaxHighlighter_private_method__update_cache>` for a callback.
+Xóa rồi cập nhật các bộ nhớ đệm **SyntaxHighlighter**. Ghi đè :ref:`_update_cache()<class_SyntaxHighlighter_private_method__update_cache>` để tạo callback.
 
-\ **Note:** This is called automatically when the associated :ref:`TextEdit<class_TextEdit>` node, updates its own cache.
+\ **Lưu ý:** Phương thức này được gọi tự động khi node :ref:`TextEdit<class_TextEdit>` đi kèm cập nhật bộ nhớ đệm của chính nó.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

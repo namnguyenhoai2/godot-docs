@@ -10,25 +10,25 @@
 RootMotionView
 ==============
 
-**Inherits:** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Editor-only helper for setting up root motion in :ref:`AnimationMixer<class_AnimationMixer>`.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-*Root motion* refers to an animation technique where a mesh's skeleton is used to give impulse to a character. When working with 3D animations, a popular technique is for animators to use the root skeleton bone to give motion to the rest of the skeleton. This allows animating characters in a way where steps actually match the floor below. It also allows precise interaction with objects during cinematics. See also :ref:`AnimationMixer<class_AnimationMixer>`.
-
-\ **Note:** **RootMotionView** is only visible in the editor. It will be hidden automatically in the running project.
+Helper chỉ dành cho Editor để thiết lập root motion trong :ref:`AnimationMixer<class_AnimationMixer>`.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
----------
+Mô tả
+-----
 
-- `Using AnimationTree - Root motion <../tutorials/animation/animation_tree.html#root-motion>`__
+*Root motion* là một kỹ thuật animation trong đó skeleton của mesh được dùng để tạo lực đẩy cho nhân vật. Khi làm việc với animation 3D, một kỹ thuật phổ biến là animator sử dụng bone gốc của skeleton để tạo chuyển động cho phần còn lại của skeleton. Điều này cho phép animate nhân vật theo cách mà các bước chân thực sự khớp với mặt sàn bên dưới. Kỹ thuật này cũng cho phép tương tác chính xác với các đối tượng trong những cảnh cinematic. Xem thêm :ref:`AnimationMixer<class_AnimationMixer>`.
+
+\ **Lưu ý:** **RootMotionView** chỉ hiển thị trong editor. Nó sẽ tự động bị ẩn khi project đang chạy.
+
+.. rst-class:: classref-introduction-group
+
+Tutorial
+--------
+
+- `Sử dụng AnimationTree - Root motion <../tutorials/animation/animation_tree.html#root-motion>`__
 
 .. rst-class:: classref-reftable-group
 
@@ -56,8 +56,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_RootMotionView_property_animation_path:
 
@@ -70,7 +70,7 @@ Property Descriptions
 - |void| **set_animation_path**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_animation_path**\ (\ )
 
-Path to an :ref:`AnimationMixer<class_AnimationMixer>` node to use as a basis for root motion.
+Đường dẫn đến một node :ref:`AnimationMixer<class_AnimationMixer>` được dùng làm cơ sở cho root motion.
 
 .. rst-class:: classref-item-separator
 
@@ -87,7 +87,7 @@ Path to an :ref:`AnimationMixer<class_AnimationMixer>` node to use as a basis fo
 - |void| **set_cell_size**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_cell_size**\ (\ )
 
-The grid's cell size in 3D units.
+Kích thước ô của grid theo đơn vị 3D.
 
 .. rst-class:: classref-item-separator
 
@@ -104,7 +104,7 @@ The grid's cell size in 3D units.
 - |void| **set_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_color**\ (\ )
 
-The grid's color.
+Màu của grid.
 
 .. rst-class:: classref-item-separator
 
@@ -121,7 +121,7 @@ The grid's color.
 - |void| **set_radius**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_radius**\ (\ )
 
-The grid's radius in 3D units. The grid's opacity will fade gradually as the distance from the origin increases until this :ref:`radius<class_RootMotionView_property_radius>` is reached.
+Bán kính của grid theo đơn vị 3D. Độ mờ của grid sẽ giảm dần khi khoảng cách từ gốc tăng lên cho đến khi đạt đến :ref:`radius<class_RootMotionView_property_radius>` này.
 
 .. rst-class:: classref-item-separator
 
@@ -138,14 +138,14 @@ The grid's radius in 3D units. The grid's opacity will fade gradually as the dis
 - |void| **set_zero_y**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_zero_y**\ (\ )
 
-If ``true``, the grid's points will all be on the same Y coordinate (*local* Y = 0). If ``false``, the points' original Y coordinate is preserved.
+Nếu ``true``, tất cả các điểm của grid sẽ có cùng tọa độ Y (*local* Y = 0). Nếu ``false``, tọa độ Y ban đầu của các điểm được giữ nguyên.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải override phương thức này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không thay đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng argument nào sau các argument được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

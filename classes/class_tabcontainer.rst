@@ -10,25 +10,25 @@
 TabContainer
 ============
 
-**Inherits:** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A container that creates a tab for each child control, displaying only the active tab's control.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Arranges child controls into a tabbed view, creating a tab for each one. The active tab's corresponding control is made visible, while all other child controls are hidden. Ignores non-control children.
-
-\ **Note:** The drawing of the clickable tabs is handled by this node; :ref:`TabBar<class_TabBar>` is not needed.
+Một container tạo một tab cho mỗi control con và chỉ hiển thị control của tab đang hoạt động.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Sắp xếp các control con thành chế độ xem dạng tab, tạo một tab cho mỗi control. Control tương ứng với tab đang hoạt động sẽ được hiển thị, trong khi tất cả control con khác đều bị ẩn. Bỏ qua các phần tử con không phải control.
+
+\ **Lưu ý:** Việc vẽ các tab có thể nhấp được do node này xử lý; không cần :ref:`TabBar<class_TabBar>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Using Containers <../tutorials/ui/gui_containers>`
+- :doc:`Sử dụng các container <../tutorials/ui/gui_containers>`
 
 .. rst-class:: classref-reftable-group
 
@@ -38,39 +38,39 @@ Properties
 .. table::
    :widths: auto
 
-   +---------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                           | :ref:`all_tabs_in_front<class_TabContainer_property_all_tabs_in_front>`                       |           |
-   +---------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                           | :ref:`clip_tabs<class_TabContainer_property_clip_tabs>`                                       | ``true``  |
-   +---------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`                             | :ref:`current_tab<class_TabContainer_property_current_tab>`                                   | ``-1``    |
-   +---------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                           | :ref:`deselect_enabled<class_TabContainer_property_deselect_enabled>`                         | ``false`` |
-   +---------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                           | :ref:`drag_to_rearrange_enabled<class_TabContainer_property_drag_to_rearrange_enabled>`       | ``false`` |
-   +---------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                           | :ref:`switch_on_drag_hover<class_TabContainer_property_switch_on_drag_hover>`                 | ``true``  |
-   +---------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
-   | :ref:`AlignmentMode<enum_TabBar_AlignmentMode>`   | :ref:`tab_alignment<class_TabContainer_property_tab_alignment>`                               | ``0``     |
-   +---------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
-   | :ref:`FocusMode<enum_Control_FocusMode>`          | :ref:`tab_focus_mode<class_TabContainer_property_tab_focus_mode>`                             | ``2``     |
-   +---------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                           | :ref:`tab_{index}/disabled<class_TabContainer_property_tab_{index}/disabled>`                 | ``false`` |
-   +---------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                           | :ref:`tab_{index}/hidden<class_TabContainer_property_tab_{index}/hidden>`                     | ``false`` |
-   +---------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
-   | :ref:`Texture2D<class_Texture2D>`                 | :ref:`tab_{index}/icon<class_TabContainer_property_tab_{index}/icon>`                         |           |
-   +---------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
-   | :ref:`String<class_String>`                       | :ref:`tab_{index}/title<class_TabContainer_property_tab_{index}/title>`                       | ``""``    |
-   +---------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
-   | :ref:`TabPosition<enum_TabContainer_TabPosition>` | :ref:`tabs_position<class_TabContainer_property_tabs_position>`                               | ``0``     |
-   +---------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`                             | :ref:`tabs_rearrange_group<class_TabContainer_property_tabs_rearrange_group>`                 | ``-1``    |
-   +---------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                           | :ref:`tabs_visible<class_TabContainer_property_tabs_visible>`                                 | ``true``  |
-   +---------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                           | :ref:`use_hidden_tabs_for_min_size<class_TabContainer_property_use_hidden_tabs_for_min_size>` | ``false`` |
-   +---------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
+   +----------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                            | :ref:`all_tabs_in_front<class_TabContainer_property_all_tabs_in_front>`                       |           |
+   +----------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                            | :ref:`clip_tabs<class_TabContainer_property_clip_tabs>`                                       | ``true``  |
+   +----------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`                              | :ref:`current_tab<class_TabContainer_property_current_tab>`                                   | ``-1``    |
+   +----------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                            | :ref:`deselect_enabled<class_TabContainer_property_deselect_enabled>`                         | ``false`` |
+   +----------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                            | :ref:`drag_to_rearrange_enabled<class_TabContainer_property_drag_to_rearrange_enabled>`       | ``false`` |
+   +----------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                            | :ref:`switch_on_drag_hover<class_TabContainer_property_switch_on_drag_hover>`                 | ``true``  |
+   +----------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
+   | :ref:`AlignmentMode <enum_TabBar_AlignmentMode>`   | :ref:`tab_alignment<class_TabContainer_property_tab_alignment>`                               | ``0``     |
+   +----------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
+   | :ref:`FocusMode <enum_Control_FocusMode>`          | :ref:`tab_focus_mode<class_TabContainer_property_tab_focus_mode>`                             | ``2``     |
+   +----------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                            | :ref:`tab_{index}/disabled <class_TabContainer_property_tab_{index}/disabled>`                | ``false`` |
+   +----------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                            | :ref:`tab_{index}/hidden <class_TabContainer_property_tab_{index}/hidden>`                    | ``false`` |
+   +----------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
+   | :ref:`Texture2D<class_Texture2D>`                  | :ref:`tab_{index}/icon <class_TabContainer_property_tab_{index}/icon>`                        |           |
+   +----------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
+   | :ref:`String<class_String>`                        | :ref:`tab_{index}/title <class_TabContainer_property_tab_{index}/title>`                      | ``""``    |
+   +----------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
+   | :ref:`TabPosition <enum_TabContainer_TabPosition>` | :ref:`tabs_position<class_TabContainer_property_tabs_position>`                               | ``0``     |
+   +----------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`                              | :ref:`tabs_rearrange_group<class_TabContainer_property_tabs_rearrange_group>`                 | ``-1``    |
+   +----------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                            | :ref:`tabs_visible<class_TabContainer_property_tabs_visible>`                                 | ``true``  |
+   +----------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                            | :ref:`use_hidden_tabs_for_min_size<class_TabContainer_property_use_hidden_tabs_for_min_size>` | ``false`` |
+   +----------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-reftable-group
 
@@ -138,8 +138,8 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Theme Properties
-----------------
+Các thuộc tính giao diện
+------------------------
 
 .. table::
    :widths: auto
@@ -214,8 +214,8 @@ Theme Properties
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_TabContainer_signal_active_tab_rearranged:
 
@@ -223,7 +223,7 @@ Signals
 
 **active_tab_rearranged**\ (\ idx_to\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TabContainer_signal_active_tab_rearranged>`
 
-Emitted when the active tab is rearranged via mouse drag. See :ref:`drag_to_rearrange_enabled<class_TabContainer_property_drag_to_rearrange_enabled>`.
+Được phát ra khi tab đang hoạt động được sắp xếp lại bằng cách kéo chuột. Xem :ref:`drag_to_rearrange_enabled<class_TabContainer_property_drag_to_rearrange_enabled>`.
 
 .. rst-class:: classref-item-separator
 
@@ -235,7 +235,7 @@ Emitted when the active tab is rearranged via mouse drag. See :ref:`drag_to_rear
 
 **pre_popup_pressed**\ (\ ) :ref:`🔗<class_TabContainer_signal_pre_popup_pressed>`
 
-Emitted when the **TabContainer**'s :ref:`Popup<class_Popup>` button is clicked. See :ref:`set_popup()<class_TabContainer_method_set_popup>` for details.
+Được phát ra khi nút :ref:`Popup<class_Popup>` của **TabContainer** được nhấp. Xem :ref:`set_popup()<class_TabContainer_method_set_popup>` để biết chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -247,7 +247,7 @@ Emitted when the **TabContainer**'s :ref:`Popup<class_Popup>` button is clicked.
 
 **tab_button_pressed**\ (\ tab\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TabContainer_signal_tab_button_pressed>`
 
-Emitted when the user clicks on the button icon on this tab.
+Được phát ra khi người dùng nhấp vào biểu tượng nút trên tab này.
 
 .. rst-class:: classref-item-separator
 
@@ -259,7 +259,7 @@ Emitted when the user clicks on the button icon on this tab.
 
 **tab_changed**\ (\ tab\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TabContainer_signal_tab_changed>`
 
-Emitted when switching to another tab.
+Được phát ra khi chuyển sang tab khác.
 
 .. rst-class:: classref-item-separator
 
@@ -271,7 +271,7 @@ Emitted when switching to another tab.
 
 **tab_clicked**\ (\ tab\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TabContainer_signal_tab_clicked>`
 
-Emitted when a tab is clicked, even if it is the current tab.
+Được phát ra khi một tab được nhấp, ngay cả khi đó là tab hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -283,7 +283,7 @@ Emitted when a tab is clicked, even if it is the current tab.
 
 **tab_hovered**\ (\ tab\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TabContainer_signal_tab_hovered>`
 
-Emitted when a tab is hovered by the mouse.
+Được phát ra khi chuột di lên một tab.
 
 .. rst-class:: classref-item-separator
 
@@ -295,7 +295,7 @@ Emitted when a tab is hovered by the mouse.
 
 **tab_selected**\ (\ tab\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TabContainer_signal_tab_selected>`
 
-Emitted when a tab is selected via click, directional input, or script, even if it is the current tab.
+Được phát ra khi một tab được chọn bằng thao tác nhấp, điều hướng hoặc script, ngay cả khi đó là tab hiện tại.
 
 .. rst-class:: classref-section-separator
 
@@ -303,14 +303,14 @@ Emitted when a tab is selected via click, directional input, or script, even if 
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_TabContainer_TabPosition:
 
 .. rst-class:: classref-enumeration
 
-enum **TabPosition**: :ref:`🔗<enum_TabContainer_TabPosition>`
+enum **TabPosition**: :ref:`🔗 <enum_TabContainer_TabPosition>`
 
 .. _class_TabContainer_constant_POSITION_TOP:
 
@@ -318,7 +318,7 @@ enum **TabPosition**: :ref:`🔗<enum_TabContainer_TabPosition>`
 
 :ref:`TabPosition<enum_TabContainer_TabPosition>` **POSITION_TOP** = ``0``
 
-Places the tab bar at the top.
+Đặt thanh tab ở trên cùng.
 
 .. _class_TabContainer_constant_POSITION_BOTTOM:
 
@@ -326,7 +326,7 @@ Places the tab bar at the top.
 
 :ref:`TabPosition<enum_TabContainer_TabPosition>` **POSITION_BOTTOM** = ``1``
 
-Places the tab bar at the bottom. The tab bar's :ref:`StyleBox<class_StyleBox>` will be flipped vertically.
+Đặt thanh tab ở dưới cùng. :ref:`StyleBox<class_StyleBox>` của thanh tab sẽ được lật theo chiều dọc.
 
 .. _class_TabContainer_constant_POSITION_MAX:
 
@@ -334,7 +334,7 @@ Places the tab bar at the bottom. The tab bar's :ref:`StyleBox<class_StyleBox>` 
 
 :ref:`TabPosition<enum_TabContainer_TabPosition>` **POSITION_MAX** = ``2``
 
-Represents the size of the :ref:`TabPosition<enum_TabContainer_TabPosition>` enum.
+Đại diện cho kích thước của kiểu liệt kê :ref:`TabPosition <enum_TabContainer_TabPosition>`.
 
 .. rst-class:: classref-section-separator
 
@@ -342,23 +342,23 @@ Represents the size of the :ref:`TabPosition<enum_TabContainer_TabPosition>` enu
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_TabContainer_property_all_tabs_in_front:
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **all_tabs_in_front** :ref:`🔗<class_TabContainer_property_all_tabs_in_front>`
+:ref:`bool<class_bool>` **all_tabs_in_front** :ref:`🔗 <class_TabContainer_property_all_tabs_in_front>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_all_tabs_in_front**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_all_tabs_in_front**\ (\ )
 
-**Deprecated:** Due to internal changes this doesn't do anything anymore, as they're always in front.
+**Deprecated:** Do các thay đổi nội bộ, thuộc tính này không còn tác dụng vì chúng luôn ở phía trước.
 
-This doesn't do anything.
+Thuộc tính này không có tác dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -375,7 +375,7 @@ This doesn't do anything.
 - |void| **set_clip_tabs**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_clip_tabs**\ (\ )
 
-If ``true``, tabs overflowing this node's width will be hidden, displaying two navigation buttons instead. Otherwise, this node's minimum size is updated so that all tabs are visible.
+Nếu ``true``, các tab vượt quá chiều rộng của node này sẽ bị ẩn và thay bằng hai nút điều hướng. Nếu không, kích thước tối thiểu của node này sẽ được cập nhật để tất cả các tab đều hiển thị.
 
 .. rst-class:: classref-item-separator
 
@@ -392,9 +392,9 @@ If ``true``, tabs overflowing this node's width will be hidden, displaying two n
 - |void| **set_current_tab**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_current_tab**\ (\ )
 
-The current tab index. When set, this index's :ref:`Control<class_Control>` node's ``visible`` property is set to ``true`` and all others are set to ``false``.
+Chỉ mục tab hiện tại. Khi được thiết lập, thuộc tính ``visible`` của node :ref:`Control<class_Control>` tại chỉ mục này sẽ được đặt thành ``true`` và tất cả các node khác được đặt thành ``false``.
 
-A value of ``-1`` means that no tab is selected.
+Giá trị ``-1`` có nghĩa là không có tab nào được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -411,9 +411,9 @@ A value of ``-1`` means that no tab is selected.
 - |void| **set_deselect_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_deselect_enabled**\ (\ )
 
-If ``true``, all tabs can be deselected so that no tab is selected. Click on the :ref:`current_tab<class_TabContainer_property_current_tab>` to deselect it.
+Nếu ``true``, có thể bỏ chọn tất cả các tab để không tab nào được chọn. Nhấp vào :ref:`current_tab<class_TabContainer_property_current_tab>` để bỏ chọn tab đó.
 
-Only the tab header will be shown if no tabs are selected.
+Chỉ tiêu đề tab được hiển thị nếu không có tab nào được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -430,7 +430,7 @@ Only the tab header will be shown if no tabs are selected.
 - |void| **set_drag_to_rearrange_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_drag_to_rearrange_enabled**\ (\ )
 
-If ``true``, tabs can be rearranged with mouse drag.
+Nếu ``true``, có thể sắp xếp lại các tab bằng cách kéo chuột.
 
 .. rst-class:: classref-item-separator
 
@@ -447,7 +447,7 @@ If ``true``, tabs can be rearranged with mouse drag.
 - |void| **set_switch_on_drag_hover**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_switch_on_drag_hover**\ (\ )
 
-If ``true``, hovering over a tab while dragging something will switch to that tab. Does not have effect when hovering another tab to rearrange.
+Nếu ``true``, khi kéo một đối tượng và di chuột qua một tab, tab đó sẽ được chuyển sang. Không có tác dụng khi di chuột qua một tab khác để sắp xếp lại.
 
 .. rst-class:: classref-item-separator
 
@@ -464,7 +464,7 @@ If ``true``, hovering over a tab while dragging something will switch to that ta
 - |void| **set_tab_alignment**\ (\ value\: :ref:`AlignmentMode<enum_TabBar_AlignmentMode>`\ )
 - :ref:`AlignmentMode<enum_TabBar_AlignmentMode>` **get_tab_alignment**\ (\ )
 
-The position at which tabs will be placed.
+Vị trí đặt các tab.
 
 .. rst-class:: classref-item-separator
 
@@ -481,7 +481,7 @@ The position at which tabs will be placed.
 - |void| **set_tab_focus_mode**\ (\ value\: :ref:`FocusMode<enum_Control_FocusMode>`\ )
 - :ref:`FocusMode<enum_Control_FocusMode>` **get_tab_focus_mode**\ (\ )
 
-The focus access mode for the internal :ref:`TabBar<class_TabBar>` node.
+Chế độ truy cập focus cho node :ref:`TabBar<class_TabBar>` nội bộ.
 
 .. rst-class:: classref-item-separator
 
@@ -491,11 +491,11 @@ The focus access mode for the internal :ref:`TabBar<class_TabBar>` node.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **tab_{index}/disabled** = ``false`` :ref:`🔗<class_TabContainer_property_tab_{index}/disabled>`
+:ref:`bool<class_bool>` **tab_{index}/disabled** = ``false`` :ref:`🔗 <class_TabContainer_property_tab_{index}/disabled>`
 
-If ``true``, the tab at ``index`` is disabled.
+Nếu ``true``, tab tại ``index`` sẽ bị vô hiệu hóa.
 
-\ **Note:** ``index`` is a value in the ``0 .. get_tab_count() - 1`` range.
+\ **Note:** ``index`` là một giá trị trong phạm vi ``0 .. get_tab_count() - 1``.
 
 .. rst-class:: classref-item-separator
 
@@ -505,11 +505,11 @@ If ``true``, the tab at ``index`` is disabled.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **tab_{index}/hidden** = ``false`` :ref:`🔗<class_TabContainer_property_tab_{index}/hidden>`
+:ref:`bool<class_bool>` **tab_{index}/hidden** = ``false`` :ref:`🔗 <class_TabContainer_property_tab_{index}/hidden>`
 
-If ``true``, the tab at ``index`` is hidden.
+Nếu ``true``, tab tại ``index`` sẽ bị ẩn.
 
-\ **Note:** ``index`` is a value in the ``0 .. get_tab_count() - 1`` range.
+\ **Note:** ``index`` là một giá trị trong phạm vi ``0 .. get_tab_count() - 1``.
 
 .. rst-class:: classref-item-separator
 
@@ -519,11 +519,11 @@ If ``true``, the tab at ``index`` is hidden.
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **tab_{index}/icon** :ref:`🔗<class_TabContainer_property_tab_{index}/icon>`
+:ref:`Texture2D<class_Texture2D>` **tab_{index}/icon** :ref:`🔗 <class_TabContainer_property_tab_{index}/icon>`
 
-The title text of the tab at ``index``.
+Văn bản tiêu đề của tab tại ``index``.
 
-\ **Note:** ``index`` is a value in the ``0 .. get_tab_count() - 1`` range.
+\ **Note:** ``index`` là một giá trị trong phạm vi ``0 .. get_tab_count() - 1``.
 
 .. rst-class:: classref-item-separator
 
@@ -533,11 +533,11 @@ The title text of the tab at ``index``.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **tab_{index}/title** = ``""`` :ref:`🔗<class_TabContainer_property_tab_{index}/title>`
+:ref:`String<class_String>` **tab_{index}/title** = ``""`` :ref:`🔗 <class_TabContainer_property_tab_{index}/title>`
 
-The tooltip text of the tab at ``index``.
+Văn bản tooltip của tab tại ``index``.
 
-\ **Note:** ``index`` is a value in the ``0 .. get_tab_count() - 1`` range.
+\ **Note:** ``index`` là một giá trị trong phạm vi ``0 .. get_tab_count() - 1``.
 
 .. rst-class:: classref-item-separator
 
@@ -554,7 +554,7 @@ The tooltip text of the tab at ``index``.
 - |void| **set_tabs_position**\ (\ value\: :ref:`TabPosition<enum_TabContainer_TabPosition>`\ )
 - :ref:`TabPosition<enum_TabContainer_TabPosition>` **get_tabs_position**\ (\ )
 
-The horizontal alignment of the tabs.
+Căn chỉnh theo chiều ngang của các tab.
 
 .. rst-class:: classref-item-separator
 
@@ -571,9 +571,9 @@ The horizontal alignment of the tabs.
 - |void| **set_tabs_rearrange_group**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_tabs_rearrange_group**\ (\ )
 
-**TabContainer**\ s with the same rearrange group ID will allow dragging the tabs between them. Enable drag with :ref:`drag_to_rearrange_enabled<class_TabContainer_property_drag_to_rearrange_enabled>`.
+**TabContainer**\ s có cùng ID nhóm sắp xếp lại sẽ cho phép kéo các tab giữa chúng. Bật thao tác kéo bằng :ref:`drag_to_rearrange_enabled<class_TabContainer_property_drag_to_rearrange_enabled>`.
 
-Setting this to ``-1`` will disable rearranging between **TabContainer**\ s.
+Đặt giá trị này thành ``-1`` sẽ vô hiệu hóa việc sắp xếp lại giữa các **TabContainer**\ s.
 
 .. rst-class:: classref-item-separator
 
@@ -590,7 +590,7 @@ Setting this to ``-1`` will disable rearranging between **TabContainer**\ s.
 - |void| **set_tabs_visible**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **are_tabs_visible**\ (\ )
 
-If ``true``, tabs are visible. If ``false``, tabs' content and titles are hidden.
+Nếu ``true``, các tab sẽ hiển thị. Nếu ``false``, nội dung và tiêu đề của các tab sẽ bị ẩn.
 
 .. rst-class:: classref-item-separator
 
@@ -607,7 +607,7 @@ If ``true``, tabs are visible. If ``false``, tabs' content and titles are hidden
 - |void| **set_use_hidden_tabs_for_min_size**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_use_hidden_tabs_for_min_size**\ (\ )
 
-If ``true``, child :ref:`Control<class_Control>` nodes that are hidden have their minimum size take into account in the total, instead of only the currently visible one.
+Nếu ``true``, kích thước tối thiểu của các node :ref:`Control<class_Control>` con đang bị ẩn sẽ được tính vào tổng kích thước, thay vì chỉ tính node hiện đang hiển thị.
 
 .. rst-class:: classref-section-separator
 
@@ -615,8 +615,8 @@ If ``true``, child :ref:`Control<class_Control>` nodes that are hidden have thei
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_TabContainer_method_get_current_tab_control:
 
@@ -624,7 +624,7 @@ Method Descriptions
 
 :ref:`Control<class_Control>` **get_current_tab_control**\ (\ ) |const| :ref:`🔗<class_TabContainer_method_get_current_tab_control>`
 
-Returns the child :ref:`Control<class_Control>` node located at the active tab index.
+Trả về node :ref:`Control<class_Control>` con nằm tại chỉ mục tab đang hoạt động.
 
 .. rst-class:: classref-item-separator
 
@@ -636,9 +636,9 @@ Returns the child :ref:`Control<class_Control>` node located at the active tab i
 
 :ref:`Popup<class_Popup>` **get_popup**\ (\ ) |const| :ref:`🔗<class_TabContainer_method_get_popup>`
 
-Returns the :ref:`Popup<class_Popup>` node instance if one has been set already with :ref:`set_popup()<class_TabContainer_method_set_popup>`.
+Trả về thực thể node :ref:`Popup<class_Popup>` nếu node này đã được thiết lập bằng :ref:`set_popup()<class_TabContainer_method_set_popup>`.
 
-\ **Warning:** This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their :ref:`Window.visible<class_Window_property_visible>` property.
+\ **Warning:** Đây là node nội bộ bắt buộc; việc xóa và giải phóng node này có thể gây crash. Nếu muốn ẩn node này hoặc bất kỳ node con nào của nó, hãy sử dụng thuộc tính :ref:`Window.visible<class_Window_property_visible>` tương ứng.
 
 .. rst-class:: classref-item-separator
 
@@ -650,7 +650,7 @@ Returns the :ref:`Popup<class_Popup>` node instance if one has been set already 
 
 :ref:`int<class_int>` **get_previous_tab**\ (\ ) |const| :ref:`🔗<class_TabContainer_method_get_previous_tab>`
 
-Returns the previously active tab index.
+Trả về chỉ mục tab trước đó đang hoạt động.
 
 .. rst-class:: classref-item-separator
 
@@ -662,9 +662,9 @@ Returns the previously active tab index.
 
 :ref:`TabBar<class_TabBar>` **get_tab_bar**\ (\ ) |const| :ref:`🔗<class_TabContainer_method_get_tab_bar>`
 
-Returns the :ref:`TabBar<class_TabBar>` contained in this container.
+Trả về :ref:`TabBar<class_TabBar>` được chứa trong container này.
 
-\ **Warning:** This is a required internal node, removing and freeing it or editing its tabs may cause a crash. If you wish to edit the tabs, use the methods provided in **TabContainer**.
+\ **Warning:** Đây là node nội bộ bắt buộc; việc xóa và giải phóng node này hoặc chỉnh sửa các tab của nó có thể gây crash. Nếu muốn chỉnh sửa các tab, hãy sử dụng các phương thức được cung cấp trong **TabContainer**.
 
 .. rst-class:: classref-item-separator
 
@@ -676,7 +676,7 @@ Returns the :ref:`TabBar<class_TabBar>` contained in this container.
 
 :ref:`Texture2D<class_Texture2D>` **get_tab_button_icon**\ (\ tab_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TabContainer_method_get_tab_button_icon>`
 
-Returns the button icon from the tab at index ``tab_idx``.
+Trả về biểu tượng nút từ tab tại chỉ mục ``tab_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -688,7 +688,7 @@ Returns the button icon from the tab at index ``tab_idx``.
 
 :ref:`Control<class_Control>` **get_tab_control**\ (\ tab_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TabContainer_method_get_tab_control>`
 
-Returns the :ref:`Control<class_Control>` node from the tab at index ``tab_idx``.
+Trả về node :ref:`Control<class_Control>` từ tab tại chỉ mục ``tab_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -700,7 +700,7 @@ Returns the :ref:`Control<class_Control>` node from the tab at index ``tab_idx``
 
 :ref:`int<class_int>` **get_tab_count**\ (\ ) |const| :ref:`🔗<class_TabContainer_method_get_tab_count>`
 
-Returns the number of tabs.
+Trả về số lượng tab.
 
 .. rst-class:: classref-item-separator
 
@@ -712,7 +712,7 @@ Returns the number of tabs.
 
 :ref:`Texture2D<class_Texture2D>` **get_tab_icon**\ (\ tab_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TabContainer_method_get_tab_icon>`
 
-Returns the :ref:`Texture2D<class_Texture2D>` for the tab at index ``tab_idx`` or ``null`` if the tab has no :ref:`Texture2D<class_Texture2D>`.
+Trả về :ref:`Texture2D<class_Texture2D>` của tab tại chỉ mục ``tab_idx``, hoặc ``null`` nếu tab không có :ref:`Texture2D<class_Texture2D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -724,7 +724,7 @@ Returns the :ref:`Texture2D<class_Texture2D>` for the tab at index ``tab_idx`` o
 
 :ref:`int<class_int>` **get_tab_icon_max_width**\ (\ tab_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TabContainer_method_get_tab_icon_max_width>`
 
-Returns the maximum allowed width of the icon for the tab at index ``tab_idx``.
+Trả về chiều rộng tối đa cho phép của biểu tượng cho tab tại chỉ mục ``tab_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -736,7 +736,7 @@ Returns the maximum allowed width of the icon for the tab at index ``tab_idx``.
 
 :ref:`int<class_int>` **get_tab_idx_at_point**\ (\ point\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_TabContainer_method_get_tab_idx_at_point>`
 
-Returns the index of the tab at local coordinates ``point``. Returns ``-1`` if the point is outside the control boundaries or if there's no tab at the queried position.
+Trả về chỉ mục của tab tại tọa độ cục bộ ``point``. Trả về ``-1`` nếu điểm nằm ngoài ranh giới của control hoặc không có tab nào tại vị trí được truy vấn.
 
 .. rst-class:: classref-item-separator
 
@@ -748,7 +748,7 @@ Returns the index of the tab at local coordinates ``point``. Returns ``-1`` if t
 
 :ref:`int<class_int>` **get_tab_idx_from_control**\ (\ control\: :ref:`Control<class_Control>`\ ) |const| :ref:`🔗<class_TabContainer_method_get_tab_idx_from_control>`
 
-Returns the index of the tab tied to the given ``control``. The control must be a child of the **TabContainer**.
+Trả về chỉ mục của tab được liên kết với ``control``. Control phải là phần tử con của **TabContainer**.
 
 .. rst-class:: classref-item-separator
 
@@ -760,7 +760,7 @@ Returns the index of the tab tied to the given ``control``. The control must be 
 
 :ref:`Variant<class_Variant>` **get_tab_metadata**\ (\ tab_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TabContainer_method_get_tab_metadata>`
 
-Returns the metadata value set to the tab at index ``tab_idx`` using :ref:`set_tab_metadata()<class_TabContainer_method_set_tab_metadata>`. If no metadata was previously set, returns ``null`` by default.
+Trả về giá trị metadata được đặt cho tab tại chỉ mục ``tab_idx`` bằng :ref:`set_tab_metadata()<class_TabContainer_method_set_tab_metadata>`. Nếu trước đó chưa đặt metadata, mặc định trả về ``null``.
 
 .. rst-class:: classref-item-separator
 
@@ -772,7 +772,7 @@ Returns the metadata value set to the tab at index ``tab_idx`` using :ref:`set_t
 
 :ref:`String<class_String>` **get_tab_title**\ (\ tab_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TabContainer_method_get_tab_title>`
 
-Returns the title of the tab at index ``tab_idx``. Tab titles default to the name of the indexed child node, but this can be overridden with :ref:`set_tab_title()<class_TabContainer_method_set_tab_title>`.
+Trả về tiêu đề của tab tại chỉ mục ``tab_idx``. Theo mặc định, tiêu đề tab là tên của node con được lập chỉ mục, nhưng có thể ghi đè bằng :ref:`set_tab_title()<class_TabContainer_method_set_tab_title>`.
 
 .. rst-class:: classref-item-separator
 
@@ -784,7 +784,7 @@ Returns the title of the tab at index ``tab_idx``. Tab titles default to the nam
 
 :ref:`String<class_String>` **get_tab_tooltip**\ (\ tab_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TabContainer_method_get_tab_tooltip>`
 
-Returns the tooltip text of the tab at index ``tab_idx``.
+Trả về văn bản chú giải của tab tại chỉ mục ``tab_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -796,7 +796,7 @@ Returns the tooltip text of the tab at index ``tab_idx``.
 
 :ref:`bool<class_bool>` **is_tab_disabled**\ (\ tab_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TabContainer_method_is_tab_disabled>`
 
-Returns ``true`` if the tab at index ``tab_idx`` is disabled.
+Trả về ``true`` nếu tab tại chỉ mục ``tab_idx`` bị vô hiệu hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -808,7 +808,7 @@ Returns ``true`` if the tab at index ``tab_idx`` is disabled.
 
 :ref:`bool<class_bool>` **is_tab_hidden**\ (\ tab_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TabContainer_method_is_tab_hidden>`
 
-Returns ``true`` if the tab at index ``tab_idx`` is hidden.
+Trả về ``true`` nếu tab tại chỉ mục ``tab_idx`` bị ẩn.
 
 .. rst-class:: classref-item-separator
 
@@ -820,7 +820,7 @@ Returns ``true`` if the tab at index ``tab_idx`` is hidden.
 
 :ref:`bool<class_bool>` **select_next_available**\ (\ ) :ref:`🔗<class_TabContainer_method_select_next_available>`
 
-Selects the first available tab with greater index than the currently selected. Returns ``true`` if tab selection changed.
+Chọn tab khả dụng đầu tiên có chỉ mục lớn hơn tab hiện đang được chọn. Trả về ``true`` nếu lựa chọn tab đã thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -832,7 +832,7 @@ Selects the first available tab with greater index than the currently selected. 
 
 :ref:`bool<class_bool>` **select_previous_available**\ (\ ) :ref:`🔗<class_TabContainer_method_select_previous_available>`
 
-Selects the first available tab with lower index than the currently selected. Returns ``true`` if tab selection changed.
+Chọn tab khả dụng đầu tiên có chỉ mục nhỏ hơn tab hiện đang được chọn. Trả về ``true`` nếu lựa chọn tab đã thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -856,7 +856,7 @@ If set on a :ref:`Popup<class_Popup>` node instance, a popup menu icon appears i
 
 |void| **set_tab_button_icon**\ (\ tab_idx\: :ref:`int<class_int>`, icon\: :ref:`Texture2D<class_Texture2D>`\ ) :ref:`🔗<class_TabContainer_method_set_tab_button_icon>`
 
-Sets the button icon from the tab at index ``tab_idx``.
+Đặt icon của nút từ tab tại chỉ mục ``tab_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -868,7 +868,7 @@ Sets the button icon from the tab at index ``tab_idx``.
 
 |void| **set_tab_disabled**\ (\ tab_idx\: :ref:`int<class_int>`, disabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_TabContainer_method_set_tab_disabled>`
 
-If ``disabled`` is ``true``, disables the tab at index ``tab_idx``, making it non-interactable.
+Nếu ``disabled`` là ``true``, vô hiệu hóa tab tại chỉ mục ``tab_idx``, khiến tab này không thể tương tác.
 
 .. rst-class:: classref-item-separator
 
@@ -880,7 +880,7 @@ If ``disabled`` is ``true``, disables the tab at index ``tab_idx``, making it no
 
 |void| **set_tab_hidden**\ (\ tab_idx\: :ref:`int<class_int>`, hidden\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_TabContainer_method_set_tab_hidden>`
 
-If ``hidden`` is ``true``, hides the tab at index ``tab_idx``, making it disappear from the tab area.
+Nếu ``hidden`` là ``true``, ẩn tab tại chỉ mục ``tab_idx``, khiến tab này biến mất khỏi vùng tab.
 
 .. rst-class:: classref-item-separator
 
@@ -892,7 +892,7 @@ If ``hidden`` is ``true``, hides the tab at index ``tab_idx``, making it disappe
 
 |void| **set_tab_icon**\ (\ tab_idx\: :ref:`int<class_int>`, icon\: :ref:`Texture2D<class_Texture2D>`\ ) :ref:`🔗<class_TabContainer_method_set_tab_icon>`
 
-Sets an icon for the tab at index ``tab_idx``.
+Đặt icon cho tab tại chỉ mục ``tab_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -904,7 +904,7 @@ Sets an icon for the tab at index ``tab_idx``.
 
 |void| **set_tab_icon_max_width**\ (\ tab_idx\: :ref:`int<class_int>`, width\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TabContainer_method_set_tab_icon_max_width>`
 
-Sets the maximum allowed width of the icon for the tab at index ``tab_idx``. This limit is applied on top of the default size of the icon and on top of :ref:`icon_max_width<class_TabContainer_theme_constant_icon_max_width>`. The height is adjusted according to the icon's ratio.
+Đặt chiều rộng tối đa cho phép của icon của tab tại chỉ mục ``tab_idx``. Giới hạn này được áp dụng ngoài kích thước mặc định của icon và ngoài :ref:`icon_max_width<class_TabContainer_theme_constant_icon_max_width>`. Chiều cao được điều chỉnh theo tỷ lệ của icon.
 
 .. rst-class:: classref-item-separator
 
@@ -916,7 +916,7 @@ Sets the maximum allowed width of the icon for the tab at index ``tab_idx``. Thi
 
 |void| **set_tab_metadata**\ (\ tab_idx\: :ref:`int<class_int>`, metadata\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_TabContainer_method_set_tab_metadata>`
 
-Sets the metadata value for the tab at index ``tab_idx``, which can be retrieved later using :ref:`get_tab_metadata()<class_TabContainer_method_get_tab_metadata>`.
+Đặt giá trị metadata cho tab tại chỉ mục ``tab_idx``, giá trị này có thể được truy xuất sau bằng :ref:`get_tab_metadata()<class_TabContainer_method_get_tab_metadata>`.
 
 .. rst-class:: classref-item-separator
 
@@ -928,7 +928,7 @@ Sets the metadata value for the tab at index ``tab_idx``, which can be retrieved
 
 |void| **set_tab_title**\ (\ tab_idx\: :ref:`int<class_int>`, title\: :ref:`String<class_String>`\ ) :ref:`🔗<class_TabContainer_method_set_tab_title>`
 
-Sets a custom title for the tab at index ``tab_idx`` (tab titles default to the name of the indexed child node). Set it back to the child's name to make the tab default to it again.
+Đặt tiêu đề tùy chỉnh cho tab tại chỉ mục ``tab_idx`` (theo mặc định, tiêu đề tab là tên của node con được lập chỉ mục). Đặt lại thành tên của node con để tab trở về giá trị mặc định.
 
 .. rst-class:: classref-item-separator
 
@@ -940,9 +940,9 @@ Sets a custom title for the tab at index ``tab_idx`` (tab titles default to the 
 
 |void| **set_tab_tooltip**\ (\ tab_idx\: :ref:`int<class_int>`, tooltip\: :ref:`String<class_String>`\ ) :ref:`🔗<class_TabContainer_method_set_tab_tooltip>`
 
-Sets a custom tooltip text for tab at index ``tab_idx``.
+Đặt văn bản chú giải tùy chỉnh cho tab tại chỉ mục ``tab_idx``.
 
-\ **Note:** By default, if the ``tooltip`` is empty and the tab text is truncated (not all characters fit into the tab), the title will be displayed as a tooltip. To hide the tooltip, assign ``" "`` as the ``tooltip`` text.
+\ **Lưu ý:** Theo mặc định, nếu ``tooltip`` trống và văn bản tab bị cắt ngắn (không phải tất cả ký tự đều vừa trong tab), tiêu đề sẽ được hiển thị dưới dạng chú giải. Để ẩn chú giải, hãy gán ``" "`` làm văn bản ``tooltip``.
 
 .. rst-class:: classref-section-separator
 
@@ -950,8 +950,8 @@ Sets a custom tooltip text for tab at index ``tab_idx``.
 
 .. rst-class:: classref-descriptions-group
 
-Theme Property Descriptions
----------------------------
+Mô tả thuộc tính Theme
+----------------------
 
 .. _class_TabContainer_theme_color_drop_mark_color:
 
@@ -959,7 +959,7 @@ Theme Property Descriptions
 
 :ref:`Color<class_Color>` **drop_mark_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_TabContainer_theme_color_drop_mark_color>`
 
-Modulation color for the :ref:`drop_mark<class_TabContainer_theme_icon_drop_mark>` icon.
+Màu điều biến cho icon :ref:`drop_mark<class_TabContainer_theme_icon_drop_mark>`.
 
 .. rst-class:: classref-item-separator
 
@@ -971,7 +971,7 @@ Modulation color for the :ref:`drop_mark<class_TabContainer_theme_icon_drop_mark
 
 :ref:`Color<class_Color>` **font_disabled_color** = ``Color(0.875, 0.875, 0.875, 0.5)`` :ref:`🔗<class_TabContainer_theme_color_font_disabled_color>`
 
-Font color of disabled tabs.
+Màu font của các tab bị vô hiệu hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -983,7 +983,7 @@ Font color of disabled tabs.
 
 :ref:`Color<class_Color>` **font_hovered_color** = ``Color(0.95, 0.95, 0.95, 1)`` :ref:`🔗<class_TabContainer_theme_color_font_hovered_color>`
 
-Font color of the currently hovered tab. Does not apply to the selected tab.
+Màu font của tab hiện đang được di chuột qua. Không áp dụng cho tab đang được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -995,7 +995,7 @@ Font color of the currently hovered tab. Does not apply to the selected tab.
 
 :ref:`Color<class_Color>` **font_outline_color** = ``Color(0, 0, 0, 1)`` :ref:`🔗<class_TabContainer_theme_color_font_outline_color>`
 
-The tint of text outline of the tab name.
+Màu pha của đường viền văn bản của tên tab.
 
 .. rst-class:: classref-item-separator
 
@@ -1007,7 +1007,7 @@ The tint of text outline of the tab name.
 
 :ref:`Color<class_Color>` **font_selected_color** = ``Color(0.95, 0.95, 0.95, 1)`` :ref:`🔗<class_TabContainer_theme_color_font_selected_color>`
 
-Font color of the currently selected tab.
+Màu font của tab hiện đang được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -1019,7 +1019,7 @@ Font color of the currently selected tab.
 
 :ref:`Color<class_Color>` **font_unselected_color** = ``Color(0.7, 0.7, 0.7, 1)`` :ref:`🔗<class_TabContainer_theme_color_font_unselected_color>`
 
-Font color of the other, unselected tabs.
+Màu font của các tab còn lại, chưa được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -1031,7 +1031,7 @@ Font color of the other, unselected tabs.
 
 :ref:`Color<class_Color>` **icon_disabled_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_TabContainer_theme_color_icon_disabled_color>`
 
-Icon color of disabled tabs.
+Màu icon của các tab bị vô hiệu hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -1043,7 +1043,7 @@ Icon color of disabled tabs.
 
 :ref:`Color<class_Color>` **icon_hovered_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_TabContainer_theme_color_icon_hovered_color>`
 
-Icon color of the currently hovered tab. Does not apply to the selected tab.
+Màu icon của tab hiện đang được di chuột qua. Không áp dụng cho tab đang được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -1055,7 +1055,7 @@ Icon color of the currently hovered tab. Does not apply to the selected tab.
 
 :ref:`Color<class_Color>` **icon_selected_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_TabContainer_theme_color_icon_selected_color>`
 
-Icon color of the currently selected tab.
+Màu icon của tab hiện đang được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -1067,7 +1067,7 @@ Icon color of the currently selected tab.
 
 :ref:`Color<class_Color>` **icon_unselected_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_TabContainer_theme_color_icon_unselected_color>`
 
-Icon color of the other, unselected tabs.
+Màu icon của các tab còn lại, chưa được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -1079,7 +1079,7 @@ Icon color of the other, unselected tabs.
 
 :ref:`int<class_int>` **icon_max_width** = ``0`` :ref:`🔗<class_TabContainer_theme_constant_icon_max_width>`
 
-The maximum allowed width of the tab's icon. This limit is applied on top of the default size of the icon, but before the value set with :ref:`TabBar.set_tab_icon_max_width()<class_TabBar_method_set_tab_icon_max_width>`. The height is adjusted according to the icon's ratio.
+Chiều rộng tối đa cho phép của icon của tab. Giới hạn này được áp dụng ngoài kích thước mặc định của icon, nhưng trước giá trị được đặt bằng :ref:`TabBar.set_tab_icon_max_width()<class_TabBar_method_set_tab_icon_max_width>`. Chiều cao được điều chỉnh theo tỷ lệ của icon.
 
 .. rst-class:: classref-item-separator
 
@@ -1091,7 +1091,7 @@ The maximum allowed width of the tab's icon. This limit is applied on top of the
 
 :ref:`int<class_int>` **icon_separation** = ``4`` :ref:`🔗<class_TabContainer_theme_constant_icon_separation>`
 
-Space between tab's name and its icon.
+Khoảng cách giữa tên tab và icon của tab.
 
 .. rst-class:: classref-item-separator
 
@@ -1103,9 +1103,9 @@ Space between tab's name and its icon.
 
 :ref:`int<class_int>` **outline_size** = ``0`` :ref:`🔗<class_TabContainer_theme_constant_outline_size>`
 
-The size of the tab text outline.
+Kích thước đường viền văn bản của tab.
 
-\ **Note:** If using a font with :ref:`FontFile.multichannel_signed_distance_field<class_FontFile_property_multichannel_signed_distance_field>` enabled, its :ref:`FontFile.msdf_pixel_range<class_FontFile_property_msdf_pixel_range>` must be set to at least *twice* the value of :ref:`outline_size<class_TabContainer_theme_constant_outline_size>` for outline rendering to look correct. Otherwise, the outline may appear to be cut off earlier than intended.
+\ **Lưu ý:** Nếu sử dụng font có bật :ref:`FontFile.multichannel_signed_distance_field<class_FontFile_property_multichannel_signed_distance_field>`, :ref:`FontFile.msdf_pixel_range<class_FontFile_property_msdf_pixel_range>` của font đó phải được đặt ít nhất bằng *hai lần* giá trị của :ref:`outline_size<class_TabContainer_theme_constant_outline_size>` để việc hiển thị đường viền chính xác. Nếu không, đường viền có thể bị cắt sớm hơn dự kiến.
 
 .. rst-class:: classref-item-separator
 
@@ -1117,9 +1117,9 @@ The size of the tab text outline.
 
 :ref:`int<class_int>` **side_margin** = ``8`` :ref:`🔗<class_TabContainer_theme_constant_side_margin>`
 
-The space at the left or right edges of the tab bar, accordingly with the current :ref:`tab_alignment<class_TabContainer_property_tab_alignment>`.
+Khoảng trống ở mép trái hoặc phải của thanh tab, tương ứng với :ref:`tab_alignment<class_TabContainer_property_tab_alignment>` hiện tại.
 
-The margin is ignored with :ref:`TabBar.ALIGNMENT_RIGHT<class_TabBar_constant_ALIGNMENT_RIGHT>` if the tabs are clipped (see :ref:`clip_tabs<class_TabContainer_property_clip_tabs>`) or a popup has been set (see :ref:`set_popup()<class_TabContainer_method_set_popup>`). The margin is always ignored with :ref:`TabBar.ALIGNMENT_CENTER<class_TabBar_constant_ALIGNMENT_CENTER>`.
+Lề bị bỏ qua với :ref:`TabBar.ALIGNMENT_RIGHT<class_TabBar_constant_ALIGNMENT_RIGHT>` nếu các tab bị cắt (xem :ref:`clip_tabs<class_TabContainer_property_clip_tabs>`) hoặc đã đặt popup (xem :ref:`set_popup()<class_TabContainer_method_set_popup>`). Lề luôn bị bỏ qua với :ref:`TabBar.ALIGNMENT_CENTER<class_TabBar_constant_ALIGNMENT_CENTER>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1131,7 +1131,7 @@ The margin is ignored with :ref:`TabBar.ALIGNMENT_RIGHT<class_TabBar_constant_AL
 
 :ref:`int<class_int>` **tab_separation** = ``0`` :ref:`🔗<class_TabContainer_theme_constant_tab_separation>`
 
-The space between tabs in the tab bar.
+Khoảng cách giữa các tab trong thanh tab.
 
 .. rst-class:: classref-item-separator
 
@@ -1141,9 +1141,9 @@ The space between tabs in the tab bar.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Font<class_Font>` **font** :ref:`🔗<class_TabContainer_theme_font_font>`
+:ref:`Font<class_Font>` **font** :ref:`🔗 <class_TabContainer_theme_font_font>`
 
-The font used to draw tab names.
+Font được dùng để vẽ tên tab.
 
 .. rst-class:: classref-item-separator
 
@@ -1153,9 +1153,9 @@ The font used to draw tab names.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`int<class_int>` **font_size** :ref:`🔗<class_TabContainer_theme_font_size_font_size>`
+:ref:`int<class_int>` **font_size** :ref:`🔗 <class_TabContainer_theme_font_size_font_size>`
 
-Font size of the tab names.
+Cỡ font của tên tab.
 
 .. rst-class:: classref-item-separator
 
@@ -1165,9 +1165,9 @@ Font size of the tab names.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **decrement** :ref:`🔗<class_TabContainer_theme_icon_decrement>`
+:ref:`Texture2D<class_Texture2D>` **decrement** :ref:`🔗 <class_TabContainer_theme_icon_decrement>`
 
-Icon for the left arrow button that appears when there are too many tabs to fit in the container width. When the button is disabled (i.e. the first tab is visible), it appears semi-transparent.
+Icon cho nút mũi tên trái xuất hiện khi có quá nhiều tab không thể vừa với chiều rộng của vùng chứa. Khi nút bị vô hiệu hóa (tức là tab đầu tiên đang hiển thị), nút sẽ hiển thị bán trong suốt.
 
 .. rst-class:: classref-item-separator
 
@@ -1177,9 +1177,9 @@ Icon for the left arrow button that appears when there are too many tabs to fit 
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **decrement_highlight** :ref:`🔗<class_TabContainer_theme_icon_decrement_highlight>`
+:ref:`Texture2D<class_Texture2D>` **decrement_highlight** :ref:`🔗 <class_TabContainer_theme_icon_decrement_highlight>`
 
-Icon for the left arrow button that appears when there are too many tabs to fit in the container width. Used when the button is being hovered with the cursor.
+Icon cho nút mũi tên trái xuất hiện khi có quá nhiều tab không thể vừa với chiều rộng của vùng chứa. Được sử dụng khi con trỏ đang di chuột qua nút.
 
 .. rst-class:: classref-item-separator
 
@@ -1189,9 +1189,9 @@ Icon for the left arrow button that appears when there are too many tabs to fit 
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **drop_mark** :ref:`🔗<class_TabContainer_theme_icon_drop_mark>`
+:ref:`Texture2D<class_Texture2D>` **drop_mark** :ref:`🔗 <class_TabContainer_theme_icon_drop_mark>`
 
-Icon shown to indicate where a dragged tab will be dropped (see :ref:`drag_to_rearrange_enabled<class_TabContainer_property_drag_to_rearrange_enabled>`).
+Icon hiển thị để cho biết vị trí tab được kéo sẽ được thả (xem :ref:`drag_to_rearrange_enabled<class_TabContainer_property_drag_to_rearrange_enabled>`).
 
 .. rst-class:: classref-item-separator
 
@@ -1201,9 +1201,9 @@ Icon shown to indicate where a dragged tab will be dropped (see :ref:`drag_to_re
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **increment** :ref:`🔗<class_TabContainer_theme_icon_increment>`
+:ref:`Texture2D<class_Texture2D>` **increment** :ref:`🔗 <class_TabContainer_theme_icon_increment>`
 
-Icon for the right arrow button that appears when there are too many tabs to fit in the container width. When the button is disabled (i.e. the last tab is visible) it appears semi-transparent.
+Icon cho nút mũi tên phải xuất hiện khi có quá nhiều tab không thể vừa với chiều rộng của vùng chứa. Khi nút bị vô hiệu hóa (tức là tab cuối cùng đang hiển thị), nút sẽ hiển thị bán trong suốt.
 
 .. rst-class:: classref-item-separator
 
@@ -1213,9 +1213,9 @@ Icon for the right arrow button that appears when there are too many tabs to fit
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **increment_highlight** :ref:`🔗<class_TabContainer_theme_icon_increment_highlight>`
+:ref:`Texture2D<class_Texture2D>` **increment_highlight** :ref:`🔗 <class_TabContainer_theme_icon_increment_highlight>`
 
-Icon for the right arrow button that appears when there are too many tabs to fit in the container width. Used when the button is being hovered with the cursor.
+Icon cho nút mũi tên phải xuất hiện khi có quá nhiều tab không thể vừa với chiều rộng của vùng chứa. Được sử dụng khi con trỏ đang di chuột qua nút.
 
 .. rst-class:: classref-item-separator
 
@@ -1225,9 +1225,9 @@ Icon for the right arrow button that appears when there are too many tabs to fit
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **menu** :ref:`🔗<class_TabContainer_theme_icon_menu>`
+:ref:`Texture2D<class_Texture2D>` **menu** :ref:`🔗 <class_TabContainer_theme_icon_menu>`
 
-The icon for the menu button (see :ref:`set_popup()<class_TabContainer_method_set_popup>`).
+Icon cho nút menu (xem :ref:`set_popup()<class_TabContainer_method_set_popup>`).
 
 .. rst-class:: classref-item-separator
 
@@ -1237,9 +1237,9 @@ The icon for the menu button (see :ref:`set_popup()<class_TabContainer_method_se
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **menu_highlight** :ref:`🔗<class_TabContainer_theme_icon_menu_highlight>`
+:ref:`Texture2D<class_Texture2D>` **menu_highlight** :ref:`🔗 <class_TabContainer_theme_icon_menu_highlight>`
 
-The icon for the menu button (see :ref:`set_popup()<class_TabContainer_method_set_popup>`) when it's being hovered with the cursor.
+Biểu tượng của nút menu (xem :ref:`set_popup()<class_TabContainer_method_set_popup>`) khi con trỏ đang di chuột qua nó.
 
 .. rst-class:: classref-item-separator
 
@@ -1249,9 +1249,9 @@ The icon for the menu button (see :ref:`set_popup()<class_TabContainer_method_se
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **panel** :ref:`🔗<class_TabContainer_theme_style_panel>`
+:ref:`StyleBox<class_StyleBox>` **panel** :ref:`🔗 <class_TabContainer_theme_style_panel>`
 
-The style for the background fill.
+Kiểu cho phần tô nền.
 
 .. rst-class:: classref-item-separator
 
@@ -1261,9 +1261,9 @@ The style for the background fill.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **tab_disabled** :ref:`🔗<class_TabContainer_theme_style_tab_disabled>`
+:ref:`StyleBox<class_StyleBox>` **tab_disabled** :ref:`🔗 <class_TabContainer_theme_style_tab_disabled>`
 
-The style of disabled tabs.
+Kiểu của các tab bị vô hiệu hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -1273,9 +1273,9 @@ The style of disabled tabs.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **tab_focus** :ref:`🔗<class_TabContainer_theme_style_tab_focus>`
+:ref:`StyleBox<class_StyleBox>` **tab_focus** :ref:`🔗 <class_TabContainer_theme_style_tab_focus>`
 
-:ref:`StyleBox<class_StyleBox>` used when the :ref:`TabBar<class_TabBar>` is focused. The :ref:`tab_focus<class_TabContainer_theme_style_tab_focus>` :ref:`StyleBox<class_StyleBox>` is displayed *over* the base :ref:`StyleBox<class_StyleBox>` of the selected tab, so a partially transparent :ref:`StyleBox<class_StyleBox>` should be used to ensure the base :ref:`StyleBox<class_StyleBox>` remains visible. A :ref:`StyleBox<class_StyleBox>` that represents an outline or an underline works well for this purpose. To disable the focus visual effect, assign a :ref:`StyleBoxEmpty<class_StyleBoxEmpty>` resource. Note that disabling the focus visual effect will harm keyboard/controller navigation usability, so this is not recommended for accessibility reasons.
+:ref:`StyleBox<class_StyleBox>` được sử dụng khi :ref:`TabBar<class_TabBar>` được focus. :ref:`tab_focus<class_TabContainer_theme_style_tab_focus>` :ref:`StyleBox<class_StyleBox>` được hiển thị *đè lên* :ref:`StyleBox<class_StyleBox>` cơ sở của tab đã chọn, vì vậy nên sử dụng :ref:`StyleBox<class_StyleBox>` có độ trong suốt một phần để đảm bảo :ref:`StyleBox<class_StyleBox>` cơ sở vẫn hiển thị. Một :ref:`StyleBox<class_StyleBox>` đại diện cho đường viền hoặc đường gạch chân sẽ phù hợp với mục đích này. Để tắt hiệu ứng hiển thị focus, hãy gán tài nguyên :ref:`StyleBoxEmpty<class_StyleBoxEmpty>`. Lưu ý rằng việc tắt hiệu ứng hiển thị focus sẽ làm giảm khả năng sử dụng khi điều hướng bằng bàn phím/bộ điều khiển, vì vậy không được khuyến nghị vì lý do khả năng truy cập.
 
 .. rst-class:: classref-item-separator
 
@@ -1285,11 +1285,11 @@ The style of disabled tabs.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **tab_hovered** :ref:`🔗<class_TabContainer_theme_style_tab_hovered>`
+:ref:`StyleBox<class_StyleBox>` **tab_hovered** :ref:`🔗 <class_TabContainer_theme_style_tab_hovered>`
 
-The style of the currently hovered tab.
+Kiểu của tab hiện đang được di chuột qua.
 
-\ **Note:** This style will be drawn with the same width as :ref:`tab_unselected<class_TabContainer_theme_style_tab_unselected>` at minimum.
+\ **Lưu ý:** Kiểu này sẽ được vẽ với chiều rộng tối thiểu bằng :ref:`tab_unselected<class_TabContainer_theme_style_tab_unselected>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1299,9 +1299,9 @@ The style of the currently hovered tab.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **tab_selected** :ref:`🔗<class_TabContainer_theme_style_tab_selected>`
+:ref:`StyleBox<class_StyleBox>` **tab_selected** :ref:`🔗 <class_TabContainer_theme_style_tab_selected>`
 
-The style of the currently selected tab.
+Kiểu của tab hiện đang được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -1311,9 +1311,9 @@ The style of the currently selected tab.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **tab_unselected** :ref:`🔗<class_TabContainer_theme_style_tab_unselected>`
+:ref:`StyleBox<class_StyleBox>` **tab_unselected** :ref:`🔗 <class_TabContainer_theme_style_tab_unselected>`
 
-The style of the other, unselected tabs.
+Kiểu của các tab khác, chưa được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -1323,16 +1323,16 @@ The style of the other, unselected tabs.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **tabbar_background** :ref:`🔗<class_TabContainer_theme_style_tabbar_background>`
+:ref:`StyleBox<class_StyleBox>` **tabbar_background** :ref:`🔗 <class_TabContainer_theme_style_tabbar_background>`
 
-The style for the background fill of the :ref:`TabBar<class_TabBar>` area.
+Kiểu cho phần tô nền của khu vực :ref:`TabBar<class_TabBar>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng ghi đè để có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`
