@@ -12,7 +12,7 @@ AimModifier3D
 
 **Kế thừa:** :ref:`BoneConstraint3D<class_BoneConstraint3D>` **<** :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**AimModifier3D**xoay một xương để hướng về một xương tham chiếu.
+**AimModifier3D** xoay một xương để hướng về một xương tham chiếu.
 
 .. rst-class:: classref-introduction-group
 

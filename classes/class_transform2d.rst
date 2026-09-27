@@ -179,7 +179,7 @@ Hằng số
 
 **IDENTITY** = ``Transform2D(1, 0, 0, 1, 0, 0)`` :ref:`🔗<class_Transform2D_constant_IDENTITY>`
 
-**Transform2D**identity. Đây là một phép biến đổi không có phép tịnh tiến, không có phép xoay và có tỷ lệ :ref:`Vector2.ONE<class_Vector2_constant_ONE>`. Điều này cũng có nghĩa là:
+**Transform2D** identity. Đây là một phép biến đổi không có phép tịnh tiến, không có phép xoay và có tỷ lệ :ref:`Vector2.ONE<class_Vector2_constant_ONE>`. Điều này cũng có nghĩa là:
 
 - :ref:`x<class_Transform2D_property_x>` trỏ sang phải (:ref:`Vector2.RIGHT<class_Vector2_constant_RIGHT>`);
 

@@ -19,7 +19,7 @@ Hình dạng hình cầu để sử dụng với occlusion culling trong :ref:`O
 Mô tả
 -----
 
-**SphereOccluder3D**lưu trữ một hình dạng hình cầu có thể được engine sử dụng trong hệ thống occlusion culling.
+**SphereOccluder3D** lưu trữ một hình dạng hình cầu có thể được engine sử dụng trong hệ thống occlusion culling.
 
 Xem tài liệu của :ref:`OccluderInstance3D<class_OccluderInstance3D>` để biết hướng dẫn thiết lập occlusion culling.
 

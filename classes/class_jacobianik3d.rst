@@ -19,7 +19,7 @@ Trình giải bài toán động học ngược dựa trên chuyển vị Jacobi
 Mô tả
 -----
 
-**JacobianIK3D**tính toán các phép xoay cho tất cả các khớp cùng lúc, tạo ra chuyển động tự nhiên và mượt mà. Phương pháp này đặc biệt phù hợp với các animation sinh học.
+**JacobianIK3D** tính toán các phép xoay cho tất cả các khớp cùng lúc, tạo ra chuyển động tự nhiên và mượt mà. Phương pháp này đặc biệt phù hợp với các animation sinh học.
 
 Độ xoắn kết quả quanh vector hướng tiến luôn được giữ lại từ pose trước đó.
 

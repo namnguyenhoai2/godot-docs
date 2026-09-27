@@ -829,7 +829,7 @@ Trả về ``true`` nếu node nhận :ref:`NOTIFICATION_TRANSFORM_CHANGED<class
 
 :ref:`bool<class_bool>` **is_visible_in_tree**\ (\ ) |const| :ref:`🔗<class_Node3D_method_is_visible_in_tree>`
 
-Trả về ``true`` nếu node này nằm trong scene tree và thuộc tính :ref:`visible<class_Node3D_property_visible>` là ``true`` đối với node này và tất cả ancestor **Node3D***theo trình tự* của nó. Ancestor thuộc bất kỳ loại nào khác (chẳng hạn như :ref:`Node<class_Node>` hoặc :ref:`Node2D<class_Node2D>`) sẽ ngắt trình tự. Xem thêm :ref:`Node.get_parent()<class_Node_method_get_parent>`.
+Trả về ``true`` nếu node này nằm trong scene tree và thuộc tính :ref:`visible<class_Node3D_property_visible>` là ``true`` đối với node này và tất cả ancestor **Node3D** *theo trình tự* của nó. Ancestor thuộc bất kỳ loại nào khác (chẳng hạn như :ref:`Node<class_Node>` hoặc :ref:`Node2D<class_Node2D>`) sẽ ngắt trình tự. Xem thêm :ref:`Node.get_parent()<class_Node_method_get_parent>`.
 
 \ **Lưu ý:** Phương thức này không thể xem xét :ref:`VisualInstance3D.layers<class_VisualInstance3D_property_layers>`, vì vậy ngay cả khi phương thức này trả về ``true``, node có thể không được kết xuất.
 

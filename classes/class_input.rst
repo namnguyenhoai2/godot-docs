@@ -21,7 +21,7 @@ Mô tả
 
 Singleton **Input** xử lý thao tác nhấn phím, nút chuột và chuyển động chuột, gamepad và các hành động đầu vào. Có thể thiết lập các hành động và sự kiện của chúng trong tab **Input Map** tại **Project > Project Settings**, hoặc bằng lớp :ref:`InputMap<class_InputMap>`.
 
-\ **Lưu ý:** **Input**Các phương thức của singleton phản ánh trạng thái đầu vào toàn cục và không bị ảnh hưởng bởi :ref:`Control.accept_event()<class_Control_method_accept_event>` hoặc :ref:`Viewport.set_input_as_handled()<class_Viewport_method_set_input_as_handled>`, vì các phương thức đó chỉ xử lý cách đầu vào được truyền trong :ref:`SceneTree<class_SceneTree>`.
+\ **Lưu ý:** **Input** Các phương thức của singleton phản ánh trạng thái đầu vào toàn cục và không bị ảnh hưởng bởi :ref:`Control.accept_event()<class_Control_method_accept_event>` hoặc :ref:`Viewport.set_input_as_handled()<class_Viewport_method_set_input_as_handled>`, vì các phương thức đó chỉ xử lý cách đầu vào được truyền trong :ref:`SceneTree<class_SceneTree>`.
 
 .. rst-class:: classref-introduction-group
 

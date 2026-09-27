@@ -21,7 +21,7 @@ Một vùng không gian 3D hình hộp, phát hiện xem nó có hiển thị tr
 Mô tả
 -----
 
-**VisibleOnScreenNotifier3D**đại diện cho một vùng không gian 3D hình hộp. Khi bất kỳ phần nào của vùng này hiển thị trên màn hình hoặc trong tầm nhìn của :ref:`Camera3D<class_Camera3D>`, nó sẽ phát tín hiệu :ref:`screen_entered<class_VisibleOnScreenNotifier3D_signal_screen_entered>`, và tương tự sẽ phát tín hiệu :ref:`screen_exited<class_VisibleOnScreenNotifier3D_signal_screen_exited>` khi không còn phần nào của nó hiển thị.
+**VisibleOnScreenNotifier3D** đại diện cho một vùng không gian 3D hình hộp. Khi bất kỳ phần nào của vùng này hiển thị trên màn hình hoặc trong tầm nhìn của :ref:`Camera3D<class_Camera3D>`, nó sẽ phát tín hiệu :ref:`screen_entered<class_VisibleOnScreenNotifier3D_signal_screen_entered>`, và tương tự sẽ phát tín hiệu :ref:`screen_exited<class_VisibleOnScreenNotifier3D_signal_screen_exited>` khi không còn phần nào của nó hiển thị.
 
 Nếu muốn một node được tự động bật khi vùng này hiển thị trên màn hình, hãy sử dụng :ref:`VisibleOnScreenEnabler3D<class_VisibleOnScreenEnabler3D>`.
 

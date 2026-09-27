@@ -21,7 +21,7 @@ Một node có thể sửa đổi các bone của Skeleton3D.
 Mô tả
 -----
 
-**SkeletonModifier3D**lấy một :ref:`Skeleton3D<class_Skeleton3D>` đích bằng cách có một parent :ref:`Skeleton3D<class_Skeleton3D>`.
+**SkeletonModifier3D** lấy một :ref:`Skeleton3D<class_Skeleton3D>` đích bằng cách có một parent :ref:`Skeleton3D<class_Skeleton3D>`.
 
 Nếu có một :ref:`AnimationMixer<class_AnimationMixer>`, việc sửa đổi luôn được thực hiện sau quá trình phát lại của :ref:`AnimationMixer<class_AnimationMixer>`.
 

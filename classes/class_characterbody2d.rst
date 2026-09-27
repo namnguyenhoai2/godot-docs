@@ -105,7 +105,7 @@ Các phương thức
    +---------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector2<class_Vector2>`                           | :ref:`get_real_velocity<class_CharacterBody2D_method_get_real_velocity>`\ (\ ) |const|                                                            |
    +---------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`KinematicCollision2D<class_KinematicCollision2D>` | :ref:`get_slide_collision<class_CharacterBody2D_method_get_slide_collision>`\ (\ slide_idx\: :ref:`int<class_int>`\ ) /*  */                      |
+   | :ref:`KinematicCollision2D<class_KinematicCollision2D>` | :ref:`get_slide_collision<class_CharacterBody2D_method_get_slide_collision>`\ (\ slide_idx\: :ref:`int<class_int>`\ )                             |
    +---------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                                   | :ref:`get_slide_collision_count<class_CharacterBody2D_method_get_slide_collision_count>`\ (\ ) |const|                                            |
    +---------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
